@@ -4,35 +4,39 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductCard from '../components/ProductCard.astro';
 import FAQSection from '../components/FAQSection.astro';
 import AdSlot from '../components/AdSlot.astro';
+import sitioData from '../data/sitio.json';
 
 const allArticles = await getCollection('articles');
 const featuredArticles = allArticles.sort(
   (a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime()
 );
 
+const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL || sitioData.emailContacto;
+
 const organizationSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
+  '@type': 'LocalBusiness',
   'name': 'HogarTV.cl',
   'url': 'https://hogartv.cl',
   'logo': 'https://hogartv.cl/favicon.svg',
-  'description': 'Portal técnico independiente en Chile para guías de compra de Smart TVs, tutoriales de TV Digital Abierta (TVD) y streaming.',
+  'description': 'Portal híbrido en Chile especializado en guías de compra de Smart TVs, comparativas de streaming y servicio técnico de instalación de antenas de Televisión Digital Abierta (TVD).',
   'address': {
     '@type': 'PostalAddress',
     'addressCountry': 'CL',
-    'addressLocality': 'Santiago',
+    'addressLocality': 'Santiago / Regiones de Chile',
   },
   'contactPoint': {
     '@type': 'ContactPoint',
     'contactType': 'customer support',
-    'email': 'contacto@hogartv.cl',
+    'email': contactEmail,
     'availableLanguage': ['Spanish'],
   },
   'knowsAbout': [
     'Smart TV',
-    'Televisión Digital Abierta Chile',
+    'Televisión Digital Abierta Chile (TVD)',
     'Norma ISDB-Tb',
     'Streaming y TV Sticks',
+    'Instalación de Antenas y Soportes de TV',
   ],
   'sameAs': [
     'https://hogartv.cl/sobre-nosotros',
@@ -40,134 +44,281 @@ const organizationSchema = {
   ],
 };
 
-const categories = [
+const pillars = [
   {
-    name: 'Smart TV',
-    slug: 'smart-tv',
-    icon: '📺',
-    desc: 'Los mejores televisores de 50", 55" y 65" pulgadas analizados para Chile.',
-    badge: 'Popular',
-    color: 'from-blue-600/20 to-indigo-600/10 border-blue-500/30 text-blue-400',
-  },
-  {
-    name: 'Streaming y TV Online',
-    slug: 'streaming',
-    icon: '🍿',
-    desc: 'Zapping TV, DGO, fútbol chileno y comparativa de planes.',
-    badge: 'En tendencia',
-    color: 'from-purple-600/20 to-pink-600/10 border-purple-500/30 text-purple-400',
-  },
-  {
-    name: 'TV Abierta Digital (TVD)',
-    slug: 'tv-abierta',
     icon: '📡',
-    desc: 'Canales nacionales gratis en Full HD (TVN, Mega, Canal 13, CHV).',
-    badge: 'Gratis',
-    color: 'from-emerald-600/20 to-teal-600/10 border-emerald-500/30 text-emerald-400',
+    badge: '100% Gratis · Sin Mensualidades',
+    badgeColor: 'bg-emerald-950/80 text-emerald-400 border-emerald-800/60',
+    title: 'TV Digital Abierta (TVD)',
+    desc: 'Aprende a sintonizar Canal 13, TVN, Mega, Chilevisión y señales regionales en calidad Full HD 1080p con antena, sin pagar planes de cable.',
+    link: '/tv-abierta/como-sintonizar-canales-hd-tvd-chile/',
+    linkText: 'Ver guía de sintonización HD',
+    gradient: 'from-emerald-900/20 via-slate-900/40 to-slate-900/80 border-emerald-800/30 hover:border-emerald-500/50',
   },
   {
-    name: 'Accesorios y TV Sticks',
-    slug: 'accesorios',
+    icon: '🍿',
+    badge: 'Fútbol en Vivo · Cero Retardo',
+    badgeColor: 'bg-purple-950/80 text-purple-300 border-purple-800/60',
+    title: 'Streaming y TV Online',
+    desc: 'Comparamos Zapping TV vs. DGO para ver fútbol chileno (TNT Sports) sin spoilers, con fluidez a 60 fps y precios transparentes en pesos chilenos.',
+    link: '/streaming/zapping-vs-dgo-chile-cual-conviene/',
+    linkText: 'Comparar Zapping vs DGO',
+    gradient: 'from-purple-900/20 via-slate-900/40 to-slate-900/80 border-purple-800/30 hover:border-purple-500/50',
+  },
+  {
+    icon: '📺',
+    badge: 'Compra Inteligente 2026',
+    badgeColor: 'bg-blue-950/80 text-blue-300 border-blue-800/60',
+    title: 'Mejores Smart TVs y Sticks',
+    desc: 'Revisamos paneles QLED, Mini-LED y 4K con la mejor relación calidad-precio en Chile, más TV Sticks (Roku / Chromecast) para revivir tu tele antigua.',
+    link: '/smart-tv/mejores-smart-tv-calidad-precio-chile/',
+    linkText: 'Ver ranking Smart TVs 2026',
+    gradient: 'from-blue-900/20 via-slate-900/40 to-slate-900/80 border-blue-800/30 hover:border-blue-500/50',
+  },
+];
+
+const quickNeeds = [
+  {
+    icon: '🆓',
+    question: 'Quiero ver canales nacionales en Full HD gratis',
+    solution: 'Guía paso a paso para instalar antena TVD digital (norma chilena ISDB-Tb).',
+    link: '/tv-abierta/como-sintonizar-canales-hd-tvd-chile/',
+  },
+  {
+    icon: '⚽',
+    question: 'Quiero ver fútbol chileno y canales por internet',
+    solution: 'Comparativa de planes de Zapping TV y DGO con TNT Sports Premium.',
+    link: '/streaming/zapping-vs-dgo-chile-cual-conviene/',
+  },
+  {
+    icon: '🛒',
+    question: 'Quiero renovar mi televisor sin pagar de más',
+    solution: 'Ranking de los 3 mejores Smart TV 55" calidad-precio en el mercado chileno.',
+    link: '/smart-tv/mejores-smart-tv-calidad-precio-chile/',
+  },
+  {
     icon: '🔌',
-    desc: 'Roku, Chromecast con Google TV, antenas HD y barras de sonido.',
-    badge: 'Gadgets',
-    color: 'from-amber-600/20 to-orange-600/10 border-amber-500/30 text-amber-400',
+    question: 'Mi tele es lenta o vieja y quiero apps de streaming',
+    solution: 'Análisis a fondo: Roku Express 4K frente a Google Chromecast con Google TV.',
+    link: '/accesorios/roku-vs-chromecast-chile-cual-conviene/',
   },
 ];
 ---
 
 <BaseLayout
-  title="HogarTV.cl | Guía de Televisión, Streaming y Smart TVs en Chile"
-  description="El portal #1 en Chile para elegir tu Smart TV, comparar plataformas de streaming (Zapping, DGO) y sintonizar canales HD abiertos gratis con TVD."
+  title="HogarTV.cl | Guía de Televisión, Streaming y Servicio Técnico en Chile"
+  description="Todo para la televisión de tu hogar en Chile: aprende a captar canales HD gratis con TVD, compara plataformas de streaming y Smart TVs, o solicita asesoría e instalación técnica."
 >
   
-  <!-- HERO SECTION -->
+  <!-- HERO SECTION CON CLARIDAD TOTAL -->
   <section class="relative overflow-hidden pt-12 pb-20 border-b border-slate-800/80 bg-gradient-to-b from-slate-950 via-surface-dark to-surface-dark">
-    <!-- Efecto de luz ambiental de fondo -->
-    <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-brand-600/20 blur-[120px] rounded-full pointer-events-none"></div>
+    <!-- Efecto ambiental -->
+    <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-brand-600/15 blur-[130px] rounded-full pointer-events-none"></div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
       
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-slate-700/80 text-xs font-semibold text-slate-300 shadow-sm mb-6">
+      <!-- Badge de Identidad -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/90 border border-slate-700/80 text-xs font-semibold text-slate-200 shadow-sm mb-6">
         <span class="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span>Portal Especializado en Televisión y Streaming para Chile 🇨🇱 · Edición 2026</span>
+        <span>🇨🇱 Portal Híbrido: Guías, Streaming y Servicio Técnico en Chile</span>
       </div>
 
-      <h1 class="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-tight max-w-4xl mx-auto mb-6">
-        Tu guía experta en <span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-400 via-indigo-300 to-brand-500">Smart TVs, Streaming</span> y Televisión en el Hogar
+      <!-- Titular Principal -->
+      <h1 class="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-tight max-w-4xl mx-auto mb-6">
+        Todo para la Televisión de tu Hogar: <span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-400 via-indigo-300 to-brand-500">Sin Enredos ni Cobros Ocultos</span>
       </h1>
 
-      <p class="text-base sm:text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
-        Aprende a sintonizar canales HD gratis, compara plataformas de TV online y encuentra el mejor televisor para tu casa sin pagar de más.
+      <!-- Bajada Explicativa -->
+      <p class="text-base sm:text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed font-normal">
+        Te ayudamos a <strong>cortar el cable tradicional</strong> y disfrutar la mejor calidad de imagen: aprende a captar canales HD nacionales gratis con TVD, compara plataformas de streaming legales para ver fútbol en vivo, o solicita <strong>asesoría e instalación técnica a domicilio</strong>.
       </p>
 
-      <!-- Botones de Acción Rápida -->
+      <!-- Botones Principales de Acción -->
       <div class="flex flex-wrap items-center justify-center gap-4">
         <a
-          href="/smart-tv/mejores-smart-tv-calidad-precio-chile/"
+          href="#pilares"
           class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-bold text-sm shadow-lg shadow-brand-600/30 hover:shadow-brand-600/50 transition-all transform hover:-translate-y-0.5"
         >
-          🔥 Ver Mejores Smart TV 2026
+          🚀 Ver los 3 Pilares de HogarTV
+        </a>
+        <a
+          href="#servicio-tecnico"
+          class="px-6 py-3.5 rounded-xl bg-surface-card hover:bg-slate-800 text-slate-200 border border-slate-700 text-sm font-semibold transition-all hover:border-brand-500/60 flex items-center gap-2"
+        >
+          <span>🛠️</span> Solicitar Servicio Técnico
         </a>
         <a
           href="/streaming/zapping-vs-dgo-chile-cual-conviene/"
-          class="px-6 py-3.5 rounded-xl bg-purple-950/60 hover:bg-purple-900/60 text-purple-200 border border-purple-700/60 text-sm font-semibold transition-all hover:border-purple-500"
+          class="px-6 py-3.5 rounded-xl bg-purple-950/60 hover:bg-purple-900/60 text-purple-200 border border-purple-700/60 text-sm font-semibold transition-all hover:border-purple-500 flex items-center gap-2"
         >
-          🍿 Zapping TV vs DGO (Fútbol)
-        </a>
-        <a
-          href="/tv-abierta/como-sintonizar-canales-hd-tvd-chile/"
-          class="px-6 py-3.5 rounded-xl bg-surface-card hover:bg-slate-800 text-slate-200 border border-slate-700 text-sm font-semibold transition-all hover:border-slate-600"
-        >
-          📡 Cómo ver TV Digital Gratis
+          <span>🍿</span> Zapping vs DGO (Fútbol)
         </a>
       </div>
 
     </div>
   </section>
 
-  <!-- CATEGORÍAS PRINCIPALES -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <div class="flex items-center justify-between mb-8">
-      <div>
-        <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">¿Qué estás buscando hoy?</h2>
-        <p class="text-xs sm:text-sm text-slate-400">Selecciona el tema que te interesa para ver guías y recomendaciones actualizadas</p>
-      </div>
+  <!-- LOS 3 PILARES CLAVE DE HOGARTV -->
+  <section id="pilares" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <h2 class="text-xs font-bold uppercase tracking-wider text-brand-400 mb-2">¿De qué se trata HogarTV?</h2>
+      <p class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+        Nuestros 3 Pilares de Solución para tu Televisión
+      </p>
+      <p class="text-sm text-slate-400 mt-2">
+        Combinamos conocimiento técnico en terreno con recomendaciones independientes para que disfrutes de la televisión como debe ser.
+      </p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      {categories.map((cat) => (
-        <a
-          href={`/${cat.slug}/`}
-          class={`group relative p-6 rounded-2xl bg-surface-card border border-slate-800 hover:border-slate-600 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl bg-gradient-to-b ${cat.color} flex flex-col justify-between`}
-        >
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {pillars.map((pillar) => (
+        <div class={`rounded-3xl p-8 bg-gradient-to-b ${pillar.gradient} border backdrop-blur-sm flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl`}>
           <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-3xl p-3 bg-slate-900/80 rounded-xl border border-slate-800 group-hover:scale-110 transition-transform">
-                {cat.icon}
+            <div class="flex items-center justify-between mb-6">
+              <span class="text-4xl p-3.5 bg-slate-900/90 rounded-2xl border border-slate-800 shadow-md">
+                {pillar.icon}
               </span>
-              <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-slate-900/90 text-slate-300 border border-slate-700/60">
-                {cat.badge}
+              <span class={`text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border ${pillar.badgeColor}`}>
+                {pillar.badge}
               </span>
             </div>
-            <h3 class="text-lg font-bold text-white group-hover:text-brand-300 transition-colors mb-2">
-              {cat.name}
+            
+            <h3 class="text-xl font-bold text-white mb-3 tracking-tight">
+              {pillar.title}
             </h3>
-            <p class="text-xs text-slate-400 leading-relaxed mb-4">
-              {cat.desc}
+            
+            <p class="text-sm text-slate-300 leading-relaxed mb-6">
+              {pillar.desc}
             </p>
           </div>
-          <span class="text-xs font-bold text-brand-400 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-            <span>Explorar guías</span>
-            <span>→</span>
-          </span>
-        </a>
+
+          <a
+            href={pillar.link}
+            class="inline-flex items-center justify-between w-full px-5 py-3 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-white font-semibold text-xs border border-slate-700/80 transition-colors group"
+          >
+            <span>{pillar.linkText}</span>
+            <span class="group-hover:translate-x-1 transition-transform">→</span>
+          </a>
+        </div>
       ))}
     </div>
   </section>
 
-  <!-- RECOMENDACIÓN DESTACADA DE LA SEMANA (Afiliados) -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <!-- SELECTOR RÁPIDO INTERACTIVO: "¿QUÉ NECESITAS RESOLVER HOY?" -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div class="bg-surface-card border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-xl">
+      <div class="max-w-2xl mb-8">
+        <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 block mb-1">Acceso Inmediato</span>
+        <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
+          ¿Qué necesitas resolver hoy en tu televisor?
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1">
+          Haz clic en tu situación para ir directamente a la solución comprobada:
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {quickNeeds.map((item) => (
+          <a
+            href={item.link}
+            class="p-5 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-brand-500/60 hover:bg-slate-900 transition-all flex items-start gap-4 group"
+          >
+            <span class="text-2xl p-2.5 bg-slate-800/80 rounded-xl border border-slate-700/50 group-hover:scale-110 transition-transform shrink-0">
+              {item.icon}
+            </span>
+            <div>
+              <h3 class="text-sm font-bold text-white group-hover:text-brand-300 transition-colors mb-1">
+                {item.question}
+              </h3>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                {item.solution}
+              </p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN DESTACADA: SERVICIO TÉCNICO E INSTALACIÓN A DOMICILIO -->
+  <section id="servicio-tecnico" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="rounded-3xl bg-gradient-to-r from-slate-900 via-slate-900/90 to-indigo-950/40 border border-slate-800 p-8 sm:p-12 relative overflow-hidden shadow-2xl">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-950/80 border border-brand-800/50 text-brand-300 text-xs font-semibold uppercase tracking-wider">
+            <span>🛠️ Soporte Técnico en Terreno</span>
+          </div>
+
+          <h2 class="text-2xl sm:text-4xl font-black text-white tracking-tight leading-snug">
+            ¿Prefieres que un técnico profesional lo haga por ti?
+          </h2>
+
+          <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+            Ofrecemos <strong>servicio técnico independiente y asesoría a domicilio</strong> en Chile, liderado por <strong>Luis Briones</strong> (Técnico en Telecomunicaciones con más de 8 años de experiencia en terreno).
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+            <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800">
+              <span class="text-2xl block mb-2">📡</span>
+              <h3 class="text-xs font-bold text-white mb-1">Antenas TVD HD</h3>
+              <p class="text-[11px] text-slate-400 leading-relaxed">Orientación y cableado coaxial para captar todos los canales digitales de tu comuna.</p>
+            </div>
+            
+            <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800">
+              <span class="text-2xl block mb-2">📺</span>
+              <h3 class="text-xs font-bold text-white mb-1">Soportes a Muro</h3>
+              <p class="text-[11px] text-slate-400 leading-relaxed">Instalación firme y nivelada de televisores de 32" a 75" con ordenamiento estético de cables.</p>
+            </div>
+            
+            <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800">
+              <span class="text-2xl block mb-2">⚡</span>
+              <h3 class="text-xs font-bold text-white mb-1">Redes & Streaming</h3>
+              <p class="text-[11px] text-slate-400 leading-relaxed">Cableado Ethernet Cat 6 y WiFi 5 GHz para ver fútbol sin cortes ni congelamientos.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta de Contacto Directo -->
+        <div class="lg:col-span-5 bg-surface-card/90 border border-slate-700/80 rounded-2xl p-6 sm:p-8 text-center space-y-5 shadow-xl">
+          <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-brand-600 to-indigo-400 mx-auto flex items-center justify-center text-2xl shadow-lg shadow-brand-500/25">
+            👨‍🔧
+          </div>
+
+          <div>
+            <h3 class="text-lg font-bold text-white">Luis Briones</h3>
+            <p class="text-xs text-brand-400 font-medium">Técnico Especialista en Audio/Video y TVD</p>
+          </div>
+
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Consúltanos directamente por disponibilidad de visitas técnicas, cotizaciones de instalación o asesoría para tu televisor.
+          </p>
+
+          <div class="space-y-3 pt-2">
+            <a
+              href="/contacto/"
+              class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm shadow-lg shadow-brand-600/30 transition-all"
+            >
+              <span>✉️</span> Solicitar Visita / Cotización
+            </a>
+            
+            <a
+              href="/sobre-nosotros/"
+              class="w-full inline-flex items-center justify-center px-4 py-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 font-semibold text-xs border border-slate-700 transition-colors"
+            >
+              Conocer trayectoria y metodología →
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RECOMENDACIÓN EDITORIAL (SMART TV N°1 2026) -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
     <div class="bg-gradient-to-r from-slate-900 via-surface-card to-slate-900 rounded-3xl p-6 sm:p-10 border border-slate-800 shadow-2xl relative overflow-hidden">
       
       <div class="max-w-2xl mb-6">
@@ -203,19 +354,19 @@ const categories = [
     </div>
   </section>
 
-  <!-- GUÍAS RECIENTES Y ARTÍCULOS -->
+  <!-- TODAS LAS GUÍAS Y ANÁLISIS RECIENTES (LAS 4 ENTRADAS) -->
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
     <div class="flex items-center justify-between mb-8">
       <div>
-        <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Guías y Análisis Recientes</h2>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Guías y Análisis Técnicos</h2>
         <p class="text-xs sm:text-sm text-slate-400">Artículos prácticos redactados para resolver dudas reales de televisión en Chile</p>
       </div>
-      <a href="/smart-tv/" class="text-xs font-semibold text-brand-400 hover:text-brand-300 hidden sm:inline-block">
-        Ver todas →
-      </a>
+      <span class="text-xs font-semibold text-brand-400 hidden sm:inline-block">
+        {featuredArticles.length} guías publicadas
+      </span>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       {featuredArticles.map((article) => {
         const slug = article.id.replace(/\.(md|mdx)$/, '');
         return (
@@ -224,24 +375,24 @@ const categories = [
               <div>
                 <div class="flex items-center justify-between text-xs text-slate-400 mb-3">
                   <span class="text-brand-400 font-semibold uppercase tracking-wider">{article.data.categoryName}</span>
-                  <span>{article.data.publishDate}</span>
+                  <span class="text-[11px] text-slate-500">{article.data.publishDate}</span>
                 </div>
-                <h3 class="text-lg sm:text-xl font-bold text-white group-hover:text-brand-300 transition-colors mb-3 leading-snug">
+                <h3 class="text-base sm:text-lg font-bold text-white group-hover:text-brand-300 transition-colors mb-3 leading-snug line-clamp-2">
                   <a href={`/${article.data.category}/${slug}/`}>
                     {article.data.title}
                   </a>
                 </h3>
-                <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4 line-clamp-3">
+                <p class="text-slate-400 text-xs leading-relaxed mb-4 line-clamp-3">
                   {article.data.description}
                 </p>
               </div>
               <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
-                <span class="text-slate-400">⏱️ {article.data.readTime}</span>
+                <span class="text-slate-500">⏱️ {article.data.readTime}</span>
                 <a
                   href={`/${article.data.category}/${slug}/`}
                   class="font-bold text-brand-400 hover:text-brand-300 group-hover:translate-x-0.5 transition-transform"
                 >
-                  Leer guía →
+                  Leer →
                 </a>
               </div>
             </div>
@@ -259,19 +410,23 @@ const categories = [
   <!-- SECCIÓN FAQ GENERAL -->
   <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
     <FAQSection
-      title="Preguntas Frecuentes sobre Televisión en Chile"
+      title="Preguntas Frecuentes sobre HogarTV"
       items={[
         {
-          question: "¿Qué es HogarTV.cl y qué tipo de contenidos publica?",
-          answer: "HogarTV.cl es un portal digital independiente chileno enfocado en ayudar a las familias y usuarios a optimizar su experiencia de televisión en casa. Publicamos guías de compra de Smart TVs, comparativas de plataformas de streaming por internet (Zapping, DGO, etc.) y manuales paso a paso para sintonizar canales HD gratuitos mediante la Televisión Digital Abierta (TVD)."
+          question: "¿Qué es HogarTV.cl y cómo funciona este portal?",
+          answer: "HogarTV.cl es un portal digital híbrido e independiente en Chile. Cumple dos funciones clave: por un lado, publica tutoriales gratuitos de televisión digital abierta (TVD), análisis de Smart TVs y comparativas de streaming; por otro lado, ofrece orientación y servicios técnicos a domicilio para instalar antenas, montar soportes a pared y optimizar la red doméstica de televisión."
         },
         {
-          question: "¿Los precios de los televisores y accesorios están en moneda chilena?",
-          answer: "Sí, todos los precios mostrados en HogarTV.cl están expresados en Pesos Chilenos (CLP). Corresponden a valores referenciales tomados en la fecha indicada junto a cada producto en comercios electrónicos como Mercado Libre Chile. Dado que las ofertas y el stock fluctúan con frecuencia, recomendamos siempre verificar el precio final y las condiciones de compra directamente en la tienda oficial antes de adquirir un producto."
+          question: "¿Los canales de la Televisión Digital Abierta (TVD) son realmente gratis?",
+          answer: "Sí, 100% gratis por ley. Tras el apagón analógico en Chile, las señales principales (TVN, Mega, Canal 13, Chilevisión, TV+, La Red y señales regionales) emiten por aire en señal digital HD abierta bajo la norma ISDB-Tb. Solo necesitas un televisor con sintonizador digital (sello TVD) y una antena conectada a la entrada coaxial."
         },
         {
-          question: "¿Cómo puedo contactar o sugerir un tema para analizar?",
-          answer: "Puedes escribirnos a través de nuestra página de contacto con tus dudas sobre modelos de televisores, compatibilidad de aplicaciones o sintonización en tu región. Actualizamos continuamente las guías técnicas según las consultas de la comunidad chilena."
+          question: "¿Cómo solicito servicio técnico o instalación de antena en mi casa?",
+          answer: "Puedes comunicarte a través de nuestra página de contacto para consultar cobertura, cotizaciones y agendar visitas técnicas para instalación de antenas, montaje de soportes a muro y configuración de Smart TVs."
+        },
+        {
+          question: "¿Los precios de televisores mostrados están en moneda chilena?",
+          answer: "Sí, todos los precios están expresados en Pesos Chilenos (CLP) y corresponden a valores de referencia tomados en comercios electrónicos regulados en Chile como Mercado Libre."
         }
       ]}
     />

@@ -1,19 +1,45 @@
 DirectoryIndex index.html
+ErrorDocument 404 /404.html
 
-RewriteEngine On
+<IfModule mod_rewrite.c>
+    RewriteEngine On
 
-# 1. Forzar HTTPS
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    # 1. Forzar HTTPS
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# 2. Redirigir www a no-www
-RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-RewriteRule ^(.*)$ https://%1/$1 [L,R=301]
+    # 2. Redirigir www a no-www (https://hogartv.cl)
+    RewriteCond %{HTTP_HOST} ^www\.hogartv\.cl$ [NC]
+    RewriteRule ^(.*)$ https://hogartv.cl/$1 [L,R=301]
 
-# 3. Cabeceras de Seguridad
+    # 3. Forzar trailing slash canónico (ej: /smart-tv -> /smart-tv/)
+    # Excluye archivos existentes y extensiones comunes (.xml, .png, .ico, etc.)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_URI} !(\.[a-zA-Z0-9]{1,5})$
+    RewriteRule ^(.*[^/])$ https://hogartv.cl/$1/ [L,R=301]
+</IfModule>
+
+# 4. Cabeceras de Seguridad
 <IfModule mod_headers.c>
     Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
     Header set X-Content-Type-Options "nosniff"
     Header set X-Frame-Options "SAMEORIGIN"
     Header set Referrer-Policy "strict-origin-when-cross-origin"
+    Header set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+
+    # 5. Políticas de Caché
+    # Archivos estáticos con hash inmutable (fuentes, imágenes, scripts empaquetados)
+    <FilesMatch "\.(css|js|woff2?|ttf|otf|eot|webp|avif|png|jpg|jpeg|gif|svg|ico)$">
+        Header set Cache-Control "max-age=31536000, public, immutable"
+    </FilesMatch>
+
+    # Documentos HTML y feeds (revalidación inmediata con tolerancia stale)
+    <FilesMatch "\.(html|xml|json)$">
+        Header set Cache-Control "max-age=0, must-revalidate, stale-while-revalidate=86400"
+    </FilesMatch>
+</IfModule>
+
+# 6. Compresión Gzip / Deflate para máxima velocidad
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json application/xml application/rss+xml image/svg+xml
 </IfModule>

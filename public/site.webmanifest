@@ -1,0 +1,21 @@
+{
+  "name": "HogarTV.cl",
+  "short_name": "HogarTV",
+  "description": "Guías de Smart TVs, streaming y televisión digital abierta en Chile.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#090d16",
+  "theme_color": "#2563eb",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

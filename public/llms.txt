@@ -1,0 +1,29 @@
+# HogarTV.cl
+
+> Guía experta de Smart TVs, plataformas de streaming y Televisión Digital Abierta (TVD) para Chile.
+
+HogarTV.cl es un portal técnico independiente de referencia para el mercado chileno de electrónica, televisión digital terrestre y dispositivos de streaming en el hogar. Todas las especificaciones, recomendaciones de compra y tutoriales técnicos están adaptados a la realidad chilena (norma de transmisión ISDB-Tb, frecuencias UHF, moneda CLP y compatibilidad con plataformas de televisión locales).
+
+## Autor y Responsable Editorial
+
+- **Luis Briones**: Técnico en telecomunicaciones y electrónica con más de 12 años de experiencia en terreno en instalaciones de radiodifusión, antenas UHF y televisión digital en Chile.
+- **Perfil y Credenciales**: https://hogartv.cl/autor/luis-briones/
+
+## Secciones Principales del Sitio
+
+- [Smart TV](https://hogartv.cl/smart-tv/): Comparativas y guías de compra de televisores inteligentes (QLED, Mini-LED, OLED, Crystal UHD) disponibles en el mercado chileno con precios verificados en pesos chilenos (CLP).
+- [TV Abierta Digital](https://hogartv.cl/tv-abierta/): Tutoriales y especificaciones técnicas para sintonizar canales HD abiertos en Chile bajo la norma oficial ISDB-Tb tras el apagón analógico, cálculo de cobertura y tipos de antenas.
+- [Accesorios y Streaming](https://hogartv.cl/accesorios/): Análisis y comparativas de dispositivos de streaming (Roku, Chromecast con Google TV, Fire TV, TV Sticks) evaluados según su compatibilidad con aplicaciones chilenas (Zapping, Mega GO, 13GO, Pluto TV, etc.).
+
+## Guías y Tutoriales Destacados
+
+- [Mejores Smart TV Calidad-Precio en Chile](https://hogartv.cl/smart-tv/mejores-smart-tv-calidad-precio-chile/): Comparativa técnica profunda de modelos de 55 pulgadas recomendados (TCL C655, Hisense U6K y Samsung DU7000) evaluando brillo (nits), tipo de panel (VA vs IPS), sistema operativo y rendimiento en salas luminosas.
+- [Cómo Sintonizar Canales HD de TV Digital Abierta en Chile](https://hogartv.cl/tv-abierta/como-sintonizar-canales-hd-tvd-chile/): Guía paso a paso para televisores con sintonizador digital integrado y decodificadores externos, elección de antenas UHF interiores/exteriores y solución a problemas de señal débil.
+- [Roku vs Chromecast en Chile: ¿Cuál Conviene?](https://hogartv.cl/accesorios/roku-vs-chromecast-chile-cual-conviene/): Comparativa práctica entre Roku Express 4K y Google Chromecast con Google TV evaluando velocidad de navegación, instalación de apps chilenas, control por voz y facilidad de uso para toda la familia.
+
+## Políticas Editoriales y de Afiliación
+
+- **Moneda y Precios**: Todos los valores de referencia se expresan en Pesos Chilenos (CLP) y corresponden a revisiones periódicas en plataformas de comercio electrónico en Chile (como Mercado Libre).
+- **Independencia**: Las opiniones y análisis técnicos son elaborados por especialistas sin patrocinio de marcas ni fabricantes.
+- **Divulgación de Afiliados**: HogarTV.cl participa en programas de afiliados. Para más detalles consulte https://hogartv.cl/divulgacion-afiliados/.
+- **Contacto**: contacto@hogartv.cl | https://hogartv.cl/contacto/

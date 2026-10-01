@@ -1,0 +1,54 @@
+---
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  title?: string;
+  items: FAQItem[];
+  headingLevel?: 'h2' | 'h3';
+}
+
+const { title = 'Preguntas Frecuentes', items, headingLevel = 'h2' } = Astro.props;
+const HeadingTag = headingLevel;
+
+// Generar JSON-LD Schema.org para FAQPage
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  'mainEntity': items.map((item) => ({
+    '@type': 'Question',
+    'name': item.question,
+    'acceptedAnswer': {
+      '@type': 'Answer',
+      'text': item.answer,
+    },
+  })),
+};
+---
+
+<section class="my-10">
+  <HeadingTag class="text-xl md:text-2xl font-bold text-white mb-6 flex items-center gap-2">
+    <span class="text-brand-400">❓</span> {title}
+  </HeadingTag>
+
+  <div class="space-y-3">
+    {items.map((item, index) => (
+      <details class="group bg-surface-card border border-slate-800 rounded-xl overflow-hidden transition-all duration-200 open:border-brand-500/40">
+        <summary class="flex items-center justify-between p-4 sm:p-5 font-semibold text-slate-200 cursor-pointer select-none hover:text-white group-open:text-brand-300">
+          <span class="pr-4 text-sm sm:text-base">{item.question}</span>
+          <svg class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </summary>
+        <div class="px-4 sm:px-5 pb-5 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-800/60 pt-3">
+          {item.answer}
+        </div>
+      </details>
+    ))}
+  </div>
+
+  <!-- Schema.org JSON-LD para Google Rich Snippets -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+</section>

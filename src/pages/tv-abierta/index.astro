@@ -1,0 +1,223 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const allArticles = await getCollection('articles');
+const articles = allArticles
+  .filter((a) => a.data.category === 'tv-abierta')
+  .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  'name': 'Guías y Tutoriales de TV Digital Abierta en Chile',
+  'itemListElement': articles.map((article, index) => {
+    const slug = article.id.replace(/\.(md|mdx)$/, '');
+    return {
+      '@type': 'ListItem',
+      'position': index + 1,
+      'name': article.data.title,
+      'url': `https://hogartv.cl/tv-abierta/${slug}/`,
+    };
+  }),
+};
+---
+
+<BaseLayout
+  title="TV Abierta Digital en Chile (TVD): Canales HD y Sintonización"
+  description="Guía completa para ver televisión digital abierta en Chile gratis y en HD. Frecuencias de TVN, Canal 13, Mega, Chilevisión y tutoriales de antenas digitales."
+  breadcrumbs={[{ name: 'TV Abierta Chile', url: '/tv-abierta/' }]}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    
+    <!-- Header de Categoría -->
+    <div class="max-w-3xl mb-12">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/60 border border-emerald-800/40 text-emerald-300 text-xs font-semibold uppercase tracking-wider mb-4">
+        <span>📡 Señal Gratuita y Legal</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
+        Televisión Digital Abierta (TVD Chile)
+      </h1>
+      <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+        Aprende a sintonizar los canales nacionales y regionales en alta definición sin pagar cuentas mensuales de cable. Todo 100% legal, gratuito y por el aire.
+      </p>
+    </div>
+
+    <!-- Lista de Artículos -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {articles.map((article) => {
+        const slug = article.id.replace(/\.(md|mdx)$/, '');
+        return (
+          <article class="flex flex-col bg-surface-card border border-slate-800 rounded-2xl overflow-hidden hover:border-emerald-500/50 hover:shadow-xl transition-all duration-300 group">
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between text-xs text-slate-400 mb-3">
+                  <span class="text-emerald-400 font-semibold">{article.data.categoryName}</span>
+                  <span>{article.data.publishDate}</span>
+                </div>
+                <h2 class="text-xl font-bold text-white group-hover:text-emerald-300 transition-colors mb-3 leading-snug">
+                  <a href={`/tv-abierta/${slug}/`}>
+                    {article.data.title}
+                  </a>
+                </h2>
+                <p class="text-slate-400 text-sm leading-relaxed mb-4 line-clamp-3">
+                  {article.data.description}
+                </p>
+              </div>
+              <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+                <span class="text-xs text-slate-400">⏱️ {article.data.readTime}</span>
+                <a
+                  href={`/tv-abierta/${slug}/`}
+                  class="inline-flex items-center gap-1 text-xs font-bold text-emerald-400 hover:text-emerald-300 group-hover:translate-x-0.5 transition-transform"
+                >
+                  <span>Ver tutorial</span>
+                  <span>→</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+
+    <!-- Guía Técnica Completa de Televisión Digital Abierta en Chile (D1: >600 palabras) -->
+    <section class="mt-16 pt-12 border-t border-slate-800 text-slate-300 space-y-12">
+      <div>
+        <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider block mb-2">Fundamentos Técnicos para Chile</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-4">
+          Todo lo que Debes Saber sobre la Televisión Digital Abierta (TVD)
+        </h2>
+        <p class="text-sm sm:text-base text-slate-300 leading-relaxed mb-4">
+          Con la concreción del apagón analógico definitivo en abril de 2024 supervisado por el Consejo Nacional de Televisión (CNTV) y la Subsecretaría de Telecomunicaciones (SUBTEL), Chile cerró más de seis décadas de transmisiones analógicas por ondas VHF. A partir de esa fecha, toda la televisión terrestre abierta del país opera de manera exclusiva mediante el estándar digital <strong>ISDB-Tb</strong>.
+        </p>
+        <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+          Esta transformación tecnológica representa una ventaja mayúscula para los hogares chilenos: permite acceder a todos los canales nacionales y señales regionales en resolución nativa Full HD 1080p, con audio estéreo digital y canales culturales adicionales, sin tener que pagar suscripciones de cable, planes de telefonía ni consumir el ancho de banda del WiFi de la casa.
+        </p>
+      </div>
+
+      <!-- Sección 1: Por qué ISDB-Tb en Chile -->
+      <div class="space-y-4">
+        <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight flex items-center gap-2">
+          <span>📡</span> 1. La Norma ISDB-Tb: Resistencia Técnica en la Geografía Chilena
+        </h2>
+        <p class="text-sm text-slate-300 leading-relaxed">
+          Chile adoptó oficialmente la norma <strong>ISDB-Tb</strong> (Integrated Services Digital Broadcasting Terrestrial con compresión de video MPEG-4 AVC / H.264) tras extensas evaluaciones técnicas y mediciones de campo realizadas por universidades chilenas en la década del 2000. La decisión técnica se fundamentó en su extraordinaria capacidad para superar la accidentada geografía nacional:
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-3">
+          <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+            <h3 class="text-sm font-bold text-white mb-1">Inmunidad a Reflexiones (Ecos de Montaña)</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              En ciudades rodeadas de cerros como Santiago, Valparaíso, Viña del Mar, Coquimbo o Puerto Montt, las señales de televisión rebotan en las laderas cordilleranas. La modulación BST-OFDM de ISDB-Tb aprovecha estas reflexiones múltiples para fortalecer la señal en lugar de generar "fantasmas" o interferencias destructivas.
+            </p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+            <h3 class="text-sm font-bold text-white mb-1">Multiplexación Digital y Subcanales (.1 y .2)</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Cada canal de radiofrecuencia de 6 MHz puede subdividirse digitalmente. Esto permite que una misma estación transmita simultáneamente su señal principal en Full HD (ej. TVN 7.1) y un segundo canal independiente con programación educativa y cultural sin costo adicional para el espectador (ej. NTV 7.2).
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sección 2: Antenas según Ubicación en Chile -->
+      <div class="space-y-4">
+        <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight flex items-center gap-2">
+          <span>📶</span> 2. Cómo Elegir la Antena Adecuada según tu Tipo de Vivienda
+        </h2>
+        <p class="text-sm text-slate-300 leading-relaxed">
+          Uno de los problemas más comunes que encontramos al asesorar usuarios en Chile es la compra de antenas inadecuadas para las condiciones de su barrio o construcción:
+        </p>
+        <div class="space-y-3">
+          <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+            <h3 class="text-sm font-bold text-white mb-1">Antenas de Interior (Varilla Magnética o Panel Plano UHF)</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Recomendadas exclusivamente para departamentos o casas ubicadas en pisos medios o altos con vista despejada hacia la antena transmisora de la ciudad (por ejemplo, vista directa al Cerro San Cristóbal o Cerro Renca en el Gran Santiago). Se instalan en segundos fijando su base imantada al marco metálico de un ventanal.
+            </p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+            <h3 class="text-sm font-bold text-white mb-1">Antenas Exteriores de Techo (Yagi o Parrilla UHF Direccional)</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Son indispensables si resides en comunas periféricas, valles intermontanos (como Colina, Lampa, Curacaví, Talagante, Peñaflor, Buin, Paine o sectores de la Región de Valparaíso y O'Higgins) o en viviendas construidas con muros estructurales de hormigón armado o tabiquería con aislación aluminizada, que bloquean las ondas electromagnéticas como una caja de blindaje. Una antena exterior orientada hacia el cerro transmisor garantiza una ganancia de 9 a 14 dBi sin caídas de señal.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sección 3: Guía de Canales Nacionales y Segundas Señales -->
+      <div class="space-y-4">
+        <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight flex items-center gap-2">
+          <span>📺</span> 3. Principales Señales Digitales en el Espectro Chileno
+        </h2>
+        <p class="text-sm text-slate-300 leading-relaxed">
+          Al ejecutar la sintonización automática en un televisor con norma chilena, la lista de canales se organiza mediante números virtuales con punto decimal:
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-300">
+          <div class="p-3.5 rounded-xl bg-slate-900/70 border border-slate-800">
+            <strong class="text-white text-sm block mb-1">Televisión Nacional de Chile (TVN)</strong>
+            <p class="text-slate-400 leading-relaxed">• <strong>7.1 (TVN HD):</strong> Señal generalista nacional en 1080i.<br/>• <strong>7.2 (NTV):</strong> Canal infantil y cultural familiar de emisión continua.</p>
+          </div>
+          <div class="p-3.5 rounded-xl bg-slate-900/70 border border-slate-800">
+            <strong class="text-white text-sm block mb-1">Mega (Megamedia)</strong>
+            <p class="text-slate-400 leading-relaxed">• <strong>9.1 (Mega HD):</strong> Señal principal con matinales, prensa y teleseries.<br/>• <strong>9.2 (Mega 2):</strong> Señal secundaria orientada a programas culturales y deportes.</p>
+          </div>
+          <div class="p-3.5 rounded-xl bg-slate-900/70 border border-slate-800">
+            <strong class="text-white text-sm block mb-1">Chilevisión (CHV)</strong>
+            <p class="text-slate-400 leading-relaxed">• <strong>11.1 (CHV HD):</strong> Noticias, entretención y partidos de la Selección Chilena.<br/>• <strong>11.2 (UChile TV):</strong> Canal educativo de la Universidad de Chile.</p>
+          </div>
+          <div class="p-3.5 rounded-xl bg-slate-900/70 border border-slate-800">
+            <strong class="text-white text-sm block mb-1">Canal 13</strong>
+            <p class="text-slate-400 leading-relaxed">• <strong>13.1 (Canal 13 HD):</strong> Señal generalista en alta definición.<br/>• <strong>13.2 (T13 En Vivo):</strong> Señal de noticias e información en tiempo real 24/7.</p>
+          </div>
+        </div>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          En capitales regionales y provincias existen decenas de estaciones comunitarias y regionales autorizadas por SUBTEL (como TVU y Biobío TV en la Región del Biobío, Canal 2 en San Antonio, o ITV Patagonia en Magallanes) que enriquecen la parrilla local de forma gratuita.
+        </p>
+      </div>
+
+      <!-- Sección 4: Solución de Problemas de Sintonización -->
+      <div class="space-y-4">
+        <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight flex items-center gap-2">
+          <span>🛠️</span> 4. El "Efecto Acantilado": Por qué los Canales se Congelan o Dicen "Sin Señal"
+        </h2>
+        <p class="text-sm text-slate-300 leading-relaxed">
+          En la antigua televisión analógica, una señal débil se manifestaba como "nieve" o "lluvia", pero el audio seguía escuchándose. En la Televisión Digital Abierta rige el denominado <strong>efecto acantilado</strong> (<em>cliff effect</em>): la imagen se ve en impecable alta definición hasta que la calidad de señal desciende por debajo del umbral mínimo decodificable; en ese instante exacto, la pantalla se congela en mosaicos de píxeles o muestra el mensaje "Sin Señal".
+        </p>
+        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2 text-xs text-slate-300">
+          <h3 class="text-sm font-bold text-white mb-2">Protocolo Técnico para Recuperar la Señal:</h3>
+          <p><strong>Paso 1:</strong> Verifica que el cable coaxial esté conectado en la toma de <em>Aire / Antena</em> y no en la de <em>Cable</em>.</p>
+          <p><strong>Paso 2:</strong> Reubica la antena en altura y próxima a una ventana que apunte al cerro transmisor más cercano.</p>
+          <p><strong>Paso 3:</strong> Vuelve a ejecutar la <em>Búsqueda Automática</em> desde el menú de configuración de tu Smart TV para registrar nuevamente las frecuencias.</p>
+          <p><strong>Paso 4:</strong> Si vives en un primer piso interior o subterráneo, evalúa instalar una bajada de cable coaxial desde el techo o utilizar una antena con amplificador activo de señal.</p>
+        </div>
+      </div>
+
+      <!-- Sección 5: Glosario Técnico de TVD -->
+      <div class="space-y-4">
+        <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight flex items-center gap-2">
+          <span>📚</span> 5. Glosario Técnico de Televisión Abierta
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-300">
+          <div class="p-3 rounded-lg bg-slate-900/50 border border-slate-800">
+            <h3 class="text-white text-xs font-bold mb-0.5">Banda UHF (Ultra High Frequency)</h3>
+            <p class="text-slate-400">Rango del espectro radioeléctrico (canales 14 al 51) utilizado para transmitir las señales digitales de TVD en Chile tras el apagón de las bandas VHF.</p>
+          </div>
+          <div class="p-3 rounded-lg bg-slate-900/50 border border-slate-800">
+            <h3 class="text-white text-xs font-bold mb-0.5">Conector Tipo F (Coaxial)</h3>
+            <p class="text-slate-400">Terminal metálico roscado o a presión de 75 ohms utilizado para conectar la antena receptora a la entrada de sintonización del televisor.</p>
+          </div>
+          <div class="p-3 rounded-lg bg-slate-900/50 border border-slate-800">
+            <h3 class="text-white text-xs font-bold mb-0.5">Decodificador ISDB-Tb Externo</h3>
+            <p class="text-slate-400">Dispositivo sintonizador compacto que se conecta mediante HDMI o cables RCA a televisores antiguos para permitirles recibir la señal digital abierta moderna.</p>
+          </div>
+          <div class="p-3 rounded-lg bg-slate-900/50 border border-slate-800">
+            <h3 class="text-white text-xs font-bold mb-0.5">One-Seg</h3>
+            <p class="text-slate-400">Segmento especial del canal digital diseñado para la recepción móvil de baja resolución en receptores portátiles o pantallas de vehículos sin consumo de datos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+</BaseLayout>

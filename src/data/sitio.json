@@ -1,0 +1,16 @@
+{
+  "nombre": "HogarTV.cl",
+  "url": "https://hogartv.cl",
+  "slogan": "Guías de Smart TV, Streaming y Televisión Digital en Chile",
+  "emailContacto": "contacto@hogartv.cl",
+  "TODO_EMAIL": "Definir correo real de contacto si es diferente a contacto@hogartv.cl o configurar PUBLIC_CONTACT_EMAIL en .env",
+  "horarioAtencion": "Lunes a Viernes de 09:00 a 18:00 hrs (Hora continental de Chile, GMT-3 / GMT-4)",
+  "tiempoRespuesta": "24 a 48 horas hábiles",
+  "ubicacion": "Santiago, Región Metropolitana, Chile",
+  "añoFundacion": 2026,
+  "normativa": {
+    "leyPrivacidad": "Ley N° 19.628 sobre Protección de la Vida Privada (Chile)",
+    "leyConsumidor": "Ley N° 19.496 sobre Protección de los Derechos de los Consumidores (SERNAC)",
+    "normaTVD": "Norma técnica ISDB-Tb de Televisión Digital Terrestre (SUBTEL)"
+  }
+}

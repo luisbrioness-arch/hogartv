@@ -1,0 +1,238 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQSection from '../../components/FAQSection.astro';
+
+const allArticles = await getCollection('articles');
+const articles = allArticles
+  .filter((a) => a.data.category === 'streaming')
+  .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  'name': 'Guías y Comparativas de Streaming en Chile',
+  'itemListElement': articles.map((article, index) => {
+    const slug = article.id.replace(/\.(md|mdx)$/, '');
+    return {
+      '@type': 'ListItem',
+      'position': index + 1,
+      'name': article.data.title,
+      'url': `https://hogartv.cl/streaming/${slug}/`,
+    };
+  }),
+};
+---
+
+<BaseLayout
+  title="Plataformas de Streaming en Chile: Precios, Planes y Canales 2026"
+  description="Comparativa de servicios de streaming en Chile: Zapping TV, DGO, Netflix, Disney+, Max y Prime Video. Precios en CLP, canales de fútbol chileno y ofertas."
+  breadcrumbs={[{ name: 'Streaming y TV Online', url: '/streaming/' }]}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    
+    <!-- Header de Categoría -->
+    <div class="max-w-3xl mb-12">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-950/60 border border-purple-800/40 text-purple-300 text-xs font-semibold uppercase tracking-wider mb-4">
+        <span>🍿 Streaming & Televisión Online</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
+        Streaming y TV en Vivo en Chile
+      </h1>
+      <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+        El cable tradicional quedó atrás. Analizamos las mejores plataformas de televisión por internet (IPTV legal) y streaming on-demand disponibles en Chile con precios reales en pesos chilenos.
+      </p>
+    </div>
+
+    <!-- Comparativa de Servicios de TV Online en Chile -->
+    <div class="mb-14">
+      <h2 class="text-2xl font-bold text-white mb-6">Comparativa de Servicios de TV Online en Chile</h2>
+      <ComparisonTable
+        title="Plataformas de Televisión por Internet en Chile (2026)"
+        headers={["Servicio", "Canales en Vivo", "Fútbol Chileno / TNT", "Multipantalla", "Precio Mensual CLP"]}
+        rows={[
+          { feature: "Zapping TV (Plan Plus / Fútbol)", values: ["130+ Canales HD", "Disponible (Plan Extra / Fútbol)", "Hasta 5 dispositivos (mismo hogar)", "$ 14.990 - $ 27.990"] },
+          { feature: "DGO (DirecTV GO)", values: ["90+ Canales HD", "DSPORTS exclusivo + TNT Sports", "2 pantallas simultáneas", "$ 17.990 - $ 29.990"] },
+          { feature: "Pluto TV", values: ["100+ Canales temáticos", "Eventos deportivos selectos", "Ilimitada", "Gratis ($ 0 CLP)"] }
+        ]}
+        verdict="Si buscas la mejor calidad técnica y estabilidad para ver televisión chilena por internet, Zapping TV es el referente nacional. Si priorizas torneos internacionales exclusivos (Copa Sudamericana, etc.), DGO es la alternativa con DSPORTS."
+      />
+    </div>
+
+    <!-- Guía Editorial Completa de Streaming en Chile (D1: >600 palabras) -->
+    <section class="mb-14 pt-10 border-t border-slate-800 text-slate-300 space-y-12">
+      <div>
+        <span class="text-xs font-bold text-purple-400 uppercase tracking-wider block mb-2">Panorama Técnico y Comercial</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-4">
+          La Guía Definitiva para Cortar el Cable en Chile
+        </h2>
+        <p class="text-sm sm:text-base text-slate-300 leading-relaxed mb-4">
+          En la última década, el consumo audiovisual en los hogares chilenos cambió de manera radical. El antiguo modelo de televisión por cable tradicional —con decodificadores satelitales ruidosos, contratos anuales amarrados, cobros por arriendo de equipos y extensas visitas técnicas— ha sido desplazado por el streaming y la televisión por internet (OTT / IPTV legal).
+        </p>
+        <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+          Gracias al despliegue de redes de fibra óptica que cubren gran parte del territorio nacional (con operadores como Movistar, Mundo Pacífico, Entel, WOM y GTD), hoy es posible disfrutar de señales en vivo, canales de deportes y transmisiones en 4K con una estabilidad que compite de igual a igual con las emisiones satelitales. Sin embargo, para tomar la mejor decisión es fundamental distinguir entre las alternativas legales y entender los requerimientos técnicos de tu hogar.
+        </p>
+      </div>
+
+      <!-- Sección 1: IPTV Legal vs Listas no autorizadas -->
+      <div class="space-y-4">
+        <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight flex items-center gap-2">
+          <span>📡</span> 1. IPTV Legal en Chile: Zapping TV y DGO frente a Listas No Autorizadas
+        </h2>
+        <p class="text-sm text-slate-300 leading-relaxed">
+          Un punto crítico que abordamos permanentemente en el soporte técnico domiciliario es la diferencia entre contratar un servicio legal regulado y utilizar listas de canales no autorizadas (las populares "listas m3u" vendidas informalmente):
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-3">
+          <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+            <h3 class="text-sm font-bold text-white mb-2 flex items-center gap-2">
+              <span class="text-emerald-400">✓</span> Servicios Legales (Zapping / DGO)
+            </h3>
+            <ul class="text-xs text-slate-400 space-y-1.5 leading-relaxed">
+              <li>• Servidores dedicados CDN en Santiago y nodos regionales para cero buffering.</li>
+              <li>• Calidad de transmisión a 60 cuadros por segundo (fps) reales para eventos deportivos.</li>
+              <li>• Sin riesgo de hackeo de red ni filtración de datos de tarjetas bancarias.</li>
+              <li>• Soporte oficial con aplicaciones optimizadas en Smart TVs y TV Sticks.</li>
+            </ul>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+            <h3 class="text-sm font-bold text-white mb-2 flex items-center gap-2">
+              <span class="text-rose-400">✖</span> Listas Piratas Informales
+            </h3>
+            <ul class="text-xs text-slate-400 space-y-1.5 leading-relaxed">
+              <li>• Caída sistemática de servidores durante partidos de alta convocatoria (clásicos de fútbol).</li>
+              <li>• Latencia extrema de 1 a 3 minutos respecto a la transmisión en vivo.</li>
+              <li>• Riesgo de malware y captura de tráfico en la red WiFi del hogar.</li>
+              <li>• Bloqueos judiciales periódicos de direcciones IP ordenados por tribunales chilenos.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          En el mercado formal chileno, <strong>Zapping TV</strong> destaca como el operador pionero en tecnología: cuenta con el innovador <em>Modo Turbo</em>, un desarrollo propio que reduce el retraso de transmisión a menos de 8 a 10 segundos respecto al aire real, evitando los molestos spoilers de goles gritados por vecinos. Por su parte, <strong>DGO</strong> ofrece la ventaja de su señal deportiva propia <em>DSPORTS</em>, con transmisiones exclusivas de copas internacionales.
+        </p>
+      </div>
+
+      <!-- Sección 2: Requisitos de Conexión y Fibra Óptica -->
+      <div class="space-y-4">
+        <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight flex items-center gap-2">
+          <span>⚡</span> 2. Velocidad de Internet y Optimización de Red en el Hogar
+        </h2>
+        <p class="text-sm text-slate-300 leading-relaxed">
+          Uno de los mitos más frecuentes es creer que se necesita contratar el plan de internet más caro del mercado para ver televisión online. La realidad técnica es distinta: más que la velocidad máxima contratada (ancho de banda), lo que determina la fluidez del streaming es la <strong>estabilidad y latencia</strong> de la conexión interna:
+        </p>
+        <div class="space-y-3">
+          <div class="p-3.5 rounded-xl bg-slate-900/70 border border-slate-800">
+            <h3 class="text-sm font-bold text-white mb-1">Requisitos de Ancho de Banda por Pantalla</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Para transmisiones en Full HD 1080p a 60 fps se requieren entre 6 y 10 Mbps sostenidos por televisor. Para contenido en 4K HDR (como partidos selectos o series en Netflix/Max) se aconseja un flujo constante de 25 a 30 Mbps. Cualquier plan de fibra óptica simétrica básico en Chile (300 a 500 Mbps) es más que suficiente para alimentar 4 o 5 televisores simultáneos.
+            </p>
+          </div>
+          <div class="p-3.5 rounded-xl bg-slate-900/70 border border-slate-800">
+            <h3 class="text-sm font-bold text-white mb-1">El Cuello de Botella: WiFi de 2.4 GHz vs 5 GHz</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              En condominios y edificios de departamentos en comunas como Santiago Centro, Ñuñoa, San Miguel o Viña del Mar, la banda WiFi tradicional de 2.4 GHz se encuentra severamente saturada por las señales de los vecinos. Para ver televisión sin cortes, asegúrate de conectar tu Smart TV a la red WiFi de <strong>5 GHz</strong> o, idealmente, conectar un cable de red Ethernet Cat 5e o Cat 6 directo al router.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sección 3: Fútbol Chileno y Deportes en Vivo -->
+      <div class="space-y-4">
+        <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight flex items-center gap-2">
+          <span>⚽</span> 3. Cómo Ver Fútbol Chileno y el Campeonato Nacional
+        </h2>
+        <p class="text-sm text-slate-300 leading-relaxed">
+          Para los fanáticos del deporte en Chile, la transmisión del Campeonato Nacional de Primera División y la Copa Chile está centralizada en los derechos de <strong>TNT Sports</strong>. Si no tienes cable tradicional, cuentas con tres vías oficiales para seguir los partidos:
+        </p>
+        <ul class="space-y-2.5 text-xs text-slate-300">
+          <li class="p-3 rounded-lg bg-slate-900/60 border border-slate-800">
+            <strong class="text-white block mb-0.5">1. Suscripción Add-on en Zapping TV:</strong>
+            Puedes agregar el paquete TNT Sports Premium a tu cuenta de Zapping. La ventaja es que todo queda integrado en una sola aplicación con guía de canales unificada y la menor latencia del mercado.
+          </li>
+          <li class="p-3 rounded-lg bg-slate-900/60 border border-slate-800">
+            <strong class="text-white block mb-0.5">2. Suscripción Add-on en DGO:</strong>
+            Permite sumar TNT Sports al paquete de canales de DGO, sumando además la cobertura deportiva de DSPORTS para torneos europeos y sudamericanos.
+          </li>
+          <li class="p-3 rounded-lg bg-slate-900/60 border border-slate-800">
+            <strong class="text-white block mb-0.5">3. Plataforma Estadio TNT:</strong>
+            Es la suscripción independiente para streaming directo de TNT Sports sin necesidad de contratar canales de televisión adicionales.
+          </li>
+        </ul>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Para los partidos de la Selección Chilena (Eliminatorias y amistosos) o eventos especiales, recuerda que por ley se transmiten de manera abierta y gratuita a través de Chilevisión en TVD digital o mediante sus plataformas web oficiales autorizadas.
+        </p>
+      </div>
+
+      <!-- Sección 4: Canales FAST Gratuitos y Canales Locales -->
+      <div class="space-y-4">
+        <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight flex items-center gap-2">
+          <span>🆓</span> 4. Canales FAST y Plataformas Gratuitas en Chile
+        </h2>
+        <p class="text-sm text-slate-300 leading-relaxed">
+          No todo el streaming requiere pagos mensuales. En Chile ha crecido con fuerza el modelo <strong>FAST</strong> (Free Ad-Supported Streaming Television), que consiste en canales lineales gratuitos con pausas comerciales:
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-300">
+          <div class="p-3 rounded-lg bg-slate-900/50 border border-slate-800">
+            <h3 class="text-white text-xs font-bold mb-1">Pluto TV</h3>
+            <p class="text-slate-400 leading-relaxed">Más de 100 canales en vivo temáticos (noticias de CHV Noticias, anime, series clásicas, documentales, cine retro) sin necesidad de crear cuenta ni ingresar tarjeta de crédito.</p>
+          </div>
+          <div class="p-3 rounded-lg bg-slate-900/50 border border-slate-800">
+            <h3 class="text-white text-xs font-bold mb-1">Samsung TV Plus y LG Channels</h3>
+            <p class="text-slate-400 leading-relaxed">Canales en vivo integrados de fábrica en la guía de Smart TVs de estas marcas, con noticias, música y programación cultural nacional e internacional sin costo.</p>
+          </div>
+          <div class="p-3 rounded-lg bg-slate-900/50 border border-slate-800">
+            <h3 class="text-white text-xs font-bold mb-1">TVN Play y 13GO</h3>
+            <p class="text-slate-400 leading-relaxed">Las aplicaciones oficiales de TVN y Canal 13 para Smart TVs y celulares. Transmiten las señales principales en vivo, canales de noticias 24 horas y todo su archivo histórico de producciones.</p>
+          </div>
+          <div class="p-3 rounded-lg bg-slate-900/50 border border-slate-800">
+            <h3 class="text-white text-xs font-bold mb-1">Mega GO</h3>
+            <p class="text-slate-400 leading-relaxed">Plataforma de Megamedia que ofrece señal en directo de Mega, Mega 2 y sus radios asociadas, con acceso a capítulos adelantados de teleseries y programas de prensa.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sección 5: Glosario Técnico de Streaming -->
+      <div class="space-y-4">
+        <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight flex items-center gap-2">
+          <span>📖</span> 5. Glosario Técnico de Streaming
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-300">
+          <div class="p-3 rounded-lg bg-slate-900/50 border border-slate-800">
+            <h3 class="text-white text-xs font-bold mb-0.5">Bitrate Adaptativo (ABR)</h3>
+            <p class="text-slate-400">Tecnología que ajusta automáticamente la calidad del video en tiempo real según la estabilidad de tu conexión para evitar que la reproducción se detenga.</p>
+          </div>
+          <div class="p-3 rounded-lg bg-slate-900/50 border border-slate-800">
+            <h3 class="text-white text-xs font-bold mb-0.5">Red de Distribución de Contenido (CDN)</h3>
+            <p class="text-slate-400">Conjunto de servidores ubicados localmente en Chile para almacenar en caché los flujos de video y entregarlos con el menor tiempo de respuesta posible.</p>
+          </div>
+          <div class="p-3 rounded-lg bg-slate-900/50 border border-slate-800">
+            <h3 class="text-white text-xs font-bold mb-0.5">Latencia de Transmisión</h3>
+            <p class="text-slate-400">Diferencia de tiempo entre lo que ocurre en el estadio o estudio de televisión y el momento en que se visualiza en la pantalla de tu casa.</p>
+          </div>
+          <div class="p-3 rounded-lg bg-slate-900/50 border border-slate-800">
+            <h3 class="text-white text-xs font-bold mb-0.5">FPS (Cuadros por Segundo)</h3>
+            <p class="text-slate-400">En transmisiones de fútbol y tenis, 60 fps garantiza que la pelota y los jugadores se desplacen con nitidez continua, a diferencia del estándar cinematográfico de 24/30 fps.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Streaming -->
+    <FAQSection
+      title="Preguntas Frecuentes sobre Streaming en Chile"
+      items={[
+        {
+          question: "¿Con qué velocidad de internet se puede ver streaming en 4K en Chile?",
+          answer: "Para ver contenidos en 4K HDR sin cortes se recomienda una conexión de al menos 25 a 30 Mbps estables por cada televisor conectado. Cualquier plan de fibra óptica actual en Chile (WOM, Movistar, Mundo, Entel) de 300 Mbps o más sobra para varios televisores al mismo tiempo."
+        },
+        {
+          question: "¿Dónde ver el Campeonato Nacional de fútbol chileno por internet?",
+          answer: "Los partidos del Campeonato Nacional se transmiten oficialmente a través de TNT Sports Premium, disponible como suscripción adicional en plataformas como Zapping TV, DGO y Estadio TNT."
+        }
+      ]}
+    />
+
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+</BaseLayout>

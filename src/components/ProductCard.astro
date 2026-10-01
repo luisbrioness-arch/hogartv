@@ -1,0 +1,258 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import afiliadosData from '../data/afiliados.json';
+import preciosData from '../data/precios.json';
+import AffiliateLink from './AffiliateLink.astro';
+import Precio from './Precio.astro';
+
+interface Props {
+  productKey: string;
+  title: string;
+  brand?: string;
+  badge?: string;
+  rating?: number;
+  reviewCount?: number;
+  price?: string;
+  specs?: string[];
+  pros: string[];
+  cons: string[];
+  image?: ImageMetadata;
+  imageUrl?: string;
+  alt?: string;
+  isFirst?: boolean;
+}
+
+const {
+  productKey,
+  title,
+  brand,
+  badge = '⭐ Elección Recomendada',
+  rating,
+  reviewCount,
+  price,
+  specs = [],
+  pros = [],
+  cons = [],
+  image,
+  imageUrl,
+  alt,
+  isFirst = false,
+} = Astro.props;
+
+// Validación de accesibilidad: alt es obligatorio y no puede estar vacío
+const imageAlt = (alt || title)?.trim();
+if (!imageAlt) {
+  throw new Error(`[ProductCard] Atributo "alt" o "title" es obligatorio para el producto "${productKey}".`);
+}
+
+// Búsqueda dinámica de imagen en src/assets/ si no se pasó una por prop
+const allAssets = import.meta.glob<{ default: ImageMetadata }>('/src/assets/**/*.{png,jpg,jpeg,webp,avif}', { eager: true });
+const matchedEntry = Object.entries(allAssets).find(([path]) => {
+  const filename = path.split('/').pop()?.split('.')[0];
+  return filename === productKey;
+});
+const resolvedImage: ImageMetadata | undefined = image || matchedEntry?.[1]?.default;
+
+type AfiliadoItem = {
+  nombre: string;
+  url: string;
+  tienda: string;
+  actualizado: string;
+  TODO?: string;
+};
+
+const product = (afiliadosData as Record<string, AfiliadoItem>)[productKey];
+if (!product) {
+  throw new Error(`[ProductCard] productKey "${productKey}" no existe en src/data/afiliados.json`);
+}
+
+const tienda = product.tienda;
+const precioItem = (preciosData as Record<string, any>)[productKey];
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  'name': title,
+  'image': resolvedImage ? `https://hogartv.cl${resolvedImage.src}` : undefined,
+  'description': specs.length > 0 ? specs.join(' · ') : title,
+  'brand': {
+    '@type': 'Brand',
+    'name': brand || 'Genérica',
+  },
+  'offers': {
+    '@type': 'Offer',
+    'url': product.url,
+    'priceCurrency': 'CLP',
+    'price': precioItem?.precioCLP,
+    'priceValidUntil': '2026-12-31',
+    'availability': 'https://schema.org/InStock',
+    'itemCondition': 'https://schema.org/NewCondition',
+    'seller': {
+      '@type': 'Organization',
+      'name': tienda,
+    },
+  },
+};
+---
+
+<div class="my-8 rounded-2xl bg-surface-card border border-slate-700/80 shadow-xl overflow-hidden hover:border-brand-500/50 transition-all duration-300">
+  <!-- Badge superior de recomendación -->
+  {badge && (
+    <div class="bg-gradient-to-r from-brand-600 to-indigo-600 px-4 py-1.5 flex items-center justify-between text-xs font-semibold text-white tracking-wide">
+      <span>{badge}</span>
+      <span class="text-brand-200">Actualizado Chile 2026</span>
+    </div>
+  )}
+
+  <div class="p-6">
+    <div class="flex flex-col md:flex-row gap-6 items-start">
+      
+      <!-- Contenedor con dimensiones fijas para evitar Cumulative Layout Shift (CLS = 0) -->
+      <div class="w-full md:w-56 h-48 md:h-52 bg-slate-900 rounded-xl flex items-center justify-center p-4 border border-slate-800 shrink-0 relative overflow-hidden group">
+        {resolvedImage ? (
+          <Image
+            src={resolvedImage}
+            alt={imageAlt}
+            width={400}
+            height={300}
+            format="webp"
+            loading={isFirst ? 'eager' : 'lazy'}
+            fetchpriority={isFirst ? 'high' : undefined}
+            class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+          />
+        ) : imageUrl ? (
+          <img
+            src={imageUrl}
+            alt={imageAlt}
+            width="400"
+            height="300"
+            loading={isFirst ? 'eager' : 'lazy'}
+            fetchpriority={isFirst ? 'high' : undefined}
+            class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+          />
+        ) : (
+          <!-- Placeholder documentado para imagen de producto (aportada por usuario) -->
+          <div class="text-center">
+            <svg class="w-16 h-16 text-slate-600 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+            <span class="text-xs text-slate-500 uppercase tracking-wider font-semibold block">{brand || 'Smart TV'}</span>
+            <span class="text-[10px] text-slate-600 block mt-1">Foto pendiente</span>
+          </div>
+        )}
+        <div class="absolute bottom-2 left-2 bg-slate-950/80 backdrop-blur-sm px-2 py-0.5 rounded text-[10px] text-slate-300 font-mono">
+          {tienda}
+        </div>
+      </div>
+
+      <!-- Info del Producto -->
+      <div class="flex-1 w-full flex flex-col justify-between">
+        <div>
+          {brand && (
+            <span class="text-xs uppercase tracking-wider font-bold text-brand-400 mb-1 inline-block">
+              {brand}
+            </span>
+          )}
+          <h3 class="text-xl md:text-2xl font-bold text-white mb-2 leading-snug">
+            {title}
+          </h3>
+
+          <!-- Rating con estrellas (solo si viene de una fuente verificable documentada) -->
+          {rating && (
+            <div class="flex items-center gap-2 mb-4">
+              <div class="flex items-center text-accent-gold text-sm" aria-hidden="true">
+                {'★'.repeat(Math.floor(rating))}
+                <span class="text-slate-500">{'★'.repeat(5 - Math.floor(rating))}</span>
+              </div>
+              <span class="text-xs font-semibold text-white">{rating}</span>
+              {reviewCount && <span class="text-xs text-slate-400">({reviewCount} opiniones)</span>}
+            </div>
+          )}
+
+          <!-- Especificaciones clave -->
+          {specs.length > 0 && (
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              {specs.map((spec) => (
+                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700/60">
+                  {spec}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <!-- Precio y Botón CTA Afiliado -->
+        <div class="pt-4 border-t border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <span class="text-[11px] text-slate-400 uppercase tracking-wider block mb-1">Precio referencial</span>
+            {price ? (
+              <div class="text-2xl font-extrabold text-accent-green tracking-tight">
+                {price}
+              </div>
+            ) : (
+              <Precio productKey={productKey} />
+            )}
+          </div>
+
+          <!-- Componente centralizado de afiliación con rel="nofollow sponsored noopener" -->
+          <AffiliateLink
+            productKey={productKey}
+            class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-bold text-sm shadow-lg shadow-brand-600/30 hover:shadow-brand-600/50 hover:scale-[1.02] active:scale-[0.98] transition-all"
+          >
+            <span>Ver precio en {tienda}</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            </svg>
+          </AffiliateLink>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Pros y Contras -->
+    {(pros.length > 0 || cons.length > 0) && (
+      <div class="mt-6 pt-5 border-t border-slate-800/80 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Pros -->
+        <div class="bg-emerald-950/20 border border-emerald-900/30 rounded-xl p-4">
+          <div class="flex items-center gap-2 text-emerald-400 font-bold text-xs uppercase tracking-wider mb-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Puntos a favor</span>
+          </div>
+          <ul class="space-y-1.5 text-xs text-slate-300">
+            {pros.map((pro) => (
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-400 mt-0.5">✔</span>
+                <span>{pro}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Contras -->
+        <div class="bg-rose-950/20 border border-rose-900/30 rounded-xl p-4">
+          <div class="flex items-center gap-2 text-rose-400 font-bold text-xs uppercase tracking-wider mb-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+            <span>A tener en cuenta</span>
+          </div>
+          <ul class="space-y-1.5 text-xs text-slate-300">
+            {cons.map((con) => (
+              <li class="flex items-start gap-2">
+                <span class="text-rose-400 mt-0.5">✖</span>
+                <span>{con}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    )}
+
+  </div>
+</div>
+
+<!-- Product Schema JSON-LD para Rich Snippets en Google (Precio CLP, Stock y Marca) -->
+<script type="application/ld+json" set:html={JSON.stringify(productSchema)} />

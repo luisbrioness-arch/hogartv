@@ -1,0 +1,160 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import interLatinWoff2 from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogType?: 'website' | 'article';
+  ogImage?: string;
+  publishedTime?: string;
+  breadcrumbs?: { name: string; url: string }[];
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogType = 'website',
+  ogImage,
+  publishedTime,
+  breadcrumbs,
+} = Astro.props;
+
+const siteUrl = 'https://hogartv.cl';
+let rawCanonical = canonical || new URL(Astro.url.pathname, siteUrl).href;
+if (!rawCanonical.endsWith('/') && !rawCanonical.match(/\.[a-zA-Z0-9]+$/)) {
+  rawCanonical = `${rawCanonical}/`;
+}
+const canonicalUrl = rawCanonical;
+const fullTitle = title.includes('HogarTV') ? title : `${title} | HogarTV.cl`;
+
+// Variables de entorno para GA4 y Google Search Console
+const ga4Id = import.meta.env.PUBLIC_GA4_ID?.trim();
+const gscVerification = import.meta.env.PUBLIC_GSC_VERIFICATION?.trim();
+const isDev = import.meta.env.DEV;
+const showGA4 = !isDev && Boolean(ga4Id);
+const showGSC = Boolean(gscVerification);
+
+// Fallback consistente de imagen OG a https://hogartv.cl/og-image.png
+const ogImageUrl = ogImage
+  ? (ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage.startsWith('/') ? '' : '/'}${ogImage}`)
+  : `${siteUrl}/og-image.png`;
+
+// Schema.org general para el sitio
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  'name': 'HogarTV.cl',
+  'url': siteUrl,
+  'description': 'Guía definitiva de Smart TVs, plataformas de streaming y televisión digital abierta en Chile.',
+  'inLanguage': 'es-CL',
+};
+
+// Schema.org BreadcrumbList (para todas las páginas excepto Home)
+const breadcrumbSchema =
+  breadcrumbs && breadcrumbs.length > 0
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        'itemListElement': [
+          {
+            '@type': 'ListItem',
+            'position': 1,
+            'name': 'Inicio',
+            'item': `${siteUrl}/`,
+          },
+          ...breadcrumbs.map((crumb, idx) => ({
+            '@type': 'ListItem',
+            'position': idx + 2,
+            'name': crumb.name,
+            'item': crumb.url.startsWith('http')
+              ? crumb.url
+              : `${siteUrl}${crumb.url.startsWith('/') ? '' : '/'}${crumb.url}`,
+          })),
+        ],
+      }
+    : null;
+---
+
+<!DOCTYPE html>
+<html lang="es-CL" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Preload de fuente primaria Inter (evita FOIT / CLS en primer render) -->
+  <link rel="preload" href={interLatinWoff2} as="font" type="font/woff2" crossorigin />
+
+  <!-- Favicons, Apple Touch Icon y Web App Manifest -->
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#090d16" />
+  <link rel="alternate" type="application/rss+xml" title="HogarTV.cl" href="/rss.xml" />
+  <meta name="generator" content={Astro.generator} />
+
+  <!-- Primordial SEO -->
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalUrl} />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+  {showGSC && (
+    <meta name="google-site-verification" content={gscVerification} />
+  )}
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content={ogType} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImageUrl} />
+  <meta property="og:site_name" content="HogarTV.cl" />
+  <meta property="og:locale" content="es_CL" />
+  {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content={canonicalUrl} />
+  <meta name="twitter:title" content={fullTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImageUrl} />
+
+  <!-- WebSite Schema JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+
+  <!-- BreadcrumbList Schema JSON-LD -->
+  {breadcrumbSchema && (
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  )}
+
+  {showGA4 && (
+    <>
+      <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}></script>
+      <script is:inline define:vars={{ ga4Id }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', ga4Id);
+      </script>
+    </>
+  )}
+</head>
+<body class="min-h-screen flex flex-col bg-surface-dark text-slate-100 font-sans">
+  <a
+    href="#main-content"
+    class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 px-4 py-2 bg-brand-600 text-white rounded-lg shadow-lg font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-brand-400"
+  >
+    Saltar al contenido principal
+  </a>
+  <Header />
+  <main id="main-content" class="flex-grow">
+    <slot />
+  </main>
+  <Footer />
+</body>
+</html>

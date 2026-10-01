@@ -1,0 +1,144 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import autoresData from '../data/autores.json';
+import sitioData from '../data/sitio.json';
+
+const author = autoresData['luis-briones'];
+---
+
+<BaseLayout
+  title="Sobre Nosotros y Nuestra Metodología | HogarTV.cl"
+  description="Conoce la historia de HogarTV.cl, quién está detrás y nuestra metodología de análisis técnico honesto para Smart TVs y televisión digital en Chile."
+  canonical="https://hogartv.cl/sobre-nosotros/"
+  breadcrumbs={[{ name: 'Sobre Nosotros', url: '/sobre-nosotros/' }]}
+>
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Migas de pan -->
+    <nav class="flex items-center gap-2 text-xs text-slate-400 mb-8 font-medium">
+      <a href="/" class="hover:text-white transition-colors">Inicio</a>
+      <span>/</span>
+      <span class="text-brand-400 font-semibold">Sobre Nosotros</span>
+    </nav>
+
+    <header class="mb-12">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-950/60 border border-brand-800/40 text-brand-300 text-xs font-semibold uppercase tracking-wider mb-4">
+        <span>🇨🇱 Especialistas en Entretenimiento para Chile</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-6 leading-tight">
+        Ayudamos a los hogares chilenos a elegir mejor televisión sin pagar de más
+      </h1>
+      <p class="text-base sm:text-xl text-slate-300 leading-relaxed font-normal">
+        HogarTV.cl nació para derribar el lenguaje técnico incomprensible del mundo de los televisores y el streaming, entregando guías directas y adaptadas a la realidad técnica y económica de Chile.
+      </p>
+    </header>
+
+    <div class="space-y-12 text-slate-300 text-sm sm:text-base leading-relaxed">
+      
+      <!-- Historia y Misión -->
+      <section class="bg-surface-card border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-xl space-y-4">
+        <h2 class="text-2xl font-bold text-white tracking-tight">Nuestra Historia y Misión</h2>
+        <p>
+          Con el fin de la televisión analógica y la llegada masiva de nuevas tecnologías como <strong>QLED, Mini-LED, Google TV y la norma digital ISDB-Tb</strong>, millones de familias en Chile se encontraron con una oferta abrumadora de modelos en tiendas departamentales y marketplaces, muchas veces acompañada de información confusa o desactualizada.
+        </p>
+        <p>
+          En <strong>HogarTV.cl</strong> creamos un espacio enfocado 100% en el usuario chileno: explicamos qué antena necesitas realmente para ver fútbol en HD gratis en tu comuna, qué televisor conviene según tu presupuesto en pesos chilenos y qué reproductor de streaming soporta de verdad plataformas nacionales como Zapping o DGO sin ralentizarse.
+        </p>
+      </section>
+
+      <!-- Quién está detrás (Autor) -->
+      <section class="bg-slate-900/80 border border-slate-700/80 rounded-3xl p-6 sm:p-10 shadow-xl">
+        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-8 mb-6">
+          <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-gradient-to-tr from-brand-600 to-indigo-600 flex items-center justify-center shrink-0 border border-brand-400/30 shadow-lg">
+            <span class="text-3xl font-black text-white">LB</span>
+          </div>
+          <div>
+            <span class="text-xs uppercase tracking-wider font-bold text-brand-400 block mb-1">Especialista Técnico</span>
+            <h3 class="text-2xl font-bold text-white mb-2">{author.nombre}</h3>
+            <p class="text-xs sm:text-sm text-brand-200 font-medium mb-3">{author.rol}</p>
+            <p class="text-sm text-slate-300 leading-relaxed mb-4">
+              {author.bioCompleta}
+            </p>
+            <a
+              href={author.url}
+              class="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-400 hover:text-brand-300 transition-colors"
+            >
+              Conoce el perfil profesional completo de Luis Briones →
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Metodología Honesta: Cero humo, cero falsos laboratorios -->
+      <section class="bg-surface-card border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-xl space-y-6">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/60 border border-emerald-800/40 text-emerald-400 text-xs font-semibold uppercase tracking-wider">
+          <span>🛡️ Criterio de Análisis Honesto</span>
+        </div>
+        <h2 class="text-2xl font-bold text-white tracking-tight">Nuestra Metodología de Análisis</h2>
+        <p>
+          En internet abundan los sitios que fingen tener "laboratorios con instrumental de miles de dólares" para justificar opiniones copiadas. En HogarTV.cl trabajamos con honestidad:
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+          <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 space-y-2">
+            <div class="text-2xl">📑</div>
+            <h3 class="text-sm font-bold text-white">1. Especificaciones Oficiales</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Examinamos a fondo los manuales técnicos, tipos de paneles (VA, IPS, Mini-LED), procesadores y tasas de refresco nativas declaradas por los fabricantes.
+            </p>
+          </div>
+
+          <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 space-y-2">
+            <div class="text-2xl">📡</div>
+            <h3 class="text-sm font-bold text-white">2. Experiencia Práctica en Chile</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Aplicamos conocimientos reales de terreno sobre propagación de frecuencias UHF, la norma ISDB-Tb de SUBTEL y la calidad de la señal digital abierta en diversas regiones.
+            </p>
+          </div>
+
+          <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 space-y-2">
+            <div class="text-2xl">👥</div>
+            <h3 class="text-sm font-bold text-white">3. Experiencia de Compradores Reales</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Revisamos reportes y opiniones de usuarios que han comprado los dispositivos en Chile para identificar problemas comunes de software, fugas de luz o durabilidad.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ¿Por qué confiar en nosotros? -->
+      <section class="bg-surface-card border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-xl space-y-4">
+        <h2 class="text-2xl font-bold text-white tracking-tight">¿Por qué confiar en HogarTV.cl?</h2>
+        <ul class="space-y-3 text-slate-300 text-sm">
+          <li class="flex items-start gap-3">
+            <span class="text-emerald-400 font-bold text-base">✔</span>
+            <span><strong>Enfoque exclusivo en Chile:</strong> No traducimos reviews de otros países. Todo lo que publicamos está disponible con soporte, enchufes y tiendas que operan legalmente en Chile.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-emerald-400 font-bold text-base">✔</span>
+            <span><strong>Transparencia de afiliación:</strong> Si un producto tiene fallas graves o no justifica su precio, lo decimos con franqueza, priorizando siempre el ahorro del usuario.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-emerald-400 font-bold text-base">✔</span>
+            <span><strong>Canal de comunicación abierto:</strong> Si tienes una duda sobre tu instalación o televisor, puedes contactarnos directamente y recibirás orientación técnica real.</span>
+          </li>
+        </ul>
+
+        <div class="pt-6 border-t border-slate-800 flex flex-wrap gap-4">
+          <a
+            href="/contacto"
+            class="px-6 py-3 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs shadow-lg shadow-brand-600/30 transition-all"
+          >
+            Contáctanos →
+          </a>
+          <a
+            href="/divulgacion-afiliados"
+            class="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs transition-all"
+          >
+            Conoce cómo nos financiamos
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</BaseLayout>

@@ -1,0 +1,70 @@
+---
+import preciosData from '../data/precios.json';
+
+interface Props {
+  productKey: string;
+  showVerification?: boolean;
+  showRange?: boolean;
+  class?: string;
+  priceClass?: string;
+}
+
+const {
+  productKey,
+  showVerification = true,
+  showRange = false,
+  class: className = '',
+  priceClass = 'text-2xl font-extrabold text-accent-green tracking-tight',
+} = Astro.props;
+
+type PrecioItem = {
+  precioCLP: number;
+  precioFormateado: string;
+  rango: string;
+  tiendaReferencia: string;
+  fechaVerificacion: string;
+  enOferta?: boolean;
+  TODO?: string;
+};
+
+const precioInfo = (preciosData as Record<string, PrecioItem>)[productKey];
+
+if (!precioInfo) {
+  throw new Error(`[Precio.astro] La clave "${productKey}" no existe en src/data/precios.json`);
+}
+
+// Calcular días desde última verificación
+const diffDays = Math.floor(
+  (Date.now() - new Date(precioInfo.fechaVerificacion).getTime()) / (1000 * 60 * 60 * 24)
+);
+const isOutdated = diffDays > 30;
+
+// Formatear mes y año legible en español
+const dateObj = new Date(precioInfo.fechaVerificacion);
+const monthNames = [
+  'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
+  'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
+];
+const mesAño = `${monthNames[dateObj.getUTCMonth()]} ${dateObj.getUTCFullYear()}`;
+---
+
+<div class={`inline-block ${className}`}>
+  <div class={priceClass}>
+    {showRange ? precioInfo.rango : precioInfo.precioFormateado}
+  </div>
+
+  {showVerification && (
+    <div class="mt-0.5">
+      {isOutdated ? (
+        <span class="text-[10px] text-amber-400 font-medium flex items-center gap-1" title={`Última revisión: ${precioInfo.fechaVerificacion}`}>
+          <span>⚠️</span>
+          <span>Precio referencial — verificar en tienda</span>
+        </span>
+      ) : (
+        <span class="text-[10px] text-slate-400 font-medium block">
+          Precio verificado: {mesAño}
+        </span>
+      )}
+    </div>
+  )}
+</div>

@@ -1,0 +1,54 @@
+---
+import afiliadosData from '../data/afiliados.json';
+
+interface Props {
+  productKey: string;
+  class?: string;
+  text?: string;
+  showIcon?: boolean;
+}
+
+const {
+  productKey,
+  class: className = '',
+  text,
+  showIcon = true,
+} = Astro.props;
+
+type AfiliadoItem = {
+  nombre: string;
+  url: string;
+  tienda: string;
+  actualizado: string;
+  TODO?: string;
+};
+
+const product = (afiliadosData as Record<string, AfiliadoItem>)[productKey];
+
+if (!product) {
+  throw new Error(`[AffiliateLink] La clave "${productKey}" no existe en src/data/afiliados.json`);
+}
+
+// Soporte opcional para sobreescribir la URL desde .env (ej. PUBLIC_CHROMECAST_GOOGLE_TV_URL)
+const envKey = `PUBLIC_${productKey.replace(/-/g, '_').toUpperCase()}_URL`;
+const envUrl = (import.meta.env as Record<string, string | undefined>)[envKey]?.trim();
+const targetUrl = envUrl || product.url;
+
+const displayText = text || `Ver precio en ${product.tienda}`;
+---
+
+<a
+  href={targetUrl}
+  target="_blank"
+  rel="nofollow sponsored noopener"
+  class={className}
+>
+  <slot>
+    <span>{displayText}</span>
+    {showIcon && (
+      <svg class="w-4 h-4 inline-block ml-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+      </svg>
+    )}
+  </slot>
+</a>

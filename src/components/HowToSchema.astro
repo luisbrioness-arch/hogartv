@@ -1,0 +1,58 @@
+---
+interface Step {
+  name: string;
+  text: string;
+  url?: string;
+}
+
+interface Supply {
+  name: string;
+}
+
+interface Tool {
+  name: string;
+}
+
+interface Props {
+  name: string;
+  description: string;
+  totalTime?: string;
+  supply?: Supply[];
+  tool?: Tool[];
+  steps: Step[];
+}
+
+const {
+  name,
+  description,
+  totalTime = 'PT10M',
+  supply = [],
+  tool = [],
+  steps,
+} = Astro.props;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  'name': name,
+  'description': description,
+  'totalTime': totalTime,
+  'supply': supply.map((s) => ({
+    '@type': 'HowToSupply',
+    'name': s.name,
+  })),
+  'tool': tool.map((t) => ({
+    '@type': 'HowToTool',
+    'name': t.name,
+  })),
+  'step': steps.map((st, idx) => ({
+    '@type': 'HowToStep',
+    'position': idx + 1,
+    'name': st.name,
+    'text': st.text,
+    'url': st.url,
+  })),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

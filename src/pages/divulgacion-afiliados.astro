@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import sitioData from '../data/sitio.json';
+
+const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL || sitioData.emailContacto;
+---
+
+<BaseLayout
+  title="Divulgación de Afiliados y Transparencia | HogarTV.cl"
+  description="Conoce cómo se financia HogarTV.cl mediante programas de afiliados transparentes, sin costo adicional para nuestros lectores en Chile."
+  canonical="https://hogartv.cl/divulgacion-afiliados/"
+  breadcrumbs={[{ name: 'Divulgación de Afiliados', url: '/divulgacion-afiliados/' }]}
+>
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Migas de pan -->
+    <nav class="flex items-center gap-2 text-xs text-slate-400 mb-8 font-medium">
+      <a href="/" class="hover:text-white transition-colors">Inicio</a>
+      <span>/</span>
+      <span class="text-brand-400 font-semibold">Divulgación de Afiliados</span>
+    </nav>
+
+    <header class="mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-950/60 border border-brand-800/40 text-brand-300 text-xs font-semibold uppercase tracking-wider mb-4">
+        <span>🤝 Ética y Transparencia Financiera</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">
+        Divulgación de Afiliados y Financiamiento
+      </h1>
+      <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+        En HogarTV.cl creemos en la absoluta claridad con nuestra comunidad. Te explicamos exactamente cómo se sustenta este proyecto independiente y qué ocurre cuando haces clic en nuestras recomendaciones.
+      </p>
+    </header>
+
+    <div class="space-y-8 text-slate-300 text-sm sm:text-base leading-relaxed">
+      
+      <!-- Resumen Destacado -->
+      <div class="bg-gradient-to-r from-brand-950/80 to-slate-900 p-6 sm:p-8 rounded-2xl border border-brand-700/50 shadow-xl space-y-3">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span>💡</span> Lo esencial en pocas palabras:
+        </h2>
+        <ul class="space-y-2 text-slate-300 text-sm">
+          <li class="flex items-start gap-2">
+            <span class="text-brand-400 font-bold">1.</span>
+            <span><strong>Cero costo extra para ti:</strong> Comprar a través de uno de nuestros enlaces jamás aumenta el precio de tu producto. Pagas exactamente lo mismo (o accedes a las ofertas vigentes de la tienda).</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-brand-400 font-bold">2.</span>
+            <span><strong>Comisión de soporte:</strong> Si decides comprar tras hacer clic en un enlace de nuestro sitio, la tienda nos entrega una pequeña comisión porcentual que financia los costos de hosting y el tiempo de redacción técnica.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-brand-400 font-bold">3.</span>
+            <span><strong>Independencia editorial total:</strong> Ninguna marca nos paga por hablar bien de un televisor deficiente ni por manipular comparativas. Si un equipo no conviene para Chile, lo decimos claramente.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Sección 1: Qué es el marketing de afiliados -->
+      <section class="bg-surface-card border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-4">
+        <h2 class="text-xl font-bold text-white">1. ¿Qué es un enlace de afiliado y cómo opera?</h2>
+        <p>
+          Un enlace de afiliado es una dirección web especial provista por una tienda de comercio electrónico que contiene un identificador numérico o etiqueta de seguimiento. Cuando haces clic en un botón como <em>"Ver precio en Mercado Libre"</em> y concretas una compra calificada en esa plataforma, el sistema de la tienda reconoce que fuiste derivado desde HogarTV.cl y nos abona una comisión.
+        </p>
+        <p>
+          Esta comisión la asume el comercio como parte de su presupuesto ordinario de difusión comercial, por lo que <strong>el precio final que pagas no se incrementa bajo ninguna circunstancia</strong>.
+        </p>
+      </section>
+
+      <!-- Sección 2: Plataformas en las que participamos -->
+      <section class="bg-surface-card border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-4">
+        <h2 class="text-xl font-bold text-white">2. Programas de Afiliados en los que Participa HogarTV.cl</h2>
+        <p>
+          Actualmente participamos en los siguientes programas orientados a consumidores en Chile:
+        </p>
+        <ul class="list-disc list-inside space-y-2 text-slate-300">
+          <li>
+            <strong>Mercado Libre Chile Afiliados:</strong> Enlazamos a tiendas oficiales y vendedores certificados dentro de la plataforma de Mercado Libre en Chile para Smart TVs, antenas TVD, soportes de pared y streaming sticks.
+          </li>
+          <li>
+            <strong>Amazon Asociados / Retailers locales:</strong> Eventualmente podemos referenciar opciones en Amazon o tiendas especializadas cuando un producto no cuenta con stock oficial en el mercado nacional pero cuenta con importación directa respaldada hacia Chile.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Sección 3: Compromiso Ético y Cumplimiento Normativo -->
+      <section class="bg-surface-card border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-4">
+        <h2 class="text-xl font-bold text-white">3. Cumplimiento de Buenas Prácticas y Directrices Internacionales (FTC)</h2>
+        <p>
+          En cumplimiento con las directrices sobre divulgación de patrocinios y relaciones comerciales de la Comisión Federal de Comercio (FTC de EE.UU.) y las directrices de transparencia y buenas prácticas comerciales supervisadas por el SERNAC en Chile:
+        </p>
+        <ul class="list-disc list-inside space-y-2 text-slate-300">
+          <li>
+            Todos los artículos que incluyen enlaces de afiliados contienen un aviso destacado al inicio del texto advirtiendo dicha relación comercial.
+          </li>
+          <li>
+            Todos los enlaces salientes a tiendas están etiquetados técnicamente con los atributos estandarizados <code>rel="nofollow sponsored noopener"</code> exigidos por las directrices de Google para webmasters.
+          </li>
+          <li>
+            Nuestras opiniones y pros/contras se fundamentan en el criterio técnico de nuestro especialista en telecomunicaciones y en las fichas técnicas públicas de los fabricantes, sin favorecer a un producto solo por ofrecer una comisión superior.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Sección 4: Publicidad Programática (Google AdSense a futuro) -->
+      <section class="bg-surface-card border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-4">
+        <h2 class="text-xl font-bold text-white">4. Espacios Publicitarios de Terceros</h2>
+        <p>
+          Además de los enlaces de afiliados, el portal puede exhibir banners publicitarios gestionados por redes automatizadas como Google AdSense. Estos anuncios están claramente identificados con la etiqueta "Publicidad" o "Anuncio" y son suministrados de forma externa por algoritmos de la red publicitaria respectiva.
+        </p>
+      </section>
+
+      <!-- Sección 5: Preguntas y Contacto -->
+      <section class="bg-surface-card border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-4">
+        <h2 class="text-xl font-bold text-white">5. ¿Tienes consultas sobre nuestras relaciones comerciales?</h2>
+        <p>
+          Si tienes cualquier pregunta sobre nuestra política de transparencia, puedes contactarnos en cualquier momento a través de <a href={`mailto:${contactEmail}`} class="text-brand-400 underline">{contactEmail}</a> o mediante nuestro formulario en la sección de <a href="/contacto" class="text-brand-400 underline">contacto</a>.
+        </p>
+      </section>
+
+    </div>
+  </main>
+</BaseLayout>

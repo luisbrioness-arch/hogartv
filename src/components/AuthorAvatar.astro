@@ -1,0 +1,56 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  slug?: string;
+  nombre?: string;
+  size?: 'sm' | 'md' | 'lg';
+  class?: string;
+}
+
+const {
+  slug = 'luis-briones',
+  nombre = 'Luis Briones',
+  size = 'md',
+  class: extraClass = '',
+} = Astro.props;
+
+// Validación estricta de alt requerido
+const authorAlt = `Fotografía de perfil de ${nombre}, autor técnico en HogarTV.cl`.trim();
+if (!authorAlt) {
+  throw new Error(`[AuthorAvatar] Atributo "alt" es requerido para accesibilidad del autor "${slug}".`);
+}
+
+// Búsqueda dinámica de foto del autor en src/assets/autores/
+const allAssets = import.meta.glob<{ default: ImageMetadata }>('/src/assets/autores/*.{png,jpg,jpeg,webp,avif}', { eager: true });
+const matchedEntry = Object.entries(allAssets).find(([path]) => {
+  const filename = path.split('/').pop()?.split('.')[0];
+  return filename === slug;
+});
+const authorImage = matchedEntry?.[1]?.default;
+
+const sizeMap = {
+  sm: { px: 36, class: 'w-9 h-9 text-xs rounded-full' },
+  md: { px: 80, class: 'w-16 h-16 sm:w-20 sm:h-20 text-2xl rounded-2xl' },
+  lg: { px: 144, class: 'w-28 h-28 sm:w-36 sm:h-36 text-4xl rounded-2xl' },
+};
+
+const currentSize = sizeMap[size] || sizeMap.md;
+---
+
+{authorImage ? (
+  <Image
+    src={authorImage}
+    alt={authorAlt}
+    width={currentSize.px}
+    height={currentSize.px}
+    format="webp"
+    loading="lazy"
+    class={`object-cover border border-brand-400/30 shadow-md shrink-0 ${currentSize.class} ${extraClass}`}
+  />
+) : (
+  <div class={`bg-gradient-to-tr from-brand-600 to-indigo-600 border border-brand-400/40 flex items-center justify-center font-bold text-white shadow-md shrink-0 ${currentSize.class} ${extraClass}`}>
+    <span>LB</span>
+  </div>
+)}

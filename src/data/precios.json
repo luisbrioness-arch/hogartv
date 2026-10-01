@@ -1,0 +1,56 @@
+{
+  "tcl-c655-55": {
+    "precioCLP": 419990,
+    "precioFormateado": "$ 419.990 CLP",
+    "rango": "$ 399.990 - $ 449.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-09-15",
+    "enOferta": true,
+    "TODO": "Verificar precio periódicamente según ofertas vigentes de Mercado Libre"
+  },
+  "hisense-u6k-55": {
+    "precioCLP": 399990,
+    "precioFormateado": "$ 399.990 CLP",
+    "rango": "$ 379.990 - $ 419.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-09-15",
+    "enOferta": false,
+    "TODO": "Verificar precio periódicamente según ofertas vigentes de Mercado Libre"
+  },
+  "samsung-du7000-55": {
+    "precioCLP": 329990,
+    "precioFormateado": "$ 329.990 CLP",
+    "rango": "$ 329.990 - $ 359.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-09-15",
+    "enOferta": false,
+    "TODO": "Verificar precio periódicamente según ofertas vigentes de Mercado Libre"
+  },
+  "antena-tvd-chile": {
+    "precioCLP": 11990,
+    "precioFormateado": "$ 11.990 CLP",
+    "rango": "$ 8.990 - $ 14.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-09-14",
+    "enOferta": false,
+    "TODO": "Verificar precio de antenas y accesorios en Mercado Libre"
+  },
+  "roku-express-4k": {
+    "precioCLP": 38990,
+    "precioFormateado": "$ 38.990 CLP",
+    "rango": "$ 34.990 - $ 42.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-09-12",
+    "enOferta": false,
+    "TODO": "Verificar precio de Roku Express 4K en Mercado Libre"
+  },
+  "chromecast-google-tv": {
+    "precioCLP": 49990,
+    "precioFormateado": "$ 49.990 CLP",
+    "rango": "$ 42.990 - $ 54.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-09-12",
+    "enOferta": false,
+    "TODO": "Verificar precio de Chromecast con Google TV en Mercado Libre"
+  }
+}

@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import sitioData from '../data/sitio.json';
+
+const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL || sitioData.emailContacto;
+---
+
+<BaseLayout
+  title="Términos y Condiciones de Uso | HogarTV.cl"
+  description="Términos y condiciones legales que regulan el acceso, uso y exención de responsabilidad de contenidos y precios en HogarTV.cl."
+  canonical="https://hogartv.cl/terminos/"
+  breadcrumbs={[{ name: 'Términos y Condiciones', url: '/terminos/' }]}
+>
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Migas de pan -->
+    <nav class="flex items-center gap-2 text-xs text-slate-400 mb-8 font-medium">
+      <a href="/" class="hover:text-white transition-colors">Inicio</a>
+      <span>/</span>
+      <span class="text-brand-400 font-semibold">Términos y Condiciones</span>
+    </nav>
+
+    <header class="mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-950/60 border border-brand-800/40 text-brand-300 text-xs font-semibold uppercase tracking-wider mb-4">
+        <span>⚖️ Condiciones de Servicio</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">
+        Términos y Condiciones de Uso
+      </h1>
+      <p class="text-sm text-slate-400">
+        Última actualización: 18 de marzo de 2026. Documento aplicable a cualquier usuario de <strong class="text-slate-300">hogartv.cl</strong>.
+      </p>
+    </header>
+
+    <div class="prose prose-invert max-w-none space-y-8 text-slate-300 text-sm sm:text-base leading-relaxed">
+      
+      <!-- REVISAR CON ABOGADO: Aceptación de los Términos -->
+      <section class="bg-surface-card border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-4">
+        <h2 class="text-xl font-bold text-white mb-2">1. Objeto y Aceptación</h2>
+        <p>
+          El presente documento regula los términos de acceso, navegación y uso del portal web <strong>HogarTV.cl</strong> (en adelante, "el Sitio"). El ingreso y permanencia en el Sitio confiere la condición de usuario e implica la aceptación plena e incondicional de las disposiciones contenidas en este documento. Si no estás de acuerdo con alguna de ellas, te solicitamos abstenerte de hacer uso de este portal.
+        </p>
+      </section>
+
+      <!-- REVISAR CON ABOGADO: Naturaleza Informativa y Técnica -->
+      <section class="bg-surface-card border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-4">
+        <h2 class="text-xl font-bold text-white mb-2">2. Naturaleza de los Contenidos</h2>
+        <p>
+          HogarTV.cl es un medio digital editorial de orientación tecnológica especializado en el mercado chileno. Publicamos análisis técnicos, tutoriales paso a paso de televisión digital abierta (TVD) y comparativas de dispositivos de consumo.
+        </p>
+        <p>
+          Aunque nuestro equipo técnico procura mantener toda la información rigurosamente actualizada y alineada con los estándares de la Subsecretaría de Telecomunicaciones de Chile (SUBTEL), los contenidos se ofrecen únicamente a título informativo y orientativo. No constituyen asesoría comercial vinculante ni garantía absoluta de que una señal de TV abierta o aplicación específica funcione de manera idéntica en condiciones topográficas desfavorables.
+        </p>
+      </section>
+
+      <!-- REVISAR CON ABOGADO: Exención de Responsabilidad sobre Precios, Stock y Tiendas Terceras -->
+      <section class="bg-surface-card border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-4 border-l-4 border-l-brand-500">
+        <h2 class="text-xl font-bold text-white mb-2">3. Exención de Responsabilidad sobre Precios, Stock y Enlaces de Compra</h2>
+        <p>
+          <strong>HogarTV.cl NO es una tienda online, no vende directamente productos ni intermedia transacciones de pago.</strong> Todos los precios indicados en nuestros artículos corresponden a valores referenciales observados en pesos chilenos (CLP) en tiendas oficiales, marketplaces (como Mercado Libre Chile) o distribuidores al momento de la publicación.
+        </p>
+        <p>
+          Las tiendas terceras pueden variar sus precios, costos de envío, promociones o disponibilidad de inventario en cualquier momento y sin previo aviso. En consecuencia:
+        </p>
+        <ul class="list-disc list-inside space-y-2 text-slate-300">
+          <li>
+            El precio definitivo y las condiciones de venta aplicables son exclusivamente las que figuren en la plataforma del vendedor externo en el instante exacto de realizar tu compra.
+          </li>
+          <li>
+            Cualquier reclamo relativo a garantías de fábrica, despachos, devoluciones de dinero, fallas de producto o derecho a retracto según la Ley del Consumidor (Ley N° 19.496) debe ser dirigido directamente a la tienda o distribuidor en el que adquiriste el bien. HogarTV.cl no asume responsabilidad civil, contractual ni extracontractual por dichas operaciones comerciales.
+          </li>
+        </ul>
+      </section>
+
+      <!-- REVISAR CON ABOGADO: Propiedad Intelectual -->
+      <section class="bg-surface-card border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-4">
+        <h2 class="text-xl font-bold text-white mb-2">4. Propiedad Intelectual</h2>
+        <p>
+          Todos los textos originales, tablas comparativas elaboradas por nuestro autor, diseño gráfico, código fuente y selección de contenidos de HogarTV.cl son propiedad de sus creadores y se encuentran protegidos por la Ley N° 17.336 sobre Propiedad Intelectual de Chile.
+        </p>
+        <p>
+          Las marcas comerciales, logotipos, nombres de modelos y plataformas de streaming mencionadas (tales como Samsung, LG, TCL, Hisense, Roku, Chromecast, Zapping, DGO, Netflix, etc.) pertenecen a sus respectivos titulares y se citan exclusivamente con fines informativos y de identificación en beneficio del consumidor.
+        </p>
+      </section>
+
+      <!-- REVISAR CON ABOGADO: Jurisdicción y Ley Aplicable -->
+      <section class="bg-surface-card border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-4">
+        <h2 class="text-xl font-bold text-white mb-2">5. Legislación y Tribunales Competentes</h2>
+        <p>
+          Estos términos y condiciones se rigen e interpretan conforme a las leyes de la República de Chile. Para cualquier controversia legal que pudiera suscitarse en relación con este sitio web, las partes se someten a la jurisdicción de los Tribunales Ordinarios de Justicia de la ciudad de Santiago de Chile.
+        </p>
+        <p>
+          Para formular cualquier duda respecto a estos términos, puedes escribir a <a href={`mailto:${contactEmail}`} class="text-brand-400 underline">{contactEmail}</a>.
+        </p>
+      </section>
+
+    </div>
+  </main>
+</BaseLayout>

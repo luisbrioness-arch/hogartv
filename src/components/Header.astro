@@ -1,0 +1,97 @@
+---
+const navLinks = [
+  { name: 'Smart TV', href: '/smart-tv' },
+  { name: 'Streaming', href: '/streaming' },
+  { name: 'TV Abierta Chile', href: '/tv-abierta' },
+  { name: 'Accesorios', href: '/accesorios' },
+];
+---
+
+<header class="sticky top-0 z-50 bg-surface-dark/90 backdrop-blur-md border-b border-slate-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-400 flex items-center justify-center shadow-lg shadow-brand-500/25 group-hover:scale-105 transition-transform">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+          </svg>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-xl font-extrabold tracking-tight text-white flex items-center gap-1">
+            Hogar<span class="text-brand-400">TV</span><span class="text-xs px-1.5 py-0.5 rounded bg-brand-500/20 text-brand-300 font-semibold border border-brand-500/30">.cl</span>
+          </span>
+          <span class="text-[10px] text-slate-400 tracking-wider uppercase font-medium">Guía & Streaming Chile</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-1 lg:gap-2">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors"
+          >
+            {link.name}
+          </a>
+        ))}
+      </nav>
+
+      <!-- Action Button / Badge -->
+      <div class="hidden sm:flex items-center gap-3">
+        <a
+          href="/smart-tv"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold text-white bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 shadow-sm shadow-brand-500/20 transition-all hover:shadow-brand-500/40"
+        >
+          <span>🔥 Mejores TVs 2026</span>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Toggle Button -->
+      <div class="flex md:hidden">
+        <button
+          id="mobile-menu-btn"
+          type="button"
+          aria-label="Abrir menú"
+          class="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 focus:outline-none"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800 bg-surface-card px-4 pt-2 pb-4 space-y-1">
+    {navLinks.map((link) => (
+      <a
+        href={link.href}
+        class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-200 hover:text-white hover:bg-slate-800"
+      >
+        {link.name}
+      </a>
+    ))}
+    <div class="pt-2">
+      <a
+        href="/smart-tv"
+        class="block text-center w-full px-4 py-2.5 rounded-lg text-sm font-semibold text-white bg-brand-600 hover:bg-brand-500"
+      >
+        🔥 Mejores Smart TV en Chile
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  }
+</script>

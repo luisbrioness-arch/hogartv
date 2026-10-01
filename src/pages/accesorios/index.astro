@@ -1,0 +1,218 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const allArticles = await getCollection('articles');
+const articles = allArticles
+  .filter((a) => a.data.category === 'accesorios')
+  .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  'name': 'Guías de Accesorios y TV Sticks en Chile',
+  'itemListElement': articles.map((article, index) => {
+    const slug = article.id.replace(/\.(md|mdx)$/, '');
+    return {
+      '@type': 'ListItem',
+      'position': index + 1,
+      'name': article.data.title,
+      'url': `https://hogartv.cl/accesorios/${slug}/`,
+    };
+  }),
+};
+---
+
+<BaseLayout
+  title="Accesorios TV en Chile: TV Boxes, Barras de Sonido y Soportes"
+  description="Convierte cualquier televisor en un centro multimedia inteligente. Comparativas de Roku, Google Chromecast, Fire TV, antenas y barras de sonido en Chile."
+  breadcrumbs={[{ name: 'Accesorios y TV Sticks', url: '/accesorios/' }]}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    
+    <!-- Header de Categoría -->
+    <div class="max-w-3xl mb-12">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-950/60 border border-blue-800/40 text-blue-300 text-xs font-semibold uppercase tracking-wider mb-4">
+        <span>🔌 Hardware & Gadgets</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
+        Accesorios y TV Sticks
+      </h1>
+      <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+        Los mejores dispositivos para mejorar el sonido, conectar antenas de alta ganancia o darle una segunda vida a tu televisor antiguo con Google TV o Roku.
+      </p>
+    </div>
+
+    <!-- Lista de Artículos -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {articles.map((article) => {
+        const slug = article.id.replace(/\.(md|mdx)$/, '');
+        return (
+          <article class="flex flex-col bg-surface-card border border-slate-800 rounded-2xl overflow-hidden hover:border-blue-500/50 hover:shadow-xl transition-all duration-300 group">
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between text-xs text-slate-400 mb-3">
+                  <span class="text-blue-400 font-semibold">{article.data.categoryName}</span>
+                  <span>{article.data.publishDate}</span>
+                </div>
+                <h2 class="text-xl font-bold text-white group-hover:text-blue-300 transition-colors mb-3 leading-snug">
+                  <a href={`/accesorios/${slug}/`}>
+                    {article.data.title}
+                  </a>
+                </h2>
+                <p class="text-slate-400 text-sm leading-relaxed mb-4 line-clamp-3">
+                  {article.data.description}
+                </p>
+              </div>
+              <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+                <span class="text-xs text-slate-400">⏱️ {article.data.readTime}</span>
+                <a
+                  href={`/accesorios/${slug}/`}
+                  class="inline-flex items-center gap-1 text-xs font-bold text-blue-400 hover:text-blue-300 group-hover:translate-x-0.5 transition-transform"
+                >
+                  <span>Ver comparativa</span>
+                  <span>→</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+
+    <!-- Guía Exhaustiva de Hardware y Accesorios para TV en Chile (D1: >600 palabras) -->
+    <section class="mt-16 pt-12 border-t border-slate-800 text-slate-300 space-y-12">
+      <div>
+        <span class="text-xs font-bold text-blue-400 uppercase tracking-wider block mb-2">Guía Técnica de Accesorios en Chile</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-4">
+          Cómo Mejorar, Instalar y Proteger tu Televisor en el Hogar
+        </h2>
+        <p class="text-sm sm:text-base text-slate-300 leading-relaxed mb-4">
+          Un buen televisor es solo la mitad de la experiencia audiovisual en el hogar. En muchas ocasiones, la diferencia entre una pantalla frustrante y un verdadero cine en casa no radica en gastar millones de pesos en un televisor nuevo, sino en elegir los complementos adecuados: un reproductor de streaming ágil, una barra de sonido con diálogos nítidos y una instalación mural segura y nivelada.
+        </p>
+        <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+          A continuación, revisamos las recomendaciones de hardware indispensables basadas en instalaciones cotidianas en viviendas chilenas, con especial énfasis en la seguridad estructural de muros y la compatibilidad de puertos.
+        </p>
+      </div>
+
+      <!-- Sección 1: TV Sticks y TV Boxes -->
+      <div class="space-y-4">
+        <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight flex items-center gap-2">
+          <span>🕹️</span> 1. Reproductores Multimedia: Revivir Pantallas sin Cambiar de Tele
+        </h2>
+        <p class="text-sm text-slate-300 leading-relaxed">
+          La obsolescencia del software es uno de los problemas más frecuentes en televisores comprados hace 4 a 8 años: el panel de imagen sigue viéndose impecable, pero el procesador interno se vuelve lento y aplicaciones críticas como Netflix, Zapping, DGO o YouTube dejan de actualizarse o abren con congelamientos.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-3">
+          <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+            <h3 class="text-sm font-bold text-white mb-1">Roku OS (Roku Express 4K / Streaming Stick)</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Es la opción ideal para usuarios que buscan simplicidad absoluta, adultos mayores o niños. Su interfaz se basa en una cuadrícula despejada de canales, su control remoto incluye botones directos a las apps más populares y ofrece compatibilidad con Apple AirPlay para usuarios de iPhone sin configuraciones complejas.
+            </p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+            <h3 class="text-sm font-bold text-white mb-1">Google TV / Android TV (Chromecast con Google TV)</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Es la plataforma para quienes exigen máxima versatilidad. Permite instalar aplicaciones fuera de la tienda oficial (archivos APK como reproductores IPTV o emuladores), cuenta con comandos de voz inteligentes vía Asistente de Google y su control remoto puede sincronizarse para encender y controlar el volumen de la pantalla.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sección 2: Soportes de Muro y Tipos de Tabique en Chile -->
+      <div class="space-y-4">
+        <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight flex items-center gap-2">
+          <span>🧱</span> 2. Soportes de Muro: Estándar VESA y Precaución Crítica en Tabiquería Chilena
+        </h2>
+        <p class="text-sm text-slate-300 leading-relaxed">
+          Montar el televisor en el muro libera espacio y mejora la ergonomía visual. Sin embargo, en la construcción de viviendas en Chile conviven dos tipos de muros muy distintos que exigen métodos de fijación radicalmente diferentes:
+        </p>
+        <div class="space-y-3">
+          <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+            <h3 class="text-sm font-bold text-white mb-1">Muros de Hormigón Armado y Ladrillo Princesa</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Son los muros estructurales y medianeros comunes en departamentos y casas sólidas. Soportan cualquier tipo de anclaje, incluidos soportes con brazo articulado extensible para televisores pesados de 65 pulgadas o más. Se instalan con taladro percutor, broca para concreto de widia de 8 a 10 mm y tarugos plásticos de nylon de alta densidad con pernos tirafondo hexagonales.
+            </p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+            <h3 class="text-sm font-bold text-white mb-1">Muros de Tabiquería en Yeso-Cartón (Vulcanita) o Fibrocemento</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              <strong>Advertencia crítica de seguridad:</strong> Los muros divisorios interiores en departamentos nuevos o ampliaciones habitacionales en Chile están hechos de planchas de yeso-cartón (Vulcanita) sobre estructura de perfiles de acero liviano (Metalcon) o madera. <em>Jamás debes fijar un televisor utilizando tarugos plásticos comunes de expansión</em>, ya que la vibración y el peso rasgarán la plancha de yeso provocando la caída del equipo. En estos muros es obligatorio ubicar los montantes de Metalcon mediante un detector magnético de perfiles para atornillar directamente a la estructura de acero, o en su defecto, emplear anclajes metálicos basculantes de palanca (tipo mariposa) diseñados específicamente para placas huecas.
+            </p>
+          </div>
+        </div>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Para conocer el soporte compatible con tu tele, revisa la medida <strong>VESA</strong> (distancia en milímetros entre los 4 orificios traseros, por ejemplo: 200x200 mm para 43-50", 300x300 o 400x400 mm para 55-65").
+        </p>
+      </div>
+
+      <!-- Sección 3: Barras de Sonido y Conectividad de Audio -->
+      <div class="space-y-4">
+        <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight flex items-center gap-2">
+          <span>🔊</span> 3. Barras de Sonido: Solucionando el Punto Débil de los Smart TVs
+        </h2>
+        <p class="text-sm text-slate-300 leading-relaxed">
+          A medida que los televisores modernos se volvieron más delgados con bordes casi invisibles, el espacio físico para los altavoces desapareció. Los pequeños transductores de 10W a 20W integrados en el chasis apuntan hacia abajo o contra la pared, lo que hace que los diálogos de películas o noticias se escuchen apagados o con efecto "de lata".
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 my-3 text-xs text-slate-300">
+          <div class="p-3.5 rounded-xl bg-slate-900/70 border border-slate-800">
+            <h3 class="text-white text-xs font-bold mb-1">HDMI ARC / eARC</h3>
+            <p class="text-slate-400 leading-relaxed">La mejor opción. Envía el audio digital de alta resolución desde la tele a la barra mediante un solo cable HDMI y permite subir o bajar el volumen con el control remoto del televisor gracias al protocolo HDMI-CEC.</p>
+          </div>
+          <div class="p-3.5 rounded-xl bg-slate-900/70 border border-slate-800">
+            <h3 class="text-white text-xs font-bold mb-1">Cable Óptico Digital (TOSLink)</h3>
+            <p class="text-slate-400 leading-relaxed">Alternativa muy confiable y libre de interferencias electromagnéticas para barras de sonido 2.1 o 5.1 tradicionales. Soporta Dolby Digital y DTS sin problemas.</p>
+          </div>
+          <div class="p-3.5 rounded-xl bg-slate-900/70 border border-slate-800">
+            <h3 class="text-white text-xs font-bold mb-1">Conexión Bluetooth</h3>
+            <p class="text-slate-400 leading-relaxed">Cómoda para escuchar música desde el celular, pero desaconsejada para películas o partidos de fútbol debido al retraso (latencia) entre el movimiento de los labios y la voz.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sección 4: Protección Eléctrica y Certificación SEC -->
+      <div class="space-y-4">
+        <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight flex items-center gap-2">
+          <span>⚡</span> 4. Protección Eléctrica: Resguardo ante Variaciones de Voltaje en Chile
+        </h2>
+        <p class="text-sm text-slate-300 leading-relaxed">
+          En la red eléctrica nacional chilena (220 Voltios a 50 Hz), las variaciones de voltaje, descargas atmosféricas por tormentas cordilleranas o cortes intempestivos de energía son una de las principales causas de quema de placas madres y fuentes de poder en televisores costosos.
+        </p>
+        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 space-y-2">
+          <h3 class="text-sm font-bold text-white mb-1">Recomendaciones de Seguridad Eléctrica:</h3>
+          <p>• <strong>Usa zapatillas con supresor de sobretensión certificado por la SEC:</strong> Verifica siempre que el alargador cuente con el sello con código QR de la Superintendencia de Electricidad y Combustibles (SEC) y un varistor de protección (mínimo 450 Joules).</p>
+          <p>• <strong>Desconecta la antena externa durante tormentas eléctricas:</strong> Si usas una antena exterior en el techo en zonas rurales o precordilleranas, las descargas pueden ingresar directamente por el cable coaxial hacia el sintonizador.</p>
+          <p>• <strong>Cables HDMI de alta velocidad certificados:</strong> Para transmitir 4K a 60Hz con HDR sin parpadeos de pantalla negra, utiliza cables rotulados como <em>Premium High Speed HDMI</em> (18 Gbps) o <em>Ultra High Speed</em> (48 Gbps para 120Hz/144Hz en consolas).</p>
+        </div>
+      </div>
+
+      <!-- Sección 5: Glosario de Hardware -->
+      <div class="space-y-4">
+        <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight flex items-center gap-2">
+          <span>📚</span> 5. Glosario Técnico de Conectividad y Hardware
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-300">
+          <div class="p-3 rounded-lg bg-slate-900/50 border border-slate-800">
+            <h3 class="text-white text-xs font-bold mb-0.5">Estándar VESA</h3>
+            <p class="text-slate-400">Norma internacional de la Video Electronics Standards Association que estandariza la posición y distancia de los agujeros de montaje en la espalda de televisores y monitores.</p>
+          </div>
+          <div class="p-3 rounded-lg bg-slate-900/50 border border-slate-800">
+            <h3 class="text-white text-xs font-bold mb-0.5">HDMI-CEC</h3>
+            <p class="text-slate-400">Función que permite que dispositivos interconectados por HDMI se comuniquen entre sí (ejemplo: al encender tu Chromecast o consola, el televisor se enciende automáticamente en la entrada correcta).</p>
+          </div>
+          <div class="p-3 rounded-lg bg-slate-900/50 border border-slate-800">
+            <h3 class="text-white text-xs font-bold mb-0.5">Anclaje Basculante (Mariposa)</h3>
+            <p class="text-slate-400">Perno especial con aletas metálicas que se abren por detrás de planchas de yeso-cartón o tabiquería hueca para distribuir la fuerza de tracción sobre una mayor superficie.</p>
+          </div>
+          <div class="p-3 rounded-lg bg-slate-900/50 border border-slate-800">
+            <h3 class="text-white text-xs font-bold mb-0.5">Canal de Retorno de Audio (ARC)</h3>
+            <p class="text-slate-400">Permite que un puerto HDMI funcione como salida de audio hacia una barra de sonido sin requerir un cable de audio óptico adicional.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+</BaseLayout>

@@ -1,0 +1,39 @@
+{
+  "tcl-c655-55": {
+    "nombre": "Smart TV TCL 55\" 4K QLED C655",
+    "url": "https://meli.la/34eR64T",
+    "tienda": "Mercado Libre Chile",
+    "actualizado": "2026-03-18"
+  },
+  "hisense-u6k-55": {
+    "nombre": "Smart TV Hisense 55\" 4K Mini-LED U6K",
+    "url": "https://meli.la/32FEBK4",
+    "tienda": "Mercado Libre Chile",
+    "actualizado": "2026-03-18"
+  },
+  "samsung-du7000-55": {
+    "nombre": "Smart TV Samsung 55\" 4K Crystal UHD DU7000",
+    "url": "https://meli.la/2DFkxBV",
+    "tienda": "Mercado Libre Chile",
+    "actualizado": "2026-03-18"
+  },
+  "antena-tvd-chile": {
+    "nombre": "Antena Digital HDTV Interior / Exterior Amplificada",
+    "url": "https://meli.la/2qaQjtq",
+    "tienda": "Mercado Libre Chile",
+    "actualizado": "2026-03-18"
+  },
+  "roku-express-4k": {
+    "nombre": "Roku Express 4K Streaming Player",
+    "url": "https://meli.la/1gLh4QQ",
+    "tienda": "Mercado Libre Chile",
+    "actualizado": "2026-03-18"
+  },
+  "chromecast-google-tv": {
+    "nombre": "Google Chromecast con Google TV 4K",
+    "url": "https://meli.la/TODO-chromecast-google-tv",
+    "tienda": "Mercado Libre Chile",
+    "actualizado": "2026-03-18",
+    "TODO": "reemplazar por link meli.la correspondiente al Chromecast (código entregado: NLAXBU-UWVY). Configurable también vía PUBLIC_CHROMECAST_GOOGLE_TV_URL en .env"
+  }
+}

@@ -21,3 +21,10 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# Archivos temporales de debug/scripting
+*.cjs
+pc_*.txt
+*.tmp
+push.bat
+dist.zip

@@ -34,5 +34,12 @@
     "url": "https://meli.la/1meZxX8",
     "tienda": "Mercado Libre Chile",
     "actualizado": "2026-10-07"
+  },
+  "decodificador-tvd": {
+    "nombre": "Decodificador TV Digital TDT ISDB-Tb para Chile",
+    "url": "https://www.mercadolibre.cl/decodificadores-dtv-s/p",
+    "tienda": "Mercado Libre Chile",
+    "actualizado": "2026-10-08",
+    "TODO": "Reemplazar con link de afiliado cuando esté disponible"
   }
 }

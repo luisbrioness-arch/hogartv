@@ -52,5 +52,14 @@
     "tiendaReferencia": "Mercado Libre Chile",
     "fechaVerificacion": "2026-10-07",
     "enOferta": false
+  },
+  "decodificador-tvd": {
+    "precioCLP": 14990,
+    "precioFormateado": "$ 14.990 CLP",
+    "rango": "$ 9.990 - $ 18.990 CLP",
+    "precioMinVisto": "$ 8.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-10-08",
+    "enOferta": false
   }
 }

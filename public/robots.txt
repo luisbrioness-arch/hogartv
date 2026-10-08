@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 
+Sitemap: https://hogartv.cl/sitemap.xml
 Sitemap: https://hogartv.cl/sitemap-index.xml
 # LLM & AI Search Index: https://hogartv.cl/llms.txt

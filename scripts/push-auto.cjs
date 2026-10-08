@@ -53,6 +53,14 @@ async function main() {
     console.log('✅ Archivos web colocados en la raíz listos para public_html.');
   }
 
+  // Garantizar que sitemap.xml siempre exista en la raíz para Google Search Console
+  const sitemapIndex = path.join(rootDir, 'sitemap-index.xml');
+  const sitemapXml = path.join(rootDir, 'sitemap.xml');
+  if (fs.existsSync(sitemapIndex) && !fs.existsSync(sitemapXml)) {
+    fs.copyFileSync(sitemapIndex, sitemapXml);
+    console.log('✅ sitemap.xml asegurado en la raíz para Google Search Console.');
+  }
+
   // 3. Empaquetado si existe el script
   const packScript = path.join(rootDir, 'scripts', 'pack-dist.cjs');
   if (fs.existsSync(packScript)) {

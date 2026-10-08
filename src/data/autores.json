@@ -5,15 +5,16 @@
     "rol": "Técnico en Telecomunicaciones / Especialista en TVD y Audio/Video",
     "avatar": "/images/autores/luis-briones.webp",
     "TODO_AVATAR": "Colocar foto de perfil real en public/images/autores/luis-briones.webp (o usar avatar con iniciales)",
-    "bioCorta": "Técnico en telecomunicaciones con más de 8 años de experiencia en terreno en Chile, especializado en instalación de antenas de Televisión Digital Abierta (norma ISDB-Tb), configuración de sistemas de entretenimiento doméstico y asesoría técnica independiente para la compra de Smart TVs y dispositivos de streaming.",
-    "bioCompleta": "Luis Briones es técnico en telecomunicaciones con amplia experiencia práctica en despliegue de redes, instalación y calibración de sistemas de recepción de televisión digital abierta (TVD bajo norma ISDB-Tb) y optimización de conectividad doméstica en diversas regiones de Chile. Su trabajo se enfoca en desmitificar la tecnología de pantallas, traduciendo especificaciones técnicas complejas (paneles Mini-LED, QLED, tasas de refresco y sistemas operativos) en recomendaciones claras, prácticas y adaptadas al presupuesto de los hogares chilenos.",
+    "bioCorta": "Técnico en telecomunicaciones con más de 8 años de experiencia en terreno en la Región del Biobío (Chile), especializado en instalación de antenas de Televisión Digital Abierta (norma ISDB-Tb), soportes de muro y asesoría técnica independiente para Smart TVs y streaming.",
+    "bioCompleta": "Luis Briones es técnico en telecomunicaciones radicado en la Región del Biobío, con amplia experiencia práctica en terreno en comunas como Concepción, Talcahuano, San Pedro de la Paz, Chiguayante y Los Ángeles. Su labor abarca la instalación y calibración de sistemas de recepción de televisión digital abierta (TVD bajo norma ISDB-Tb), montaje de soportes a muro, optimización de redes para streaming y asesoría técnica independiente para la compra de Smart TVs adaptados a la realidad de los hogares en Chile.",
     "metodologia": "Nuestras recomendaciones se fundamentan en el análisis exhaustivo de especificaciones técnicas oficiales de fabricantes, verificación de cumplimiento de la norma chilena de televisión digital ISDB-Tb (SUBTEL), pruebas de compatibilidad de aplicaciones locales (Zapping, DGO, señales nacionales) y el contraste con valoraciones de compradores verificados en Chile.",
     "knowsAbout": [
       "Televisión Digital Abierta Chile",
-      "Smart TV",
+      "Smart TV y Paneles 4K",
       "Norma ISDB-Tb",
+      "Servicio Técnico e Instalación en Biobío",
       "Streaming y TV Sticks",
-      "Instalaciones de Audio y Video"
+      "Montaje de Soportes e Instalaciones A/V"
     ],
     "url": "https://hogartv.cl/autor/luis-briones/"
   }

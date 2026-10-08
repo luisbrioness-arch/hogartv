@@ -6,7 +6,8 @@
   "TODO_EMAIL": "Definir correo real de contacto si es diferente a contacto@hogartv.cl o configurar PUBLIC_CONTACT_EMAIL en .env",
   "horarioAtencion": "Lunes a Viernes de 09:00 a 18:00 hrs (Hora continental de Chile, GMT-3 / GMT-4)",
   "tiempoRespuesta": "24 a 48 horas hábiles",
-  "ubicacion": "Santiago, Región Metropolitana, Chile",
+  "ubicacion": "Concepción, Región del Biobío, Chile",
+  "coberturaServicio": "Región del Biobío (Gran Concepción, Talcahuano, San Pedro de la Paz, Chiguayante, Los Ángeles y alrededores)",
   "añoFundacion": 2026,
   "normativa": {
     "leyPrivacidad": "Ley N° 19.628 sobre Protección de la Vida Privada (Chile)",

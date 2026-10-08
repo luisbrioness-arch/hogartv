@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProductCard from '../components/ProductCard.astro';
+
+const breadcrumbs = [
+  { name: 'Recomendados', url: '/recomendados' }
+];
+---
+
+<BaseLayout
+  title="Tienda y Productos Recomendados"
+  description="Los mejores Smart TV, decodificadores, antenas y accesorios para disfrutar de la televisión digital y el streaming en Chile, recomendados por expertos."
+  breadcrumbs={breadcrumbs}
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-extrabold text-white mb-4">Escaparate de Recomendados</h1>
+      <p class="text-lg text-slate-300 max-w-2xl mx-auto">
+        Selección curada de los mejores equipos y accesorios para mejorar tu experiencia de televisión. Comprando a través de estos enlaces apoyas a HogarTV.cl sin costo extra para ti.
+      </p>
+    </div>
+
+    <div class="space-y-8">
+      
+      <ProductCard
+        productKey="tcl-c655-55"
+        isFirst={true}
+        title='Smart TV TCL 55" QD-Mini LED UHD 4K P8L'
+        brand="TCL"
+        badge="🏆 Mejor Smart TV Calidad / Precio"
+        specs={["55 Pulgadas 4K", "Panel QD-Mini LED", "Tasa de Refresco 144Hz", "Google TV Oficial", "Dolby Vision & Atmos"]}
+        pros={[
+          "Contraste cinematográfico y brillo extremo",
+          "Google TV oficial con Play Store Chile (Zapping, DGO, Disney+)",
+          "Fluidez perfecta para deportes y videojuegos"
+        ]}
+        cons={[]}
+      />
+
+      <ProductCard
+        productKey="chromecast-google-tv"
+        title="Google Chromecast con Google TV 4K"
+        brand="Google"
+        badge="🚀 Convierte cualquier TV en Smart TV"
+        specs={["Resolución 4K UHD", "Dolby Vision", "Google Assistant por voz", "Control remoto incluido"]}
+        pros={[
+          "Reúne todas tus películas y series en una sola pantalla",
+          "Permite instalar cualquier aplicación Android",
+          "El control remoto enciende y apaga tu televisor"
+        ]}
+        cons={[]}
+      />
+
+      <ProductCard
+        productKey="roku-express-4k"
+        title="Roku Express 4K Streaming Player"
+        brand="Roku"
+        badge="🥇 El Más Fácil de Usar"
+        specs={["Resolución 4K HDR", "WiFi doble banda", "Apple AirPlay", "Control remoto"]}
+        pros={[
+          "Interfaz muy simple ideal para toda la familia",
+          "Compatible con Zapping, Netflix, DGO y más",
+          "Se configura en menos de 5 minutos"
+        ]}
+        cons={[]}
+      />
+
+      <ProductCard
+        productKey="antena-tvd-chile"
+        title="Antena Digital HDTV Interior / Exterior Amplificada"
+        brand="Genérica HDTV"
+        badge="📡 Indispensable para TV Abierta"
+        specs={["Recepción 360°", "Frecuencia UHF / VHF", "Base magnética", "Cable coaxial largo"]}
+        pros={[
+          "Instalación instantánea: conectar y escanear canales",
+          "Capta señales digitales (TVN, Mega, CHV) en alta definición gratis",
+          "Evita pagar mensualidades de cable"
+        ]}
+        cons={[]}
+      />
+
+    </div>
+    
+    <div class="mt-12 text-center text-sm text-slate-400 bg-slate-900/50 p-6 rounded-2xl border border-slate-800">
+      <p>
+        <strong>Aviso de Afiliados:</strong> HogarTV.cl participa en programas de afiliados. Si compras a través de los enlaces de esta página, podríamos recibir una pequeña comisión sin ningún costo adicional para ti. Esto nos ayuda a mantener el sitio funcionando. ¡Gracias por tu apoyo!
+      </p>
+    </div>
+  </div>
+</BaseLayout>

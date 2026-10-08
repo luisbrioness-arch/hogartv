@@ -32,12 +32,14 @@ if (!rawCanonical.endsWith('/') && !rawCanonical.match(/\.[a-zA-Z0-9]+$/)) {
 const canonicalUrl = rawCanonical;
 const fullTitle = title.includes('HogarTV') ? title : `${title} | HogarTV.cl`;
 
-// Variables de entorno para GA4 y Google Search Console
+// Variables de entorno para GA4, GSC y AdSense
 const ga4Id = import.meta.env.PUBLIC_GA4_ID?.trim();
 const gscVerification = import.meta.env.PUBLIC_GSC_VERIFICATION?.trim();
+const adsenseId = import.meta.env.PUBLIC_ADSENSE_ID?.trim();
 const isDev = import.meta.env.DEV;
 const showGA4 = !isDev && Boolean(ga4Id);
 const showGSC = Boolean(gscVerification);
+const showAdsense = !isDev && Boolean(adsenseId);
 
 // Fallback consistente de imagen OG a https://hogartv.cl/og-image.png
 const ogImageUrl = ogImage
@@ -142,6 +144,10 @@ const breadcrumbSchema =
         gtag('config', ga4Id);
       </script>
     </>
+  )}
+
+  {showAdsense && (
+    <script is:inline async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseId}`} crossorigin="anonymous"></script>
   )}
 </head>
 <body class="min-h-screen flex flex-col bg-surface-dark text-slate-100 font-sans">

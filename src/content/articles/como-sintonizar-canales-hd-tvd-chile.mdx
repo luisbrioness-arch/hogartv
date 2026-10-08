@@ -11,6 +11,7 @@ author: "luis-briones"
 ---
 
 import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQSection from '../../components/FAQSection.astro';
 import AdSlot from '../../components/AdSlot.astro';
 import HowToSchema from '../../components/HowToSchema.astro';
@@ -111,14 +112,19 @@ Tu televisor tardará entre 2 y 5 minutos en escanear todo el espectro de frecue
 
 ## Principales Canales Digitales Disponibles en Santiago y Regiones
 
-| Canal | Señal Digital Principal (.1) | Segunda Señal (.2) |
-| :--- | :--- | :--- |
-| **TVN** | 7.1 (TVN HD) | 7.2 (NTV Infantil y Cultural) |
-| **Mega** | 9.1 (Mega HD) | 9.2 (Mega 2 / Ficción y Noticias) |
-| **Chilevisión** | 11.1 (CHV HD) | 11.2 (UChile TV / Noticias) |
-| **Canal 13** | 13.1 (Canal 13 HD) | 13.2 (T13 En Vivo Noticias) |
-| **TV Más** | 5.1 (TV+ HD) | 5.2 (TV Más 2) |
-| **La Red** | 4.1 (La Red HD) | Señal de respaldo |
+<ComparisonTable
+  title="Frecuencias y Señales Digitales TVD en Chile"
+  headers={["Canal", "Señal Principal (.1)", "Segunda Señal (.2)"]}
+  rows={[
+    { feature: "TVN", values: ["7.1 (TVN HD 1080p)", "7.2 (NTV Infantil y Cultural)"] },
+    { feature: "Mega", values: ["9.1 (Mega HD 1080p)", "9.2 (Mega 2 / Ficción y Noticias)"] },
+    { feature: "Chilevisión", values: ["11.1 (CHV HD 1080p)", "11.2 (UChile TV / Noticias)"] },
+    { feature: "Canal 13", values: ["13.1 (Canal 13 HD 1080p)", "13.2 (T13 En Vivo Noticias)"] },
+    { feature: "TV Más", values: ["5.1 (TV+ HD 1080p)", "5.2 (TV Más 2 / UCV)"] },
+    { feature: "La Red", values: ["4.1 (La Red HD)", "Señal digital de respaldo"] }
+  ]}
+  verdict="Todas las señales emitidas por aire bajo la norma digital chilena ISDB-Tb son 100% gratuitas y de libre recepción. En regiones, la numeración principal puede adaptarse a la concesión local."
+/>
 
 *(Nota: En regiones fuera de la Región Metropolitana, los números de canal pueden variar levemente según la repetidora local).*
 

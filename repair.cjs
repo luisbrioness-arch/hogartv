@@ -1,187 +1,7 @@
----
-import { Image } from 'astro:assets';
-import type { ImageMetadata } from 'astro';
-import afiliadosData from '../data/afiliados.json';
-import preciosData from '../data/precios.json';
-import AffiliateLink from './AffiliateLink.astro';
-import Precio from './Precio.astro';
+﻿const fs = require('fs');
+let content = fs.readFileSync('pc_top.txt', 'utf8');
 
-interface Props {
-  productKey: string;
-  title: string;
-  brand?: string;
-  badge?: string;
-  rating?: number;
-  reviewCount?: number;
-  price?: string;
-  specs?: string[];
-  pros: string[];
-  cons: string[];
-  image?: ImageMetadata;
-  imageUrl?: string;
-  alt?: string;
-  isFirst?: boolean;
-}
-
-const {
-  productKey,
-  title,
-  brand,
-  badge = '⭐ Elección Recomendada',
-  rating,
-  reviewCount,
-  price,
-  specs = [],
-  pros = [],
-  cons = [],
-  image,
-  imageUrl,
-  alt,
-  isFirst = false,
-} = Astro.props;
-
-// Validación de accesibilidad: alt es obligatorio y no puede estar vacío
-const imageAlt = (alt || title)?.trim();
-if (!imageAlt) {
-  throw new Error(`[ProductCard] Atributo "alt" o "title" es obligatorio para el producto "${productKey}".`);
-}
-
-// Búsqueda dinámica de imagen en src/assets/ si no se pasó una por prop
-const allAssets = import.meta.glob<{ default: ImageMetadata }>('/src/assets/**/*.{png,jpg,jpeg,webp,avif}', { eager: true });
-const matchedEntry = Object.entries(allAssets).find(([path]) => {
-  const filename = path.split('/').pop()?.split('.')[0];
-  return filename === productKey;
-});
-const resolvedImage: ImageMetadata | undefined = image || matchedEntry?.[1]?.default;
-
-type AfiliadoItem = {
-  nombre: string;
-  url: string;
-  tienda: string;
-  actualizado: string;
-  TODO?: string;
-};
-
-const product = (afiliadosData as Record<string, AfiliadoItem>)[productKey];
-if (!product) {
-  throw new Error(`[ProductCard] productKey "${productKey}" no existe en src/data/afiliados.json`);
-}
-
-const tienda = product.tienda;
-const precioItem = (preciosData as Record<string, any>)[productKey];
-
-const productSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Product',
-  'name': title,
-  'image': resolvedImage ? `https://hogartv.cl${resolvedImage.src}` : undefined,
-  'description': specs.length > 0 ? specs.join(' · ') : title,
-  'brand': {
-    '@type': 'Brand',
-    'name': brand || 'Genérica',
-  },
-  'offers': {
-    '@type': 'Offer',
-    'url': product.url,
-    'priceCurrency': 'CLP',
-    'price': precioItem?.precioCLP,
-    'priceValidUntil': '2026-12-31',
-    'availability': 'https://schema.org/InStock',
-    'itemCondition': 'https://schema.org/NewCondition',
-    'seller': {
-      '@type': 'Organization',
-      'name': tienda,
-    },
-  },
-};
----
-
-<div class="my-8 rounded-2xl bg-surface-card border border-slate-700/80 shadow-xl overflow-hidden hover:border-brand-500/50 transition-all duration-300">
-  <!-- Badge superior de recomendación -->
-  {badge && (
-    <div class="bg-gradient-to-r from-brand-600 to-indigo-600 px-4 py-1.5 flex items-center justify-between text-xs font-semibold text-white tracking-wide">
-      <span>{badge}</span>
-      <span class="text-brand-200">Actualizado Chile 2026</span>
-    </div>
-  )}
-
-  <div class="p-6">
-    <div class="flex flex-col md:flex-row gap-6 items-start">
-      
-      <!-- Contenedor con dimensiones fijas para evitar Cumulative Layout Shift (CLS = 0) -->
-      <div class="w-full md:w-56 h-48 md:h-52 bg-slate-900 rounded-xl flex items-center justify-center p-4 border border-slate-800 shrink-0 relative overflow-hidden group">
-        {resolvedImage ? (
-          <Image
-            src={resolvedImage}
-            alt={imageAlt}
-            width={400}
-            height={300}
-            format="webp"
-            loading={isFirst ? 'eager' : 'lazy'}
-            fetchpriority={isFirst ? 'high' : undefined}
-            class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
-          />
-        ) : imageUrl ? (
-          <img
-            src={imageUrl}
-            alt={imageAlt}
-            width="400"
-            height="300"
-            loading={isFirst ? 'eager' : 'lazy'}
-            fetchpriority={isFirst ? 'high' : undefined}
-            class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
-          />
-        ) : (
-          <!-- Placeholder documentado para imagen de producto (aportada por usuario) -->
-          <div class="text-center">
-            <svg class="w-16 h-16 text-slate-600 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-            </svg>
-            <span class="text-xs text-slate-500 uppercase tracking-wider font-semibold block">{brand || 'Smart TV'}</span>
-            <span class="text-[10px] text-slate-600 block mt-1">Foto pendiente</span>
-          </div>
-        )}
-        <div class="absolute bottom-2 left-2 bg-slate-950/80 backdrop-blur-sm px-2 py-0.5 rounded text-[10px] text-slate-300 font-mono">
-          {tienda}
-        </div>
-      </div>
-
-      <!-- Info del Producto -->
-      <div class="flex-1 w-full flex flex-col justify-between">
-        <div>
-          {brand && (
-            <span class="text-xs uppercase tracking-wider font-bold text-brand-400 mb-1 inline-block">
-              {brand}
-            </span>
-          )}
-          <h3 class="text-xl md:text-2xl font-bold text-white mb-2 leading-snug">
-            {title}
-          </h3>
-
-          <!-- Rating con estrellas (solo si viene de una fuente verificable documentada) -->
-          {rating && (
-            <div class="flex items-center gap-2 mb-4">
-              <div class="flex items-center text-accent-gold text-sm" aria-hidden="true">
-                {'★'.repeat(Math.floor(rating))}
-                <span class="text-slate-500">{'★'.repeat(5 - Math.floor(rating))}</span>
-              </div>
-              <span class="text-xs font-semibold text-white">{rating}</span>
-              {reviewCount && <span class="text-xs text-slate-400">({reviewCount} opiniones)</span>}
-            </div>
-          )}
-
-          <!-- Especificaciones clave -->
-          {specs.length > 0 && (
-            <div class="flex flex-wrap gap-1.5 mb-4">
-              {specs.map((spec) => (
-                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700/60">
-                  {spec}
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
-
+const mid = `
         <!-- Precio y Botones de Acción / Compartir -->
         <div class="pt-5 mt-2 border-t border-slate-800/60 flex flex-col gap-4">
           <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
@@ -199,7 +19,7 @@ const productSchema = {
             <!-- Botones de Acción -->
             <div class="flex flex-wrap items-center gap-2">
               <a
-                href={`https://api.whatsapp.com/send?text=${encodeURIComponent('¡Mira este producto recomendado en HogarTV! ' + title + ': ' + product.url)}`}
+                href={\`https://api.whatsapp.com/send?text=\${encodeURIComponent('¡Mira este producto recomendado en HogarTV! ' + title + ': ' + product.url)}\`}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 font-medium text-xs transition-colors"
@@ -256,7 +76,7 @@ const productSchema = {
 
     <!-- Pros y Contras (Oculta contras si está vacío) -->
     {(pros.length > 0 || cons.length > 0) && (
-      <div class={`mt-6 pt-6 border-t border-slate-800/60 grid grid-cols-1 ${pros.length > 0 && cons.length > 0 ? 'md:grid-cols-2' : ''} gap-4`}>
+      <div class={\`mt-6 pt-6 border-t border-slate-800/60 grid grid-cols-1 \${pros.length > 0 && cons.length > 0 ? 'md:grid-cols-2' : ''} gap-4\`}>
         {pros.length > 0 && (
           <div class="bg-emerald-950/20 border border-emerald-900/30 rounded-xl p-5">
             <div class="flex items-center gap-2 text-emerald-400 font-semibold text-xs uppercase tracking-wider mb-3">
@@ -322,3 +142,6 @@ const productSchema = {
     });
   });
 </script>
+`;
+
+fs.writeFileSync('src/components/ProductCard.astro', content + mid, 'utf8');

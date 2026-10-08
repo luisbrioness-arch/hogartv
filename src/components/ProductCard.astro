@@ -182,29 +182,79 @@ const productSchema = {
           )}
         </div>
 
-        <!-- Precio y Botón CTA Afiliado -->
-        <div class="pt-4 border-t border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div>
-            <span class="text-[11px] text-slate-400 uppercase tracking-wider block mb-1">Precio referencial</span>
-            {price ? (
-              <div class="text-2xl font-extrabold text-accent-green tracking-tight">
-                {price}
-              </div>
-            ) : (
-              <Precio productKey={productKey} />
-            )}
+        <!-- Precio y Botones de Acción / Compartir -->
+        <div class="pt-4 border-t border-slate-800 flex flex-col gap-3">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <span class="text-[11px] text-slate-400 uppercase tracking-wider block mb-0.5">Precio referencial</span>
+              {price ? (
+                <div class="text-2xl font-extrabold text-accent-green tracking-tight">
+                  {price}
+                </div>
+              ) : (
+                <Precio productKey={productKey} />
+              )}
+            </div>
+
+            <!-- Botones de Acción: Ver Precio + Compartir -->
+            <div class="flex flex-wrap items-center gap-2">
+              <!-- Botón Compartir por WhatsApp -->
+              <a
+                href={`https://api.whatsapp.com/send?text=${encodeURIComponent(`¡Mira este producto recomendado en HogarTV! ${title}: ${product.url}`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 px-3 py-2.5 rounded-xl bg-emerald-950/70 hover:bg-emerald-900/90 border border-emerald-700/60 text-emerald-300 font-semibold text-xs shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98]"
+                title="Compartir por WhatsApp con un amigo o familiar"
+              >
+                <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.769.82 2.791.82 3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.766-5.768-5.766zm6.818 5.766c-.001 3.759-3.059 6.817-6.818 6.817-1.189 0-2.316-.312-3.308-.858l-4.723 1.238 1.26-4.598c-.611-1.026-.935-2.203-.935-3.417 0-3.759 3.059-6.818 6.818-6.818 3.759 0 6.818 3.059 6.818 6.818z"/>
+                </svg>
+                <span>WhatsApp</span>
+              </a>
+
+              <!-- Botón Copiar Link -->
+              <button
+                type="button"
+                data-share-url={product.url}
+                class="copy-share-btn inline-flex items-center gap-1.5 px-3 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-semibold text-xs shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98]"
+                title="Copiar enlace de recomendación"
+              >
+                <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                </svg>
+                <span class="btn-text">Copiar</span>
+              </button>
+
+              <!-- Botón CTA Afiliado -->
+              <AffiliateLink
+                productKey={productKey}
+                class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-bold text-sm shadow-lg shadow-brand-600/30 hover:shadow-brand-600/50 hover:scale-[1.02] active:scale-[0.98] transition-all"
+              >
+                <span>Ver precio en {tienda}</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                </svg>
+              </AffiliateLink>
+            </div>
           </div>
 
-          <!-- Componente centralizado de afiliación con rel="nofollow sponsored noopener" -->
-          <AffiliateLink
-            productKey={productKey}
-            class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-bold text-sm shadow-lg shadow-brand-600/30 hover:shadow-brand-600/50 hover:scale-[1.02] active:scale-[0.98] transition-all"
-          >
-            <span>Ver precio en {tienda}</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-            </svg>
-          </AffiliateLink>
+          <!-- Información Inteligente de Precios (Rango Aceptable + Más Bajo Visto) -->
+          {precioItem && (
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2 border-t border-slate-800/80 text-xs">
+              <div class="flex items-center gap-2 bg-slate-900/90 px-3 py-2 rounded-xl border border-slate-800">
+                <span class="text-amber-400 font-semibold flex items-center gap-1 shrink-0">
+                  <span>🎯</span> Rango aceptable:
+                </span>
+                <span class="text-slate-300 font-mono text-[11px] font-medium">{precioItem.rango || 'Varía según tienda'}</span>
+              </div>
+              <div class="flex items-center gap-2 bg-slate-900/90 px-3 py-2 rounded-xl border border-slate-800">
+                <span class="text-emerald-400 font-semibold flex items-center gap-1 shrink-0">
+                  <span>🏷️</span> Más bajo visto:
+                </span>
+                <span class="text-emerald-300 font-mono text-[11px] font-bold">{precioItem.precioMinVisto || precioItem.rango?.split('-')[0]?.trim() || precioItem.precioFormateado}</span>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
@@ -256,3 +306,27 @@ const productSchema = {
 
 <!-- Product Schema JSON-LD para Rich Snippets en Google (Precio CLP, Stock y Marca) -->
 <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+
+<script>
+  document.querySelectorAll('.copy-share-btn').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const url = button.getAttribute('data-share-url');
+      if (!url) return;
+      try {
+        await navigator.clipboard.writeText(url);
+        const textSpan = button.querySelector('.btn-text');
+        if (textSpan) {
+          const original = textSpan.textContent;
+          textSpan.textContent = '¡Copiado!';
+          button.classList.add('bg-emerald-800', 'text-white');
+          setTimeout(() => {
+            textSpan.textContent = original;
+            button.classList.remove('bg-emerald-800', 'text-white');
+          }, 2000);
+        }
+      } catch (err) {
+        prompt('Copia el siguiente enlace:', url);
+      }
+    });
+  });
+</script>

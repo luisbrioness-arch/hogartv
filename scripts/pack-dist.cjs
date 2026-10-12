@@ -18,7 +18,8 @@ if (fs.existsSync(zipPath)) {
 // Ejecutar tar desde dentro del directorio dist para empaquetar con forward slashes
 console.log('Empaquetando dist/ en dist.zip con rutas POSIX estándar...');
 process.chdir(distDir);
-execSync(`tar -a -c -f "${zipPath}" *`);
+const hasHtaccess = fs.existsSync('.htaccess');
+execSync(`tar.exe -a -c -f "${zipPath}" ${hasHtaccess ? '.htaccess ' : ''}*`);
 process.chdir(rootDir);
 
 const stats = fs.statSync(zipPath);

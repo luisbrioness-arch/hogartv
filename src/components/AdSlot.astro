@@ -15,39 +15,29 @@ const formatClasses = {
   'in-article': 'min-h-[250px] max-w-2xl',
 };
 
-const defaultClient = import.meta.env.PUBLIC_ADSENSE_ID;
-const finalClient = client || defaultClient;
+const defaultClient = import.meta.env.PUBLIC_ADSENSE_ID || 'ca-pub-5268337462639131';
+const finalClient = (client && !client.includes('XXXXXXXXXXXXXXXX')) ? client : defaultClient;
+const hasValidSlot = Boolean(slot && slot !== '1234567890');
 const isDev = import.meta.env.DEV;
-
-// Mostrar el marcador de posiciÃ³n (placeholder) si no hay ID de AdSense o estamos en desarrollo,
-// o si se pasÃ³ explÃ­citamente pero estÃ¡ con las 'X' de ejemplo
-const isPlaceholder = !finalClient || finalClient.includes('XXXXXXXXXXXXXXXX') || isDev;
 ---
 
-<div class={`my-8 mx-auto w-full ${formatClasses[format]} flex flex-col items-center justify-center rounded-xl overflow-hidden relative ${isPlaceholder ? 'bg-slate-900/40 border border-dashed border-slate-800 p-4' : 'bg-transparent'}`}>
-  {isPlaceholder ? (
-    <>
-      <span class="text-[10px] uppercase tracking-widest text-slate-600 mb-1">{label}</span>
-      <div class="flex items-center gap-2 text-slate-500">
-        <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-        </svg>
-        <span class="text-xs text-center">Espacio AdSense reservado<br/><span class="text-[9px] opacity-70">(Configura PUBLIC_ADSENSE_ID en .env o usa props)</span></span>
-      </div>
-    </>
-  ) : (
-    <>
-      <span class="absolute top-0 left-0 text-[9px] text-slate-500 bg-slate-900/50 px-2 py-0.5 rounded-br-md z-10">{label}</span>
-      <ins class="adsbygoogle w-full h-full block"
-           style="display:block; text-align:center;"
-           data-ad-layout={format === 'in-article' ? 'in-article' : undefined}
-           data-ad-format={format === 'in-article' ? 'fluid' : 'auto'}
-           data-ad-client={finalClient}
-           data-ad-slot={slot}
-           data-full-width-responsive="true"></ins>
-      <script is:inline>
-           (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
-    </>
-  )}
-</div>
+{hasValidSlot ? (
+  <div class={`my-8 mx-auto w-full ${formatClasses[format]} flex flex-col items-center justify-center rounded-xl overflow-hidden relative bg-transparent`}>
+    <span class="absolute top-0 left-0 text-[9px] text-slate-500 bg-slate-900/50 px-2 py-0.5 rounded-br-md z-10">{label}</span>
+    <ins class="adsbygoogle w-full h-full block"
+         style="display:block; text-align:center;"
+         data-ad-layout={format === 'in-article' ? 'in-article' : undefined}
+         data-ad-format={format === 'in-article' ? 'fluid' : 'auto'}
+         data-ad-client={finalClient}
+         data-ad-slot={slot}
+         data-full-width-responsive="true"></ins>
+    <script is:inline>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+) : isDev ? (
+  <div class={`my-8 mx-auto w-full ${formatClasses[format]} flex flex-col items-center justify-center rounded-xl overflow-hidden relative bg-slate-900/40 border border-dashed border-slate-800 p-4`}>
+    <span class="text-[10px] uppercase tracking-widest text-slate-600 mb-1">{label}</span>
+    <span class="text-xs text-slate-500 text-center">Espacio AdSense (Auto Ads activo en producción)</span>
+  </div>
+) : null}

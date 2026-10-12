@@ -33,8 +33,8 @@ ErrorDocument 404 /404.html
         Header set Cache-Control "max-age=31536000, public, immutable"
     </FilesMatch>
 
-    # Documentos HTML y feeds (revalidación inmediata con tolerancia stale)
-    <FilesMatch "\.(html|xml|json)$">
+    # Documentos HTML, feeds y archivos de verificación (ads.txt, robots.txt)
+    <FilesMatch "\.(html|xml|json|txt)$">
         Header set Cache-Control "max-age=0, must-revalidate, stale-while-revalidate=86400"
     </FilesMatch>
 </IfModule>

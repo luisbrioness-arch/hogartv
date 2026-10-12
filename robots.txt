@@ -1,5 +1,10 @@
+User-agent: Mediapartners-Google
+Allow: /
+Allow: /ads.txt
+
 User-agent: *
 Allow: /
+Allow: /ads.txt
 
 Sitemap: https://hogartv.cl/sitemap.xml
 Sitemap: https://hogartv.cl/sitemap-index.xml

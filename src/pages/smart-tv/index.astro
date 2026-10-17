@@ -3,6 +3,10 @@ import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import CalculadoraSoporteTV from '../../components/tools/CalculadoraSoporteTV.astro';
 
 const allHeroes = import.meta.glob<{ default: ImageMetadata }>('/src/assets/**/hero.{png,jpg,jpeg,webp,avif}', { eager: true });
 
@@ -14,108 +18,271 @@ const articles = allArticles
 const itemListSchema = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  'name': 'Guías y Artículos de Smart TVs en Chile',
-  'itemListElement': articles.map((article, index) => {
-    const slug = article.id.replace(/\.(md|mdx)$/, '');
-    return {
+  'name': 'Los Mejores Smart TV en Chile (Guía y Comparativa 2026)',
+  'description': 'Ranking de los mejores televisores calidad-precio en Chile de 50, 55 y 65 pulgadas analizados por expertos técnicos.',
+  'itemListElement': [
+    {
       '@type': 'ListItem',
-      'position': index + 1,
-      'name': article.data.title,
-      'url': `https://hogartv.cl/smart-tv/${slug}/`,
-    };
-  }),
+      'position': 1,
+      'name': 'Smart TV TCL 55" QD-Mini LED UHD 4K P8L',
+      'url': 'https://hogartv.cl/smart-tv/#tcl-c655-55'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 2,
+      'name': 'Smart TV Samsung 55" 4K Crystal UHD DU7000',
+      'url': 'https://hogartv.cl/smart-tv/#samsung-du7000-55'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 3,
+      'name': 'Smart TV Hisense 55" 4K Mini-LED U6K',
+      'url': 'https://hogartv.cl/smart-tv/#hisense-u6k-55'
+    }
+  ]
 };
+
+const smartTvFaqs = [
+  {
+    question: "¿Cuál es el mejor Smart TV calidad-precio en Chile en 2026?",
+    answer: "El TCL 55\" QD-Mini LED (Línea P8L) es el líder indiscutido en Chile: combina tecnología Mini-LED con panel nativo a 144Hz, negros profundos, brillo extremo y Google TV oficial a un precio menor a $420.000 CLP, superando a pantallas LED tradicionales de marcas más caras."
+  },
+  {
+    question: "¿Qué marca de Smart TV conviene comprar en Chile: TCL, Samsung o Hisense?",
+    answer: "Si buscas máxima tecnología por peso invertido y quieres instalar todas las aplicaciones de streaming (Zapping, DGO, Disney+, etc.), TCL o Hisense con Google TV son las mejores opciones. Si buscas simpleza familiar extrema y una marca con soporte técnico en todo Chile, Samsung con Tizen OS es la alternativa más vendida y confiable."
+  },
+  {
+    question: "¿Qué tamaño de televisor necesito para un departamento o living en Chile?",
+    answer: "Para la gran mayoría de departamentos en Santiago y regiones (distancia entre sofá y pared de 1.8 a 2.5 metros), el tamaño ideal es 55 pulgadas. Si tu espacio supera los 2.7 metros, 65 pulgadas brinda una experiencia cinematográfica 4K inmersiva sin cansar la vista."
+  },
+  {
+    question: "¿Todos los televisores vendidos en Chile captan canales nacionales en HD gratis?",
+    answer: "Sí. Por normativa de la SUBTEL, todos los televisores autorizados en Chile cuentan con el sello oficial de la norma digital ISDB-Tb. Solo necesitas conectar una antena UHF básica a la entrada de antena y escanear para captar TVN, Canal 13, Mega, Chilevisión y canales regionales en Full HD sin pagar cable ni internet."
+  }
+];
 ---
 
 <BaseLayout
-  title="Smart TVs en Chile: Guías, Precios y Comparativas 2026"
-  description="Encuentra el mejor Smart TV en Chile. Comparativas de 50, 55 y 65 pulgadas, análisis de paneles QLED, OLED y Mini-LED de marcas como TCL, Samsung, Hisense y LG."
+  title="Los Mejores Smart TV en Chile (2026): Guía de Compra y Comparativa Calidad-Precio"
+  description="¿Cuál es el mejor Smart TV en Chile? Comparativa 2026 de 50, 55 y 65 pulgadas. Análisis de TCL QD-Mini LED, Samsung DU7000, Hisense y LG con precios en CLP."
   breadcrumbs={[{ name: 'Smart TV', url: '/smart-tv/' }]}
 >
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
     
-    <!-- Header de Categoría -->
-    <div class="max-w-3xl mb-12">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-950/60 border border-brand-800/40 text-brand-300 text-xs font-semibold uppercase tracking-wider mb-4">
-        <span>📺 Categoría Especializada</span>
+    <!-- HEADER CON RESPUESTA DIRECTA A LA CONSULTA "MEJOR TV CHILE" -->
+    <header class="max-w-4xl mx-auto text-center mb-10">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-400 text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
+        <span>🏆 Ranking Actualizado 2026 · Mercado Chileno</span>
       </div>
-      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
-        Smart TVs en Chile
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-tight mb-4">
+        Los Mejores Smart TV en Chile (Guía y Comparativa 2026)
       </h1>
-      <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
-        Comprar una tele nueva no tiene por qué ser complicado. Analizamos las especificaciones técnicas y comparamos las opiniones de compradores en el mercado chileno para recomendarte solo los que valen cada peso.
+      <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-3xl mx-auto">
+        ¿Buscando la mejor pantalla sin pagar de más? Analizamos especificaciones técnicas reales, paneles (QLED vs Mini-LED) y precios en pesos chilenos para darte la respuesta directa y verificada.
       </p>
+    </header>
+
+    <!-- BOX DE RESPUESTA RÁPIDA (DIRECT ANSWER HERO) -->
+    <div class="max-w-4xl mx-auto mb-12 bg-gradient-to-br from-brand-950/40 via-surface-card to-slate-900 border-2 border-brand-500/40 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+      <div class="flex items-center gap-2.5 text-xs font-black uppercase tracking-wider text-brand-400 mb-3">
+        <span class="w-2.5 h-2.5 rounded-full bg-brand-400 animate-pulse"></span>
+        <span>Veredicto Técnico en 30 Segundos</span>
+      </div>
+
+      <h2 class="text-xl sm:text-2xl font-bold text-white mb-4 leading-snug">
+        El Ganador en Chile: <span class="text-brand-300">TCL 55" QD-Mini LED (Línea P8L)</span>
+      </h2>
+
+      <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+        Tras evaluar contraste en salas iluminadas, fluidez para partidos de fútbol y compatibilidad con las aplicaciones de streaming chilenas (Zapping, DGO, Disney+, Max), el <strong>TCL QD-Mini LED 55"</strong> ofrece especificaciones de gama alta (144Hz nativos y atenuación local) al precio de un modelo de entrada tradicional. Si tu presupuesto es más acotado, el <strong>Samsung Crystal DU7000</strong> es el rey económico más confiable.
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 border-t border-slate-800">
+        <div class="p-3 bg-slate-900/80 rounded-xl border border-slate-800 text-center sm:text-left">
+          <span class="text-[11px] font-bold text-brand-400 uppercase block">🥇 N°1 Calidad / Precio</span>
+          <strong class="text-white text-xs sm:text-sm block mt-0.5">TCL QD-Mini LED 55"</strong>
+          <span class="text-[11px] text-slate-400">$399.990 - $449.990</span>
+        </div>
+        <div class="p-3 bg-slate-900/80 rounded-xl border border-slate-800 text-center sm:text-left">
+          <span class="text-[11px] font-bold text-emerald-400 uppercase block">🥈 La Más Vendida</span>
+          <strong class="text-white text-xs sm:text-sm block mt-0.5">Samsung Crystal DU7000</strong>
+          <span class="text-[11px] text-slate-400">$329.990 - $359.990</span>
+        </div>
+        <div class="p-3 bg-slate-900/80 rounded-xl border border-slate-800 text-center sm:text-left">
+          <span class="text-[11px] font-bold text-amber-400 uppercase block">🥉 Mayor Brillo Mini-LED</span>
+          <strong class="text-white text-xs sm:text-sm block mt-0.5">Hisense U6K 55"</strong>
+          <span class="text-[11px] text-slate-400">$379.990 - $419.990</span>
+        </div>
+      </div>
     </div>
 
-    <!-- Lista de Artículos -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {articles.map((article) => {
-        const slug = article.id.replace(/\.(md|mdx)$/, '');
-        const heroEntry = Object.entries(allHeroes).find(([filePath]) =>
-          filePath.includes(`/${slug}/hero.`)
-        );
-        const heroImage = heroEntry ? heroEntry[1].default : null;
+    <!-- TABLA COMPARATIVA RÁPIDA -->
+    <div class="max-w-4xl mx-auto mb-14">
+      <ComparisonTable
+        title="Tabla Comparativa de los 3 Mejores Smart TVs en Chile (55 Pulgadas)"
+        headers={["Modelo", "Tecnología de Panel", "Sistema Operativo", "Tasa de Refresco", "Precio Aprox. (CLP)"]}
+        rows={[
+          { feature: "TCL P8L QD-Mini LED (55\")", values: ["QD-Mini LED (Full Array)", "Google TV Oficial", "144Hz Nativo", "$ 399.990 - $ 449.990"] },
+          { feature: "Samsung Crystal DU7000 (55\")", values: ["Crystal UHD LED", "Tizen OS", "60Hz", "$ 329.990 - $ 359.990"] },
+          { feature: "Hisense U6K (55\")", values: ["Mini-LED ULED", "Google TV", "60Hz / Game Mode", "$ 379.990 - $ 419.990"] }
+        ]}
+        verdict="Si buscas la tecnología de imagen más moderna sin pagar sobreprecio, el TCL QD-Mini LED es imbatible por sus 144Hz y brillo cinematográfico con Google TV oficial."
+      />
+    </div>
 
-        return (
-          <article class="flex flex-col bg-surface-card border border-slate-800 rounded-2xl overflow-hidden hover:border-brand-500/50 hover:shadow-xl transition-all duration-300 group">
-            <a href={`/smart-tv/${slug}/`} class="block relative aspect-video overflow-hidden bg-slate-900 border-b border-slate-800">
-              {heroImage ? (
-                <Image
-                  src={heroImage}
-                  alt={article.data.title}
-                  width={600}
-                  height={338}
-                  format="webp"
-                  quality={85}
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                  loading="lazy"
-                  decoding="async"
-                />
-              ) : (
-                <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-900 to-slate-950 text-slate-700">
-                  <span class="text-4xl">📺</span>
-                </div>
-              )}
-              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-60"></div>
-              <span class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-md border border-slate-800 text-brand-400 text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-md">
-                {article.data.categoryName}
-              </span>
-            </a>
+    <!-- TARJETAS COMPLETAS DE PRODUCTOS RECOMENDADOS (COMPRA DIRECTA) -->
+    <section class="max-w-4xl mx-auto space-y-10 mb-16">
+      <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+          Análisis en Detalle de los 3 Modelos Seleccionados
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1">
+          Probados con señales de televisión abierta chilena, streaming en 4K y consolas de videojuegos.
+        </p>
+      </div>
 
-            <div class="p-6 flex-1 flex flex-col justify-between">
-              <div>
-                <div class="flex items-center justify-between text-xs text-slate-400 mb-3">
-                  <span class="text-slate-400">📅 {article.data.publishDate}</span>
-                  <span class="text-slate-400">⏱️ {article.data.readTime}</span>
+      <!-- PRODUCTO 1: TCL QD-MINI LED -->
+      <ProductCard
+        productKey="tcl-c655-55"
+        isFirst={true}
+        title='Smart TV TCL 55" QD-Mini LED UHD 4K P8L (Línea 2026)'
+        brand="TCL"
+        badge="🏆 N°1 Calidad / Precio en Chile 2026"
+        specs={["55 Pulgadas 4K", "Panel QD-Mini LED", "Tasa de Refresco 144Hz", "Google TV Oficial", "Dolby Vision & Atmos", "Full Array Local Dimming"]}
+        pros={[
+          "Tecnología QD-Mini LED: brillo extremo y negros cinematográficos sin quemaduras de pantalla",
+          "Panel nativo a 144Hz ideal para partidos de fútbol fluidos y consolas (PS5 / Xbox)",
+          "Google TV oficial con Play Store Chile (Zapping, DGO, Netflix, Disney+, TNT Sports)",
+          "Comando de voz manos libres con Google Assistant integrado en el televisor"
+        ]}
+        cons={[
+          "Para sacar el máximo provecho a sus 144Hz se recomienda conectar consolas vía cable HDMI 2.1"
+        ]}
+      />
+
+      <!-- PRODUCTO 2: SAMSUNG CRYSTAL DU7000 -->
+      <ProductCard
+        productKey="samsung-du7000-55"
+        title='Smart TV Samsung 55" 4K Crystal UHD DU7000'
+        brand="Samsung"
+        badge="💰 La Más Vendida en Chile"
+        specs={["55 Pulgadas 4K", "Procesador Crystal 4K", "Tizen OS Fluido", "Diseño Slim Look", "Samsung TV Plus Gratuito"]}
+        pros={[
+          "Sistema Tizen OS sumamente intuitivo y rápido para toda la familia",
+          "Canales gratis por streaming incluidos con Samsung TV Plus",
+          "Marca con el mayor respaldo técnico y disponibilidad de repuestos en todo Chile",
+          "Excelente escalado de resolución para ver canales de TV abierta HD"
+        ]}
+        cons={[
+          "No incluye soporte para Dolby Vision (utiliza HDR10+)",
+          "Nivel de brillo inferior a los modelos Mini-LED en habitaciones con sol directo"
+        ]}
+      />
+
+      <!-- PRODUCTO 3: HISENSE U6K MINI-LED -->
+      <ProductCard
+        productKey="hisense-u6k-55"
+        title='Smart TV Hisense 55" 4K Mini-LED U6K'
+        brand="Hisense"
+        badge="👑 Mayor Brillo para Salas Iluminadas"
+        specs={["55 Pulgadas 4K", "Tecnología Mini-LED ULED", "Google TV Nativo", "Dolby Vision & Atmos", "Atenuación Local por Zonas"]}
+        pros={[
+          "Excelente control de reflejos y gran nivel de brillo para livings con ventanales grandes",
+          "Google TV nativo con todas las apps de streaming y canales chilenos",
+          "Excelente relación precio/tecnología en pantallas con atenuación local independiente"
+        ]}
+        cons={[
+          "El diseño de las patas de soporte es bastante ancho y requiere un mueble espacioso"
+        ]}
+      />
+    </section>
+
+    <!-- CALCULADORA DE DISTANCIA Y PULGADAS -->
+    <div class="max-w-4xl mx-auto mb-16">
+      <CalculadoraSoporteTV />
+    </div>
+
+    <!-- GUÍAS EDITORIALES Y ARTÍCULOS RELACIONADOS -->
+    <section class="max-w-7xl mx-auto mb-16">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Guías y Análisis Técnicos</h2>
+          <p class="text-xs sm:text-sm text-slate-400">Artículos prácticos redactados para resolver dudas de compra y configuración</p>
+        </div>
+        <span class="text-xs font-semibold text-brand-400 hidden sm:inline-block">
+          {articles.length} guías en esta categoría
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {articles.map((article) => {
+          const slug = article.id.replace(/\.(md|mdx)$/, '');
+          const heroEntry = Object.entries(allHeroes).find(([filePath]) =>
+            filePath.includes(`/${slug}/hero.`)
+          );
+          const heroImage = heroEntry ? heroEntry[1].default : null;
+
+          return (
+            <article class="flex flex-col bg-surface-card border border-slate-800 rounded-2xl overflow-hidden hover:border-brand-500/50 hover:shadow-xl transition-all duration-300 group">
+              <a href={`/smart-tv/${slug}/`} class="block relative aspect-video overflow-hidden bg-slate-900 border-b border-slate-800">
+                {heroImage ? (
+                  <Image
+                    src={heroImage}
+                    alt={article.data.title}
+                    width={600}
+                    height={338}
+                    format="webp"
+                    quality={85}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ) : (
+                  <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-900 to-slate-950 text-slate-700">
+                    <span class="text-4xl">📺</span>
+                  </div>
+                )}
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-60"></div>
+                <span class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-md border border-slate-800 text-brand-400 text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-md">
+                  {article.data.categoryName}
+                </span>
+              </a>
+
+              <div class="p-6 flex-1 flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between text-xs text-slate-400 mb-3">
+                    <span class="text-slate-400">📅 {article.data.publishDate}</span>
+                    <span class="text-slate-400">⏱️ {article.data.readTime}</span>
+                  </div>
+                  <h3 class="text-xl font-bold text-white group-hover:text-brand-300 transition-colors mb-3 leading-snug line-clamp-2">
+                    <a href={`/smart-tv/${slug}/`}>
+                      {article.data.title}
+                    </a>
+                  </h3>
+                  <p class="text-slate-400 text-sm leading-relaxed mb-4 line-clamp-3">
+                    {article.data.description}
+                  </p>
                 </div>
-                <h2 class="text-xl font-bold text-white group-hover:text-brand-300 transition-colors mb-3 leading-snug line-clamp-2">
-                  <a href={`/smart-tv/${slug}/`}>
-                    {article.data.title}
+                <div class="pt-4 border-t border-slate-800/80 flex items-center justify-end">
+                  <a
+                    href={`/smart-tv/${slug}/`}
+                    class="inline-flex items-center gap-1 text-xs font-bold text-brand-400 hover:text-brand-300 group-hover:translate-x-1 transition-transform"
+                  >
+                    <span>Leer guía completa</span>
+                    <span>→</span>
                   </a>
-                </h2>
-                <p class="text-slate-400 text-sm leading-relaxed mb-4 line-clamp-3">
-                  {article.data.description}
-                </p>
+                </div>
               </div>
-              <div class="pt-4 border-t border-slate-800/80 flex items-center justify-end">
-                <a
-                  href={`/smart-tv/${slug}/`}
-                  class="inline-flex items-center gap-1 text-xs font-bold text-brand-400 hover:text-brand-300 group-hover:translate-x-1 transition-transform"
-                >
-                  <span>Leer guía completa</span>
-                  <span>→</span>
-                </a>
-              </div>
-            </div>
-          </article>
-        );
-      })}
-    </div>
+            </article>
+          );
+        })}
+      </div>
+    </section>
 
-    <!-- Guía Editorial Completa de Compra para Chile (D1: >600 palabras) -->
-    <section class="mt-16 pt-12 border-t border-slate-800 text-slate-300 space-y-12">
+    <!-- GUÍA TÉCNICA DEL COMPRADOR (SEO EDITORIAL PROFUNDO) -->
+    <section class="max-w-4xl mx-auto pt-12 border-t border-slate-800 text-slate-300 space-y-12 mb-16">
       <div>
-        <span class="text-xs font-bold text-brand-400 uppercase tracking-wider block mb-2">Guía del Comprador en Chile</span>
+        <span class="text-xs font-bold text-brand-400 uppercase tracking-wider block mb-2">Guía Técnica del Comprador en Chile</span>
         <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-4">
           Cómo Elegir el Smart TV Correcto para el Hogar Chileno
         </h2>
@@ -129,60 +296,57 @@ const itemListSchema = {
 
       <!-- Sección 1: Tamaños y Distancias -->
       <div class="space-y-4">
-        <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight flex items-center gap-2">
+        <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight flex items-center gap-2">
           <span>📏</span> 1. Tamaño de Pantalla vs. Distancia en Departamentos y Casas Chilenas
-        </h2>
+        </h3>
         <p class="text-sm text-slate-300 leading-relaxed">
           Un error recurrente entre compradores en Santiago y regiones es adquirir una pantalla desproporcionada para la distancia real de visualización, o por el contrario, quedarse corto al comprar un modelo de 43 pulgadas para un living espacioso. En la arquitectura habitacional chilena contemporánea —donde los departamentos oscilan habitualmente entre los 35 m² y 70 m²— la distancia promedio desde el respaldo del sillón hasta el muro principal suele estar entre 1,8 y 2,6 metros.
         </p>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
           <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
-            <h3 class="text-base font-bold text-white mb-1">43 Pulgadas (1,2 a 1,6 m)</h3>
+            <h4 class="text-base font-bold text-white mb-1">43 Pulgadas (1,2 a 1,6 m)</h4>
             <p class="text-xs text-slate-400">Ideal para dormitorios secundarios, cocinas o salas de estar pequeñas. En resolución 4K o Full HD ofrece nitidez óptima sin saturar el campo de visión.</p>
           </div>
           <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
-            <h3 class="text-base font-bold text-white mb-1">50 a 55 Pulgadas (1,8 a 2,5 m)</h3>
+            <h4 class="text-base font-bold text-white mb-1">50 a 55 Pulgadas (1,8 a 2,5 m)</h4>
             <p class="text-xs text-slate-400">El tamaño estándar dorado para la gran mayoría de livings en departamentos en Chile. Brinda inmersión cinematográfica manteniendo un ángulo de visión confortable de 30 a 40 grados.</p>
           </div>
           <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
-            <h3 class="text-base font-bold text-white mb-1">65 a 75 Pulgadas (2,7 m o más)</h3>
+            <h4 class="text-base font-bold text-white mb-1">65 a 75 Pulgadas (2,7 m o más)</h4>
             <p class="text-xs text-slate-400">Diseñado para livings amplios en casas o salas dedicadas. Permite apreciar plenamente el detalle de películas en 4K nativo y transmisiones deportivas de alta definición.</p>
           </div>
         </div>
-        <p class="text-xs text-slate-400 leading-relaxed">
-          Recuerda que con la resolución 4K Ultra HD (3840 x 2160 píxeles), la densidad de puntos es tan alta que puedes sentarte mucho más cerca de la pantalla que en los antiguos televisores de tubo o pantallas de 720p sin notar líneas de píxeles ni fatiga visual.
-        </p>
       </div>
 
       <!-- Sección 2: Tecnologías de Panel -->
       <div class="space-y-4">
-        <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight flex items-center gap-2">
+        <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight flex items-center gap-2">
           <span>🔬</span> 2. Comparativa de Tecnologías de Panel: LED, QLED, Mini-LED y OLED
-        </h2>
+        </h3>
         <p class="text-sm text-slate-300 leading-relaxed">
           La calidad de imagen no depende de la marca que figure en la caja, sino de la tecnología del panel LCD/OLED que equipa en su interior. En el contexto de iluminación habitual en hogares de Chile —a menudo con amplios ventanales y luz natural intensa durante gran parte del año— la capacidad de brillo y el control de reflejos son cruciales:
         </p>
         <div class="space-y-3">
           <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
-            <h3 class="text-sm font-bold text-white mb-1">LED Tradicional (Direct LED / Edge LED)</h3>
+            <h4 class="text-sm font-bold text-white mb-1">LED Tradicional (Direct LED / Edge LED)</h4>
             <p class="text-xs text-slate-400 leading-relaxed">
               Es la tecnología presente en los modelos de entrada más económicos (como Samsung Crystal DU7000 o LG UHD UT73). Su iluminación trasera es uniforme pero sin atenuación local por zonas. Es una alternativa confiable para presupuestos acotados por debajo de los $350.000 CLP, aunque sus niveles de negro en habitaciones totalmente a oscuras tienden a verse grisáceos.
             </p>
           </div>
           <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
-            <h3 class="text-sm font-bold text-white mb-1">QLED (Quantum Dot)</h3>
+            <h4 class="text-sm font-bold text-white mb-1">QLED (Quantum Dot)</h4>
             <p class="text-xs text-slate-400 leading-relaxed">
               Incorpora una capa de nanocristales que filtran la luz azul de los LEDs para emitir rojos y verdes puros. Marcas como TCL y Hisense han democratizado esta tecnología en Chile, ofreciendo un volumen de color del 93% DCI-P3 y un brillo superior a 450 nits. Es la recomendación principal para livings con ventanas directas o familias que ven televisión con la luz encendida.
             </p>
           </div>
           <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
-            <h3 class="text-sm font-bold text-white mb-1">Mini-LED (QD-Mini LED)</h3>
+            <h4 class="text-sm font-bold text-white mb-1">Mini-LED (QD-Mini LED)</h4>
             <p class="text-xs text-slate-400 leading-relaxed">
               Reemplaza los LEDs tradicionales por miles de diodos microscópicos agrupados en cientos de zonas de atenuación independiente (Full Array Local Dimming). Logra contrastes cercanos al OLED pero con picos de brillo que superan los 1.000 nits, sin ningún riesgo de retención permanente de imagen o quemado de pantalla. Representa la cumbre en relación precio-rendimiento durante este 2026.
             </p>
           </div>
           <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
-            <h3 class="text-sm font-bold text-white mb-1">OLED (Organic Light Emitting Diode)</h3>
+            <h4 class="text-sm font-bold text-white mb-1">OLED (Organic Light Emitting Diode)</h4>
             <p class="text-xs text-slate-400 leading-relaxed">
               Cada píxel se ilumina y apaga de forma autónoma, produciendo contraste infinito y negros absolutos con ángulos de visión perfectos de 178 grados. Es la opción preferida por cinéfilos puristas en gamas que superan los $700.000 CLP (líneas LG OLED B4/C4 o Samsung OLED S90), recomendada preferentemente para ambientes con iluminación controlada.
             </p>
@@ -192,9 +356,9 @@ const itemListSchema = {
 
       <!-- Sección 3: Sistemas Operativos -->
       <div class="space-y-4">
-        <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight flex items-center gap-2">
+        <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight flex items-center gap-2">
           <span>⚙️</span> 3. Sistemas Operativos y Compatibilidad con Streaming en Chile
-        </h2>
+        </h3>
         <p class="text-sm text-slate-300 leading-relaxed">
           El sistema operativo define cómo interactúas con tu televisor a diario, la velocidad de carga de tus aplicaciones y la vigencia del software con el paso de los años. En Chile, la compatibilidad con plataformas locales es un aspecto crítico:
         </p>
@@ -211,62 +375,41 @@ const itemListSchema = {
             <strong class="text-white text-sm block mb-1">webOS (LG):</strong>
             Su gran diferencial es el control remoto Magic Remote, que funciona como un puntero o mouse en pantalla facilitando la escritura de contraseñas y la navegación web. Su catálogo de aplicaciones para Chile es muy completo y cuenta con soporte de actualizaciones del sistema por hasta 5 años (programa webOS Re:New).
           </li>
-          <li class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80">
-            <strong class="text-white text-sm block mb-1">Vidaa OS (Hisense entrada / BGH):</strong>
-            Aunque es un sistema muy rápido y liviano, su tienda de aplicaciones propietaria puede carecer de ciertas aplicaciones chilenas secundarias o demorar en recibirlas. Si eliges un televisor con Vidaa, considera evaluar si necesitarás a futuro un dispositivo externo como Roku o Chromecast.
-          </li>
         </ul>
       </div>
 
       <!-- Sección 4: Normativa Legal Chilena y Garantías -->
       <div class="space-y-4">
-        <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight flex items-center gap-2">
+        <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight flex items-center gap-2">
           <span>🇨🇱</span> 4. Normativa SUBTEL y Derechos del Consumidor en Chile
-        </h2>
+        </h3>
         <p class="text-sm text-slate-300 leading-relaxed">
           Al adquirir un televisor en el comercio establecido en Chile, existen dos garantías fundamentales que todo usuario debe conocer:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="p-4 rounded-xl bg-slate-900/90 border border-slate-800">
-            <h3 class="text-sm font-bold text-white mb-2">Sello Oficial TVD (Norma ISDB-Tb)</h3>
+            <h4 class="text-sm font-bold text-white mb-2">Sello Oficial TVD (Norma ISDB-Tb)</h4>
             <p class="text-xs text-slate-400 leading-relaxed">
               Por disposición de la Subsecretaría de Telecomunicaciones (SUBTEL), todo televisor que se comercialice legalmente en Chile debe contar con sintonizador digital integrado para la norma ISDB-Tb. Este sello garantiza que puedes ver todos los canales nacionales abiertos en Full HD conectando una antena pasiva simple, sin pagar mensualidades a ninguna compañía de telecomunicaciones.
             </p>
           </div>
           <div class="p-4 rounded-xl bg-slate-900/90 border border-slate-800">
-            <h3 class="text-sm font-bold text-white mb-2">Garantía Legal de 6 Meses (SERNAC)</h3>
+            <h4 class="text-sm font-bold text-white mb-2">Garantía Legal de 6 Meses (SERNAC)</h4>
             <p class="text-xs text-slate-400 leading-relaxed">
               De acuerdo con la Ley Pro Consumidor (Ley N° 19.496 y sus modificaciones), si tu televisor presenta fallas técnicas de origen, píxeles quemados o defectos de encendido dentro de los primeros 6 meses desde la compra, tienes el derecho legal irrenunciable a elegir entre: 1) reparación gratuita, 2) cambio por un producto nuevo, o 3) devolución íntegra de tu dinero. Además, la mayoría de los distribuidores oficiales en Chile ofrecen 1 año de garantía de fabricante con red de servicio técnico nacional.
             </p>
           </div>
         </div>
       </div>
-
-      <!-- Sección 5: Glosario Técnico -->
-      <div class="space-y-4">
-        <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight flex items-center gap-2">
-          <span>📚</span> 5. Glosario Técnico Esencial para Televisores
-        </h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-300">
-          <div class="p-3 rounded-lg bg-slate-900/50 border border-slate-800">
-            <h3 class="text-white text-xs font-bold mb-0.5">Tasa de Refresco (Hz)</h3>
-            <p class="text-slate-400">Indica cuántas veces por segundo se actualiza la imagen. Los paneles a 60Hz son el estándar de televisión; los paneles a 120Hz o 144Hz ofrecen mayor suavidad en partidos de fútbol y juegos en PlayStation 5 o Xbox Series X.</p>
-          </div>
-          <div class="p-3 rounded-lg bg-slate-900/50 border border-slate-800">
-            <h3 class="text-white text-xs font-bold mb-0.5">Dolby Vision / HDR10+</h3>
-            <p class="text-slate-400">Formatos de alto rango dinámico (HDR) dinámico que ajustan el brillo y color escena por escena para mostrar mayores detalles en sombras y luces brillantes.</p>
-          </div>
-          <div class="p-3 rounded-lg bg-slate-900/50 border border-slate-800">
-            <h3 class="text-white text-xs font-bold mb-0.5">HDMI eARC</h3>
-            <p class="text-slate-400">Canal de retorno de audio mejorado que permite enviar sonido sin pérdidas (Dolby Atmos o DTS:X) desde el televisor hacia una barra de sonido receptora mediante un único cable HDMI.</p>
-          </div>
-          <div class="p-3 rounded-lg bg-slate-900/50 border border-slate-800">
-            <h3 class="text-white text-xs font-bold mb-0.5">Local Dimming</h3>
-            <p class="text-slate-400">Sistema que apaga o atenúa de forma independiente zonas específicas de la retroiluminación para lograr negros profundos sin desteñir los elementos iluminados adyacentes.</p>
-          </div>
-        </div>
-      </div>
     </section>
+
+    <!-- FAQ SECTION CON SCHEMA ORG -->
+    <div class="max-w-4xl mx-auto mb-16">
+      <FAQSection
+        title="Preguntas Frecuentes sobre Smart TVs en Chile"
+        items={smartTvFaqs}
+      />
+    </div>
 
   </div>
 

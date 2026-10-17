@@ -1,65 +1,65 @@
 {
   "tcl-c655-55": {
-    "precioCLP": 419990,
-    "precioFormateado": "$ 419.990 CLP",
-    "rango": "$ 399.990 - $ 449.990 CLP",
-    "precioMinVisto": "$ 389.990 CLP",
+    "precioCLP": 369990,
+    "precioFormateado": "$ 369.990 CLP",
+    "rango": "$ 349.990 - $ 429.990 CLP",
+    "precioMinVisto": "$ 329.990 CLP",
     "tiendaReferencia": "Mercado Libre Chile",
-    "fechaVerificacion": "2026-10-07",
+    "fechaVerificacion": "2026-10-17",
     "enOferta": true
   },
   "hisense-u6k-55": {
     "precioCLP": 399990,
     "precioFormateado": "$ 399.990 CLP",
-    "rango": "$ 379.990 - $ 419.990 CLP",
+    "rango": "$ 379.990 - $ 429.990 CLP",
     "precioMinVisto": "$ 369.990 CLP",
     "tiendaReferencia": "Mercado Libre Chile",
-    "fechaVerificacion": "2026-10-07",
+    "fechaVerificacion": "2026-10-17",
     "enOferta": false
   },
   "samsung-du7000-55": {
-    "precioCLP": 329990,
-    "precioFormateado": "$ 329.990 CLP",
-    "rango": "$ 329.990 - $ 359.990 CLP",
+    "precioCLP": 349990,
+    "precioFormateado": "$ 349.990 CLP",
+    "rango": "$ 339.990 - $ 399.990 CLP",
     "precioMinVisto": "$ 319.990 CLP",
     "tiendaReferencia": "Mercado Libre Chile",
-    "fechaVerificacion": "2026-10-07",
+    "fechaVerificacion": "2026-10-17",
     "enOferta": false
   },
   "antena-tvd-chile": {
-    "precioCLP": 11990,
-    "precioFormateado": "$ 11.990 CLP",
-    "rango": "$ 8.990 - $ 14.990 CLP",
-    "precioMinVisto": "$ 7.990 CLP",
+    "precioCLP": 9990,
+    "precioFormateado": "$ 9.990 CLP",
+    "rango": "$ 4.990 - $ 12.990 CLP",
+    "precioMinVisto": "$ 3.990 CLP",
     "tiendaReferencia": "Mercado Libre Chile",
-    "fechaVerificacion": "2026-10-07",
-    "enOferta": false
+    "fechaVerificacion": "2026-10-17",
+    "enOferta": true
   },
   "roku-express-4k": {
-    "precioCLP": 38990,
-    "precioFormateado": "$ 38.990 CLP",
-    "rango": "$ 34.990 - $ 42.990 CLP",
-    "precioMinVisto": "$ 32.990 CLP",
+    "precioCLP": 44990,
+    "precioFormateado": "$ 44.990 CLP",
+    "rango": "$ 40.990 - $ 54.990 CLP",
+    "precioMinVisto": "$ 38.990 CLP",
     "tiendaReferencia": "Mercado Libre Chile",
-    "fechaVerificacion": "2026-10-07",
-    "enOferta": false
+    "fechaVerificacion": "2026-10-17",
+    "enOferta": true
   },
   "chromecast-google-tv": {
-    "precioCLP": 49990,
-    "precioFormateado": "$ 49.990 CLP",
-    "rango": "$ 42.990 - $ 54.990 CLP",
-    "precioMinVisto": "$ 41.990 CLP",
+    "precioCLP": 54990,
+    "precioFormateado": "$ 54.990 CLP",
+    "rango": "$ 49.990 - $ 69.990 CLP",
+    "precioMinVisto": "$ 46.990 CLP",
     "tiendaReferencia": "Mercado Libre Chile",
-    "fechaVerificacion": "2026-10-07",
+    "fechaVerificacion": "2026-10-17",
     "enOferta": false
   },
   "decodificador-tvd": {
-    "precioCLP": 14990,
-    "precioFormateado": "$ 14.990 CLP",
-    "rango": "$ 9.990 - $ 18.990 CLP",
-    "precioMinVisto": "$ 8.990 CLP",
+    "precioCLP": 16990,
+    "precioFormateado": "$ 16.990 CLP",
+    "rango": "$ 14.990 - $ 22.990 CLP",
+    "precioMinVisto": "$ 13.990 CLP",
     "tiendaReferencia": "Mercado Libre Chile",
-    "fechaVerificacion": "2026-10-08",
+    "fechaVerificacion": "2026-10-17",
     "enOferta": false
   }
 }

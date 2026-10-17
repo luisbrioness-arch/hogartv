@@ -17,6 +17,7 @@ interface Props {
   readTime?: string;
   ogImage?: string;
   author?: string;
+  headings?: { depth: number; slug: string; text: string }[];
 }
 
 const {
@@ -30,6 +31,7 @@ const {
   readTime = '5 min de lectura',
   ogImage,
   author: authorSlug = 'luis-briones',
+  headings = [],
 } = Astro.props;
 
 type AuthorItem = {
@@ -199,8 +201,8 @@ const articleSchema = {
       </p>
     </div>
 
-    <!-- Índice de Contenidos Interactivo (TOC) para SEO y navegación rápida -->
-    <details id="article-toc" class="my-6 p-4 sm:p-5 rounded-2xl bg-surface-card border border-slate-800 shadow-md group">
+    <!-- Índice de Contenidos Interactivo (TOC) para SEO y navegación rápida (Pre-renderizado en SSG) -->
+    <details id="article-toc" class="my-6 p-4 sm:p-5 rounded-2xl bg-surface-card border border-slate-800 shadow-md group" open>
       <summary class="flex items-center justify-between cursor-pointer font-bold text-white text-xs sm:text-sm list-none select-none">
         <span class="flex items-center gap-2">
           <span class="text-brand-400">📑</span>
@@ -209,6 +211,16 @@ const articleSchema = {
         <span class="text-xs text-brand-400 group-open:rotate-180 transition-transform duration-200">▼</span>
       </summary>
       <nav id="toc-nav" class="mt-3 pt-3 border-t border-slate-800/80 text-xs sm:text-sm text-slate-300 space-y-1.5" aria-label="Índice de la página">
+        {headings.filter((h) => h.depth === 2 || h.depth === 3).map((h) => (
+          <a
+            href={`#${h.slug}`}
+            class={h.depth === 3
+              ? "block pl-4 py-1 text-slate-400 hover:text-brand-300 transition-colors border-l border-slate-800 hover:border-brand-500 text-xs"
+              : "block py-1 font-semibold text-slate-200 hover:text-brand-400 transition-colors text-xs sm:text-sm"}
+          >
+            {h.text.replace(/^[0-9]+\.\s*/, '')}
+          </a>
+        ))}
       </nav>
     </details>
 
@@ -274,27 +286,51 @@ const articleSchema = {
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           {relatedArticles.map((rel) => {
             const relSlug = rel.id.replace(/\.(md|mdx)$/, '');
+            const relHeroEntry = Object.entries(allHeroes).find(([filePath]) =>
+              filePath.includes(`/${relSlug}/hero.`)
+            );
+            const relHeroImage = relHeroEntry ? relHeroEntry[1].default : null;
             return (
               <a
                 href={`/${rel.data.category}/${relSlug}/`}
-                class="group p-5 rounded-2xl bg-surface-card border border-slate-800 hover:border-brand-500/50 hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+                class="group rounded-2xl bg-surface-card border border-slate-800 hover:border-brand-500/50 hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden"
               >
-                <div>
-                  <div class="flex items-center justify-between text-xs text-slate-400 mb-2.5">
-                    <span class="text-brand-400 font-semibold">{rel.data.categoryName}</span>
-                    <span>⏱️ {rel.data.readTime}</span>
+                {relHeroImage && (
+                  <div class="relative aspect-video overflow-hidden bg-slate-900 border-b border-slate-800">
+                    <Image
+                      src={relHeroImage}
+                      alt={rel.data.title}
+                      width={400}
+                      height={225}
+                      format="webp"
+                      quality={80}
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <span class="absolute top-2 left-2 bg-slate-950/80 backdrop-blur-md text-brand-400 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border border-slate-800">
+                      {rel.data.categoryName}
+                    </span>
                   </div>
-                  <h3 class="text-base font-bold text-white group-hover:text-brand-300 transition-colors mb-2 leading-snug">
-                    {rel.data.title}
-                  </h3>
-                  <p class="text-xs text-slate-400 leading-relaxed line-clamp-2 mb-4">
-                    {rel.data.description}
-                  </p>
+                )}
+                <div class="p-5 flex-1 flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center justify-between text-xs text-slate-400 mb-2.5">
+                      <span class="text-slate-400">📅 {rel.data.publishDate}</span>
+                      <span>⏱️ {rel.data.readTime}</span>
+                    </div>
+                    <h3 class="text-base font-bold text-white group-hover:text-brand-300 transition-colors mb-2 leading-snug line-clamp-2">
+                      {rel.data.title}
+                    </h3>
+                    <p class="text-xs text-slate-400 leading-relaxed line-clamp-2 mb-4">
+                      {rel.data.description}
+                    </p>
+                  </div>
+                  <span class="text-xs font-bold text-brand-400 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                    <span>Leer guía completa</span>
+                    <span>→</span>
+                  </span>
                 </div>
-                <span class="text-xs font-bold text-brand-400 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                  <span>Leer guía completa</span>
-                  <span>→</span>
-                </span>
               </a>
             );
           })}
@@ -351,7 +387,7 @@ const articleSchema = {
           if (tocDetails) tocDetails.style.display = 'none';
           return;
         }
-        tocNav.innerHTML = '';
+        // Asignar IDs si no existen para que los links ancla funcionen
         headings.forEach((h, idx) => {
           if (!h.id) {
             const cleanText = h.textContent.toLowerCase().trim()
@@ -360,15 +396,20 @@ const articleSchema = {
               .replace(/^-|-$/g, '');
             h.id = cleanText || ('seccion-' + (idx + 1));
           }
-          const isH3 = h.tagName.toLowerCase() === 'h3';
-          const a = document.createElement('a');
-          a.href = '#' + h.id;
-          a.textContent = h.textContent.replace(/^[0-9]+\.\s*/, '');
-          a.className = isH3
-            ? 'block pl-4 py-1 text-slate-400 hover:text-brand-300 transition-colors border-l border-slate-800 hover:border-brand-500 text-xs'
-            : 'block py-1 font-semibold text-slate-200 hover:text-brand-400 transition-colors text-xs sm:text-sm';
-          tocNav.appendChild(a);
         });
+        // Si no se renderizó nada en el servidor (ej. Markdown sin headings listados), poblar dinámicamente
+        if (tocNav.children.length === 0) {
+          headings.forEach((h) => {
+            const isH3 = h.tagName.toLowerCase() === 'h3';
+            const a = document.createElement('a');
+            a.href = '#' + h.id;
+            a.textContent = h.textContent.replace(/^[0-9]+\.\s*/, '');
+            a.className = isH3
+              ? 'block pl-4 py-1 text-slate-400 hover:text-brand-300 transition-colors border-l border-slate-800 hover:border-brand-500 text-xs'
+              : 'block py-1 font-semibold text-slate-200 hover:text-brand-400 transition-colors text-xs sm:text-sm';
+            tocNav.appendChild(a);
+          });
+        }
       }
       if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initTOC);

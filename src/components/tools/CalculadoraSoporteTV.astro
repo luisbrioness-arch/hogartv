@@ -1,0 +1,223 @@
+---
+// Componente Interactivo: Calculadora de Pulgadas, Altura y Soporte de Muro para TV en Chile
+---
+
+<div class="my-10 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 border-2 border-brand-500/40 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden not-prose" id="calculadora-tv-widget">
+  <div class="absolute -top-24 -left-24 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="flex items-center gap-3 mb-4">
+    <div class="w-10 h-10 rounded-xl bg-brand-500/20 text-brand-400 flex items-center justify-center text-xl shrink-0 border border-brand-500/30">
+      📐
+    </div>
+    <div>
+      <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight">
+        Calculadora de Pulgadas y Altura para Instalar tu TV en Muro
+      </h3>
+      <p class="text-xs sm:text-sm text-slate-400">
+        Averigua el tamaño ideal de pantalla, la altura exacta del soporte en centímetros y el tipo de anclaje según tu espacio.
+      </p>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 mb-8">
+    <!-- CONTROL 1: DISTANCIA -->
+    <div class="bg-slate-950/70 border border-slate-800 rounded-2xl p-5">
+      <div class="flex items-center justify-between mb-3">
+        <label for="distancia-slider" class="text-xs font-bold uppercase tracking-wider text-slate-300">
+          Distancia al televisor (Sillón / Cama a la Pared):
+        </label>
+        <span id="distancia-display" class="text-lg font-black text-brand-400 bg-brand-500/10 px-3 py-1 rounded-lg border border-brand-500/20">
+          2.4 m
+        </span>
+      </div>
+      <input
+        type="range"
+        id="distancia-slider"
+        min="1.5"
+        max="4.5"
+        step="0.1"
+        value="2.4"
+        class="w-full accent-brand-500 cursor-pointer h-2 bg-slate-800 rounded-lg appearance-none"
+      />
+      <div class="flex justify-between text-[11px] text-slate-500 mt-2">
+        <span>1.5 metros (Cerca)</span>
+        <span>3.0 metros</span>
+        <span>4.5 metros (Lejos)</span>
+      </div>
+    </div>
+
+    <!-- CONTROL 2: TIPO DE HABITACIÓN -->
+    <div class="bg-slate-950/70 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between">
+      <label class="text-xs font-bold uppercase tracking-wider text-slate-300 mb-2 block">
+        Lugar de instalación:
+      </label>
+      <div class="grid grid-cols-2 gap-3" id="ambiente-selector">
+        <button
+          type="button"
+          data-ambiente="living"
+          class="ambiente-btn active px-4 py-3 rounded-xl border border-brand-500 bg-brand-500/10 text-white font-bold text-xs sm:text-sm flex flex-col items-center gap-1 transition-all"
+        >
+          <span class="text-xl">🛋️</span>
+          <span>Living / Sala</span>
+          <span class="text-[10px] text-slate-400 font-normal">Vista sentado</span>
+        </button>
+        <button
+          type="button"
+          data-ambiente="dormitorio"
+          class="ambiente-btn px-4 py-3 rounded-xl border border-slate-800 bg-surface-card text-slate-400 font-bold text-xs sm:text-sm flex flex-col items-center gap-1 transition-all hover:text-white"
+        >
+          <span class="text-xl">🛏️</span>
+          <span>Dormitorio</span>
+          <span class="text-[10px] text-slate-500 font-normal">Vista recostado</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTADOS CALCULADOS -->
+  <div class="space-y-6">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <!-- RESULTADO 1: PULGADAS -->
+      <div class="bg-surface-card border border-slate-800 rounded-2xl p-5 text-center sm:text-left">
+        <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-1">Pulgadas Recomendadas</span>
+        <div id="pulgadas-result" class="text-2xl sm:text-3xl font-black text-brand-400 tracking-tight">
+          55" a 65"
+        </div>
+        <p class="text-[11px] text-slate-400 mt-1" id="pulgadas-desc">Ideal para disfrutar 4K UHD sin fatiga visual ni pixelado.</p>
+      </div>
+
+      <!-- RESULTADO 2: ALTURA -->
+      <div class="bg-surface-card border border-slate-800 rounded-2xl p-5 text-center sm:text-left">
+        <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-1">Altura Centro de la Pantalla</span>
+        <div id="altura-result" class="text-2xl sm:text-3xl font-black text-white tracking-tight">
+          100 - 105 cm
+        </div>
+        <p class="text-[11px] text-slate-400 mt-1" id="altura-desc">Medido desde el piso hasta el punto central de tu pantalla.</p>
+      </div>
+
+      <!-- RESULTADO 3: SOPORTE RECOMENDADO -->
+      <div class="bg-surface-card border border-slate-800 rounded-2xl p-5 text-center sm:text-left">
+        <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-1">Tipo de Soporte</span>
+        <div id="soporte-result" class="text-lg sm:text-xl font-bold text-amber-300">
+          Fijo Ultra Slim o Inclinable
+        </div>
+        <p class="text-[11px] text-slate-400 mt-1" id="soporte-desc">Estándar VESA 300x300 / 400x400 con pernos M6/M8.</p>
+      </div>
+    </div>
+
+    <!-- TIPS Y GUÍA DE ANCLAJE SEGÚN EL TIPO DE MURO CHILENO -->
+    <div class="bg-slate-950/80 border border-slate-800 rounded-2xl p-5">
+      <h4 class="text-xs font-bold uppercase tracking-wider text-slate-300 mb-3 flex items-center gap-2">
+        <span>🧱</span> Consejos de Fijación en Paredes Chilenas:
+      </h4>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-slate-400">
+        <div class="bg-surface-card/60 p-3.5 rounded-xl border border-slate-800/80">
+          <strong class="text-slate-200 block mb-1">Hormigón Armado / Ladrillo Princesa:</strong>
+          Usa broca para concreto de 8mm a 10mm y tarugos plásticos expansivos reforzados (tipo Fisher SX o DuoPower). Soporta más de 50 kg con máxima seguridad sísmica.
+        </div>
+        <div class="bg-surface-card/60 p-3.5 rounded-xl border border-slate-800/80">
+          <strong class="text-slate-200 block mb-1">Tabiquería Volcanita / Metalcom:</strong>
+          <span class="text-amber-300 font-semibold">¡Nunca cuelgues solo del yeso-cartón!</span> Busca los perfiles de acero galvanizado (montantes cada 40 cm) con imán y atornilla directo a la estructura con tornillos autoperforantes punta broca.
+        </div>
+      </div>
+    </div>
+
+    <!-- ENLACE A SMART TVS O ACCESORIOS -->
+    <div class="bg-gradient-to-r from-brand-950/40 via-surface-card to-slate-900 border border-brand-500/30 rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="space-y-1 text-center sm:text-left">
+        <span class="text-xs font-bold uppercase tracking-wider text-brand-400">¿Buscando renovar tu televisor a la medida calculada?</span>
+        <h4 class="text-sm sm:text-base font-bold text-white">Revisa los mejores Smart TVs de 50", 55" y 65" con Google TV</h4>
+        <p class="text-xs text-slate-400">Paneles QLED y Mini-LED analizados por relación calidad / precio para Chile.</p>
+      </div>
+      <div class="flex items-center gap-3 shrink-0">
+        <a
+          href="/smart-tv/mejores-smart-tv-calidad-precio-chile/"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs sm:text-sm shadow-lg shadow-brand-500/20 transition-all hover:scale-105"
+        >
+          <span>Ver Comparativa de Smart TVs</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  let ambienteActual = 'living';
+
+  function recalcularTV() {
+    const distancia = parseFloat(document.getElementById('distancia-slider').value);
+    document.getElementById('distancia-display').textContent = `${distancia.toFixed(1)} m`;
+
+    let pulgadasTexto = '';
+    let pulgadasDesc = '';
+    let alturaTexto = '';
+    let alturaDesc = '';
+    let soporteTexto = '';
+    let soporteDesc = '';
+
+    // Cálculo de tamaño según distancia
+    if (distancia < 1.8) {
+      pulgadasTexto = '43" a 50"';
+      pulgadasDesc = 'Distancia corta: evita fatiga ocular y mantiene nitidez óptima a 1080p y 4K.';
+    } else if (distancia < 2.3) {
+      pulgadasTexto = '50" a 55"';
+      pulgadasDesc = 'Equilibrio perfecto para living estándar o dormitorio principal amplio.';
+    } else if (distancia < 2.9) {
+      pulgadasTexto = '55" a 65"';
+      pulgadasDesc = 'Tamaño recomendado por THX/SMPTE para experiencia de cine inmersiva 4K.';
+    } else if (distancia < 3.5) {
+      pulgadasTexto = '65" a 75"';
+      pulgadasDesc = 'Gran formato para salones amplios. Aprovecha al máximo la definición 4K HDR.';
+    } else {
+      pulgadasTexto = '75" a 85"';
+      pulgadasDesc = 'Salón espacioso o sala de cine en casa. Requiere fijación reforzada obligatoria.';
+    }
+
+    // Cálculo de altura según ambiente
+    if (ambienteActual === 'living') {
+      alturaTexto = '100 - 105 cm';
+      alturaDesc = 'Centro de pantalla alineado al nivel de los ojos de un adulto promedio sentado en el sillón.';
+      soporteTexto = 'Fijo Ultra Slim o Inclinable Ligero';
+      soporteDesc = 'VESA habitual 200x200 a 400x400. Mantiene la TV pegada a la pared con estética limpia.';
+    } else {
+      alturaTexto = '130 - 145 cm';
+      alturaDesc = 'Más alto para librar los pies de la cama; requiere inclinación hacia abajo de 10° a 15°.';
+      soporteTexto = 'Inclinable (Tilt) o Brazo Articulado';
+      soporteDesc = 'Imprescindible ángulo de inclinación vertical para no forzar cervicales recostado.';
+    }
+
+    document.getElementById('pulgadas-result').textContent = pulgadasTexto;
+    document.getElementById('pulgadas-desc').textContent = pulgadasDesc;
+    document.getElementById('altura-result').textContent = alturaTexto;
+    document.getElementById('altura-desc').textContent = alturaDesc;
+    document.getElementById('soporte-result').textContent = soporteTexto;
+    document.getElementById('soporte-desc').textContent = soporteDesc;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.getElementById('distancia-slider');
+    const botonesAmbiente = document.querySelectorAll('.ambiente-btn');
+
+    if (slider) {
+      slider.addEventListener('input', recalcularTV);
+    }
+
+    botonesAmbiente.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        botonesAmbiente.forEach((b) => {
+          b.classList.remove('active', 'border-brand-500', 'bg-brand-500/10', 'text-white');
+          b.classList.add('border-slate-800', 'bg-surface-card', 'text-slate-400');
+        });
+
+        btn.classList.add('active', 'border-brand-500', 'bg-brand-500/10', 'text-white');
+        btn.classList.remove('border-slate-800', 'bg-surface-card', 'text-slate-400');
+
+        ambienteActual = btn.getAttribute('data-ambiente') || 'living';
+        recalcularTV();
+      });
+    });
+
+    recalcularTV();
+  });
+</script>

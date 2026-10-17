@@ -1,0 +1,274 @@
+---
+// Componente Interactivo: Buscador y Verificador de Canales TVD y Antenas por Ciudad de Chile
+---
+
+<div class="my-10 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 border-2 border-brand-500/40 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden not-prose" id="buscador-tvd-widget">
+  <div class="absolute -top-24 -right-24 w-72 h-72 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="flex items-center gap-3 mb-4">
+    <div class="w-10 h-10 rounded-xl bg-brand-500/20 text-brand-400 flex items-center justify-center text-xl shrink-0 border border-brand-500/30">
+      📡
+    </div>
+    <div>
+      <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight">
+        Verificador de Canales TVD Digitales y Antenas por Ciudad
+      </h3>
+      <p class="text-xs sm:text-sm text-slate-400">
+        Consulta qué frecuencias abiertas en alta definición están activas en tu zona y hacia dónde apuntar tu antena.
+      </p>
+    </div>
+  </div>
+
+  <!-- SELECTOR DE CIUDAD -->
+  <div class="mt-6 mb-8">
+    <label for="ciudad-selector" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+      Selecciona tu ciudad o comuna:
+    </label>
+    <div class="relative">
+      <select
+        id="ciudad-selector"
+        class="w-full bg-slate-950 border border-slate-700 text-white rounded-xl px-4 py-3.5 pr-10 text-sm sm:text-base font-semibold focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all cursor-pointer appearance-none"
+      >
+        <option value="concepcion" selected>Gran Concepción / Talcahuano / San Pedro de la Paz (Biobío)</option>
+        <option value="santiago">Santiago / Gran Santiago (Región Metropolitana)</option>
+        <option value="valparaiso">Valparaíso / Viña del Mar / Concón (Valparaíso)</option>
+        <option value="temuco">Temuco / Padre Las Casas (La Araucanía)</option>
+        <option value="laserena">La Serena / Coquimbo (Coquimbo)</option>
+        <option value="antofagasta">Antofagasta (Antofagasta)</option>
+        <option value="puertomontt">Puerto Montt / Puerto Varas (Los Lagos)</option>
+      </select>
+      <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-400">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTADO DINÁMICO -->
+  <div id="resultado-zona" class="space-y-6">
+    <!-- INFO DE REPETIDOR Y ORIENTACIÓN -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="bg-surface-card/80 border border-slate-800 rounded-2xl p-4">
+        <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-1">Cerro Transmisor / Repetidor</span>
+        <div id="cerro-nombre" class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
+          <span>⛰️</span> Cerro La Pólvora / Cerro Centinela
+        </div>
+      </div>
+      <div class="bg-surface-card/80 border border-slate-800 rounded-2xl p-4">
+        <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-1">Recomendación de Antena</span>
+        <div id="antena-tipo" class="text-sm sm:text-base font-bold text-brand-300 flex items-center gap-2">
+          <span>📶</span> Interior amplificada o Exterior para bordes
+        </div>
+      </div>
+      <div class="bg-surface-card/80 border border-slate-800 rounded-2xl p-4">
+        <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-1">Estado de Transmisión</span>
+        <div id="estado-red" class="text-sm sm:text-base font-bold text-emerald-400 flex items-center gap-2">
+          <span>🟢</span> 100% Digital ISDB-Tb Activo
+        </div>
+      </div>
+    </div>
+
+    <!-- LISTADO DE CANALES DIGITALES DETECTADOS -->
+    <div class="bg-slate-950/60 border border-slate-800/80 rounded-2xl p-5">
+      <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-800">
+        <span class="text-xs font-bold uppercase tracking-wider text-slate-300">
+          Canales Digitales HD Disponibles en esta Zona:
+        </span>
+        <span id="canales-count" class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-brand-500/20 text-brand-400 border border-brand-500/30">
+          7 señales digitales
+        </span>
+      </div>
+
+      <div id="canales-lista" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+        <!-- Renderizado dinámico vía script -->
+      </div>
+    </div>
+
+    <!-- RECOMENDACIÓN DE EQUIPO Y ENLACE -->
+    <div class="bg-gradient-to-r from-brand-950/40 via-surface-card to-slate-900 border border-brand-500/30 rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="space-y-1 text-center sm:text-left">
+        <span class="text-xs font-bold uppercase tracking-wider text-brand-400">¿No tienes antena digital o tu TV no sintoniza?</span>
+        <h4 class="text-sm sm:text-base font-bold text-white">Antena Digital Amplificada 360° para Norma Chilena</h4>
+        <p class="text-xs text-slate-400">Recepción optimizada para UHF con base magnética y filtro de interferencias 4G/5G.</p>
+      </div>
+      <div class="flex items-center gap-3 shrink-0">
+        <a
+          href="https://meli.la/2qaQjtq"
+          target="_blank"
+          rel="nofollow noopener sponsored"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs sm:text-sm shadow-lg shadow-amber-400/20 transition-all hover:scale-105"
+        >
+          <span>🛒 Ver en Mercado Libre</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- BOX LOCAL PARA EL BIOBÍO -->
+    <div id="biobio-tecnico-box" class="bg-blue-950/30 border border-blue-500/30 rounded-2xl p-4 text-xs text-slate-300 flex items-start gap-3">
+      <span class="text-xl shrink-0">🔧</span>
+      <div>
+        <strong class="text-blue-300 font-bold">Servicio Técnico Especializado en Concepción y Alrededores:</strong>
+        <p class="mt-0.5 text-slate-400">
+          Si vives en el Gran Concepción, Talcahuano, San Pedro de la Paz, Chiguayante o Los Ángeles y tienes problemas de sombra geográfica por cerros, podemos revisar tu cableado, orientar tu antena de techo o instalar decodificadores a domicilio.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  const datosCiudades = {
+    concepcion: {
+      cerro: 'Cerro La Pólvora / Cerro Centinela',
+      antena: 'Interior amplificada (o exterior si hay cerros tapando)',
+      estado: '100% Digital ISDB-Tb Activo',
+      canales: [
+        { dial: '4.1', nombre: 'TVN HD', tipo: 'Nacional HD' },
+        { dial: '4.2', nombre: 'NTV', tipo: 'Cultural HD' },
+        { dial: '2.1', nombre: 'Mega HD', tipo: 'Nacional HD' },
+        { dial: '2.2', nombre: 'Mega 2', tipo: 'Contenido Extra' },
+        { dial: '7.1', nombre: 'Chilevisión HD', tipo: 'Nacional HD' },
+        { dial: '7.2', nombre: 'UChile TV', tipo: 'Educativo' },
+        { dial: '13.1', nombre: 'Canal 13 HD', tipo: 'Nacional HD' },
+        { dial: '13.2', nombre: 'T13 En Vivo', tipo: 'Noticias 24/7' },
+        { dial: '9.1', nombre: 'Canal 9 Bío Bío TV', tipo: 'Regional HD' },
+        { dial: '11.1', nombre: 'TVU Concepción', tipo: 'Regional UdeC' }
+      ],
+      esBiobio: true
+    },
+    santiago: {
+      cerro: 'Cerro San Cristóbal / Cerro Chena',
+      antena: 'Interior estándar o amplificada según piso',
+      estado: '100% Digital ISDB-Tb Activo',
+      canales: [
+        { dial: '7.1', nombre: 'TVN HD', tipo: 'Nacional HD' },
+        { dial: '7.2', nombre: 'NTV', tipo: 'Cultural HD' },
+        { dial: '9.1', nombre: 'Mega HD', tipo: 'Nacional HD' },
+        { dial: '9.2', nombre: 'Mega 2', tipo: 'Contenido Extra' },
+        { dial: '11.1', nombre: 'Chilevisión HD', tipo: 'Nacional HD' },
+        { dial: '11.2', nombre: 'UChile TV', tipo: 'Educativo' },
+        { dial: '13.1', nombre: 'Canal 13 HD', tipo: 'Nacional HD' },
+        { dial: '13.2', nombre: 'T13 En Vivo', tipo: 'Noticias' },
+        { dial: '5.1', nombre: 'TV+ HD', tipo: 'Entretenimiento' },
+        { dial: '4.1', nombre: 'La Red HD', tipo: 'Nacional HD' },
+        { dial: '2.1', nombre: 'Telecanal HD', tipo: 'Generalista' }
+      ],
+      esBiobio: false
+    },
+    valparaiso: {
+      cerro: 'Cerro Cruz del Sur / Los Placeres',
+      antena: 'Interior para plan; exterior o balcones en cerros',
+      estado: '100% Digital ISDB-Tb Activo',
+      canales: [
+        { dial: '12.1', nombre: 'TVN HD', tipo: 'Nacional HD' },
+        { dial: '12.2', nombre: 'NTV', tipo: 'Cultural HD' },
+        { dial: '5.1', nombre: 'Mega HD', tipo: 'Nacional HD' },
+        { dial: '10.1', nombre: 'Chilevisión HD', tipo: 'Nacional HD' },
+        { dial: '8.1', nombre: 'Canal 13 HD', tipo: 'Nacional HD' },
+        { dial: '8.2', nombre: 'T13 En Vivo', tipo: 'Noticias' },
+        { dial: '4.1', nombre: 'UCV TV HD', tipo: 'Regional Histórico' }
+      ],
+      esBiobio: false
+    },
+    temuco: {
+      cerro: 'Cerro Ñielol',
+      antena: 'Interior amplificada en radio urbano',
+      estado: '100% Digital ISDB-Tb Activo',
+      canales: [
+        { dial: '7.1', nombre: 'TVN HD', tipo: 'Nacional HD' },
+        { dial: '7.2', nombre: 'NTV', tipo: 'Cultural HD' },
+        { dial: '12.1', nombre: 'Mega HD', tipo: 'Nacional HD' },
+        { dial: '11.1', nombre: 'Chilevisión HD', tipo: 'Nacional HD' },
+        { dial: '4.1', nombre: 'Canal 13 HD', tipo: 'Nacional HD' },
+        { dial: '38.1', nombre: 'UfroVisión', tipo: 'Universitario' }
+      ],
+      esBiobio: false
+    },
+    laserena: {
+      cerro: 'Cerro Grande',
+      antena: 'Interior amplificada o exterior para Coquimbo parte alta',
+      estado: '100% Digital ISDB-Tb Activo',
+      canales: [
+        { dial: '4.1', nombre: 'TVN HD', tipo: 'Nacional HD' },
+        { dial: '4.2', nombre: 'NTV', tipo: 'Cultural HD' },
+        { dial: '11.1', nombre: 'Mega HD', tipo: 'Nacional HD' },
+        { dial: '2.1', nombre: 'Chilevisión HD', tipo: 'Nacional HD' },
+        { dial: '13.1', nombre: 'Canal 13 HD', tipo: 'Nacional HD' },
+        { dial: '45.1', nombre: 'Thema TV', tipo: 'Regional' }
+      ],
+      esBiobio: false
+    },
+    antofagasta: {
+      cerro: 'Morro Moreno / Antenas Cerro El Ancla',
+      antena: 'Interior para borde costero; exterior hacia el cerro',
+      estado: '100% Digital ISDB-Tb Activo',
+      canales: [
+        { dial: '6.1', nombre: 'TVN HD', tipo: 'Nacional HD' },
+        { dial: '6.2', nombre: 'NTV', tipo: 'Cultural HD' },
+        { dial: '9.1', nombre: 'Mega HD', tipo: 'Nacional HD' },
+        { dial: '7.1', nombre: 'Chilevisión HD', tipo: 'Nacional HD' },
+        { dial: '13.1', nombre: 'Canal 13 HD', tipo: 'Nacional HD' },
+        { dial: '14.1', nombre: 'Antofagasta TV', tipo: 'Regional HD' }
+      ],
+      esBiobio: false
+    },
+    puertomontt: {
+      cerro: 'Cerro Philippi / Pelluco',
+      antena: 'Antena exterior recomendada por humedad y relieve',
+      estado: '100% Digital ISDB-Tb Activo',
+      canales: [
+        { dial: '4.1', nombre: 'TVN HD', tipo: 'Nacional HD' },
+        { dial: '4.2', nombre: 'NTV', tipo: 'Cultural HD' },
+        { dial: '2.1', nombre: 'Mega HD', tipo: 'Nacional HD' },
+        { dial: '10.1', nombre: 'Chilevisión HD', tipo: 'Nacional HD' },
+        { dial: '13.1', nombre: 'Canal 13 HD', tipo: 'Nacional HD' },
+        { dial: '12.1', nombre: 'Vértice TV', tipo: 'Regional HD' }
+      ],
+      esBiobio: false
+    }
+  };
+
+  function actualizarZona(ciudadKey) {
+    const data = datosCiudades[ciudadKey];
+    if (!data) return;
+
+    document.getElementById('cerro-nombre').innerHTML = `<span>⛰️</span> ${data.cerro}`;
+    document.getElementById('antena-tipo').innerHTML = `<span>📶</span> ${data.antena}`;
+    document.getElementById('estado-red').innerHTML = `<span>🟢</span> ${data.estado}`;
+    document.getElementById('canales-count').textContent = `${data.canales.length} señales activas`;
+
+    const biobioBox = document.getElementById('biobio-tecnico-box');
+    if (biobioBox) {
+      biobioBox.style.display = data.esBiobio ? 'flex' : 'none';
+    }
+
+    const canalesContainer = document.getElementById('canales-lista');
+    canalesContainer.innerHTML = '';
+
+    data.canales.forEach((ch) => {
+      const card = document.createElement('div');
+      card.className = 'bg-slate-900 border border-slate-800 rounded-xl p-3 flex flex-col justify-between hover:border-slate-700 transition-colors';
+      card.innerHTML = `
+        <div class="flex items-center justify-between gap-1 mb-1">
+          <span class="text-xs font-black text-brand-400 bg-brand-500/10 px-2 py-0.5 rounded">${ch.dial}</span>
+          <span class="text-[10px] text-slate-400 font-semibold truncate">${ch.tipo}</span>
+        </div>
+        <div class="font-bold text-white text-xs sm:text-sm truncate">${ch.nombre}</div>
+      `;
+      canalesContainer.appendChild(card);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const selector = document.getElementById('ciudad-selector');
+    if (selector) {
+      selector.addEventListener('change', (e) => {
+        actualizarZona(e.target.value);
+      });
+      // Inicializar con Concepción por defecto
+      actualizarZona('concepcion');
+    }
+  });
+</script>

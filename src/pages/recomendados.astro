@@ -1,9 +1,80 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductCard from '../components/ProductCard.astro';
+import FAQSection from '../components/FAQSection.astro';
 
 const breadcrumbs = [
-  { name: 'Recomendados', url: '/recomendados' }
+  { name: 'Recomendados', url: '/recomendados/' }
+];
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  'name': 'Equipos y Accesorios Recomendados para Televisión en Chile 2026',
+  'description': 'Selección curada de los mejores Smart TVs, Streaming Sticks y Antenas Digitales para TVD en Chile.',
+  'itemListElement': [
+    {
+      '@type': 'ListItem',
+      'position': 1,
+      'name': 'Smart TV TCL 55" QD-Mini LED UHD 4K P8L',
+      'url': 'https://hogartv.cl/recomendados/#tcl-c655-55'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 2,
+      'name': 'Google Chromecast con Google TV 4K',
+      'url': 'https://hogartv.cl/recomendados/#chromecast-google-tv'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 3,
+      'name': 'Roku Streaming Stick HD con Control por Voz',
+      'url': 'https://hogartv.cl/recomendados/#roku-express-4k'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 4,
+      'name': 'Smart TV Samsung 55" 4K Crystal UHD DU7000',
+      'url': 'https://hogartv.cl/recomendados/#samsung-du7000-55'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 5,
+      'name': 'Smart TV Hisense 55" 4K Mini-LED U6K',
+      'url': 'https://hogartv.cl/recomendados/#hisense-u6k-55'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 6,
+      'name': 'Antena Digital HDTV Interior / Exterior Amplificada',
+      'url': 'https://hogartv.cl/recomendados/#antena-tvd-chile'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 7,
+      'name': 'Decodificador TV Digital TDT ISDB-Tb para Chile',
+      'url': 'https://hogartv.cl/recomendados/#decodificador-tvd'
+    }
+  ]
+};
+
+const purchaseFaqs = [
+  {
+    question: '¿Es seguro comprar a través de los enlaces recomendados en HogarTV.cl?',
+    answer: 'Sí, totalmente seguro. Todos nuestros enlaces dirigen a publicaciones oficiales o tiendas verificadas en plataformas líderes de Chile (como Mercado Libre con programa de Compra Protegida y entrega Mercado Envíos). Tu transacción y garantía son directas con la plataforma de compra.'
+  },
+  {
+    question: '¿Todos los Smart TVs recomendados cuentan con sintonizador digital para Chile?',
+    answer: 'Sí. Todos los modelos comercializados oficialmente en Chile que recomendamos cumplen por ley con la norma técnica ISDB-Tb (sello TVD declarado ante SUBTEL), permitiendo captar canales HD abiertos conectando una antena sin requerir decodificador externo.'
+  },
+  {
+    question: '¿Qué me conviene más: comprar un Streaming Stick (Roku / Chromecast) o cambiar el televisor?',
+    answer: 'Si tu televisor actual tiene buena calidad de imagen y pantalla funcionando bien pero su sistema se volvió lento o ya no actualiza aplicaciones (como Netflix, Disney+ o Zapping), un TV Stick como Chromecast 4K o Roku es la opción más económica e inteligente, ahorrándote más del 80% frente a comprar un televisor nuevo.'
+  },
+  {
+    question: '¿Necesito pagar alguna mensualidad para ver canales en una antena TVD o decodificador?',
+    answer: 'No. La Televisión Digital Abierta (TVD) bajo norma ISDB-Tb en Chile es 100% gratuita por ley. No requiere contratos, tarjetas de crédito ni suscripciones. Solo compras el equipo o antena una sola vez.'
+  }
 ];
 ---
 
@@ -13,137 +84,231 @@ const breadcrumbs = [
   breadcrumbs={breadcrumbs}
 >
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="text-center mb-12">
-      <h1 class="text-4xl font-extrabold text-white mb-4">Escaparate de Recomendados</h1>
-      <p class="text-lg text-slate-300 max-w-2xl mx-auto">
-        Selección curada de los mejores equipos y accesorios para mejorar tu experiencia de televisión. Comprando a través de estos enlaces apoyas a HogarTV.cl sin costo extra para ti.
+    <div class="text-center mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-400 text-xs font-semibold mb-4">
+        <span>⭐</span> Selección Verificada 2026
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Escaparate de Recomendados</h1>
+      <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto">
+        Equipos analizados y probados para resolver tus necesidades de entretenimiento en Chile: imagen 4K, streaming ágil y recepción digital abierta gratuita.
       </p>
     </div>
 
-    <div class="space-y-8">
+    <!-- TABS DE FILTRO RÁPIDO DE CATEGORÍAS -->
+    <div class="flex items-center justify-center flex-wrap gap-2 sm:gap-3 mb-10" id="filter-tabs">
+      <button
+        type="button"
+        data-filter="all"
+        class="filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-brand-500 text-slate-950 shadow-lg shadow-brand-500/20"
+      >
+        Todos (7)
+      </button>
+      <button
+        type="button"
+        data-filter="smart-tv"
+        class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-surface-card border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700"
+      >
+        📺 Smart TVs (3)
+      </button>
+      <button
+        type="button"
+        data-filter="streaming"
+        class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-surface-card border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700"
+      >
+        🍿 Streaming Sticks (2)
+      </button>
+      <button
+        type="button"
+        data-filter="tv-abierta"
+        class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-surface-card border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700"
+      >
+        📡 Antenas y TDT (2)
+      </button>
+    </div>
+
+    <!-- LISTADO DE PRODUCTOS FILTRABLE -->
+    <div class="space-y-8" id="products-list">
       
-      <ProductCard
-        productKey="tcl-c655-55"
-        isFirst={true}
-        title='Smart TV TCL 55" QD-Mini LED UHD 4K P8L'
-        brand="TCL"
-        badge="🏆 Mejor Smart TV Calidad / Precio"
-        specs={["55 Pulgadas 4K", "Panel QD-Mini LED", "Tasa de Refresco 144Hz", "Google TV Oficial", "Dolby Vision & Atmos"]}
-        pros={[
-          "Contraste cinematográfico y brillo extremo",
-          "Google TV oficial con Play Store Chile (Zapping, DGO, Disney+)",
-          "Fluidez perfecta para deportes y videojuegos"
-        ]}
-        cons={[
-    "Requiere cable HDMI 2.1 para jugar a 144Hz en consolas de última generación"
-  ]}
-      />
+      <div class="product-item" data-category="smart-tv">
+        <ProductCard
+          productKey="tcl-c655-55"
+          isFirst={true}
+          title='Smart TV TCL 55" QD-Mini LED UHD 4K P8L'
+          brand="TCL"
+          badge="🏆 Mejor Smart TV Calidad / Precio"
+          specs={["55 Pulgadas 4K", "Panel QD-Mini LED", "Tasa de Refresco 144Hz", "Google TV Oficial", "Dolby Vision & Atmos"]}
+          pros={[
+            "Contraste cinematográfico y brillo extremo",
+            "Google TV oficial con Play Store Chile (Zapping, DGO, Disney+)",
+            "Fluidez perfecta para deportes y videojuegos"
+          ]}
+          cons={[
+            "Requiere cable HDMI 2.1 para jugar a 144Hz en consolas de última generación"
+          ]}
+        />
+      </div>
 
-      <ProductCard
-        productKey="chromecast-google-tv"
-        title="Google Chromecast con Google TV 4K"
-        brand="Google"
-        badge="🚀 Convierte cualquier TV en Smart TV"
-        specs={["Resolución 4K UHD", "Dolby Vision", "Google Assistant por voz", "Control remoto incluido"]}
-        pros={[
-          "Reúne todas tus películas y series en una sola pantalla",
-          "Permite instalar cualquier aplicación Android",
-          "El control remoto enciende y apaga tu televisor"
-        ]}
-        cons={[
-    "Almacenamiento interno limitado (4GB libres) si instalas demasiadas aplicaciones"
-  ]}
-      />
+      <div class="product-item" data-category="streaming">
+        <ProductCard
+          productKey="chromecast-google-tv"
+          title="Google Chromecast con Google TV 4K"
+          brand="Google"
+          badge="🚀 Convierte cualquier TV en Smart TV"
+          specs={["Resolución 4K UHD", "Dolby Vision", "Google Assistant por voz", "Control remoto incluido"]}
+          pros={[
+            "Reúne todas tus películas y series en una sola pantalla",
+            "Permite instalar cualquier aplicación Android",
+            "El control remoto enciende y apaga tu televisor"
+          ]}
+          cons={[
+            "Almacenamiento interno limitado (4GB libres) si instalas demasiadas aplicaciones"
+          ]}
+        />
+      </div>
 
-      <ProductCard
-        productKey="roku-express-4k"
-        title="Roku 3840S2 Streaming Stick HD con Control por Voz"
-        brand="Roku"
-        badge="🥇 El Más Fácil de Usar"
-        specs={["Streaming Stick compacto", "Control remoto por voz", "WiFi largo alcance", "Apple AirPlay"]}
-        pros={[
-          "Control remoto con comando por voz integrado",
-          "Formato Stick discreto que se oculta tras la TV",
-          "Compatible con Zapping, Netflix, DGO, Disney+ y YouTube",
-          "Se configura en menos de 5 minutos"
-        ]}
-        cons={[
-    "No permite instalar aplicaciones fuera de su tienda oficial (no soporta APKs Android)"
-  ]}
-      />
+      <div class="product-item" data-category="streaming">
+        <ProductCard
+          productKey="roku-express-4k"
+          title="Roku 3840S2 Streaming Stick HD con Control por Voz"
+          brand="Roku"
+          badge="🥇 El Más Fácil de Usar"
+          specs={["Streaming Stick compacto", "Control remoto por voz", "WiFi largo alcance", "Apple AirPlay"]}
+          pros={[
+            "Control remoto con comando por voz integrado",
+            "Formato Stick discreto que se oculta tras la TV",
+            "Compatible con Zapping, Netflix, DGO, Disney+ y YouTube",
+            "Se configura en menos de 5 minutos"
+          ]}
+          cons={[
+            "No permite instalar aplicaciones fuera de su tienda oficial (no soporta APKs Android)"
+          ]}
+        />
+      </div>
 
-      <ProductCard
-        productKey="samsung-du7000-55"
-        title='Smart TV Samsung 55" 4K Crystal UHD DU7000'
-        brand="Samsung"
-        badge="💰 La Más Vendida en Chile"
-        specs={["55 Pulgadas", "Procesador Crystal 4K", "Tizen OS", "Diseño Slim Look", "Samsung TV Plus"]}
-        pros={[
-          "Sistema Tizen OS intuitivo para toda la familia",
-          "Canales gratis por streaming con Samsung TV Plus",
-          "Marca con amplio respaldo y soporte técnico en todo Chile"
-        ]}
-        cons={[
-    "No soporta Dolby Vision (solo HDR10+)",
-    "Brillo en SDR inferior a los modelos QLED de gama media"
-  ]}
-      />
+      <div class="product-item" data-category="smart-tv">
+        <ProductCard
+          productKey="samsung-du7000-55"
+          title='Smart TV Samsung 55" 4K Crystal UHD DU7000'
+          brand="Samsung"
+          badge="💰 La Más Vendida en Chile"
+          specs={["55 Pulgadas", "Procesador Crystal 4K", "Tizen OS", "Diseño Slim Look", "Samsung TV Plus"]}
+          pros={[
+            "Sistema Tizen OS intuitivo para toda la familia",
+            "Canales gratis por streaming con Samsung TV Plus",
+            "Marca con amplio respaldo y soporte técnico en todo Chile"
+          ]}
+          cons={[
+            "No soporta Dolby Vision (solo HDR10+)",
+            "Brillo en SDR inferior a los modelos QLED de gama media"
+          ]}
+        />
+      </div>
 
-      <ProductCard
-        productKey="hisense-u6k-55"
-        title='Smart TV Hisense 55" 4K Mini-LED U6K'
-        brand="Hisense"
-        badge="👑 Mayor Brillo y Contraste"
-        specs={["55 Pulgadas", "Tecnología Mini-LED", "Google TV", "Dolby Vision & Atmos"]}
-        pros={[
-          "Negros profundos y gran nivel de brillo para salas iluminadas",
-          "Google TV nativo con todas las apps de streaming chilenas",
-          "Excelente relación precio/tecnología en Mini-LED"
-        ]}
-        cons={[
-    "El diseño de las patas de soporte requiere un mueble bastante ancho"
-  ]}
-      />
+      <div class="product-item" data-category="smart-tv">
+        <ProductCard
+          productKey="hisense-u6k-55"
+          title='Smart TV Hisense 55" 4K Mini-LED U6K'
+          brand="Hisense"
+          badge="👑 Mayor Brillo y Contraste"
+          specs={["55 Pulgadas", "Tecnología Mini-LED", "Google TV", "Dolby Vision & Atmos"]}
+          pros={[
+            "Negros profundos y gran nivel de brillo para salas iluminadas",
+            "Google TV nativo con todas las apps de streaming chilenas",
+            "Excelente relación precio/tecnología en Mini-LED"
+          ]}
+          cons={[
+            "El diseño de las patas de soporte requiere un mueble bastante ancho"
+          ]}
+        />
+      </div>
 
-      <ProductCard
-        productKey="antena-tvd-chile"
-        title="Antena Digital HDTV Interior / Exterior Amplificada"
-        brand="Genérica HDTV"
-        badge="📡 Indispensable para TV Abierta"
-        specs={["Recepción 360°", "Frecuencia UHF / VHF", "Base magnética", "Cable coaxial largo"]}
-        pros={[
-          "Instalación instantánea: conectar y escanear canales",
-          "Capta señales digitales (TVN, Mega, CHV) en alta definición gratis",
-          "Evita pagar mensualidades de cable"
-        ]}
-        cons={[
-    "En sótanos o zonas muy alejadas de la antena repetidora puede requerir una instalación de techo"
-  ]}
-      />
+      <div class="product-item" data-category="tv-abierta">
+        <ProductCard
+          productKey="antena-tvd-chile"
+          title="Antena Digital HDTV Interior / Exterior Amplificada"
+          brand="Genérica HDTV"
+          badge="📡 Indispensable para TV Abierta"
+          specs={["Recepción 360°", "Frecuencia UHF / VHF", "Base magnética", "Cable coaxial largo"]}
+          pros={[
+            "Instalación instantánea: conectar y escanear canales",
+            "Capta señales digitales (TVN, Mega, CHV) en alta definición gratis",
+            "Evita pagar mensualidades de cable"
+          ]}
+          cons={[
+            "En sótanos o zonas muy alejadas de la antena repetidora puede requerir una instalación de techo"
+          ]}
+        />
+      </div>
 
-      <ProductCard
-        productKey="decodificador-tvd"
-        title="Decodificador TV Digital TDT ISDB-Tb"
-        brand="TDT"
-        badge="📺 Para TVs sin Sintonizador Digital"
-        specs={["Norma ISDB-Tb (estándar Chile)", "Salida HDMI y RCA", "Compatible con antena externa", "Control remoto incluido"]}
-        pros={[
-          "Da vida a televisores antiguos sin sintonizador digital",
-          "Recibe canales abiertos HD (TVN, Mega, CHV, Canal 13) gratis",
-          "Instalación en menos de 5 minutos: conectar y escanear"
-        ]}
-        cons={[
-          "Requiere antena externa para mejor recepción en zonas alejadas",
-          "No permite streaming por internet (solo TV abierta)"
-        ]}
-      />
+      <div class="product-item" data-category="tv-abierta">
+        <ProductCard
+          productKey="decodificador-tvd"
+          title="Decodificador TV Digital TDT ISDB-Tb para Chile"
+          brand="TDT"
+          badge="📺 Para TVs sin Sintonizador Digital"
+          specs={["Norma ISDB-Tb (estándar Chile)", "Salida HDMI y RCA", "Compatible con antena externa", "Control remoto incluido"]}
+          pros={[
+            "Da vida a televisores antiguos sin sintonizador digital",
+            "Recibe canales abiertos HD (TVN, Mega, CHV, Canal 13) gratis",
+            "Instalación en menos de 5 minutos: conectar y escanear"
+          ]}
+          cons={[
+            "Requiere antena externa para mejor recepción en zonas alejadas",
+            "No permite streaming por internet (solo TV abierta)"
+          ]}
+        />
+      </div>
 
     </div>
+
+    <!-- SECCIÓN DE PREGUNTAS FRECUENTES SOBRE COMPRA Y AFILIADOS -->
+    <div class="mt-14">
+      <FAQSection
+        title="Preguntas Frecuentes sobre Equipos y Compras"
+        items={purchaseFaqs}
+      />
+    </div>
     
-    <div class="mt-12 text-center text-sm text-slate-400 bg-slate-900/50 p-6 rounded-2xl border border-slate-800">
+    <div class="mt-12 text-center text-xs sm:text-sm text-slate-400 bg-slate-900/50 p-6 rounded-2xl border border-slate-800">
       <p>
-        <strong>Aviso de Afiliados:</strong> HogarTV.cl participa en programas de afiliados. Si compras a través de los enlaces de esta página, podríamos recibir una pequeña comisión sin ningún costo adicional para ti. Esto nos ayuda a mantener el sitio funcionando. ¡Gracias por tu apoyo!
+        <strong>Aviso de Transparencia y Afiliados:</strong> HogarTV.cl participa en programas de afiliados (incluyendo Mercado Libre). Si compras a través de los enlaces de esta página, podríamos recibir una pequeña comisión sin ningún costo adicional para ti. Esto nos ayuda a mantener independientes nuestros análisis técnicos. ¡Gracias por apoyar el contenido de calidad!
       </p>
     </div>
   </div>
+
+  <!-- Schema.org ItemList JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+
+  <!-- Script interactivo de filtrado de pestañas -->
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const buttons = document.querySelectorAll('.filter-btn');
+      const items = document.querySelectorAll('.product-item');
+
+      buttons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const filter = btn.getAttribute('data-filter');
+
+          // Actualizar estilos activos de botones
+          buttons.forEach((b) => {
+            b.classList.remove('active', 'bg-brand-500', 'text-slate-950', 'shadow-lg', 'shadow-brand-500/20');
+            b.classList.add('bg-surface-card', 'border', 'border-slate-800', 'text-slate-300');
+          });
+
+          btn.classList.add('active', 'bg-brand-500', 'text-slate-950', 'shadow-lg', 'shadow-brand-500/20');
+          btn.classList.remove('bg-surface-card', 'border', 'border-slate-800', 'text-slate-300');
+
+          // Filtrar items
+          items.forEach((item) => {
+            const cat = item.getAttribute('data-category');
+            if (filter === 'all' || cat === filter) {
+              item.style.display = 'block';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
 </BaseLayout>

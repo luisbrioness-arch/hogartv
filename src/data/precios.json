@@ -6,7 +6,33 @@
     "precioMinVisto": "$ 329.990 CLP",
     "tiendaReferencia": "Mercado Libre Chile",
     "fechaVerificacion": "2026-10-17",
-    "enOferta": true
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 369.990 CLP",
+        "badge": "🔥 Mejor Precio",
+        "destacada": true,
+        "envio": "Envío Gratis Rápido",
+        "urlKey": "tcl-c655-55"
+      },
+      {
+        "tienda": "Falabella Chile",
+        "precio": "$ 399.990 CLP",
+        "badge": "Retail Oficial",
+        "destacada": false,
+        "envio": "Despacho o Retiro",
+        "url": "https://www.falabella.com/falabella-cl/search?Ntt=tcl+55+c655"
+      },
+      {
+        "tienda": "Paris.cl",
+        "precio": "$ 429.990 CLP",
+        "badge": "Precio Lista",
+        "destacada": false,
+        "envio": "Despacho a Domicilio",
+        "url": "https://www.paris.cl/search?q=tcl+55+c655"
+      }
+    ]
   },
   "hisense-u6k-55": {
     "precioCLP": 399990,
@@ -15,7 +41,33 @@
     "precioMinVisto": "$ 369.990 CLP",
     "tiendaReferencia": "Mercado Libre Chile",
     "fechaVerificacion": "2026-10-17",
-    "enOferta": false
+    "enOferta": false,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 399.990 CLP",
+        "badge": "🔥 Mejor Oferta",
+        "destacada": true,
+        "envio": "Envío Gratis a Todo Chile",
+        "urlKey": "hisense-u6k-55"
+      },
+      {
+        "tienda": "Falabella Chile",
+        "precio": "$ 429.990 CLP",
+        "badge": "Retail Oficial",
+        "destacada": false,
+        "envio": "Despacho o Retiro",
+        "url": "https://www.falabella.com/falabella-cl/search?Ntt=hisense+55+u6k"
+      },
+      {
+        "tienda": "Paris.cl",
+        "precio": "$ 439.990 CLP",
+        "badge": "Precio Lista",
+        "destacada": false,
+        "envio": "Despacho a Domicilio",
+        "url": "https://www.paris.cl/search?q=hisense+55+u6k"
+      }
+    ]
   },
   "samsung-du7000-55": {
     "precioCLP": 349990,
@@ -24,7 +76,33 @@
     "precioMinVisto": "$ 319.990 CLP",
     "tiendaReferencia": "Mercado Libre Chile",
     "fechaVerificacion": "2026-10-17",
-    "enOferta": false
+    "enOferta": false,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 349.990 CLP",
+        "badge": "🔥 Mejor Precio",
+        "destacada": true,
+        "envio": "Envío Gratis Rápido",
+        "urlKey": "samsung-du7000-55"
+      },
+      {
+        "tienda": "Falabella Chile",
+        "precio": "$ 369.990 CLP",
+        "badge": "Retail Oficial",
+        "destacada": false,
+        "envio": "Despacho o Retiro en Tienda",
+        "url": "https://www.falabella.com/falabella-cl/search?Ntt=samsung+55+du7000"
+      },
+      {
+        "tienda": "Paris.cl",
+        "precio": "$ 379.990 CLP",
+        "badge": "Precio Lista",
+        "destacada": false,
+        "envio": "Despacho a Domicilio",
+        "url": "https://www.paris.cl/search?q=samsung+55+du7000"
+      }
+    ]
   },
   "antena-tvd-chile": {
     "precioCLP": 9990,
@@ -33,7 +111,25 @@
     "precioMinVisto": "$ 3.990 CLP",
     "tiendaReferencia": "Mercado Libre Chile",
     "fechaVerificacion": "2026-10-17",
-    "enOferta": true
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 9.990 CLP",
+        "badge": "🔥 Más Vendida",
+        "destacada": true,
+        "envio": "Envío Full Inmediato",
+        "urlKey": "antena-tvd-chile"
+      },
+      {
+        "tienda": "Sodimac / Retail",
+        "precio": "$ 14.990 CLP",
+        "badge": "Retail Físico",
+        "destacada": false,
+        "envio": "Compra en Sucursal",
+        "url": "https://www.falabella.com/falabella-cl/search?Ntt=antena+tvd+digital"
+      }
+    ]
   },
   "roku-express-4k": {
     "precioCLP": 44990,
@@ -42,7 +138,33 @@
     "precioMinVisto": "$ 38.990 CLP",
     "tiendaReferencia": "Mercado Libre Chile",
     "fechaVerificacion": "2026-10-17",
-    "enOferta": true
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 44.990 CLP",
+        "badge": "🔥 Mejor Precio",
+        "destacada": true,
+        "envio": "Envío Gratis 24 Horas",
+        "urlKey": "roku-express-4k"
+      },
+      {
+        "tienda": "Falabella Chile",
+        "precio": "$ 49.990 CLP",
+        "badge": "Retail Oficial",
+        "destacada": false,
+        "envio": "Despacho o Retiro",
+        "url": "https://www.falabella.com/falabella-cl/search?Ntt=roku+streaming+stick"
+      },
+      {
+        "tienda": "Paris.cl",
+        "precio": "$ 52.990 CLP",
+        "badge": "Precio Lista",
+        "destacada": false,
+        "envio": "Despacho a Domicilio",
+        "url": "https://www.paris.cl/search?q=roku+streaming+stick"
+      }
+    ]
   },
   "chromecast-google-tv": {
     "precioCLP": 54990,
@@ -51,7 +173,33 @@
     "precioMinVisto": "$ 46.990 CLP",
     "tiendaReferencia": "Mercado Libre Chile",
     "fechaVerificacion": "2026-10-17",
-    "enOferta": false
+    "enOferta": false,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 54.990 CLP",
+        "badge": "🔥 Mejor Precio",
+        "destacada": true,
+        "envio": "Envío Gratis Rápido",
+        "urlKey": "chromecast-google-tv"
+      },
+      {
+        "tienda": "Falabella Chile",
+        "precio": "$ 59.990 CLP",
+        "badge": "Retail Oficial",
+        "destacada": false,
+        "envio": "Despacho o Retiro",
+        "url": "https://www.falabella.com/falabella-cl/search?Ntt=chromecast+con+google+tv+4k"
+      },
+      {
+        "tienda": "Paris.cl",
+        "precio": "$ 64.990 CLP",
+        "badge": "Precio Lista",
+        "destacada": false,
+        "envio": "Despacho a Domicilio",
+        "url": "https://www.paris.cl/search?q=chromecast+google+tv"
+      }
+    ]
   },
   "decodificador-tvd": {
     "precioCLP": 16990,
@@ -60,6 +208,164 @@
     "precioMinVisto": "$ 13.990 CLP",
     "tiendaReferencia": "Mercado Libre Chile",
     "fechaVerificacion": "2026-10-17",
-    "enOferta": false
+    "enOferta": false,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 16.990 CLP",
+        "badge": "🔥 Mejor Precio",
+        "destacada": true,
+        "envio": "Envío Rápido",
+        "urlKey": "decodificador-tvd"
+      },
+      {
+        "tienda": "Ferreterías / Retail",
+        "precio": "$ 22.990 CLP",
+        "badge": "Precio Regular",
+        "destacada": false,
+        "envio": "Retiro Local",
+        "url": "https://www.falabella.com/falabella-cl/search?Ntt=decodificador+digital+isdbt"
+      }
+    ]
+  },
+  "samsung-soundbar-b550": {
+    "precioCLP": 139990,
+    "precioFormateado": "$ 139.990 CLP",
+    "rango": "$ 129.990 - $ 179.990 CLP",
+    "precioMinVisto": "$ 119.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-10-17",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 139.990 CLP",
+        "badge": "🔥 Mejor Precio",
+        "destacada": true,
+        "envio": "Envío Gratis Rápido",
+        "urlKey": "samsung-soundbar-b550"
+      },
+      {
+        "tienda": "Falabella Chile",
+        "precio": "$ 169.990 CLP",
+        "badge": "Retail Oficial",
+        "destacada": false,
+        "envio": "Despacho o Retiro",
+        "url": "https://www.falabella.com/falabella-cl/search?Ntt=soundbar+samsung+hw-b550"
+      },
+      {
+        "tienda": "Paris.cl",
+        "precio": "$ 179.990 CLP",
+        "badge": "Precio Lista",
+        "destacada": false,
+        "envio": "Despacho a Domicilio",
+        "url": "https://www.paris.cl/search?q=soundbar+samsung+b550"
+      }
+    ]
+  },
+  "jbl-soundbar-sb170": {
+    "precioCLP": 149990,
+    "precioFormateado": "$ 149.990 CLP",
+    "rango": "$ 139.990 - $ 189.990 CLP",
+    "precioMinVisto": "$ 129.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-10-17",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 149.990 CLP",
+        "badge": "🔥 Mejor Precio",
+        "destacada": true,
+        "envio": "Envío Gratis Rápido",
+        "urlKey": "jbl-soundbar-sb170"
+      },
+      {
+        "tienda": "Falabella Chile",
+        "precio": "$ 179.990 CLP",
+        "badge": "Retail Oficial",
+        "destacada": false,
+        "envio": "Despacho o Retiro",
+        "url": "https://www.falabella.com/falabella-cl/search?Ntt=jbl+cinema+sb170"
+      },
+      {
+        "tienda": "Paris.cl",
+        "precio": "$ 189.990 CLP",
+        "badge": "Precio Lista",
+        "destacada": false,
+        "envio": "Despacho a Domicilio",
+        "url": "https://www.paris.cl/search?q=jbl+sb170"
+      }
+    ]
+  },
+  "proyector-magcubic-hy320": {
+    "precioCLP": 59990,
+    "precioFormateado": "$ 59.990 CLP",
+    "rango": "$ 49.990 - $ 79.990 CLP",
+    "precioMinVisto": "$ 44.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-10-17",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 59.990 CLP",
+        "badge": "🔥 Mejor Oferta Nacional",
+        "destacada": true,
+        "envio": "Envío Gratis 24 Horas",
+        "urlKey": "proyector-magcubic-hy320"
+      },
+      {
+        "tienda": "Falabella Marketplace",
+        "precio": "$ 69.990 CLP",
+        "badge": "Marketplace",
+        "destacada": false,
+        "envio": "Despacho a Domicilio",
+        "url": "https://www.falabella.com/falabella-cl/search?Ntt=magcubic+hy320"
+      },
+      {
+        "tienda": "AliExpress Direct",
+        "precio": "$ 49.990 CLP",
+        "badge": "Importación",
+        "destacada": false,
+        "envio": "Despacho Internacional 15 días",
+        "url": "https://es.aliexpress.com/w/wholesale-magcubic-hy320.html"
+      }
+    ]
+  },
+  "soporte-tv-articulado-pesado": {
+    "precioCLP": 19990,
+    "precioFormateado": "$ 19.990 CLP",
+    "rango": "$ 16.990 - $ 29.990 CLP",
+    "precioMinVisto": "$ 14.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-10-17",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 19.990 CLP",
+        "badge": "🔥 Mejor Precio",
+        "destacada": true,
+        "envio": "Envío Rápido a Todo Chile",
+        "urlKey": "soporte-tv-articulado-pesado"
+      },
+      {
+        "tienda": "Sodimac / Falabella",
+        "precio": "$ 27.990 CLP",
+        "badge": "Retail Físico",
+        "destacada": false,
+        "envio": "Retiro o Despacho",
+        "url": "https://www.falabella.com/falabella-cl/search?Ntt=soporte+tv+articulado+75"
+      },
+      {
+        "tienda": "Easy Chile",
+        "precio": "$ 29.990 CLP",
+        "badge": "Precio Lista",
+        "destacada": false,
+        "envio": "Compra en Sucursal",
+        "url": "https://www.easy.cl/search?q=soporte+tv+articulado"
+      }
+    ]
   }
 }

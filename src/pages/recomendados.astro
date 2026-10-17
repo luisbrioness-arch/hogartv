@@ -11,7 +11,7 @@ const itemListSchema = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
   'name': 'Equipos y Accesorios Recomendados para Televisión en Chile 2026',
-  'description': 'Selección curada y categorizada de los mejores Smart TVs, Streaming Sticks y Antenas Digitales para TVD en Chile.',
+  'description': 'Selección curada y categorizada de los mejores Smart TVs, Streaming Sticks, Antenas Digitales y Sistemas de Audio en Chile.',
   'itemListElement': [
     {
       '@type': 'ListItem',
@@ -54,6 +54,30 @@ const itemListSchema = {
       'position': 7,
       'name': 'Decodificador TV Digital TDT ISDB-Tb para Chile',
       'url': 'https://hogartv.cl/recomendados/#decodificador-tvd'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 8,
+      'name': 'Barra de Sonido Samsung HW-B550 2.1ch Subwoofer Inalámbrico 410W',
+      'url': 'https://hogartv.cl/recomendados/#samsung-soundbar-b550'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 9,
+      'name': 'Barra de Sonido JBL Cinema SB170 2.1 Canales con Subwoofer 220W',
+      'url': 'https://hogartv.cl/recomendados/#jbl-soundbar-sb170'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 10,
+      'name': 'Proyector Inteligente Portátil Magcubic HY320 Full HD Android',
+      'url': 'https://hogartv.cl/recomendados/#proyector-magcubic-hy320'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 11,
+      'name': 'Soporte TV Móvil Articulado Doble Brazo Reforzado 32 a 75 Pulgadas VESA',
+      'url': 'https://hogartv.cl/recomendados/#soporte-tv-articulado-pesado'
     }
   ]
 };
@@ -68,6 +92,10 @@ const purchaseFaqs = [
     answer: 'Sí. Todos los modelos comercializados oficialmente en Chile que recomendamos cumplen por ley con la norma técnica ISDB-Tb (sello TVD declarado ante SUBTEL), permitiendo captar canales HD abiertos conectando una antena pasiva sin requerir decodificador externo.'
   },
   {
+    question: '¿Por qué conviene agregar una barra de sonido a un Smart TV moderno?',
+    answer: 'Los televisores modernos son extremadamente delgados y no tienen espacio físico para altavoces que generen frecuencias graves. Una barra de sonido 2.1 con subwoofer dedicado (como Samsung o JBL) transforma la experiencia de cine en casa y aclara los diálogos para que no tengas que subir el volumen excesivamente.'
+  },
+  {
     question: '¿Qué me conviene más: comprar un Streaming Stick (Roku / Chromecast) o cambiar el televisor?',
     answer: 'Si tu televisor actual tiene buena calidad de imagen y pantalla funcionando bien pero su sistema se volvió lento o ya no actualiza aplicaciones (como Netflix, Disney+ o Zapping), un TV Stick como Chromecast 4K o Roku es la opción más inteligente y económica, ahorrándote más del 80% frente a comprar un televisor nuevo.'
   },
@@ -79,8 +107,8 @@ const purchaseFaqs = [
 ---
 
 <BaseLayout
-  title="Tienda y Equipos Recomendados en Chile: Smart TVs, Streaming y Antenas"
-  description="Catálogo por secciones de los mejores Smart TVs 4K, TV Sticks (Roku / Chromecast) y antenas digitales TVD en Chile con precios verificados en Mercado Libre."
+  title="Tienda y Equipos Recomendados en Chile: Smart TVs, Audio, Streaming y Antenas"
+  description="Catálogo por secciones de los mejores Smart TVs 4K, barras de sonido, proyectores, TV Sticks (Roku / Chromecast) y antenas digitales TVD en Chile con comparador multitienda."
   breadcrumbs={breadcrumbs}
 >
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
@@ -94,12 +122,12 @@ const purchaseFaqs = [
         Escaparate de Equipos Recomendados
       </h1>
       <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
-        Elige la categoría que deseas mejorar en tu hogar: compra pantallas 4K al mejor precio, moderniza tu tele con streaming o capta canales nacionales en HD sin pagar mensualidades.
+        Elige la categoría que deseas mejorar en tu hogar: compra pantallas 4K al mejor precio, potencia el audio de tus películas, moderniza tu tele con streaming o capta canales nacionales en HD sin pagar mensualidades.
       </p>
     </header>
 
-    <!-- SECTOR VISUAL SUPERIOR: 3 TARJETAS DE SECCIÓN PARA ELEGIR ARRIBA -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10" id="secciones-selector-superior">
+    <!-- SECTOR VISUAL SUPERIOR: 4 TARJETAS DE SECCIÓN PARA ELEGIR ARRIBA -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10" id="secciones-selector-superior">
       
       <!-- SECCIÓN 1: SMART TVS -->
       <a
@@ -114,11 +142,11 @@ const purchaseFaqs = [
               3 Modelos
             </span>
           </div>
-          <h2 class="text-lg font-bold text-white group-hover:text-brand-300 transition-colors mb-1.5">
+          <h2 class="text-base sm:text-lg font-bold text-white group-hover:text-brand-300 transition-colors mb-1.5">
             Smart TVs 4K
           </h2>
           <p class="text-xs text-slate-400 leading-relaxed mb-4">
-            Televisores QLED y Mini-LED de 55 pulgadas probados con el mejor rendimiento por peso en Chile.
+            Televisores QLED y Mini-LED de 55" probados con el mejor rendimiento por peso en Chile.
           </p>
         </div>
         <div class="flex items-center gap-1.5 text-xs font-bold text-brand-400 group-hover:translate-x-1 transition-transform">
@@ -127,7 +155,33 @@ const purchaseFaqs = [
         </div>
       </a>
 
-      <!-- SECCIÓN 2: STREAMING STICKS -->
+      <!-- SECCIÓN 2: AUDIO Y SOPORTES -->
+      <a
+        href="#seccion-audio-accesorios"
+        data-cat-target="audio-accesorios"
+        class="cat-card group p-5 rounded-2xl bg-gradient-to-br from-slate-900 via-surface-card to-slate-900 border border-slate-800 hover:border-amber-500 hover:shadow-xl hover:shadow-amber-500/10 transition-all duration-300 flex flex-col justify-between"
+      >
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-3xl">🔊</span>
+            <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
+              4 Equipos
+            </span>
+          </div>
+          <h2 class="text-base sm:text-lg font-bold text-white group-hover:text-amber-300 transition-colors mb-1.5">
+            Audio & Soportes
+          </h2>
+          <p class="text-xs text-slate-400 leading-relaxed mb-4">
+            Barras de sonido Dolby, proyector portátil Smart y soportes de muro reforzados.
+          </p>
+        </div>
+        <div class="flex items-center gap-1.5 text-xs font-bold text-amber-400 group-hover:translate-x-1 transition-transform">
+          <span>Ver Audio & Soportes</span>
+          <span>↓</span>
+        </div>
+      </a>
+
+      <!-- SECCIÓN 3: STREAMING STICKS -->
       <a
         href="#seccion-streaming"
         data-cat-target="streaming"
@@ -140,11 +194,11 @@ const purchaseFaqs = [
               2 Equipos
             </span>
           </div>
-          <h2 class="text-lg font-bold text-white group-hover:text-purple-300 transition-colors mb-1.5">
-            Streaming & TV Sticks
+          <h2 class="text-base sm:text-lg font-bold text-white group-hover:text-purple-300 transition-colors mb-1.5">
+            Streaming Sticks
           </h2>
           <p class="text-xs text-slate-400 leading-relaxed mb-4">
-            Chromecast 4K y Roku Stick para revivir cualquier televisor con Google TV o sistema fluido.
+            Chromecast 4K y Roku Stick para revivir cualquier televisor con sistema fluido.
           </p>
         </div>
         <div class="flex items-center gap-1.5 text-xs font-bold text-purple-400 group-hover:translate-x-1 transition-transform">
@@ -153,7 +207,7 @@ const purchaseFaqs = [
         </div>
       </a>
 
-      <!-- SECCIÓN 3: ANTENAS Y TDT -->
+      <!-- SECCIÓN 4: ANTENAS Y TDT -->
       <a
         href="#seccion-tv-abierta"
         data-cat-target="tv-abierta"
@@ -166,15 +220,15 @@ const purchaseFaqs = [
               2 Soluciones
             </span>
           </div>
-          <h2 class="text-lg font-bold text-white group-hover:text-emerald-300 transition-colors mb-1.5">
+          <h2 class="text-base sm:text-lg font-bold text-white group-hover:text-emerald-300 transition-colors mb-1.5">
             Antenas TVD y TDT
           </h2>
           <p class="text-xs text-slate-400 leading-relaxed mb-4">
-            Antena amplificada 360° y decodificador digital ISDB-Tb para ver TV nacional en HD 100% gratis.
+            Antena amplificada 360° y decodificador digital ISDB-Tb para TV nacional gratis.
           </p>
         </div>
         <div class="flex items-center gap-1.5 text-xs font-bold text-emerald-400 group-hover:translate-x-1 transition-transform">
-          <span>Ver Antenas y TDT</span>
+          <span>Ver Antenas</span>
           <span>↓</span>
         </div>
       </a>
@@ -188,7 +242,7 @@ const purchaseFaqs = [
         data-filter="all"
         class="filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-brand-500 text-slate-950 shadow-lg shadow-brand-500/20"
       >
-        Mostrar Todo (7)
+        Mostrar Todo (11)
       </button>
       <button
         type="button"
@@ -196,6 +250,13 @@ const purchaseFaqs = [
         class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-surface-card border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700"
       >
         📺 Smart TVs (3)
+      </button>
+      <button
+        type="button"
+        data-filter="audio-accesorios"
+        class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-surface-card border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700"
+      >
+        🔊 Audio & Soportes (4)
       </button>
       <button
         type="button"
@@ -295,7 +356,101 @@ const purchaseFaqs = [
       </section>
 
       <!-- ========================================== -->
-      <!-- SECCIÓN 2: STREAMING & TV STICKS           -->
+      <!-- SECCIÓN 2: AUDIO, PROYECTORES Y SOPORTES   -->
+      <!-- ========================================== -->
+      <section id="seccion-audio-accesorios" class="category-section scroll-mt-24" data-category="audio-accesorios">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 mb-8 border-b-2 border-amber-500/30 gap-2">
+          <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center text-xl shrink-0">
+              🔊
+            </span>
+            <div>
+              <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                Audio, Proyectores y Soportes para TV
+              </h2>
+              <p class="text-xs sm:text-sm text-slate-400">
+                Potencia el sonido de tus películas, crea un cine en cualquier habitación o instala tu pantalla con total seguridad.
+              </p>
+            </div>
+          </div>
+          <span class="text-xs font-semibold px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 self-start sm:self-auto">
+            4 Equipos
+          </span>
+        </div>
+
+        <div class="space-y-8">
+          <ProductCard
+            productKey="samsung-soundbar-b550"
+            title="Barra de Sonido Samsung HW-B550 2.1ch con Subwoofer Inalámbrico 410W"
+            brand="Samsung"
+            badge="🔊 Mejor Barra Calidad / Precio 2026"
+            specs={["Potencia 410W", "Subwoofer Inalámbrico", "Dolby Audio / DTS Virtual:X", "HDMI ARC & Óptico", "Modo Bass Boost"]}
+            pros={[
+              "Subwoofer inalámbrico con graves profundos para películas de acción y música",
+              "Conexión HDMI ARC para controlar el volumen con el mismo control remoto de tu televisor",
+              "Modo Voice Enhance que aclara los diálogos en teleseries y noticias",
+              "Bluetooth multiconexión para conectar dos celulares al mismo tiempo"
+            ]}
+            cons={[
+              "No cuenta con conexión WiFi directa (utiliza Bluetooth para música desde el móvil)"
+            ]}
+          />
+
+          <ProductCard
+            productKey="jbl-soundbar-sb170"
+            title="Barra de Sonido JBL Cinema SB170 2.1 Canales con Subwoofer 220W"
+            brand="JBL"
+            badge="🎵 Bajos Potentes y Claridad de Voz"
+            specs={["Potencia 220W", "Subwoofer Inalámbrico", "Dolby Digital", "HDMI ARC", "Botón dedicado Voice"]}
+            pros={[
+              "Firma de audio JBL con pegada contundente y respuesta de bajos cinematográfica",
+              "Modo de voz dedicado para escuchar conversaciones nítidas sin subir el volumen general",
+              "Instalación súper limpia: un solo cable HDMI a la tele y el subwoofer se vincula solo",
+              "Diseño compacto y elegante que cabe debajo de cualquier pantalla de 43 a 65 pulgadas"
+            ]}
+            cons={[
+              "Tiene 220W de potencia total, suficiente para salas medianas pero menor al modelo B550 de Samsung"
+            ]}
+          />
+
+          <ProductCard
+            productKey="proyector-magcubic-hy320"
+            title="Proyector Inteligente Portátil Magcubic HY320 Full HD 1080p Nativo Android 11"
+            brand="Magcubic"
+            badge="🎬 Cine Portátil en Cualquier Habitación"
+            specs={["Full HD 1080p Nativo (soporta 4K)", "Android 11 Integrado", "WiFi 6 & Bluetooth 5.0", "Giro 180° Proyección a Techo", "Hasta 150 Pulgadas"]}
+            pros={[
+              "Android 11 integrado: abre YouTube, Netflix y streaming sin conectar computadores ni cables",
+              "Cuerpo giratorio 180° para proyectar directamente al techo acostado en la cama",
+              "WiFi 6 ultrarrápido y altavoz incorporado con opción de conectar parlantes Bluetooth",
+              "Corrección trapezoidal automática que endereza la imagen al instante"
+            ]}
+            cons={[
+              "Requiere habitación en penumbra u oscura para disfrutar del mejor contraste y colores"
+            ]}
+          />
+
+          <ProductCard
+            productKey="soporte-tv-articulado-pesado"
+            title="Soporte TV Móvil Articulado Doble Brazo Reforzado 32 a 75 Pulgadas VESA"
+            brand="Universal VESA"
+            badge="🔩 Máxima Seguridad y Flexibilidad de Giro"
+            specs={["Pantallas de 32\" a 75\"", "Doble Brazo de Acero SPCC", "Soporta hasta 45 kg", "Giro 120° e Inclinación +15°/-5°", "VESA 100x100 a 600x400"]}
+            pros={[
+              "Doble brazo reforzado con acero laminado que no cede ni se pandea con pantallas pesadas",
+              "Permite girar el televisor hacia el comedor o living con un suave empujón con la mano",
+              "Incluye nivel de burbuja y set completo de pernos y tarugos para concreto y ladrillo",
+              "Extensión de hasta 40 cm del muro para conectar fácilmente cables HDMI traseros"
+            ]}
+            cons={[
+              "Para muros de tabiquería o yeso-cartón (Volcanita) requiere anclar a los montantes o pies derechos"
+            ]}
+          />
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECCIÓN 3: STREAMING & TV STICKS           -->
       <!-- ========================================== -->
       <section id="seccion-streaming" class="category-section scroll-mt-24" data-category="streaming">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 mb-8 border-b-2 border-purple-500/30 gap-2">
@@ -355,7 +510,7 @@ const purchaseFaqs = [
       </section>
 
       <!-- ========================================== -->
-      <!-- SECCIÓN 3: ANTENAS TVD Y TDT               -->
+      <!-- SECCIÓN 4: ANTENAS TVD Y TDT               -->
       <!-- ========================================== -->
       <section id="seccion-tv-abierta" class="category-section scroll-mt-24" data-category="tv-abierta">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 mb-8 border-b-2 border-emerald-500/30 gap-2">
@@ -428,7 +583,7 @@ const purchaseFaqs = [
     <!-- AVISO DE AFILIADOS Y TRANSPARENCIA -->
     <div class="mt-12 text-center text-xs sm:text-sm text-slate-400 bg-slate-900/60 p-6 rounded-2xl border border-slate-800">
       <p>
-        <strong>Aviso de Transparencia y Afiliados:</strong> HogarTV.cl participa en programas de afiliados (incluyendo Mercado Libre Chile). Si compras a través de los enlaces de esta página, podríamos recibir una pequeña comisión sin ningún costo adicional para ti. Esto nos ayuda a mantener independientes nuestros análisis técnicos. ¡Gracias por apoyar el contenido de calidad!
+        <strong>Aviso de Transparencia y Afiliados:</strong> HogarTV.cl participa en programas de afiliados (incluyendo Mercado Libre Chile y retailers oficiales). Si compras a través de los enlaces de esta página, podríamos recibir una pequeña comisión sin ningún costo adicional para ti. Esto nos ayuda a mantener independientes y actualizados nuestros análisis técnicos. ¡Gracias por apoyar el contenido de calidad!
       </p>
     </div>
   </div>
@@ -475,7 +630,7 @@ const purchaseFaqs = [
         });
       });
 
-      // Clics en las 3 tarjetas superiores de sección
+      // Clics en las tarjetas superiores de sección
       catCards.forEach((card) => {
         card.addEventListener('click', (e) => {
           const targetCategory = card.getAttribute('data-cat-target');

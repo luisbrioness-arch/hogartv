@@ -125,6 +125,16 @@ async function main() {
     }
   }
 
+  // 8. Notificar a Bing / ChatGPT Search vía IndexNow
+  const indexNowScript = path.join(rootDir, 'scripts', 'ping-indexnow.cjs');
+  if (fs.existsSync(indexNowScript)) {
+    try {
+      execSync('node scripts/ping-indexnow.cjs', { stdio: 'inherit' });
+    } catch (e) {
+      console.warn('⚠️ Nota: No se pudo ejecutar ping-indexnow.cjs:', e.message);
+    }
+  }
+
   console.log('\n==================================================');
   console.log('🎉 PROCESO COMPLETADO');
   console.log('==================================================\n');

@@ -1,0 +1,472 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+
+const breadcrumbs = [
+  { name: 'Gadgets Hogar: AliExpress vs Mercado Libre', url: '/gadgets-hogar/' },
+];
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  'name': 'Los 7 Mejores Gadgets Tecnológicos para el Hogar y TV en Chile (2026): AliExpress vs. Mercado Libre',
+  'description': 'Ranking técnico y comparativa de precios entre Mercado Libre Chile (Envío Full 24h), Falabella y AliExpress Choice para proyectores portátiles, TV Sticks, barras de sonido y antenas digitales.',
+  'itemListElement': [
+    {
+      '@type': 'ListItem',
+      'position': 1,
+      'name': 'Mini Proyector Smart Portátil Magcubic HY320 Full HD 1080p Android 11',
+      'url': 'https://hogartv.cl/gadgets-hogar/#proyector-magcubic-hy320',
+    },
+    {
+      '@type': 'ListItem',
+      'position': 2,
+      'name': 'Google Chromecast con Google TV 4K con Control por Voz',
+      'url': 'https://hogartv.cl/gadgets-hogar/#chromecast-google-tv',
+    },
+    {
+      '@type': 'ListItem',
+      'position': 3,
+      'name': 'Roku Streaming Stick HD (3840S2) con Control por Voz',
+      'url': 'https://hogartv.cl/gadgets-hogar/#roku-express-4k',
+    },
+    {
+      '@type': 'ListItem',
+      'position': 4,
+      'name': 'Barra de Sonido Samsung HW-B550 / Q600H con Subwoofer Inalámbrico',
+      'url': 'https://hogartv.cl/gadgets-hogar/#samsung-soundbar-b550',
+    },
+    {
+      '@type': 'ListItem',
+      'position': 5,
+      'name': 'Soporte TV Móvil Articulado Doble Brazo Reforzado 32 a 75 Pulgadas VESA',
+      'url': 'https://hogartv.cl/gadgets-hogar/#soporte-tv-articulado-pesado',
+    },
+    {
+      '@type': 'ListItem',
+      'position': 6,
+      'name': 'Antena Digital HDTV Interior / Exterior Amplificada 360°',
+      'url': 'https://hogartv.cl/gadgets-hogar/#antena-tvd-chile',
+    },
+    {
+      '@type': 'ListItem',
+      'position': 7,
+      'name': 'Decodificador TV Digital TDT ISDB-Tb Oficial para Chile',
+      'url': 'https://hogartv.cl/gadgets-hogar/#decodificador-tvd',
+    },
+  ],
+};
+
+const gadgetsFaqs = [
+  {
+    question: '¿Qué conviene comprar en AliExpress y qué conviene comprar en Mercado Libre desde Chile?',
+    answer: 'En AliExpress Choice conviene comprar gadgets electrónicos compactos y livianos de menos de 1 kg (como el miniproyector Magcubic HY320, tiras LED RGBIC USB para TV o controles remotos Air Mouse), donde ahorras entre un 25% y 35% directo de fábrica con envío de 10 a 14 días. En cambio, en Mercado Libre Chile o Falabella conviene comprar equipos pesados (barras de sonido con subwoofer, soportes de muro de acero), dispositivos que exigen certificación Google Widevine original (Chromecast 4K / Roku) y equipos con norma técnica chilena obligatoria (decodificadores TVD ISDB-Tb).',
+  },
+  {
+    question: '¿Qué tipo de enchufe debo elegir en AliExpress para que funcione en Chile sin adaptador?',
+    answer: 'Chile utiliza corriente alterna de 220V a 50Hz y enchufes de patas redondas (Tipo C y Tipo L). Al comprar en AliExpress cualquier proyector o gadget con cable de poder, debes elegir siempre la opción "EU Plug" (Enchufe Europeo). Sus dos clavijas redondas calzan directamente en los enchufes chilenos sin necesidad de adaptadores.',
+  },
+  {
+    question: '¿Cuál es la diferencia entre el proyector Magcubic HY300 y el Magcubic HY320 en Chile?',
+    answer: 'El Magcubic HY300 tiene resolución nativa 720p (HD) y unos 200 lúmenes ANSI, ideal para presupuestos ultra ajustados. El nuevo Magcubic HY320 da un salto técnico importante: ofrece resolución nativa real Full HD 1080p (1920x1080), mayor potencia lumínica (390 lúmenes ANSI), mejor nitidez en los bordes para leer subtítulos y WiFi 6 de doble banda. Por la poca diferencia de precio actual, el HY320 es la compra recomendada en 2026.',
+  },
+  {
+    question: '¿Por qué no sirven los decodificadores de TV digital vendidos en AliExpress para Chile?',
+    answer: 'Porque Chile adoptó por ley la norma japonesa-brasileña ISDB-Tb para la Televisión Digital Abierta (TVD). Casi todos los decodificadores baratos de AliExpress utilizan la norma europea DVB-T2 o la norma china DTMB, por lo que al conectarlos a una antena en Chile no sintonizan ningún canal nacional. Los decodificadores TVD deben comprarse siempre en el comercio chileno.',
+  },
+  {
+    question: '¿Por qué las TV Box baratas genéricas (como MXQ Pro) no abren Netflix o Zapping en HD?',
+    answer: 'Las cajas Android genéricas sin marca usan versiones modificadas de Android para celulares o tablets y carecen de la certificación de seguridad Google Widevine L1 y certificación oficial de Netflix. Como resultado, Netflix no abre o limita la imagen a 480p borroso, y apps como Zapping o DGO presentan cierres inesperados. Para streaming fluido en 4K, compra siempre un Google Chromecast con Google TV o un Roku Streaming Stick.',
+  },
+  {
+    question: '¿Cómo puedo pagar mis compras en Mercado Libre y AliExpress desde Chile?',
+    answer: 'En Mercado Libre Chile y Falabella puedes pagar en pesos chilenos con CuentaRUT, tarjetas de débito Redcompra y hasta en 6 o 12 cuotas sin interés con tarjetas de crédito nacionales. En AliExpress puedes pagar al contado usando CuentaRUT Visa Débito, MACH, Tenpo o cualquier tarjeta bancaria chilena habilitada para compras internacionales.',
+  },
+];
+---
+
+<BaseLayout
+  title="Mejores Gadgets Tecnológicos para el Hogar en Chile (2026): AliExpress vs. Mercado Libre"
+  description="Guía y comparador en vivo de los mejores gadgets tecnológicos para el hogar y Smart TV en Chile. Comparamos precios reales, tiempos de envío y garantías entre Mercado Libre Full, Falabella y AliExpress Choice."
+  breadcrumbs={breadcrumbs}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- HEADER SEO PRINCIPAL -->
+    <header class="max-w-4xl mx-auto text-center mb-12">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rose-950/70 border border-rose-700/50 text-rose-300 text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
+        <span class="w-2 h-2 rounded-full bg-rose-400 animate-pulse"></span>
+        <span>Comparador Oficial Chile 2026 · AliExpress Choice vs. Mercado Libre Full</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight mb-5 leading-tight">
+        Los Mejores Gadgets Tecnológicos para el Hogar y TV en Chile: <span class="bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 via-amber-400 to-rose-400">AliExpress vs. Mercado Libre</span>
+      </h1>
+      <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-3xl mx-auto">
+        ¿Qué conviene pedir directo de fábrica en <strong>AliExpress Choice</strong> para ahorrar dinero y qué productos es mejor comprar en <strong>Mercado Libre Chile o Falabella</strong> con despacho en 24 horas y garantía nacional? Analizamos los 7 gadgets más buscados en Chile con enlaces verificados.
+      </p>
+    </header>
+
+    <!-- DIRECT ANSWER BOX (OPTIMIZADO PARA GOOGLE FEATURED SNIPPETS Y MOTORES DE IA) -->
+    <section aria-labelledby="resumen-ejecutivo-ia" class="max-w-4xl mx-auto mb-14 bg-gradient-to-br from-slate-900 via-surface-card to-indigo-950/30 border-2 border-brand-500/40 rounded-3xl p-6 sm:p-8 shadow-2xl">
+      <div class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-brand-400 mb-3">
+        <span>🤖</span>
+        <span>Respuesta Rápida y Veredicto Técnico (Guía de Compra en 30 Segundos)</span>
+      </div>
+
+      <h2 id="resumen-ejecutivo-ia" class="text-xl sm:text-2xl font-bold text-white mb-4 leading-snug">
+        La Regla de Oro para Comprar Tecnología desde Chile en 2026
+      </h2>
+
+      <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+        Tras comparar precios finales con envío a Santiago y regiones, tiempos de aduana y voltajes eléctricos (220V), la conclusión técnica es clara: <strong>usa AliExpress Choice para gadgets livianos de proyección e iluminación</strong> (donde ahorras hasta un 30% comprando a la fábrica original eligiendo enchufe <em>EU Plug</em>), y <strong>prefiere Mercado Libre Full o Falabella para equipos de streaming certificados, audio pesado y televisión digital chilena (ISDB-Tb)</strong>.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-slate-800">
+        <div class="p-4 bg-yellow-950/20 rounded-2xl border border-yellow-500/30">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-black text-yellow-300 uppercase tracking-wider">⚡ Cuándo Elegir Mercado Libre / Falabella</span>
+            <span class="text-[11px] font-mono bg-yellow-500/20 text-yellow-200 px-2 py-0.5 rounded">Entrega 24-48h</span>
+          </div>
+          <ul class="text-xs text-slate-300 space-y-1.5 leading-relaxed">
+            <li>• <strong>TV Sticks Certificados:</strong> Chromecast 4K y Roku Stick (evitas clones sin licencia Widevine L1).</li>
+            <li>• <strong>Audio Pesado y Soportes:</strong> Barras de sonido con subwoofer y soportes de acero (sin costo de flete aéreo internacional).</li>
+            <li>• <strong>Norma Chilena TVD:</strong> Antenas y decodificadores ISDB-Tb 100% compatibles con canales nacionales.</li>
+            <li>• <strong>Facilidad de Pago:</strong> Hasta 6 o 12 cuotas sin interés y garantía legal SERNAC de 6 meses.</li>
+          </ul>
+        </div>
+
+        <div class="p-4 bg-rose-950/20 rounded-2xl border border-rose-500/30">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-black text-rose-300 uppercase tracking-wider">🔥 Cuándo Elegir AliExpress Choice</span>
+            <span class="text-[11px] font-mono bg-rose-500/20 text-rose-200 px-2 py-0.5 rounded">Ahorro 25% - 35%</span>
+          </div>
+          <ul class="text-xs text-slate-300 space-y-1.5 leading-relaxed">
+            <li>• <strong>Mini Proyectores Smart:</strong> El Magcubic HY320 cuesta cerca de $15.000 menos directo en la tienda oficial de la marca.</li>
+            <li>• <strong>Gadgets USB Livianos:</strong> Tiras LED Ambilight RGBIC, controles Air Mouse con teclado y cables HDMI 2.1 trenzados.</li>
+            <li>• <strong>Envío Aéreo Rápido:</strong> Despacho Choice gratuito en 10 a 14 días entregado en Chile por Bluexpress o Correos.</li>
+            <li>• <strong>Consejo Clave:</strong> Selecciona siempre versión <strong>"EU Plug"</strong> (dos patas redondas para enchufe chileno).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TABLA COMPARATIVA MAESTRA CON DOBLE BOTÓN -->
+    <section aria-labelledby="tabla-comparativa-gadgets" class="max-w-5xl mx-auto mb-16">
+      <h2 id="tabla-comparativa-gadgets" class="sr-only">Tabla Comparativa de Precios: Mercado Libre vs AliExpress en Chile</h2>
+      <ComparisonTable
+        title="Comparativa de Precios y Tiendas: Los 7 Mejores Gadgets para el Hogar (Chile 2026)"
+        headers={["Gadget Tecnológico", "Precio M. Libre (24-48h)", "Precio AliExpress / Retail", "Recomendación de Compra"]}
+        rows={[
+          {
+            feature: "1. Mini Proyector Smart Magcubic HY320 (Full HD)",
+            values: ["$ 59.990 CLP", "$ 44.990 CLP (AliExpress)", "Ambos: M. Libre por rapidez / Ali por ahorro"],
+            productKey: "proyector-magcubic-hy320",
+            secondaryProductKey: "proyector-magcubic-aliexpress"
+          },
+          {
+            feature: "2. Google Chromecast con Google TV 4K",
+            values: ["$ 54.990 CLP", "$ 59.990 CLP", "Mercado Libre (100% Original Certificado)"],
+            productKey: "chromecast-google-tv"
+          },
+          {
+            feature: "3. Roku Streaming Stick con Control por Voz",
+            values: ["$ 39.990 CLP", "$ 44.990 CLP", "Mercado Libre (Envío Full + Garantía Chile)"],
+            productKey: "roku-express-4k"
+          },
+          {
+            feature: "4. Barra de Sonido Samsung + Subwoofer 410W",
+            values: ["$ 149.990 CLP", "$ 159.990 CLP (Falabella)", "Mercado Libre o Falabella (Ahorras flete pesado)"],
+            productKey: "samsung-soundbar-b550",
+            secondaryProductKey: "falabella-samsung-soundbar"
+          },
+          {
+            feature: "5. Soporte TV Móvil Doble Brazo Reforzado (32\"-75\")",
+            values: ["$ 19.990 CLP", "$ 34.990 CLP (Con envío)", "Mercado Libre (Acero pesado con envío gratis)"],
+            productKey: "soporte-tv-articulado-pesado"
+          },
+          {
+            feature: "6. Antena Digital HDTV Amplificada 360°",
+            values: ["$ 9.990 CLP", "$ 12.990 CLP", "Mercado Libre (Entrega en 24h lista para usar)"],
+            productKey: "antena-tvd-chile"
+          },
+          {
+            feature: "7. Decodificador TV Digital ISDB-Tb Norma Chilena",
+            values: ["$ 19.990 CLP", "No compatible en AliExpress", "Mercado Libre (Único con norma SUBTEL Chile)"],
+            productKey: "decodificador-tvd"
+          }
+        ]}
+        verdict="En los productos donde ambas tiendas son recomendables (como el proyector Magcubic HY320 o la Barra de Sonido Samsung), hemos habilitado los dos botones oficiales en cada fila y ficha para que elijas libremente tu tienda favorita."
+      />
+    </section>
+
+    <!-- RANKING DETALLADO DE LOS 7 GADGETS CON FICHAS DE COMPRA -->
+    <section aria-labelledby="ranking-gadgets-detalle" class="max-w-4xl mx-auto space-y-12 mb-16">
+      <div class="border-b border-slate-800 pb-4">
+        <span class="text-xs font-bold text-brand-400 uppercase tracking-wider block mb-1">Análisis Unidad por Unidad</span>
+        <h2 id="ranking-gadgets-detalle" class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+          Los 7 Gadgets Imprescindibles para Transformar tu Hogar y TV
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1">
+          Seleccionados por impacto real en calidad de vida, facilidad de instalación y retorno por cada peso invertido en Chile.
+        </p>
+      </div>
+
+      <!-- GADGET 1: PROYECTOR MAGCUBIC HY320 -->
+      <div>
+        <h3 class="text-xl sm:text-2xl font-bold text-white mb-2 flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-lg bg-brand-600 text-white text-sm font-black">#1</span>
+          <span>Mini Proyector Smart Magcubic HY320 Full HD (El Rey de Dormitorios)</span>
+        </h3>
+        <p class="text-sm text-slate-300 leading-relaxed mb-4">
+          Es el gadget tecnológico más vendido del año en Chile. Gracias a su cuerpo cilíndrico que gira en 180°, puedes proyectar una pantalla gigante de hasta 150 pulgadas en la pared o directamente en el techo de tu cama, con <strong>Android 11 y WiFi 6 integrados</strong> para abrir YouTube, Netflix, Disney+ o Max sin conectar ningún computador.
+        </p>
+        <ProductCard
+          productKey="proyector-magcubic-hy320"
+          isFirst={true}
+          title="Proyector Inteligente Portátil Magcubic HY320 Full HD 1080p Nativo Android 11"
+          brand="Magcubic"
+          badge="🔥 N°1 en Ventas: Disponible en Mercado Libre y AliExpress"
+          specs={["Full HD 1080p Nativo", "390 ANSI Lúmenes", "Android 11 Integrado", "WiFi 6 & Bluetooth 5.0", "Giro 180° a Techo"]}
+          pros={[
+            "Doble opción de compra activa: botón amarillo para envío 24h en Mercado Libre Chile o botón rojo para precio de fábrica en AliExpress",
+            "Resolución nativa 1080p real (mucho más nítido que el modelo básico HY300 de 720p)",
+            "Corrección trapezoidal automática que endereza la imagen sola al inclinar el proyector",
+            "Bluetooth 5.0 para vincular parlantes externos o barras de sonido de forma inalámbrica"
+          ]}
+          cons={[
+            "Como todo proyector LED compacto, requiere usarse de noche o con cortinas blackout para máximo contraste"
+          ]}
+        />
+      </div>
+
+      <!-- GADGET 2: CHROMECAST 4K -->
+      <div>
+        <h3 class="text-xl sm:text-2xl font-bold text-white mb-2 flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-lg bg-brand-600 text-white text-sm font-black">#2</span>
+          <span>Google Chromecast con Google TV 4K (Revive Cualquier Televisor)</span>
+        </h3>
+        <p class="text-sm text-slate-300 leading-relaxed mb-4">
+          Si tu televisor tiene entre 4 y 10 años, es muy probable que su pantalla siga viéndose bien pero su sistema operativo sea lento o ya no permita instalar <strong>Zapping, DGO o TNT Sports</strong>. Conectar un Chromecast con Google TV 4K al puerto HDMI le da el mismo cerebro que traen los televisores de gama alta de 2026 por una fracción de su costo.
+        </p>
+        <ProductCard
+          productKey="chromecast-google-tv"
+          title="Google Chromecast con Google TV 4K con Control por Voz"
+          brand="Google"
+          badge="🚀 El Mejor TV Stick con Android TV Oficial"
+          specs={["Resolución 4K UHD a 60fps", "Dolby Vision & Atmos", "Google Play Store Chile", "Control por Voz", "Soporta APKs"]}
+          pros={[
+            "100% compatible con todas las apps chilenas (Zapping, DGO, Estadio TNT, Mega GO, 13GO, TVN Play)",
+            "Permite instalar aplicaciones abiertas en formato APK y reproductores multimedia avanzados",
+            "Su control remoto configura el encendido y volumen de tu televisor para usar un solo mando",
+            "Certificación Google Widevine L1 auténtica para ver Netflix y Disney+ en 4K real"
+          ]}
+          cons={[
+            "No conviene comprarlo en portales chinos por el alto riesgo de recibir imitaciones sin licencia oficial"
+          ]}
+        />
+      </div>
+
+      <!-- GADGET 3: ROKU STICK -->
+      <div>
+        <h3 class="text-xl sm:text-2xl font-bold text-white mb-2 flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-lg bg-brand-600 text-white text-sm font-black">#3</span>
+          <span>Roku Streaming Stick con Control por Voz (Fluidez y Simpleza Extrema)</span>
+        </h3>
+        <p class="text-sm text-slate-300 leading-relaxed mb-4">
+          Para dormitorios secundarios o para adultos mayores que quieren encender la tele y entrar directo a sus canales sin menús recargados, Roku ofrece la interfaz más rápida y estable del mercado chileno, además de soporte nativo para enviar pantalla desde iPhone vía <strong>Apple AirPlay 2</strong>.
+        </p>
+        <ProductCard
+          productKey="roku-express-4k"
+          title="Roku Streaming Stick HD (3840S2) con Control por Voz"
+          brand="Roku"
+          badge="🥇 El Más Fácil e Intuitivo para Toda la Familia"
+          specs={["Formato Stick Oculto", "Control por Voz", "Apple AirPlay 2 Nativo", "Roku OS Ultra Estable"]}
+          pros={[
+            "Interfaz de iconos grandes y claros que no se vuelve lenta con el paso de los años",
+            "Compatible oficialmente con Zapping, DGO, Netflix, Prime Video, Disney+, Max y YouTube",
+            "Se alimenta directamente del puerto USB del televisor quedando oculto detrás de la pantalla",
+            "Excelente precio en Mercado Libre Chile con envío rápido a domicilio"
+          ]}
+          cons={[
+            "No permite instalar archivos APK externos fuera de la tienda oficial de Roku"
+          ]}
+        />
+      </div>
+
+      <!-- GADGET 4: BARRA DE SONIDO SAMSUNG -->
+      <div>
+        <h3 class="text-xl sm:text-2xl font-bold text-white mb-2 flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-lg bg-brand-600 text-white text-sm font-black">#4</span>
+          <span>Barra de Sonido Samsung con Subwoofer Inalámbrico (Adiós al Volumen Bajo)</span>
+        </h3>
+        <p class="text-sm text-slate-300 leading-relaxed mb-4">
+          ¿Te pasa que en las películas de Netflix las conversaciones se escuchan muy despacio pero cuando hay música o acción el volumen retumba demasiado fuerte? Esta barra de sonido con subwoofer inalámbrico incluye un procesador de <strong>Realce de Diálogos (Voice Enhance)</strong> y modo nocturno que equilibra las frecuencias al instante.
+        </p>
+        <ProductCard
+          productKey="samsung-soundbar-b550"
+          title="Barra de Sonido Samsung HW-B550 / Q-Series con Subwoofer Inalámbrico"
+          brand="Samsung"
+          badge="🔊 Doble Opción Oficial: Mercado Libre y Falabella"
+          specs={["Subwoofer Inalámbrico", "Dolby Audio / DTS Virtual:X", "HDMI ARC (Un solo control)", "Modo Realce de Voz", "Bluetooth"]}
+          pros={[
+            "Disponible con enlace directo tanto en Mercado Libre Full como en Falabella Chile",
+            "Al conectarla por HDMI ARC, manejas el volumen con el mismo control remoto de tu Smart TV",
+            "Subwoofer sin cables hacia la barra para ubicarlo libremente en cualquier esquina del living",
+            "Bluetooth para usarla como equipo de música de alta potencia desde tu celular"
+          ]}
+          cons={[
+            "Por su tamaño y peso (más de 7 kg), cómprala siempre en el retail chileno para evitar costos de importación"
+          ]}
+        />
+      </div>
+
+      <!-- GADGET 5: SOPORTE ARTICULADO DOBLE BRAZO -->
+      <div>
+        <h3 class="text-xl sm:text-2xl font-bold text-white mb-2 flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-lg bg-brand-600 text-white text-sm font-black">#5</span>
+          <span>Soporte Móvil Articulado Doble Brazo Reforzado VESA (Seguridad Antisísmica)</span>
+        </h3>
+        <p class="text-sm text-slate-300 leading-relaxed mb-4">
+          En un país sísmico como Chile, dejar un televisor de 55 o 65 pulgadas apoyado sobre patas plásticas en un mueble angosto es un riesgo constante. Un soporte articulado de <strong>doble brazo de acero laminado</strong> asegura la pantalla al muro y te permite girarla hacia el comedor o la terraza.
+        </p>
+        <ProductCard
+          productKey="soporte-tv-articulado-pesado"
+          title="Soporte TV Móvil Articulado Doble Brazo Reforzado 32 a 75 Pulgadas VESA"
+          brand="Universal VESA"
+          badge="🔩 Acero Reforzado Antisísmico para Chile"
+          specs={["Para TVs de 32\" a 75\"", "Doble Brazo Acero SPCC", "Soporta hasta 45 kg", "Giro 120° e Inclinación", "VESA Universal"]}
+          pros={[
+            "Estructura de doble brazo que impide que el televisor se incline o ceda al extenderlo",
+            "Permite separar la tele hasta 40 cm de la pared para enchufar cables HDMI o USB sin esfuerzo",
+            "Incluye set completo de pernos M4, M6 y M8 para televisores TCL, Hisense, Samsung, LG y Sony"
+          ]}
+          cons={[
+            "En muros de tabiquería (Volcanita) requiere anclaje directo a los montantes o tarugos metálicos especiales"
+          ]}
+        />
+      </div>
+
+      <!-- GADGETS 6 Y 7: ANTENA Y DECODIFICADOR TVD -->
+      <div>
+        <h3 class="text-xl sm:text-2xl font-bold text-white mb-2 flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-lg bg-brand-600 text-white text-sm font-black">#6 y #7</span>
+          <span>Kit de Televisión Digital Gratis (Antena Amplificada 360° + Decodificador ISDB-Tb)</span>
+        </h3>
+        <p class="text-sm text-slate-300 leading-relaxed mb-4">
+          Los dos gadgets con mayor retorno económico para cualquier hogar o segunda vivienda en Chile: con una inversión mínima de una sola vez, captas <strong>TVN HD, Mega HD, Canal 13 HD, Chilevisión HD y señales regionales en 1080p gratis</strong>, sin gastar internet ni pagar mensualidades.
+        </p>
+        <ProductCard
+          productKey="antena-tvd-chile"
+          title="Antena Digital HDTV Interior / Exterior Amplificada 360°"
+          brand="HDTV Chile"
+          badge="📡 TV Nacional en Full HD 100% Gratis"
+          specs={["Recepción 360° UHF/VHF", "Norma Chilena ISDB-Tb", "Base Imantada Firme", "Cable Coaxial Blindado"]}
+          pros={[
+            "Se conecta directo a la entrada de antena de cualquier Smart TV moderno y sintoniza en 2 minutos",
+            "Base magnética que mejora la ganancia al adherirla a marcos metálicos de ventanas o barandas",
+            "Funciona incluso cuando se corta el internet o la fibra óptica en tu barrio"
+          ]}
+          cons={[
+            "En sectores rurales muy alejados de las antenas repetidoras se recomienda ubicarla en el exterior"
+          ]}
+        />
+
+        <ProductCard
+          productKey="decodificador-tvd"
+          title="Decodificador TV Digital TDT ISDB-Tb Oficial para Chile"
+          brand="TDT Chile"
+          badge="📺 Para Televisores Antiguos sin Sintonizador Digital"
+          specs={["Norma Chilena ISDB-Tb", "Salidas HDMI y RCA", "Grabador por USB", "Control Remoto Incluido"]}
+          pros={[
+            "Actualiza televisores antiguos post-apagón analógico para recibir todos los canales HD de Chile",
+            "Incluye cables RCA (rojo, blanco y amarillo) y salida HDMI para todo tipo de pantallas",
+            "Homologado con la norma japonesa-brasileña ISDB-Tb exigida en Chile"
+          ]}
+          cons={[
+            "Requiere conectarse a una antena UHF para recibir la señal de aire"
+          ]}
+        />
+      </div>
+    </section>
+
+    <!-- SECCIÓN DE RESPUESTAS A LAS BÚSQUEDAS MÁS FRECUENTES EN CHILE (SEO LONG-TAIL + IA) -->
+    <section aria-labelledby="consultas-frecuentes-seo" class="max-w-4xl mx-auto mb-16 pt-10 border-t border-slate-800 space-y-8">
+      <div>
+        <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider block mb-1">Guía Técnica de Dudas Reales</span>
+        <h2 id="consultas-frecuentes-seo" class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+          Lo Que Más Buscan los Usuarios en Chile Antes de Comprar
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1">
+          Respuestas técnicas directas verificadas por nuestro equipo para que compres sin errores de compatibilidad.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <article class="p-6 rounded-2xl bg-surface-card border border-slate-800 space-y-2">
+          <h3 class="text-base font-bold text-white flex items-center gap-2">
+            <span class="text-amber-400">🔌</span>
+            <span>¿Qué enchufe pedir en AliExpress para Chile?</span>
+          </h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            En Chile la red eléctrica es de <strong>220V / 50Hz</strong> con tomas de corriente Tipo C y L (dos orificios redondos). Al comprar proyectores como el Magcubic HY320 en AliExpress, selecciona siempre la variante <strong>"EU Plug" (Enchufe Europeo)</strong>. No elijas "US Plug" (patas planas de 110V) ni "UK Plug" (tres patas rectangulares) para evitar tener que comprar adaptadores adicionales.
+          </p>
+        </article>
+
+        <article class="p-6 rounded-2xl bg-surface-card border border-slate-800 space-y-2">
+          <h3 class="text-base font-bold text-white flex items-center gap-2">
+            <span class="text-brand-400">🎬</span>
+            <span>Magcubic HY300 vs. HY320: ¿Cuál elegir?</span>
+          </h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Aunque lucen parecidos por fuera, el <strong>Magcubic HY320</strong> tiene resolución nativa real <strong>1080p Full HD (1920x1080) y 390 ANSI lúmenes</strong>, mientras que el HY300 es solo 720p (1280x720) con 200 ANSI lúmenes. Si vas a ver películas con subtítulos o partidos de fútbol sobre 80 pulgadas, el HY320 ofrece el doble de nitidez y brillo.
+          </p>
+        </article>
+
+        <article class="p-6 rounded-2xl bg-surface-card border border-slate-800 space-y-2">
+          <h3 class="text-base font-bold text-white flex items-center gap-2">
+            <span class="text-rose-400">⚠️</span>
+            <span>¿Por qué evitar las TV Box baratas "MXQ Pro 4K"?</span>
+          </h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Es una de las consultas de soporte más repetidas en Chile: las cajas genéricas económicas traen procesadores obsoletos y Android de celular sin licencia <strong>Google Widevine L1</strong>. No permiten usar el control remoto con normalidad en Netflix y se traban con canales en vivo de Zapping o DGO. Invierte seguro en un <strong>Chromecast con Google TV</strong> o un <strong>Roku Stick</strong>.
+          </p>
+        </article>
+
+        <article class="p-6 rounded-2xl bg-surface-card border border-slate-800 space-y-2">
+          <h3 class="text-base font-bold text-white flex items-center gap-2">
+            <span class="text-emerald-400">📦</span>
+            <span>¿Cuánto tarda AliExpress Choice frente a Mercado Libre Full?</span>
+          </h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Los envíos <strong>Mercado Libre Full</strong> se despachan desde bodegas en Santiago y llegan en <strong>24 a 48 horas</strong> a casi todo Chile. Por su parte, <strong>AliExpress Choice</strong> consolida paquetes por vía aérea prioritaria llegando al domicilio en Chile entre <strong>10 y 14 días corridos</strong> a través de Bluexpress o Correos de Chile.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- PREGUNTAS FRECUENTES CON SCHEMA FAQPAGE -->
+    <div class="max-w-4xl mx-auto mb-12">
+      <FAQSection
+        title="Preguntas Frecuentes sobre Gadgets en AliExpress y Mercado Libre Chile"
+        items={gadgetsFaqs}
+      />
+    </div>
+
+    <!-- CTA FINAL A SMART TVS -->
+    <div class="max-w-4xl mx-auto">
+      <CtaBanner
+        title="¿También estás pensando en renovar tu televisor principal?"
+        description="Revisa nuestra comparativa de los 3 mejores Smart TVs de 55 pulgadas en Chile (TCL QD-Mini LED, Hisense Mini-LED y Samsung Crystal) con video reviews y precios en Mercado Libre y Falabella."
+        buttonText="Ver Ranking de Smart TVs 2026"
+        buttonUrl="/smart-tv/"
+      />
+    </div>
+
+  </div>
+
+  <!-- Schema.org ItemList JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+</BaseLayout>

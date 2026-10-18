@@ -1,6 +1,12 @@
 ---
 import afiliadosData from '../data/afiliados.json';
 
+interface ColumnCta {
+  productKey?: string;
+  ctaUrl?: string;
+  ctaLabel?: string;
+}
+
 interface Props {
   title?: string;
   headers: string[];
@@ -10,11 +16,15 @@ interface Props {
     productKey?: string;
     ctaUrl?: string;
     ctaLabel?: string;
+    secondaryProductKey?: string;
+    secondaryCtaUrl?: string;
+    secondaryCtaLabel?: string;
   }[];
+  columnCtas?: ColumnCta[];
   verdict?: string;
 }
 
-const { title = 'Tabla Comparativa Rápida', headers, rows, verdict } = Astro.props;
+const { title = 'Tabla Comparativa Rápida', headers, rows, columnCtas = [], verdict } = Astro.props;
 
 // ID único para instanciar controles independientes si hay múltiples tablas
 const tableId = 'comp-' + Math.random().toString(36).slice(2, 9);
@@ -30,7 +40,8 @@ const isFeatureComparison =
 
 const optionCount = headers.length - 1;
 const isTwoOptions = optionCount === 2;
-const hasAnyCta = rows.some((r) => r.productKey || r.ctaUrl);
+const hasAnyRowCta = rows.some((r) => r.productKey || r.ctaUrl || r.secondaryProductKey || r.secondaryCtaUrl);
+const hasColumnCtas = columnCtas && columnCtas.length > 0;
 const afiliadosMap: Record<string, any> = afiliadosData;
 
 // Helper para clasificar enlaces y asignar estilo de marca de alta conversión
@@ -45,7 +56,8 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
       isOperative: true,
       network: 'mercadolibre',
       btnBg: 'bg-[#FFE600] hover:bg-[#F5D600] !text-slate-950 border-yellow-400 shadow-md shadow-yellow-500/25',
-      btnText: 'Comprar en M. Libre',
+      btnText: 'M. Libre',
+      btnFullText: 'Comprar en M. Libre',
       iconColor: 'text-slate-950',
     };
   }
@@ -55,7 +67,8 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
       isOperative: true,
       network: 'falabella',
       btnBg: 'bg-[#008A00] hover:bg-[#007000] !text-white border-emerald-400 shadow-md shadow-emerald-700/30',
-      btnText: 'Comprar en Falabella',
+      btnText: 'Falabella',
+      btnFullText: 'Comprar en Falabella',
       iconColor: 'text-white',
     };
   }
@@ -65,7 +78,8 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
       isOperative: true,
       network: 'aliexpress',
       btnBg: 'bg-[#FF4747] hover:bg-[#E03030] !text-white border-rose-400 shadow-md shadow-rose-700/30',
-      btnText: 'Comprar en AliExpress',
+      btnText: 'AliExpress',
+      btnFullText: 'Comprar en AliExpress',
       iconColor: 'text-white',
     };
   }
@@ -75,12 +89,13 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
     network: 'reference',
     btnBg: 'bg-slate-800 hover:bg-slate-700 !text-slate-300 border-slate-700 shadow-none',
     btnText: 'Ver Oferta',
+    btnFullText: 'Ver Oferta',
     iconColor: 'text-slate-400',
   };
 }
 ---
 
-<div class="my-8 rounded-2xl border border-slate-800 bg-surface-card shadow-xl overflow-hidden" id={tableId}>
+<div class="my-8 rounded-2xl border border-slate-800 bg-surface-card shadow-xl overflow-hidden not-prose" id={tableId}>
   <!-- Encabezado de la Comparativa -->
   <div class="bg-slate-900/95 px-4 sm:px-6 py-3.5 border-b border-slate-800 flex items-center justify-between gap-3">
     <div class="flex items-center gap-2.5 min-w-0">
@@ -89,7 +104,7 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
         </svg>
       </div>
-      <h3 class="text-sm sm:text-base md:text-lg font-bold text-white truncate">
+      <h3 class="text-sm sm:text-base md:text-lg font-bold text-white truncate m-0">
         {title}
       </h3>
     </div>
@@ -127,7 +142,7 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
       <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
       <span>Ajustado a tu pantalla (sin scroll horizontal)</span>
     </span>
-    <span class="text-slate-500 font-mono">{rows.length} analizados</span>
+    <span class="text-slate-500 font-mono">{rows.length} filas</span>
   </div>
 
   <!-- ========================================================================= -->
@@ -135,100 +150,106 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
   <!-- ========================================================================= -->
   <div class="comp-cards-view block md:hidden p-3.5 sm:p-4 space-y-3 bg-slate-950/30">
     {isFeatureComparison ? (
-      /* CASO A: Comparación por Característica (Zapping vs DGO, Roku vs Chromecast) */
-      rows.map((row) => (
-        <div class="rounded-xl border border-slate-800/90 bg-slate-900/70 p-3.5 shadow-sm transition-all">
-          <div class="flex items-center gap-2 mb-2.5 pb-2 border-b border-slate-800/80">
-            <span class="w-2 h-2 rounded-full bg-brand-400 shrink-0"></span>
-            <h4 class="text-xs sm:text-sm font-bold text-white tracking-tight leading-snug">
-              {row.feature}
-            </h4>
-          </div>
-
-          {isTwoOptions ? (
-            /* Lado a lado en 2 columnas exactas al 100% del ancho móvil */
-            <div class="grid grid-cols-2 gap-2">
-              {row.values.map((val, idx) => {
-                const optName = headers[idx + 1] || `Opción ${idx + 1}`;
-                const isPrice = val.includes('$') || row.feature.toLowerCase().includes('precio');
-                const isPrimary = idx === 0;
-
-                return (
-                  <div class={`p-2.5 rounded-lg border flex flex-col justify-between ${
-                    isPrimary
-                      ? 'bg-slate-950/70 border-brand-500/30'
-                      : 'bg-slate-950/70 border-indigo-500/30'
-                  }`}>
-                    <span class={`text-[10px] font-bold uppercase tracking-wider mb-1 line-clamp-1 ${
-                      isPrimary ? 'text-brand-300' : 'text-indigo-300'
-                    }`}>
-                      {optName}
-                    </span>
-                    <span class={`text-xs leading-relaxed ${
-                      isPrice ? 'font-bold text-emerald-400' : 'text-slate-200'
-                    }`}>
-                      {val}
-                    </span>
-                  </div>
-                );
-              })}
+      /* CASO A: Comparación por Característica (Zapping vs DGO, Roku vs Chromecast, TCL vs Hisense) */
+      <>
+        {rows.map((row) => (
+          <div class="rounded-xl border border-slate-800/90 bg-slate-900/70 p-3.5 shadow-sm transition-all">
+            <div class="flex items-center gap-2 mb-2.5 pb-2 border-b border-slate-800/80">
+              <span class="w-2 h-2 rounded-full bg-brand-400 shrink-0"></span>
+              <h4 class="text-xs sm:text-sm font-bold text-white tracking-tight leading-snug m-0">
+                {row.feature}
+              </h4>
             </div>
-          ) : (
-            /* Más de 2 opciones: lista apilada con identificador */
-            <div class="space-y-2">
-              {row.values.map((val, idx) => {
-                const optName = headers[idx + 1] || `Opción ${idx + 1}`;
-                const isPrice = val.includes('$') || row.feature.toLowerCase().includes('precio');
 
-                return (
-                  <div class="flex items-start justify-between gap-3 text-xs pt-1.5 border-t border-slate-800/50 first:border-0 first:pt-0">
-                    <span class="font-semibold text-brand-300 shrink-0 max-w-[45%] text-[11px]">
-                      {optName}:
-                    </span>
-                    <span class={`text-right ${
-                      isPrice ? 'font-bold text-emerald-400' : 'text-slate-200'
+            {isTwoOptions ? (
+              /* Lado a lado en 2 columnas exactas al 100% del ancho móvil */
+              <div class="grid grid-cols-2 gap-2">
+                {row.values.map((val, idx) => {
+                  const optName = headers[idx + 1] || `Opción ${idx + 1}`;
+                  const isPrice = val.includes('$') || row.feature.toLowerCase().includes('precio');
+                  const isPrimary = idx === 0;
+
+                  return (
+                    <div class={`p-2.5 rounded-lg border flex flex-col justify-between ${
+                      isPrimary
+                        ? 'bg-slate-950/70 border-brand-500/30'
+                        : 'bg-slate-950/70 border-indigo-500/30'
                     }`}>
-                      {val}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
-          )}
-
-          {/* Botón CTA Opcional en Móvil CASO A */}
-          {(() => {
-            const pKey = row.productKey;
-            const directUrl = row.ctaUrl;
-            const productInfo = pKey ? afiliadosMap[pKey] : null;
-            const targetUrl = directUrl || productInfo?.url;
-            const tiendaName = productInfo?.tienda || '';
-            const theme = getStoreAffiliateTheme(targetUrl, tiendaName);
-            const label = row.ctaLabel || theme.btnText;
-
-            if (!targetUrl) return null;
-
-            return (
-              <div class="mt-2.5 pt-2 border-t border-slate-800/60 flex items-center justify-between gap-2">
-                <span class="text-[11px] text-slate-400">Verificado:</span>
-                <a
-                  href={targetUrl}
-                  target="_blank"
-                  rel="nofollow sponsored noopener noreferrer"
-                  class={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-black text-xs shadow-md hover:scale-105 active:scale-95 transition-all !no-underline border ${theme.btnBg}`}
-                >
-                  <span>{label}</span>
-                  <svg class={`w-3.5 h-3.5 shrink-0 ${theme.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                </a>
+                      <span class={`text-[10px] font-bold uppercase tracking-wider mb-1 line-clamp-1 ${
+                        isPrimary ? 'text-brand-300' : 'text-indigo-300'
+                      }`}>
+                        {optName}
+                      </span>
+                      <span class={`text-xs leading-relaxed ${
+                        isPrice ? 'font-bold font-mono text-emerald-400' : 'text-slate-200'
+                      }`}>
+                        {val}
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
-            );
-          })()}
-        </div>
-      ))
+            ) : (
+              /* Más de 2 opciones: lista apilada con identificador */
+              <div class="space-y-2">
+                {row.values.map((val, idx) => {
+                  const optName = headers[idx + 1] || `Opción ${idx + 1}`;
+                  const isPrice = val.includes('$') || row.feature.toLowerCase().includes('precio');
+
+                  return (
+                    <div class="flex items-start justify-between gap-3 text-xs pt-1.5 border-t border-slate-800/50 first:border-0 first:pt-0">
+                      <span class="font-semibold text-brand-300 shrink-0 max-w-[45%] text-[11px]">
+                        {optName}:
+                      </span>
+                      <span class={`text-right ${
+                        isPrice ? 'font-bold font-mono text-emerald-400' : 'text-slate-200'
+                      }`}>
+                        {val}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        ))}
+
+        {/* Botones de Compra por Columna en Móvil (si existen columnCtas) */}
+        {hasColumnCtas && (
+          <div class="rounded-xl border border-brand-500/30 bg-slate-900/90 p-3.5 shadow-md space-y-2">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-brand-300 block">
+              🛒 Enlaces Oficiales de Compra:
+            </span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {columnCtas.map((cta, idx) => {
+                const pKey = cta?.productKey;
+                const directUrl = cta?.ctaUrl;
+                const productInfo = pKey ? afiliadosMap[pKey] : null;
+                const targetUrl = directUrl || productInfo?.url;
+                if (!targetUrl) return null;
+                const theme = getStoreAffiliateTheme(targetUrl, productInfo?.tienda);
+                const optName = headers[idx + 1] || `Opción ${idx + 1}`;
+                const label = cta?.ctaLabel || `Ver ${optName}`;
+
+                return (
+                  <a
+                    href={targetUrl}
+                    target="_blank"
+                    rel="nofollow sponsored noopener noreferrer"
+                    class={`flex items-center justify-between gap-2 px-3.5 py-2.5 rounded-xl font-black text-xs shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all !no-underline border ${theme.btnBg}`}
+                  >
+                    <span class="truncate">{label}</span>
+                    <svg class={`w-3.5 h-3.5 shrink-0 ${theme.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        )}
+      </>
     ) : (
-      /* CASO B: Fila es Producto o Servicio (Smart TVs TCL/Hisense/Samsung, Plataformas de streaming) */
+      /* CASO B: Fila es Producto, Gadget o Servicio */
       rows.map((row, rIdx) => {
-        // Encontrar precio si existe en las cabeceras
         const priceIdx = headers.findIndex((h) => h.toLowerCase().includes('precio'));
         const priceVal = priceIdx > 0 ? row.values[priceIdx - 1] : null;
 
@@ -237,8 +258,16 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
         const productInfo = pKey ? afiliadosMap[pKey] : null;
         const targetUrl = directUrl || productInfo?.url;
         const tiendaName = productInfo?.tienda || '';
+        const hasDual = Boolean(row.secondaryProductKey || row.secondaryCtaUrl);
         const theme = getStoreAffiliateTheme(targetUrl, tiendaName);
-        const label = row.ctaLabel || theme.btnText;
+        const label = row.ctaLabel || (hasDual ? theme.btnText : theme.btnFullText);
+
+        const secKey = row.secondaryProductKey;
+        const secDirectUrl = row.secondaryCtaUrl;
+        const secInfo = secKey ? afiliadosMap[secKey] : null;
+        const secTargetUrl = secDirectUrl || secInfo?.url;
+        const secTheme = secTargetUrl ? getStoreAffiliateTheme(secTargetUrl, secInfo?.tienda) : null;
+        const secLabel = row.secondaryCtaLabel || (secTheme ? secTheme.btnText : '');
 
         return (
           <div class="rounded-xl border border-slate-800/90 bg-slate-900/70 p-3.5 sm:p-4 shadow-sm relative overflow-hidden">
@@ -246,14 +275,14 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
             <div class="flex items-start justify-between gap-2 mb-3 pb-2.5 border-b border-slate-800/80">
               <div class="min-w-0">
                 <span class="text-[10px] font-bold uppercase tracking-wider text-brand-400 block mb-0.5">
-                  {headers[0]}: Opción {rIdx + 1}
+                  {headers[0]} #{rIdx + 1}
                 </span>
-                <h4 class="text-xs sm:text-sm font-bold text-white leading-snug">
+                <h4 class="text-xs sm:text-sm font-bold text-white leading-snug m-0">
                   {row.feature}
                 </h4>
               </div>
               {priceVal && (
-                <span class="shrink-0 px-2.5 py-1 rounded-lg bg-emerald-950/80 border border-emerald-800/60 text-emerald-300 font-bold text-xs">
+                <span class="shrink-0 px-2.5 py-1 rounded-lg bg-emerald-950/80 border border-emerald-800/60 text-emerald-300 font-bold font-mono text-xs">
                   {priceVal}
                 </span>
               )}
@@ -264,14 +293,16 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
               {row.values.map((val, idx) => {
                 const headerLabel = headers[idx + 1] || '';
                 const isPrice = headerLabel.toLowerCase().includes('precio');
-                if (isPrice && priceVal) return null; // Ya destacado en la cabecera
+                if (isPrice && priceVal) return null;
 
                 return (
                   <div class="flex items-start justify-between gap-3 pt-1.5 border-t border-slate-800/50 first:border-0 first:pt-0">
                     <span class="text-slate-400 font-medium text-[11px] shrink-0 max-w-[45%]">
                       {headerLabel}:
                     </span>
-                    <span class="text-right text-slate-200 font-semibold leading-relaxed">
+                    <span class={`text-right font-semibold leading-relaxed ${
+                      val.includes('$') ? 'text-emerald-400 font-mono font-bold' : 'text-slate-200'
+                    }`}>
                       {val}
                     </span>
                   </div>
@@ -279,21 +310,35 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
               })}
             </div>
 
-            <!-- Botón CTA de Compra Directa en Móvil CASO B -->
-            {targetUrl && (
-              <div class="mt-3.5 pt-2.5 border-t border-slate-800/80 flex items-center justify-between gap-2">
-                <span class="text-[11px] text-slate-400 font-medium">Compra verificada:</span>
-                <a
-                  href={targetUrl}
-                  target="_blank"
-                  rel="nofollow sponsored noopener noreferrer"
-                  class={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg font-black text-xs shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all !no-underline border ${theme.btnBg}`}
-                >
-                  <span>{label}</span>
-                  <svg class={`w-3.5 h-3.5 shrink-0 ${theme.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </a>
+            <!-- Botones CTA de Compra Directa en Móvil CASO B -->
+            {(targetUrl || secTargetUrl) && (
+              <div class="mt-3.5 pt-2.5 border-t border-slate-800/80 flex flex-wrap items-center justify-end gap-2">
+                {targetUrl && (
+                  <a
+                    href={targetUrl}
+                    target="_blank"
+                    rel="nofollow sponsored noopener noreferrer"
+                    class={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl font-black text-xs shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all !no-underline border ${theme.btnBg}`}
+                  >
+                    <span>{label}</span>
+                    <svg class={`w-3.5 h-3.5 shrink-0 ${theme.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </a>
+                )}
+                {secTargetUrl && secTheme && (
+                  <a
+                    href={secTargetUrl}
+                    target="_blank"
+                    rel="nofollow sponsored noopener noreferrer"
+                    class={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl font-black text-xs shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all !no-underline border ${secTheme.btnBg}`}
+                  >
+                    <span>{secLabel}</span>
+                    <svg class={`w-3.5 h-3.5 shrink-0 ${secTheme.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </a>
+                )}
               </div>
             )}
           </div>
@@ -306,19 +351,21 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
   <!-- 2. VISTA DE TABLA COMPLETA (VISIBLE EN ESCRITORIO O AL ACTIVAR TOGGLE)     -->
   <!-- ========================================================================= -->
   <div class="comp-table-view hidden md:block overflow-x-auto">
-    <table class="w-full text-left text-xs sm:text-sm border-collapse">
-      <thead class="bg-slate-950/80 text-slate-300 uppercase tracking-wider font-semibold border-b border-slate-800 text-[11px]">
+    <table class="w-full text-left text-xs sm:text-sm border-collapse m-0">
+      <thead class="bg-slate-950/90 text-slate-300 uppercase tracking-wider font-bold border-b border-slate-800 text-[11px]">
         <tr>
           {headers.map((h, idx) => (
-            <th class={`px-4 sm:px-6 py-3.5 ${
-              idx === 0 ? 'text-slate-400' : 'text-brand-300'
+            <th class={`px-4 sm:px-5 py-3.5 align-middle ${
+              idx === 0
+                ? 'text-slate-400 border-r border-slate-800/80 min-w-[160px] sm:min-w-[190px]'
+                : 'text-brand-300'
             }`}>
               {h}
             </th>
           ))}
-          {hasAnyCta && (
-            <th class="px-4 sm:px-6 py-3.5 text-right text-emerald-400">
-              Oferta Online
+          {hasAnyRowCta && (
+            <th class="px-4 sm:px-5 py-3.5 text-right text-emerald-400 align-middle whitespace-nowrap">
+              Dónde Comprar
             </th>
           )}
         </tr>
@@ -330,12 +377,20 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
           const productInfo = pKey ? afiliadosMap[pKey] : null;
           const targetUrl = directUrl || productInfo?.url;
           const tiendaName = productInfo?.tienda || '';
+          const hasDual = Boolean(row.secondaryProductKey || row.secondaryCtaUrl);
           const theme = getStoreAffiliateTheme(targetUrl, tiendaName);
-          const label = row.ctaLabel || theme.btnText;
+          const label = row.ctaLabel || (hasDual ? theme.btnText : theme.btnFullText);
+
+          const secKey = row.secondaryProductKey;
+          const secDirectUrl = row.secondaryCtaUrl;
+          const secInfo = secKey ? afiliadosMap[secKey] : null;
+          const secTargetUrl = secDirectUrl || secInfo?.url;
+          const secTheme = secTargetUrl ? getStoreAffiliateTheme(secTargetUrl, secInfo?.tienda) : null;
+          const secLabel = row.secondaryCtaLabel || (secTheme ? secTheme.btnText : '');
 
           return (
             <tr class={rIdx % 2 === 0 ? 'bg-surface-card hover:bg-slate-900/40 transition-colors' : 'bg-slate-900/30 hover:bg-slate-900/50 transition-colors'}>
-              <td class="px-4 sm:px-6 py-3.5 font-semibold text-slate-100 bg-slate-900/50 border-r border-slate-800/60 leading-snug">
+              <td class="px-4 sm:px-5 py-3.5 font-semibold text-white bg-slate-900/50 border-r border-slate-800/70 leading-snug align-middle">
                 {row.feature}
               </td>
               {row.values.map((val, vIdx) => {
@@ -343,22 +398,76 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
                 const isPrice = val.includes('$') || headerName.toLowerCase().includes('precio');
 
                 return (
-                  <td class={`px-4 sm:px-6 py-3.5 leading-relaxed ${
-                    isPrice ? 'font-bold text-emerald-400' : 'text-slate-300'
+                  <td class={`px-4 sm:px-5 py-3.5 leading-relaxed align-middle ${
+                    isPrice ? 'font-bold font-mono text-emerald-400 whitespace-nowrap' : 'text-slate-200'
                   }`}>
                     {val}
                   </td>
                 );
               })}
-              {hasAnyCta && (
-                <td class="px-4 sm:px-6 py-3.5 text-right whitespace-nowrap">
+              {hasAnyRowCta && (
+                <td class="px-4 sm:px-5 py-3.5 text-right whitespace-nowrap align-middle">
+                  <div class="inline-flex items-center justify-end gap-2">
+                    {targetUrl ? (
+                      <a
+                        href={targetUrl}
+                        target="_blank"
+                        rel="nofollow sponsored noopener noreferrer"
+                        class={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl font-black text-xs shadow-md hover:scale-105 active:scale-95 transition-all !no-underline border ${theme.btnBg}`}
+                        title={`Ver oferta en ${tiendaName || 'tienda'}`}
+                      >
+                        <span>{label}</span>
+                        <svg class={`w-3.5 h-3.5 shrink-0 ${theme.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                      </a>
+                    ) : (
+                      !secTargetUrl && <span class="text-slate-600 text-xs">—</span>
+                    )}
+                    {secTargetUrl && secTheme && (
+                      <a
+                        href={secTargetUrl}
+                        target="_blank"
+                        rel="nofollow sponsored noopener noreferrer"
+                        class={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl font-black text-xs shadow-md hover:scale-105 active:scale-95 transition-all !no-underline border ${secTheme.btnBg}`}
+                        title="Ver oferta alternativa"
+                      >
+                        <span>{secLabel}</span>
+                        <svg class={`w-3.5 h-3.5 shrink-0 ${secTheme.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                      </a>
+                    )}
+                  </div>
+                </td>
+              )}
+            </tr>
+          );
+        })}
+
+        {/* Fila de cierre con CTAs por Columna (para tablas de Criterio vs Producto A vs Producto B) */}
+        {hasColumnCtas && (
+          <tr class="bg-slate-950/90 border-t-2 border-slate-800">
+            <td class="px-4 sm:px-5 py-4 font-bold text-brand-300 bg-slate-950 border-r border-slate-800/80 align-middle text-xs uppercase tracking-wider">
+              🛒 Ver Mejor Oferta
+            </td>
+            {headers.slice(1).map((h, idx) => {
+              const cta = columnCtas[idx];
+              const pKey = cta?.productKey;
+              const directUrl = cta?.ctaUrl;
+              const productInfo = pKey ? afiliadosMap[pKey] : null;
+              const targetUrl = directUrl || productInfo?.url;
+              const theme = getStoreAffiliateTheme(targetUrl, productInfo?.tienda);
+              const label = cta?.ctaLabel || theme.btnFullText;
+
+              return (
+                <td class="px-4 sm:px-5 py-4 align-middle">
                   {targetUrl ? (
                     <a
                       href={targetUrl}
                       target="_blank"
                       rel="nofollow sponsored noopener noreferrer"
-                      class={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl font-black text-xs shadow-md hover:scale-105 active:scale-95 transition-all !no-underline border ${theme.btnBg}`}
-                      title={`Ver oferta en ${tiendaName || 'tienda'}`}
+                      class={`inline-flex items-center gap-2 px-4 py-2 rounded-xl font-black text-xs shadow-md hover:scale-105 active:scale-95 transition-all !no-underline border ${theme.btnBg}`}
                     >
                       <span>{label}</span>
                       <svg class={`w-3.5 h-3.5 shrink-0 ${theme.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -366,13 +475,14 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
                       </svg>
                     </a>
                   ) : (
-                    <span class="text-slate-600 text-xs">—</span>
+                    <span class="text-slate-500 text-xs">—</span>
                   )}
                 </td>
-              )}
-            </tr>
-          );
-        })}
+              );
+            })}
+            {hasAnyRowCta && <td class="px-4 sm:px-5 py-4"></td>}
+          </tr>
+        )}
       </tbody>
     </table>
   </div>
@@ -405,25 +515,21 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
         const btnTable = container.querySelector('.comp-btn-table');
 
         if (view === 'table') {
-          // Mostrar tabla completa en móvil
           cardsView?.classList.add('hidden');
           cardsView?.classList.remove('block');
           tableView?.classList.remove('hidden');
           tableView?.classList.add('block');
 
-          // Estilo botones
           btnTable?.classList.add('bg-brand-600', 'text-white', 'font-bold');
           btnTable?.classList.remove('text-slate-400', 'font-medium');
           btnCards?.classList.remove('bg-brand-600', 'text-white', 'font-bold');
           btnCards?.classList.add('text-slate-400', 'font-medium');
         } else {
-          // Mostrar fichas adaptadas en móvil
           tableView?.classList.add('hidden');
           tableView?.classList.remove('block');
           cardsView?.classList.remove('hidden');
           cardsView?.classList.add('block');
 
-          // Estilo botones
           btnCards?.classList.add('bg-brand-600', 'text-white', 'font-bold');
           btnCards?.classList.remove('text-slate-400', 'font-medium');
           btnTable?.classList.remove('bg-brand-600', 'text-white', 'font-bold');

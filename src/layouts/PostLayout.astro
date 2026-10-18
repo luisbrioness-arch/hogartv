@@ -197,7 +197,7 @@ const articleSchema = {
     <div class="my-6 p-4 rounded-xl bg-slate-900/90 border border-slate-800 text-xs text-slate-400 flex items-start gap-3">
       <span class="text-brand-400 text-base">💡</span>
       <p class="leading-relaxed">
-        <strong class="text-slate-300">Nota de transparencia:</strong> En HogarTV.cl analizamos de forma independiente productos y servicios de televisión en Chile. Algunos enlaces de esta página pueden ser de afiliados (como Mercado Libre o Amazon), lo que nos permite recibir una pequeña comisión si decides comprar, sin costo extra para ti. Conoce más en nuestra <a href="/divulgacion-afiliados/" class="text-brand-400 underline hover:text-brand-300">divulgación de afiliados</a>.
+        <strong class="text-slate-300">Nota de transparencia:</strong> En HogarTV.cl analizamos de forma independiente productos y servicios de televisión en Chile. Algunos enlaces de esta página pueden ser de afiliados (como Mercado Libre, Falabella o AliExpress), lo que nos permite recibir una pequeña comisión si decides comprar, sin costo extra para ti. Conoce más en nuestra <a href="/divulgacion-afiliados/" class="text-brand-400 underline hover:text-brand-300">divulgación de afiliados</a>.
       </p>
     </div>
 
@@ -338,31 +338,29 @@ const articleSchema = {
       </section>
     )}
 
-    <!-- Bloque de Compartir y Cierre -->
+    <!-- Bloque de Navegación y Conversión al Cierre -->
     <footer class="mt-10 pt-8 border-t border-slate-800">
       <div class="bg-gradient-to-r from-slate-900 to-brand-950/40 rounded-2xl p-6 sm:p-8 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-6">
         <div>
-          <h3 class="text-lg font-bold text-white mb-1">¿Te sirvió esta guía?</h3>
-          <p class="text-xs text-slate-400">Comparte este tutorial con quien lo necesite o explora más guías técnicas.</p>
+          <h3 class="text-lg font-bold text-white mb-1">¿Buscas dónde comprar al mejor precio en Chile?</h3>
+          <p class="text-xs text-slate-400">Revisa nuestro escaparate actualizado con enlaces verificados en Mercado Libre, Falabella y AliExpress.</p>
         </div>
         <div class="flex flex-wrap items-center gap-3">
           <a
-            href={`https://api.whatsapp.com/send?text=${encodeURIComponent(`Te comparto esta guía técnica de HogarTV: ${title} - ${articleUrl}`)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-all inline-flex items-center gap-2 shadow-lg shadow-emerald-950/40"
+            href="/recomendados/"
+            class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-all inline-flex items-center gap-2 shadow-lg shadow-emerald-950/40"
           >
-            <span>💬 Compartir en WhatsApp</span>
+            <span>🛒 Ver Equipos y Ofertas Recomendadas</span>
           </a>
           <a
             href={`/${category}/`}
-            class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold transition-colors"
+            class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold transition-colors"
           >
             Más en {categoryName}
           </a>
           <a
             href="/"
-            class="px-4 py-2 rounded-xl bg-brand-600 hover:bg-brand-500 text-white text-xs font-semibold transition-colors"
+            class="px-4 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white text-xs font-semibold transition-colors"
           >
             Portada
           </a>
@@ -380,7 +378,7 @@ const articleSchema = {
       }, { passive: true });
 
       function initTOC() {
-        const headings = document.querySelectorAll('.article-content h2, .article-content h3');
+        const headings = document.querySelectorAll('.article-content > h2, .article-content > h3');
         const tocNav = document.getElementById('toc-nav');
         const tocDetails = document.getElementById('article-toc');
         if (!tocNav || headings.length === 0) {

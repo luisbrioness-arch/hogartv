@@ -9,9 +9,11 @@ import AdSlot from '../components/AdSlot.astro';
 import sitioData from '../data/sitio.json';
 
 const allArticles = await getCollection('articles');
-const featuredArticles = allArticles.sort(
-  (a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime()
-);
+const featuredArticles = allArticles.sort((a, b) => {
+  if (a.data.featured && !b.data.featured) return -1;
+  if (!a.data.featured && b.data.featured) return 1;
+  return new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime();
+});
 
 const allHeroes = import.meta.glob<{ default: ImageMetadata }>('/src/assets/**/hero.{png,jpg,jpeg,webp,avif}', { eager: true });
 
@@ -74,26 +76,26 @@ const pillars = [
     icon: '📺',
     badge: 'Compra Inteligente 2026',
     badgeColor: 'bg-blue-950/80 text-blue-300 border-blue-800/60',
-    title: 'Mejores Smart TVs y Sticks',
-    desc: 'Revisamos paneles QLED, Mini-LED y 4K con la mejor relación calidad-precio en Chile, más TV Sticks (Roku / Chromecast) para revivir tu tele antigua.',
-    link: '/smart-tv/mejores-smart-tv-calidad-precio-chile/',
-    linkText: 'Ver ranking Smart TVs 2026',
+    title: 'Mejores Smart TVs y Gadgets',
+    desc: 'Revisamos paneles QLED, Mini-LED y los mejores gadgets tecnológicos para el hogar comparando precios en Mercado Libre, Falabella y AliExpress.',
+    link: '/accesorios/mejores-gadgets-tecnologicos-hogar-tv-chile/',
+    linkText: 'Ver Gadgets AliExpress vs M. Libre',
     gradient: 'from-blue-900/20 via-slate-900/40 to-slate-900/80 border-blue-800/30 hover:border-blue-500/50',
   },
 ];
 
 const quickNeeds = [
   {
+    icon: '🔥',
+    question: 'Busco los mejores gadgets para el hogar (AliExpress vs. Mercado Libre)',
+    solution: 'Comparativa de mini proyectores Smart, TV Sticks, barras de sonido y antenas al mejor precio.',
+    link: '/accesorios/mejores-gadgets-tecnologicos-hogar-tv-chile/',
+  },
+  {
     icon: '🆓',
     question: 'Quiero ver canales nacionales en Full HD gratis',
     solution: 'Guía paso a paso para sintonizar canales HD con antena (norma ISDB-Tb).',
     link: '/tv-abierta/como-sintonizar-canales-hd-tvd-chile/',
-  },
-  {
-    icon: '📡',
-    question: '¿Qué antena comprar para TV digital en mi casa o depto?',
-    solution: 'Comparativa de antenas interiores magnéticas, amplificadas y de techo.',
-    link: '/tv-abierta/mejores-antenas-tvd-digital-chile/',
   },
   {
     icon: '📺',
@@ -110,7 +112,7 @@ const quickNeeds = [
   {
     icon: '🛒',
     question: 'Quiero renovar mi televisor sin pagar de más',
-    solution: 'Ranking de los 3 mejores Smart TV 55" calidad-precio en el mercado chileno.',
+    solution: 'Ranking de los 3 mejores Smart TV 55" calidad-precio con video review en Chile.',
     link: '/smart-tv/mejores-smart-tv-calidad-precio-chile/',
   },
   {

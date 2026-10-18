@@ -15,61 +15,74 @@
   }
 }
 
-/* Custom styles for article content */
-.article-content h2 {
+/* Custom styles for article content (isolated from .not-prose components) */
+.article-content :where(h2):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
   @apply text-2xl md:text-3xl font-bold text-white mt-10 mb-4 pb-2 border-b border-slate-800 tracking-tight;
 }
 
-.article-content h3 {
+.article-content :where(h3):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
   @apply text-xl md:text-2xl font-semibold text-brand-300 mt-8 mb-3 tracking-tight;
 }
 
-.article-content p {
+.article-content :where(p):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
   @apply text-slate-300 text-base md:text-lg leading-relaxed mb-6;
 }
 
-.article-content ul, .article-content ol {
+.article-content :where(ul, ol):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
   @apply text-slate-300 text-base md:text-lg mb-6 pl-6 space-y-2;
 }
 
-.article-content ul {
+.article-content :where(ul):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
   @apply list-disc;
 }
 
-.article-content ol {
+.article-content :where(ol):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
   @apply list-decimal;
 }
 
-.article-content strong {
+.article-content :where(strong):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
   @apply text-white font-semibold;
 }
 
-.article-content a:not([class*="rounded"]):not([class*="bg-"]):not([class*="btn"]) {
+.article-content :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *, [class*="rounded"], [class*="bg-"], [class*="btn"])) {
   @apply text-brand-400 hover:text-brand-300 underline underline-offset-4 decoration-brand-500/50 hover:decoration-brand-400 transition-colors;
 }
 
-.article-content blockquote {
+.article-content :where(blockquote):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
   @apply border-l-4 border-brand-500 bg-slate-900/60 p-4 rounded-r-xl my-6 text-slate-300 italic;
 }
 
-/* Tablas markdown estándar */
-.article-content table {
-  @apply w-full my-6 text-left text-xs sm:text-sm rounded-xl overflow-hidden border border-slate-800 bg-surface-card border-collapse;
+/* Tablas markdown estándar (Fichas Técnicas en artículos) */
+.article-content :where(table):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  @apply w-full my-8 text-left text-xs sm:text-sm rounded-2xl overflow-hidden border border-slate-800 bg-surface-card border-collapse shadow-xl;
 }
 
-.article-content th {
-  @apply bg-slate-900/90 text-brand-300 font-semibold px-3 sm:px-4 py-3 border-b border-slate-800 uppercase tracking-wider text-[11px] sm:text-xs;
+.article-content :where(th):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  @apply bg-slate-950/90 text-brand-300 font-bold px-4 sm:px-6 py-3.5 border-b border-slate-800 uppercase tracking-wider text-[11px] sm:text-xs align-middle;
 }
 
-.article-content td {
-  @apply px-3 sm:px-4 py-3 border-b border-slate-800/60 text-slate-300 text-xs sm:text-sm leading-relaxed;
+.article-content :where(th:first-child):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  @apply text-slate-400 w-2/5 sm:w-1/3 border-r border-slate-800/80;
 }
 
-.article-content tr:last-child td {
+.article-content :where(td):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  @apply px-4 sm:px-6 py-3.5 border-b border-slate-800/70 text-slate-200 text-xs sm:text-sm leading-relaxed align-middle;
+}
+
+.article-content :where(td:first-child):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  @apply font-semibold text-white bg-slate-900/60 border-r border-slate-800/80;
+}
+
+.article-content :where(tr:last-child td):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
   @apply border-b-0;
 }
 
-.article-content tr:nth-child(even) {
+.article-content :where(tr:nth-child(even)):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
   @apply bg-slate-900/30;
 }
+
+.article-content :where(tr:hover td):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  @apply bg-slate-800/40 transition-colors;
+}
+
 

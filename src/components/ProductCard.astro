@@ -175,6 +175,27 @@ const secondaryAffiliates = comparativa
   })
   .filter((item: any) => item.theme.isOperative && item.targetUrl !== product.url);
 
+// Reviews y análisis en profundidad con video para modelos específicos
+const reviewsMap: Record<string, { url: string; label: string; videoId: string }> = {
+  'tcl-c655-55': {
+    url: '/smart-tv/review-tcl-c655-p8l-55-chile/',
+    label: 'Review a Fondo & Video Test',
+    videoId: 'Wzf2fIcIK-I',
+  },
+  'hisense-u6k-55': {
+    url: '/smart-tv/review-hisense-u6k-55-mini-led-chile/',
+    label: 'Review a Fondo & Video Test',
+    videoId: '-uuiFpxgzPA',
+  },
+  'samsung-du7000-55': {
+    url: '/smart-tv/review-samsung-crystal-du7000-55-chile/',
+    label: 'Review a Fondo & Video Test',
+    videoId: '93NJU4dE2yw',
+  },
+};
+
+const reviewInfo = reviewsMap[productKey];
+
 const productSchema = {
   '@context': 'https://schema.org',
   '@type': 'Product',
@@ -277,12 +298,27 @@ const productSchema = {
 
           <!-- Especificaciones clave -->
           {specs.length > 0 && (
-            <div class="flex flex-wrap gap-1.5 mb-4">
+            <div class="flex flex-wrap gap-1.5 mb-3">
               {specs.map((spec) => (
                 <span class="text-xs px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700/60">
                   {spec}
                 </span>
               ))}
+            </div>
+          )}
+
+          <!-- Enlace a Review Dedicado con Video si existe -->
+          {reviewInfo && (
+            <div class="mb-4">
+              <a
+                href={reviewInfo.url}
+                class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-indigo-950/70 hover:bg-indigo-900 border border-indigo-500/40 text-indigo-300 hover:text-white text-xs font-bold transition-all shadow-sm hover:scale-[1.02] !no-underline group"
+                title={`Ver review técnico completo y prueba en video de ${title}`}
+              >
+                <span class="w-5 h-5 rounded-lg bg-rose-600 text-white flex items-center justify-center text-[10px] shrink-0 font-mono">▶</span>
+                <span>Ver Review a Fondo & Ficha Técnica Completa</span>
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
+              </a>
             </div>
           )}
         </div>
@@ -308,26 +344,14 @@ const productSchema = {
               )}
             </div>
 
-            <!-- Botones de Acción -->
+            <!-- Botones de Acción (Directos a Tiendas y Copiar) -->
             <div class="flex flex-wrap items-center gap-2.5">
-              <!-- Botón Compartir por WhatsApp -->
-              <a
-                href={`https://api.whatsapp.com/send?text=${encodeURIComponent('¡Mira este producto recomendado en HogarTV! ' + title + ': https://hogartv.cl')}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] !text-white font-bold text-sm shadow-md shadow-emerald-950/40 hover:scale-[1.02] active:scale-[0.98] transition-all !no-underline"
-                title="Compartir por WhatsApp" aria-label="Compartir por WhatsApp"
-              >
-                <svg class="w-5 h-5 fill-current !text-white shrink-0" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.769.82 2.791.82 3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.766-5.768-5.766zm6.818 5.766c-.001 3.759-3.059 6.817-6.818 6.817-1.189 0-2.316-.312-3.308-.858l-4.723 1.238 1.26-4.598c-.611-1.026-.935-2.203-.935-3.417 0-3.759 3.059-6.818 6.818-6.818 3.759 0 6.818 3.059 6.818 6.818z"/></svg>
-                <span class="!text-white font-bold">WhatsApp</span>
-              </a>
-
               <!-- Botón Copiar Link -->
               <button
                 type="button"
                 data-share-url={product.url}
-                class="copy-share-btn inline-flex items-center gap-1.5 px-3.5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 !text-slate-200 font-semibold text-xs shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98] !no-underline"
-                title="Copiar enlace" aria-label="Copiar enlace de recomendación"
+                class="copy-share-btn inline-flex items-center gap-1.5 px-3.5 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 !text-slate-200 font-semibold text-xs shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98] !no-underline"
+                title="Copiar enlace de recomendación" aria-label="Copiar enlace de recomendación"
               >
                 <svg class="w-4 h-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                 <span class="btn-text">Copiar</span>
@@ -465,6 +489,43 @@ const productSchema = {
         </div>
       </div>
     </div>
+
+    <!-- Video Review Expandible si existe -->
+    {reviewInfo?.videoId && (
+      <div class="mt-6">
+        <details class="group rounded-2xl bg-slate-900/90 border border-slate-800 overflow-hidden shadow-md">
+          <summary class="cursor-pointer px-4 sm:px-5 py-3.5 flex items-center justify-between text-xs sm:text-sm font-bold text-slate-200 hover:text-white select-none bg-slate-900/80 hover:bg-slate-800/80 transition-colors">
+            <span class="flex items-center gap-2.5">
+              <span class="w-6 h-6 rounded-lg bg-rose-600 text-white flex items-center justify-center text-xs shrink-0 shadow-sm shadow-rose-600/40">▶</span>
+              <span>Ver Video Review y Test de Imagen en Español ({brand || 'Smart TV'})</span>
+            </span>
+            <span class="text-xs font-semibold text-brand-400 group-open:rotate-180 transition-transform">▼ Desplegar Video</span>
+          </summary>
+          <div class="p-4 sm:p-5 border-t border-slate-800/80 bg-slate-950/80 space-y-3">
+            <div class="aspect-video w-full rounded-xl overflow-hidden border border-slate-800 bg-black shadow-inner">
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${reviewInfo.videoId}`}
+                title={`Video Review de ${title}`}
+                class="w-full h-full border-0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+                loading="lazy"
+              ></iframe>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-slate-400 pt-1">
+              <span class="flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>Video review independiente en español para evaluar nitidez, contraste y fluidez.</span>
+              </span>
+              <a href={reviewInfo.url} class="text-brand-300 hover:text-white font-bold inline-flex items-center gap-1 hover:underline shrink-0">
+                <span>Leer ficha técnica completa</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </details>
+      </div>
+    )}
 
     <!-- Pros y Contras -->
     {(pros.length > 0 || cons.length > 0) && (

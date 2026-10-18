@@ -1,0 +1,31 @@
+---
+interface Props {
+  videoId: string;
+  title: string;
+  caption?: string;
+}
+
+const { videoId, title, caption = 'Video review independiente en español para evaluar rendimiento real de pantalla y sonido.' } = Astro.props;
+---
+
+<div class="my-8 rounded-2xl overflow-hidden border border-slate-800 bg-slate-950 shadow-2xl not-prose">
+  <div class="aspect-video w-full bg-black relative">
+    <iframe
+      src={`https://www.youtube-nocookie.com/embed/${videoId}`}
+      title={title}
+      class="w-full h-full border-0 absolute inset-0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+      loading="lazy"
+    ></iframe>
+  </div>
+  {caption && (
+    <div class="p-3.5 bg-slate-900/95 border-t border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-slate-400">
+      <span class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-rose-500 shrink-0"></span>
+        <span>{caption}</span>
+      </span>
+      <span class="text-[11px] font-mono text-slate-500 shrink-0">YouTube · Análisis en Español</span>
+    </div>
+  )}
+</div>

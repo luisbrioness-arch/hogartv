@@ -56,8 +56,11 @@ function scanDir(dirPath) {
 // 1. Escaneo de archivos fuente en src/ (excluyendo src/data/afiliados.json explícitamente)
 dirsToScan.forEach(scanDir);
 
-// 2. Escaneo de HTML compilado en dist/ (si existe) para validar que en runtime tampoco se emitan
+// 2. Escaneo de HTML compilado en dist/ (si existe) para validar que en runtime tampoco se emitan enlaces fuera de afiliados.json
 const distDir = path.join(projectRoot, 'dist');
+const afiliadosData = JSON.parse(fs.readFileSync(path.join(projectRoot, 'src', 'data', 'afiliados.json'), 'utf8'));
+const allowedUrls = new Set(Object.values(afiliadosData).map(a => a.url));
+
 let distFilesScanned = 0;
 if (fs.existsSync(distDir)) {
   function scanDist(dirPath) {
@@ -69,16 +72,19 @@ if (fs.existsSync(distDir)) {
       } else if (entry.isFile() && entry.name.endsWith('.html')) {
         distFilesScanned++;
         const content = fs.readFileSync(fullPath, 'utf8');
-        // Buscar enlaces href crudos a mercadolibre.cl
+        // Buscar enlaces href crudos a mercadolibre.cl que no estén centralizados en afiliados.json
         const hrefMatches = content.match(/href=["'](https?:\/\/[a-zA-Z0-9.-]*mercadolibre\.cl[^"']*)["']/gi);
         if (hrefMatches) {
           hrefMatches.forEach(m => {
-            violations.push({
-              file: path.relative(projectRoot, fullPath),
-              line: 1,
-              matchedUrl: m,
-              lineContent: 'Enlace crudo detectado en HTML compilado'
-            });
+            const cleanUrl = m.replace(/^href=["']/, '').replace(/["']$/, '');
+            if (!allowedUrls.has(cleanUrl)) {
+              violations.push({
+                file: path.relative(projectRoot, fullPath),
+                line: 1,
+                matchedUrl: m,
+                lineContent: 'Enlace crudo no centralizado detectado en HTML compilado'
+              });
+            }
           });
         }
       }

@@ -15,6 +15,7 @@ import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQSection from '../../components/FAQSection.astro';
 import AdSlot from '../../components/AdSlot.astro';
 import CtaBanner from '../../components/CtaBanner.astro';
+import AffiliateLink from '../../components/AffiliateLink.astro';
 
 En el último año, los proyectores portátiles inteligentes han revolucionado el entretenimiento en los hogares chilenos. Lo que antes era un lujo de oficinas o salas de cine que costaba más de $500.000 CLP, hoy es un **gadget accesible por menos de $65.000 CLP** capaz de transformar cualquier pared blanca o techo de dormitorio en una **pantalla gigante de 100 a 150 pulgadas**.
 
@@ -78,9 +79,46 @@ La clave del éxito del Magcubic en Chile es su **autonomía de funcionamiento**
 2. **Abres directamente la aplicación de streaming:** YouTube, Prime Video, Disney+, Max o navegadores web.
 3. **El altavoz incorporado** te permite escuchar de inmediato, o puedes conectarle tu parlante Bluetooth favorito (JBL, Sony, etc.) para tener audio de discoteca o cine en tu habitación.
 
-> 💡 **¿Dónde te conviene comprarlo desde Chile?**
-> - Si lo necesitas **rápido con garantía nacional de 24 a 48 horas**, cómpralo a través de **Mercado Libre Chile**.
-> - Si prefieres **ahorrarte más de $15.000 a $20.000 CLP** comprando a precio directo de fábrica, pídelo en la **[Tienda Oficial de AliExpress con Envío Choice Gratis a Chile](https://s.click.aliexpress.com/e/_c4eGFwl3)** (demora aproximadamente 10 a 14 días y cuenta con seguimiento en línea).
+<div class="my-6 p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-slate-900 via-surface-card to-slate-900 border border-slate-700/80 shadow-xl">
+  <div class="flex items-center gap-2 mb-2 text-white font-bold text-base sm:text-lg">
+    <span class="text-xl">💡</span>
+    <span>¿Dónde conviene comprar el Magcubic HY320 desde Chile?</span>
+  </div>
+  <p class="text-xs sm:text-sm text-slate-300 mb-4 leading-relaxed">
+    Dependiendo de si priorizas entrega inmediata local o el máximo ahorro directo de fábrica, tienes dos opciones oficiales verificadas:
+  </p>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+    <AffiliateLink
+      productKey="proyector-magcubic-hy320"
+      class="flex flex-col justify-between p-3.5 rounded-xl bg-[#FFE600] hover:bg-[#F5D600] !text-slate-950 font-black shadow-md shadow-yellow-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all !no-underline border border-yellow-400 group"
+      showIcon={false}
+    >
+      <div class="flex items-center justify-between gap-2 mb-1">
+        <span class="text-xs uppercase tracking-wider font-extrabold text-slate-900 flex items-center gap-1">⚡ Mercado Libre Chile</span>
+        <span class="text-[10px] px-1.5 py-0.5 rounded bg-slate-950 text-yellow-300 font-bold">24-48 Horas</span>
+      </div>
+      <div class="flex items-center justify-between gap-1 text-sm">
+        <span>Comprar con Garantía Nacional</span>
+        <span class="group-hover:translate-x-1 transition-transform font-black">→</span>
+      </div>
+    </AffiliateLink>
+    <a
+      href="https://s.click.aliexpress.com/e/_c4eGFwl3"
+      target="_blank"
+      rel="nofollow sponsored noopener noreferrer"
+      class="flex flex-col justify-between p-3.5 rounded-xl bg-[#FF4747] hover:bg-[#E03030] !text-white font-black shadow-md shadow-rose-600/30 hover:scale-[1.02] active:scale-[0.98] transition-all !no-underline border border-rose-400 group"
+    >
+      <div class="flex items-center justify-between gap-2 mb-1">
+        <span class="text-xs uppercase tracking-wider font-extrabold text-rose-100 flex items-center gap-1">🔥 AliExpress Choice</span>
+        <span class="text-[10px] px-1.5 py-0.5 rounded bg-slate-950 text-rose-200 font-bold">Ahorro $15.000+</span>
+      </div>
+      <div class="flex items-center justify-between gap-1 text-sm">
+        <span>Comprar a Precio de Fábrica</span>
+        <span class="group-hover:translate-x-1 transition-transform font-black">→</span>
+      </div>
+    </a>
+  </div>
+</div>
 
 <AdSlot format="in-feed" label="Ofertas Recomendadas de Proyectores" />
 

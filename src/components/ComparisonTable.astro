@@ -32,6 +32,52 @@ const optionCount = headers.length - 1;
 const isTwoOptions = optionCount === 2;
 const hasAnyCta = rows.some((r) => r.productKey || r.ctaUrl);
 const afiliadosMap: Record<string, any> = afiliadosData;
+
+// Helper para clasificar enlaces y asignar estilo de marca de alta conversión
+function getStoreAffiliateTheme(url: string, storeName?: string) {
+  const safeUrl = url || '';
+  const isMeli = safeUrl.includes('meli.la') || safeUrl.includes('mercadolibre.cl');
+  const isFalabella = safeUrl.includes('creators.falabella.com');
+  const isAliExpress = safeUrl.includes('s.click.aliexpress.com') || (safeUrl.includes('aliexpress.com') && safeUrl.includes('aff_platform'));
+
+  if (isMeli) {
+    return {
+      isOperative: true,
+      network: 'mercadolibre',
+      btnBg: 'bg-[#FFE600] hover:bg-[#F5D600] !text-slate-950 border-yellow-400 shadow-md shadow-yellow-500/25',
+      btnText: 'Comprar en M. Libre',
+      iconColor: 'text-slate-950',
+    };
+  }
+
+  if (isFalabella) {
+    return {
+      isOperative: true,
+      network: 'falabella',
+      btnBg: 'bg-[#008A00] hover:bg-[#007000] !text-white border-emerald-400 shadow-md shadow-emerald-700/30',
+      btnText: 'Comprar en Falabella',
+      iconColor: 'text-white',
+    };
+  }
+
+  if (isAliExpress) {
+    return {
+      isOperative: true,
+      network: 'aliexpress',
+      btnBg: 'bg-[#FF4747] hover:bg-[#E03030] !text-white border-rose-400 shadow-md shadow-rose-700/30',
+      btnText: 'Comprar en AliExpress',
+      iconColor: 'text-white',
+    };
+  }
+
+  return {
+    isOperative: false,
+    network: 'reference',
+    btnBg: 'bg-slate-800 hover:bg-slate-700 !text-slate-300 border-slate-700 shadow-none',
+    btnText: 'Ver Oferta',
+    iconColor: 'text-slate-400',
+  };
+}
 ---
 
 <div class="my-8 rounded-2xl border border-slate-800 bg-surface-card shadow-xl overflow-hidden" id={tableId}>
@@ -156,8 +202,9 @@ const afiliadosMap: Record<string, any> = afiliadosData;
             const directUrl = row.ctaUrl;
             const productInfo = pKey ? afiliadosMap[pKey] : null;
             const targetUrl = directUrl || productInfo?.url;
-            const tiendaName = productInfo?.tienda || 'Mercado Libre';
-            const label = row.ctaLabel || `Ver Oferta en ${tiendaName}`;
+            const tiendaName = productInfo?.tienda || '';
+            const theme = getStoreAffiliateTheme(targetUrl, tiendaName);
+            const label = row.ctaLabel || theme.btnText;
 
             if (!targetUrl) return null;
 
@@ -168,10 +215,10 @@ const afiliadosMap: Record<string, any> = afiliadosData;
                   href={targetUrl}
                   target="_blank"
                   rel="nofollow sponsored noopener noreferrer"
-                  class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[#FFE600] hover:bg-[#F5D600] !text-slate-950 font-black text-xs shadow-sm !no-underline border border-yellow-400"
+                  class={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-black text-xs shadow-md hover:scale-105 active:scale-95 transition-all !no-underline border ${theme.btnBg}`}
                 >
                   <span>{label}</span>
-                  <svg class="w-3.5 h-3.5 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                  <svg class={`w-3.5 h-3.5 shrink-0 ${theme.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                 </a>
               </div>
             );
@@ -189,8 +236,9 @@ const afiliadosMap: Record<string, any> = afiliadosData;
         const directUrl = row.ctaUrl;
         const productInfo = pKey ? afiliadosMap[pKey] : null;
         const targetUrl = directUrl || productInfo?.url;
-        const tiendaName = productInfo?.tienda || 'Mercado Libre';
-        const label = row.ctaLabel || `Ver Oferta en ${tiendaName}`;
+        const tiendaName = productInfo?.tienda || '';
+        const theme = getStoreAffiliateTheme(targetUrl, tiendaName);
+        const label = row.ctaLabel || theme.btnText;
 
         return (
           <div class="rounded-xl border border-slate-800/90 bg-slate-900/70 p-3.5 sm:p-4 shadow-sm relative overflow-hidden">
@@ -239,10 +287,10 @@ const afiliadosMap: Record<string, any> = afiliadosData;
                   href={targetUrl}
                   target="_blank"
                   rel="nofollow sponsored noopener noreferrer"
-                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#FFE600] hover:bg-[#F5D600] !text-slate-950 font-black text-xs shadow-md shadow-yellow-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all !no-underline border border-yellow-400"
+                  class={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg font-black text-xs shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all !no-underline border ${theme.btnBg}`}
                 >
                   <span>{label}</span>
-                  <svg class="w-3.5 h-3.5 text-slate-950 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class={`w-3.5 h-3.5 shrink-0 ${theme.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </a>
@@ -281,8 +329,9 @@ const afiliadosMap: Record<string, any> = afiliadosData;
           const directUrl = row.ctaUrl;
           const productInfo = pKey ? afiliadosMap[pKey] : null;
           const targetUrl = directUrl || productInfo?.url;
-          const tiendaName = productInfo?.tienda || 'Mercado Libre';
-          const label = row.ctaLabel || 'Ver Oferta';
+          const tiendaName = productInfo?.tienda || '';
+          const theme = getStoreAffiliateTheme(targetUrl, tiendaName);
+          const label = row.ctaLabel || theme.btnText;
 
           return (
             <tr class={rIdx % 2 === 0 ? 'bg-surface-card hover:bg-slate-900/40 transition-colors' : 'bg-slate-900/30 hover:bg-slate-900/50 transition-colors'}>
@@ -308,11 +357,11 @@ const afiliadosMap: Record<string, any> = afiliadosData;
                       href={targetUrl}
                       target="_blank"
                       rel="nofollow sponsored noopener noreferrer"
-                      class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#FFE600] hover:bg-[#F5D600] !text-slate-950 font-black text-xs shadow-md shadow-yellow-500/20 hover:scale-105 active:scale-95 transition-all !no-underline border border-yellow-400"
-                      title={`Ver oferta en ${tiendaName}`}
+                      class={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl font-black text-xs shadow-md hover:scale-105 active:scale-95 transition-all !no-underline border ${theme.btnBg}`}
+                      title={`Ver oferta en ${tiendaName || 'tienda'}`}
                     >
                       <span>{label}</span>
-                      <svg class="w-3.5 h-3.5 text-slate-950 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg class={`w-3.5 h-3.5 shrink-0 ${theme.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                       </svg>
                     </a>

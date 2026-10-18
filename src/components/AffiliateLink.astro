@@ -35,13 +35,30 @@ const envUrl = (import.meta.env as Record<string, string | undefined>)[envKey]?.
 const targetUrl = envUrl || product.url;
 
 const displayText = text || `Ver precio en ${product.tienda}`;
+
+const isMeli = targetUrl.includes('meli.la') || targetUrl.includes('mercadolibre.cl');
+const isFalabella = targetUrl.includes('creators.falabella.com');
+const isAliExpress = targetUrl.includes('s.click.aliexpress.com') || (targetUrl.includes('aliexpress.com') && targetUrl.includes('aff_platform'));
+
+let defaultButtonClass = 'inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-black text-sm shadow-md transition-all hover:scale-105 active:scale-95 !no-underline border';
+if (isFalabella) {
+  defaultButtonClass += ' bg-[#008A00] hover:bg-[#007000] !text-white border-emerald-400 shadow-emerald-700/30';
+} else if (isAliExpress) {
+  defaultButtonClass += ' bg-[#FF4747] hover:bg-[#E03030] !text-white border-rose-400 shadow-rose-700/30';
+} else if (isMeli) {
+  defaultButtonClass += ' bg-[#FFE600] hover:bg-[#F5D600] !text-slate-950 border-yellow-400 shadow-yellow-500/25';
+} else {
+  defaultButtonClass += ' bg-brand-600 hover:bg-brand-500 !text-white border-brand-500';
+}
+
+const finalClass = className || defaultButtonClass;
 ---
 
 <a
   href={targetUrl}
   target="_blank"
   rel="nofollow sponsored noopener noreferrer"
-  class={className}
+  class={finalClass}
 >
   <slot>
     <span>{displayText}</span>

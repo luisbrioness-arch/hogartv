@@ -56,8 +56,8 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
       isOperative: true,
       network: 'mercadolibre',
       btnBg: 'bg-[#FFE600] hover:bg-[#F5D600] !text-slate-950 border-yellow-400 shadow-md shadow-yellow-500/25',
-      btnText: 'M. Libre',
-      btnFullText: 'Comprar en M. Libre',
+      btnText: 'Mercado Libre',
+      btnFullText: 'Mercado Libre',
       iconColor: 'text-slate-950',
     };
   }
@@ -68,7 +68,7 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
       network: 'falabella',
       btnBg: 'bg-[#008A00] hover:bg-[#007000] !text-white border-emerald-400 shadow-md shadow-emerald-700/30',
       btnText: 'Falabella',
-      btnFullText: 'Comprar en Falabella',
+      btnFullText: 'Falabella',
       iconColor: 'text-white',
     };
   }
@@ -79,7 +79,7 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
       network: 'aliexpress',
       btnBg: 'bg-[#FF4747] hover:bg-[#E03030] !text-white border-rose-400 shadow-md shadow-rose-700/30',
       btnText: 'AliExpress',
-      btnFullText: 'Comprar en AliExpress',
+      btnFullText: 'AliExpress',
       iconColor: 'text-white',
     };
   }
@@ -351,20 +351,20 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
   <!-- 2. VISTA DE TABLA COMPLETA (VISIBLE EN ESCRITORIO O AL ACTIVAR TOGGLE)     -->
   <!-- ========================================================================= -->
   <div class="comp-table-view hidden md:block overflow-x-auto">
-    <table class="w-full text-left text-xs sm:text-sm border-collapse m-0">
+    <table class="w-full text-left text-xs sm:text-sm border-collapse m-0 table-auto">
       <thead class="bg-slate-950/90 text-slate-300 uppercase tracking-wider font-bold border-b border-slate-800 text-[11px]">
         <tr>
           {headers.map((h, idx) => (
-            <th class={`px-4 sm:px-5 py-3.5 align-middle ${
+            <th class={`px-3 sm:px-4 py-3.5 align-middle ${
               idx === 0
-                ? 'text-slate-400 border-r border-slate-800/80 min-w-[160px] sm:min-w-[190px]'
+                ? 'text-slate-400 border-r border-slate-800/80 min-w-[150px]'
                 : 'text-brand-300'
             }`}>
               {h}
             </th>
           ))}
           {hasAnyRowCta && (
-            <th class="px-4 sm:px-5 py-3.5 text-right text-emerald-400 align-middle whitespace-nowrap">
+            <th class="px-3 sm:px-4 py-3.5 text-center text-emerald-400 align-middle whitespace-nowrap min-w-[140px]">
               Dónde Comprar
             </th>
           )}
@@ -379,7 +379,7 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
           const tiendaName = productInfo?.tienda || '';
           const hasDual = Boolean(row.secondaryProductKey || row.secondaryCtaUrl);
           const theme = getStoreAffiliateTheme(targetUrl, tiendaName);
-          const label = row.ctaLabel || (hasDual ? theme.btnText : theme.btnFullText);
+          const label = row.ctaLabel || theme.btnText;
 
           const secKey = row.secondaryProductKey;
           const secDirectUrl = row.secondaryCtaUrl;
@@ -390,7 +390,7 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
 
           return (
             <tr class={rIdx % 2 === 0 ? 'bg-surface-card hover:bg-slate-900/40 transition-colors' : 'bg-slate-900/30 hover:bg-slate-900/50 transition-colors'}>
-              <td class="px-4 sm:px-5 py-3.5 font-semibold text-white bg-slate-900/50 border-r border-slate-800/70 leading-snug align-middle">
+              <td class="px-3 sm:px-4 py-3 font-semibold text-white bg-slate-900/50 border-r border-slate-800/70 leading-snug align-middle">
                 {row.feature}
               </td>
               {row.values.map((val, vIdx) => {
@@ -398,7 +398,7 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
                 const isPrice = val.includes('$') || headerName.toLowerCase().includes('precio');
 
                 return (
-                  <td class={`px-4 sm:px-5 py-3.5 leading-relaxed align-middle ${
+                  <td class={`px-3 sm:px-4 py-3 leading-relaxed align-middle ${
                     isPrice ? 'font-bold font-mono text-emerald-400 whitespace-nowrap' : 'text-slate-200'
                   }`}>
                     {val}
@@ -406,18 +406,18 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
                 );
               })}
               {hasAnyRowCta && (
-                <td class="px-4 sm:px-5 py-3.5 text-right whitespace-nowrap align-middle">
-                  <div class="inline-flex items-center justify-end gap-2">
+                <td class="px-3 sm:px-4 py-3 text-right align-middle">
+                  <div class="flex flex-wrap items-center justify-end gap-1.5 min-w-[130px]">
                     {targetUrl ? (
                       <a
                         href={targetUrl}
                         target="_blank"
                         rel="nofollow sponsored noopener noreferrer"
-                        class={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl font-black text-xs shadow-md hover:scale-105 active:scale-95 transition-all !no-underline border ${theme.btnBg}`}
+                        class={`inline-flex items-center justify-center gap-1 px-2.5 py-1.5 rounded-lg font-black text-[11px] shadow-sm hover:scale-105 active:scale-95 transition-all !no-underline border ${theme.btnBg} whitespace-nowrap`}
                         title={`Ver oferta en ${tiendaName || 'tienda'}`}
                       >
                         <span>{label}</span>
-                        <svg class={`w-3.5 h-3.5 shrink-0 ${theme.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class={`w-3 h-3 shrink-0 ${theme.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>
                       </a>
@@ -429,11 +429,11 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
                         href={secTargetUrl}
                         target="_blank"
                         rel="nofollow sponsored noopener noreferrer"
-                        class={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl font-black text-xs shadow-md hover:scale-105 active:scale-95 transition-all !no-underline border ${secTheme.btnBg}`}
+                        class={`inline-flex items-center justify-center gap-1 px-2.5 py-1.5 rounded-lg font-black text-[11px] shadow-sm hover:scale-105 active:scale-95 transition-all !no-underline border ${secTheme.btnBg} whitespace-nowrap`}
                         title="Ver oferta alternativa"
                       >
                         <span>{secLabel}</span>
-                        <svg class={`w-3.5 h-3.5 shrink-0 ${secTheme.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class={`w-3 h-3 shrink-0 ${secTheme.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>
                       </a>

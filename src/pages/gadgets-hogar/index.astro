@@ -12,8 +12,8 @@ const breadcrumbs = [
 const itemListSchema = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  'name': 'Los 7 Mejores Gadgets Tecnológicos para el Hogar y TV en Chile (2026): AliExpress vs. Mercado Libre',
-  'description': 'Ranking técnico y comparativa de precios entre Mercado Libre Chile (Envío Full 24h), Falabella y AliExpress Choice para proyectores portátiles, TV Sticks, barras de sonido y antenas digitales.',
+  'name': 'Los 9 Mejores Gadgets Tecnológicos para el Hogar y TV en Chile (2026): AliExpress vs. Mercado Libre',
+  'description': 'Ranking técnico y comparativa de precios entre Mercado Libre Chile (Envío Full 24h), Falabella y AliExpress Choice para proyectores portátiles, TV Boxes, tiras LED Ambilight, barras de sonido y antenas digitales.',
   'itemListElement': [
     {
       '@type': 'ListItem',
@@ -30,30 +30,42 @@ const itemListSchema = {
     {
       '@type': 'ListItem',
       'position': 3,
+      'name': 'Xiaomi TV Box S (2nd Gen) 4K Ultra HD con Google TV',
+      'url': 'https://hogartv.cl/gadgets-hogar/#xiaomi-tv-box-s-4k',
+    },
+    {
+      '@type': 'ListItem',
+      'position': 4,
       'name': 'Roku Streaming Stick HD (3840S2) con Control por Voz',
       'url': 'https://hogartv.cl/gadgets-hogar/#roku-express-4k',
     },
     {
       '@type': 'ListItem',
-      'position': 4,
+      'position': 5,
+      'name': 'Kit Tira Luces LED RGBIC TV Ambilight USB 55 a 65 Pulgadas',
+      'url': 'https://hogartv.cl/gadgets-hogar/#luces-led-tv-ambilight',
+    },
+    {
+      '@type': 'ListItem',
+      'position': 6,
       'name': 'Barra de Sonido Samsung HW-B550 / Q600H con Subwoofer Inalámbrico',
       'url': 'https://hogartv.cl/gadgets-hogar/#samsung-soundbar-b550',
     },
     {
       '@type': 'ListItem',
-      'position': 5,
+      'position': 7,
       'name': 'Soporte TV Móvil Articulado Doble Brazo Reforzado 32 a 75 Pulgadas VESA',
       'url': 'https://hogartv.cl/gadgets-hogar/#soporte-tv-articulado-pesado',
     },
     {
       '@type': 'ListItem',
-      'position': 6,
+      'position': 8,
       'name': 'Antena Digital HDTV Interior / Exterior Amplificada 360°',
       'url': 'https://hogartv.cl/gadgets-hogar/#antena-tvd-chile',
     },
     {
       '@type': 'ListItem',
-      'position': 7,
+      'position': 9,
       'name': 'Decodificador TV Digital TDT ISDB-Tb Oficial para Chile',
       'url': 'https://hogartv.cl/gadgets-hogar/#decodificador-tvd',
     },
@@ -157,7 +169,7 @@ const gadgetsFaqs = [
     <section aria-labelledby="tabla-comparativa-gadgets" class="max-w-5xl mx-auto mb-16">
       <h2 id="tabla-comparativa-gadgets" class="sr-only">Tabla Comparativa de Precios: Mercado Libre vs AliExpress en Chile</h2>
       <ComparisonTable
-        title="Comparativa de Precios y Tiendas: Los 7 Mejores Gadgets para el Hogar (Chile 2026)"
+        title="Comparativa de Precios y Tiendas: Los 9 Mejores Gadgets para el Hogar (Chile 2026)"
         headers={["Gadget Tecnológico", "Precio M. Libre (24-48h)", "Precio AliExpress / Retail", "Recomendación de Compra"]}
         rows={[
           {
@@ -172,29 +184,39 @@ const gadgetsFaqs = [
             productKey: "chromecast-google-tv"
           },
           {
-            feature: "3. Roku Streaming Stick con Control por Voz",
-            values: ["$ 39.990 CLP", "$ 44.990 CLP", "Mercado Libre (Envío Full + Garantía Chile)"],
+            feature: "3. Xiaomi TV Box S (2nd Gen) 4K Google TV",
+            values: ["$ 52.990 CLP", "$ 56.990 CLP", "Mercado Libre (Con Puerto USB y Audio Jack)"],
+            productKey: "xiaomi-tv-box-s-4k"
+          },
+          {
+            feature: "4. Roku Streaming Stick con Control por Voz",
+            values: ["$ 44.990 CLP", "$ 49.990 CLP", "Mercado Libre (Envío Full + Garantía Chile)"],
             productKey: "roku-express-4k"
           },
           {
-            feature: "4. Barra de Sonido Samsung + Subwoofer 410W",
-            values: ["$ 149.990 CLP", "$ 159.990 CLP (Falabella)", "Mercado Libre o Falabella (Ahorras flete pesado)"],
+            feature: "5. Kit Tira Luces LED RGBIC TV Ambilight USB",
+            values: ["$ 12.990 CLP", "$ 8.990 CLP", "Mercado Libre (Entrega en 24h para el finde)"],
+            productKey: "luces-led-tv-ambilight"
+          },
+          {
+            feature: "6. Barra de Sonido Samsung + Subwoofer 410W",
+            values: ["$ 139.990 CLP", "$ 169.990 CLP (Falabella)", "Mercado Libre o Falabella (Ahorras flete pesado)"],
             productKey: "samsung-soundbar-b550",
             secondaryProductKey: "falabella-samsung-soundbar"
           },
           {
-            feature: "5. Soporte TV Móvil Doble Brazo Reforzado (32\"-75\")",
+            feature: "7. Soporte TV Móvil Doble Brazo Reforzado (32\"-75\")",
             values: ["$ 19.990 CLP", "$ 34.990 CLP (Con envío)", "Mercado Libre (Acero pesado con envío gratis)"],
             productKey: "soporte-tv-articulado-pesado"
           },
           {
-            feature: "6. Antena Digital HDTV Amplificada 360°",
+            feature: "8. Antena Digital HDTV Amplificada 360°",
             values: ["$ 9.990 CLP", "$ 12.990 CLP", "Mercado Libre (Entrega en 24h lista para usar)"],
             productKey: "antena-tvd-chile"
           },
           {
-            feature: "7. Decodificador TV Digital ISDB-Tb Norma Chilena",
-            values: ["$ 19.990 CLP", "No compatible en AliExpress", "Mercado Libre (Único con norma SUBTEL Chile)"],
+            feature: "9. Decodificador TV Digital ISDB-Tb Norma Chilena",
+            values: ["$ 16.990 CLP", "No compatible en AliExpress", "Mercado Libre (Único con norma SUBTEL Chile)"],
             productKey: "decodificador-tvd"
           }
         ]}
@@ -277,10 +299,37 @@ const gadgetsFaqs = [
         />
       </div>
 
-      <!-- GADGET 3: ROKU STICK -->
+      <!-- GADGET 2.5: XIAOMI TV BOX S 4K (2ND GEN) -->
       <div>
         <h3 class="text-xl sm:text-2xl font-bold text-white mb-2 flex items-center gap-2">
           <span class="px-2.5 py-0.5 rounded-lg bg-brand-600 text-white text-sm font-black">#3</span>
+          <span>Xiaomi TV Box S 4K (2da Generación): Google TV con Puerto USB</span>
+        </h3>
+        <p class="text-sm text-slate-300 leading-relaxed mb-4">
+          A diferencia de los TV Sticks que solo tienen conector HDMI, la <strong>Xiaomi TV Box S (2nd Gen)</strong> incorpora un puerto <strong>USB 2.0 completo y salida de audio</strong>. Es el equipo favorito en Chile para quienes además de ver Zapping, DGO y Netflix en 4K quieren conectar pendrives con películas, discos duros externos o adaptadores de red Ethernet.
+        </p>
+        <ProductCard
+          productKey="xiaomi-tv-box-s-4k"
+          title="Xiaomi TV Box S (2nd Gen) 4K Ultra HD con Google TV y Dolby Vision"
+          brand="Xiaomi"
+          badge="📦 La Mejor TV Box Certificada con Puerto USB"
+          specs={["Google TV Oficial", "4K UHD + Dolby Vision", "Puerto USB 2.0 + Audio", "HDMI 2.1", "Control Bluetooth 360°"]}
+          pros={[
+            "Incluye puerto USB físico para reproducir películas desde pendrive o conectar adaptador de cable de red",
+            "Procesador Quad-Core de 2da generación un 25% más rápido que la Mi Box S original",
+            "Certificación oficial Google Widevine L1 y Netflix 4K (a diferencia de las cajas chinas genéricas)",
+            "Soporta Dolby Vision, HDR10+ y sonido inmersivo Dolby Atmos / DTS-HD"
+          ]}
+          cons={[
+            "Por su formato de caja requiere apoyarse sobre el mueble o repisa junto al televisor"
+          ]}
+        />
+      </div>
+
+      <!-- GADGET 3: ROKU STICK -->
+      <div>
+        <h3 class="text-xl sm:text-2xl font-bold text-white mb-2 flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-lg bg-brand-600 text-white text-sm font-black">#4</span>
           <span>Roku Streaming Stick con Control por Voz (Fluidez y Simpleza Extrema)</span>
         </h3>
         <p class="text-sm text-slate-300 leading-relaxed mb-4">
@@ -304,10 +353,36 @@ const gadgetsFaqs = [
         />
       </div>
 
+      <!-- GADGET LUZ AMBILIGHT LED -->
+      <div>
+        <h3 class="text-xl sm:text-2xl font-bold text-white mb-2 flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-lg bg-brand-600 text-white text-sm font-black">#5</span>
+          <span>Kit Tiras LED RGBIC TV Ambilight USB (Cine Inmersivo y Menos Fatiga Visual)</span>
+        </h3>
+        <p class="text-sm text-slate-300 leading-relaxed mb-4">
+          ¿Sabías que ver televisión completamente a oscuras cansa la vista por el choque entre el brillo de la pantalla y la pared negra? Colocar una <strong>tira de retroiluminación LED RGBIC conectada al USB de la tele</strong> no solo transforma estética y modernamente tu living, sino que mejora la percepción de contraste (<em>Bias Lighting</em>) por menos de $15.000 CLP.
+        </p>
+        <ProductCard
+          productKey="luces-led-tv-ambilight"
+          title="Kit Tira Luces LED RGBIC TV Ambilight USB 55 a 65 Pulgadas con Control y App"
+          brand="Smart RGBIC"
+          badge="💡 El Gadget Barato de Mayor Impacto Visual"
+          specs={["Conexión USB Directa a TV", "Para TVs de 43\" a 65\"", "Control por App + Mando", "Sincronización con Sonido", "Adhesivo 3M"]}
+          pros={[
+            "Se enciende y apaga automáticamente junto con el televisor gracias a su alimentación USB de 5V",
+            "Reduce el cansancio ocular nocturno y hace que los negros de tu Smart TV luzcan más profundos",
+            "Se controla desde el celular vía Bluetooth o con su control remoto incluido (millones de colores y modo música)"
+          ]}
+          cons={[
+            "Limpia bien el polvo de la tapa trasera del televisor antes de pegar la cinta adhesiva para que no se despegue con el calor"
+          ]}
+        />
+      </div>
+
       <!-- GADGET 4: BARRA DE SONIDO SAMSUNG -->
       <div>
         <h3 class="text-xl sm:text-2xl font-bold text-white mb-2 flex items-center gap-2">
-          <span class="px-2.5 py-0.5 rounded-lg bg-brand-600 text-white text-sm font-black">#4</span>
+          <span class="px-2.5 py-0.5 rounded-lg bg-brand-600 text-white text-sm font-black">#6</span>
           <span>Barra de Sonido Samsung con Subwoofer Inalámbrico (Adiós al Volumen Bajo)</span>
         </h3>
         <p class="text-sm text-slate-300 leading-relaxed mb-4">
@@ -334,7 +409,7 @@ const gadgetsFaqs = [
       <!-- GADGET 5: SOPORTE ARTICULADO DOBLE BRAZO -->
       <div>
         <h3 class="text-xl sm:text-2xl font-bold text-white mb-2 flex items-center gap-2">
-          <span class="px-2.5 py-0.5 rounded-lg bg-brand-600 text-white text-sm font-black">#5</span>
+          <span class="px-2.5 py-0.5 rounded-lg bg-brand-600 text-white text-sm font-black">#7</span>
           <span>Soporte Móvil Articulado Doble Brazo Reforzado VESA (Seguridad Antisísmica)</span>
         </h3>
         <p class="text-sm text-slate-300 leading-relaxed mb-4">
@@ -360,7 +435,7 @@ const gadgetsFaqs = [
       <!-- GADGETS 6 Y 7: ANTENA Y DECODIFICADOR TVD -->
       <div>
         <h3 class="text-xl sm:text-2xl font-bold text-white mb-2 flex items-center gap-2">
-          <span class="px-2.5 py-0.5 rounded-lg bg-brand-600 text-white text-sm font-black">#6 y #7</span>
+          <span class="px-2.5 py-0.5 rounded-lg bg-brand-600 text-white text-sm font-black">#8 y #9</span>
           <span>Kit de Televisión Digital Gratis (Antena Amplificada 360° + Decodificador ISDB-Tb)</span>
         </h3>
         <p class="text-sm text-slate-300 leading-relaxed mb-4">

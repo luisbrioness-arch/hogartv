@@ -1,0 +1,396 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+
+const breadcrumbs = [
+  { name: 'Ofertas Smart TV y Gadgets Chile', url: '/ofertas-tv-chile/' },
+];
+
+const offerCatalogSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  'name': 'Radar de Ofertas en Smart TVs, Proyectores y Streaming en Chile (Octubre 2026)',
+  'description': 'Monitoreo actualizado de descuentos reales en Smart TVs 4K QLED/Mini-LED, proyectores portátiles, barras de sonido y TV Sticks en Mercado Libre Chile, Falabella y AliExpress Choice.',
+  'itemListElement': [
+    {
+      '@type': 'ListItem',
+      'position': 1,
+      'name': 'Oferta Smart TV TCL 55" 4K QLED / QD-Mini LED (C655 / T6D / P8L)',
+      'url': 'https://hogartv.cl/ofertas-tv-chile/#tcl-c655-55',
+    },
+    {
+      '@type': 'ListItem',
+      'position': 2,
+      'name': 'Oferta Smart TV Samsung 55" 4K Crystal UHD DU7000 / U8500H',
+      'url': 'https://hogartv.cl/ofertas-tv-chile/#samsung-du7000-55',
+    },
+    {
+      '@type': 'ListItem',
+      'position': 3,
+      'name': 'Oferta Proyector Inteligente Portátil Magcubic HY320 Full HD 1080p',
+      'url': 'https://hogartv.cl/ofertas-tv-chile/#proyector-magcubic-hy320',
+    },
+    {
+      '@type': 'ListItem',
+      'position': 4,
+      'name': 'Oferta Barra de Sonido Samsung HW-B550 / Q-Series con Subwoofer Inalámbrico',
+      'url': 'https://hogartv.cl/ofertas-tv-chile/#samsung-soundbar-b550',
+    },
+    {
+      '@type': 'ListItem',
+      'position': 5,
+      'name': 'Oferta Roku Streaming Stick HD con Control por Voz',
+      'url': 'https://hogartv.cl/ofertas-tv-chile/#roku-express-4k',
+    },
+    {
+      '@type': 'ListItem',
+      'position': 6,
+      'name': 'Oferta Antena Digital HDTV Interior / Exterior Amplificada 360°',
+      'url': 'https://hogartv.cl/ofertas-tv-chile/#antena-tvd-chile',
+    },
+  ],
+};
+
+const ofertasFaqs = [
+  {
+    question: '¿Cómo verifican en HogarTV.cl que un descuento en Smart TV sea real y no un precio inflado?',
+    answer: 'En cada equipo registramos el rango histórico de los últimos 90 días y el precio mínimo visto en Chile (en pesos chilenos CLP). Solo destacamos en este radar aquellos modelos que se encuentran bajo su precio promedio habitual de retail o que incluyen beneficios directos como Envío Full Gratuito y cuotas sin interés en Mercado Libre o Falabella.',
+  },
+  {
+    question: '¿Dónde conviene más comprar un Smart TV en oferta en Chile: Mercado Libre o Falabella?',
+    answer: 'Ambos son excelentes y 100% seguros, pero depende de tu medio de pago y ubicación. Mercado Libre Full suele tener el precio al contado más agresivo con despacho en 24 a 48 horas y 6 cuotas sin interés con cualquier banco. Falabella, en cambio, permite retirar gratis en tienda física y ofrece descuentos adicionales exclusivos al pagar con tarjeta CMR.',
+  },
+  {
+    question: '¿Qué ofertas valen más la pena por menos de $60.000 CLP en Chile hoy?',
+    answer: 'Las 3 compras con mayor retorno por menos de $60.000 CLP son: 1) El Mini Proyector Smart Magcubic HY320 ($44.990 en AliExpress / $59.990 en Mercado Libre) que proyecta hasta 150 pulgadas en el techo; 2) El Roku Streaming Stick o Chromecast 4K ($44.990 - $54.990) que revive televisores antiguos; y 3) La Antena Digital TVD amplificada ($9.990) para ver canales nacionales HD gratis.',
+  },
+  {
+    question: '¿Los productos comprados en oferta mantienen la garantía legal en Chile?',
+    answer: 'Sí. Por la Ley del Consumidor (Pro-Consumidor) vigente en Chile, todo televisor, barra de sonido o accesorio nuevo comprado en Mercado Libre Chile o Falabella cuenta con 6 meses de garantía legal obligatoria ante fallas de fábrica, además de la ventana de Compra Protegida para devoluciones.',
+  },
+];
+---
+
+<BaseLayout
+  title="Ofertas Smart TV y Gadgets en Chile (Octubre 2026): Radar de Precios Bajos"
+  description="Radar actualizado de ofertas reales en Smart TVs 4K (TCL, Samsung, Hisense), proyectores portátiles, barras de sonido y TV Sticks en Mercado Libre Chile, Falabella y AliExpress."
+  breadcrumbs={breadcrumbs}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- HEADER RADAR DE OFERTAS -->
+    <header class="max-w-4xl mx-auto text-center mb-12">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/40 text-amber-300 text-xs font-extrabold uppercase tracking-wider mb-4 shadow-sm">
+        <span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span>
+        <span>Radar de Precios Verificados en Chile · Pre-Black Friday 2026</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight mb-5 leading-tight">
+        Radar de Ofertas en Smart TVs, Audio y Gadgets en Chile <span class="bg-clip-text text-transparent bg-gradient-to-r from-amber-300 via-yellow-400 to-rose-400">(Sin Precios Inflados)</span>
+      </h1>
+      <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-3xl mx-auto mb-8">
+        Monitoreamos a diario los precios reales en <strong>Mercado Libre Full</strong>, <strong>Falabella Chile</strong> y <strong>AliExpress Choice</strong> para filtrar los falsos descuentos y mostrarte únicamente los equipos que hoy están en su piso de precio en pesos chilenos.
+      </p>
+
+      <!-- BOTONES DE SALTO RÁPIDO POR PRESUPUESTO -->
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <a
+          href="#ofertas-smart-tv"
+          class="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm shadow-lg shadow-amber-500/20 transition-all"
+        >
+          📺 Ofertas Smart TVs 4K (Hasta -$70.000)
+        </a>
+        <a
+          href="#ofertas-menos-60mil"
+          class="px-4 py-2.5 rounded-xl bg-surface-card hover:bg-slate-800 text-white border border-slate-700 font-bold text-xs sm:text-sm transition-all"
+        >
+          ⚡ Gadgets y Streaming bajo $60.000
+        </a>
+        <a
+          href="#ofertas-menos-20mil"
+          class="px-4 py-2.5 rounded-xl bg-emerald-950/60 hover:bg-emerald-900/60 text-emerald-300 border border-emerald-700/50 font-bold text-xs sm:text-sm transition-all"
+        >
+          💡 Chollos Útiles bajo $20.000
+        </a>
+      </div>
+    </header>
+
+    <!-- TABLA RESUMEN DE DESCUENTOS REALES DE HOY -->
+    <section aria-labelledby="tabla-ofertas-hoy" class="max-w-5xl mx-auto mb-16">
+      <h2 id="tabla-ofertas-hoy" class="sr-only">Tabla de Ofertas Verificadas Hoy en Chile</h2>
+      <ComparisonTable
+        title="🔥 Top 8 Rebajas Verificadas de la Semana en Chile (Stock Limitado)"
+        headers={["Producto en Oferta", "Precio Normal Retail", "Precio Oferta Hoy", "Ahorro Real / Beneficio"]}
+        rows={[
+          {
+            feature: "1. Smart TV TCL 55\" 4K QLED / Mini-LED (T6D / C655 / P8L)",
+            values: ["$ 429.990 CLP", "$ 359.990 - $ 369.990", "Ahorras $70.000 + Envío Gratis"],
+            productKey: "tcl-c655-55",
+            secondaryProductKey: "falabella-tcl-t6d-55"
+          },
+          {
+            feature: "2. Smart TV Samsung 55\" 4K Crystal UHD DU7000",
+            values: ["$ 399.990 CLP", "$ 349.990 CLP", "Ahorras $50.000 (M. Libre / Falabella)"],
+            productKey: "samsung-du7000-55",
+            secondaryProductKey: "falabella-samsung-crystal-55"
+          },
+          {
+            feature: "3. Proyector Smart Portátil Magcubic HY320 (Full HD 1080p)",
+            values: ["$ 79.990 CLP", "$ 44.990 (Ali) / $ 59.990 (ML)", "Hasta 43% OFF sobre retail"],
+            productKey: "proyector-magcubic-hy320",
+            secondaryProductKey: "proyector-magcubic-aliexpress"
+          },
+          {
+            feature: "4. Barra de Sonido Samsung HW-B550 + Subwoofer 410W",
+            values: ["$ 179.990 CLP", "$ 139.990 CLP", "Ahorras $40.000 en Audio Dolby"],
+            productKey: "samsung-soundbar-b550",
+            secondaryProductKey: "falabella-samsung-soundbar"
+          },
+          {
+            feature: "5. Barra de Sonido JBL Cinema SB170 / SB180 + Subwoofer",
+            values: ["$ 189.990 CLP", "$ 149.990 CLP", "Ahorras $40.000 + Envío Gratis"],
+            productKey: "jbl-soundbar-sb170"
+          },
+          {
+            feature: "6. Roku Streaming Stick con Control por Voz",
+            values: ["$ 54.990 CLP", "$ 44.990 CLP", "Envío Full 24 Horas"],
+            productKey: "roku-express-4k"
+          },
+          {
+            feature: "7. Soporte TV Móvil Doble Brazo Reforzado (32\" a 75\")",
+            values: ["$ 29.990 CLP", "$ 19.990 CLP", "Acero Pesado VESA con 33% OFF"],
+            productKey: "soporte-tv-articulado-pesado"
+          },
+          {
+            feature: "8. Antena Digital HDTV Amplificada 360° (Norma Chilena)",
+            values: ["$ 14.990 CLP", "$ 9.990 CLP", "Canales HD Gratis de por vida"],
+            productKey: "antena-tvd-chile"
+          }
+        ]}
+        verdict="Todos los botones amarillos abren la oferta directa en Mercado Libre Chile (con Compra Protegida), los verdes en Falabella Oficial y los rojos en AliExpress Choice."
+      />
+    </section>
+
+    <!-- BLOQUE 1: OFERTAS SMART TVS 4K -->
+    <section id="ofertas-smart-tv" class="max-w-4xl mx-auto space-y-8 mb-16 scroll-mt-24">
+      <div class="border-b-2 border-amber-500/30 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div>
+          <span class="text-xs font-bold text-amber-400 uppercase tracking-wider block mb-1">Descuentos de Alto Impacto</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            📺 Ofertas en Smart TVs 4K (Mercado Libre vs. Falabella)
+          </h2>
+        </div>
+        <span class="text-xs font-bold px-3 py-1 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30 self-start sm:self-auto">
+          Hasta 6 y 12 Cuotas Sin Interés
+        </span>
+      </div>
+
+      <ProductCard
+        productKey="tcl-c655-55"
+        isFirst={true}
+        title='Smart TV TCL 55" 4K QLED / QD-Mini LED (C655 / T6D / P8L)'
+        brand="TCL"
+        badge="🔥 Oferta N°1: Disponible en Mercado Libre y Falabella"
+        specs={["55 Pulgadas 4K", "QLED / QD-Mini LED", "Google TV Oficial", "Dolby Vision & Atmos", "Sintonizador TVD Chile"]}
+        pros={[
+          "Triple opción de cotización en vivo: Mercado Libre Full ($369.990), Falabella T6D QLED ($359.990) y Falabella P8L Mini-LED",
+          "La mejor relación calidad/precio del mercado chileno en 2026 con Google TV nativo",
+          "Compatible al 100% con Zapping, DGO, Estadio TNT, Netflix 4K, Disney+ y Max"
+        ]}
+        cons={[
+          "El stock en oferta de la versión T6D y C655 suele agotarse rápido los fines de semana"
+        ]}
+      />
+
+      <ProductCard
+        productKey="samsung-du7000-55"
+        title='Smart TV Samsung 55" 4K Crystal UHD DU7000 / U8500H'
+        brand="Samsung"
+        badge="💰 Rebaja Verificada en M. Libre y Falabella"
+        specs={["55 Pulgadas 4K", "Procesador Crystal 4K", "Tizen OS", "Samsung TV Plus Gratis", "Diseño AirSlim"]}
+        pros={[
+          "Bajo la barrera de los $350.000 CLP en Mercado Libre Full y disponible con retiro en tienda en Falabella",
+          "Incluye decenas de canales gratuitos por internet con Samsung TV Plus sin suscripción",
+          "Garantía oficial Samsung Chile y excelente durabilidad"
+        ]}
+        cons={[
+          "Panel 60Hz enfocado en cine y televisión familiar (sin 120Hz)"
+        ]}
+      />
+
+      <ProductCard
+        productKey="hisense-u6k-55"
+        title='Smart TV Hisense 55" 4K Mini-LED U6K / U6ESV'
+        brand="Hisense"
+        badge="☀️ El Mini-LED con Local Dimming Más Barato de Chile"
+        specs={["55 Pulgadas 4K", "Mini-LED ULED", "Full Array Local Dimming", "Dolby Vision IQ", "Modo Deportes"]}
+        pros={[
+          "Tecnología Mini-LED real por menos de $400.000 CLP (otras marcas cobran sobre $550.000 por el mismo panel)",
+          "Doble enlace verificado en Mercado Libre Chile y Falabella"
+        ]}
+        cons={[
+          "Pesa ligeramente más que un LED convencional; usa soporte de doble brazo si lo cuelgas al muro"
+        ]}
+      />
+    </section>
+
+    <!-- BLOQUE 2: OFERTAS MENOS DE $60.000 CLP -->
+    <section id="ofertas-menos-60mil" class="max-w-4xl mx-auto space-y-8 mb-16 scroll-mt-24">
+      <div class="border-b-2 border-brand-500/30 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div>
+          <span class="text-xs font-bold text-brand-400 uppercase tracking-wider block mb-1">Compras Inteligentes</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            ⚡ Ofertas Flash por Menos de $60.000 CLP (y Audio Cine)
+          </h2>
+        </div>
+        <span class="text-xs font-bold px-3 py-1 rounded-full bg-brand-500/15 text-brand-300 border border-brand-500/30 self-start sm:self-auto">
+          Alta Rotación en Chile
+        </span>
+      </div>
+
+      <ProductCard
+        productKey="proyector-magcubic-hy320"
+        title="Proyector Inteligente Portátil Magcubic HY320 Full HD 1080p Nativo Android 11"
+        brand="Magcubic"
+        badge="🎬 $44.990 en AliExpress / $59.990 en Mercado Libre (24h)"
+        specs={["Full HD 1080p Nativo", "390 ANSI Lúmenes", "Android 11 Integrado", "Giro 180° a Techo", "WiFi 6 & Bluetooth 5.0"]}
+        pros={[
+          "Puedes elegir entre ahorrar $15.000 pidiéndolo en AliExpress Choice (EU Plug) o recibirlo mañana mismo por Mercado Libre Full",
+          "Convierte cualquier pared o techo de dormitorio en un cine de 130 pulgadas sin instalar soportes"
+        ]}
+        cons={[
+          "Para uso en oscuridad o penumbra nocturna"
+        ]}
+      />
+
+      <ProductCard
+        productKey="roku-express-4k"
+        title="Roku Streaming Stick HD (3840S2) con Control por Voz"
+        brand="Roku"
+        badge="🍿 En Oferta: Revive tu TV por $44.990 CLP"
+        specs={["Streaming Stick Oculto", "Control por Voz", "Apple AirPlay 2", "Compatible con Zapping y DGO"]}
+        pros={[
+          "La forma más económica de actualizar un televisor antiguo o lento sin gastar en una pantalla nueva",
+          "Envío Full en 24 horas a través de Mercado Libre Chile"
+        ]}
+        cons={[
+          "Si necesitas instalar APKs abiertos de Android, elige el Chromecast 4K o la Xiaomi TV Box S"
+        ]}
+      />
+
+      <ProductCard
+        productKey="samsung-soundbar-b550"
+        title="Barra de Sonido Samsung HW-B550 / Q-Series con Subwoofer Inalámbrico"
+        brand="Samsung"
+        badge="🔊 Rebaja de $40.000 en Audio 2.1 con Subwoofer"
+        specs={["Potencia 410W", "Subwoofer Inalámbrico", "HDMI ARC", "Realce de Diálogos", "Bluetooth"]}
+        pros={[
+          "Disponible tanto en Mercado Libre Chile ($139.990) como en Falabella Oficial",
+          "Soluciona para siempre el sonido enlatado de los televisores delgados modernos"
+        ]}
+        cons={[
+          "El subwoofer requiere un enchufe eléctrico cercano en el suelo"
+        ]}
+      />
+
+      <ProductCard
+        productKey="jbl-soundbar-sb170"
+        title="Barra de Sonido JBL Cinema SB170 / SB180 2.1ch con Subwoofer Inalámbrico"
+        brand="JBL"
+        badge="🎵 Sonido de Cine JBL en Oferta"
+        specs={["2.1 Canales + Subwoofer", "Dolby Digital", "HDMI ARC", "Botón Voice Clarity", "Bluetooth"]}
+        pros={[
+          "Bajos profundos característicos de JBL con subwoofer inalámbrico compacto",
+          "Botón Voice en el control remoto que levanta al instante el volumen de las voces en noticias y series"
+        ]}
+        cons={[
+          "Stock limitado con envío gratis en Mercado Libre"
+        ]}
+      />
+    </section>
+
+    <!-- BLOQUE 3: CHOLLOS MENOS DE $20.000 CLP -->
+    <section id="ofertas-menos-20mil" class="max-w-4xl mx-auto space-y-8 mb-16 scroll-mt-24">
+      <div class="border-b-2 border-emerald-500/30 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div>
+          <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider block mb-1">Accesorios Esenciales</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            💡 Chollos Útiles por Menos de $20.000 CLP
+          </h2>
+        </div>
+        <span class="text-xs font-bold px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 self-start sm:self-auto">
+          Ideales para Completar Carrito con Envío Gratis
+        </span>
+      </div>
+
+      <ProductCard
+        productKey="soporte-tv-articulado-pesado"
+        title="Soporte TV Móvil Articulado Doble Brazo Reforzado 32 a 75 Pulgadas VESA"
+        brand="Universal VESA"
+        badge='🔩 Solo $19.990: Acero Doble Brazo para 32" a 75"'
+        specs={["Doble Brazo Reforzado", "Soporta 45 kg", "Giro 180° / Inclinación", "VESA Universal"]}
+        pros={[
+          "En grandes tiendas un soporte articulado de doble brazo cuesta sobre $34.990 CLP; en Mercado Libre cuesta $19.990",
+          "Protege tu televisor ante temblores y permite girarlo hacia el comedor"
+        ]}
+        cons={[
+          "Verifica tener broca para concreto o madera según el muro de tu casa"
+        ]}
+      />
+
+      <ProductCard
+        productKey="luces-led-tv-ambilight"
+        title="Kit Tira Luces LED RGBIC TV Ambilight USB 55 a 65 Pulgadas con Control y App"
+        brand="Smart RGBIC"
+        badge="💡 Solo $12.990: Iluminación de Cine por USB"
+        specs={["Alimentación USB TV", "Control por App y Mando", "Modo Música", "Para TVs de 43\" a 65\""]}
+        pros={[
+          "Transforma el aspecto de tu living o pieza por apenas $12.990 CLP",
+          "Descansa la vista al ver películas a oscuras"
+        ]}
+        cons={[
+          "Asegúrate de limpiar bien la parte trasera del TV antes de pegar el adhesivo"
+        ]}
+      />
+
+      <ProductCard
+        productKey="antena-tvd-chile"
+        title="Antena Digital HDTV Interior / Exterior Amplificada 360°"
+        brand="HDTV Chile"
+        badge="📡 Solo $9.990: Canales Nacionales en Full HD Gratis"
+        specs={["Norma Chilena ISDB-Tb", "Recepción 360°", "Base Magnética", "Sin Mensualidades"]}
+        pros={[
+          "Por menos de $10.000 CLP captas TVN, Mega, CHV, Canal 13 y señales regionales en 1080p sin pagar cable",
+          "Ideal para agregar al carrito de Mercado Libre y alcanzar el monto de envío gratuito"
+        ]}
+        cons={[
+          "En zonas alejadas del radio urbano ubícala cerca de una ventana exterior"
+        ]}
+      />
+    </section>
+
+    <!-- FAQ SECTION -->
+    <div class="max-w-4xl mx-auto mb-12">
+      <FAQSection
+        title="Preguntas Frecuentes sobre Ofertas de Smart TVs y Tecnología en Chile"
+        items={ofertasFaqs}
+      />
+    </div>
+
+    <!-- CTA FINAL -->
+    <div class="max-w-4xl mx-auto">
+      <CtaBanner
+        title="¿Buscas un televisor de 43 o 50 pulgadas para tu dormitorio?"
+        description="Revisa nuestra nueva guía especializada con las medidas exactas de distancia y los modelos más baratos de 43 y 50 pulgadas en Chile."
+        buttonText="Ver Guía de Smart TVs 43 y 50 Pulgadas"
+        buttonUrl="/smart-tv/mejores-smart-tv-43-50-pulgadas-baratos-chile/"
+      />
+    </div>
+
+  </div>
+
+  <!-- Schema.org ItemList JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify(offerCatalogSchema)} />
+</BaseLayout>

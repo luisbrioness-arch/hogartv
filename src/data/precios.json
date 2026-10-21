@@ -255,5 +255,51 @@
         "urlKey": "soporte-tv-articulado-pesado"
       }
     ]
+  },
+  "xiaomi-tv-box-s-4k": {
+    "precioCLP": 52990,
+    "precioFormateado": "$ 52.990 CLP",
+    "rango": "$ 49.990 - $ 64.990 CLP",
+    "precioMinVisto": "$ 47.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-10-20",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 52.990 CLP",
+        "badge": "🔥 Envío Full 24h",
+        "destacada": true,
+        "envio": "Envío Gratis Rápido",
+        "urlKey": "xiaomi-tv-box-s-4k"
+      },
+      {
+        "tienda": "Alternativa Chromecast 4K Oficial",
+        "precio": "$ 54.990 CLP",
+        "badge": "Google TV Oficial",
+        "destacada": false,
+        "envio": "Envío Gratis 24 Horas",
+        "urlKey": "chromecast-google-tv"
+      }
+    ]
+  },
+  "luces-led-tv-ambilight": {
+    "precioCLP": 12990,
+    "precioFormateado": "$ 12.990 CLP",
+    "rango": "$ 9.990 - $ 19.990 CLP",
+    "precioMinVisto": "$ 8.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-10-20",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 12.990 CLP",
+        "badge": "🔥 Entrega 24 Horas",
+        "destacada": true,
+        "envio": "Envío Full Rápido",
+        "urlKey": "luces-led-tv-ambilight"
+      }
+    ]
   }
 }

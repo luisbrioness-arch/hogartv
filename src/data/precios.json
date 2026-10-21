@@ -17,7 +17,7 @@
         "urlKey": "tcl-c655-55"
       },
       {
-        "tienda": "Falabella Chile",
+        "tienda": "Falabella (Modelo P8L Mini-LED)",
         "precio": "$ 399.990 CLP",
         "badge": "Retail Oficial",
         "destacada": false,
@@ -25,12 +25,12 @@
         "url": "https://creators.falabella.com/-5xdz"
       },
       {
-        "tienda": "Paris.cl",
-        "precio": "$ 429.990 CLP",
-        "badge": "Precio Lista",
+        "tienda": "Falabella (Modelo T6D QLED)",
+        "precio": "$ 359.990 CLP",
+        "badge": "Alternativa QLED",
         "destacada": false,
-        "envio": "Despacho a Domicilio",
-        "url": "https://www.paris.cl/search?q=tcl+55+c655"
+        "envio": "Despacho o Retiro",
+        "url": "https://creators.falabella.com/-5xdD"
       }
     ]
   },
@@ -58,14 +58,6 @@
         "destacada": false,
         "envio": "Despacho o Retiro",
         "url": "https://creators.falabella.com/-5xdR"
-      },
-      {
-        "tienda": "Paris.cl",
-        "precio": "$ 439.990 CLP",
-        "badge": "Precio Lista",
-        "destacada": false,
-        "envio": "Despacho a Domicilio",
-        "url": "https://www.paris.cl/search?q=hisense+55+u6k"
       }
     ]
   },
@@ -93,14 +85,6 @@
         "destacada": false,
         "envio": "Despacho o Retiro en Tienda",
         "url": "https://creators.falabella.com/-5xdP"
-      },
-      {
-        "tienda": "Paris.cl",
-        "precio": "$ 379.990 CLP",
-        "badge": "Precio Lista",
-        "destacada": false,
-        "envio": "Despacho a Domicilio",
-        "url": "https://www.paris.cl/search?q=samsung+55+du7000"
       }
     ]
   },
@@ -120,14 +104,6 @@
         "destacada": true,
         "envio": "Envío Full Inmediato",
         "urlKey": "antena-tvd-chile"
-      },
-      {
-        "tienda": "Sodimac / Retail",
-        "precio": "$ 14.990 CLP",
-        "badge": "Retail Físico",
-        "destacada": false,
-        "envio": "Compra en Sucursal",
-        "url": "https://www.falabella.com/falabella-cl/search?Ntt=antena+tvd+digital"
       }
     ]
   },
@@ -147,22 +123,6 @@
         "destacada": true,
         "envio": "Envío Gratis 24 Horas",
         "urlKey": "roku-express-4k"
-      },
-      {
-        "tienda": "Falabella Chile",
-        "precio": "$ 49.990 CLP",
-        "badge": "Retail Oficial",
-        "destacada": false,
-        "envio": "Despacho o Retiro",
-        "url": "https://www.falabella.com/falabella-cl/search?Ntt=roku+streaming+stick"
-      },
-      {
-        "tienda": "Paris.cl",
-        "precio": "$ 52.990 CLP",
-        "badge": "Precio Lista",
-        "destacada": false,
-        "envio": "Despacho a Domicilio",
-        "url": "https://www.paris.cl/search?q=roku+streaming+stick"
       }
     ]
   },
@@ -182,22 +142,6 @@
         "destacada": true,
         "envio": "Envío Gratis Rápido",
         "urlKey": "chromecast-google-tv"
-      },
-      {
-        "tienda": "Falabella Chile",
-        "precio": "$ 59.990 CLP",
-        "badge": "Retail Oficial",
-        "destacada": false,
-        "envio": "Despacho o Retiro",
-        "url": "https://www.falabella.com/falabella-cl/search?Ntt=chromecast+con+google+tv+4k"
-      },
-      {
-        "tienda": "Paris.cl",
-        "precio": "$ 64.990 CLP",
-        "badge": "Precio Lista",
-        "destacada": false,
-        "envio": "Despacho a Domicilio",
-        "url": "https://www.paris.cl/search?q=chromecast+google+tv"
       }
     ]
   },
@@ -217,14 +161,6 @@
         "destacada": true,
         "envio": "Envío Rápido",
         "urlKey": "decodificador-tvd"
-      },
-      {
-        "tienda": "Ferreterías / Retail",
-        "precio": "$ 22.990 CLP",
-        "badge": "Precio Regular",
-        "destacada": false,
-        "envio": "Retiro Local",
-        "url": "https://www.falabella.com/falabella-cl/search?Ntt=decodificador+digital+isdbt"
       }
     ]
   },
@@ -252,14 +188,6 @@
         "destacada": false,
         "envio": "Despacho o Retiro",
         "url": "https://creators.falabella.com/-5xdW"
-      },
-      {
-        "tienda": "Paris.cl",
-        "precio": "$ 179.990 CLP",
-        "badge": "Precio Lista",
-        "destacada": false,
-        "envio": "Despacho a Domicilio",
-        "url": "https://www.paris.cl/search?q=soundbar+samsung+b550"
       }
     ]
   },
@@ -269,7 +197,7 @@
     "rango": "$ 139.990 - $ 189.990 CLP",
     "precioMinVisto": "$ 129.990 CLP",
     "tiendaReferencia": "Mercado Libre Chile",
-    "fechaVerificacion": "2026-10-17",
+    "fechaVerificacion": "2026-10-20",
     "enOferta": true,
     "comparativaTiendas": [
       {
@@ -279,54 +207,30 @@
         "destacada": true,
         "envio": "Envío Gratis Rápido",
         "urlKey": "jbl-soundbar-sb170"
-      },
-      {
-        "tienda": "Falabella Chile",
-        "precio": "$ 179.990 CLP",
-        "badge": "Retail Oficial",
-        "destacada": false,
-        "envio": "Despacho o Retiro",
-        "url": "https://www.falabella.com/falabella-cl/search?Ntt=jbl+cinema+sb170"
-      },
-      {
-        "tienda": "Paris.cl",
-        "precio": "$ 189.990 CLP",
-        "badge": "Precio Lista",
-        "destacada": false,
-        "envio": "Despacho a Domicilio",
-        "url": "https://www.paris.cl/search?q=jbl+sb170"
       }
     ]
   },
   "proyector-magcubic-hy320": {
     "precioCLP": 59990,
     "precioFormateado": "$ 59.990 CLP",
-    "rango": "$ 49.990 - $ 79.990 CLP",
+    "rango": "$ 44.990 - $ 69.990 CLP",
     "precioMinVisto": "$ 44.990 CLP",
     "tiendaReferencia": "Mercado Libre Chile",
-    "fechaVerificacion": "2026-10-17",
+    "fechaVerificacion": "2026-10-20",
     "enOferta": true,
     "comparativaTiendas": [
       {
         "tienda": "Mercado Libre Chile",
         "precio": "$ 59.990 CLP",
-        "badge": "🔥 Mejor Oferta Nacional",
+        "badge": "🔥 Entrega 24-48h Chile",
         "destacada": true,
         "envio": "Envío Gratis 24 Horas",
         "urlKey": "proyector-magcubic-hy320"
       },
       {
-        "tienda": "Falabella Marketplace",
-        "precio": "$ 69.990 CLP",
-        "badge": "Marketplace",
-        "destacada": false,
-        "envio": "Despacho a Domicilio",
-        "url": "https://www.falabella.com/falabella-cl/search?Ntt=magcubic+hy320"
-      },
-      {
         "tienda": "AliExpress Oficial",
         "precio": "$ 44.990 CLP",
-        "badge": "🔥 Mejor Precio Global",
+        "badge": "🔥 Mejor Precio Fábrica",
         "destacada": false,
         "envio": "Envío Choice Gratis (10-14 días)",
         "url": "https://s.click.aliexpress.com/e/_c4eGFwl3"
@@ -339,7 +243,7 @@
     "rango": "$ 16.990 - $ 29.990 CLP",
     "precioMinVisto": "$ 14.990 CLP",
     "tiendaReferencia": "Mercado Libre Chile",
-    "fechaVerificacion": "2026-10-17",
+    "fechaVerificacion": "2026-10-20",
     "enOferta": true,
     "comparativaTiendas": [
       {
@@ -349,22 +253,6 @@
         "destacada": true,
         "envio": "Envío Rápido a Todo Chile",
         "urlKey": "soporte-tv-articulado-pesado"
-      },
-      {
-        "tienda": "Sodimac / Falabella",
-        "precio": "$ 27.990 CLP",
-        "badge": "Retail Físico",
-        "destacada": false,
-        "envio": "Retiro o Despacho",
-        "url": "https://www.falabella.com/falabella-cl/search?Ntt=soporte+tv+articulado+75"
-      },
-      {
-        "tienda": "Easy Chile",
-        "precio": "$ 29.990 CLP",
-        "badge": "Precio Lista",
-        "destacada": false,
-        "envio": "Compra en Sucursal",
-        "url": "https://www.easy.cl/search?q=soporte+tv+articulado"
       }
     ]
   }

@@ -7,12 +7,31 @@ import ProductCard from '../components/ProductCard.astro';
 import FAQSection from '../components/FAQSection.astro';
 import AdSlot from '../components/AdSlot.astro';
 import sitioData from '../data/sitio.json';
+import afiliadosData from '../data/afiliados.json';
+import preciosData from '../data/precios.json';
+
+// Imágenes optimizadas para el Bento Grid y Vitrina de Más Vendidos
+import heroCinePieza from '../assets/como-armar-cine-en-casa-barato-pieza-chile/hero.webp';
+import heroTvVieja from '../assets/como-convertir-televisor-antiguo-en-smart-tv-chile/hero.webp';
+import heroTv32y40 from '../assets/mejores-smart-tv-32-40-pulgadas-baratos-chile/hero.webp';
+import heroTv65 from '../assets/mejores-smart-tv-65-pulgadas-chile/hero.webp';
+
+import imgMagcubic from '../assets/accesorios/proyector-magcubic-hy320.webp';
+import imgXiaomiBox from '../assets/products/xiaomi-tv-box-s-4k.webp';
+import imgTcl55 from '../assets/smart-tv/mejores-smart-tv-calidad-precio-chile/tcl-c655-55.webp';
+import imgSamsungBar from '../assets/accesorios/samsung-soundbar-b550.webp';
+import imgLucesLed from '../assets/products/luces-led-tv-ambilight.webp';
+import imgAntenaTvd from '../assets/tv-abierta/como-sintonizar-canales-hd-tvd-chile/antena-tvd-chile.webp';
+import imgSoporteMuro from '../assets/accesorios/soporte-tv-articulado-pesado.webp';
+import imgRoku4k from '../assets/accesorios/roku-vs-chromecast-chile-cual-conviene/roku-express-4k.webp';
 
 const allArticles = await getCollection('articles');
 const featuredArticles = allArticles.sort((a, b) => {
+  const dateDiff = new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime();
+  if (dateDiff !== 0) return dateDiff;
   if (a.data.featured && !b.data.featured) return -1;
   if (!a.data.featured && b.data.featured) return 1;
-  return new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime();
+  return 0;
 });
 
 const allHeroes = import.meta.glob<{ default: ImageMetadata }>('/src/assets/**/hero.{png,jpg,jpeg,webp,avif}', { eager: true });
@@ -25,7 +44,7 @@ const organizationSchema = {
   'name': 'HogarTV.cl',
   'url': 'https://hogartv.cl',
   'logo': 'https://hogartv.cl/favicon.svg',
-  'description': 'Portal híbrido en Chile especializado en guías de compra de Smart TVs, comparativas de streaming y servicio técnico de instalación de antenas de Televisión Digital Abierta (TVD).',
+  'description': 'Portal en Chile especializado en datos, picadas tecnológicas, comparativas de Smart TVs, proyectores portátiles, streaming y televisión digital abierta (TVD).',
   'address': {
     '@type': 'PostalAddress',
     'addressCountry': 'CL',
@@ -40,47 +59,123 @@ const organizationSchema = {
   },
   'knowsAbout': [
     'Smart TV',
+    'Proyectores Portátiles',
     'Televisión Digital Abierta Chile (TVD)',
     'Norma ISDB-Tb',
-    'Streaming y TV Sticks',
+    'Streaming y TV Boxes',
     'Instalación de Antenas y Soportes de TV',
   ],
   'sameAs': [
-    'https://hogartv.cl/sobre-nosotros',
-    'https://hogartv.cl/autor/luis-briones',
+    'https://hogartv.cl/sobre-nosotros/',
+    'https://hogartv.cl/autor/luis-briones/',
   ],
 };
 
-const pillars = [
+// Los 4 Datos Más Vendidos (Vitrina Principal de Conversión)
+const topSellers = [
   {
-    icon: '📡',
-    badge: '100% Gratis · Sin Mensualidades',
-    badgeColor: 'bg-emerald-950/80 text-emerald-400 border-emerald-800/60',
-    title: 'TV Digital Abierta (TVD)',
-    desc: 'Aprende a sintonizar Canal 13, TVN, Mega, Chilevisión y señales regionales en calidad Full HD 1080p con antena, sin pagar planes de cable.',
-    link: '/tv-abierta/como-sintonizar-canales-hd-tvd-chile/',
-    linkText: 'Ver guía de sintonización HD',
-    gradient: 'from-emerald-900/20 via-slate-900/40 to-slate-900/80 border-emerald-800/30 hover:border-emerald-500/50',
+    badge: '🔥 N°1 Más Viral en Chile',
+    badgeClass: 'bg-amber-500 text-slate-950',
+    title: 'Mini Proyector Smart Magcubic HY320 (Full HD 1080p)',
+    hook: 'Proyecta de 80" a 130" en pared o techo. Android 11, WiFi 6 y giro de 180° para ver películas desde la cama.',
+    price: '$ 59.990 CLP',
+    subPrice: 'o $ 44.990 en AliExpress',
+    image: imgMagcubic,
+    reviewUrl: '/smart-tv/review-proyector-magcubic-hy320-vs-hy300-chile/',
+    reviewLabel: 'Ver pruebas y detalles →',
+    primaryCtaText: 'Comprar en M. Libre',
+    primaryCtaUrl: afiliadosData['proyector-magcubic-hy320'].url,
+    primaryCtaClass: 'bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 border-yellow-400',
+    secondaryCtaText: 'Ver en AliExpress',
+    secondaryCtaUrl: afiliadosData['proyector-magcubic-aliexpress'].url,
+    secondaryCtaClass: 'bg-[#FF4747] hover:bg-[#E03030] text-white border-rose-400',
   },
   {
-    icon: '🍿',
-    badge: 'Fútbol en Vivo · Cero Retardo',
-    badgeColor: 'bg-purple-950/80 text-purple-300 border-purple-800/60',
-    title: 'Streaming y TV Online',
-    desc: 'Comparamos Zapping TV vs. DGO para ver fútbol chileno (TNT Sports) sin spoilers, con fluidez a 60 fps y precios transparentes en pesos chilenos.',
-    link: '/streaming/zapping-vs-dgo-chile-cual-conviene/',
-    linkText: 'Comparar Zapping vs DGO',
-    gradient: 'from-purple-900/20 via-slate-900/40 to-slate-900/80 border-purple-800/30 hover:border-purple-500/50',
+    badge: '⚡ Revive tu Tele Vieja',
+    badgeClass: 'bg-brand-500 text-white',
+    title: 'Xiaomi TV Box S (2nd Gen) 4K Ultra HD Google TV',
+    hook: 'Transforma cualquier televisor antiguo en un Smart TV de última generación. Compatible con Zapping, DGO y APKs.',
+    price: preciosData['xiaomi-tv-box-s-4k'].precioFormateado,
+    subPrice: 'Envío Full 24h en Chile',
+    image: imgXiaomiBox,
+    reviewUrl: '/accesorios/como-convertir-televisor-antiguo-en-smart-tv-chile/',
+    reviewLabel: 'Ver guía paso a paso →',
+    primaryCtaText: 'Comprar en M. Libre',
+    primaryCtaUrl: afiliadosData['xiaomi-tv-box-s-4k'].url,
+    primaryCtaClass: 'bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 border-yellow-400',
+    secondaryCtaText: 'Alternativa Roku 4K',
+    secondaryCtaUrl: afiliadosData['roku-express-4k'].url,
+    secondaryCtaClass: 'bg-slate-800 hover:bg-slate-700 text-slate-200 border-slate-600',
   },
   {
-    icon: '📺',
-    badge: 'Compra Inteligente 2026',
-    badgeColor: 'bg-blue-950/80 text-blue-300 border-blue-800/60',
-    title: 'Mejores Smart TVs y Gadgets',
-    desc: 'Revisamos paneles QLED, Mini-LED y los mejores gadgets tecnológicos para el hogar comparando precios en Mercado Libre, Falabella y AliExpress.',
-    link: '/gadgets-hogar/',
-    linkText: 'Ver Gadgets AliExpress vs M. Libre',
-    gradient: 'from-blue-900/20 via-slate-900/40 to-slate-900/80 border-blue-800/30 hover:border-blue-500/50',
+    badge: '🏆 Mejor Smart TV 2026',
+    badgeClass: 'bg-emerald-500 text-slate-950',
+    title: 'Smart TV TCL 55" 4K QLED / QD-Mini LED (144Hz)',
+    hook: 'Calidad de imagen de gama alta a precio de gama media. Google TV oficial, Dolby Vision y panel ultra fluido.',
+    price: '$ 359.990 CLP',
+    subPrice: 'Hasta 6 cuotas sin interés',
+    image: imgTcl55,
+    reviewUrl: '/smart-tv/review-tcl-c655-p8l-55-chile/',
+    reviewLabel: 'Ver review técnico →',
+    primaryCtaText: 'Mercado Libre',
+    primaryCtaUrl: afiliadosData['tcl-c655-55'].url,
+    primaryCtaClass: 'bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 border-yellow-400',
+    secondaryCtaText: 'Falabella',
+    secondaryCtaUrl: afiliadosData['falabella-tcl-t6d-55'].url,
+    secondaryCtaClass: 'bg-[#008A00] hover:bg-[#007000] text-white border-emerald-400',
+  },
+  {
+    badge: '🔊 Cine en tu Living',
+    badgeClass: 'bg-purple-500 text-white',
+    title: 'Barra de Sonido Samsung HW-B550 2.1ch (410W)',
+    hook: 'Subwoofer inalámbrico dedicado que hace vibrar la sala. Se conecta por Bluetooth o HDMI ARC en segundos.',
+    price: preciosData['samsung-soundbar-b550'].precioFormateado,
+    subPrice: 'Subwoofer inalámbrico incluido',
+    image: imgSamsungBar,
+    reviewUrl: '/accesorios/mejores-barras-de-sonido-calidad-precio-chile/',
+    reviewLabel: 'Ver comparativa de audio →',
+    primaryCtaText: 'Mercado Libre',
+    primaryCtaUrl: afiliadosData['samsung-soundbar-b550'].url,
+    primaryCtaClass: 'bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 border-yellow-400',
+    secondaryCtaText: 'Falabella',
+    secondaryCtaUrl: afiliadosData['falabella-samsung-soundbar'].url,
+    secondaryCtaClass: 'bg-[#008A00] hover:bg-[#007000] text-white border-emerald-400',
+  },
+];
+
+// Picadas Baratas bajo $45.000 CLP (Compras de Impulso)
+const impulseDeals = [
+  {
+    title: 'Antena Digital TVD HD Interior/Exterior',
+    desc: 'Canales nacionales 1080p gratis sin pagar cable',
+    price: '$ 9.990 CLP',
+    image: imgAntenaTvd,
+    buyUrl: afiliadosData['antena-tvd-chile'].url,
+    guideUrl: '/tv-abierta/como-sintonizar-canales-hd-tvd-chile/',
+  },
+  {
+    title: 'Kit Tira Luces LED RGBIC Ambilight USB',
+    desc: 'Iluminación de cine para TV o pieza con control y App',
+    price: '$ 12.990 CLP',
+    image: imgLucesLed,
+    buyUrl: afiliadosData['luces-led-tv-ambilight'].url,
+    guideUrl: '/accesorios/como-armar-cine-en-casa-barato-pieza-chile/',
+  },
+  {
+    title: 'Soporte Muro Articulado Doble Brazo (32"-75")',
+    desc: 'Acero reforzado para girar e inclinar tu televisor',
+    price: '$ 19.990 CLP',
+    image: imgSoporteMuro,
+    buyUrl: afiliadosData['soporte-tv-articulado-pesado'].url,
+    guideUrl: '/accesorios/como-instalar-soporte-tv-muro-chile/',
+  },
+  {
+    title: 'Roku Express 4K con Control Remoto',
+    desc: 'El sistema más fácil para adultos mayores y niños',
+    price: '$ 44.990 CLP',
+    image: imgRoku4k,
+    buyUrl: afiliadosData['roku-express-4k'].url,
+    guideUrl: '/accesorios/roku-vs-chromecast-chile-cual-conviene/',
   },
 ];
 
@@ -92,147 +187,439 @@ const quickNeeds = [
     link: '/ofertas-tv-chile/',
   },
   {
-    icon: '🔥',
-    question: 'Busco los mejores gadgets para el hogar (AliExpress vs. Mercado Libre)',
-    solution: 'Página dedicada de mini proyectores Smart, TV Boxes, luces Ambilight y barras de sonido.',
-    link: '/gadgets-hogar/',
+    icon: '🍿',
+    question: 'Quiero armar un cine de 100" en mi pieza gastando poco',
+    solution: 'El combo viral de proyector Full HD + luces Ambilight por menos de $120.000 en Chile.',
+    link: '/accesorios/como-armar-cine-en-casa-barato-pieza-chile/',
   },
   {
     icon: '🛏️',
-    question: 'Busco un Smart TV de 43 o 50 pulgadas barato para pieza o depto',
-    solution: 'Guía de tamaños por distancia y ranking de televisores 4K económicos en Chile.',
-    link: '/smart-tv/mejores-smart-tv-43-50-pulgadas-baratos-chile/',
+    question: 'Busco un Smart TV barato (32", 40", 43" o 50") para pieza o cocina',
+    solution: 'Comparativa de modelos económicos que no se pegan y soportan todas las apps.',
+    link: '/smart-tv/mejores-smart-tv-32-40-pulgadas-baratos-chile/',
+  },
+  {
+    icon: '🔌',
+    question: 'Mi tele es lenta o vieja y quiero ponerle Netflix, YouTube y Zapping',
+    solution: 'Cómo transformarla en Smart TV en 2 minutos con Xiaomi TV Box S, Roku o Chromecast.',
+    link: '/accesorios/como-convertir-televisor-antiguo-en-smart-tv-chile/',
   },
   {
     icon: '🆓',
-    question: 'Quiero ver canales nacionales en Full HD gratis',
-    solution: 'Guía paso a paso para sintonizar canales HD con antena (norma ISDB-Tb).',
+    question: 'Quiero ver canales nacionales en Full HD gratis sin cable',
+    solution: 'Tutorial paso a paso para sintonizar señales digitales TVD con antena de $9.990.',
     link: '/tv-abierta/como-sintonizar-canales-hd-tvd-chile/',
   },
   {
     icon: '⚽',
-    question: 'Quiero ver fútbol chileno y canales por internet',
-    solution: 'Comparativa de planes de Zapping TV y DGO con TNT Sports Premium.',
+    question: 'Quiero ver fútbol chileno (TNT Sports) sin spoilers de goles',
+    solution: 'Comparativa a fondo de Zapping TV vs. DGO con precios y latencia en vivo.',
     link: '/streaming/zapping-vs-dgo-chile-cual-conviene/',
-  },
-  {
-    icon: '🔌',
-    question: 'Mi tele es lenta o vieja y quiero apps de streaming',
-    solution: 'Análisis a fondo: Roku Stick, Chromecast 4K y Xiaomi TV Box S en Chile.',
-    link: '/accesorios/roku-vs-chromecast-chile-cual-conviene/',
   },
 ];
 ---
 
 <BaseLayout
-  title="HogarTV.cl | TV Digital, Streaming y Antenas en Chile"
-  description="Todo para la televisión de tu hogar en Chile: aprende a captar canales HD gratis con TVD, compara plataformas de streaming y Smart TVs, o solicita asesoría e instalación técnica."
+  title="HogarTV.cl | Datos de Smart TVs, Proyectores, Ofertas y Streaming en Chile"
+  description="Las mejores picadas tecnológicas, comparativas de Smart TVs, mini proyectores portátiles, TV Boxes y guías para ver canales HD gratis en Chile."
 >
-  
-  <!-- HERO SECTION CON CLARIDAD TOTAL -->
-  <section class="relative overflow-hidden pt-12 pb-20 border-b border-slate-800/80 bg-gradient-to-b from-slate-950 via-surface-dark to-surface-dark">
-    <!-- Efecto ambiental -->
-    <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-brand-600/15 blur-[130px] rounded-full pointer-events-none"></div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-      
-      <!-- Badge de Identidad -->
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/90 border border-slate-700/80 text-xs font-semibold text-slate-200 shadow-sm mb-6">
-        <span class="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span>🇨🇱 Portal Híbrido: Guías, Streaming y Servicio Técnico en Chile</span>
+  <!-- BARRA SUPERIOR DE TENDENCIAS / ACCESO RÁPIDO A OFERTAS -->
+  <div class="bg-gradient-to-r from-amber-500/15 via-brand-500/15 to-emerald-500/15 border-b border-slate-800/90 py-2 px-4">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2 text-xs">
+      <div class="flex items-center gap-2 font-bold text-amber-300">
+        <span class="inline-block w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+        <span>🔥 TENDENCIA EN CHILE HOY:</span>
+        <a href="/smart-tv/review-proyector-magcubic-hy320-vs-hy300-chile/" class="text-white hover:text-amber-300 underline decoration-amber-400/60 underline-offset-2 transition-colors">
+          Mini Proyector Magcubic HY320 Full HD (100" en tu pieza desde $44.990)
+        </a>
+      </div>
+      <div class="hidden md:flex items-center gap-4 text-slate-300 font-medium">
+        <a href="/ofertas-tv-chile/" class="hover:text-amber-300 transition-colors">🏷️ Radar de Ofertas</a>
+        <span>·</span>
+        <a href="/gadgets-hogar/" class="hover:text-brand-300 transition-colors">⚡ Top 9 Gadgets</a>
+        <span>·</span>
+        <a href="/smart-tv/mejores-smart-tv-65-pulgadas-chile/" class="hover:text-emerald-300 transition-colors">📺 TVs 65" en Oferta</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- 1. PORTADA EDITORIAL ESTILO NOTICIA DE IMPACTO (BENTO GRID)             -->
+  <!-- ======================================================================= -->
+  <section class="relative overflow-hidden pt-6 pb-12 border-b border-slate-800/80 bg-gradient-to-b from-slate-950 via-surface-dark to-surface-dark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+      <!-- Cabecera compacta de sección -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-5">
+        <div class="flex items-center gap-2.5">
+          <span class="px-2.5 py-1 rounded-md bg-rose-600 text-white text-[11px] font-black uppercase tracking-wider shadow-sm">
+            Destacados de la Semana
+          </span>
+          <span class="text-xs sm:text-sm text-slate-300 font-medium">
+            Pruebas reales, datos verificados y precios actualizados en Chile 🇨🇱
+          </span>
+        </div>
+        <a
+          href="/ofertas-tv-chile/"
+          class="inline-flex items-center gap-1.5 text-xs font-extrabold text-amber-400 hover:text-amber-300 transition-colors"
+        >
+          <span>⚡ Ver todas las ofertas del día en M. Libre y Falabella</span>
+          <span>→</span>
+        </a>
       </div>
 
-      <!-- Titular Principal -->
-      <h1 class="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-tight max-w-4xl mx-auto mb-6">
-        Televisión, Streaming y Canales HD en Chile: <span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-400 via-indigo-300 to-brand-500">Guías Prácticas y Soporte Técnico</span>
-      </h1>
+      <!-- BENTO GRID: Noticia Principal Gigante (7 cols) + 3 Noticias Clave Laterales (5 cols) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
 
-      <!-- Bajada Explicativa -->
-      <p class="text-base sm:text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed font-normal">
-        Te ayudamos a <strong>cortar el cable tradicional</strong> y disfrutar la mejor calidad de imagen: aprende a captar canales HD nacionales gratis con TVD, compara plataformas de streaming legales para ver fútbol en vivo, o solicita <strong>asesoría e instalación técnica a domicilio en la Región del Biobío</strong>.
-      </p>
+        <!-- BLOQUE PRINCIPAL: EL PROYECTOR / CINE EN LA PIEZA -->
+        <article class="lg:col-span-7 rounded-3xl border-2 border-brand-500/40 bg-slate-900 overflow-hidden shadow-2xl flex flex-col justify-between group relative">
+          <a href="/accesorios/como-armar-cine-en-casa-barato-pieza-chile/" class="block relative aspect-[16/10] sm:aspect-[16/9] overflow-hidden bg-slate-950">
+            <Image
+              src={heroCinePieza}
+              alt="Mini Proyector Magcubic HY320 proyectando 100 pulgadas en dormitorio en Chile"
+              width={900}
+              height={506}
+              format="webp"
+              quality={88}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+              loading="eager"
+              fetchpriority="high"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/35 to-transparent"></div>
 
-      <!-- Botones Principales de Acción -->
-      <div class="flex flex-wrap items-center justify-center gap-4">
-        <a
-          href="#pilares"
-          class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-bold text-sm shadow-lg shadow-brand-600/30 hover:shadow-brand-600/50 transition-all transform hover:-translate-y-0.5"
-        >
-          🚀 Ver los 3 Pilares de HogarTV
-        </a>
-        <a
-          href="#servicio-tecnico"
-          class="px-6 py-3.5 rounded-xl bg-surface-card hover:bg-slate-800 text-slate-200 border border-slate-700 text-sm font-semibold transition-all hover:border-brand-500/60 flex items-center gap-2"
-        >
-          <span>🛠️</span> Solicitar Servicio Técnico
-        </a>
-        <a
-          href="/streaming/zapping-vs-dgo-chile-cual-conviene/"
-          class="px-6 py-3.5 rounded-xl bg-purple-950/60 hover:bg-purple-900/60 text-purple-200 border border-purple-700/60 text-sm font-semibold transition-all hover:border-purple-500 flex items-center gap-2"
-        >
-          <span>🍿</span> Zapping vs DGO (Fútbol)
-        </a>
+            <!-- Etiquetas Flotantes Superiores -->
+            <div class="absolute top-3.5 left-3.5 right-3.5 flex flex-wrap items-center justify-between gap-2">
+              <span class="px-3 py-1 rounded-full bg-amber-400 text-slate-950 text-xs font-black uppercase tracking-wide shadow-lg">
+                🔥 Picada N°1 en Chile · Ahorra $300.000
+              </span>
+              <span class="px-3 py-1 rounded-full bg-slate-950/90 border border-emerald-500/50 text-emerald-400 text-xs font-mono font-bold shadow-lg">
+                Desde $44.990 CLP
+              </span>
+            </div>
+
+            <!-- Titular Estilo Noticia Gigante Sobre la Imagen (Desktop/Mobile) -->
+            <div class="absolute bottom-0 inset-x-0 p-5 sm:p-7">
+              <span class="text-brand-300 text-xs font-extrabold uppercase tracking-wider block mb-1.5">
+                Especial Cine en Casa · Prueba a Fondo
+              </span>
+              <h1 class="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight leading-tight drop-shadow-md">
+                El Mini Proyector de $44.990 que reemplaza a una Tele de 100 Pulgadas en tu Pieza
+              </h1>
+            </div>
+          </a>
+
+          <!-- Cuerpo y Llamados a la Acción Inmediatos -->
+          <div class="p-5 sm:p-7 bg-gradient-to-b from-slate-900 to-slate-950 flex-1 flex flex-col justify-between gap-5">
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed m-0">
+              Olvídate de gastar una fortuna en un televisor gigante para el dormitorio. Probamos el <strong>Magcubic HY320 (Full HD 1080p real, Android 11 y giro de 180° al techo)</strong> y te mostramos cómo armar un cine completo en tu pieza.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1">
+              <a
+                href="/accesorios/como-armar-cine-en-casa-barato-pieza-chile/"
+                class="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-black text-sm shadow-lg shadow-brand-600/30 transition-all hover:-translate-y-0.5"
+              >
+                <span>📖 Ve aquí todos los detalles y cómo armarlo</span>
+                <span>→</span>
+              </a>
+              <a
+                href={afiliadosData['proyector-magcubic-hy320'].url}
+                target="_blank"
+                rel="nofollow sponsored noopener noreferrer"
+                class="inline-flex items-center justify-center gap-1.5 px-5 py-3.5 rounded-xl bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 font-black text-sm shadow-md transition-all hover:scale-[1.02] shrink-0"
+              >
+                <span>🛒 Ver Oferta en M. Libre</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- COLUMNA LATERAL: 3 NOTICIAS / DATOS DE ALTA CONVERSIÓN -->
+        <div class="lg:col-span-5 flex flex-col justify-between gap-4">
+
+          <!-- Noticia Lateral 1: Revivir Tele Vieja -->
+          <article class="flex-1 rounded-2xl border border-slate-800 hover:border-brand-500/60 bg-surface-card p-4 sm:p-5 shadow-lg transition-all group flex flex-col justify-between">
+            <div class="flex gap-4 items-start">
+              <a href="/accesorios/como-convertir-televisor-antiguo-en-smart-tv-chile/" class="w-28 sm:w-32 aspect-[4/3] rounded-xl overflow-hidden shrink-0 bg-slate-900 border border-slate-800">
+                <Image
+                  src={heroTvVieja}
+                  alt="Convertir televisor antiguo en Smart TV en Chile"
+                  width={240}
+                  height={180}
+                  format="webp"
+                  quality={80}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </a>
+              <div class="min-w-0 flex-1">
+                <span class="inline-block px-2 py-0.5 rounded bg-brand-950 text-brand-300 border border-brand-800/60 text-[10px] font-extrabold uppercase tracking-wider mb-1">
+                  ⚡ Dato Ahorro · Desde $44.990
+                </span>
+                <h2 class="text-sm sm:text-base font-extrabold text-white group-hover:text-brand-300 transition-colors leading-snug mb-1.5">
+                  <a href="/accesorios/como-convertir-televisor-antiguo-en-smart-tv-chile/">
+                    No botes tu tele vieja: conviértela en un Smart TV 4K ultra rápido en 2 minutos
+                  </a>
+                </h2>
+                <p class="text-xs text-slate-400 line-clamp-2 m-0">
+                  Comparamos Xiaomi TV Box S 4K, Roku y Chromecast para instalar Zapping, DGO y Netflix en cualquier tele.
+                </p>
+              </div>
+            </div>
+            <div class="mt-3 pt-2.5 border-t border-slate-800/80 flex items-center justify-between gap-2">
+              <a href="/accesorios/como-convertir-televisor-antiguo-en-smart-tv-chile/" class="text-xs font-extrabold text-brand-400 hover:text-brand-300">
+                Ver guía y modelos compatibles →
+              </a>
+              <a
+                href={afiliadosData['xiaomi-tv-box-s-4k'].url}
+                target="_blank"
+                rel="nofollow sponsored noopener noreferrer"
+                class="px-2.5 py-1 rounded-lg bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 font-black text-[11px]"
+              >
+                Xiaomi Box en M. Libre ↗
+              </a>
+            </div>
+          </article>
+
+          <!-- Noticia Lateral 2: Smart TVs Baratas 32, 40 y 50 pulgadas -->
+          <article class="flex-1 rounded-2xl border border-slate-800 hover:border-emerald-500/60 bg-surface-card p-4 sm:p-5 shadow-lg transition-all group flex flex-col justify-between">
+            <div class="flex gap-4 items-start">
+              <a href="/smart-tv/mejores-smart-tv-32-40-pulgadas-baratos-chile/" class="w-28 sm:w-32 aspect-[4/3] rounded-xl overflow-hidden shrink-0 bg-slate-900 border border-slate-800">
+                <Image
+                  src={heroTv32y40}
+                  alt="Mejores Smart TV de 32 y 40 pulgadas baratas en Chile"
+                  width={240}
+                  height={180}
+                  format="webp"
+                  quality={80}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </a>
+              <div class="min-w-0 flex-1">
+                <span class="inline-block px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800/60 text-[10px] font-extrabold uppercase tracking-wider mb-1">
+                  📺 Especial Pieza y Cocina
+                </span>
+                <h2 class="text-sm sm:text-base font-extrabold text-white group-hover:text-emerald-300 transition-colors leading-snug mb-1.5">
+                  <a href="/smart-tv/mejores-smart-tv-32-40-pulgadas-baratos-chile/">
+                    Mejores Smart TV de 32, 40 y 50 Pulgadas Baratas en Chile (Ranking 2026)
+                  </a>
+                </h2>
+                <p class="text-xs text-slate-400 line-clamp-2 m-0">
+                  Cuáles valen la pena por su fluidez en TCL, Samsung y Hisense y cuáles evitar para no pasar rabias.
+                </p>
+              </div>
+            </div>
+            <div class="mt-3 pt-2.5 border-t border-slate-800/80 flex items-center justify-between gap-2">
+              <a href="/smart-tv/mejores-smart-tv-32-40-pulgadas-baratos-chile/" class="text-xs font-extrabold text-emerald-400 hover:text-emerald-300">
+                Ver ranking de televisores →
+              </a>
+              <a href="/smart-tv/mejores-smart-tv-43-50-pulgadas-baratos-chile/" class="text-[11px] font-bold text-slate-300 hover:text-white underline">
+                Ver 43" y 50"
+              </a>
+            </div>
+          </article>
+
+          <!-- Noticia Lateral 3: Smart TVs 65 Pulgadas / Radar de Ofertas -->
+          <article class="flex-1 rounded-2xl border border-amber-500/30 hover:border-amber-400 bg-gradient-to-r from-slate-900 via-surface-card to-amber-950/20 p-4 sm:p-5 shadow-lg transition-all group flex flex-col justify-between">
+            <div class="flex gap-4 items-start">
+              <a href="/smart-tv/mejores-smart-tv-65-pulgadas-chile/" class="w-28 sm:w-32 aspect-[4/3] rounded-xl overflow-hidden shrink-0 bg-slate-900 border border-slate-800">
+                <Image
+                  src={heroTv65}
+                  alt="Mejores Smart TV 65 pulgadas y ofertas en Chile"
+                  width={240}
+                  height={180}
+                  format="webp"
+                  quality={80}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </a>
+              <div class="min-w-0 flex-1">
+                <span class="inline-block px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40 text-[10px] font-extrabold uppercase tracking-wider mb-1">
+                  🏷️ Radar de Descuentos Hoy
+                </span>
+                <h2 class="text-sm sm:text-base font-extrabold text-white group-hover:text-amber-300 transition-colors leading-snug mb-1.5">
+                  <a href="/ofertas-tv-chile/">
+                    Ofertas Verificadas en Smart TVs de 55" y 65" QLED / Mini-LED en Chile
+                  </a>
+                </h2>
+                <p class="text-xs text-slate-400 line-clamp-2 m-0">
+                  Comparador en vivo entre Mercado Libre y Falabella con ahorro de hasta $180.000 CLP.
+                </p>
+              </div>
+            </div>
+            <div class="mt-3 pt-2.5 border-t border-slate-800/80 flex items-center justify-between gap-2">
+              <a href="/ofertas-tv-chile/" class="text-xs font-extrabold text-amber-400 hover:text-amber-300">
+                Abrir el Radar de Ofertas →
+              </a>
+              <a href="/smart-tv/mejores-smart-tv-65-pulgadas-chile/" class="text-[11px] font-bold text-slate-300 hover:text-white underline">
+                Guía 65 Pulgadas
+              </a>
+            </div>
+          </article>
+
+        </div>
       </div>
 
     </div>
   </section>
 
-  <!-- LOS 3 PILARES CLAVE DE HOGARTV -->
-  <section id="pilares" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <div class="text-center max-w-3xl mx-auto mb-12">
-      <h2 class="text-xs font-bold uppercase tracking-wider text-brand-400 mb-2">¿De qué se trata HogarTV?</h2>
-      <p class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-        Nuestros 3 Pilares de Solución para tu Televisión
-      </p>
-      <p class="text-sm text-slate-400 mt-2">
-        Combinamos conocimiento técnico en terreno con recomendaciones independientes para que disfrutes de la televisión como debe ser.
-      </p>
+  <!-- ======================================================================= -->
+  <!-- 2. VITRINA DE COMPRA DIRECTA: "LOS 4 DATOS MÁS VENDIDOS EN CHILE"       -->
+  <!-- ======================================================================= -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-b border-slate-800/70">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-extrabold uppercase tracking-wider mb-2">
+          <span>🛒 Selección de Compra Inteligente</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
+          Los 4 Datos Más Vendidos por Nuestros Lectores en Chile
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1">
+          Revisa nuestro análisis técnico o ve directo a la oferta verificada en Mercado Libre, Falabella y AliExpress:
+        </p>
+      </div>
+      <a
+        href="/gadgets-hogar/"
+        class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-brand-300 border border-slate-700 text-xs font-bold transition-colors shrink-0"
+      >
+        <span>Ver el Ranking Completo de 9 Gadgets</span>
+        <span>→</span>
+      </a>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {pillars.map((pillar) => (
-        <div class={`rounded-3xl p-8 bg-gradient-to-b ${pillar.gradient} border backdrop-blur-sm flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl`}>
+    <!-- Grilla de 4 Tarjetas de Alta Conversión -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {topSellers.map((item) => (
+        <div class="rounded-2xl border border-slate-800 hover:border-brand-500/50 bg-surface-card flex flex-col justify-between overflow-hidden shadow-xl transition-all hover:-translate-y-1">
           <div>
-            <div class="flex items-center justify-between mb-6">
-              <span class="text-4xl p-3.5 bg-slate-900/90 rounded-2xl border border-slate-800 shadow-md">
-                {pillar.icon}
+            <!-- Imagen del Producto con Badge -->
+            <a href={item.reviewUrl} class="block relative aspect-[4/3] bg-white p-4 overflow-hidden border-b border-slate-800">
+              <Image
+                src={item.image}
+                alt={item.title}
+                width={400}
+                height={300}
+                format="webp"
+                quality={85}
+                class="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
+              />
+              <span class={`absolute top-2.5 left-2.5 px-2.5 py-1 rounded-full text-[11px] font-black uppercase tracking-wide shadow ${item.badgeClass}`}>
+                {item.badge}
               </span>
-              <span class={`text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border ${pillar.badgeColor}`}>
-                {pillar.badge}
-              </span>
+            </a>
+
+            <!-- Contenido de la Ficha -->
+            <div class="p-4 sm:p-5">
+              <h3 class="text-base font-extrabold text-white leading-snug mb-2">
+                <a href={item.reviewUrl} class="hover:text-brand-300 transition-colors">
+                  {item.title}
+                </a>
+              </h3>
+              <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                {item.hook}
+              </p>
+
+              <!-- Bloque de Precio -->
+              <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-800/90 mb-3">
+                <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Mejor Precio Ref. Hoy:</div>
+                <div class="text-lg font-black font-mono text-emerald-400">{item.price}</div>
+                <div class="text-[11px] text-slate-400">{item.subPrice}</div>
+              </div>
             </div>
-            
-            <h3 class="text-xl font-bold text-white mb-3 tracking-tight">
-              {pillar.title}
-            </h3>
-            
-            <p class="text-sm text-slate-300 leading-relaxed mb-6">
-              {pillar.desc}
-            </p>
           </div>
 
-          <a
-            href={pillar.link}
-            class="inline-flex items-center justify-between w-full px-5 py-3 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-white font-semibold text-xs border border-slate-700/80 transition-colors group"
-          >
-            <span>{pillar.linkText}</span>
-            <span class="group-hover:translate-x-1 transition-transform">→</span>
-          </a>
+          <!-- Botones de Acción (Compra Directa + Ver Detalles) -->
+          <div class="px-4 sm:px-5 pb-5 space-y-2">
+            <div class="grid grid-cols-2 gap-2">
+              <a
+                href={item.primaryCtaUrl}
+                target="_blank"
+                rel="nofollow sponsored noopener noreferrer"
+                class={`inline-flex items-center justify-center gap-1 px-2.5 py-2.5 rounded-xl font-black text-xs border shadow-sm transition-transform hover:scale-[1.02] text-center ${item.primaryCtaClass}`}
+              >
+                <span>{item.primaryCtaText}</span>
+                <span>↗</span>
+              </a>
+              <a
+                href={item.secondaryCtaUrl}
+                target="_blank"
+                rel="nofollow sponsored noopener noreferrer"
+                class={`inline-flex items-center justify-center gap-1 px-2.5 py-2.5 rounded-xl font-black text-xs border shadow-sm transition-transform hover:scale-[1.02] text-center ${item.secondaryCtaClass}`}
+              >
+                <span>{item.secondaryCtaText}</span>
+                <span>↗</span>
+              </a>
+            </div>
+            <a
+              href={item.reviewUrl}
+              class="block w-full text-center py-2 rounded-lg bg-slate-900/90 hover:bg-slate-800 text-brand-300 font-bold text-xs border border-slate-800 transition-colors"
+            >
+              {item.reviewLabel}
+            </a>
+          </div>
         </div>
       ))}
     </div>
+
+    <!-- Barra de 4 Picadas Baratas bajo $45.000 (Impulso Rápido) -->
+    <div class="mt-8 rounded-2xl bg-slate-900/70 border border-slate-800 p-4 sm:p-6">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-sm sm:text-base font-extrabold text-white flex items-center gap-2 m-0">
+          <span>⚡</span>
+          <span>Picadas Baratas bajo $45.000 CLP que Resuelven Problemas Reales:</span>
+        </h3>
+        <span class="text-[11px] text-emerald-400 font-mono hidden sm:inline">Envío Rápido a Todo Chile</span>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+        {impulseDeals.map((deal) => (
+          <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-800/90 hover:border-slate-700 flex items-center gap-3 justify-between">
+            <img
+              src={deal.image.src}
+              alt={deal.title}
+              width="56"
+              height="56"
+              loading="lazy"
+              class="w-14 h-14 rounded-lg bg-white p-1 object-contain shrink-0"
+            />
+            <div class="min-w-0 flex-1">
+              <a href={deal.guideUrl} class="text-xs font-bold text-white hover:text-brand-300 line-clamp-1 block">
+                {deal.title}
+              </a>
+              <span class="text-xs font-mono font-black text-emerald-400 block">{deal.price}</span>
+              <div class="flex items-center gap-2 mt-1">
+                <a
+                  href={deal.buyUrl}
+                  target="_blank"
+                  rel="nofollow sponsored noopener noreferrer"
+                  class="px-2 py-0.5 rounded bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 font-black text-[10px]"
+                >
+                  Ver en M. Libre ↗
+                </a>
+                <a href={deal.guideUrl} class="text-[10px] text-slate-400 hover:text-white underline">
+                  Detalles
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   </section>
 
-  <!-- SELECTOR RÁPIDO INTERACTIVO: "¿QUÉ NECESITAS RESOLVER HOY?" -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+  <!-- ======================================================================= -->
+  <!-- 3. SELECTOR RÁPIDO INTERACTIVO: "¿QUÉ NECESITAS RESOLVER HOY?"          -->
+  <!-- ======================================================================= -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="bg-surface-card border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-xl">
       <div class="max-w-2xl mb-8">
-        <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 block mb-1">Acceso Inmediato</span>
+        <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 block mb-1">Soluciones en 1 Clic</span>
         <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
-          ¿Qué necesitas resolver hoy en tu televisor?
+          ¿Qué estás buscando para tu casa o dormitorio hoy?
         </h2>
         <p class="text-xs sm:text-sm text-slate-400 mt-1">
-          Haz clic en tu situación para ir directamente a la solución comprobada:
+          Elige tu caso y entra directo a la guía con los productos probados y enlaces de compra:
         </p>
       </div>
 
@@ -259,126 +646,15 @@ const quickNeeds = [
     </div>
   </section>
 
-  <!-- SECCIÓN DESTACADA: SERVICIO TÉCNICO E INSTALACIÓN A DOMICILIO -->
-  <section id="servicio-tecnico" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <div class="rounded-3xl bg-gradient-to-r from-slate-900 via-slate-900/90 to-indigo-950/40 border border-slate-800 p-8 sm:p-12 relative overflow-hidden shadow-2xl">
-      
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-        
-        <div class="lg:col-span-7 space-y-6">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-950/80 border border-brand-800/50 text-brand-300 text-xs font-semibold uppercase tracking-wider">
-            <span>🛠️ Soporte Técnico en Terreno · Región del Biobío</span>
-          </div>
-
-          <h2 class="text-2xl sm:text-4xl font-black text-white tracking-tight leading-snug">
-            ¿Prefieres que un técnico profesional lo haga por ti?
-          </h2>
-
-          <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
-            Ofrecemos <strong>servicio técnico independiente y asesoría a domicilio en la Región del Biobío</strong> (Concepción, Talcahuano, San Pedro de la Paz, Chiguayante, Hualpén, Coronel, Penco, Los Ángeles y comunas aledañas), liderado por <strong>Luis Briones</strong> (Técnico en Telecomunicaciones con más de 8 años de experiencia en terreno).
-          </p>
-
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-            <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800">
-              <span class="text-2xl block mb-2">📡</span>
-              <h3 class="text-xs font-bold text-white mb-1">Antenas TVD HD</h3>
-              <p class="text-[11px] text-slate-400 leading-relaxed">Orientación y cableado coaxial para captar todos los canales digitales de tu comuna.</p>
-            </div>
-            
-            <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800">
-              <span class="text-2xl block mb-2">📺</span>
-              <h3 class="text-xs font-bold text-white mb-1">Soportes a Muro</h3>
-              <p class="text-[11px] text-slate-400 leading-relaxed">Instalación firme y nivelada de televisores de 32" a 75" con ordenamiento estético de cables.</p>
-            </div>
-            
-            <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800">
-              <span class="text-2xl block mb-2">⚡</span>
-              <h3 class="text-xs font-bold text-white mb-1">Redes & Streaming</h3>
-              <p class="text-[11px] text-slate-400 leading-relaxed">Cableado Ethernet Cat 6 y WiFi 5 GHz para ver fútbol sin cortes ni congelamientos.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tarjeta de Contacto Directo -->
-        <div class="lg:col-span-5 bg-surface-card/90 border border-slate-700/80 rounded-2xl p-6 sm:p-8 text-center space-y-5 shadow-xl">
-          <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-brand-600 to-indigo-400 mx-auto flex items-center justify-center text-2xl shadow-lg shadow-brand-500/25">
-            👨‍🔧
-          </div>
-
-          <div>
-            <h3 class="text-lg font-bold text-white">Luis Briones</h3>
-            <p class="text-xs text-brand-400 font-medium">Técnico Especialista en Audio/Video y TVD</p>
-          </div>
-
-          <p class="text-xs text-slate-300 leading-relaxed">
-            Consúltanos directamente por disponibilidad de visitas técnicas en la Región del Biobío, cotizaciones de instalación de antenas, soportes o asesoría para tu televisor.
-          </p>
-
-          <div class="space-y-3 pt-2">
-            <a
-              href="/contacto/"
-              class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm shadow-lg shadow-brand-600/30 transition-all"
-            >
-              <span>✉️</span> Solicitar Visita / Cotización
-            </a>
-            
-            <a
-              href="/sobre-nosotros/"
-              class="w-full inline-flex items-center justify-center px-4 py-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 font-semibold text-xs border border-slate-700 transition-colors"
-            >
-              Conocer trayectoria y metodología →
-            </a>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- RECOMENDACIÓN EDITORIAL (SMART TV N°1 2026) -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-    <div class="bg-gradient-to-r from-slate-900 via-surface-card to-slate-900 rounded-3xl p-6 sm:p-10 border border-slate-800 shadow-2xl relative overflow-hidden">
-      
-      <div class="max-w-2xl mb-6">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-950 border border-brand-800 text-brand-300 text-xs font-semibold uppercase tracking-wider mb-2">
-          <span>⭐ Elección Editorial de la Semana</span>
-        </div>
-        <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
-          La Smart TV más recomendada en Chile para 2026
-        </h2>
-        <p class="text-xs sm:text-sm text-slate-400">
-          Evaluada por calidad de pantalla QLED, sonido Dolby Atmos y compatibilidad total con apps locales vía Google TV.
-        </p>
-      </div>
-
-      <ProductCard
-        productKey="tcl-c655-55"
-        isFirst={true}
-        title='Smart TV TCL 55" QD-Mini LED UHD 4K P8L (Línea 2026)'
-        brand="TCL"
-        badge="🏆 N°1 Calidad / Precio en Chile 2026"
-        specs={["55 Pulgadas 4K", "Panel QD-Mini LED", "Tasa de Refresco 144Hz", "Google TV Oficial", "Dolby Vision & Atmos", "Full Array"]}
-        pros={[
-          "Tecnología QD-Mini LED: brillo extremo y negros cinematográficos",
-          "Panel nativo a 144Hz ideal para partidos de fútbol y consolas (PS5 / Xbox)",
-          "Google TV oficial con Play Store Chile (Zapping, DGO, Netflix, etc.)",
-          "Comando de voz manos libres con Google Assistant integrado"
-        ]}
-        cons={[
-          "Para sacar el máximo provecho a sus 144Hz se recomienda conectar vía HDMI 2.1"
-        ]}
-      />
-
-    </div>
-  </section>
-
-  <!-- TODAS LAS GUÍAS Y ANÁLISIS RECIENTES (LAS 4 ENTRADAS) -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+  <!-- ======================================================================= -->
+  <!-- 4. TODAS LAS GUÍAS, COMPARATIVAS Y PICADAS RECIENTES                    -->
+  <!-- ======================================================================= -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="flex items-center justify-between mb-8">
       <div>
-        <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Guías y Análisis Técnicos</h2>
-        <p class="text-xs sm:text-sm text-slate-400">Artículos prácticos redactados para resolver dudas reales de televisión en Chile</p>
+        <span class="text-xs font-bold uppercase tracking-wider text-brand-400 block mb-1">Catálogo Completo</span>
+        <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">Últimas Guías de Compra, Reviews y Tutoriales</h2>
+        <p class="text-xs sm:text-sm text-slate-400">Análisis independientes con precios en pesos chilenos y enlaces verificados</p>
       </div>
       <span class="text-xs font-semibold text-brand-400 hidden sm:inline-block">
         {featuredArticles.length} guías publicadas
@@ -440,12 +716,13 @@ const quickNeeds = [
                   {article.data.description}
                 </p>
               </div>
-              <div class="pt-4 border-t border-slate-800/80 flex items-center justify-end text-xs">
+              <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
+                <span class="text-[11px] text-emerald-400 font-semibold">✓ Precios Chile 2026</span>
                 <a
                   href={`/${article.data.category}/${slug}/`}
-                  class="inline-flex items-center gap-1 font-bold text-brand-400 group-hover:text-brand-300 transition-colors"
+                  class="inline-flex items-center gap-1 font-extrabold text-brand-400 group-hover:text-brand-300 transition-colors"
                 >
-                  <span>Leer guía completa</span>
+                  <span>Ver detalles y ofertas</span>
                   <span class="group-hover:translate-x-1 transition-transform">→</span>
                 </a>
               </div>
@@ -461,34 +738,67 @@ const quickNeeds = [
     <AdSlot format="banner" label="Espacio Patrocinado" />
   </div>
 
-  <!-- SECCIÓN FAQ GENERAL OPTIMIZADA PARA SEO / BÚSQUEDA ORGÁNICA -->
+  <!-- ======================================================================= -->
+  <!-- 5. SERVICIO TÉCNICO EN EL BIOBÍO (UBICADO AL CIERRE COMO COMPLEMENTO)   -->
+  <!-- ======================================================================= -->
+  <section id="servicio-tecnico" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="rounded-3xl bg-gradient-to-r from-slate-900 via-slate-900/90 to-indigo-950/40 border border-slate-800 p-8 sm:p-10 relative overflow-hidden shadow-xl">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-8 space-y-4">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-950/80 border border-brand-800/50 text-brand-300 text-xs font-semibold uppercase tracking-wider">
+            <span>🛠️ Instalación Presencial · Región del Biobío</span>
+          </div>
+          <h2 class="text-xl sm:text-3xl font-black text-white tracking-tight leading-snug">
+            ¿Vives en el Gran Concepción o Biobío y necesitas instalación a domicilio?
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Además de nuestras guías y comparativas para todo Chile, realizamos <strong>instalación profesional de antenas TVD HD, montaje de soportes articulados en muro y configuración de redes para Smart TV</strong> en Concepción, Talcahuano, San Pedro de la Paz, Chiguayante, Hualpén, Coronel, Penco y Los Ángeles, a cargo de <strong>Luis Briones</strong>.
+          </p>
+        </div>
+        <div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3">
+          <a
+            href="/contacto/"
+            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm shadow-lg shadow-brand-600/30 transition-all"
+          >
+            <span>✉️</span> Solicitar Visita / Cotización
+          </a>
+          <a
+            href="/sobre-nosotros/"
+            class="w-full inline-flex items-center justify-center px-4 py-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 font-semibold text-xs border border-slate-700 transition-colors"
+          >
+            Conocer experiencia técnica →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================= -->
+  <!-- 6. PREGUNTAS FRECUENTES (SEO ORGÁNICO)                                  -->
+  <!-- ======================================================================= -->
   <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
     <FAQSection
-      title="Preguntas Frecuentes sobre Televisión, Canales HD y Streaming en Chile"
+      title="Preguntas Frecuentes sobre Smart TVs, Proyectores y Canales HD en Chile"
       items={[
+        {
+          question: "¿Vale la pena comprar el mini proyector Magcubic HY320 en vez de un televisor para la pieza?",
+          answer: "Si tu objetivo es ver películas, series o fútbol de noche o con cortinas cerradas ahorrando espacio y dinero, el Magcubic HY320 ofrece una pantalla de 100 a 130 pulgadas en resolución Full HD 1080p nativa por menos de $60.000 CLP en Chile. Si en cambio necesitas ver televisión a pleno día con luz solar directa entrando por la ventana, un televisor LED o QLED tradicional de 40, 43 o 50 pulgadas será más adecuado."
+        },
+        {
+          question: "¿Cómo convertir una tele antigua en Smart TV para ver Netflix, YouTube o Zapping?",
+          answer: "Solo debes conectar un dispositivo de streaming al puerto HDMI, como el Xiaomi TV Box S (2nd Gen) 4K, Roku Express 4K o Google Chromecast con Google TV. Estos aparatos incluyen control remoto propio, conexión WiFi de doble banda y actualizan de forma instantánea cualquier pantalla antigua con las aplicaciones chilenas más recientes."
+        },
         {
           question: "¿Cómo ver canales nacionales en Full HD gratis sin pagar cable?",
           answer: "Solo necesitas un televisor con sintonizador digital (norma chilena ISDB-Tb) y conectar una antena para TV digital abierta (UHF) a la entrada coaxial. Luego seleccionas la opción de sintonización automática para captar Canal 13, TVN, Chilevisión, Mega, La Red y canales regionales con calidad 1080p sin pagar mensualidades."
-        },
-        {
-          question: "¿Se necesita internet o WiFi para captar la TV digital abierta con antena?",
-          answer: "No. La Televisión Digital Abierta (TVD) se transmite por el aire mediante ondas de radiofrecuencia terrestres gratuitas. No consume datos móviles, no requiere conexión a internet y continúa funcionando incluso durante cortes de fibra óptica o caídas de red."
-        },
-        {
-          question: "¿Cómo saber si mi televisor es compatible con la señal digital TVD en Chile?",
-          answer: "Todos los televisores comercializados legalmente en Chile desde 2014 incluyen el sello oficial de compatibilidad con la norma ISDB-Tb. Si tu televisor es un modelo antiguo sin sintonizador integrado, puedes conectarle un decodificador digital TVD externo vía cable HDMI o RCA para sintonizar todas las señales digitales."
         },
         {
           question: "¿Cuál es la mejor alternativa para ver fútbol chileno (TNT Sports) por internet?",
           answer: "Servicios de streaming legal como Zapping TV y DGO (DirecTV GO) permiten contratar TNT Sports Premium sin contratos de permanencia ni cobros de arriendo por decodificador. Zapping destaca por su Modo Turbo con baja latencia para evitar spoilers de goles, mientras que DGO ofrece señales deportivas exclusivas de DSPORTS."
         },
         {
-          question: "¿Cómo convertir una tele antigua en Smart TV para ver Netflix, YouTube o Zapping?",
-          answer: "Solo debes conectar un dispositivo de streaming al puerto HDMI, como Roku Streaming Stick o Google Chromecast con Google TV. Estos aparatos incluyen control remoto propio, conexión WiFi y actualizan de forma instantánea cualquier pantalla antigua con las aplicaciones más recientes."
-        },
-        {
-          question: "¿Dónde realizan instalación de antenas y servicio técnico presencial en el Biobío?",
-          answer: "Ofrecemos visitas técnicas y asesoría a domicilio en toda la Región del Biobío (Gran Concepción, Talcahuano, San Pedro de la Paz, Chiguayante, Hualpén, Coronel, Penco, Los Ángeles y comunas aledañas). Realizamos instalación de antenas TVD de alta ganancia, montaje de soportes a muro y optimización de redes para Smart TV."
+          question: "¿Es seguro comprar televisores y gadgets por Mercado Libre y Falabella desde sus enlaces?",
+          answer: "Sí, absolutamente. En HogarTV.cl seleccionamos exclusivamente enlaces hacia tiendas oficiales y vendedores verificados con Compra Protegida en Mercado Libre Chile, Falabella y AliExpress Choice, garantizando despacho a domicilio en todo el país y respaldo ante cualquier eventualidad."
         }
       ]}
     />

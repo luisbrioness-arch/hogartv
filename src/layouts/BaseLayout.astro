@@ -30,7 +30,16 @@ if (!rawCanonical.endsWith('/') && !rawCanonical.match(/\.[a-zA-Z0-9]+$/)) {
   rawCanonical = `${rawCanonical}/`;
 }
 const canonicalUrl = rawCanonical;
-const fullTitle = title.includes('HogarTV') ? title : `${title} | HogarTV.cl`;
+// TÃ­tulo SERP: Google corta ~60 caracteres. Solo aÃ±adimos la marca si cabe completa.
+const fullTitle = title.includes('HogarTV') || title.length + 13 > 60 ? title : `${title} | HogarTV.cl`;
+
+// Meta description: mÃ¡x. ~158 caracteres, cortada en lÃ­mite de palabra.
+const clampDescription = (text: string, max = 158) => {
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max - 1);
+  return cut.slice(0, cut.lastIndexOf(' ')).replace(/[\s,.;:â€“-]+$/, '') + 'â€¦';
+};
+const metaDescription = clampDescription(description);
 
 // Variables de entorno para GA4, GSC y AdSense
 const ga4Id = import.meta.env.PUBLIC_GA4_ID?.trim();
@@ -52,11 +61,11 @@ const websiteSchema = {
   '@type': 'WebSite',
   'name': 'HogarTV.cl',
   'url': siteUrl,
-  'description': 'Guía definitiva de Smart TVs, plataformas de streaming y televisión digital abierta en Chile.',
+  'description': 'GuÃ­a definitiva de Smart TVs, plataformas de streaming y televisiÃ³n digital abierta en Chile.',
   'inLanguage': 'es-CL',
 };
 
-// Schema.org BreadcrumbList (para todas las páginas excepto Home)
+// Schema.org BreadcrumbList (para todas las pÃ¡ginas excepto Home)
 const breadcrumbSchema =
   breadcrumbs && breadcrumbs.length > 0
     ? {
@@ -101,7 +110,7 @@ const breadcrumbSchema =
 
   <!-- Primordial SEO -->
   <title>{fullTitle}</title>
-  <meta name="description" content={description} />
+  <meta name="description" content={metaDescription} />
   <link rel="canonical" href={canonicalUrl} />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 
@@ -113,7 +122,7 @@ const breadcrumbSchema =
   <meta property="og:type" content={ogType} />
   <meta property="og:url" content={canonicalUrl} />
   <meta property="og:title" content={fullTitle} />
-  <meta property="og:description" content={description} />
+  <meta property="og:description" content={metaDescription} />
   <meta property="og:image" content={ogImageUrl} />
   <meta property="og:site_name" content="HogarTV.cl" />
   <meta property="og:locale" content="es_CL" />
@@ -123,7 +132,7 @@ const breadcrumbSchema =
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content={canonicalUrl} />
   <meta name="twitter:title" content={fullTitle} />
-  <meta name="twitter:description" content={description} />
+  <meta name="twitter:description" content={metaDescription} />
   <meta name="twitter:image" content={ogImageUrl} />
 
   <!-- WebSite Schema JSON-LD -->

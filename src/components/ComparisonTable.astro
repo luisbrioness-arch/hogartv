@@ -304,7 +304,13 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
                   {headers[0]} #{rIdx + 1}
                 </span>
                 <h4 class="text-xs sm:text-sm font-bold text-white leading-snug m-0">
-                  {row.feature}
+                  {row.productKey ? (
+                    <a href={`#${row.productKey}`} class="hover:text-brand-300 transition-colors">
+                      {row.feature}
+                    </a>
+                  ) : (
+                    row.feature
+                  )}
                 </h4>
               </div>
               {priceVal && (
@@ -477,7 +483,13 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
           return (
             <tr class={rIdx % 2 === 0 ? 'bg-surface-card hover:bg-slate-900/40 transition-colors' : 'bg-slate-900/30 hover:bg-slate-900/50 transition-colors'}>
               <td class="px-3 sm:px-4 py-3 font-semibold text-white bg-slate-900/50 border-r border-slate-800/70 leading-snug align-middle">
-                {row.feature}
+                {row.productKey ? (
+                  <a href={`#${row.productKey}`} class="hover:text-brand-300 transition-colors">
+                    {row.feature}
+                  </a>
+                ) : (
+                  row.feature
+                )}
               </td>
               {row.values.map((val, vIdx) => {
                 const headerName = headers[vIdx + 1] || '';

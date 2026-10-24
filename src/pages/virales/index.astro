@@ -1,0 +1,362 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+
+const breadcrumbs = [
+  { name: 'Gadgets Virales de TikTok e Internet en Chile', url: '/virales/' },
+];
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  'name': 'Los Gadgets y Productos Más Virales de TikTok e Internet en Chile (2026)',
+  'description': 'Ranking de los productos virales que son tendencia en redes sociales en Chile: desde el mono timbre lagartija chillona hasta el mini proyector de techo para dormitorios.',
+  'itemListElement': [
+    {
+      '@type': 'ListItem',
+      'position': 1,
+      'name': 'Timbre Bocina Lagartija Chillona de Goma para Bicicleta y Moto (Screaming Gecko)',
+      'url': 'https://hogartv.cl/virales/#lagartija-chillona-bicicleta',
+    },
+    {
+      '@type': 'ListItem',
+      'position': 2,
+      'name': 'Mini Proyector Smart Portátil Magcubic HY320 Full HD 1080p Android 11',
+      'url': 'https://hogartv.cl/virales/#proyector-magcubic-hy320',
+    },
+    {
+      '@type': 'ListItem',
+      'position': 3,
+      'name': 'Kit Tira Luces LED RGBIC TV Ambilight USB reactiva al sonido',
+      'url': 'https://hogartv.cl/virales/#luces-led-tv-ambilight',
+    },
+    {
+      '@type': 'ListItem',
+      'position': 4,
+      'name': 'Xiaomi TV Box S (2nd Gen) 4K Ultra HD con Google TV',
+      'url': 'https://hogartv.cl/virales/#xiaomi-tv-box-s-4k',
+    },
+    {
+      '@type': 'ListItem',
+      'position': 5,
+      'name': 'Antena Digital HDTV Interior / Exterior Amplificada 360°',
+      'url': 'https://hogartv.cl/virales/#antena-tvd-chile',
+    },
+  ],
+};
+
+const viralesFaqs = [
+  {
+    question: '¿Por qué todos buscan el mono de la lagartija chillona en TikTok?',
+    answer: 'Se volvió viral en TikTok e Instagram Reels por su diseño cómico de ojos saltones y boca elástica: al apretarlo emite un chillido agudo muy gracioso. Los ciclistas y motociclistas en Chile lo usan como timbre alternativo para alertar peatones con humor, y también se usa en manubrios de scooters y tableros de autos.',
+  },
+  {
+    question: '¿Conviene comprar productos virales en AliExpress o Mercado Libre desde Chile?',
+    answer: 'Depende de la urgencia: si quieres el producto para el fin de semana o como regalo inmediato, Mercado Libre Full te lo entrega en 24 a 48 horas en tu casa con garantía nacional. Si no tienes apuro y quieres pagar el precio mínimo de fábrica (ahorrando hasta 50%), AliExpress Choice es excelente y llega por vía aérea entre 10 y 14 días a todo Chile.',
+  },
+  {
+    question: '¿Cómo evitar estafas en anuncios de TikTok e Instagram de productos virales?',
+    answer: 'Muchos anuncios en redes sociales te redirigen a tiendas temporales de Shopify extranjeras que cobran en dólares y triplican el valor real del producto (dropshipping). Nunca compres en enlaces desconocidos de historias patrocinadas: busca siempre los enlaces directos de tiendas oficiales con reputación verificada en Mercado Libre Chile o AliExpress Choice, pagando en pesos chilenos y con protección al comprador.',
+  },
+  {
+    question: '¿Qué enchufe pedir en compras de gadgets chinos para Chile?',
+    answer: 'En Chile la corriente es de 220V con enchufes de clavijas redondas (Tipo C y L). Siempre que compres un gadget eléctrico en AliExpress (como el proyector Magcubic), selecciona la opción "EU Plug". Jamás elijas "US Plug" (110V patas planas) para no requerir adaptadores adicionales.',
+  },
+];
+---
+
+<BaseLayout
+  title="Gadgets y Productos Virales de TikTok en Chile (2026): Los Que Sí Valen la Pena"
+  description="Los productos, monos y gadgets más virales de TikTok e Instagram en Chile probados a fondo. Precios reales, dónde comprarlos barato y comparativa entre Mercado Libre y AliExpress."
+  breadcrumbs={breadcrumbs}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- HEADER VIRAL CON GRADIENTE ENERGÉTICO TIKTOK / INSTAGRAM -->
+    <header class="max-w-4xl mx-auto text-center mb-12">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-rose-950 via-purple-950 to-cyan-950 border border-rose-500/40 text-rose-300 text-xs font-black uppercase tracking-wider mb-4 shadow-lg shadow-rose-950/50">
+        <span class="w-2.5 h-2.5 rounded-full bg-rose-400 animate-ping"></span>
+        <span>Tendencias Virales Chile 2026 · TikTok, Reels y Redes Sociales</span>
+      </div>
+      
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight mb-5 leading-tight">
+        Los Gadgets y Monos Virales que <span class="bg-clip-text text-transparent bg-gradient-to-r from-rose-400 via-fuchsia-400 to-cyan-400">Todos Buscan en Chile</span>
+      </h1>
+      
+      <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-3xl mx-auto">
+        Filtramos el hype de las redes sociales: probamos los objetos virales más compartidos de TikTok y YouTube para contarte cuáles de verdad funcionan, cuáles resuelven problemas diarios y en qué tienda conseguirlos al precio más bajo real en Chile sin caer en estafas.
+      </p>
+
+      <!-- STATS STRIP VIRAL -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl mx-auto mt-8">
+        <div class="p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800">
+          <div class="text-lg font-black text-rose-400 font-mono">100%</div>
+          <div class="text-[11px] text-slate-400 uppercase font-semibold">Probados y Reales</div>
+        </div>
+        <div class="p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800">
+          <div class="text-lg font-black text-amber-400 font-mono">Desde $2.990</div>
+          <div class="text-[11px] text-slate-400 uppercase font-semibold">Precios Mínimos</div>
+        </div>
+        <div class="p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800">
+          <div class="text-lg font-black text-emerald-400 font-mono">24-48h</div>
+          <div class="text-[11px] text-slate-400 uppercase font-semibold">Envíos Full Chile</div>
+        </div>
+        <div class="p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800">
+          <div class="text-lg font-black text-cyan-400 font-mono">0 Humo</div>
+          <div class="text-[11px] text-slate-400 uppercase font-semibold">Sin Dropshipping</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ALERTA DE COMPRA INTELIGENTE (EVITA DROPSHIPPERS) -->
+    <section class="max-w-4xl mx-auto mb-12 p-5 rounded-2xl bg-gradient-to-r from-amber-950/30 via-slate-900 to-amber-950/20 border border-amber-500/40 text-xs sm:text-sm text-slate-300 leading-relaxed">
+      <div class="flex items-center gap-2 font-bold text-amber-300 mb-2">
+        <span class="text-base">⚠️</span>
+        <span>Consejo de Seguridad para Comprar Productos de TikTok en Chile:</span>
+      </div>
+      <p class="m-0">
+        Cuando un producto se vuelve viral en TikTok, aparecen cientos de anuncios en Instagram vendiéndolo a $15.000 o $20.000 CLP en páginas dudosas. <strong>No pagues de más:</strong> esos mismos productos se compran por <strong>$2.990 a $5.990 CLP</strong> directamente en las tiendas oficiales de <strong>Mercado Libre Chile</strong> (entrega rápida) o <strong>AliExpress Choice</strong> (fábrica). A continuación te dejamos los enlaces directos y verificados:
+      </p>
+    </section>
+
+    <!-- TABLA COMPARATIVA DE PRECIOS VIRALES -->
+    <section aria-labelledby="tabla-virales" class="max-w-5xl mx-auto mb-16">
+      <h2 id="tabla-virales" class="sr-only">Tabla Comparativa de Gadgets Virales en Chile</h2>
+      <ComparisonTable
+        title="Comparativa de Gadgets Virales: Mercado Libre vs AliExpress Choice"
+        headers={["Producto Viral", "Precio M. Libre (24h)", "Precio AliExpress Choice", "Veredicto Rápido"]}
+        rows={[
+          {
+            feature: "1. Timbre Lagartija Chillona de Goma (Screaming Gecko)",
+            values: ["$ 5.990 CLP", "$ 2.990 CLP", "M. Libre para regalar este finde / Ali para comprar de a 2"],
+            productKey: "lagartija-chillona-bicicleta",
+            secondaryProductKey: "lagartija-chillona-aliexpress"
+          },
+          {
+            feature: "2. Mini Proyector Smart Magcubic HY320 1080p Nativo",
+            values: ["$ 59.990 CLP", "$ 44.990 CLP", "Ambos: M. Libre por garantía inmediata / Ali por ahorro de $15.000"],
+            productKey: "proyector-magcubic-hy320",
+            secondaryProductKey: "proyector-magcubic-aliexpress"
+          },
+          {
+            feature: "3. Kit Tira Luces LED RGBIC USB Ambilight TV",
+            values: ["$ 12.990 CLP", "$ 8.990 CLP", "Mercado Libre (Llega al día siguiente para tu setup)"],
+            productKey: "luces-led-tv-ambilight"
+          },
+          {
+            feature: "4. Xiaomi TV Box S (2nd Gen) 4K Google TV",
+            values: ["$ 52.990 CLP", "$ 56.990 CLP", "Mercado Libre (100% Original Certificado con USB)"],
+            productKey: "xiaomi-tv-box-s-4k"
+          },
+          {
+            feature: "5. Antena Digital HDTV 360° Canales Abiertos Gratis",
+            values: ["$ 9.990 CLP", "$ 12.990 CLP", "Mercado Libre (Norma ISDB-Tb probada en Chile)"],
+            productKey: "antena-tvd-chile"
+          }
+        ]}
+        verdict="En gadgets de impulso como la lagartija chillona o el proyector Magcubic, ambos enlaces están activos para que elijas entre inmediatez (Mercado Libre) o el precio más bajo directo de fábrica (AliExpress)."
+      />
+    </section>
+
+    <!-- FICHAS EN PROFUNDIDAD DE CADA VIRAL -->
+    <section class="max-w-4xl mx-auto space-y-14 mb-16">
+
+      <!-- VIRAL 1: LAGARTIJA CHILLONA -->
+      <div id="lagartija-chillona-bicicleta" class="scroll-mt-28 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-slate-900 via-surface-card to-emerald-950/40 border-2 border-emerald-500/60 shadow-2xl relative overflow-hidden">
+        <div class="flex flex-wrap items-center gap-2 mb-3">
+          <span class="px-3 py-1 rounded-full bg-emerald-500 text-slate-950 text-xs font-black uppercase tracking-wider flex items-center gap-1.5 shadow">
+            <span>🦎</span>
+            <span>#1 FENÓMENO TIKTOK CHILE</span>
+          </span>
+          <span class="px-2.5 py-0.5 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30 text-[11px] font-bold">
+            🔥 +50M Reproducciones
+          </span>
+          <span class="px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[11px] font-bold">
+            🔊 Chillido al Apretar
+          </span>
+        </div>
+
+        <h2 class="text-2xl sm:text-3xl font-black text-white mb-3">
+          Timbre Bocina Lagartija Chillona de Goma (Screaming Gecko)
+        </h2>
+        
+        <p class="text-sm sm:text-base text-slate-300 leading-relaxed mb-6">
+          Es el mono viral que conquistó los manubrios de Chile: una lagartija de goma flexible con ojos saltones y boca articulada que se sujeta con una correa de silicona a bicicletas, scooters eléctricos, motos y tableros de auto. Al presionarla abre la boca y emite un chillido cómico de alto volumen que saca sonrisas en las ciclovías.
+        </p>
+
+        <ProductCard
+          productKey="lagartija-chillona-bicicleta"
+          title="Timbre Bocina Lagartija Chillona para Bicicleta y Moto (Goma con Sonido)"
+          brand="Viral TikTok / Screaming Gecko"
+          badge="🦎 Furor Viral en Chile ($2.990 en Ali / $5.990 en M. Libre)"
+          specs={["Silicona elástica de alta resistencia", "Bocina sonora integrada (chillido al apretar)", "Abrazadera universal para manubrios", "Resistente a lluvia y sol", "Compatible con bicicletas, motos y autos"]}
+          pros={[
+            "La forma más graciosa y original de reemplazar el clásico timbre aburrido de bicicleta",
+            "Fácil montaje en menos de 10 segundos sin herramientas",
+            "Super económico: desde $2.990 en AliExpress Choice o entrega rápida por Mercado Libre Chile",
+            "Excelente idea para regalar de cumpleaños o broma a ciclistas y amigos"
+          ]}
+          cons={[
+            "Es tan llamativo que si dejas la bicicleta amarrada en la calle conviene desmontarlo para evitar que se lo lleven"
+          ]}
+        />
+      </div>
+
+      <!-- VIRAL 2: PROYECTOR MAGCUBIC HY320 -->
+      <div id="proyector-magcubic-hy320" class="scroll-mt-28 p-6 sm:p-8 rounded-3xl bg-surface-card border border-slate-800 shadow-xl">
+        <div class="flex flex-wrap items-center gap-2 mb-3">
+          <span class="px-3 py-1 rounded-full bg-brand-600 text-white text-xs font-black uppercase tracking-wider">
+            🎬 CINE EN EL TECHO
+          </span>
+          <span class="px-2.5 py-0.5 rounded-full bg-brand-500/20 text-brand-300 border border-brand-500/30 text-[11px] font-bold">
+            Full HD 1080p Nativo
+          </span>
+          <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[11px] font-bold">
+            WiFi 6 + Android 11
+          </span>
+        </div>
+
+        <h2 class="text-2xl sm:text-3xl font-black text-white mb-3">
+          Mini Proyector Smart Magcubic HY320 (El Rey de las Piezas en TikTok)
+        </h2>
+        
+        <p class="text-sm sm:text-base text-slate-300 leading-relaxed mb-6">
+          El gadget más famoso en videos de dormitorios aesthetic: gracias a su cabezal giratorio de 180°, permite proyectar una pantalla gigante de 100 a 150 pulgadas directo en el techo de tu cama para ver Netflix o YouTube acostado sin cansar el cuello.
+        </p>
+
+        <ProductCard
+          productKey="proyector-magcubic-hy320"
+          title="Proyector Inteligente Portátil Magcubic HY320 Full HD 1080p Nativo Android 11"
+          brand="Magcubic"
+          badge="🔥 N°1 en Ventas: Disponible en Mercado Libre y AliExpress"
+          specs={["Full HD 1080p Nativo", "390 ANSI Lúmenes", "Android 11 Integrado", "WiFi 6 & Bluetooth 5.0", "Giro 180° a Techo"]}
+          pros={[
+            "Doble opción de compra activa: botón amarillo para envío 24h en Mercado Libre Chile o botón rojo para precio de fábrica en AliExpress",
+            "Resolución nativa 1080p real (mucho más nítido que el modelo básico HY300 de 720p)",
+            "Corrección trapezoidal automática que endereza la imagen sola al inclinar el proyector",
+            "Bluetooth 5.0 para vincular parlantes externos o barras de sonido de forma inalámbrica"
+          ]}
+          cons={[
+            "Como todo proyector LED compacto, requiere usarse de noche o con cortinas blackout para máximo contraste"
+          ]}
+        />
+      </div>
+
+      <!-- VIRAL 3: LUCES LED TV AMBILIGHT -->
+      <div id="luces-led-tv-ambilight" class="scroll-mt-28 p-6 sm:p-8 rounded-3xl bg-surface-card border border-slate-800 shadow-xl">
+        <div class="flex flex-wrap items-center gap-2 mb-3">
+          <span class="px-3 py-1 rounded-full bg-purple-600 text-white text-xs font-black uppercase tracking-wider">
+            ✨ SETUP CINEMATOGRÁFICO
+          </span>
+          <span class="px-2.5 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 text-[11px] font-bold">
+            Alimentación USB Directa
+          </span>
+        </div>
+
+        <h2 class="text-2xl sm:text-3xl font-black text-white mb-3">
+          Kit Tira Luces LED RGBIC TV Ambilight USB Reactiva
+        </h2>
+        
+        <p class="text-sm sm:text-base text-slate-300 leading-relaxed mb-6">
+          El truco visual que hace que cualquier Smart TV económico de 43 a 65 pulgadas luzca como un televisor premium de $800.000: ilumina la pared trasera al ritmo de la música y reduce la fatiga ocular nocturna al ver películas a oscuras.
+        </p>
+
+        <ProductCard
+          productKey="luces-led-tv-ambilight"
+          title="Kit Tira Luces LED RGBIC TV Ambilight USB 55 a 65 Pulgadas con Control y App"
+          brand="Smart RGBIC"
+          badge="💡 El Gadget Barato de Mayor Impacto Visual"
+          specs={["Conexión USB Directa a TV", "Para TVs de 43\" a 65\"", "Control por App + Mando", "Sincronización con Sonido", "Adhesivo 3M"]}
+          pros={[
+            "Se enciende y apaga automáticamente junto con el televisor gracias a su alimentación USB de 5V",
+            "Reduce el cansancio ocular nocturno y hace que los negros de tu Smart TV luzcan más profundos",
+            "Se controla desde el celular vía Bluetooth o con su control remoto incluido (millones de colores y modo música)"
+          ]}
+          cons={[
+            "Limpia bien el polvo de la tapa trasera del televisor antes de pegar la cinta adhesiva para que no se despegue con el calor"
+          ]}
+        />
+      </div>
+
+      <!-- VIRAL 4: XIAOMI TV BOX S 4K -->
+      <div id="xiaomi-tv-box-s-4k" class="scroll-mt-28 p-6 sm:p-8 rounded-3xl bg-surface-card border border-slate-800 shadow-xl">
+        <div class="flex flex-wrap items-center gap-2 mb-3">
+          <span class="px-3 py-1 rounded-full bg-amber-500 text-slate-950 text-xs font-black uppercase tracking-wider">
+            🚀 REVIVE TU TELE VIEJA
+          </span>
+          <span class="px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[11px] font-bold">
+            Google TV 4K Oficial
+          </span>
+        </div>
+
+        <h2 class="text-2xl sm:text-3xl font-black text-white mb-3">
+          Xiaomi TV Box S (2nd Gen) 4K Ultra HD
+        </h2>
+        
+        <p class="text-sm sm:text-base text-slate-300 leading-relaxed mb-6">
+          El salvavidas viral para evitar botar un televisor que todavía funciona pero cuyas aplicaciones de fábrica ya no abren: le otorga la velocidad, el control por voz y la tienda de aplicaciones completa de Google TV.
+        </p>
+
+        <ProductCard
+          productKey="xiaomi-tv-box-s-4k"
+          title="Xiaomi TV Box S (2nd Gen) 4K Ultra HD con Google TV y Dolby Vision"
+          brand="Xiaomi"
+          badge="📦 La Mejor TV Box Certificada con Puerto USB"
+          specs={["Google TV Oficial", "4K UHD + Dolby Vision", "Puerto USB 2.0 + Audio", "HDMI 2.1", "Control Bluetooth 360°"]}
+          pros={[
+            "Incluye puerto USB físico para reproducir películas desde pendrive o conectar adaptador de cable de red",
+            "Procesador Quad-Core de 2da generación un 25% más rápido que la Mi Box S original",
+            "Certificación oficial Google Widevine L1 y Netflix 4K (a diferencia de las cajas chinas genéricas)",
+            "Soporta Dolby Vision, HDR10+ y sonido inmersivo Dolby Atmos / DTS-HD"
+          ]}
+          cons={[
+            "Por su formato de caja requiere apoyarse sobre el mueble o repisa junto al televisor"
+          ]}
+        />
+      </div>
+
+    </section>
+
+    <!-- FAQ SECTION -->
+    <div class="max-w-4xl mx-auto mb-16">
+      <FAQSection
+        title="Preguntas Frecuentes sobre Productos Virales en Chile"
+        items={viralesFaqs}
+      />
+    </div>
+
+    <!-- CTA BANNER -->
+    <div class="max-w-4xl mx-auto">
+      <CtaBanner
+        title="¿Buscas más gadgets y datos técnicos para tu hogar?"
+        description="Revisa nuestro comparador completo con los 10 mejores gadgets para el hogar y TV en Chile, con análisis de enchufes y garantías."
+        buttonText="Ver Ranking de Gadgets Hogar →"
+        buttonUrl="/gadgets-hogar/"
+      />
+    </div>
+
+  </div>
+
+  <!-- Schema ItemList JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+
+  <!-- Anchor Scroll Helper -->
+  <script is:inline>
+    function scrollToAnchorTarget() {
+      if (window.location.hash) {
+        try {
+          const target = document.querySelector(window.location.hash);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        } catch (e) {}
+      }
+    }
+    window.addEventListener('DOMContentLoaded', () => setTimeout(scrollToAnchorTarget, 100));
+    window.addEventListener('load', () => setTimeout(scrollToAnchorTarget, 300));
+    window.addEventListener('hashchange', scrollToAnchorTarget);
+  </script>
+</BaseLayout>

@@ -188,6 +188,58 @@ const impulseDeals = [
   },
 ];
 
+// Selección de Gadgets y Monos Virales (TikTok e Internet Chile)
+const viralHighlights = [
+  {
+    badge: '🦎 Mono Viral #1 en TikTok',
+    badgeClass: 'bg-emerald-500 text-slate-950',
+    title: 'Timbre Lagartija Chillona de Goma (Screaming Gecko)',
+    hook: 'Furor en TikTok e Instagram: al apretarla abre la boca y emite un chillido cómico. Abrazadera de silicona para bicicleta, moto o scooter.',
+    priceMeli: '$ 5.990 CLP',
+    priceAli: '$ 2.990 CLP',
+    image: imgLagartija,
+    meliUrl: afiliadosData['lagartija-chillona-bicicleta'].url,
+    aliUrl: afiliadosData['lagartija-chillona-aliexpress'].url,
+    detailUrl: '/virales/#lagartija-chillona-bicicleta',
+  },
+  {
+    badge: '🎬 Cine en el Techo',
+    badgeClass: 'bg-brand-600 text-white',
+    title: 'Mini Proyector Smart Magcubic HY320 Full HD',
+    hook: 'El proyector portátil 1080p con giro en 180° que convirtió las piezas en salas de cine gigante de 150\". Con Android 11 y WiFi 6.',
+    priceMeli: '$ 59.990 CLP',
+    priceAli: '$ 44.990 CLP',
+    image: imgMagcubic,
+    meliUrl: afiliadosData['proyector-magcubic-hy320'].url,
+    aliUrl: afiliadosData['proyector-magcubic-aliexpress'].url,
+    detailUrl: '/virales/#proyector-magcubic-hy320',
+  },
+  {
+    badge: '✨ Setup Inmersivo',
+    badgeClass: 'bg-purple-600 text-white',
+    title: 'Kit Tiras Luces LED RGBIC TV Ambilight USB',
+    hook: 'El truco viral para que tu tele económica luzca de $800.000: luces reactivas que se conectan directo al USB de la pantalla.',
+    priceMeli: '$ 12.990 CLP',
+    priceAli: '$ 8.990 CLP',
+    image: imgLucesLed,
+    meliUrl: afiliadosData['luces-led-tv-ambilight'].url,
+    aliUrl: null,
+    detailUrl: '/virales/#luces-led-tv-ambilight',
+  },
+  {
+    badge: '🚀 Revive Cualquier Tele',
+    badgeClass: 'bg-amber-500 text-slate-950',
+    title: 'Xiaomi TV Box S (2nd Gen) 4K Ultra HD',
+    hook: 'Convierte televisores viejos en un centro multimedia con Google TV, Netflix 4K certificado y puerto USB físico para pendrives.',
+    priceMeli: '$ 52.990 CLP',
+    priceAli: null,
+    image: imgXiaomiBox,
+    meliUrl: afiliadosData['xiaomi-tv-box-s-4k'].url,
+    aliUrl: null,
+    detailUrl: '/virales/#xiaomi-tv-box-s-4k',
+  },
+];
+
 const quickNeeds = [
   {
     icon: '🏷️',
@@ -617,7 +669,111 @@ const quickNeeds = [
     </div>
   </section>
 
+    <!-- ======================================================================= -->
+  <!-- 2.5 SECCIÓN VIRAL: LO MÁS BUSCADO DE TIKTOK Y REDES EN CHILE            -->
   <!-- ======================================================================= -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-b border-slate-800/70">
+    <div class="p-6 sm:p-10 rounded-3xl bg-gradient-to-br from-rose-950/40 via-slate-900 to-purple-950/40 border-2 border-rose-500/30 shadow-2xl relative overflow-hidden">
+      <!-- Glow decorativo -->
+      <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-rose-500/10 blur-3xl pointer-events-none"></div>
+
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 relative z-10">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-black uppercase tracking-wider mb-2">
+            <span class="w-2 h-2 rounded-full bg-rose-400 animate-ping"></span>
+            <span>🔥 Tendencias TikTok e Internet Chile</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
+            Los Gadgets y Monos Virales que la Rompen en Redes
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl">
+            Desde la lagartija chillona de manubrio hasta el proyector de techo para Netflix: probamos lo viral y te damos los enlaces directos a precio real de bodega sin caer en dropshipping.
+          </p>
+        </div>
+        <a
+          href="/virales/"
+          class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-gradient-to-r from-rose-600 to-fuchsia-600 hover:from-rose-500 hover:to-fuchsia-500 text-white text-xs font-black shadow-lg shadow-rose-900/40 transition-all shrink-0"
+        >
+          <span>Ver Catálogo Completo de Virales</span>
+          <span>→</span>
+        </a>
+      </div>
+
+      <!-- Grilla de 4 Tarjetas Virales -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 relative z-10">
+        {viralHighlights.map((v) => (
+          <div class="rounded-2xl bg-surface-card/90 border border-slate-800 hover:border-rose-500/50 p-4 sm:p-5 flex flex-col justify-between shadow-xl transition-all hover:-translate-y-1 group">
+            <div>
+              <div class="relative aspect-square rounded-xl bg-white p-3 overflow-hidden mb-3 border border-slate-700/60">
+                <Image
+                  src={v.image}
+                  alt={v.title}
+                  width={300}
+                  height={300}
+                  format="webp"
+                  quality={85}
+                  class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                />
+                <span class={`absolute top-2 left-2 px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wide shadow ${v.badgeClass}`}>
+                  {v.badge}
+                </span>
+              </div>
+
+              <h3 class="text-sm font-extrabold text-white leading-snug mb-2 group-hover:text-rose-300 transition-colors">
+                <a href={v.detailUrl}>{v.title}</a>
+              </h3>
+              <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                {v.hook}
+              </p>
+            </div>
+
+            <div class="space-y-2 pt-3 border-t border-slate-800/80">
+              <div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center justify-between">
+                <span class="text-[10px] uppercase font-bold text-slate-400">Precios Ref:</span>
+                <span class="text-xs font-mono font-black text-emerald-400">
+                  {v.priceAli ? `${v.priceAli} - ${v.priceMeli}` : v.priceMeli}
+                </span>
+              </div>
+
+              <div class="grid grid-cols-1 gap-1.5">
+                {v.meliUrl && (
+                  <a
+                    href={v.meliUrl}
+                    target="_blank"
+                    rel="nofollow sponsored noopener noreferrer"
+                    class="w-full inline-flex items-center justify-between px-3 py-2 rounded-xl bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 font-black text-xs shadow-sm transition-transform hover:scale-[1.01]"
+                  >
+                    <span>Comprar en M. Libre (24h)</span>
+                    <span class="font-bold">↗</span>
+                  </a>
+                )}
+                {v.aliUrl && (
+                  <a
+                    href={v.aliUrl}
+                    target="_blank"
+                    rel="nofollow sponsored noopener noreferrer"
+                    class="w-full inline-flex items-center justify-between px-3 py-2 rounded-xl bg-[#E62E04] hover:bg-[#D02600] text-white font-black text-xs shadow-sm transition-transform hover:scale-[1.01]"
+                  >
+                    <span>Comprar en AliExpress ({v.priceAli})</span>
+                    <span class="font-bold">↗</span>
+                  </a>
+                )}
+              </div>
+
+              <a
+                href={v.detailUrl}
+                class="block w-full text-center py-1.5 text-[11px] text-slate-400 hover:text-white underline transition-colors"
+              >
+                Ver review y detalles completos →
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+<!-- ======================================================================= -->
   <!-- 3. SELECTOR RÁPIDO INTERACTIVO: "¿QUÉ NECESITAS RESOLVER HOY?"          -->
   <!-- ======================================================================= -->
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

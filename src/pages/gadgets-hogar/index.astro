@@ -69,6 +69,12 @@ const itemListSchema = {
       'name': 'Decodificador TV Digital TDT ISDB-Tb Oficial para Chile',
       'url': 'https://hogartv.cl/gadgets-hogar/#decodificador-tvd',
     },
+    {
+      '@type': 'ListItem',
+      'position': 10,
+      'name': 'Timbre Bocina Lagartija Chillona para Bicicleta y Moto (Screaming Gecko)',
+      'url': 'https://hogartv.cl/gadgets-hogar/#lagartija-chillona-bicicleta',
+    },
   ],
 };
 
@@ -218,6 +224,12 @@ const gadgetsFaqs = [
             feature: "9. Decodificador TV Digital ISDB-Tb Norma Chilena",
             values: ["$ 16.990 CLP", "No compatible en AliExpress", "Mercado Libre (Único con norma SUBTEL Chile)"],
             productKey: "decodificador-tvd"
+          },
+          {
+            feature: "10. Timbre Bocina Lagartija Chillona (Viral TikTok)",
+            values: ["$ 5.990 CLP", "$ 2.990 CLP (AliExpress Choice)", "Ambos: M. Libre por inmediatez / Ali por precio mínimo"],
+            productKey: "lagartija-chillona-bicicleta",
+            secondaryProductKey: "lagartija-chillona-aliexpress"
           }
         ]}
         verdict="En los productos donde ambas tiendas son recomendables (como el proyector Magcubic HY320 o la Barra de Sonido Samsung), hemos habilitado los dos botones oficiales en cada fila y ficha para que elijas libremente tu tienda favorita."
@@ -470,6 +482,33 @@ const gadgetsFaqs = [
           ]}
           cons={[
             "Requiere conectarse a una antena UHF para recibir la señal de aire"
+          ]}
+        />
+      </div>
+
+      <!-- GADGET 10: LA LAGARTIJA CHILLONA VIRAL -->
+      <div id="lagartija-chillona-bicicleta">
+        <h3 class="text-xl sm:text-2xl font-bold text-white mb-2 flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-lg bg-emerald-500 text-slate-950 text-sm font-black">#10 VIRAL</span>
+          <span>Timbre Bocina Lagartija Chillona de Goma para Bicicleta y Moto (Screaming Gecko)</span>
+        </h3>
+        <p class="text-sm text-slate-300 leading-relaxed mb-4">
+          El fenómeno viral indiscutible de TikTok e Instagram en Chile: un muñeco de goma con forma de lagartija de ojos saltones que se amarra al manubrio de tu bicicleta, scooter, moto o tablero del auto con una abrazadera de silicona. Al apretarlo abre la boca y emite un chillido gracioso para alertar a peatones o sacar risas con amigos.
+        </p>
+        <ProductCard
+          productKey="lagartija-chillona-bicicleta"
+          title="Timbre Bocina Lagartija Chillona para Bicicleta y Moto (Goma con Sonido)"
+          brand="Viral TikTok / Screaming Gecko"
+          badge="🦎 Furor Viral en Chile ($2.990 en Ali / $5.990 en M. Libre)"
+          specs={["Silicona elástica de alta resistencia", "Bocina sonora integrada (chillido al apretar)", "Abrazadera universal para manubrios", "Resistente a lluvia y sol", "Compatible con bicicletas, motos y autos"]}
+          pros={[
+            "La forma más graciosa y original de reemplazar el clásico timbre aburrido de bicicleta",
+            "Fácil montaje en menos de 10 segundos sin herramientas",
+            "Super económico: desde $2.990 en AliExpress Choice o entrega rápida por Mercado Libre Chile",
+            "Excelente idea para regalar de cumpleaños o broma a ciclistas y amigos"
+          ]}
+          cons={[
+            "Es tan llamativo que si dejas la bicicleta amarrada en la calle conviene desmontarlo para evitar que se lo lleven"
           ]}
         />
       </div>

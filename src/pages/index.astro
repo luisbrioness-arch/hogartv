@@ -24,6 +24,7 @@ import imgLucesLed from '../assets/products/luces-led-tv-ambilight.webp';
 import imgAntenaTvd from '../assets/tv-abierta/como-sintonizar-canales-hd-tvd-chile/antena-tvd-chile.webp';
 import imgSoporteMuro from '../assets/accesorios/soporte-tv-articulado-pesado.webp';
 import imgRoku4k from '../assets/accesorios/roku-vs-chromecast-chile-cual-conviene/roku-express-4k.webp';
+import imgLagartija from '../assets/products/lagartija-chillona-bicicleta.webp';
 
 const allArticles = await getCollection('articles');
 const featuredArticles = allArticles.sort((a, b) => {
@@ -145,6 +146,14 @@ const topSellers = [
 
 // Picadas Baratas bajo $45.000 CLP (Compras de Impulso)
 const impulseDeals = [
+  {
+    title: 'Timbre Lagartija Chillona Bicicleta (Viral)',
+    desc: 'Bocina de goma para manubrio furor en TikTok e Instagram',
+    price: '$ 2.990 - $ 5.990 CLP',
+    image: imgLagartija,
+    buyUrl: afiliadosData['lagartija-chillona-bicicleta'].url,
+    guideUrl: '/gadgets-hogar/#lagartija-chillona-bicicleta',
+  },
   {
     title: 'Antena Digital TVD HD Interior/Exterior',
     desc: 'Canales nacionales 1080p gratis sin pagar cable',
@@ -563,7 +572,7 @@ const quickNeeds = [
       ))}
     </div>
 
-    <!-- Barra de 4 Picadas Baratas bajo $45.000 (Impulso Rápido) -->
+    <!-- Barra de 5 Picadas Baratas bajo $45.000 (Impulso Rápido) -->
     <div class="mt-8 rounded-2xl bg-slate-900/70 border border-slate-800 p-4 sm:p-6">
       <div class="flex items-center justify-between mb-4">
         <h3 class="text-sm sm:text-base font-extrabold text-white flex items-center gap-2 m-0">
@@ -572,7 +581,7 @@ const quickNeeds = [
         </h3>
         <span class="text-[11px] text-emerald-400 font-mono hidden sm:inline">Envío Rápido a Todo Chile</span>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5">
         {impulseDeals.map((deal) => (
           <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-800/90 hover:border-slate-700 flex items-center gap-3 justify-between">
             <img

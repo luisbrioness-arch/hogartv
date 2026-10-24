@@ -301,5 +301,32 @@
         "urlKey": "luces-led-tv-ambilight"
       }
     ]
+  },
+  "lagartija-chillona-bicicleta": {
+    "precioCLP": 5990,
+    "precioFormateado": "$ 5.990 CLP",
+    "rango": "$ 2.990 - $ 7.990 CLP",
+    "precioMinVisto": "$ 2.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-10-24",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 5.990 CLP",
+        "badge": "🔥 Envío Rápido",
+        "destacada": true,
+        "envio": "Envío a Todo Chile",
+        "urlKey": "lagartija-chillona-bicicleta"
+      },
+      {
+        "tienda": "AliExpress Choice",
+        "precio": "$ 2.990 CLP",
+        "badge": "🔥 Precio Fábrica",
+        "destacada": false,
+        "envio": "Envío Choice",
+        "url": "https://s.click.aliexpress.com/e/_c44gTIiT"
+      }
+    ]
   }
 }

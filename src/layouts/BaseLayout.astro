@@ -42,7 +42,7 @@ const clampDescription = (text: string, max = 158) => {
 const metaDescription = clampDescription(description);
 
 // Variables de entorno para GA4, GSC y AdSense
-const ga4Id = import.meta.env.PUBLIC_GA4_ID?.trim();
+const ga4Id = import.meta.env.PUBLIC_GA4_ID?.trim() || 'G-0ZB5T66TJ2';
 const gscVerification = import.meta.env.PUBLIC_GSC_VERIFICATION?.trim();
 const adsenseId = import.meta.env.PUBLIC_ADSENSE_ID?.trim();
 const isDev = import.meta.env.DEV;

@@ -1,6 +1,7 @@
 {
   "nombre": "HogarTV.cl",
   "url": "https://hogartv.cl",
+  "ga4Id": "G-0ZB5T66TJ2",
   "slogan": "Guías de Smart TV, Streaming y Televisión Digital en Chile",
   "emailContacto": "contacto@hogartv.cl",
   "TODO_EMAIL": "Definir correo real de contacto si es diferente a contacto@hogartv.cl o configurar PUBLIC_CONTACT_EMAIL en .env",

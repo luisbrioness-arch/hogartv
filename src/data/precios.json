@@ -108,20 +108,20 @@
     ]
   },
   "roku-express-4k": {
-    "precioCLP": 44990,
-    "precioFormateado": "$ 44.990 CLP",
-    "rango": "$ 40.990 - $ 54.990 CLP",
-    "precioMinVisto": "$ 38.990 CLP",
+    "precioCLP": 28990,
+    "precioFormateado": "$ 28.990 CLP",
+    "rango": "$ 26.990 - $ 34.990 CLP",
+    "precioMinVisto": "$ 26.990 CLP",
     "tiendaReferencia": "Mercado Libre Chile",
-    "fechaVerificacion": "2026-10-17",
+    "fechaVerificacion": "2026-10-25",
     "enOferta": true,
     "comparativaTiendas": [
       {
         "tienda": "Mercado Libre Chile",
-        "precio": "$ 44.990 CLP",
-        "badge": "🔥 Mejor Precio",
+        "precio": "$ 28.990 CLP",
+        "badge": "⚡ Mejor Precio",
         "destacada": true,
-        "envio": "Envío Gratis 24 Horas",
+        "envio": "Envío Full Inmediato",
         "urlKey": "roku-express-4k"
       }
     ]

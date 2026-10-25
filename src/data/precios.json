@@ -328,5 +328,59 @@
         "url": "https://s.click.aliexpress.com/e/_c44gTIiT"
       }
     ]
+  },
+  "onn-google-tv-4k": {
+    "precioCLP": 34990,
+    "precioFormateado": "$ 34.990 CLP",
+    "rango": "$ 28.990 - $ 39.990 CLP",
+    "precioMinVisto": "$ 28.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-10-25",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 34.990 CLP",
+        "badge": "⚡ Envío 24-48h",
+        "destacada": true,
+        "envio": "Envío a Todo Chile",
+        "urlKey": "onn-google-tv-4k"
+      },
+      {
+        "tienda": "AliExpress Choice",
+        "precio": "$ 28.990 CLP",
+        "badge": "🏭 Precio Fábrica",
+        "destacada": false,
+        "envio": "Envío Choice (10-14 días)",
+        "url": "https://s.click.aliexpress.com/e/_c4eGFwl3"
+      }
+    ]
+  },
+  "tv-box-android-economico": {
+    "precioCLP": 22990,
+    "precioFormateado": "$ 22.990 CLP",
+    "rango": "$ 16.990 - $ 25.990 CLP",
+    "precioMinVisto": "$ 16.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-10-25",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 22.990 CLP",
+        "badge": "⚡ Con Puerto USB y Red",
+        "destacada": true,
+        "envio": "Envío Rápido Chile",
+        "urlKey": "tv-box-android-economico"
+      },
+      {
+        "tienda": "AliExpress Choice",
+        "precio": "$ 16.990 CLP",
+        "badge": "🏭 Menos de $20k",
+        "destacada": false,
+        "envio": "Envío Choice",
+        "url": "https://s.click.aliexpress.com/e/_c4eGFwl3"
+      }
+    ]
   }
 }

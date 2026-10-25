@@ -334,25 +334,25 @@
     "precioFormateado": "$ 34.990 CLP",
     "rango": "$ 28.990 - $ 39.990 CLP",
     "precioMinVisto": "$ 28.990 CLP",
-    "tiendaReferencia": "Mercado Libre Chile",
+    "tiendaReferencia": "AliExpress Choice",
     "fechaVerificacion": "2026-10-25",
     "enOferta": true,
     "comparativaTiendas": [
       {
-        "tienda": "Mercado Libre Chile",
-        "precio": "$ 34.990 CLP",
-        "badge": "⚡ Envío 24-48h",
-        "destacada": true,
-        "envio": "Envío a Todo Chile",
-        "urlKey": "onn-google-tv-4k"
-      },
-      {
         "tienda": "AliExpress Choice",
         "precio": "$ 28.990 CLP",
-        "badge": "🏭 Precio Fábrica",
+        "badge": "🏭 Oferta Choice Directa",
+        "destacada": true,
+        "envio": "Envío a Todo Chile",
+        "url": "https://s.click.aliexpress.com/e/_c3LfVW11"
+      },
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 34.990 CLP",
+        "badge": "⚡ Entrega Rápida",
         "destacada": false,
-        "envio": "Envío Choice (10-14 días)",
-        "url": "https://s.click.aliexpress.com/e/_c4eGFwl3"
+        "envio": "Envío Nacional",
+        "url": "https://s.click.aliexpress.com/e/_c3LfVW11"
       }
     ]
   },
@@ -379,7 +379,7 @@
         "badge": "🏭 Menos de $20k",
         "destacada": false,
         "envio": "Envío Choice",
-        "url": "https://s.click.aliexpress.com/e/_c4eGFwl3"
+        "url": "https://meli.la/17Wdq2T"
       }
     ]
   },

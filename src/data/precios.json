@@ -467,67 +467,97 @@
       }
     ]
   },
-  "wifi-mesh-tplink-deco": {
-    "precioCLP": 54990,
-    "precioFormateado": "$ 54.990 CLP",
-    "rango": "$ 49.990 - $ 69.990 CLP",
-    "precioMinVisto": "$ 49.990 CLP",
+  "wifi-mesh-huawei-mesh3": {
+    "precioCLP": 39990,
+    "precioFormateado": "$ 39.990 CLP",
+    "rango": "$ 36.990 - $ 45.990 CLP (por unidad)",
+    "precioMinVisto": "$ 36.990 CLP",
     "tiendaReferencia": "Mercado Libre Chile",
     "fechaVerificacion": "2026-10-25",
     "enOferta": true,
     "comparativaTiendas": [
       {
         "tienda": "Mercado Libre Chile",
-        "precio": "$ 54.990 CLP",
-        "badge": "🏡 Pack 2 Nodos (2 Pisos)",
+        "precio": "$ 39.990 CLP",
+        "badge": "🏡 Mejor Mesh Wi-Fi 6 (Unidad)",
         "destacada": true,
         "envio": "Envío Gratis a Todo Chile",
-        "urlKey": "wifi-mesh-tplink-deco"
-      },
+        "urlKey": "wifi-mesh-huawei-mesh3"
+      }
+    ]
+  },
+  "wifi-mesh-tplink-deco": {
+    "precioCLP": 39990,
+    "precioFormateado": "$ 39.990 CLP",
+    "rango": "$ 36.990 - $ 45.990 CLP (por unidad)",
+    "precioMinVisto": "$ 36.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-10-25",
+    "enOferta": true,
+    "comparativaTiendas": [
       {
-        "tienda": "Falabella Chile",
-        "precio": "$ 59.990 CLP",
-        "badge": "🛡️ Garantía Oficial",
-        "destacada": false,
-        "envio": "Retiro o Envío Express",
-        "url": "https://listado.mercadolibre.cl/tp-link-deco-m4#D[A:tp-link%20deco%20m4]"
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 39.990 CLP",
+        "badge": "🏡 Mejor Mesh Wi-Fi 6 (Unidad)",
+        "destacada": true,
+        "envio": "Envío Gratis a Todo Chile",
+        "urlKey": "wifi-mesh-huawei-mesh3"
+      }
+    ]
+  },
+  "cable-red-20m-cat6e": {
+    "precioCLP": 9990,
+    "precioFormateado": "$ 9.990 CLP",
+    "rango": "$ 8.990 - $ 12.990 CLP",
+    "precioMinVisto": "$ 8.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-10-25",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 9.990 CLP",
+        "badge": "⚡ 20 Metros Cat 6e Armado",
+        "destacada": true,
+        "envio": "Envío a Todo Chile",
+        "urlKey": "cable-red-20m-cat6e"
       }
     ]
   },
   "cable-red-plano-cat6": {
-    "precioCLP": 6990,
-    "precioFormateado": "$ 6.990 CLP",
-    "rango": "$ 4.990 - $ 9.990 CLP",
-    "precioMinVisto": "$ 4.990 CLP",
+    "precioCLP": 9990,
+    "precioFormateado": "$ 9.990 CLP",
+    "rango": "$ 8.990 - $ 12.990 CLP",
+    "precioMinVisto": "$ 8.990 CLP",
     "tiendaReferencia": "Mercado Libre Chile",
     "fechaVerificacion": "2026-10-25",
     "enOferta": true,
     "comparativaTiendas": [
       {
         "tienda": "Mercado Libre Chile",
-        "precio": "$ 6.990 CLP",
-        "badge": "🚪 Pasa Bajo Puertas",
+        "precio": "$ 9.990 CLP",
+        "badge": "⚡ 20 Metros Cat 6e Armado",
         "destacada": true,
-        "envio": "Envío Full",
-        "urlKey": "cable-red-plano-cat6"
+        "envio": "Envío a Todo Chile",
+        "urlKey": "cable-red-20m-cat6e"
       }
     ]
   },
   "adaptador-usb-wifi-5ghz": {
-    "precioCLP": 8990,
-    "precioFormateado": "$ 8.990 CLP",
-    "rango": "$ 6.990 - $ 12.990 CLP",
-    "precioMinVisto": "$ 6.990 CLP",
+    "precioCLP": 11990,
+    "precioFormateado": "$ 11.990 CLP",
+    "rango": "$ 9.990 - $ 14.990 CLP",
+    "precioMinVisto": "$ 9.990 CLP",
     "tiendaReferencia": "Mercado Libre Chile",
     "fechaVerificacion": "2026-10-25",
     "enOferta": true,
     "comparativaTiendas": [
       {
         "tienda": "Mercado Libre Chile",
-        "precio": "$ 8.990 CLP",
-        "badge": "📡 Antena Alta Ganancia",
+        "precio": "$ 11.990 CLP",
+        "badge": "🚀 USB 3.0 · 1300 Mbps Dual Band",
         "destacada": true,
-        "envio": "Envío Nacional",
+        "envio": "Envío a Todo Chile",
         "urlKey": "adaptador-usb-wifi-5ghz"
       }
     ]

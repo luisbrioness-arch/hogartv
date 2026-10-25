@@ -409,5 +409,97 @@
         "url": "https://s.click.aliexpress.com/e/_c4eGFwl3"
       }
     ]
+  },
+  "repetidor-wifi-ac1200": {
+    "precioCLP": 19990,
+    "precioFormateado": "$ 19.990 CLP",
+    "rango": "$ 16.990 - $ 24.990 CLP",
+    "precioMinVisto": "$ 16.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-10-25",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 19.990 CLP",
+        "badge": "⚡ Doble Banda 2.4 y 5 GHz",
+        "destacada": true,
+        "envio": "Envío Rápido Full",
+        "urlKey": "repetidor-wifi-ac1200"
+      },
+      {
+        "tienda": "AliExpress Choice",
+        "precio": "$ 14.990 CLP",
+        "badge": "🏭 Precio Mínimo",
+        "destacada": false,
+        "envio": "Envío Choice (10-12 días)",
+        "url": "https://listado.mercadolibre.cl/repetidor-wifi-ac1200#D[A:repetidor%20wifi%20ac1200]"
+      }
+    ]
+  },
+  "wifi-mesh-tplink-deco": {
+    "precioCLP": 54990,
+    "precioFormateado": "$ 54.990 CLP",
+    "rango": "$ 49.990 - $ 69.990 CLP",
+    "precioMinVisto": "$ 49.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-10-25",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 54.990 CLP",
+        "badge": "🏡 Pack 2 Nodos (2 Pisos)",
+        "destacada": true,
+        "envio": "Envío Gratis a Todo Chile",
+        "urlKey": "wifi-mesh-tplink-deco"
+      },
+      {
+        "tienda": "Falabella Chile",
+        "precio": "$ 59.990 CLP",
+        "badge": "🛡️ Garantía Oficial",
+        "destacada": false,
+        "envio": "Retiro o Envío Express",
+        "url": "https://listado.mercadolibre.cl/tp-link-deco-m4#D[A:tp-link%20deco%20m4]"
+      }
+    ]
+  },
+  "cable-red-plano-cat6": {
+    "precioCLP": 6990,
+    "precioFormateado": "$ 6.990 CLP",
+    "rango": "$ 4.990 - $ 9.990 CLP",
+    "precioMinVisto": "$ 4.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-10-25",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 6.990 CLP",
+        "badge": "🚪 Pasa Bajo Puertas",
+        "destacada": true,
+        "envio": "Envío Full",
+        "urlKey": "cable-red-plano-cat6"
+      }
+    ]
+  },
+  "adaptador-usb-wifi-5ghz": {
+    "precioCLP": 8990,
+    "precioFormateado": "$ 8.990 CLP",
+    "rango": "$ 6.990 - $ 12.990 CLP",
+    "precioMinVisto": "$ 6.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-10-25",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 8.990 CLP",
+        "badge": "📡 Antena Alta Ganancia",
+        "destacada": true,
+        "envio": "Envío Nacional",
+        "urlKey": "adaptador-usb-wifi-5ghz"
+      }
+    ]
   }
 }

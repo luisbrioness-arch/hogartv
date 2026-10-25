@@ -143,5 +143,31 @@
     "tienda": "Mercado Libre Chile",
     "actualizado": "2026-10-25",
     "TODO": "Reemplazar con tu enlace de afiliado meli.la de conversor HDMI a RCA"
+  },
+  "repetidor-wifi-ac1200": {
+    "nombre": "Repetidor Extensor WiFi Doble Banda AC1200 (2.4 y 5 GHz)",
+    "url": "https://listado.mercadolibre.cl/repetidor-wifi-ac1200#D[A:repetidor%20wifi%20ac1200]",
+    "tienda": "Mercado Libre Chile",
+    "actualizado": "2026-10-25",
+    "TODO": "Reemplazar con tu enlace de afiliado meli.la de repetidor AC1200"
+  },
+  "wifi-mesh-tplink-deco": {
+    "nombre": "Sistema WiFi Mesh TP-Link Deco M4 Doble Banda (Pack 2 Nodos)",
+    "url": "https://listado.mercadolibre.cl/tp-link-deco-m4#D[A:tp-link%20deco%20m4]",
+    "tienda": "Mercado Libre Chile",
+    "actualizado": "2026-10-25",
+    "TODO": "Reemplazar con tu enlace de afiliado meli.la de TP-Link Deco"
+  },
+  "cable-red-plano-cat6": {
+    "nombre": "Cable de Red Ethernet Plano Cat 6 (10 Metros) Ultrafino para Rodapiés",
+    "url": "https://listado.mercadolibre.cl/cable-red-plano-cat-6#D[A:cable%20red%20plano%20cat%206]",
+    "tienda": "Mercado Libre Chile",
+    "actualizado": "2026-10-25"
+  },
+  "adaptador-usb-wifi-5ghz": {
+    "nombre": "Adaptador USB WiFi Doble Banda 5 GHz con Antena de Alta Ganancia",
+    "url": "https://listado.mercadolibre.cl/adaptador-usb-wifi-5ghz#D[A:adaptador%20usb%20wifi%205ghz]",
+    "tienda": "Mercado Libre Chile",
+    "actualizado": "2026-10-25"
   }
 }

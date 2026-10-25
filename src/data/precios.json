@@ -382,5 +382,32 @@
         "url": "https://s.click.aliexpress.com/e/_c4eGFwl3"
       }
     ]
+  },
+  "conversor-hdmi-rca": {
+    "precioCLP": 5990,
+    "precioFormateado": "$ 5.990 CLP",
+    "rango": "$ 4.490 - $ 7.990 CLP",
+    "precioMinVisto": "$ 4.490 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-10-25",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 5.990 CLP",
+        "badge": "⚡ Para Teles Antiguas de Tubo",
+        "destacada": true,
+        "envio": "Envío a Todo Chile",
+        "urlKey": "conversor-hdmi-rca"
+      },
+      {
+        "tienda": "AliExpress Choice",
+        "precio": "$ 2.990 CLP",
+        "badge": "🏭 Precio Fábrica",
+        "destacada": false,
+        "envio": "Envío Choice",
+        "url": "https://s.click.aliexpress.com/e/_c4eGFwl3"
+      }
+    ]
   }
 }

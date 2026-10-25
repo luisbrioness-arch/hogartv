@@ -191,5 +191,47 @@
     "url": "https://meli.la/2y2ACHX",
     "tienda": "Mercado Libre Chile",
     "actualizado": "2026-10-25"
+  },
+  "camara-wifi-exterior-360": {
+    "nombre": "Cámara de Seguridad WiFi Exterior 360° PTZ Impermeable con Visión Nocturna Color",
+    "url": "https://listado.mercadolibre.cl/camara-seguridad-wifi-exterior-360#D[A:camara%20seguridad%20wifi%20exterior%20360]",
+    "tienda": "Mercado Libre Chile",
+    "actualizado": "2026-10-25",
+    "TODO": "Reemplazar con tu enlace meli.la de Cámara Exterior 360°"
+  },
+  "camara-wifi-interior-360": {
+    "nombre": "Cámara de Seguridad WiFi Interior 360° Full HD con Audio Bidireccional (Tipo Tapo C200)",
+    "url": "https://listado.mercadolibre.cl/camara-wifi-interior-360-tapo-c200#D[A:camara%20wifi%20interior%20360%20tapo%20c200]",
+    "tienda": "Mercado Libre Chile",
+    "actualizado": "2026-10-25",
+    "TODO": "Reemplazar con tu enlace meli.la de Cámara Interior 360°"
+  },
+  "tarjeta-microsd-vigilancia": {
+    "nombre": "Tarjeta de Memoria MicroSD 64GB / 128GB Clase 10 U3 Especial para Cámaras de Seguridad",
+    "url": "https://listado.mercadolibre.cl/tarjeta-micro-sd-64gb-clase-10#D[A:tarjeta%20micro%20sd%2064gb%20clase%2010]",
+    "tienda": "Mercado Libre Chile",
+    "actualizado": "2026-10-25",
+    "TODO": "Reemplazar con tu enlace meli.la de Tarjeta MicroSD 64GB/128GB"
+  },
+  "celular-adulto-mayor-sos": {
+    "nombre": "Teléfono Celular para Adulto Mayor con Teclas Grandes, Base Cargadora y Botón SOS",
+    "url": "https://listado.mercadolibre.cl/celular-adulto-mayor-boton-sos#D[A:celular%20adulto%20mayor%20boton%20sos]",
+    "tienda": "Mercado Libre Chile",
+    "actualizado": "2026-10-25",
+    "TODO": "Reemplazar con tu enlace meli.la de Celular Adulto Mayor con Botón SOS"
+  },
+  "boton-panico-sos-inalambrico": {
+    "nombre": "Timbre y Botón de Pánico SOS Inalámbrico con Colgante de Emergencia para Adulto Mayor",
+    "url": "https://listado.mercadolibre.cl/boton-panico-sos-adulto-mayor#D[A:boton%20panico%20sos%20adulto%20mayor]",
+    "tienda": "Mercado Libre Chile",
+    "actualizado": "2026-10-25",
+    "TODO": "Reemplazar con tu enlace meli.la de Timbre / Botón de Pánico SOS"
+  },
+  "luces-sensor-movimiento-noche": {
+    "nombre": "Pack Luces Nocturnas LED con Sensor de Movimiento Recargables USB (Anticaídas)",
+    "url": "https://listado.mercadolibre.cl/luz-sensor-movimiento-recargable-usb#D[A:luz%20sensor%20movimiento%20recargable%20usb]",
+    "tienda": "Mercado Libre Chile",
+    "actualizado": "2026-10-25",
+    "TODO": "Reemplazar con tu enlace meli.la de Luces Nocturnas con Sensor de Movimiento"
   }
 }

@@ -563,18 +563,18 @@
     ]
   },
   "camara-wifi-exterior-360": {
-    "precioCLP": 29990,
-    "precioFormateado": "$ 29.990 CLP",
-    "rango": "$ 24.990 - $ 39.990 CLP",
-    "precioMinVisto": "$ 24.990 CLP",
+    "precioCLP": 39990,
+    "precioFormateado": "$ 39.990 CLP",
+    "rango": "$ 36.990 - $ 44.990 CLP",
+    "precioMinVisto": "$ 36.990 CLP",
     "tiendaReferencia": "Mercado Libre Chile",
     "fechaVerificacion": "2026-10-25",
     "enOferta": true,
     "comparativaTiendas": [
       {
         "tienda": "Mercado Libre Chile",
-        "precio": "$ 29.990 CLP",
-        "badge": "🛡️ Exterior 360° · $0 Mensualidad",
+        "precio": "$ 39.990 CLP",
+        "badge": "🛡️ TP-Link Tapo C500 · Exterior 360°",
         "destacada": true,
         "envio": "Envío Gratis Rápido",
         "urlKey": "camara-wifi-exterior-360"
@@ -582,48 +582,10 @@
     ]
   },
   "camara-wifi-interior-360": {
-    "precioCLP": 22990,
-    "precioFormateado": "$ 22.990 CLP",
-    "rango": "$ 19.990 - $ 27.990 CLP",
-    "precioMinVisto": "$ 19.990 CLP",
-    "tiendaReferencia": "Mercado Libre Chile",
-    "fechaVerificacion": "2026-10-25",
-    "enOferta": true,
-    "comparativaTiendas": [
-      {
-        "tienda": "Mercado Libre Chile",
-        "precio": "$ 22.990 CLP",
-        "badge": "🏠 Interior 360° · Audio 2 Vías",
-        "destacada": true,
-        "envio": "Envío Full a Todo Chile",
-        "urlKey": "camara-wifi-interior-360"
-      }
-    ]
-  },
-  "tarjeta-microsd-vigilancia": {
-    "precioCLP": 8990,
-    "precioFormateado": "$ 8.990 CLP",
-    "rango": "$ 6.990 - $ 12.990 CLP",
-    "precioMinVisto": "$ 6.990 CLP",
-    "tiendaReferencia": "Mercado Libre Chile",
-    "fechaVerificacion": "2026-10-25",
-    "enOferta": true,
-    "comparativaTiendas": [
-      {
-        "tienda": "Mercado Libre Chile",
-        "precio": "$ 8.990 CLP",
-        "badge": "💾 Grabación Continua 24/7",
-        "destacada": true,
-        "envio": "Envío Full",
-        "urlKey": "tarjeta-microsd-vigilancia"
-      }
-    ]
-  },
-  "celular-adulto-mayor-sos": {
     "precioCLP": 24990,
     "precioFormateado": "$ 24.990 CLP",
-    "rango": "$ 19.990 - $ 32.990 CLP",
-    "precioMinVisto": "$ 19.990 CLP",
+    "rango": "$ 22.990 - $ 27.990 CLP",
+    "precioMinVisto": "$ 22.990 CLP",
     "tiendaReferencia": "Mercado Libre Chile",
     "fechaVerificacion": "2026-10-25",
     "enOferta": true,
@@ -631,37 +593,18 @@
       {
         "tienda": "Mercado Libre Chile",
         "precio": "$ 24.990 CLP",
-        "badge": "🆘 Botón SOS + Teclas Grandes",
+        "badge": "🏠 TP-Link Tapo C200 · Más Vendida",
         "destacada": true,
-        "envio": "Envío Rápido a Todo Chile",
-        "urlKey": "celular-adulto-mayor-sos"
+        "envio": "Envío Full a Todo Chile",
+        "urlKey": "camara-wifi-interior-360"
       }
     ]
   },
-  "boton-panico-sos-inalambrico": {
-    "precioCLP": 14990,
-    "precioFormateado": "$ 14.990 CLP",
-    "rango": "$ 11.990 - $ 19.990 CLP",
-    "precioMinVisto": "$ 11.990 CLP",
-    "tiendaReferencia": "Mercado Libre Chile",
-    "fechaVerificacion": "2026-10-25",
-    "enOferta": true,
-    "comparativaTiendas": [
-      {
-        "tienda": "Mercado Libre Chile",
-        "precio": "$ 14.990 CLP",
-        "badge": "🔔 Alarma Emergencia Casa/Baño",
-        "destacada": true,
-        "envio": "Envío Nacional",
-        "urlKey": "boton-panico-sos-inalambrico"
-      }
-    ]
-  },
-  "luces-sensor-movimiento-noche": {
+  "tarjeta-microsd-vigilancia": {
     "precioCLP": 7990,
     "precioFormateado": "$ 7.990 CLP",
-    "rango": "$ 5.990 - $ 11.990 CLP",
-    "precioMinVisto": "$ 5.990 CLP",
+    "rango": "$ 6.990 - $ 9.990 CLP",
+    "precioMinVisto": "$ 6.990 CLP",
     "tiendaReferencia": "Mercado Libre Chile",
     "fechaVerificacion": "2026-10-25",
     "enOferta": true,
@@ -669,9 +612,66 @@
       {
         "tienda": "Mercado Libre Chile",
         "precio": "$ 7.990 CLP",
-        "badge": "💡 Se Encienden Solas al Pasar",
+        "badge": "💾 Maxell 64GB Clase 10 90MB/s",
         "destacada": true,
         "envio": "Envío Full",
+        "urlKey": "tarjeta-microsd-vigilancia"
+      }
+    ]
+  },
+  "celular-adulto-mayor-sos": {
+    "precioCLP": 31663,
+    "precioFormateado": "$ 31.663 CLP",
+    "rango": "$ 29.990 - $ 34.990 CLP",
+    "precioMinVisto": "$ 31.663 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-10-25",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 31.663 CLP",
+        "badge": "🆘 Tecnolab TL038 4G Tipo Almeja",
+        "destacada": true,
+        "envio": "Envío Rápido a Todo Chile",
+        "urlKey": "celular-adulto-mayor-sos"
+      }
+    ]
+  },
+  "boton-panico-sos-inalambrico": {
+    "precioCLP": 35990,
+    "precioFormateado": "$ 35.990 CLP",
+    "rango": "$ 32.990 - $ 39.990 CLP",
+    "precioMinVisto": "$ 35.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-10-25",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 35.990 CLP",
+        "badge": "🚨 Alarma Pánico 118 dB Más Vendida",
+        "destacada": true,
+        "envio": "Envío Gratis a Todo Chile",
+        "urlKey": "boton-panico-sos-inalambrico"
+      }
+    ]
+  },
+  "luces-sensor-movimiento-noche": {
+    "precioCLP": 16990,
+    "precioFormateado": "$ 16.990 CLP",
+    "rango": "$ 14.990 - $ 19.990 CLP",
+    "precioMinVisto": "$ 14.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-10-25",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 16.990 CLP",
+        "badge": "💡 Proyector LED 150W con Sensor",
+        "destacada": true,
+        "envio": "Envío a Todo Chile",
         "urlKey": "luces-sensor-movimiento-noche"
       }
     ]

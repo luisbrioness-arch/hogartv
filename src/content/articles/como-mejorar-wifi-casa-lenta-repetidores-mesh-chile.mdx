@@ -10,50 +10,306 @@ featured: true
 author: "luis-briones"
 ---
 
+import { Image } from 'astro:assets';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQSection from '../../components/FAQSection.astro';
 import AdSlot from '../../components/AdSlot.astro';
 import CtaBanner from '../../components/CtaBanner.astro';
 
+import routerHuaweiImg from '../../assets/products/router-huawei-wifi7-be3.webp';
+import meshHuaweiImg from '../../assets/products/wifi-mesh-huawei-mesh3.webp';
+import tplinkImg from '../../assets/products/repetidor-wifi-ac1200.webp';
+import basicoImg from '../../assets/products/repetidor-wifi-economico.webp';
+import cableImg from '../../assets/products/cable-red-20m-cat6e.webp';
+import antenaImg from '../../assets/products/adaptador-usb-wifi-5ghz.webp';
+
+{/* =========================================================================
+    HERO DE CONVERSIÓN INMEDIATA (REGLA DE LOS 7 SEGUNDOS)
+    El usuario ve de inmediato el producto Top Recomendado con botón directo,
+    seguido de para qué sirve y los demás recomendados según su presupuesto.
+   ========================================================================= */}
+
+<div class="my-6 p-5 sm:p-7 rounded-3xl bg-gradient-to-b from-slate-900 via-surface-card to-slate-950 border-2 border-amber-400/60 shadow-2xl not-prose relative overflow-hidden">
+  
+  {/* Cabecera del Destacado */}
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400 text-slate-950 text-xs font-black uppercase tracking-wider shadow-sm">
+      <span>🏆</span>
+      <span>Top Recomendación #1 · La Solución Definitiva</span>
+    </div>
+    <span class="text-xs font-semibold text-emerald-400 flex items-center gap-1.5">
+      <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      El Router Wi-Fi 7 Más Vendido en Chile
+    </span>
+  </div>
+
+  {/* Tarjeta Principal del Router Huawei BE3 Wi-Fi 7 */}
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+    
+    <div class="md:col-span-4 flex justify-center">
+      <div class="relative w-48 h-48 sm:w-56 sm:h-56 rounded-2xl bg-slate-800/80 p-3 border border-slate-700/60 flex items-center justify-center shadow-inner">
+        <Image 
+          src={routerHuaweiImg} 
+          alt="Router Huawei BE3 Wi-Fi 7 con Puerto 2.5G"
+          width={280}
+          height={280}
+          class="w-full h-full object-contain filter drop-shadow-xl"
+          loading="eager"
+        />
+      </div>
+    </div>
+
+    <div class="md:col-span-8 flex flex-col justify-center">
+      <div class="flex items-center gap-1 text-amber-400 text-xs mb-1 font-semibold">
+        <span>★★★★★</span>
+        <span class="text-slate-300 ml-1">4.9/5 · El más valorado en Mercado Libre Chile</span>
+      </div>
+      
+      <h2 class="text-xl sm:text-2xl font-black text-white leading-tight mb-2">
+        Router Huawei BE3 Banda Doble con Wi-Fi 7 y Puerto 2.5G
+      </h2>
+
+      <div class="flex flex-wrap items-baseline gap-3 mb-3">
+        <span class="text-2xl sm:text-3xl font-black text-emerald-400">
+          $ 54.990 <span class="text-xs font-bold text-slate-400">CLP</span>
+        </span>
+        <span class="text-xs px-2.5 py-1 rounded-md bg-emerald-950/60 border border-emerald-500/40 text-emerald-300 font-semibold">
+          ⚡ Envío Gratis a Todo Chile
+        </span>
+      </div>
+
+      {/* Para qué sirve (Lectura directa en 3 segundos) */}
+      <div class="space-y-1.5 text-xs sm:text-sm text-slate-200 mb-4 bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
+        <div class="flex items-start gap-2">
+          <span class="text-amber-400 font-bold shrink-0">🚀 Para qué sirve:</span>
+          <span>Reemplaza el WiFi saturado que te pasa tu compañía para que la señal llegue con máxima fuerza y estabilidad a todas las piezas y patios.</span>
+        </div>
+        <div class="flex items-start gap-2">
+          <span class="text-emerald-400 font-bold shrink-0">⚡ Cero Lag en Todo:</span>
+          <span>Puerto ultra rápido de 2.5 Gbps y Wi-Fi 7 MLO: descargan archivos pesados, juegan en línea y ven Netflix en 4K en varios televisores sin microcortes.</span>
+        </div>
+        <div class="flex items-start gap-2">
+          <span class="text-sky-400 font-bold shrink-0">🛡️ Control Parental:</span>
+          <span>Pausa el internet de los niños en horas de sueño y bloquea contenidos inapropiados fácilmente desde la app en tu celular.</span>
+        </div>
+      </div>
+
+      {/* Botón de Compra Directo */}
+      <div>
+        <a 
+          href="https://meli.la/1KLjGy8" 
+          target="_blank" 
+          rel="nofollow sponsored noopener noreferrer"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-black text-sm uppercase tracking-wider shadow-xl shadow-yellow-500/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0 text-center"
+        >
+          <span>👉 Ver Precio y Comprar en Mercado Libre</span>
+          <span class="text-xs font-extrabold bg-slate-950/20 px-2 py-0.5 rounded">Envío Rápido</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  {/* =========================================================================
+      ACCESO RÁPIDO: LOS OTROS RECOMENDADOS SEGÚN TU CASO
+     ========================================================================= */}
+  <div class="mt-8 pt-6 border-t border-slate-800">
+    <div class="flex items-center gap-2 mb-4">
+      <span class="text-xl">🎯</span>
+      <h3 class="text-sm sm:text-base font-extrabold text-white uppercase tracking-wide m-0">
+        ¿Qué Necesitas en Tu Hogar? Elige Tu Solución Directa:
+      </h3>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+      
+      {/* Opción 2: Huawei Mesh 3+ */}
+      <div class="p-4 rounded-2xl bg-slate-900/90 border border-purple-500/30 hover:border-purple-400/60 transition-all flex flex-col justify-between">
+        <div>
+          <div class="inline-block text-[11px] font-bold px-2 py-0.5 rounded bg-purple-950 text-purple-300 mb-2 border border-purple-800/40">
+            🏡 Casas de 2 Pisos (El Mejor Mesh)
+          </div>
+          <div class="flex items-center gap-3 mb-2">
+            <Image 
+              src={meshHuaweiImg} 
+              alt="Huawei WiFi Mesh 3+" 
+              width={56} 
+              height={56} 
+              class="w-14 h-14 object-contain rounded-lg bg-slate-800 p-1 shrink-0" 
+            />
+            <div>
+              <h4 class="text-sm font-bold text-white leading-tight">
+                Huawei WiFi Mesh 3+ Wi-Fi 6
+              </h4>
+              <span class="text-xs text-emerald-400 font-extrabold">$ 39.990 CLP <span class="text-[10px] text-slate-400 font-normal">c/u</span></span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-300 mb-3 leading-relaxed">
+            <strong>Para qué sirve:</strong> Crea una sola red continua para subir la escalera sin que se corte. <em>Se compran individuales (compra 2 para 2 pisos).</em>
+          </p>
+        </div>
+        <a 
+          href="https://meli.la/2XNV6Dv" 
+          target="_blank" 
+          rel="nofollow sponsored noopener noreferrer"
+          class="w-full text-center py-2 px-3 rounded-lg bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-bold text-xs uppercase tracking-wider transition-colors block"
+        >
+          Ver Mesh en Mercado Libre →
+        </a>
+      </div>
+
+      {/* Opción 3: TP-Link AC1200 Doble Banda */}
+      <div class="p-4 rounded-2xl bg-slate-900/90 border border-emerald-500/30 hover:border-emerald-400/60 transition-all flex flex-col justify-between">
+        <div>
+          <div class="inline-block text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 mb-2 border border-emerald-800/40">
+            ⚡ El Más Barato Doble Banda
+          </div>
+          <div class="flex items-center gap-3 mb-2">
+            <Image 
+              src={tplinkImg} 
+              alt="Repetidor TP-Link AC1200" 
+              width={56} 
+              height={56} 
+              class="w-14 h-14 object-contain rounded-lg bg-slate-800 p-1 shrink-0" 
+            />
+            <div>
+              <h4 class="text-sm font-bold text-white leading-tight">
+                Repetidor TP-Link AC1200
+              </h4>
+              <span class="text-xs text-emerald-400 font-extrabold">$ 19.990 CLP</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-300 mb-3 leading-relaxed">
+            <strong>Para qué sirve:</strong> Lleva la banda rápida de 5 GHz a dormitorios lejanos en departamentos para que Netflix no se pegue.
+          </p>
+        </div>
+        <a 
+          href="https://meli.la/2btCWp5" 
+          target="_blank" 
+          rel="nofollow sponsored noopener noreferrer"
+          class="w-full text-center py-2 px-3 rounded-lg bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-bold text-xs uppercase tracking-wider transition-colors block"
+        >
+          Ver TP-Link en Mercado Libre →
+        </a>
+      </div>
+
+      {/* Opción 4: Repetidor Básico $9.990 */}
+      <div class="p-4 rounded-2xl bg-slate-900/90 border border-sky-500/30 hover:border-sky-400/60 transition-all flex flex-col justify-between">
+        <div>
+          <div class="inline-block text-[11px] font-bold px-2 py-0.5 rounded bg-sky-950 text-sky-300 mb-2 border border-sky-800/40">
+            💰 El Más Barato Absoluto
+          </div>
+          <div class="flex items-center gap-3 mb-2">
+            <Image 
+              src={basicoImg} 
+              alt="Repetidor WiFi Básico" 
+              width={56} 
+              height={56} 
+              class="w-14 h-14 object-contain rounded-lg bg-slate-800 p-1 shrink-0" 
+            />
+            <div>
+              <h4 class="text-sm font-bold text-white leading-tight">
+                Repetidor WiFi Básico
+              </h4>
+              <span class="text-xs text-emerald-400 font-extrabold">$ 9.990 CLP</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-300 mb-3 leading-relaxed">
+            <strong>Para qué sirve:</strong> Opción ultra barata para llevar señal básica (WhatsApp y noticias) a una cocina o patio pequeño.
+          </p>
+        </div>
+        <a 
+          href="https://meli.la/1MonaUc" 
+          target="_blank" 
+          rel="nofollow sponsored noopener noreferrer"
+          class="w-full text-center py-2 px-3 rounded-lg bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-bold text-xs uppercase tracking-wider transition-colors block"
+        >
+          Ver Repetidor en Mercado Libre →
+        </a>
+      </div>
+
+      {/* Opción 5: Cable de Red Cat 6e 20M */}
+      <div class="p-4 rounded-2xl bg-slate-900/90 border border-blue-500/30 hover:border-blue-400/60 transition-all flex flex-col justify-between">
+        <div>
+          <div class="inline-block text-[11px] font-bold px-2 py-0.5 rounded bg-blue-950 text-blue-300 mb-2 border border-blue-800/40">
+            💻 Cero Lag Teletrabajo / Gamer
+          </div>
+          <div class="flex items-center gap-3 mb-2">
+            <Image 
+              src={cableImg} 
+              alt="Cable Cat 6e 20 Metros" 
+              width={56} 
+              height={56} 
+              class="w-14 h-14 object-contain rounded-lg bg-slate-800 p-1 shrink-0" 
+            />
+            <div>
+              <h4 class="text-sm font-bold text-white leading-tight">
+                Cable Red Cat 6e (20 Metros)
+              </h4>
+              <span class="text-xs text-emerald-400 font-extrabold">$ 9.990 CLP</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-300 mb-3 leading-relaxed">
+            <strong>Para qué sirve:</strong> Conexión física directa sin depender del aire. Cruza pasillos y entrega el 100% de tus megas con 0 ping.
+          </p>
+        </div>
+        <a 
+          href="https://meli.la/2EXPX59" 
+          target="_blank" 
+          rel="nofollow sponsored noopener noreferrer"
+          class="w-full text-center py-2 px-3 rounded-lg bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-bold text-xs uppercase tracking-wider transition-colors block"
+        >
+          Ver Cable en Mercado Libre →
+        </a>
+      </div>
+
+      {/* Opción 6: Antena Adaptador USB 3.0 1300 Mbps */}
+      <div class="p-4 rounded-2xl bg-slate-900/90 border border-rose-500/30 hover:border-rose-400/60 transition-all flex flex-col justify-between">
+        <div>
+          <div class="inline-block text-[11px] font-bold px-2 py-0.5 rounded bg-rose-950 text-rose-300 mb-2 border border-rose-800/40">
+            📡 Revivir PC o Notebook Antiguo
+          </div>
+          <div class="flex items-center gap-3 mb-2">
+            <Image 
+              src={antenaImg} 
+              alt="Antena WiFi USB 3.0" 
+              width={56} 
+              height={56} 
+              class="w-14 h-14 object-contain rounded-lg bg-slate-800 p-1 shrink-0" 
+            />
+            <div>
+              <h4 class="text-sm font-bold text-white leading-tight">
+                Antena USB 3.0 1300 Mbps
+              </h4>
+              <span class="text-xs text-emerald-400 font-extrabold">$ 11.990 CLP</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-300 mb-3 leading-relaxed">
+            <strong>Para qué sirve:</strong> Se enchufa por USB para que tu computador viejo capte la red rápida de 5 GHz sin desarmar nada.
+          </p>
+        </div>
+        <a 
+          href="https://meli.la/2y2ACHX" 
+          target="_blank" 
+          rel="nofollow sponsored noopener noreferrer"
+          class="w-full text-center py-2 px-3 rounded-lg bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-bold text-xs uppercase tracking-wider transition-colors block"
+        >
+          Ver Antena en Mercado Libre →
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+---
+
+## ¿Por Qué Tu WiFi Se Pone Lento en Casa? (El Problema en Chile)
+
 En Chile ocurre un fenómeno muy común: contratas un plan de fibra óptica de **500 o 900 Megas**, haces un test de velocidad al lado del módem en el living y vuela. Pero caminas hacia la pieza del fondo, subes al segundo piso o sales al patio, y **el video de YouTube se queda pegado en 480p, las videollamadas de teletrabajo se cortan y el Smart TV dice *«Sin conexión a internet»***.
 
 Llamar a la compañía casi nunca lo resuelve porque ellos garantizan la velocidad **por cable directo al módem**, no la cobertura inalámbrica a través de las paredes de tu casa. Y en Chile, la gran mayoría de las construcciones son de **ladrillo princesa, tabiquería densa o losas de hormigón armado**, materiales que bloquean las ondas de radiofrecuencia exactamente igual que una muralla de plomo.
-
-En esta guía técnica te explicamos **qué aparato necesitas comprar según el tamaño de tu casa**, por qué los módems de las compañías se saturan con facilidad, y cuáles son las mejores opciones del mercado chileno: desde la alternativa ultra económica bajo $10.000 hasta el router Wi-Fi 7 más vendido del país y el mejor sistema Mesh con nodos escalables.
-
-<div class="my-8 p-6 rounded-2xl bg-gradient-to-br from-slate-900 via-surface-card to-emerald-950/30 border-2 border-emerald-500/40 shadow-xl not-prose">
-  <div class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-emerald-400 mb-2">
-    <span>💡</span>
-    <span>Diagnóstico Rápido: ¿Cuál es la Mejor Solución para tu Hogar?</span>
-  </div>
-  <ul class="text-slate-200 text-sm space-y-2.5 m-0 p-0 list-none">
-    <li class="flex items-start gap-2">
-      <span class="text-amber-400 font-bold">🚀 Top Recomendación (Máxima Velocidad y Estabilidad):</span>
-      <span>El <strong>Router Huawei BE3 Wi-Fi 7 ($54.990)</strong> es el más vendido en Chile. Incluye puerto de 2.5 Gbps, tecnología MLO para exprimir al máximo tu fibra óptica y control parental completo desde el celular.</span>
-    </li>
-    <li class="flex items-start gap-2">
-      <span class="text-purple-400 font-bold">🏡 Casas de 2 pisos o losas de concreto (Mejor en Malla):</span>
-      <span>El <strong>Huawei WiFi Mesh 3+ AX3000 Wi-Fi 6 ($39.990)</strong> es la mejor alternativa Mesh. <em>Ojo: se compran por unidad individual</em> (compra 2 unidades para una casa de 2 pisos o 3 para casas grandes con patio), creando una sola red con roaming transparente sin cortes al subir la escalera.</span>
-    </li>
-    <li class="flex items-start gap-2">
-      <span class="text-emerald-400 font-bold">⚡ El Más Barato Doble Banda:</span>
-      <span>El <strong>Repetidor TP-Link AC1200 ($19.990)</strong> trabaja en 2.4 y 5 GHz con garantía oficial TP-Link. Es ideal para departamentos o para que no se corte Netflix en el dormitorio.</span>
-    </li>
-    <li class="flex items-start gap-2">
-      <span class="text-sky-400 font-bold">💰 El Más Barato Absoluto:</span>
-      <span>El <strong>Repetidor WiFi Básico ($9.990)</strong> es la alternativa más económica para presupuestos ajustados que solo necesitan llevar internet básico a una habitación puntual.</span>
-    </li>
-    <li class="flex items-start gap-2">
-      <span class="text-blue-400 font-bold">💻 Teletrabajo o Gamers (Cero Lag y Máxima Distancia):</span>
-      <span>Un <strong>Cable de Red RJ45 Cat 6e de 20 Metros ($9.990)</strong> armado para interiores entrega el 100% de tus megas sin pérdidas por paredes.</span>
-    </li>
-    <li class="flex items-start gap-2">
-      <span class="text-rose-400 font-bold">📡 Revivir PC o Notebook Antiguo:</span>
-      <span>La <strong>Antena Adaptador WiFi USB 3.0 Dual Band 1300 Mbps ($11.990)</strong> con antenas externas multiplica por 10 la recepción en equipos que no tienen banda de 5 GHz.</span>
-    </li>
-  </ul>
-</div>
 
 ---
 
@@ -69,7 +325,7 @@ Antes de comprar cualquier equipo, debes entender cómo viajan las ondas electro
     </div>
     <p class="text-xs text-slate-300 leading-relaxed m-0">
       <strong>Ventaja:</strong> Atraviesa muros gruesos y llega lejos (hasta el patio).<br/>
-      <strong>Desventaja:</strong> Velocidad limitada (30 a 70 Mbps) y propensa a interferencias con electrodomésticos o vecinos.<br/>
+      <strong>Desventaja:</strong> Velocidad limitada (30 a 70 Mbps) y propensa a interferencias con microondas o vecinos.<br/>
       <strong>Ideal para:</strong> Cámaras de seguridad, domótica y celulares a gran distancia.
     </p>
   </div>
@@ -90,7 +346,7 @@ Antes de comprar cualquier equipo, debes entender cómo viajan las ondas electro
       <span>Wi-Fi 7 y Wi-Fi 6 Mesh</span>
     </div>
     <p class="text-xs text-slate-300 leading-relaxed m-0">
-      <strong>Ventaja:</strong> Agregan ambas bandas al mismo tiempo (MLO en Wi-Fi 7 o roaming unificado en Mesh 3+), bajan la latencia y eliminan zonas muertas.<br/>
+      <strong>Ventaja:</strong> Agregan ambas bandas simultáneamente (MLO en Wi-Fi 7 o roaming en Mesh 3+), bajan la latencia y eliminan zonas muertas.<br/>
       <strong>Desventaja:</strong> Requieren equipos dedicados.<br/>
       <strong>Ideal para:</strong> Familias con muchos celulares, streaming 4K múltiple y gaming sin lag.
     </p>
@@ -99,7 +355,7 @@ Antes de comprar cualquier equipo, debes entender cómo viajan las ondas electro
 
 ---
 
-## Tabla Comparativa de Soluciones WiFi en Chile
+## Tabla Comparativa Técnica de Equipos
 
 <ComparisonTable
   title="Comparativa de Equipos WiFi para el Hogar en Chile (2026)"
@@ -141,7 +397,7 @@ Antes de comprar cualquier equipo, debes entender cómo viajan las ondas electro
 
 ---
 
-## Los Mejores Equipos para Solucionar tu WiFi en Chile
+## Análisis en Profundidad de Cada Equipo
 
 ### 1. Router Huawei BE3 Wi-Fi 7: La Top Recomendación del Mercado Chileno
 

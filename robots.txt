@@ -1,26 +1,14 @@
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Mobile
+Allow: /
+
 User-agent: Mediapartners-Google
 Allow: /
 Allow: /ads.txt
 
-User-agent: OAI-SearchBot
-Allow: /
-
-User-agent: GPTBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: Applebot-Extended
+User-agent: Bingbot
 Allow: /
 
 User-agent: *
@@ -28,4 +16,4 @@ Allow: /
 Allow: /ads.txt
 
 Sitemap: https://hogartv.cl/sitemap-index.xml
-# LLM & AI Search Index: https://hogartv.cl/llms.txt
+Sitemap: https://hogartv.cl/sitemap-0.xml

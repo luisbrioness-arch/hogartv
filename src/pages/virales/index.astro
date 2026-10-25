@@ -21,85 +21,39 @@ const itemListSchema = {
       '@type': 'ListItem',
       'position': 1,
       'name': 'Adorno Lagarto Verde Impreso en 3D con Resorte para Tablero de Auto y Moto',
-      'url': 'https://hogartv.cl/virales/#lagartija-chillona-bicicleta',
+      'url': 'https://hogartv.cl/accesorios/lagarto-verde-auto-movimiento-viral-tiktok-chile/',
     },
     {
       '@type': 'ListItem',
       'position': 2,
       'name': 'Mini Proyector Smart Portátil Magcubic HY320 Full HD 1080p Android 11',
-      'url': 'https://hogartv.cl/virales/#proyector-magcubic-hy320',
+      'url': 'https://hogartv.cl/smart-tv/review-proyector-magcubic-hy320-vs-hy300-chile/',
     },
     {
       '@type': 'ListItem',
       'position': 3,
       'name': 'Kit Tira Luces LED RGBIC TV Ambilight USB reactiva al sonido',
-      'url': 'https://hogartv.cl/virales/#luces-led-tv-ambilight',
+      'url': 'https://hogartv.cl/accesorios/como-armar-cine-en-casa-barato-pieza-chile/',
     },
     {
       '@type': 'ListItem',
       'position': 4,
       'name': 'Xiaomi TV Box S (2nd Gen) 4K Ultra HD con Google TV',
-      'url': 'https://hogartv.cl/virales/#xiaomi-tv-box-s-4k',
+      'url': 'https://hogartv.cl/accesorios/mejores-tv-box-android-baratos-buenos-chile/',
     },
     {
       '@type': 'ListItem',
       'position': 5,
       'name': 'Antena Digital HDTV Interior / Exterior Amplificada 360°',
-      'url': 'https://hogartv.cl/virales/#antena-tvd-chile',
+      'url': 'https://hogartv.cl/tv-abierta/mejores-antenas-tvd-digital-chile/',
     },
   ],
-};
-
-const heroProductSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Product',
-  'name': 'Adorno Lagarto Verde Impreso en 3D con Resorte para Tablero de Auto y Moto',
-  'description': 'Adorno cinético de lagarto verde impreso en 3D con ojos saltones y base de resorte ultrasensible que oscila con la inercia del auto y el viento en Chile.',
-  'brand': {
-    '@type': 'Brand',
-    'name': 'Viral TikTok 3D',
-  },
-  'offers': {
-    '@type': 'AggregateOffer',
-    'priceCurrency': 'CLP',
-    'lowPrice': 2990,
-    'highPrice': 5990,
-    'offerCount': 2,
-    'offers': [
-      {
-        '@type': 'Offer',
-        'url': 'https://meli.la/1Yu8FCP',
-        'priceCurrency': 'CLP',
-        'price': 5990,
-        'availability': 'https://schema.org/InStock',
-        'seller': {
-          '@type': 'Organization',
-          'name': 'Mercado Libre Chile',
-        },
-      },
-      {
-        '@type': 'Offer',
-        'url': 'https://s.click.aliexpress.com/e/_c44gTIiT',
-        'priceCurrency': 'CLP',
-        'price': 2990,
-        'availability': 'https://schema.org/InStock',
-        'seller': {
-          '@type': 'Organization',
-          'name': 'AliExpress Choice',
-        },
-      },
-    ],
-  },
 };
 
 const viralesFaqs = [
   {
     question: '¿Por qué todos buscan el lagarto verde de auto en TikTok?',
     answer: 'Se hizo popular en TikTok e Instagram Reels por su diseño cómico de ojos saltones y boca abierta: va montado sobre un resorte y se sacude con el movimiento del auto, la moto o el viento. No emite sonido; su gracia es visual. Se compra desde unos $3.000 CLP en AliExpress o con entrega rápida en Mercado Libre.',
-  },
-  {
-    question: '¿El lagarto verde viral es una bocina o pita al presionarlo?',
-    answer: 'No, no es una bocina ni emite pitidos. Es un adorno cinético impreso en 3D con base de resorte de alta sensibilidad: se sacude y baila solo con el movimiento del auto, la moto o el viento de la ventana, sin hacer ruidos molestos mientras conduces.',
   },
   {
     question: '¿Conviene comprar productos virales en AliExpress o Mercado Libre desde Chile?',
@@ -118,7 +72,7 @@ const viralesFaqs = [
 
 <BaseLayout
   title="Gadgets Virales de TikTok en Chile (2026): Precios Reales"
-  description="Los productos, monos y gadgets más virales de TikTok e Instagram en Chile. Precios reales, dónde comprarlos barato y comparativa entre Mercado Libre y AliExpress."
+  description="Los productos y gadgets más virales de TikTok en Chile. Precios reales, comparativa entre Mercado Libre y AliExpress, y consejos para no pagar de más."
   breadcrumbs={breadcrumbs}
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
@@ -502,9 +456,8 @@ const viralesFaqs = [
 
   </div>
 
-  <!-- Schema ItemList & Product JSON-LD -->
+  <!-- Schema ItemList JSON-LD -->
   <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(heroProductSchema)} />
 
   <!-- Anchor Scroll Helper -->
   <script is:inline>

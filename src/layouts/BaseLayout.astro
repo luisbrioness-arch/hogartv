@@ -61,8 +61,20 @@ const websiteSchema = {
   '@type': 'WebSite',
   'name': 'HogarTV.cl',
   'url': siteUrl,
-  'description': 'GuÃ­a definitiva de Smart TVs, plataformas de streaming y televisiÃ³n digital abierta en Chile.',
+  'description': 'Guía definitiva de Smart TVs, plataformas de streaming y televisión digital abierta en Chile.',
   'inLanguage': 'es-CL',
+};
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  'name': 'HogarTV.cl',
+  'url': siteUrl,
+  'logo': `${siteUrl}/apple-touch-icon.png`,
+  'sameAs': [
+    `${siteUrl}/sobre-nosotros/`,
+    `${siteUrl}/autor/luis-briones/`
+  ],
 };
 
 // Schema.org BreadcrumbList (para todas las pÃ¡ginas excepto Home)
@@ -135,8 +147,9 @@ const breadcrumbSchema =
   <meta name="twitter:description" content={metaDescription} />
   <meta name="twitter:image" content={ogImageUrl} />
 
-  <!-- WebSite Schema JSON-LD -->
+  <!-- WebSite & Organization Schema JSON-LD -->
   <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
 
   <!-- BreadcrumbList Schema JSON-LD -->
   {breadcrumbSchema && (

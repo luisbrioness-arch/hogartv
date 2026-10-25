@@ -3,7 +3,12 @@
     "slug": "luis-briones",
     "nombre": "Luis Briones",
     "rol": "Técnico en Telecomunicaciones / Especialista en TVD y Audio/Video",
+    "jobTitle": "Técnico Especialista en Telecomunicaciones y Televisión Digital",
     "avatar": "/images/autores/luis-briones.webp",
+    "sameAs": [
+      "https://hogartv.cl/sobre-nosotros/",
+      "https://hogartv.cl/autor/luis-briones/"
+    ],
     "TODO_AVATAR": "Colocar foto de perfil real en public/images/autores/luis-briones.webp (o usar avatar con iniciales)",
     "bioCorta": "Técnico en telecomunicaciones con más de 8 años de experiencia en terreno en la Región del Biobío (Chile), especializado en instalación de antenas de Televisión Digital Abierta (norma ISDB-Tb), soportes de muro y asesoría técnica independiente para Smart TVs y streaming.",
     "bioCompleta": "Luis Briones es técnico en telecomunicaciones radicado en la Región del Biobío, con amplia experiencia práctica en terreno en comunas como Concepción, Talcahuano, San Pedro de la Paz, Chiguayante y Los Ángeles. Su labor abarca la instalación y calibración de sistemas de recepción de televisión digital abierta (TVD bajo norma ISDB-Tb), montaje de soportes a muro, optimización de redes para streaming y asesoría técnica independiente para la compra de Smart TVs adaptados a la realidad de los hogares en Chile.",

@@ -12,46 +12,55 @@ const breadcrumbs = [
 const offerCatalogSchema = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  'name': 'Radar de Ofertas en Smart TVs, Proyectores y Streaming en Chile (Octubre 2026)',
-  'description': 'Monitoreo actualizado de descuentos reales en Smart TVs 4K QLED/Mini-LED, proyectores portátiles, barras de sonido y TV Sticks en Mercado Libre Chile, Falabella y AliExpress Choice.',
+  'name': 'Radar de Ofertas en Smart TVs, Proyectores y Streaming en Chile (2026)',
+  'description': 'Monitoreo actualizado de descuentos en Smart TVs 4K, proyectores portátiles, barras de sonido y TV Sticks en Mercado Libre Chile, Falabella y AliExpress.',
   'itemListElement': [
     {
       '@type': 'ListItem',
       'position': 1,
-      'name': 'Oferta Smart TV TCL 55" 4K QLED / QD-Mini LED (C655 / T6D / P8L)',
-      'url': 'https://hogartv.cl/ofertas-tv-chile/#tcl-c655-55',
+      'name': 'Oferta Smart TV TCL 55" 4K QLED (C655 / T6D / P8L)',
+      'url': 'https://hogartv.cl/smart-tv/review-tcl-c655-p8l-55-chile/',
     },
     {
       '@type': 'ListItem',
       'position': 2,
-      'name': 'Oferta Smart TV Samsung 55" 4K Crystal UHD DU7000 / U8500H',
-      'url': 'https://hogartv.cl/ofertas-tv-chile/#samsung-du7000-55',
+      'name': 'Oferta Smart TV Samsung 55" 4K Crystal UHD DU7000',
+      'url': 'https://hogartv.cl/smart-tv/review-samsung-crystal-du7000-55-chile/',
     },
     {
       '@type': 'ListItem',
       'position': 3,
       'name': 'Oferta Proyector Inteligente Portátil Magcubic HY320 Full HD 1080p',
-      'url': 'https://hogartv.cl/ofertas-tv-chile/#proyector-magcubic-hy320',
+      'url': 'https://hogartv.cl/smart-tv/review-proyector-magcubic-hy320-vs-hy300-chile/',
     },
     {
       '@type': 'ListItem',
       'position': 4,
-      'name': 'Oferta Barra de Sonido Samsung HW-B550 / Q-Series con Subwoofer Inalámbrico',
-      'url': 'https://hogartv.cl/ofertas-tv-chile/#samsung-soundbar-b550',
+      'name': 'Oferta Barra de Sonido Samsung HW-B550 con Subwoofer Inalámbrico',
+      'url': 'https://hogartv.cl/accesorios/mejores-barras-de-sonido-calidad-precio-chile/',
     },
     {
       '@type': 'ListItem',
       'position': 5,
       'name': 'Oferta Roku Streaming Stick HD con Control por Voz',
-      'url': 'https://hogartv.cl/ofertas-tv-chile/#roku-express-4k',
+      'url': 'https://hogartv.cl/accesorios/roku-vs-chromecast-chile-cual-conviene/',
     },
     {
       '@type': 'ListItem',
       'position': 6,
       'name': 'Oferta Antena Digital HDTV Interior / Exterior Amplificada 360°',
-      'url': 'https://hogartv.cl/ofertas-tv-chile/#antena-tvd-chile',
+      'url': 'https://hogartv.cl/tv-abierta/mejores-antenas-tvd-digital-chile/',
     },
   ],
+};
+
+const webPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  'name': 'Radar de Ofertas Smart TV y Tecnología en Chile',
+  'url': 'https://hogartv.cl/ofertas-tv-chile/',
+  'description': 'Monitoreo de precios comparados en Smart TVs 4K, proyectores y TV Sticks en retail y marketplaces de Chile.',
+  'dateModified': new Date().toISOString().split('T')[0],
 };
 
 const ofertasFaqs = [
@@ -76,7 +85,7 @@ const ofertasFaqs = [
 
 <BaseLayout
   title="Ofertas Smart TV y Gadgets en Chile (Octubre 2026)"
-  description="Radar actualizado de ofertas reales en Smart TVs 4K (TCL, Samsung, Hisense), proyectores portátiles, barras de sonido y TV Sticks en Mercado Libre Chile, Falabella y AliExpress."
+  description="Radar de ofertas en Smart TVs 4K, proyectores y TV Sticks en Chile. Comparamos Mercado Libre y Falabella para encontrar precios reales sin inflar."
   breadcrumbs={breadcrumbs}
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -85,7 +94,7 @@ const ofertasFaqs = [
     <header class="max-w-4xl mx-auto text-center mb-12">
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/40 text-amber-300 text-xs font-extrabold uppercase tracking-wider mb-4 shadow-sm">
         <span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span>
-        <span>Radar de Precios Verificados en Chile · Pre-Black Friday 2026</span>
+        <span>Radar de Precios Comparados en Chile · Actualizado Octubre 2026</span>
       </div>
       <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight mb-5 leading-tight">
         Radar de Ofertas en Smart TVs, Audio y Gadgets en Chile <span class="bg-clip-text text-transparent bg-gradient-to-r from-amber-300 via-yellow-400 to-rose-400">(Sin Precios Inflados)</span>
@@ -407,6 +416,7 @@ const ofertasFaqs = [
 
   </div>
 
-  <!-- Schema.org ItemList JSON-LD -->
+  <!-- Schema.org ItemList & WebPage JSON-LD -->
   <script type="application/ld+json" set:html={JSON.stringify(offerCatalogSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
 </BaseLayout>

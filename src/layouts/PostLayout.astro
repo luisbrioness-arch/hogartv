@@ -99,6 +99,8 @@ const articleSchema = {
     'logo': {
       '@type': 'ImageObject',
       'url': `${siteUrl}/apple-touch-icon.png`,
+      'width': 180,
+      'height': 180,
     },
   },
   'author': {
@@ -108,6 +110,10 @@ const articleSchema = {
     'description': authorInfo.bioCorta,
     'knowsAbout': authorInfo.knowsAbout,
     'url': authorInfo.url,
+    'sameAs': [
+      `${siteUrl}/sobre-nosotros/`,
+      `${siteUrl}/autor/luis-briones/`
+    ],
   },
 };
 ---
@@ -122,6 +128,7 @@ const articleSchema = {
     { name: categoryName, url: `/${category}/` },
     { name: title, url: articleUrl },
   ]}
+>
   <!-- Barra de Progreso de Lectura -->
   <div id="reading-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-brand-500 via-indigo-500 to-purple-500 z-50 transition-all duration-150 w-0" aria-hidden="true"></div>
 

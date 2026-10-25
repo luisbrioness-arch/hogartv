@@ -410,6 +410,25 @@
       }
     ]
   },
+  "repetidor-wifi-economico": {
+    "precioCLP": 9990,
+    "precioFormateado": "$ 9.990 CLP",
+    "rango": "$ 7.990 - $ 12.990 CLP",
+    "precioMinVisto": "$ 7.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-10-25",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 9.990 CLP",
+        "badge": "💰 El Más Económico",
+        "destacada": true,
+        "envio": "Envío a Todo Chile",
+        "urlKey": "repetidor-wifi-economico"
+      }
+    ]
+  },
   "repetidor-wifi-ac1200": {
     "precioCLP": 19990,
     "precioFormateado": "$ 19.990 CLP",
@@ -422,18 +441,29 @@
       {
         "tienda": "Mercado Libre Chile",
         "precio": "$ 19.990 CLP",
-        "badge": "⚡ Doble Banda 2.4 y 5 GHz",
+        "badge": "⚡ Doble Banda TP-Link",
         "destacada": true,
         "envio": "Envío Rápido Full",
         "urlKey": "repetidor-wifi-ac1200"
-      },
+      }
+    ]
+  },
+  "router-huawei-wifi7-be3": {
+    "precioCLP": 54990,
+    "precioFormateado": "$ 54.990 CLP",
+    "rango": "$ 49.990 - $ 64.990 CLP",
+    "precioMinVisto": "$ 49.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-10-25",
+    "enOferta": true,
+    "comparativaTiendas": [
       {
-        "tienda": "AliExpress Choice",
-        "precio": "$ 14.990 CLP",
-        "badge": "🏭 Precio Mínimo",
-        "destacada": false,
-        "envio": "Envío Choice (10-12 días)",
-        "url": "https://listado.mercadolibre.cl/repetidor-wifi-ac1200#D[A:repetidor%20wifi%20ac1200]"
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 54.990 CLP",
+        "badge": "🚀 Wi-Fi 7 Más Vendido en Chile",
+        "destacada": true,
+        "envio": "Envío Gratis a Todo Chile",
+        "urlKey": "router-huawei-wifi7-be3"
       }
     ]
   },

@@ -144,12 +144,23 @@
     "actualizado": "2026-10-25",
     "TODO": "Reemplazar con tu enlace de afiliado meli.la de conversor HDMI a RCA"
   },
-  "repetidor-wifi-ac1200": {
-    "nombre": "Repetidor Extensor WiFi Doble Banda AC1200 (2.4 y 5 GHz)",
-    "url": "https://listado.mercadolibre.cl/repetidor-wifi-ac1200#D[A:repetidor%20wifi%20ac1200]",
+  "repetidor-wifi-economico": {
+    "nombre": "Repetidor Extensor WiFi Básico Enchufable (El Más Económico)",
+    "url": "https://meli.la/1MonaUc",
     "tienda": "Mercado Libre Chile",
-    "actualizado": "2026-10-25",
-    "TODO": "Reemplazar con tu enlace de afiliado meli.la de repetidor AC1200"
+    "actualizado": "2026-10-25"
+  },
+  "repetidor-wifi-ac1200": {
+    "nombre": "Repetidor Extensor WiFi TP-Link Doble Banda AC1200 (El Más Barato Doble Banda)",
+    "url": "https://meli.la/2btCWp5",
+    "tienda": "Mercado Libre Chile",
+    "actualizado": "2026-10-25"
+  },
+  "router-huawei-wifi7-be3": {
+    "nombre": "Router Huawei BE3 Banda Doble con Wi-Fi 7 y Puerto 2.5G con Control Parental",
+    "url": "https://meli.la/1KLjGy8",
+    "tienda": "Mercado Libre Chile",
+    "actualizado": "2026-10-25"
   },
   "wifi-mesh-tplink-deco": {
     "nombre": "Sistema WiFi Mesh TP-Link Deco M4 Doble Banda (Pack 2 Nodos)",

@@ -1,292 +1,547 @@
 ---
-title: "Cómo Convertir un TV Antiguo en Smart TV en Chile (2026)"
-description: "¿Tu televisor no tiene apps o el sistema quedó obsoleto? Te explicamos paso a paso cómo transformarlo en un Smart TV moderno en Chile con Xiaomi TV Box, Chromecast y Roku desde $34.990 CLP."
+title: "Cómo Convertir un TV Antiguo en Smart TV en Chile"
+description: "Aprende cómo transformar cualquier tele antigua o de tubo en Smart TV en Chile con Roku, Google TV o decodificador TVD desde $28.990 CLP."
 category: "accesorios"
 categoryName: "Accesorios"
-publishDate: "2026-10-21"
-dateModified: "2026-10-21"
-readTime: "9 min de lectura"
+publishDate: "2026-10-25"
+dateModified: "2026-10-25"
+readTime: "8 min de lectura"
 featured: true
 author: "luis-briones"
 ---
 
+import { Image } from 'astro:assets';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQSection from '../../components/FAQSection.astro';
 import AdSlot from '../../components/AdSlot.astro';
 import CtaBanner from '../../components/CtaBanner.astro';
+import afiliadosData from '../../data/afiliados.json';
+import preciosData from '../../data/precios.json';
 
-Si tienes en el living, el dormitorio o la cocina un televisor antiguo cuya pantalla todavía se ve nítida pero su sistema "Smart" ya no abre YouTube, no permite instalar [Zapping ni DGO](/streaming/zapping-vs-dgo-chile-cual-conviene/) o simplemente nunca fue inteligente, **no cometas el error de botarlo a la basura ni gastar $300.000 CLP en una tele nueva**.
+import rokuImg from '../../assets/products/roku-express-4k.webp';
+import onnImg from '../../assets/products/onn-google-tv-4k.webp';
+import conversorImg from '../../assets/products/conversor-hdmi-rca.webp';
+import decoImg from '../../assets/products/decodificador-tvd.webp';
+import xiaomiImg from '../../assets/products/xiaomi-tv-box-s-4k.webp';
 
-En Chile, la solución más inteligente, ecológica y económica es **conectar un reproductor multimedia externo (TV Box o Streaming Stick)**. Por una inversión que parte desde los **$34.990 CLP**, transformarás esa pantalla en un centro de entretenimiento con **Google TV o Roku OS**, capaz de correr Netflix, Disney+, Max, Prime Video, Spotify y todas las señales chilenas en vivo con una fluidez infinitamente superior a la de cualquier Smart TV de gama baja.
+{/* =========================================================================
+    HERO DE CONVERSIÓN INMEDIATA (REGLA DE LOS 7 SEGUNDOS)
+    El usuario ve de inmediato el reproductor económico #1 con botón directo,
+    seguido de las 3 soluciones según el tipo de pantalla que tenga en casa.
+   ========================================================================= */}
 
-En esta guía te explicamos qué necesitas según el tipo de pantalla que tengas en casa y cuáles son los mejores dispositivos disponibles en Chile con envío rápido.
-
-<div class="my-8 p-6 rounded-2xl bg-gradient-to-br from-slate-900 via-surface-card to-indigo-950/30 border-2 border-brand-500/40 shadow-xl not-prose">
-  <div class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-brand-400 mb-2">
-    <span>💡</span>
-    <span>Veredicto Técnico Rápido (30 Segundos)</span>
+<div class="my-4 sm:my-6 p-5 sm:p-7 rounded-3xl bg-gradient-to-b from-slate-900 via-surface-card to-slate-950 border-2 border-amber-400/60 shadow-2xl not-prose relative overflow-hidden">
+  
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400 text-slate-950 text-xs font-black uppercase tracking-wider shadow-sm">
+      <span>🏆</span>
+      <span>Recomendado #1 · La Solución Más Fácil y Económica</span>
+    </div>
+    <span class="text-xs font-semibold text-emerald-400 flex items-center gap-1.5">
+      <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      Compatible con Zapping, DGO, Netflix y YouTube
+    </span>
   </div>
-  <p class="text-slate-200 text-sm sm:text-base leading-relaxed m-0">
-    Cualquier televisor con un puerto <strong>HDMI</strong> (fabricado desde 2007 en adelante) puede revivir en menos de 3 minutos. Para el 90% de los hogares en Chile recomendamos el <strong>Xiaomi TV Box S (2nd Gen) 4K</strong> si buscas máxima potencia, puerto USB para películas y libertad para instalar APKs; el <strong>Roku Express 4K</strong> si buscas máxima sencillez para adultos mayores o niños; y el <strong>Chromecast con Google TV</strong> si usas comandos por voz de Google Assistant.
-  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+    
+    <div class="md:col-span-4 flex justify-center">
+      <div class="relative w-48 h-48 sm:w-56 sm:h-56 rounded-2xl bg-white p-3 border border-slate-200 flex items-center justify-center shadow-lg">
+        <Image 
+          src={rokuImg} 
+          alt="Roku Express Reproductor Streaming HD y 4K"
+          width={280}
+          height={280}
+          class="w-full h-full object-contain filter drop-shadow-md"
+          loading="eager"
+        />
+      </div>
+    </div>
+
+    <div class="md:col-span-8 flex flex-col justify-center">
+      <div class="flex items-center gap-1 text-amber-400 text-xs mb-1 font-semibold">
+        <span>★★★★★</span>
+        <span class="text-slate-300 ml-1">4.8/5 · El reproductor streaming más vendido en Chile</span>
+      </div>
+      
+      <h2 class="text-xl sm:text-2xl font-black text-white leading-tight mb-2">
+        Roku Express HD / 4K con Menú Rápido y Control Remoto
+      </h2>
+
+      <div class="flex flex-wrap items-baseline gap-3 mb-3">
+        <span class="text-2xl sm:text-3xl font-black text-emerald-400">
+          {preciosData['roku-express-4k'].precioFormateado}
+        </span>
+        <span class="text-xs px-2.5 py-1 rounded-md bg-emerald-950/60 border border-emerald-500/40 text-emerald-300 font-semibold">
+          ⚡ Enchufe HDMI Directo · Listo en 3 Minutos
+        </span>
+      </div>
+
+      <div class="space-y-1.5 text-xs sm:text-sm text-slate-200 mb-4 bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
+        <div class="flex items-start gap-2">
+          <span class="text-amber-400 font-bold shrink-0">🚀 Para qué sirve:</span>
+          <span>Le da un sistema Smart nuevo a cualquier televisor antiguo por HDMI. Abre Netflix, YouTube, Disney+, Max y Prime Video a máxima velocidad sin trabarse.</span>
+        </div>
+        <div class="flex items-start gap-2">
+          <span class="text-emerald-400 font-bold shrink-0">🇨🇱 Apps Chilenas Oficiales:</span>
+          <span>Descarga directo Zapping, DGO, Mega GO, TVN Play y 13GO para ver televisión chilena en vivo y fútbol en alta definición.</span>
+        </div>
+        <div class="flex items-start gap-2">
+          <span class="text-sky-400 font-bold shrink-0">👵 Fácil para Toda la Familia:</span>
+          <span>Menú en cuadrícula simple sin publicidad molesta. Ideal para niños y adultos mayores que solo quieren tocar un botón y ver tele.</span>
+        </div>
+      </div>
+
+      <div>
+        <a 
+          href={afiliadosData['roku-express-4k'].url} 
+          target="_blank" 
+          rel="nofollow sponsored noopener noreferrer"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-black text-sm uppercase tracking-wider shadow-xl shadow-yellow-500/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0 text-center"
+        >
+          <span>👉 Ver Precio y Comprar en Mercado Libre</span>
+          <span class="text-xs font-extrabold bg-slate-950/20 px-2 py-0.5 rounded">Envío Full</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  {/* =========================================================================
+      SELECTOR DE CASOS REALES EN CHILE
+     ========================================================================= */}
+  <div class="mt-8 pt-6 border-t border-slate-800">
+    <div class="flex items-center gap-2 mb-4">
+      <span class="text-xl">🎯</span>
+      <h3 class="text-sm sm:text-base font-extrabold text-white uppercase tracking-wide m-0">
+        Identifica tu tipo de televisor y elige la solución:
+      </h3>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+      
+      {/* Caso 1: TV con HDMI lento */}
+      <div class="p-4 rounded-2xl bg-slate-900/90 border border-emerald-500/30 hover:border-emerald-400/60 transition-all flex flex-col justify-between">
+        <div>
+          <div class="inline-block text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 mb-2 border border-emerald-800/40">
+            📺 TV con HDMI Lento / Obsoleto
+          </div>
+          <div class="flex items-center gap-3 mb-2">
+            <Image 
+              src={onnImg} 
+              alt="Onn Google TV 4K Box" 
+              width={56} 
+              height={56} 
+              class="w-14 h-14 object-contain rounded-lg bg-white p-1 shrink-0 shadow-sm" 
+            />
+            <div>
+              <h4 class="text-sm font-bold text-white leading-tight">
+                Onn Google TV 4K Box
+              </h4>
+              <span class="text-xs text-emerald-400 font-extrabold">{preciosData['onn-google-tv-4k'].precioFormateado}</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-300 mb-3 leading-relaxed">
+            <strong>Para qué sirve:</strong> Si tu tele tiene HDMI pero su Smart TV ya no abre aplicaciones, este equipo le añade Google TV oficial, control por voz y libertad para instalar APKs.
+          </p>
+        </div>
+        <a 
+          href={afiliadosData['onn-google-tv-4k'].url} 
+          target="_blank" 
+          rel="nofollow sponsored noopener noreferrer"
+          class="w-full text-center py-2 px-3 rounded-lg bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-bold text-xs uppercase tracking-wider transition-colors block"
+        >
+          Ver Onn 4K en Oferta →
+        </a>
+      </div>
+
+      {/* Caso 2: TV de tubo sin HDMI */}
+      <div class="p-4 rounded-2xl bg-slate-900/90 border border-amber-500/30 hover:border-amber-400/60 transition-all flex flex-col justify-between">
+        <div>
+          <div class="inline-block text-[11px] font-bold px-2 py-0.5 rounded bg-amber-950 text-amber-300 mb-2 border border-amber-800/40">
+            📻 TV de Tubo sin HDMI (Cables RCA)
+          </div>
+          <div class="flex items-center gap-3 mb-2">
+            <Image 
+              src={conversorImg} 
+              alt="Conversor HDMI a RCA AV" 
+              width={56} 
+              height={56} 
+              class="w-14 h-14 object-contain rounded-lg bg-white p-1 shrink-0 shadow-sm" 
+            />
+            <div>
+              <h4 class="text-sm font-bold text-white leading-tight">
+                Conversor Mini HDMI a RCA
+              </h4>
+              <span class="text-xs text-emerald-400 font-extrabold">{preciosData['conversor-hdmi-rca'].precioFormateado}</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-300 mb-3 leading-relaxed">
+            <strong>Para qué sirve:</strong> Convierte la salida HDMI de cualquier TV Box a los 3 cables de colores (amarillo, blanco y rojo) para ver Netflix en teles antiguas de hace 20 años.
+          </p>
+        </div>
+        <a 
+          href={afiliadosData['conversor-hdmi-rca'].url} 
+          target="_blank" 
+          rel="nofollow sponsored noopener noreferrer"
+          class="w-full text-center py-2 px-3 rounded-lg bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-bold text-xs uppercase tracking-wider transition-colors block"
+        >
+          Ver Conversor RCA en Meli →
+        </a>
+      </div>
+
+      {/* Caso 3: Solo canales nacionales gratis */}
+      <div class="p-4 rounded-2xl bg-slate-900/90 border border-sky-500/30 hover:border-sky-400/60 transition-all flex flex-col justify-between">
+        <div>
+          <div class="inline-block text-[11px] font-bold px-2 py-0.5 rounded bg-sky-950 text-sky-300 mb-2 border border-sky-800/40">
+            📡 Solo Canales Nacionales HD Gratis
+          </div>
+          <div class="flex items-center gap-3 mb-2">
+            <Image 
+              src={decoImg} 
+              alt="Decodificador TV Digital TDT ISDB-Tb" 
+              width={56} 
+              height={56} 
+              class="w-14 h-14 object-contain rounded-lg bg-white p-1 shrink-0 shadow-sm" 
+            />
+            <div>
+              <h4 class="text-sm font-bold text-white leading-tight">
+                Decodificador TVD + Antena
+              </h4>
+              <span class="text-xs text-emerald-400 font-extrabold">{preciosData['decodificador-tvd'].precioFormateado}</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-300 mb-3 leading-relaxed">
+            <strong>Para qué sirve:</strong> Si no tienes internet y solo quieres ver noticias y partidos en Canal 13, TVN, Mega y CHV en Full HD sin pagar cable.
+          </p>
+        </div>
+        <a 
+          href={afiliadosData['decodificador-tvd'].url} 
+          target="_blank" 
+          rel="nofollow sponsored noopener noreferrer"
+          class="w-full text-center py-2 px-3 rounded-lg bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-bold text-xs uppercase tracking-wider transition-colors block"
+        >
+          Ver Decodificador en Meli →
+        </a>
+      </div>
+
+    </div>
+  </div>
+
 </div>
 
 ---
 
-## Comparativa: Los 3 Mejores Dispositivos para Revivir tu TV en Chile
+## ¿Por Qué NO Debes Botar tu Televisor Antiguo?
+
+Comprar un Smart TV nuevo en el retail chileno cuesta entre **$220.000 y $450.000 CLP**. Además, la gran paradoja de los televisores económicos es que su procesador interno queda obsoleto en apenas 3 o 4 años, dejando de recibir actualizaciones de seguridad para Netflix o Disney+.
+
+En cambio, la pantalla de tu televisor actual (ya sea un LCD, LED o incluso un televisor de tubo tradicional) sigue funcionando perfectamente. Conectando un **dispositivo externo desde $28.990 CLP**:
+1. **Desactivas el sistema viejo:** Tu tele se convierte en un monitor de alta calidad.
+2. **Cero obsolescencia:** El "cerebro" ahora es el TV Stick. Si en 5 años quieres renovar, solo cambias el stick por $30.000 y no la pantalla entera.
+3. **Ahorras en cable:** Combinando aplicaciones de streaming con una antena TVD digital, eliminas para siempre la cuenta mensual de cableoperadores ($35.000 a $50.000 mensuales).
+
+---
+
+## Tabla Comparativa: ¿Cuál Solución se Adapta a Tu Pantalla?
 
 <ComparisonTable
-  title="Comparativa de Reproductores Multimedia en Chile (2026)"
-  headers={["Criterio", "Xiaomi TV Box S (2nd Gen)", "Google Chromecast 4K", "Roku Express 4K"]}
-  columnCtas={[
-    {
-      productKey: "xiaomi-tv-box-s-4k",
-      ctaLabel: "Mercado Libre"
-    },
-    {
-      productKey: "chromecast-google-tv",
-      ctaLabel: "Mercado Libre"
-    },
-    {
-      productKey: "roku-express-4k",
-      ctaLabel: "Mercado Libre"
-    }
-  ]}
+  title="Métodos para Revivir Televisores Antiguos en Chile (2026)"
+  headers={["Característica", "Streaming Stick HDMI (Roku / Onn)", "Conversor HDMI a RCA + Stick", "Decodificador TVD Abierta"]}
   rows={[
     {
-      feature: "Sistema Operativo",
-      values: ["Google TV Oficial (Android 11)", "Google TV Oficial", "Roku OS (Cuadrícula limpia)"]
+      feature: "Precio Estimado en Chile",
+      values: ["$ 28.990 - $ 34.990 CLP", "$ 5.990 CLP (Accesorio)", "$ 16.990 CLP"],
+      productKey: "roku-express-4k"
     },
     {
-      feature: "Resolución Máxima",
-      values: ["4K Ultra HD @ 60fps (Dolby Vision)", "4K Ultra HD @ 60fps (Dolby Vision)", "4K Ultra HD @ 60fps (HDR10+)"]
+      feature: "Tipo de Conexión en la Tele",
+      values: ["Puerto HDMI (1 o 2)", "Entradas RCA (Amarillo, Blanco, Rojo)", "Entrada Coaxial Redonda (Antena)"],
+      productKey: "roku-express-4k"
     },
     {
-      feature: "Instalación de Apps Externas (APKs)",
-      values: ["Sí, total libertad (Zapping, Magis, Kodi)", "Sí (requiere habilitar orígenes)", "No (solo catálogo oficial Roku)"]
+      feature: "¿Requiere Internet WiFi?",
+      values: ["Sí, para streaming y YouTube", "Sí, para el TV Box conectado", "No, funciona por señal aérea 100% gratis"],
+      productKey: "onn-google-tv-4k"
     },
     {
-      feature: "Puertos Físicos",
-      values: ["HDMI + USB 2.0 + Salida Audio 3.5mm", "Solo USB-C (alimentación)", "Solo Micro-USB (alimentación)"]
+      feature: "Aplicaciones Disponibles",
+      values: ["Netflix, Zapping, DGO, Disney+, Max", "Las mismas del TV Box en pantalla análoga", "Exclusivo canales nacionales de aire (TVD)"],
+      productKey: "onn-google-tv-4k"
     },
     {
-      feature: "Control Remoto",
-      values: ["Bluetooth 360° con micrófono Google", "Bluetooth con control de TV y voz", "Infrarrojo/WiFi con accesos directos"]
-    },
-    {
-      feature: "Facilidad de Uso",
-      values: ["Muy Alta (Estilo Android moderno)", "Muy Alta (Recomendaciones IA)", "Extrema (Ideal adultos mayores)"]
-    },
-    {
-      feature: "Rango de Precio en Chile",
-      values: ["$ 54.990 - $ 64.990 CLP", "$ 44.990 - $ 54.990 CLP", "$ 34.990 - $ 42.990 CLP"]
+      feature: "Instalación",
+      values: ["Enchufar y listo (3 minutos)", "Conectar conversor a corriente y cables RCA", "Conectar antena y auto-escanear canales"],
+      productKey: "conversor-hdmi-rca"
     }
   ]}
-  verdict="Si quieres conectar un pendrive con películas o instalar aplicaciones libres de IPTV y streaming chileno, el Xiaomi TV Box S gana con claridad gracias a su puerto USB dedicado. Si buscas el menor precio y máxima simplicidad para que tus papás o abuelos no se confundan con menús complejos, el Roku Express 4K es insuperable."
+  verdict="Para televisores con puerto HDMI, el Roku Express o el Onn Google TV 4K son la mejor inversión; para revivir teles de tubo clásicas, el Conversor HDMI a RCA hace milagros; y si no tienes WiFi en esa habitación, el Decodificador TVD te da todos los canales nacionales en HD gratis."
 />
 
 ---
 
-## ¿Qué tipo de televisor tienes en tu casa? Revisa sus conexiones
+## Análisis a Fondo de los Equipos Recomendados
 
-Antes de comprar cualquier dispositivo, gira tu televisor y revisa los conectores disponibles en la parte trasera o lateral:
+### 1. Roku Express HD / 4K: La Opción Más Fácil para Toda la Familia
 
-```
-┌────────────────────────────────────────────────────────┐
-│                   TIPOS DE CONEXIÓN                    │
-├────────────────────────────────────────────────────────┤
-│ 1. Puerto HDMI (Rectangular plano biselado):           │
-│    -> Enchufar directo el TV Box o Stick. ¡Listo!       │
-│                                                        │
-│ 2. Entradas RCA (Tres orificios: Amarillo, Blanco,     │
-│    Rojo): Típico de televisores de tubo o primeros LCD.│
-│    -> Requiere Adaptador HDMI a RCA ($ 4.990 CLP).     │
-│                                                        │
-│ 3. Solo Entrada Coaxial (Rosca redonda de antena):     │
-│    -> Requiere Decodificador Digital o Modulador RF.   │
-└────────────────────────────────────────────────────────┘
-```
+Si buscas encender la tele y que aparezcan directamente los iconos de Netflix, YouTube o Zapping sin menús confusos, **Roku es el rey indiscutido en Chile**.
 
-### 1. Televisor con puerto HDMI (95% de los casos en Chile)
-Si tu tele tiene al menos un puerto con la etiqueta **HDMI 1**, **HDMI 2** o **HDMI (ARC)**, estás listo. No importa si la pantalla es de resolución **720p (HD Ready)** o **1080p (Full HD)**: los dispositivos 4K actuales como el Xiaomi TV Box o el Roku detectan automáticamente la resolución nativa de tu pantalla y adaptan la señal sin deformar la imagen.
-
-### 2. Televisores antiguos de tubo (CRT) o sin HDMI
-Si tienes un televisor clásico "de poto" (tubo de rayos catódicos) o uno de los primeros monitores LCD que solo cuentan con las tres entradas redondas de colores (**RCA: Amarillo para video, Blanco y Rojo para audio estéreo**), aún puedes convertirlo. 
-* Solo necesitas intercalar un **Conversor Mini HDMI a RCA** (disponible en ferreterías electrónicas y Mercado Libre por unos $4.990 CLP).
-* Conectas el TV Box a la entrada HDMI del conversor, y de ahí salen los tres cables RCA hacia tu tele antigua. ¡Verás Netflix y YouTube en una tele de hace 20 años sin problemas!
-
-### 3. Smart TVs "zombies" (Sistemas obsoletos descontinuados)
-Muchas personas tienen Smart TVs Samsung del año 2013-2016 (con sistema Smart Hub antiguo), LG con NetCast, o Sony con Opera TV. Estos televisores siguen teniendo paneles de excelente calidad de imagen, pero sus procesadores internos se volvieron insoportablemente lentos y las empresas dejaron de actualizar los certificados de seguridad, haciendo que Netflix, Disney+ o YouTube dejen de abrir. **Conectar un TV Box por HDMI desactiva el sistema viejo y le da a tu tele un cerebro nuevo de última generación**.
-
----
-
-## Análisis de los 3 Mejores Dispositivos para Comprar en Chile
-
-A continuación detallamos las fortalezas y debilidades de cada modelo según tus hábitos de uso:
-
-### 1. Xiaomi TV Box S (2nd Gen) 4K: La Opción Más Completa y Versátil
-
-<ProductCard
-  productKey="xiaomi-tv-box-s-4k"
-  isFirst={true}
-  title="Xiaomi TV Box S (2nd Gen) 4K Ultra HD con Google TV"
-  brand="Xiaomi"
-  badge="🏆 El Más Completo y Potente"
-  specs={[
-    "Google TV Oficial con Play Store",
-    "Resolución 4K UHD @ 60fps con Dolby Vision y HDR10+",
-    "Sonido envolvente Dolby Atmos y DTS-HD",
-    "Puerto USB 2.0 integrado para pendrives y discos duros",
-    "WiFi de doble banda (2.4 GHz / 5 GHz) + Bluetooth 5.2",
-    "Control remoto por voz Bluetooth 360° con accesos directos"
-  ]}
-  pros={[
-    "Cuenta con puerto USB físico para reproducir películas descargadas o conectar un teclado/mouse",
-    "Permite instalar archivos APK externos sin bloqueos (ideal para Zapping, reproductores IPTV y apps personalizadas)",
-    "Rendimiento sumamente fluido gracias a sus 2 GB de memoria RAM y procesador Quad-Core",
-    "Control remoto Bluetooth que no necesita apuntar directamente a la tele para funcionar"
-  ]}
-  cons={[
-    "Viene en formato cajita de sobremesa (requiere un pequeño espacio sobre el mueble)",
-    "No incluye cable de red Ethernet de fábrica (se conecta por WiFi o mediante adaptador USB-Ethernet)"
-  ]}
-/>
-
-El **Xiaomi TV Box S de segunda generación** es el dispositivo preferido por los entusiastas de la tecnología en Chile. Al correr **Google TV con certificación oficial**, tienes acceso a la tienda Google Play completa de Chile y compatibilidad garantizada con aplicaciones locales como **Zapping, DGO, TNT Sports, Estadio TNT, Canal 13 GO, Mega GO y TVN Play**.
-
-Su gran diferencial frente a los "sticks" es su **puerto USB 2.0 lateral**: si tienes películas, series o videos en un pendrive o disco externo, puedes conectarlo directo y reproducirlo con VLC o Nova Player en máxima definición.
-
----
-
-### 2. Google Chromecast con Google TV: El Mejor para Control por Voz
-
-<ProductCard
-  productKey="chromecast-google-tv"
-  title="Google Chromecast con Google TV (Versión 4K)"
-  brand="Google"
-  badge="🎙️ Mejor Integración por Voz"
-  specs={[
-    "Interfaz Google TV con recomendaciones personalizadas",
-    "Resolución 4K Ultra HD con Dolby Vision",
-    "Google Cast nativo para transmitir pantalla desde el celular",
-    "Control remoto con botón de Google Assistant",
-    "Configuración vinculada a tu cuenta Gmail en 2 minutos"
-  ]}
-  pros={[
-    "Diseño compacto que cuelga directamente del puerto HDMI sin ocupar espacio en el mueble",
-    "El asistente de voz encuentra películas y series preguntando '¿dónde dan Pedro Pascal?' o 'poner música chilena'",
-    "El control remoto se programa para encender/apagar tu tele antigua y controlar su volumen"
-  ]}
-  cons={[
-    "No tiene puerto USB estándar (para conectar pendrives necesitas un HUB USB-C especial)",
-    "Precio levemente más elevado que las alternativas básicas"
-  ]}
-/>
-
-El **Chromecast con Google TV** transformó el concepto tradicional de "transmitir desde el teléfono" en un sistema autónomo completo con control remoto propio. Su interfaz reúne en una sola pantalla lo que estás viendo en Netflix, Prime Video, Disney+ y YouTube, ahorrándote tener que entrar app por app para buscar qué ver.
-
----
-
-### 3. Roku Express 4K: La Opción Más Simple y Económica
+Es sumamente ligero, se alimenta por USB o enchufe de pared y su sistema operativo (**Roku OS**) es tan liviano que jamás se queda pegado. Es la compra favorita para el dormitorio de los niños o para adultos mayores, ya que su control remoto cuenta con botones directos y menús en español neutro.
 
 <ProductCard
   productKey="roku-express-4k"
-  title="Roku Express 4K Streaming Player"
+  isFirst={true}
+  title="Roku Express HD / 4K con Menú Rápido y Menú Simplificado"
   brand="Roku"
-  badge="👵 El Más Fácil para Toda la Familia"
+  badge="🥇 EL MÁS FÁCIL DE USAR · MENOS DE $30.000 CLP"
   specs={[
-    "Roku OS con navegación ultra rápida",
-    "Resolución 4K HDR10+",
-    "Compatible con Apple AirPlay, HomeKit y Google Home",
-    "Cable HDMI de alta velocidad incluido en la caja",
-    "Control remoto simple con botones dedicados a Netflix y Disney+"
+    "Resolución Full HD y 4K con escalado automático para pantallas antiguas",
+    "WiFi de doble banda para streaming fluido sin cortes",
+    "Control remoto ergonómico con accesos directos a plataformas principales",
+    "Compatible con Apple AirPlay para transmitir fotos y videos desde iPhone",
+    "Cable HDMI de alta velocidad incluido en el empaque",
+    "Soporte oficial para Zapping, DGO, Prime Video, Disney+ y YouTube"
   ]}
   pros={[
-    "La interfaz más limpia del mercado: solo muestra una cuadrícula de tus canales favoritos sin menús confusos",
-    "Arranque casi instantáneo al encender la tele",
-    "Excelente relación precio/calidad (generalmente bajo los $40.000 CLP en oferta)",
-    "Incluye soporte oficial para Zapping, DGO, Prime Video, YouTube y Apple TV+"
+    "La interfaz más amigable del mercado: cuadrícula limpia sin publicidad invasiva",
+    "Excelente recepción WiFi incluso en dormitorios alejados del módem",
+    "Se configura en 3 minutos ingresando la clave del WiFi de tu casa",
+    "Precio ultra accesible en Mercado Libre con despacho Full inmediato"
   ]}
   cons={[
-    "No es Android: no puedes instalar aplicaciones fuera de la tienda oficial de Roku",
-    "El control remoto en la versión básica requiere apuntar con línea de visión al sensor"
+    "No permite instalar aplicaciones fuera de la tienda oficial de Roku (no apto para archivos APK libres)"
   ]}
 />
 
-Si el televisor que quieres revivir está en la pieza de tus hijos o en la casa de adultos mayores que se complican con menús tecnológicos complejos, **Roku es la compra más acertada**. Su pantalla de inicio es idéntica a la botonera de un teléfono: iconos grandes, directos y sin publicidad que estorbe.
+---
+
+### 2. Onn. Google TV 4K Streaming Box: Libertad Total para Instalar APKs
+
+Si quieres la libertad del ecosistema **Android / Google TV**, el **Onn 4K** es el dispositivo con mejor relación precio/rendimiento de la actualidad.
+
+A diferencia de los sistemas cerrados, cuenta con la tienda Google Play completa y permite habilitar la instalación de **archivos APK externos** (como reproductores IPTV, navegadores web o aplicaciones comunitarias). Su control remoto incluye micrófono para buscar contenidos por voz con el Asistente de Google y se programa para controlar el encendido y volumen de tu televisor.
+
+<ProductCard
+  productKey="onn-google-tv-4k"
+  title="Onn. Google TV 4K Streaming Box con Control por Voz"
+  brand="Onn / Walmart"
+  badge="🚀 EL REY CALIDAD/PRECIO · GOOGLE TV OFICIAL"
+  specs={[
+    "Sistema operativo Google TV oficial certificado (Android TV)",
+    "Resolución 4K Ultra HD con soporte Dolby Audio",
+    "Control remoto por voz con Google Assistant y botones de TV programables",
+    "Chromecast integrado para transmitir pantalla desde teléfonos Android y iPhone",
+    "Memoria RAM de 2 GB para navegación ágil y multitarea",
+    "Permite instalar APKs externas sin bloqueos de fábrica"
+  ]}
+  pros={[
+    "Google TV agrupa todas tus películas y series recomendadas en la pantalla de inicio",
+    "Libertad absoluta para instalar cualquier app de streaming nacional o internacional",
+    "El control remoto reemplaza al control original de tu televisor para prenderlo y apagarlo",
+    "Rendimiento idéntico al Chromecast con Google TV a un precio mucho más conveniente"
+  ]}
+  cons={[
+    "Para conectar pendrives físicos requiere un cable adaptador OTG Micro-USB por separado"
+  ]}
+/>
 
 ---
 
-<AdSlot format="in-article" client="ca-pub-5268337462639131" />
+### 3. Conversor Mini HDMI a RCA AV: Revive Pantallas de Tubo y Monitores Antiguos
+
+Si tu televisor es de los clásicos de tubo (CRT con espalda ancha) o un televisor de los primeros años 2000 que solo tiene las entradas redondas de colores (**RCA: Amarillo para video, Blanco y Rojo para audio**), este pequeño aparato es la pieza mágica que necesitas.
+
+Recibe la señal digital desde el HDMI de tu Roku o TV Box, la procesa internamente y la transforma en señal análoga RCA sin desfase de audio. Se alimenta mediante cualquier cargador USB de celular y cuenta con un interruptor selector de norma (NTSC / PAL).
+
+<ProductCard
+  productKey="conversor-hdmi-rca"
+  title="Conversor Adaptador Mini HDMI a RCA AV (Amarillo, Blanco y Rojo)"
+  brand="Mini AV Converter"
+  badge="📺 REVIVE TELES DE TUBO SIN HDMI · PLUG & PLAY"
+  specs={[
+    "Entrada hembra HDMI compatible con Roku, TV Box, Chromecast y consolas",
+    "Salida análoga compuesta 3 RCA (Video amarillo + Audio estéreo blanco/rojo)",
+    "Selector de norma análoga NTSC / PAL",
+    "Alimentación directa por cable USB (incluido en la caja)",
+    "Carcasa compacta que se esconde detrás del televisor"
+  ]}
+  pros={[
+    "Permite ver YouTube, Netflix y streaming moderno en pantallas de hace 20 o 25 años",
+    "No requiere drivers ni configuraciones complejas: solo conectar los cables de colores",
+    "Precio sumamente bajo (alrededor de $5.990 CLP en Mercado Libre)",
+    "Excelente alternativa para quinchos, talleres, cabañas o piezas de juego retro"
+  ]}
+  cons={[
+    "La resolución máxima de salida es análoga estándar (la nitidez dependerá del tubo de la tele)"
+  ]}
+/>
 
 ---
 
-## Tutorial Paso a Paso: Cómo Instalar y Configurar tu TV Box en 4 Pasos
-
-La instalación no requiere ningún conocimiento técnico y toma menos de 5 minutos:
-
-### Paso 1: Conexión de cables
-1. Enchufa el cable HDMI del TV Box en el puerto **HDMI 1** o **HDMI 2** de tu televisor.
-2. Conecta el cargador de corriente incluido a una toma de corriente de pared (evita conectar el cable USB a los puertos de servicio antiguos de la tele, ya que suelen entregar poco amperaje y provocan reinicios aleatorios).
-
-### Paso 2: Cambiar la entrada en tu televisor
-Toma el control remoto original de tu tele antigua y presiona el botón rotulado como **"Input"**, **"Source"** o el icono con un cuadrado y una flecha. Selecciona la entrada HDMI correspondiente (ej. HDMI 1) hasta que veas en pantalla el logo de inicio de Xiaomi, Google o Roku.
-
-### Paso 3: Conexión a la red WiFi (Consejo clave para Chile)
-Durante el asistente de configuración en pantalla se te pedirá elegir tu red WiFi:
-* **Si tienes router de fibra óptica (Movistar, Entel, ClaroVTR o WOM):** Verás dos redes en tu casa: una terminada en *2.4G* y otra en *5G*.
-* **Elige siempre la red 5 GHz:** Ofrece mucha mayor velocidad, no sufre las interferencias de los microondas ni de las redes de los vecinos en edificios, y evita que las películas en 4K se queden cargando en bucle (*buffering*).
-
-### Paso 4: Inicia sesión y descarga tus aplicaciones
-Ingresa tu cuenta de Google o crea una cuenta gratuita de Roku. Ve a la tienda de aplicaciones y descarga tus plataformas favoritas. En menos de 5 minutos tu televisor antiguo estará funcionando con la misma agilidad que una tele del año 2026.
+<div class="my-8 not-prose">
+  <AdSlot slot="in-article" />
+</div>
 
 ---
 
-## El Combo Definitivo: TV Box + Antena Digital TVD para Ahorrar en Cable
+### 4. Decodificador TV Digital TDT ISDB-Tb: Señal Nacional en HD sin Internet
 
-Si tu meta al modernizar tu televisor es **cortar la cuenta mensual del cable tradicional (que en Chile ronda entre $25.000 y $45.000 CLP al mes)**, el secreto de los usuarios expertos es combinar dos accesorios:
+Si en esa habitación no llega la señal WiFi de tu casa y lo único que quieres es ver las noticias, matinales y el fútbol nacional con imagen cristalina en alta definición, un **Decodificador TVD con norma chilena ISDB-Tb** es la alternativa perfecta.
 
-1. **El TV Box por HDMI:** Para ver películas, series, videos de YouTube y plataformas de streaming a demanda.
-2. **Una Antena Digital TVD conectada a la entrada coaxial:** Para captar **todos los canales nacionales abiertos en Full HD 1080p sin delay y sin gastar internet** ([revisa aquí nuestra guía de sintonización de canales TVD en Chile](/tv-abierta/como-sintonizar-canales-hd-tvd-chile/)).
+Se conecta a la antena de aire y sintoniza de forma 100% gratuita las señales de **TVN HD, Canal 13 HD, Chilevisión HD, Mega HD, La Red, TV Más** y decenas de canales regionales. Cuenta con salida HDMI para pantallas planas y salida RCA para televisores antiguos.
 
-Con este combo tienes lo mejor de los dos mundos: televisión en vivo con calidad digital para noticias y partidos de fútbol nacional 100% gratis, y todo el catálogo del cine mundial en la misma pantalla.
+<ProductCard
+  productKey="decodificador-tvd"
+  title="Decodificador TV Digital TDT ISDB-Tb para Chile con Salida HDMI y RCA"
+  brand="TDT Chile"
+  badge="📡 TV DIGITAL ABIERTA · CERO GASTO DE INTERNET Y SIN MENSUALIDAD"
+  specs={[
+    "Sintonizador digital homologado con la norma chilena ISDB-Tb",
+    "Salida dual de video: puerto HDMI Full HD 1080p y conectores análogos RCA",
+    "Puerto USB frontal con función grabadora PVR (graba tus programas favoritos en pendrive)",
+    "Control remoto ergonómico incluido con pilas",
+    "Menú en español con guía electrónica de programación (EPG)"
+  ]}
+  pros={[
+    "100% gratuito de por vida: no pagas cable ni necesitas internet WiFi",
+    "Imagen digital Full HD sin la compresión ni el retraso del streaming por internet",
+    "Compatible con cualquier televisor fabricado entre 1990 y la actualidad",
+    "Permite pausar y grabar televisión en vivo conectando una memoria USB"
+  ]}
+  cons={[
+    "Requiere conectarle una antena de TV Digital UHF (interior o exterior) para captar señal"
+  ]}
+/>
+
+---
+
+### 5. Xiaomi TV Box S (2nd Gen) 4K: Para los que Buscan Máxima Potencia y Puerto USB
+
+Si además de ver streaming te gusta conectar pendrives con películas descargadas o conectar un teclado inalámbrico para navegar, el **Xiaomi TV Box S de segunda generación** es el centro multimedia más completo.
+
+Incorpora **Google TV oficial**, 2 GB de memoria RAM, procesador de cuatro núcleos de alta velocidad, conectividad Bluetooth 5.2 y un **puerto USB 2.0 dedicado**. Es capaz de reproducir archivos pesados en formato MKV con sonido envolvente Dolby Atmos sin saltos ni ralentizaciones.
+
+<ProductCard
+  productKey="xiaomi-tv-box-s-4k"
+  title="Xiaomi TV Box S (2nd Gen) 4K Ultra HD con Google TV y Puerto USB"
+  brand="Xiaomi"
+  badge="🚀 EL MÁS COMPLETO · PUERTO USB Y AUDIO DOLBY ATMOS"
+  specs={[
+    "Google TV Oficial con certificación de Play Store y Netflix 4K",
+    "Procesador Quad-Core Cortex-A55 con 2 GB de RAM y 8 GB de almacenamiento",
+    "Puerto USB 2.0 físico para conectar pendrives, discos externos y accesorios",
+    "Sonido envolvente Dolby Atmos y DTS-HD con salida de audio auxiliar 3.5 mm",
+    "Control remoto Bluetooth 360° con micrófono y comandos por voz de Google",
+    "WiFi de doble banda 2.4 GHz y 5 GHz de alta velocidad"
+  ]}
+  pros={[
+    "El puerto USB permite reproducir tus propias películas descargadas con la app VLC",
+    "Excelente fluidez multitarea para saltar entre YouTube, Netflix y canales en vivo",
+    "Soporta la instalación de cualquier reproductor IPTV y aplicaciones de streaming chileno",
+    "Control remoto por Bluetooth: no necesitas apuntar directamente al aparato para cambiar de canal"
+  ]}
+  cons={[
+    "Formato cajita de sobremesa (requiere un pequeño espacio plano sobre el mueble de la tele)"
+  ]}
+/>
+
+---
+
+## Guía Paso a Paso: Cómo Conectar tu TV Box en Menos de 5 Minutos
+
+La instalación de un reproductor streaming es muy sencilla y no requiere contratar a ningún técnico:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                 ESQUEMA DE CONEXIÓN RÁPIDA                  │
+├─────────────────────────────────────────────────────────────┤
+│ 1. [Enchufe Pared] ─── Cable Corriente ───> [TV Box / Roku] │
+│ 2. [TV Box / Roku] ─── Cable HDMI ───────> [Puerto HDMI TV] │
+│ 3. Control Remoto TV: Presionar botón "Input" o "Source"    │
+│ 4. Seleccionar HDMI 1 -> ¡Aparece el menú en pantalla!      │
+└─────────────────────────────────────────────────────────────┘
+```
+
+1. **Conecta el HDMI:** Enchufa el TV Stick directo al puerto HDMI de tu televisor. Si el espacio contra el muro es estrecho, utiliza el extensor flexible incluido en la caja.
+2. **Conecta la alimentación:** Conecta el cargador a un tomacorriente de pared. *Evita conectar el cable USB a los puertos antiguos de la tele*, ya que suelen entregar poca corriente y pueden provocar reinicios inesperados.
+3. **Cambia la fuente en la tele:** Con el control remoto de tu televisor, presiona el botón **Input**, **Source** o el icono de cuadrado con flecha, y selecciona la entrada HDMI correspondiente.
+4. **Conecta el WiFi de 5 GHz:** Al ingresar la clave de tu internet, **selecciona la red de 5 GHz de tu módem** para asegurar la máxima velocidad de streaming en 4K.
+
+---
+
+export const tvAntiguaFaqs = [
+  {
+    question: "¿Sirve este sistema para ver Zapping y DGO en Chile?",
+    answer: "Sí, al 100%. Tanto en Roku como en los dispositivos con Google TV (Onn y Xiaomi) las aplicaciones de Zapping, DGO, Mega GO, TVN Play y 13GO están disponibles de forma oficial en sus tiendas de aplicaciones. Solo descargas la app, ingresas tu usuario y ves todos los canales en vivo."
+  },
+  {
+    question: "¿Se pueden instalar aplicaciones libres como MagisTV, IPTV o emuladores de juegos?",
+    answer: "En los dispositivos con sistema Google TV / Android TV (como el Onn 4K y el Xiaomi TV Box S) sí, tienes libertad total para instalar archivos APK externos mediante un pendrive o la aplicación Downloader. En Roku no es posible instalar APKs, ya que cuenta con un sistema operativo cerrado exclusivo para su catálogo oficial."
+  },
+  {
+    question: "¿Cómo conectar un TV Stick si mi televisor no tiene puerto HDMI (tele de tubo)?",
+    answer: "Solo necesitas intercalar un Conversor Mini HDMI a RCA (cuesta menos de $6.000 CLP en Mercado Libre). Conectas el TV Stick en la entrada HDMI del conversor, y de la salida del conversor conectas los 3 cables de colores (amarillo para video, blanco y rojo para audio) en la parte trasera de tu televisor análogo."
+  },
+  {
+    question: "¿El control remoto del TV Box puede apagar mi televisor antiguo y regular el volumen?",
+    answer: "Sí. Los controles de Onn, Chromecast y Xiaomi cuentan con tecnología HDMI-CEC y emisor infrarrojo programable. Durante la configuración inicial seleccionas la marca de tu televisor (Samsung, LG, Sony, Philips, AOC, etc.) y el control quedará configurado para encender la tele, apagarla y controlar el volumen sin tener que usar dos mandos."
+  },
+  {
+    question: "¿Gasta mucha energía eléctrica tener el reproductor conectado todo el día?",
+    answer: "No, el consumo es casi nulo. Un TV Box o Stick consume entre 3 y 5 Watts en reproducción activa y menos de 0.5 Watts en modo de espera. Esto representa un costo menor a $300 pesos chilenos al mes en tu cuenta de electricidad."
+  }
+];
+
+## Preguntas Frecuentes sobre Convertir Televisores Antiguos
+
+<FAQSection
+  title="Dudas Comunes al Revivir Pantallas Antiguas en Chile"
+  items={tvAntiguaFaqs}
+/>
 
 ---
 
 <CtaBanner
-  title="¿Prefieres renovar la pantalla completa?"
-  subtitle="Revisa nuestro comparador actualizado con los mejores televisores de 43, 50 y 55 pulgadas con precios en oferta en tiendas chilenas."
-  buttonText="Ver Guía de Smart TVs Baratas"
-  buttonUrl="/smart-tv/mejores-smart-tv-43-50-pulgadas-baratos-chile/"
-  variant="gold"
+  title="¿Tienes problemas con la señal WiFi en la habitación donde está tu televisor?"
+  description="Revisa nuestra guía práctica para mejorar el WiFi en casas de Chile con repetidores y sistemas Mesh para que tus películas nunca se queden cargando."
+  buttonText="Ver Guía de WiFi y Repetidores en Chile →"
+  buttonUrl="/accesorios/como-mejorar-wifi-casa-lenta-repetidores-mesh-chile/"
 />
 
----
-
-## Preguntas Frecuentes sobre Modernizar Televisores en Chile
-
-<FAQSection
-  items={[
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Mejores Opciones para Convertir Televisores Antiguos en Smart TV en Chile (2026)",
+  "itemListElement": [
     {
-      question: "¿Se puede conectar un TV Box 4K a un televisor antiguo que solo es Full HD o 720p?",
-      answer: "Sí, absolutamente. Todos los TV Box y Streaming Sticks con resolución 4K cuentan con tecnología de adaptación automática (downscaling). Si detectan que tu tele es Full HD 1080p o HD 720p, emitirán la señal exactamente en esa resolución. Comprar la versión 4K es muy conveniente porque sus procesadores son más rápidos y, si en el futuro decides renovar tu pantalla por una 4K, el dispositivo te servirá sin problemas."
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Roku Express HD / 4K con Menú Rápido y Menú Simplificado",
+      "url": "https://hogartv.cl/accesorios/como-convertir-televisor-antiguo-en-smart-tv-chile/#roku-express-4k"
     },
     {
-      question: "¿El control remoto del TV Box puede encender y apagar mi televisor antiguo?",
-      answer: "En la gran mayoría de los casos sí. Tanto el Xiaomi TV Box como el Chromecast y los modelos avanzados de Roku utilizan la tecnología HDMI-CEC (llamada Anynet+ en Samsung, Simplink en LG o Bravia Sync en Sony) o emisores infrarrojos universales programables. Esto permite que con el solo control del TV Box puedas encender la tele, apagarla y regular el volumen sin usar dos controles."
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Onn. Google TV 4K Streaming Box con Control por Voz",
+      "url": "https://hogartv.cl/accesorios/como-convertir-televisor-antiguo-en-smart-tv-chile/#onn-google-tv-4k"
     },
     {
-      question: "¿Gasta mucha energía eléctrica tener un TV Box conectado todo el día?",
-      answer: "No, el consumo eléctrico es insignificante. Un TV Box o Stick consume en promedio entre 3 y 5 Watts en funcionamiento y menos de 0.5 Watts en modo reposo. Esto equivale a un costo eléctrico aproximado de menos de $200 a $400 pesos chilenos al mes en tu boleta de luz de Enel, CGE o Chilquinta."
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Conversor Adaptador Mini HDMI a RCA AV (Amarillo, Blanco y Rojo)",
+      "url": "https://hogartv.cl/accesorios/como-convertir-televisor-antiguo-en-smart-tv-chile/#conversor-hdmi-rca"
     },
     {
-      question: "¿Qué velocidad de internet necesito en Chile para ver streaming sin cortes?",
-      answer: "Para ver contenidos en Full HD 1080p de manera fluida se requiere una velocidad mínima de 10 a 15 Mbps estables por pantalla. Para streaming en 4K UHD se recomiendan al menos 25 Mbps. En Chile, prácticamente cualquier plan básico de fibra óptica para el hogar (que hoy parten en 300 o 500 Mbps simétricos) tiene capacidad de sobra para alimentar 4 o 5 televisores transmitiendo al mismo tiempo sin caídas de calidad."
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Decodificador TV Digital TDT ISDB-Tb para Chile con Salida HDMI y RCA",
+      "url": "https://hogartv.cl/accesorios/como-convertir-televisor-antiguo-en-smart-tv-chile/#decodificador-tvd"
     },
     {
-      question: "¿Puedo ver los partidos del fútbol chileno (TNT Sports) en estos dispositivos?",
-      answer: "Sí. Si tienes una suscripción a TNT Sports a través de tu proveedor de cable, o mediante plataformas de streaming como Zapping TV o DGO, puedes descargar la aplicación oficial en el Xiaomi TV Box, Chromecast o Roku, ingresar tus credenciales y ver todos los partidos del campeonato nacional en alta definición."
+      "@type": "ListItem",
+      "position": 5,
+      "name": "Xiaomi TV Box S (2nd Gen) 4K Ultra HD con Google TV y Puerto USB",
+      "url": "https://hogartv.cl/accesorios/como-convertir-televisor-antiguo-en-smart-tv-chile/#xiaomi-tv-box-s-4k"
     }
-  ]}
-/>
+  ]
+})} />

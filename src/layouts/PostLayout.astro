@@ -132,98 +132,83 @@ const articleSchema = {
   <!-- Barra de Progreso de Lectura -->
   <div id="reading-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-brand-500 via-indigo-500 to-purple-500 z-50 transition-all duration-150 w-0" aria-hidden="true"></div>
 
-  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-3 sm:pt-4 pb-12">
     
-    <!-- Migas de pan (Breadcrumbs) -->
-    <nav class="flex items-center gap-2 text-xs text-slate-400 mb-6 font-medium">
+    <!-- Migas de pan (Breadcrumbs) + Categoría compactos en una sola línea -->
+    <nav class="flex flex-wrap items-center gap-2 text-xs text-slate-400 py-1 font-medium mb-2" aria-label="Migas de pan">
       <a href="/" class="hover:text-white transition-colors">Inicio</a>
-      <span>/</span>
-      <a href={`/${category}/`} class="text-brand-400 hover:text-brand-300 transition-colors">{categoryName}</a>
-      <span>/</span>
-      <span class="text-slate-500 truncate max-w-[200px] sm:max-w-none">{title}</span>
+      <span class="text-slate-600">/</span>
+      <a href={`/${category}/`} class="text-brand-400 hover:text-brand-300 font-bold transition-colors uppercase tracking-wider text-[11px] px-2.5 py-0.5 rounded-full bg-brand-950/70 border border-brand-800/50">
+        📍 {categoryName}
+      </a>
+      <span class="text-slate-600 hidden sm:inline">/</span>
+      <span class="text-slate-400 truncate max-w-[240px] sm:max-w-md hidden sm:inline">{title}</span>
     </nav>
 
-    <!-- Cabecera del Artículo -->
-    <header class="mb-8">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-950/60 border border-brand-800/40 text-brand-300 text-xs font-semibold uppercase tracking-wider mb-4">
-        <span>📍 {categoryName}</span>
-      </div>
-
-      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
+    <!-- Cabecera Compacta del Artículo (Recuperación de pantalla crítica Above the Fold) -->
+    <header class="mb-4">
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight leading-tight mb-2">
         {title}
       </h1>
 
-      <p class="text-lg sm:text-xl text-slate-300 leading-relaxed mb-6 font-normal">
+      <p class="text-sm sm:text-base text-slate-300 leading-snug mb-3 line-clamp-2">
         {description}
       </p>
 
-      <div class="flex flex-wrap items-center justify-between gap-4 py-4 border-y border-slate-800 text-xs text-slate-400">
-        <div class="flex items-center gap-3">
+      <!-- Ficha de Autor Inline Compacta + Divulgación Legal -->
+      <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-1.5 py-2 border-y border-slate-800/80 text-xs text-slate-400">
+        <div class="flex items-center gap-2.5">
           <a
             href={authorInfo.url}
             title={`Perfil de ${authorInfo.nombre}`}
             class="hover:opacity-90 transition-opacity shrink-0"
           >
-            <AuthorAvatar slug={authorSlug} nombre={authorInfo.nombre} size="sm" />
+            <AuthorAvatar slug={authorSlug} nombre={authorInfo.nombre} size="sm" class="!w-7 !h-7" />
           </a>
-          <div>
+          <div class="flex items-center gap-1.5 flex-wrap">
             <a
               href={authorInfo.url}
-              class="text-white font-medium block hover:text-brand-300 transition-colors"
+              class="text-slate-200 font-semibold hover:text-brand-300 transition-colors"
             >
               {authorInfo.nombre}
             </a>
-            <span class="text-slate-400 text-[11px] block">{authorInfo.rol}</span>
+            <span class="text-slate-600 hidden sm:inline">•</span>
+            <span class="text-slate-400 text-[11px]">
+              Actualizado: <strong class="text-slate-300 font-medium">{dateModified || publishDate}</strong>
+            </span>
+            <span class="text-slate-600 hidden sm:inline">•</span>
+            <span class="text-slate-400 text-[11px]">⏱️ {readTime}</span>
           </div>
         </div>
 
-        <div class="flex items-center gap-4 text-slate-400">
-          <span>📅 Actualizado: {dateModified || publishDate}</span>
-          <span>⏱️ {readTime}</span>
-        </div>
+        <a
+          href="/divulgacion-afiliados/"
+          title="Divulgación de transparencia sobre enlaces de afiliados"
+          class="inline-flex items-center gap-1 text-[11px] text-slate-400 hover:text-brand-300 transition-colors bg-slate-900/80 px-2 py-0.5 rounded-md border border-slate-800 hover:border-slate-700"
+        >
+          <span class="text-amber-400 text-xs">💡</span>
+          <span class="hidden sm:inline">Enlaces de afiliados (sin costo extra)</span>
+          <span class="sm:hidden">Afiliados</span>
+        </a>
       </div>
     </header>
 
-    <!-- Imagen Principal (Hero) del Artículo (si existe en src/assets/) -->
-    {heroImage && (
-      <div class="my-8 rounded-2xl overflow-hidden border border-slate-800 shadow-2xl bg-slate-900">
-        <Image
-          src={heroImage}
-          alt={heroAlt}
-          width={1200}
-          height={675}
-          format="webp"
-          loading="eager"
-          fetchpriority="high"
-          class="w-full h-auto object-cover max-h-[460px]"
-        />
-      </div>
-    )}
-
-    <!-- Alerta de Divulgación de Afiliados (Requisito legal para monetización) -->
-    <div class="my-6 p-4 rounded-xl bg-slate-900/90 border border-slate-800 text-xs text-slate-400 flex items-start gap-3">
-      <span class="text-brand-400 text-base">💡</span>
-      <p class="leading-relaxed">
-        <strong class="text-slate-300">Nota de transparencia:</strong> En HogarTV.cl analizamos de forma independiente productos y servicios de televisión en Chile. Algunos enlaces de esta página pueden ser de afiliados (como Mercado Libre, Falabella o AliExpress), lo que nos permite recibir una pequeña comisión si decides comprar, sin costo extra para ti. Conoce más en nuestra <a href="/divulgacion-afiliados/" class="text-brand-400 underline hover:text-brand-300">divulgación de afiliados</a>.
-      </p>
-    </div>
-
-    <!-- Índice de Contenidos Interactivo (TOC) para SEO y navegación rápida (Pre-renderizado en SSG) -->
-    <details id="article-toc" class="my-6 p-4 sm:p-5 rounded-2xl bg-surface-card border border-slate-800 shadow-md group">
-      <summary class="flex items-center justify-between cursor-pointer font-bold text-white text-xs sm:text-sm list-none select-none">
+    <!-- Índice de Contenidos Interactivo (TOC) Compacto y Plegable -->
+    <details id="article-toc" class="mb-4 p-2.5 sm:p-3 rounded-xl bg-surface-card/80 border border-slate-800/80 text-xs shadow-sm group">
+      <summary class="flex items-center justify-between cursor-pointer font-bold text-white list-none select-none">
         <span class="flex items-center gap-2">
           <span class="text-brand-400">📑</span>
           <span>Índice del Contenido (Temas de la Guía)</span>
         </span>
         <span class="text-xs text-brand-400 group-open:rotate-180 transition-transform duration-200">▼</span>
       </summary>
-      <nav id="toc-nav" class="mt-3 pt-3 border-t border-slate-800/80 text-xs sm:text-sm text-slate-300 space-y-1.5" aria-label="Índice de la página">
+      <nav id="toc-nav" class="mt-2.5 pt-2.5 border-t border-slate-800/80 space-y-1 text-slate-300" aria-label="Índice de la página">
         {headings.filter((h) => h.depth === 2 || h.depth === 3).map((h) => (
           <a
             href={`#${h.slug}`}
             class={h.depth === 3
-              ? "block pl-4 py-1 text-slate-400 hover:text-brand-300 transition-colors border-l border-slate-800 hover:border-brand-500 text-xs"
-              : "block py-1 font-semibold text-slate-200 hover:text-brand-400 transition-colors text-xs sm:text-sm"}
+              ? "block pl-4 py-0.5 text-slate-400 hover:text-brand-300 transition-colors border-l border-slate-800 hover:border-brand-500 text-[11px]"
+              : "block py-0.5 font-semibold text-slate-200 hover:text-brand-400 transition-colors text-xs"}
           >
             {h.text.replace(/^[0-9]+\.\s*/, '')}
           </a>

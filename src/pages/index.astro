@@ -25,6 +25,9 @@ import imgAntenaTvd from '../assets/tv-abierta/como-sintonizar-canales-hd-tvd-ch
 import imgSoporteMuro from '../assets/accesorios/soporte-tv-articulado-pesado.webp';
 import imgRoku4k from '../assets/accesorios/roku-vs-chromecast-chile-cual-conviene/roku-express-4k.webp';
 import imgLagartija from '../assets/products/lagartija-chillona-bicicleta.webp';
+import imgHuaweiWifi from '../assets/products/router-huawei-wifi7-be3.webp';
+import imgTapoC500 from '../assets/products/camara-wifi-exterior-360.webp';
+import imgCelularSenior from '../assets/products/celular-adulto-mayor-sos.webp';
 
 const allArticles = await getCollection('articles');
 const featuredArticles = allArticles.sort((a, b) => {
@@ -72,13 +75,64 @@ const organizationSchema = {
   ],
 };
 
-// Los 4 Datos Más Vendidos (Vitrina Principal de Conversión)
+// Los 8 Productos Más Vendidos y Recomendados (Vitrina Principal de Conversión)
 const topSellers = [
+  {
+    badge: '🚀 N°1 WiFi 7 en Chile',
+    badgeClass: 'bg-indigo-500 text-white',
+    title: 'Router Huawei BE3 Wi-Fi 7 Dual Band (Puerto 2.5G)',
+    hook: 'Multiplica la velocidad de tu fibra óptica y elimina el lag en gaming y streaming 4K. Con control parental y puerto ultra rápido 2.5 Gbps.',
+    price: preciosData['router-huawei-wifi7-be3'].precioFormateado,
+    subPrice: 'Top 1 routers WiFi 7 en M. Libre',
+    image: imgHuaweiWifi,
+    reviewUrl: '/accesorios/como-mejorar-wifi-casa-lenta-repetidores-mesh-chile/',
+    reviewLabel: 'Ver guía de WiFi en casa →',
+    primaryCtaText: 'Comprar en M. Libre',
+    primaryCtaUrl: afiliadosData['router-huawei-wifi7-be3'].url,
+    primaryCtaClass: 'bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 border-yellow-400',
+    secondaryCtaText: 'Ver Análisis WiFi',
+    secondaryCtaUrl: '/accesorios/como-mejorar-wifi-casa-lenta-repetidores-mesh-chile/',
+    secondaryCtaClass: 'bg-slate-800 hover:bg-slate-700 text-slate-200 border-slate-600',
+  },
+  {
+    badge: '📹 Seguridad Sin Mensualidad',
+    badgeClass: 'bg-cyan-500 text-slate-950',
+    title: 'Cámara Exterior Tapo C500 360° WiFi Full HD',
+    hook: 'Vigila tu casa o negocio día y noche desde el celular sin pagar planes mensuales. Alertas de movimiento y visión nocturna.',
+    price: preciosData['camara-wifi-exterior-360'].precioFormateado,
+    subPrice: 'Sin suscripción ni cobros extra',
+    image: imgTapoC500,
+    reviewUrl: '/accesorios/mejores-camaras-seguridad-wifi-sin-mensualidad-chile/',
+    reviewLabel: 'Ver comparativa de cámaras →',
+    primaryCtaText: 'Comprar en M. Libre',
+    primaryCtaUrl: afiliadosData['camara-wifi-exterior-360'].url,
+    primaryCtaClass: 'bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 border-yellow-400',
+    secondaryCtaText: 'Cámara Interior',
+    secondaryCtaUrl: afiliadosData['camara-wifi-interior-360'].url,
+    secondaryCtaClass: 'bg-slate-800 hover:bg-slate-700 text-slate-200 border-slate-600',
+  },
+  {
+    badge: '⚡ Revive Cualquier Tele',
+    badgeClass: 'bg-emerald-500 text-slate-950',
+    title: 'Roku Express HD / 4K con Menú Rápido y Control',
+    hook: 'La solución más barata y estable para convertir cualquier televisor antiguo en Smart TV. Compatible con Zapping, Netflix y YouTube.',
+    price: preciosData['roku-express-4k'].precioFormateado,
+    subPrice: 'Envío Full 24h en Chile',
+    image: imgRoku4k,
+    reviewUrl: '/accesorios/como-convertir-televisor-antiguo-en-smart-tv-chile/',
+    reviewLabel: 'Ver guía de instalación →',
+    primaryCtaText: 'Comprar en M. Libre',
+    primaryCtaUrl: afiliadosData['roku-express-4k'].url,
+    primaryCtaClass: 'bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 border-yellow-400',
+    secondaryCtaText: 'Roku vs Chromecast',
+    secondaryCtaUrl: '/accesorios/roku-vs-chromecast-chile-cual-conviene/',
+    secondaryCtaClass: 'bg-slate-800 hover:bg-slate-700 text-slate-200 border-slate-600',
+  },
   {
     badge: '🔥 N°1 Más Viral en Chile',
     badgeClass: 'bg-amber-500 text-slate-950',
     title: 'Mini Proyector Smart Magcubic HY320 (Full HD 1080p)',
-    hook: 'Proyecta de 80" a 130" en pared o techo. Android 11, WiFi 6 y giro de 180° para ver películas desde la cama.',
+    hook: 'Proyecta de 80" a 130" en pared o techo. Android 11, WiFi 6 y giro de 180° para ver películas y series desde la cama.',
     price: '$ 59.990 CLP',
     subPrice: 'o $ 44.990 en AliExpress',
     image: imgMagcubic,
@@ -92,27 +146,27 @@ const topSellers = [
     secondaryCtaClass: 'bg-[#FF4747] hover:bg-[#E03030] text-white border-rose-400',
   },
   {
-    badge: '⚡ Revive tu Tele Vieja',
-    badgeClass: 'bg-brand-500 text-white',
-    title: 'Xiaomi TV Box S (2nd Gen) 4K Ultra HD Google TV',
-    hook: 'Transforma cualquier televisor antiguo en un Smart TV de última generación. Compatible con Zapping, DGO y APKs.',
-    price: preciosData['xiaomi-tv-box-s-4k'].precioFormateado,
-    subPrice: 'Envío Full 24h en Chile',
-    image: imgXiaomiBox,
-    reviewUrl: '/accesorios/como-convertir-televisor-antiguo-en-smart-tv-chile/',
-    reviewLabel: 'Ver guía paso a paso →',
+    badge: '🆘 Cuidado Adulto Mayor',
+    badgeClass: 'bg-rose-500 text-white',
+    title: 'Celular Tecnolab TL038 con Botón SOS y Teclas Gigantes',
+    hook: 'Diseñado para abuelos y adultos mayores: números grandes, linterna directa, sonido potente y botón de pánico que llama a la familia.',
+    price: preciosData['celular-adulto-mayor-sos'].precioFormateado,
+    subPrice: 'Con base de carga incluida',
+    image: imgCelularSenior,
+    reviewUrl: '/accesorios/mejores-celulares-tecnologia-adultos-mayores-chile/',
+    reviewLabel: 'Ver guía para adultos mayores →',
     primaryCtaText: 'Comprar en M. Libre',
-    primaryCtaUrl: afiliadosData['xiaomi-tv-box-s-4k'].url,
+    primaryCtaUrl: afiliadosData['celular-adulto-mayor-sos'].url,
     primaryCtaClass: 'bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 border-yellow-400',
-    secondaryCtaText: 'Alternativa Roku 4K',
-    secondaryCtaUrl: afiliadosData['roku-express-4k'].url,
+    secondaryCtaText: 'Botón Pánico 118dB',
+    secondaryCtaUrl: afiliadosData['boton-panico-sos-inalambrico'].url,
     secondaryCtaClass: 'bg-slate-800 hover:bg-slate-700 text-slate-200 border-slate-600',
   },
   {
     badge: '🏆 Mejor Smart TV 2026',
     badgeClass: 'bg-emerald-500 text-slate-950',
     title: 'Smart TV TCL 55" 4K QLED / QD-Mini LED (144Hz)',
-    hook: 'Calidad de imagen de gama alta a precio de gama media. Google TV oficial, Dolby Vision y panel ultra fluido.',
+    hook: 'Calidad de imagen de gama alta a precio de gama media. Google TV oficial, Dolby Vision y panel ultra fluido para fútbol y consolas.',
     price: '$ 359.990 CLP',
     subPrice: 'Hasta 6 cuotas sin interés',
     image: imgTcl55,
@@ -124,6 +178,23 @@ const topSellers = [
     secondaryCtaText: 'Falabella',
     secondaryCtaUrl: afiliadosData['falabella-tcl-t6d-55'].url,
     secondaryCtaClass: 'bg-[#008A00] hover:bg-[#007000] text-white border-emerald-400',
+  },
+  {
+    badge: '🤖 Potencia Google TV',
+    badgeClass: 'bg-brand-500 text-white',
+    title: 'Xiaomi TV Box S (2nd Gen) 4K Ultra HD Google TV',
+    hook: 'Transforma tu televisor en un centro multimedia veloz. Compatible con Zapping, DGO, navegadores y aplicaciones APK.',
+    price: preciosData['xiaomi-tv-box-s-4k'].precioFormateado,
+    subPrice: 'Envío Full 24h en Chile',
+    image: imgXiaomiBox,
+    reviewUrl: '/accesorios/como-convertir-televisor-antiguo-en-smart-tv-chile/',
+    reviewLabel: 'Ver comparativa de TV Boxes →',
+    primaryCtaText: 'Comprar en M. Libre',
+    primaryCtaUrl: afiliadosData['xiaomi-tv-box-s-4k'].url,
+    primaryCtaClass: 'bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 border-yellow-400',
+    secondaryCtaText: 'Alternativa Onn 4K',
+    secondaryCtaUrl: afiliadosData['onn-google-tv-4k'].url,
+    secondaryCtaClass: 'bg-slate-800 hover:bg-slate-700 text-slate-200 border-slate-600',
   },
   {
     badge: '🔊 Cine en tu Living',
@@ -298,7 +369,7 @@ const quickNeeds = [
       <div class="hidden md:flex items-center gap-4 text-slate-300 font-medium">
         <a href="/ofertas-tv-chile/" class="hover:text-amber-300 transition-colors">🏷️ Radar de Ofertas</a>
         <span>·</span>
-        <a href="/gadgets-hogar/" class="hover:text-brand-300 transition-colors">⚡ Top 9 Gadgets</a>
+        <a href="/recomendados/" class="hover:text-brand-300 transition-colors">⚡ Top 9 Gadgets</a>
         <span>·</span>
         <a href="/smart-tv/mejores-smart-tv-65-pulgadas-chile/" class="hover:text-emerald-300 transition-colors">📺 TVs 65" en Oferta</a>
       </div>
@@ -535,7 +606,7 @@ const quickNeeds = [
           <span>🛒 Selección de Compra Inteligente</span>
         </div>
         <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
-          Los 4 Datos Más Vendidos por Nuestros Lectores en Chile
+          Los 8 Productos Más Vendidos y Recomendados en Chile
         </h2>
         <p class="text-xs sm:text-sm text-slate-400 mt-1">
           Revisa nuestro análisis técnico o ve directo a la oferta verificada en Mercado Libre, Falabella y AliExpress:
@@ -545,7 +616,7 @@ const quickNeeds = [
         href="/gadgets-hogar/"
         class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-brand-300 border border-slate-700 text-xs font-bold transition-colors shrink-0"
       >
-        <span>Ver el Ranking Completo de 9 Gadgets</span>
+        <span>Ver Catálogo Completo de Recomendados</span>
         <span>→</span>
       </a>
     </div>

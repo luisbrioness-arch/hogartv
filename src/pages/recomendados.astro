@@ -78,6 +78,48 @@ const itemListSchema = {
       'position': 11,
       'name': 'Soporte TV Móvil Articulado Doble Brazo Reforzado 32 a 75 Pulgadas VESA',
       'url': 'https://hogartv.cl/recomendados/#soporte-tv-articulado-pesado'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 12,
+      'name': 'Router Huawei BE3 Wi-Fi 7 Banda Doble con Puerto 2.5G',
+      'url': 'https://hogartv.cl/recomendados/#router-huawei-wifi7-be3'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 13,
+      'name': 'Huawei WiFi Mesh 3+ Sistema Dual Band Cobertura Total',
+      'url': 'https://hogartv.cl/recomendados/#wifi-mesh-huawei-mesh3'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 14,
+      'name': 'Cable de Red Ethernet 20m Cat6e Blindado para Streaming y Gaming',
+      'url': 'https://hogartv.cl/recomendados/#cable-red-20m-cat6e'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 15,
+      'name': 'Cámara Exterior Tapo C500 360° WiFi Sin Mensualidad',
+      'url': 'https://hogartv.cl/recomendados/#camara-wifi-exterior-360'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 16,
+      'name': 'Cámara Interior Tapo C200 360° WiFi Full HD',
+      'url': 'https://hogartv.cl/recomendados/#camara-wifi-interior-360'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 17,
+      'name': 'Teléfono Celular Adulto Mayor Tecnolab TL038 con Botón SOS',
+      'url': 'https://hogartv.cl/recomendados/#celular-adulto-mayor-sos'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 18,
+      'name': 'Alarma Inalámbrica con Botón de Pánico y Sirena 118dB',
+      'url': 'https://hogartv.cl/recomendados/#boton-panico-sos-inalambrico'
     }
   ]
 };
@@ -240,6 +282,58 @@ const purchaseFaqs = [
         </div>
       </a>
 
+    
+      <!-- SECCIÓN 5: REDES Y WIFI -->
+      <a
+        href="#seccion-redes-wifi"
+        data-cat-target="redes-wifi"
+        class="cat-card group p-5 rounded-2xl bg-gradient-to-br from-slate-900 via-surface-card to-slate-900 border border-slate-800 hover:border-indigo-500 hover:shadow-xl hover:shadow-indigo-500/10 transition-all duration-300 flex flex-col justify-between"
+      >
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-3xl">🌐</span>
+            <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+              3 Equipos
+            </span>
+          </div>
+          <h2 class="text-base sm:text-lg font-bold text-white group-hover:text-indigo-300 transition-colors mb-1.5">
+            Redes & WiFi Hogar
+          </h2>
+          <p class="text-xs text-slate-400 leading-relaxed mb-4">
+            Router WiFi 7, nodos Mesh y cable Cat6e para exprimir al máximo tu fibra óptica.
+          </p>
+        </div>
+        <div class="flex items-center gap-1.5 text-xs font-bold text-indigo-400 group-hover:translate-x-1 transition-transform">
+          <span>Ver Redes & WiFi</span>
+          <span>↓</span>
+        </div>
+      </a>
+
+      <!-- SECCIÓN 6: SEGURIDAD Y HOGAR -->
+      <a
+        href="#seccion-seguridad-cuidado"
+        data-cat-target="seguridad-cuidado"
+        class="cat-card group p-5 rounded-2xl bg-gradient-to-br from-slate-900 via-surface-card to-slate-900 border border-slate-800 hover:border-cyan-500 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 flex flex-col justify-between"
+      >
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-3xl">🛡️</span>
+            <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+              4 Equipos
+            </span>
+          </div>
+          <h2 class="text-base sm:text-lg font-bold text-white group-hover:text-cyan-300 transition-colors mb-1.5">
+            Seguridad & Cuidados
+          </h2>
+          <p class="text-xs text-slate-400 leading-relaxed mb-4">
+            Cámaras WiFi sin mensualidad, celular senior con botón SOS y alarma de pánico.
+          </p>
+        </div>
+        <div class="flex items-center gap-1.5 text-xs font-bold text-cyan-400 group-hover:translate-x-1 transition-transform">
+          <span>Ver Seguridad</span>
+          <span>↓</span>
+        </div>
+      </a>
     </div>
 
     <!-- BARRA DE PESTAÑAS DE FILTRADO DIRECTO -->
@@ -249,7 +343,7 @@ const purchaseFaqs = [
         data-filter="all"
         class="filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-brand-500 text-slate-950 shadow-lg shadow-brand-500/20"
       >
-        Mostrar Todo (11)
+        Mostrar Todo (18)
       </button>
       <button
         type="button"
@@ -278,6 +372,20 @@ const purchaseFaqs = [
         class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-surface-card border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700"
       >
         📡 Antenas y TDT (2)
+      </button>
+      <button
+        type="button"
+        data-filter="redes-wifi"
+        class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-surface-card border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700"
+      >
+        🌐 Redes & WiFi (3)
+      </button>
+      <button
+        type="button"
+        data-filter="seguridad-cuidado"
+        class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-surface-card border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700"
+      >
+        🛡️ Seguridad & Hogar (4)
       </button>
     </div>
 
@@ -637,7 +745,177 @@ const purchaseFaqs = [
 
     </div>
 
-    <!-- PREGUNTAS FRECUENTES SOBRE COMPRA Y AFILIADOS -->
+    <!-- PREGUNTAS FRECUENTES
+      <!-- ========================================== -->
+      <!-- SECCIÓN 5: REDES & WIFI HOGAR              -->
+      <!-- ========================================== -->
+      <section id="seccion-redes-wifi" class="category-section scroll-mt-24" data-category="redes-wifi">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 mb-8 border-b-2 border-indigo-500/30 gap-2">
+          <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 flex items-center justify-center text-xl shrink-0">
+              🌐
+            </span>
+            <div>
+              <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                Redes & WiFi de Alta Velocidad
+              </h2>
+              <p class="text-xs sm:text-sm text-slate-400">
+                Soluciones para eliminar el lag, ampliar la cobertura en casas grandes y aprovechar el 100% de tu fibra óptica en Chile.
+              </p>
+            </div>
+          </div>
+          <span class="text-xs font-semibold px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 self-start sm:self-auto">
+            3 Modelos
+          </span>
+        </div>
+
+        <div class="space-y-8">
+          <ProductCard
+            productKey="router-huawei-wifi7-be3"
+            title="Router Huawei BE3 Wi-Fi 7 Banda Doble con Puerto 2.5G"
+            brand="Huawei"
+            badge="🚀 N°1 Más Vendido en WiFi 7 en Chile"
+            specs={["Tecnología Wi-Fi 7", "Puerto WAN/LAN 2.5 Gbps", "Banda Doble 2.4 y 5 GHz", "Control parental inteligente", "Modulación 4K-QAM"]}
+            pros={[
+              "Velocidad extrema que no colapsa aunque haya 30 dispositivos conectados en casa",
+              "Puerto Ethernet 2.5G para aprovechar planes de fibra óptica superiores a 1 Giga",
+              "Control parental avanzado desde la App Huawei AI Life para bloquear páginas y fijar horarios",
+              "Instalación en menos de 5 minutos reemplazando o complementando el router de tu compañía"
+            ]}
+            cons={[
+              "Para aprovechar la máxima velocidad de WiFi 7 se requieren celulares o notebooks compatibles"
+            ]}
+          />
+
+          <ProductCard
+            productKey="wifi-mesh-huawei-mesh3"
+            title="Sistema Huawei WiFi Mesh 3+ Dual Band Cobertura Total"
+            brand="Huawei"
+            badge="📡 Cobertura Total sin Zonas Muertas"
+            specs={["Malla Mesh unificada", "Roaming inteligente sin cortes", "Puerto Gigabit", "Conexión NFC One-Hop", "Mismo nombre de red"]}
+            pros={[
+              "Elimina los puntos ciegos en casas de dos pisos o muros de concreto armado",
+              "Toda la casa queda con un solo nombre de red (SSID) y cambio invisible de nodo",
+              "Se pueden comprar nodos individuales para crecer según los metros cuadrados",
+              "Excelente estabilidad en llamadas de WhatsApp y streaming 4K en movimiento"
+            ]}
+            cons={[
+              "Se recomienda instalar al menos dos nodos para casas de más de 120 m²"
+            ]}
+          />
+
+          <ProductCard
+            productKey="cable-red-20m-cat6e"
+            title="Cable de Red Ethernet 20m Cat6e Blindado Gigabyte"
+            brand="Cat6e"
+            badge="⚡ Latencia Cero para Gaming y TV"
+            specs={["Longitud 20 metros", "Categoría 6e blindado", "Velocidad hasta 1.000 Mbps (1 Gbps)", "Conectores RJ45 reforzados", "Apto canaleta o zócalo"]}
+            pros={[
+              "Conexión física directa que elimina 100% el lag y las interferencias de vecinos",
+              "Ideal para conectar el Smart TV, consola (PS5/Xbox) o computador de escritorio",
+              "Largo suficiente (20 metros) para recorrer pasillos, zócalos o entrepisos",
+              "Cuesta una fracción de lo que vale un repetidor inalámbrico"
+            ]}
+            cons={[
+              "Requiere tirar el cable físicamente por el muro o zócalo"
+            ]}
+          />
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECCIÓN 6: SEGURIDAD & CUIDADO FAMILIAR    -->
+      <!-- ========================================== -->
+      <section id="seccion-seguridad-cuidado" class="category-section scroll-mt-24" data-category="seguridad-cuidado">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 mb-8 border-b-2 border-cyan-500/30 gap-2">
+          <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 flex items-center justify-center text-xl shrink-0">
+              🛡️
+            </span>
+            <div>
+              <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                Seguridad & Tecnología para el Cuidado del Hogar
+              </h2>
+              <p class="text-xs sm:text-sm text-slate-400">
+                Cámaras de vigilancia WiFi que no cobran mensualidad, alarmas comunitarias y celulares adaptados para adultos mayores en Chile.
+              </p>
+            </div>
+          </div>
+          <span class="text-xs font-semibold px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 self-start sm:self-auto">
+            4 Modelos
+          </span>
+        </div>
+
+        <div class="space-y-8">
+          <ProductCard
+            productKey="camara-wifi-exterior-360"
+            title="Cámara Exterior TP-Link Tapo C500 WiFi 360° Full HD"
+            brand="TP-Link"
+            badge="🏆 N°1 Exterior sin Mensualidad"
+            specs={["Giro 360° y vertical 130°", "Resistente a lluvia IP65", "Visión nocturna inteligente", "Audio bidireccional", "Ranura MicroSD hasta 512GB"]}
+            pros={[
+              "Cero cobros mensuales: graba directamente en tarjeta de memoria MicroSD",
+              "Giro motorizado en 360° que cubre todo el antejardín o patio",
+              "Detección inteligente de personas y seguimiento automático de intrusos",
+              "Sirena sonora y alarma luminosa incorporada para ahuyentar desconocidos"
+            ]}
+            cons={[
+              "Requiere estar conectada a un enchufe de corriente de 220V (no es a batería)"
+            ]}
+          />
+
+          <ProductCard
+            productKey="camara-wifi-interior-360"
+            title="Cámara Interior TP-Link Tapo C200 WiFi 360° Full HD"
+            brand="TP-Link"
+            badge="👶 La Más Vendida para Niños y Mascotas"
+            specs={["Giro 360° horizontal", "Resolución 1080p FHD", "Audio bidireccional (habla y escucha)", "Modo privacidad física", "Notificaciones inmediatas"]}
+            pros={[
+              "Permite hablar y escuchar desde el celular (ideal para calmar mascotas o hablar con niños)",
+              "Modo privacidad que oculta la lente cuando estás en casa",
+              "Configuración guiada en español en menos de 3 minutos",
+              "Excelente calidad de visión nocturna en dormitorios y living"
+            ]}
+            cons={[
+              "Diseñada exclusivamente para interiores (no resiste lluvia ni intemperie)"
+            ]}
+          />
+
+          <ProductCard
+            productKey="celular-adulto-mayor-sos"
+            title="Teléfono Celular Adulto Mayor Tecnolab TL038 con Botón SOS"
+            brand="Tecnolab"
+            badge="🆘 El Más Fácil y Seguro para Abuelos"
+            specs={["Botón SOS de pánico trasero", "Diseño almeja (tapa protege llamadas)", "Teclas y números gigantes", "Volumen extra potente", "Base de carga de sobremesa"]}
+            pros={[
+              "Botón SOS trasero que llama y manda SMS automático a 5 contactos de emergencia",
+              "Base de carga tipo cuna: se carga como teléfono inalámbrico sin forcejear con cables",
+              "Formato de conchita que corta la llamada al cerrar la tapa, evitando llamadas por error",
+              "Números grandes en pantalla iluminada y linterna de acceso directo"
+            ]}
+            cons={[
+              "Teléfono para llamadas y SMS; no tiene WhatsApp ni aplicaciones pesadas"
+            ]}
+          />
+
+          <ProductCard
+            productKey="boton-panico-sos-inalambrico"
+            title="Alarma Inalámbrica con Botón de Pánico y Sirena 118dB"
+            brand="Seguridad Hogar"
+            badge="🚨 Sirena Disuasiva 118dB con Batería Respaldo"
+            specs={["Sirena de 118 dB ultra potente", "Botón de pánico inalámbrico", "Batería de respaldo 12V", "Alcance hasta 50 metros", "Fácil fijación en muro"]}
+            pros={[
+              "Sirena ensordecedora de 118dB que alerta a toda la cuadra ante emergencias",
+              "Botón de pánico inalámbrico de bolsillo o velador",
+              "Batería interna de respaldo que sigue sonando aunque corten la luz de la casa",
+              "Instalación rápida plug & play sin requerir técnico electricista"
+            ]}
+            cons={[
+              "El sonido es extremadamente fuerte (debe usarse con responsabilidad)"
+            ]}
+          />
+        </div>
+      </section> SOBRE COMPRA Y AFILIADOS -->
     <div class="mt-16">
       <FAQSection
         title="Preguntas Frecuentes sobre Equipos y Compras en Chile"

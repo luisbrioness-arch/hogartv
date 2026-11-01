@@ -675,5 +675,176 @@
         "urlKey": "luces-sensor-movimiento-noche"
       }
     ]
+  },
+  "mini-ups-router-12v": {
+    "precioCLP": 19990,
+    "precioFormateado": "$ 19.990 CLP",
+    "rango": "$ 16.990 - $ 27.990 CLP",
+    "precioMinVisto": "$ 16.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-11-01",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 19.990 CLP",
+        "badge": "⚡ Más Vendida para Fibra",
+        "destacada": true,
+        "envio": "Envío Full Inmediato",
+        "urlKey": "mini-ups-router-12v"
+      }
+    ]
+  },
+  "ups-interactiva-forza-tv": {
+    "precioCLP": 64990,
+    "precioFormateado": "$ 64.990 CLP",
+    "rango": "$ 54.990 - $ 79.990 CLP",
+    "precioMinVisto": "$ 54.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-11-01",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 64.990 CLP",
+        "badge": "🛡️ Respaldo TV y Consolas",
+        "destacada": true,
+        "envio": "Envío Gratis a Todo Chile",
+        "urlKey": "ups-interactiva-forza-tv"
+      }
+    ]
+  },
+  "zapatilla-protector-voltaje": {
+    "precioCLP": 12990,
+    "precioFormateado": "$ 12.990 CLP",
+    "rango": "$ 9.990 - $ 15.990 CLP",
+    "precioMinVisto": "$ 9.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-11-01",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 12.990 CLP",
+        "badge": "⚡ Certificación SEC Chile",
+        "destacada": true,
+        "envio": "Envío a Todo Chile",
+        "urlKey": "zapatilla-protector-voltaje"
+      }
+    ]
+  },
+  "control-remoto-lg-magic": {
+    "precioCLP": 14990,
+    "precioFormateado": "$ 14.990 CLP",
+    "rango": "$ 11.990 - $ 22.990 CLP",
+    "precioMinVisto": "$ 11.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-11-01",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 14.990 CLP",
+        "badge": "🖱️ Con Puntero y Micrófono",
+        "destacada": true,
+        "envio": "Envío Full Inmediato",
+        "urlKey": "control-remoto-lg-magic"
+      }
+    ]
+  },
+  "control-remoto-samsung-solar": {
+    "precioCLP": 16990,
+    "precioFormateado": "$ 16.990 CLP",
+    "rango": "$ 13.990 - $ 24.990 CLP",
+    "precioMinVisto": "$ 13.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-11-01",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 16.990 CLP",
+        "badge": "☀️ Carga Solar y USB-C",
+        "destacada": true,
+        "envio": "Envío Rápido",
+        "urlKey": "control-remoto-samsung-solar"
+      }
+    ]
+  },
+  "control-air-mouse-g20s": {
+    "precioCLP": 9990,
+    "precioFormateado": "$ 9.990 CLP",
+    "rango": "$ 7.990 - $ 12.990 CLP",
+    "precioMinVisto": "$ 7.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-11-01",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 9.990 CLP",
+        "badge": "🎯 Giroscopio Universal TV Box",
+        "destacada": true,
+        "envio": "Envío a Todo Chile",
+        "urlKey": "control-air-mouse-g20s"
+      }
+    ]
+  },
+  "telon-proyector-tripode-100": {
+    "precioCLP": 39990,
+    "precioFormateado": "$ 39.990 CLP",
+    "rango": "$ 34.990 - $ 49.990 CLP",
+    "precioMinVisto": "$ 34.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-11-01",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 39.990 CLP",
+        "badge": "🎬 Formato 16:9 con Trípode",
+        "destacada": true,
+        "envio": "Envío Gratis a Todo Chile",
+        "urlKey": "telon-proyector-tripode-100"
+      }
+    ]
+  },
+  "tela-pantalla-alr-gris": {
+    "precioCLP": 16990,
+    "precioFormateado": "$ 16.990 CLP",
+    "rango": "$ 14.990 - $ 22.990 CLP",
+    "precioMinVisto": "$ 14.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-11-01",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 16.990 CLP",
+        "badge": "✨ Antirreflejo Luz Ambiental",
+        "destacada": true,
+        "envio": "Envío Full",
+        "urlKey": "tela-pantalla-alr-gris"
+      }
+    ]
+  },
+  "soporte-proyector-techo-muro": {
+    "precioCLP": 11990,
+    "precioFormateado": "$ 11.990 CLP",
+    "rango": "$ 9.990 - $ 15.990 CLP",
+    "precioMinVisto": "$ 9.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-11-01",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 11.990 CLP",
+        "badge": "🔄 Giro 360° Rosca 1/4 Universal",
+        "destacada": true,
+        "envio": "Envío a Todo Chile",
+        "urlKey": "soporte-proyector-techo-muro"
+      }
+    ]
   }
 }

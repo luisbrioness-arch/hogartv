@@ -12,6 +12,7 @@ interface Props {
   ogImage?: string;
   publishedTime?: string;
   breadcrumbs?: { name: string; url: string }[];
+  noindex?: boolean;
 }
 
 const {
@@ -22,6 +23,7 @@ const {
   ogImage,
   publishedTime,
   breadcrumbs,
+  noindex = false,
 } = Astro.props;
 
 const siteUrl = 'https://hogartv.cl';
@@ -124,7 +126,11 @@ const breadcrumbSchema =
   <title>{fullTitle}</title>
   <meta name="description" content={metaDescription} />
   <link rel="canonical" href={canonicalUrl} />
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  {noindex ? (
+    <meta name="robots" content="noindex, follow" />
+  ) : (
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  )}
 
   {showGSC && (
     <meta name="google-site-verification" content={gscVerification} />
@@ -184,5 +190,64 @@ const breadcrumbSchema =
     <slot />
   </main>
   <Footer />
+
+  <!-- Banner de Consentimiento de Cookies (Cumplimiento Google AdSense / Ley 19.628 Chile) -->
+  <aside
+    id="cookie-consent-banner"
+    class="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:max-w-md bg-slate-900/95 backdrop-blur-md border border-slate-700/80 rounded-2xl p-4 shadow-2xl z-50 transform transition-all duration-300 translate-y-32 opacity-0 pointer-events-none"
+    role="dialog"
+    aria-live="polite"
+    aria-label="Consentimiento de cookies"
+  >
+    <div class="flex items-start gap-3">
+      <span class="text-2xl shrink-0" aria-hidden="true">🍪</span>
+      <div class="space-y-2">
+        <p class="text-xs text-slate-300 leading-relaxed">
+          En <strong>HogarTV.cl</strong> utilizamos cookies técnicas y de personalización publicitaria de Google para ofrecerte la mejor experiencia y mantener nuestras guías gratuitas en Chile. Consulta nuestra <a href="/privacidad/" class="text-brand-400 underline hover:text-brand-300 font-semibold">Política de Privacidad</a>.
+        </p>
+        <div class="flex items-center gap-2 pt-1">
+          <button
+            id="accept-cookies-btn"
+            type="button"
+            class="px-4 py-1.5 rounded-lg bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold shadow-md transition-colors"
+          >
+            Aceptar todas
+          </button>
+          <button
+            id="essential-cookies-btn"
+            type="button"
+            class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium transition-colors"
+          >
+            Solo necesarias
+          </button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <script is:inline>
+    (function() {
+      const consentKey = 'hogartv_cookie_consent';
+      const banner = document.getElementById('cookie-consent-banner');
+      const acceptBtn = document.getElementById('accept-cookies-btn');
+      const essentialBtn = document.getElementById('essential-cookies-btn');
+
+      if (!localStorage.getItem(consentKey) && banner) {
+        setTimeout(function() {
+          banner.classList.remove('translate-y-32', 'opacity-0', 'pointer-events-none');
+        }, 800);
+      }
+
+      function dismissBanner(choice) {
+        localStorage.setItem(consentKey, choice);
+        if (banner) {
+          banner.classList.add('translate-y-32', 'opacity-0', 'pointer-events-none');
+        }
+      }
+
+      if (acceptBtn) acceptBtn.addEventListener('click', function() { dismissBanner('all'); });
+      if (essentialBtn) essentialBtn.addEventListener('click', function() { dismissBanner('essential'); });
+    })();
+  </script>
 </body>
 </html>

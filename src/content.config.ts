@@ -12,6 +12,7 @@ const articles = defineCollection({
     dateModified: z.string().optional(),
     readTime: z.string().optional().default('5 min de lectura'),
     featured: z.boolean().optional().default(false),
+    noindex: z.boolean().optional().default(false),
     heroImage: z.string().optional(),
     ogImage: z.string().optional(),
     author: z.string().optional().default('luis-briones'),

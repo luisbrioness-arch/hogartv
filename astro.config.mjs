@@ -17,6 +17,16 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
     sitemap({
+      filter: (page) => {
+        const excluded = [
+          'https://hogartv.cl/virales/',
+          'https://hogartv.cl/ofertas-tv-chile/',
+          'https://hogartv.cl/gadgets-hogar/',
+          'https://hogartv.cl/recomendados/',
+          'https://hogartv.cl/accesorios/lagarto-verde-auto-movimiento-viral-tiktok-chile/',
+        ];
+        return !excluded.some((url) => page === url || page.startsWith(url));
+      },
       serialize(item) {
         item.lastmod = new Date().toISOString();
         return item;

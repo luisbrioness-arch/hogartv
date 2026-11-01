@@ -36,6 +36,7 @@ const slug = article.id.replace(/\.(md|mdx)$/, '');
   ogImage={article.data.ogImage}
   author={article.data.author}
   headings={headings}
+  noindex={article.data.noindex}
 >
   <Content />
 </PostLayout>

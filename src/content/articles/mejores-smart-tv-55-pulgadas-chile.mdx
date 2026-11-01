@@ -10,28 +10,144 @@ readTime: "9 min de lectura"
 featured: true
 ---
 
+import { Image } from 'astro:assets';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import CtaBanner from '../../components/CtaBanner.astro';
-import YouTubeEmbed from '../../components/YouTubeEmbed.astro';
 import FAQSection from '../../components/FAQSection.astro';
+import tclImg from '../../assets/smart-tv/mejores-smart-tv-calidad-precio-chile/tcl-c655-55.webp';
+import hisenseImg from '../../assets/smart-tv/mejores-smart-tv-calidad-precio-chile/hisense-u6k-55.webp';
+import samsungImg from '../../assets/smart-tv/mejores-smart-tv-calidad-precio-chile/samsung-du7000-55.webp';
+import afiliadosData from '../../data/afiliados.json';
+import preciosData from '../../data/precios.json';
+
+{/* =========================================================================
+    HERO DE CONVERSIÓN INMEDIATA (REGLA DE LOS 7 SEGUNDOS)
+   ========================================================================= */}
+
+<div class="my-4 sm:my-6 p-5 sm:p-7 rounded-3xl bg-gradient-to-b from-slate-900 via-surface-card to-slate-950 border-2 border-amber-400/60 shadow-2xl not-prose relative overflow-hidden">
+  
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400 text-slate-950 text-xs font-black uppercase tracking-wider shadow-sm">
+      <span>🏆</span>
+      <span>Recomendado #1 · El Mejor 55" de Chile en 2026</span>
+    </div>
+    <span class="text-xs font-semibold text-emerald-400 flex items-center gap-1.5">
+      <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      Envío Full 24h a Todo Chile
+    </span>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+    
+    <div class="md:col-span-4 flex justify-center">
+      <div class="relative w-48 h-48 sm:w-56 sm:h-56 rounded-2xl bg-white p-3 border border-slate-200 flex items-center justify-center shadow-lg">
+        <Image 
+          src={tclImg} 
+          alt="Smart TV TCL 55 Pulgadas 4K QLED C655 / P8L"
+          width={280}
+          height={280}
+          class="w-full h-full object-contain filter drop-shadow-md"
+          loading="eager"
+        />
+      </div>
+    </div>
+
+    <div class="md:col-span-8 flex flex-col justify-center">
+      <div class="flex items-center gap-1 text-amber-400 text-xs mb-1 font-semibold">
+        <span>★★★★★</span>
+        <span class="text-slate-300 ml-1">4.8/5 · El televisor más vendido y equilibrado</span>
+      </div>
+      
+      <h2 class="text-xl sm:text-2xl font-black text-white leading-tight mb-2">
+        TCL 55" QD-Mini LED / QLED (C655 / P8L)
+      </h2>
+
+      <div class="flex flex-wrap items-baseline gap-3 mb-3">
+        <span class="text-2xl sm:text-3xl font-black text-emerald-400">
+          {preciosData['tcl-c655-55'].precioFormateado}
+        </span>
+        <span class="text-xs px-2.5 py-1 rounded-md bg-emerald-950/60 border border-emerald-500/40 text-emerald-300 font-semibold">
+          ⚡ Panel Quantum Dot + 144Hz para Consolas
+        </span>
+      </div>
+
+      <div class="space-y-1.5 text-xs sm:text-sm text-slate-200 mb-4 bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
+        <div class="flex items-start gap-2">
+          <span class="text-amber-400 font-bold shrink-0">🚀 Google TV Oficial:</span>
+          <span>Instala Zapping, DGO, Netflix, Disney+, Plex y MagisTV sin bloqueos ni trucos.</span>
+        </div>
+        <div class="flex items-start gap-2">
+          <span class="text-emerald-400 font-bold shrink-0">🇨🇱 TV Digital Integrada:</span>
+          <span>Sintonizador ISDB-Tb con norma chilena obligatoria para ver canales HD de aire gratis.</span>
+        </div>
+        <div class="flex items-start gap-2">
+          <span class="text-sky-400 font-bold shrink-0">🎮 Cine y Juegos 144Hz:</span>
+          <span>Negros profundos con panel VA y acelerador de 144Hz para PS5, Xbox y fútbol fluido.</span>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap gap-3">
+        <a 
+          href={afiliadosData['tcl-c655-55'].url} 
+          target="_blank" 
+          rel="nofollow sponsored noopener noreferrer"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-black text-sm uppercase tracking-wider shadow-xl shadow-yellow-500/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0 text-center"
+        >
+          <span>👉 Ver Oferta en Mercado Libre Full</span>
+          <span class="text-xs font-extrabold bg-slate-950/20 px-2 py-0.5 rounded">24 Horas</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  {/* Selector Rápido de 3 Casos */}
+  <div class="mt-8 pt-6 border-t border-slate-800">
+    <div class="flex items-center gap-2 mb-4">
+      <span class="text-xl">🎯</span>
+      <h3 class="text-sm sm:text-base font-extrabold text-white uppercase tracking-wide m-0">
+        ¿Cuál modelo calza mejor con tu living?
+      </h3>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+      <div class="p-4 rounded-2xl bg-slate-900/90 border border-emerald-500/30 flex flex-col justify-between">
+        <div>
+          <div class="inline-block text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 mb-2">
+            🏆 Todo Terreno & Gaming
+          </div>
+          <h4 class="text-sm font-bold text-white mb-1">TCL 55" C655 QLED</h4>
+          <p class="text-xs text-slate-300 mb-3">La mejor imagen por cada peso invertido y Google TV completo.</p>
+        </div>
+        <a href="#tcl-55" class="text-xs font-bold text-emerald-400 hover:text-emerald-300">Ver análisis completo ↓</a>
+      </div>
+
+      <div class="p-4 rounded-2xl bg-slate-900/90 border border-amber-500/30 flex flex-col justify-between">
+        <div>
+          <div class="inline-block text-[11px] font-bold px-2 py-0.5 rounded bg-amber-950 text-amber-300 mb-2">
+            ☀️ Salas Muy Iluminadas
+          </div>
+          <h4 class="text-sm font-bold text-white mb-1">Hisense 55" U6K Mini-LED</h4>
+          <p class="text-xs text-slate-300 mb-3">Brillo pico extremo para derrotar reflejos de ventanales y luz de día.</p>
+        </div>
+        <a href="#hisense-55" class="text-xs font-bold text-amber-400 hover:text-amber-300">Ver análisis completo ↓</a>
+      </div>
+
+      <div class="p-4 rounded-2xl bg-slate-900/90 border border-sky-500/30 flex flex-col justify-between">
+        <div>
+          <div class="inline-block text-[11px] font-bold px-2 py-0.5 rounded bg-sky-950 text-sky-300 mb-2">
+            ⭐ Simpleza y Confiabilidad
+          </div>
+          <h4 class="text-sm font-bold text-white mb-1">Samsung 55" Crystal DU7000</h4>
+          <p class="text-xs text-slate-300 mb-3">Fácil de usar, canales gratis Samsung TV Plus y red de servicio técnico.</p>
+        </div>
+        <a href="#samsung-55" class="text-xs font-bold text-sky-400 hover:text-sky-300">Ver análisis completo ↓</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 El formato de **55 pulgadas (139 cm de diagonal)** es, por lejos, el estándar de oro y el tamaño más vendido en Chile para el living o sala de estar principal. Ofrece el equilibrio exacto: entrega una sensación de inmersión cinematográfica contundente sin resultar invasivo ni requerir muros gigantescos como las pantallas de 65 o 75 pulgadas.
-
-Sin embargo, en el rango de los **$330.000 a $450.000 CLP**, la oferta en el retail chileno es abrumadora y confusa: paneles VA vs IPS, tecnologías QLED, Mini-LED y Crystal UHD, sistemas operativos distintos (Google TV, Tizen OS, VIDAA) y diferencias abismales en el brillo para combatir los reflejos diurnos.
-
-En esta guía técnica exhaustiva, probamos y ordenamos los televisores de 55 pulgadas que realmente justifican cada peso invertido en Chile en 2026, con stock disponible para despacho en **Mercado Libre Full** y **Falabella**.
-
-<div class="my-8 p-6 rounded-2xl bg-gradient-to-br from-slate-900 via-surface-card to-indigo-950/30 border-2 border-brand-500/40 shadow-xl">
-  <div class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-brand-400 mb-2">
-    <span>🤖</span>
-    <span>Veredicto Técnico Rápido (30 Segundos)</span>
-  </div>
-  <p class="text-slate-200 text-sm sm:text-base leading-relaxed m-0">
-    <strong>¿Cuál es el mejor Smart TV de 55 pulgadas en Chile en 2026?</strong>
-    La compra número uno por balance calidad/precio es el <strong>TCL 55" QD-Mini LED / QLED (C655 / P8L)</strong>: combina panel Quantum Dot, 144Hz VRR para consolas y <strong>Google TV oficial</strong> (compatible con Zapping, DGO, MagisTV, Kodi y Plex sin trucos). Si tu living recibe luz solar directa o tienes ventanales grandes, el rey es el <strong>Hisense 55" Mini-LED U6K</strong> por su atenuación local y altísimo brillo pico. Y si buscas la interfaz más amigable para toda la familia con el soporte técnico más extendido en el país, el <strong>Samsung 55" Crystal UHD DU7000</strong> sigue siendo la opción más confiable.
-  </p>
-</div>
 
 ---
 

@@ -10,27 +10,143 @@ readTime: "8 min de lectura"
 featured: true
 ---
 
+import { Image } from 'astro:assets';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import CtaBanner from '../../components/CtaBanner.astro';
 import FAQSection from '../../components/FAQSection.astro';
+import routerImg from '../../assets/products/router-huawei-wifi7-be3.webp';
+import botonImg from '../../assets/products/boton-panico-sos-inalambrico.webp';
+import afiliadosData from '../../data/afiliados.json';
+import preciosData from '../../data/precios.json';
+
+{/* =========================================================================
+    HERO DE CONVERSIÓN INMEDIATA (REGLA DE LOS 7 SEGUNDOS)
+   ========================================================================= */}
+
+<div class="my-4 sm:my-6 p-5 sm:p-7 rounded-3xl bg-gradient-to-b from-slate-900 via-surface-card to-slate-950 border-2 border-amber-400/60 shadow-2xl not-prose relative overflow-hidden">
+  
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400 text-slate-950 text-xs font-black uppercase tracking-wider shadow-sm">
+      <span>⚡</span>
+      <span>Solución Inmediata · Internet sin Luz en Chile</span>
+    </div>
+    <span class="text-xs font-semibold text-emerald-400 flex items-center gap-1.5">
+      <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      4 a 8 Horas Continuas de WiFi
+    </span>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+    
+    <div class="md:col-span-4 flex justify-center">
+      <div class="relative w-48 h-48 sm:w-56 sm:h-56 rounded-2xl bg-white p-3 border border-slate-200 flex items-center justify-center shadow-lg">
+        <Image 
+          src={routerImg} 
+          alt="Mini UPS Batería Respaldo para Router Fibra Óptica"
+          width={280}
+          height={280}
+          class="w-full h-full object-contain filter drop-shadow-md"
+          loading="eager"
+        />
+      </div>
+    </div>
+
+    <div class="md:col-span-8 flex flex-col justify-center">
+      <div class="flex items-center gap-1 text-amber-400 text-xs mb-1 font-semibold">
+        <span>★★★★★</span>
+        <span class="text-slate-300 ml-1">4.9/5 · El accesorio indispensable para teletrabajo</span>
+      </div>
+      
+      <h2 class="text-xl sm:text-2xl font-black text-white leading-tight mb-2">
+        Mini UPS 12V Batería de Respaldo para Router de Fibra
+      </h2>
+
+      <div class="flex flex-wrap items-baseline gap-3 mb-3">
+        <span class="text-2xl sm:text-3xl font-black text-emerald-400">
+          {preciosData['mini-ups-router-12v'].precioFormateado}
+        </span>
+        <span class="text-xs px-2.5 py-1 rounded-md bg-emerald-950/60 border border-emerald-500/40 text-emerald-300 font-semibold">
+          ⚡ Conexión Directa DC · Cero Ruido
+        </span>
+      </div>
+
+      <div class="space-y-1.5 text-xs sm:text-sm text-slate-200 mb-4 bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
+        <div class="flex items-start gap-2">
+          <span class="text-amber-400 font-bold shrink-0">🚀 Para qué sirve:</span>
+          <span>Mantiene tu módem/router de fibra prendido y transmitiendo WiFi cuando se corta la luz en tu barrio.</span>
+        </div>
+        <div class="flex items-start gap-2">
+          <span class="text-emerald-400 font-bold shrink-0">🇨🇱 Compatible con Todos:</span>
+          <span>Funciona en routers de 12V de Mundo, Movistar, Entel, WOM, Claro y VTR.</span>
+        </div>
+        <div class="flex items-start gap-2">
+          <span class="text-sky-400 font-bold shrink-0">🔋 Autonomía Real:</span>
+          <span>Entrega de 4 a 8 horas de internet y tiene puerto USB para cargar celulares en emergencias.</span>
+        </div>
+      </div>
+
+      <div>
+        <a 
+          href={afiliadosData['mini-ups-router-12v'].url} 
+          target="_blank" 
+          rel="nofollow sponsored noopener noreferrer"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-black text-sm uppercase tracking-wider shadow-xl shadow-yellow-500/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0 text-center"
+        >
+          <span>👉 Ver Precio y Comprar en Mercado Libre</span>
+          <span class="text-xs font-extrabold bg-slate-950/20 px-2 py-0.5 rounded">Envío Full</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  {/* Selector Rápido de 3 Casos */}
+  <div class="mt-8 pt-6 border-t border-slate-800">
+    <div class="flex items-center gap-2 mb-4">
+      <span class="text-xl">🎯</span>
+      <h3 class="text-sm sm:text-base font-extrabold text-white uppercase tracking-wide m-0">
+        Elige tu necesidad de respaldo eléctrico:
+      </h3>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+      <div class="p-4 rounded-2xl bg-slate-900/90 border border-emerald-500/30 flex flex-col justify-between">
+        <div>
+          <div class="inline-block text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 mb-2">
+            🌐 Solo Internet y WiFi
+          </div>
+          <h4 class="text-sm font-bold text-white mb-1">Mini UPS DC 12V</h4>
+          <p class="text-xs text-slate-300 mb-3">La más económica ($19.990 CLP), compacta y dura hasta 8 horas.</p>
+        </div>
+        <a href={afiliadosData['mini-ups-router-12v'].url} target="_blank" rel="nofollow sponsored" class="text-xs font-bold text-emerald-400 hover:text-emerald-300">Comprar en Mercado Libre →</a>
+      </div>
+
+      <div class="p-4 rounded-2xl bg-slate-900/90 border border-amber-500/30 flex flex-col justify-between">
+        <div>
+          <div class="inline-block text-[11px] font-bold px-2 py-0.5 rounded bg-amber-950 text-amber-300 mb-2">
+            📺 Smart TV + Consola
+          </div>
+          <h4 class="text-sm font-bold text-white mb-1">UPS Interactiva 1000VA</h4>
+          <p class="text-xs text-slate-300 mb-3">Respalda enchufes de 220V para guardar partida o terminar de ver tele.</p>
+        </div>
+        <a href={afiliadosData['ups-interactiva-forza-tv'].url} target="_blank" rel="nofollow sponsored" class="text-xs font-bold text-amber-400 hover:text-amber-300">Ver Modelos Forza →</a>
+      </div>
+
+      <div class="p-4 rounded-2xl bg-slate-900/90 border border-sky-500/30 flex flex-col justify-between">
+        <div>
+          <div class="inline-block text-[11px] font-bold px-2 py-0.5 rounded bg-sky-950 text-sky-300 mb-2">
+            🔒 Proteger contra Alzas
+          </div>
+          <h4 class="text-sm font-bold text-white mb-1">Protector de Voltaje SEC</h4>
+          <p class="text-xs text-slate-300 mb-3">Evita que el golpe de tensión queme la tele cuando regresa la luz.</p>
+        </div>
+        <a href={afiliadosData['zapatilla-protector-voltaje'].url} target="_blank" rel="nofollow sponsored" class="text-xs font-bold text-sky-400 hover:text-sky-300">Ver Zapatilla SEC →</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 En Chile, los temporales de invierno en el sur, el viento en la costa o los accidentes en postes del tendido eléctrico dejan sin luz a barrios enteros durante horas. El drama no es solo la falta de ampolletas: **se apaga el router y se cae el teletrabajo, las reuniones por Zoom, las cámaras de seguridad WiFi y la entretención en casa**.
-
-Sin embargo, hay un detalle técnico que la mayoría de los usuarios desconoce: **cuando se corta la luz en tu casa, la red de fibra óptica de la calle (Mundo, Movistar, Entel, WOM o VTR) casi siempre sigue funcionando** porque los nodos centrales de los operadores cuentan con bancos de baterías industriales y generadores diésel de respaldo. 
-
-Lo único que necesitas para seguir navegando a máxima velocidad con tus notebooks, tablets y celulares es alimentar tu módem/router con una **Mini UPS de 12V**.
-
-<div class="my-8 p-6 rounded-2xl bg-gradient-to-br from-slate-900 via-surface-card to-indigo-950/30 border-2 border-brand-500/40 shadow-xl">
-  <div class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-brand-400 mb-2">
-    <span>🤖</span>
-    <span>Veredicto Técnico Rápido (30 Segundos)</span>
-  </div>
-  <p class="text-slate-200 text-sm sm:text-base leading-relaxed m-0">
-    <strong>¿Cómo mantener Internet durante un corte de luz?</strong>
-    La solución más económica y eficiente es una <strong>Mini UPS DC para Router (12V / 2A o 3A)</strong>: cuesta entre $16.990 y $24.990 CLP en Mercado Libre Full, no hace ruido, se conecta directo entre el transformador y el módem sin pérdidas de energía por conversión a 220V, y entrega <strong>entre 4 y 8 horas continuas de WiFi</strong>. Si además quieres respaldar tu Smart TV, consola o computador de escritorio, necesitas una <strong>UPS Interactiva tradicional de 750VA a 1000VA</strong> (como Forza o APC) junto a un <strong>protector de sobretensión certificado SEC</strong> para evitar que el golpe de corriente al regresar la luz queme la placa madre del televisor.
-  </p>
-</div>
 
 ---
 

@@ -10,27 +10,143 @@ readTime: "8 min de lectura"
 featured: true
 ---
 
+import { Image } from 'astro:assets';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import CtaBanner from '../../components/CtaBanner.astro';
 import FAQSection from '../../components/FAQSection.astro';
+import tvboxImg from '../../assets/products/tv-box-android-economico.webp';
+import rokuImg from '../../assets/products/roku-express-4k.webp';
+import afiliadosData from '../../data/afiliados.json';
+import preciosData from '../../data/precios.json';
+
+{/* =========================================================================
+    HERO DE CONVERSIÓN INMEDIATA (REGLA DE LOS 7 SEGUNDOS)
+   ========================================================================= */}
+
+<div class="my-4 sm:my-6 p-5 sm:p-7 rounded-3xl bg-gradient-to-b from-slate-900 via-surface-card to-slate-950 border-2 border-amber-400/60 shadow-2xl not-prose relative overflow-hidden">
+  
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400 text-slate-950 text-xs font-black uppercase tracking-wider shadow-sm">
+      <span>🖱️</span>
+      <span>Reemplazo #1 Más Vendido en Chile</span>
+    </div>
+    <span class="text-xs font-semibold text-emerald-400 flex items-center gap-1.5">
+      <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      Envío Full 24h a Todo Chile
+    </span>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+    
+    <div class="md:col-span-4 flex justify-center">
+      <div class="relative w-48 h-48 sm:w-56 sm:h-56 rounded-2xl bg-white p-3 border border-slate-200 flex items-center justify-center shadow-lg">
+        <Image 
+          src={rokuImg} 
+          alt="Control Remoto LG Magic Remote Puntero y Voz"
+          width={280}
+          height={280}
+          class="w-full h-full object-contain filter drop-shadow-md"
+          loading="eager"
+        />
+      </div>
+    </div>
+
+    <div class="md:col-span-8 flex flex-col justify-center">
+      <div class="flex items-center gap-1 text-amber-400 text-xs mb-1 font-semibold">
+        <span>★★★★★</span>
+        <span class="text-slate-300 ml-1">4.8/5 · Puntero mouse y comando de voz activo</span>
+      </div>
+      
+      <h2 class="text-xl sm:text-2xl font-black text-white leading-tight mb-2">
+        LG Magic Remote (Reemplazo con Puntero en Pantalla)
+      </h2>
+
+      <div class="flex flex-wrap items-baseline gap-3 mb-3">
+        <span class="text-2xl sm:text-3xl font-black text-emerald-400">
+          {preciosData['control-remoto-lg-magic'].precioFormateado}
+        </span>
+        <span class="text-xs px-2.5 py-1 rounded-md bg-emerald-950/60 border border-emerald-500/40 text-emerald-300 font-semibold">
+          ⚡ Emparejamiento en 5 Segundos
+        </span>
+      </div>
+
+      <div class="space-y-1.5 text-xs sm:text-sm text-slate-200 mb-4 bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
+        <div class="flex items-start gap-2">
+          <span class="text-amber-400 font-bold shrink-0">🚀 Mantiene el Puntero:</span>
+          <span>Conserva la rueda de desplazamiento y el cursor estilo mouse para navegar rápido en webOS.</span>
+        </div>
+        <div class="flex items-start gap-2">
+          <span class="text-emerald-400 font-bold shrink-0">🇨🇱 Compatible LG Chile:</span>
+          <span>Funciona en Smart TVs LG NanoCell, OLED y UHD 4K desde 2018 hasta 2026.</span>
+        </div>
+        <div class="flex items-start gap-2">
+          <span class="text-sky-400 font-bold shrink-0">💰 Ahorro del 60%:</span>
+          <span>Mismo rendimiento táctil por un tercio de lo que cobra el servicio técnico oficial.</span>
+        </div>
+      </div>
+
+      <div>
+        <a 
+          href={afiliadosData['control-remoto-lg-magic'].url} 
+          target="_blank" 
+          rel="nofollow sponsored noopener noreferrer"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-black text-sm uppercase tracking-wider shadow-xl shadow-yellow-500/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0 text-center"
+        >
+          <span>👉 Ver Precio y Comprar en Mercado Libre</span>
+          <span class="text-xs font-extrabold bg-slate-950/20 px-2 py-0.5 rounded">Envío Full</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  {/* Selector Rápido de Marca */}
+  <div class="mt-8 pt-6 border-t border-slate-800">
+    <div class="flex items-center gap-2 mb-4">
+      <span class="text-xl">🎯</span>
+      <h3 class="text-sm sm:text-base font-extrabold text-white uppercase tracking-wide m-0">
+        Elige el control según tu marca o aparato:
+      </h3>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+      <div class="p-4 rounded-2xl bg-slate-900/90 border border-emerald-500/30 flex flex-col justify-between">
+        <div>
+          <div class="inline-block text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 mb-2">
+            📺 Smart TV LG
+          </div>
+          <h4 class="text-sm font-bold text-white mb-1">LG Magic Remote</h4>
+          <p class="text-xs text-slate-300 mb-3">Con giroscopio de puntero y comandos de voz ThinQ.</p>
+        </div>
+        <a href={afiliadosData['control-remoto-lg-magic'].url} target="_blank" rel="nofollow sponsored" class="text-xs font-bold text-emerald-400 hover:text-emerald-300">Comprar en Mercado Libre →</a>
+      </div>
+
+      <div class="p-4 rounded-2xl bg-slate-900/90 border border-amber-500/30 flex flex-col justify-between">
+        <div>
+          <div class="inline-block text-[11px] font-bold px-2 py-0.5 rounded bg-amber-950 text-amber-300 mb-2">
+            ☀️ Smart TV Samsung
+          </div>
+          <h4 class="text-sm font-bold text-white mb-1">Samsung SolarCell</h4>
+          <p class="text-xs text-slate-300 mb-3">Carga solar y USB-C: olvídate para siempre de las pilas.</p>
+        </div>
+        <a href={afiliadosData['control-remoto-samsung-solar'].url} target="_blank" rel="nofollow sponsored" class="text-xs font-bold text-amber-400 hover:text-amber-300">Ver Control Samsung →</a>
+      </div>
+
+      <div class="p-4 rounded-2xl bg-slate-900/90 border border-sky-500/30 flex flex-col justify-between">
+        <div>
+          <div class="inline-block text-[11px] font-bold px-2 py-0.5 rounded bg-sky-950 text-sky-300 mb-2">
+            🎯 TV Box y Android
+          </div>
+          <h4 class="text-sm font-bold text-white mb-1">Air Mouse G20S Pro</h4>
+          <p class="text-xs text-slate-300 mb-3">Mueve el puntero agitando la mano en el aire con USB plug & play.</p>
+        </div>
+        <a href={afiliadosData['control-air-mouse-g20s'].url} target="_blank" rel="nofollow sponsored" class="text-xs font-bold text-sky-400 hover:text-sky-300">Ver Air Mouse G20S →</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 Pocas cosas causan tanta frustración en el living como prender la tele y darse cuenta de que **el control remoto no responde, los botones de Netflix se hundieron, se derramó jugo encima o la mascota lo mordió**.
-
-Comprar un reemplazo en el retail tradicional chileno suele ser una pesadilla: en las grandes tiendas casi nunca tienen repuestos originales en vitrina o te intentan cobrar más de $50.000 CLP. En cambio, en **Mercado Libre Full** existen alternativas directas que funcionan de inmediato por una fracción del costo y llegan al día siguiente a tu puerta.
-
-En esta guía te explicamos cómo elegir el reemplazo exacto según la marca de tu televisor (**LG, Samsung, TCL, Hisense**) y cuáles son los mejores **Air Mouse universales** para navegar en TV Box Android sin volverte loco con la cruceta de flechas.
-
-<div class="my-8 p-6 rounded-2xl bg-gradient-to-br from-slate-900 via-surface-card to-indigo-950/30 border-2 border-brand-500/40 shadow-xl">
-  <div class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-brand-400 mb-2">
-    <span>🤖</span>
-    <span>Veredicto Rápido de Compra (30 Segundos)</span>
-  </div>
-  <p class="text-slate-200 text-sm sm:text-base leading-relaxed m-0">
-    <strong>¿Cuál control comprar si se dañó el tuyo?</strong>
-    Si tienes un <strong>Smart TV LG (NanoCell, OLED, UHD 4K)</strong>, compra el reemplazo del <strong>LG Magic Remote (MR20/MR21/MR22/MR24)</strong>: mantiene el puntero estilo mouse en pantalla y el micrófono para comandos de voz. Si tienes <strong>Samsung</strong>, el reemplazo del <strong>SolarCell / Smart Remote</strong> con carga USB-C elimina las pilas para siempre. Y si tienes un <strong>TV Box Android chino</strong> cuyo control venía lento o duro, el <strong>Air Mouse G20S Pro con giroscopio</strong> es la mejor actualización del mundo: mueves el puntero agitando la mano en el aire.
-  </p>
-</div>
 
 ---
 

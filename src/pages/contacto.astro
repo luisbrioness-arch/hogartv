@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import sitioData from '../data/sitio.json';
 
 const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL || sitioData.emailContacto;
-const { horarioAtencion, tiempoRespuesta, ubicacion } = sitioData;
+const { horarioAtencion, tiempoRespuesta, ubicacion, telefonoContacto, direccionFisica } = sitioData;
 
 const contactSchema = {
   '@context': 'https://schema.org',
@@ -65,6 +65,15 @@ const contactSchema = {
             </a>
           </div>
 
+          {telefonoContacto && (
+            <div class="border-t border-slate-800 pt-4">
+              <span class="text-[11px] uppercase tracking-wider font-bold text-brand-400 block mb-1">Teléfono / WhatsApp Soporte</span>
+              <a href={`tel:${telefonoContacto.replace(/\s+/g, '')}`} class="text-sm font-semibold text-emerald-400 hover:text-emerald-300 transition-colors">
+                {telefonoContacto}
+              </a>
+            </div>
+          )}
+
           <div class="border-t border-slate-800 pt-4">
             <span class="text-[11px] uppercase tracking-wider font-bold text-brand-400 block mb-1">Horario de Atención</span>
             <p class="text-xs text-slate-300 leading-relaxed">
@@ -80,9 +89,9 @@ const contactSchema = {
           </div>
 
           <div class="border-t border-slate-800 pt-4">
-            <span class="text-[11px] uppercase tracking-wider font-bold text-brand-400 block mb-1">Ubicación</span>
+            <span class="text-[11px] uppercase tracking-wider font-bold text-brand-400 block mb-1">Oficina y Taller Técnico</span>
             <p class="text-xs text-slate-300 leading-relaxed">
-              {ubicacion} 🇨🇱
+              {direccionFisica || ubicacion} 🇨🇱
             </p>
           </div>
         </div>

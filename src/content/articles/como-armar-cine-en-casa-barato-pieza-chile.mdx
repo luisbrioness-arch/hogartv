@@ -15,22 +15,86 @@ import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQSection from '../../components/FAQSection.astro';
 import AdSlot from '../../components/AdSlot.astro';
 import CtaBanner from '../../components/CtaBanner.astro';
+import { Image } from 'astro:assets';
+import proyectorImg from '../../assets/accesorios/proyector-magcubic-hy320.webp';
+import preciosData from '../../data/precios.json';
+import afiliadosData from '../../data/afiliados.json';
+
+<div class="my-4 p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-slate-900 via-slate-900 to-amber-950/30 border-2 border-amber-500/50 shadow-2xl not-prose">
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-3 pb-2.5 border-b border-slate-800">
+    <div class="flex items-center gap-2">
+      <span class="px-2.5 py-1 rounded-md bg-amber-500 text-slate-950 text-[11px] font-black uppercase tracking-wider">🍿 LA PICADA DE CINE EN CASA</span>
+      <span class="text-xs font-bold text-amber-300">Pantalla de 100" en tu Pieza</span>
+    </div>
+    <span class="text-[11px] text-emerald-400 font-semibold">✓ Sin taladrar · Proyecta en pared o techo</span>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+    <div class="md:col-span-3 flex justify-center">
+      <a href={afiliadosData['proyector-magcubic-hy320'].url} target="_blank" rel="nofollow sponsored noopener noreferrer" class="block bg-white p-3 rounded-2xl shadow-lg hover:scale-105 transition-transform">
+        <Image src={proyectorImg} alt="Mini Proyector Magcubic HY320 Full HD 1080p" class="w-28 h-28 sm:w-32 sm:h-32 object-contain" />
+      </a>
+    </div>
+
+    <div class="md:col-span-5">
+      <p class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-0.5">Pieza #1 del Combo · El Más Vendido en Chile</p>
+      <h2 class="text-lg sm:text-xl font-extrabold text-white leading-tight mb-1.5">
+        Mini Proyector Magcubic HY320 Full HD 1080p (390 ANSI)
+      </h2>
+      <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-2">
+        Olvídate de gastar $500.000 en una tele gigante. Con el <strong>Magcubic HY320</strong> en tu velador tienes <strong>100 pulgadas nativas en 1080p</strong>, giro en 180° hacia el techo, WiFi 6 y Bluetooth 5.0 para parlantes.
+      </p>
+      <div class="flex flex-wrap gap-1.5 text-[11px]">
+        <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-200 border border-slate-700">1080p Nativo Real</span>
+        <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-200 border border-slate-700">Giro 180° Techo</span>
+        <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-200 border border-slate-700">Auto Keystone</span>
+      </div>
+    </div>
+
+    <div class="md:col-span-4 flex flex-col gap-2 bg-slate-950/80 p-3.5 rounded-xl border border-slate-800/90">
+      <div class="flex items-baseline justify-between">
+        <span class="text-[11px] text-slate-400 font-medium">M. Libre (24-48h):</span>
+        <span class="text-xl font-black text-emerald-400 font-mono">{preciosData['proyector-magcubic-hy320'].precioFormateado}</span>
+      </div>
+      <a
+        href={afiliadosData['proyector-magcubic-hy320'].url}
+        target="_blank"
+        rel="nofollow sponsored noopener noreferrer"
+        class="w-full py-2.5 px-4 rounded-xl bg-[#FFE600] hover:bg-[#f5dc00] text-slate-950 font-black text-center text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-1.5"
+      >
+        <span>Ver Oferta en Mercado Libre</span>
+        <span>→</span>
+      </a>
+      <a
+        href={afiliadosData['proyector-magcubic-aliexpress'].url}
+        target="_blank"
+        rel="nofollow sponsored noopener noreferrer"
+        class="w-full py-1.5 px-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-center text-xs transition-colors"
+      >
+        Ver en AliExpress Choice ({preciosData['proyector-magcubic-hy320'].precioMinVisto}) →
+      </a>
+    </div>
+  </div>
+
+  <div class="mt-3 pt-3 border-t border-slate-800/80 grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+    <a href="#paso-1-la-pantalla-de-100-pulgadas-mini-proyector-magcubic-hy320" class="flex items-center justify-between p-2 rounded-lg bg-slate-950/60 hover:bg-slate-800/80 border border-slate-800 transition-colors">
+      <span>🎬 <strong>1. Proyector 100":</strong> Magcubic HY320</span>
+      <span class="text-amber-400 font-bold">{preciosData['proyector-magcubic-hy320'].precioFormateado}</span>
+    </a>
+    <a href="#paso-2-iluminacion-de-cine-sin-fatiga-visual-luces-led-ambilight" class="flex items-center justify-between p-2 rounded-lg bg-slate-950/60 hover:bg-slate-800/80 border border-slate-800 transition-colors">
+      <span>🌈 <strong>2. Luz de Cine:</strong> Tira LED Ambilight</span>
+      <span class="text-emerald-400 font-bold">{preciosData['luces-led-tv-ambilight'].precioFormateado}</span>
+    </a>
+    <a href="#paso-3-velocidad-instantanea-y-canales-chilenos-el-truco-del-hdmi" class="flex items-center justify-between p-2 rounded-lg bg-slate-950/60 hover:bg-slate-800/80 border border-slate-800 transition-colors">
+      <span>🚀 <strong>3. Fluidez Total:</strong> TV Box 4K por HDMI</span>
+      <span class="text-sky-400 font-bold">{preciosData['xiaomi-tv-box-s-4k'].precioFormateado}</span>
+    </a>
+  </div>
+</div>
 
 Si alguna vez soñaste con tener una **pantalla gigante de 100 o 120 pulgadas en tu dormitorio** para ver películas acostado, maratonear series en Netflix o ver los partidos de fútbol el fin de semana, hasta hace poco la única opción en Chile era desembolsar más de **$500.000 a $700.000 CLP** en un televisor de gran formato, además de perforar el muro con un soporte pesado.
 
-Hoy existe una **"picada" tecnológica** que se ha vuelto viral en departamentos y dormitorios de todo Chile: **combinar un mini proyector portátil Full HD de tiro flexible con iluminación ambiental y un reproductor dedicado**. Por una fracción de lo que cuesta una tele básica de 32 pulgadas, transformas cualquier pared blanca o el techo de tu pieza en una verdadera sala de cine privada.
-
-En esta guía práctica te mostramos **el presupuesto exacto pieza por pieza**, cómo conectarlos entre sí sin enredos de cables y dónde comprarlos al mejor precio en Chile.
-
-<div class="my-8 p-6 rounded-2xl bg-gradient-to-br from-slate-900 via-surface-card to-indigo-950/30 border-2 border-brand-500/40 shadow-xl not-prose">
-  <div class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-amber-400 mb-2">
-    <span>🍿</span>
-    <span>El Presupuesto de la Picada (Resumen en 30 Segundos)</span>
-  </div>
-  <p class="text-slate-200 text-sm sm:text-base leading-relaxed m-0">
-    Con solo <strong>$72.980 CLP</strong> (comprando el <strong>Magcubic HY320 Full HD</strong> + <strong>Kit de Luces LED Ambilight</strong>) ya tienes un cine de 100 pulgadas con iluminación ambiental funcionando hoy mismo. Y si le sumas un <strong>Roku Express 4K ($44.990)</strong> al puerto HDMI del proyector, quedas en <strong>$117.970 CLP en total</strong> con una fluidez de sistema superior a televisores de medio millón de pesos.
-  </p>
-</div>
+Hoy existe una **"picada" tecnológica** que se ha vuelto viral en departamentos y dormitorios de todo Chile: **combinar un mini proyector portátil Full HD de tiro flexible con iluminación ambiental y un reproductor dedicado**. En esta guía práctica te mostramos **el presupuesto exacto pieza por pieza**, cómo conectarlos entre sí sin enredos de cables y dónde comprarlos al mejor precio en Chile.
 
 ---
 

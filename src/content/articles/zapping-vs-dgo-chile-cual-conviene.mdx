@@ -15,12 +15,84 @@ import FAQSection from '../../components/FAQSection.astro';
 import AdSlot from '../../components/AdSlot.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import CtaBanner from '../../components/CtaBanner.astro';
+import { Image } from 'astro:assets';
+import rokuImg from '../../assets/products/roku-express-4k.webp';
+import preciosData from '../../data/precios.json';
+import afiliadosData from '../../data/afiliados.json';
+
+<div class="my-4 p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-slate-900 via-slate-900 to-amber-950/30 border-2 border-amber-500/50 shadow-2xl not-prose">
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-3 pb-2.5 border-b border-slate-800">
+    <div class="flex items-center gap-2">
+      <span class="px-2.5 py-1 rounded-md bg-amber-500 text-slate-950 text-[11px] font-black uppercase tracking-wider">⚡ VEREDICTO EN 5 SEGUNDOS</span>
+      <span class="text-xs font-bold text-amber-300">Zapping TV vs DGO en Chile (2026)</span>
+    </div>
+    <span class="text-[11px] text-emerald-400 font-semibold">✓ Sin contratos ni decodificadores</span>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+    <div class="md:col-span-7 space-y-2.5">
+      <div class="p-3 rounded-xl bg-slate-950/80 border border-emerald-500/30">
+        <div class="flex items-center justify-between mb-1">
+          <span class="text-xs font-black uppercase tracking-wider text-emerald-400">🥇 Ganador en Rapidez y Fútbol Chileno: ZAPPING TV</span>
+          <span class="text-xs font-mono font-bold text-slate-300">Desde $4.900/mes</span>
+        </div>
+        <p class="text-xs text-slate-300 leading-relaxed m-0">
+          Cambio de canal instantáneo, <strong>Modo Turbo (solo 8 seg de delay)</strong> para que los vecinos no te griten los goles antes y hasta <strong>5 pantallas en tu casa</strong>.
+        </p>
+      </div>
+      <div class="p-3 rounded-xl bg-slate-950/80 border border-sky-500/30">
+        <div class="flex items-center justify-between mb-1">
+          <span class="text-xs font-black uppercase tracking-wider text-sky-400">🌎 Ganador en Copa Sudamericana y Movilidad: DGO</span>
+          <span class="text-xs font-mono font-bold text-slate-300">Desde $17.990/mes</span>
+        </div>
+        <p class="text-xs text-slate-300 leading-relaxed m-0">
+          Único con señales exclusivas <strong>DSPORTS</strong> (Copa Sudamericana y ligas europeas) y permite usar <strong>2 pantallas en distintas casas o redes WiFi</strong>.
+        </p>
+      </div>
+    </div>
+
+    <div class="md:col-span-5 flex flex-col gap-2 bg-slate-950/90 p-3.5 rounded-xl border border-slate-800">
+      <div class="flex items-center gap-3">
+        <a href={afiliadosData['roku-express-4k'].url} target="_blank" rel="nofollow sponsored noopener noreferrer" class="shrink-0 bg-white p-2 rounded-xl shadow">
+          <Image src={rokuImg} alt="Roku Express para Zapping y DGO" class="w-14 h-14 object-contain" />
+        </a>
+        <div>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-amber-400 block">¿Tu tele es lenta o no tiene la App?</span>
+          <h3 class="text-xs sm:text-sm font-extrabold text-white leading-tight">Roku Express HD / 4K Oficial</h3>
+          <span class="text-sm font-black text-emerald-400 font-mono">{preciosData['roku-express-4k'].precioFormateado}</span>
+        </div>
+      </div>
+      <a
+        href={afiliadosData['roku-express-4k'].url}
+        target="_blank"
+        rel="nofollow sponsored noopener noreferrer"
+        class="w-full py-2 px-3 rounded-xl bg-[#FFE600] hover:bg-[#f5dc00] text-slate-950 font-black text-center text-xs shadow transition-all flex items-center justify-center gap-1"
+      >
+        <span>Ver Roku Recomendado en M. Libre</span>
+        <span>→</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="mt-3 pt-3 border-t border-slate-800/80 grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+    <a href="#1-zapping-tv-innovacion-tecnica-nacional-y-cero-spoilers" class="flex items-center justify-between p-2 rounded-lg bg-slate-950/60 hover:bg-slate-800/80 border border-slate-800 transition-colors">
+      <span>⚡ <strong>Análisis Zapping TV:</strong> Modo Turbo</span>
+      <span class="text-emerald-400 font-bold">Ver pros →</span>
+    </a>
+    <a href="#2-dgo-la-cobertura-deportiva-internacional-de-directv" class="flex items-center justify-between p-2 rounded-lg bg-slate-950/60 hover:bg-slate-800/80 border border-slate-800 transition-colors">
+      <span>⚽ <strong>Análisis DGO:</strong> Exclusivos DSPORTS</span>
+      <span class="text-sky-400 font-bold">Ver pros →</span>
+    </a>
+    <a href="#en-que-dispositivos-ver-zapping-o-dgo" class="flex items-center justify-between p-2 rounded-lg bg-slate-950/60 hover:bg-slate-800/80 border border-slate-800 transition-colors">
+      <span>📺 <strong>Equipos Compatibles:</strong> Roku vs Google TV</span>
+      <span class="text-amber-400 font-bold">Ver equipos →</span>
+    </a>
+  </div>
+</div>
 
 En Chile, el modelo tradicional de televisión de pago —con cables coaxiales atravesando el techo, visitas técnicas engorrosas y arriendos mensuales por cada decodificador adicional— ha quedado prácticamente obsoleto. Hoy, la forma más cómoda y económica de ver televisión en vivo es a través de servicios de **IPTV legal y streaming por internet**.
 
-En el mercado chileno, dos plataformas lideran ampliamente esta transición: **Zapping TV** y **DGO (DirecTV GO)**. Ambas permiten reemplazar por completo la suscripción de cable tradicional en tu [Smart TV](/smart-tv/mejores-smart-tv-calidad-precio-chile/) o mediante un [dispositivo de streaming como Roku o Chromecast](/accesorios/roku-vs-chromecast-chile-cual-conviene/), sin contratos de permanencia ni instalaciones físicas.
-
-Sin embargo, cada servicio tiene un enfoque técnico y un catálogo de contenidos muy diferente. En esta comparativa enfrentamos a **Zapping frente a DGO** punto por punto para que elijas la opción que mejor se adapte a tu hogar y presupuesto.
+En el mercado chileno, dos plataformas lideran ampliamente esta transición: **Zapping TV** y **DGO (DirecTV GO)**. Ambas permiten reemplazar por completo la suscripción de cable tradicional en tu [Smart TV](/smart-tv/mejores-smart-tv-calidad-precio-chile/) o mediante un [dispositivo de streaming como Roku o Chromecast](/accesorios/roku-vs-chromecast-chile-cual-conviene/), sin contratos de permanencia ni instalaciones físicas. En esta comparativa enfrentamos a **Zapping frente a DGO** punto por punto.
 
 ---
 

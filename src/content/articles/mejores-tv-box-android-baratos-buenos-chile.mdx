@@ -15,22 +15,86 @@ import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQSection from '../../components/FAQSection.astro';
 import AdSlot from '../../components/AdSlot.astro';
 import CtaBanner from '../../components/CtaBanner.astro';
+import { Image } from 'astro:assets';
+import onnImg from '../../assets/products/onn-google-tv-4k.webp';
+import preciosData from '../../data/precios.json';
+import afiliadosData from '../../data/afiliados.json';
+
+<div class="my-4 p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-slate-900 via-slate-900 to-amber-950/30 border-2 border-amber-500/50 shadow-2xl not-prose">
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-3 pb-2.5 border-b border-slate-800">
+    <div class="flex items-center gap-2">
+      <span class="px-2.5 py-1 rounded-md bg-amber-500 text-slate-950 text-[11px] font-black uppercase tracking-wider">🏆 MEJOR TV BOX BARATO 2026</span>
+      <span class="text-xs font-bold text-amber-300">Veredicto Rápido Chile</span>
+    </div>
+    <span class="text-[11px] text-emerald-400 font-semibold">✓ Certificado Google & Netflix 4K</span>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+    <div class="md:col-span-3 flex justify-center">
+      <a href={afiliadosData['onn-google-tv-4k'].url} target="_blank" rel="nofollow sponsored noopener noreferrer" class="block bg-white p-3 rounded-2xl shadow-lg hover:scale-105 transition-transform">
+        <Image src={onnImg} alt="Onn Google TV 4K Streaming Box" class="w-28 h-28 sm:w-32 sm:h-32 object-contain" />
+      </a>
+    </div>
+
+    <div class="md:col-span-5">
+      <p class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-0.5">El Matagigantes Calidad-Precio</p>
+      <h2 class="text-lg sm:text-xl font-extrabold text-white leading-tight mb-1.5">
+        Onn. Google TV 4K con Control por Voz
+      </h2>
+      <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-2">
+        Rinde igual que un Xiaomi TV Box S pero cuesta casi la mitad. Tiene <strong>licencia oficial Widevine L1</strong> para ver <strong>Netflix, Zapping, DGO, Disney+ y Max en 4K real</strong> sin bloqueos.
+      </p>
+      <div class="flex flex-wrap gap-1.5 text-[11px]">
+        <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-200 border border-slate-700">Google TV Oficial</span>
+        <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-200 border border-slate-700">Netflix 4K L1</span>
+        <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-200 border border-slate-700">Control por Voz</span>
+      </div>
+    </div>
+
+    <div class="md:col-span-4 flex flex-col gap-2 bg-slate-950/80 p-3.5 rounded-xl border border-slate-800/90">
+      <div class="flex items-baseline justify-between">
+        <span class="text-[11px] text-slate-400 font-medium">Oferta Directa:</span>
+        <span class="text-xl font-black text-emerald-400 font-mono">{preciosData['onn-google-tv-4k'].precioFormateado}</span>
+      </div>
+      <a
+        href={afiliadosData['onn-google-tv-4k'].url}
+        target="_blank"
+        rel="nofollow sponsored noopener noreferrer"
+        class="w-full py-2.5 px-4 rounded-xl bg-[#FFE600] hover:bg-[#f5dc00] text-slate-950 font-black text-center text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-1.5"
+      >
+        <span>Ver Oferta Onn 4K Ahora</span>
+        <span>→</span>
+      </a>
+      <a
+        href={afiliadosData['tv-box-android-economico'].url}
+        target="_blank"
+        rel="nofollow sponsored noopener noreferrer"
+        class="w-full py-1.5 px-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-center text-xs transition-colors"
+      >
+        Opción con USB en M. Libre ({preciosData['tv-box-android-economico'].precioFormateado}) →
+      </a>
+    </div>
+  </div>
+
+  <div class="mt-3 pt-3 border-t border-slate-800/80 grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+    <a href="#1-onn-google-tv-4k-la-mejor-alternativa-economica-a-xiaomi" class="flex items-center justify-between p-2 rounded-lg bg-slate-950/60 hover:bg-slate-800/80 border border-slate-800 transition-colors">
+      <span>🥇 <strong>Para Netflix y Zapping:</strong> Onn 4K</span>
+      <span class="text-amber-400 font-bold">{preciosData['onn-google-tv-4k'].precioFormateado}</span>
+    </a>
+    <a href="#2-tv-box-android-4k-economico-con-puertos-usb-para-peliculas-y-televisores-antiguos" class="flex items-center justify-between p-2 rounded-lg bg-slate-950/60 hover:bg-slate-800/80 border border-slate-800 transition-colors">
+      <span>💾 <strong>Para Pendrives / USB:</strong> Box Android</span>
+      <span class="text-emerald-400 font-bold">{preciosData['tv-box-android-economico'].precioFormateado}</span>
+    </a>
+    <a href="#3-xiaomi-tv-box-s-2nd-gen-4k-el-referente-si-puedes-invertir-mas" class="flex items-center justify-between p-2 rounded-lg bg-slate-950/60 hover:bg-slate-800/80 border border-slate-800 transition-colors">
+      <span>⭐ <strong>Máxima Potencia + USB:</strong> Xiaomi 4K</span>
+      <span class="text-sky-400 font-bold">{preciosData['xiaomi-tv-box-s-4k'].precioFormateado}</span>
+    </a>
+  </div>
+</div>
 
 Si tienes en el living, el dormitorio o la cocina un televisor cuya pantalla todavía se ve nítida y brillante, pero **su sistema inteligente ya no abre YouTube, no permite instalar [Zapping ni DGO](/streaming/zapping-vs-dgo-chile-cual-conviene/) o simplemente se volvió insoportablemente lento**, no cometas el error de endeudarte en un televisor nuevo de $300.000 CLP.
 
-El [Xiaomi TV Box S (2nd Gen)](/accesorios/como-convertir-televisor-antiguo-en-smart-tv-chile/) es excelente y es el equipo más vendido de su categoría, pero su precio bordea los **$52.990 a $65.000 CLP**. Si tu presupuesto es más ajustado o buscas equipar un segundo televisor en la pieza de los niños sin gastar un dineral, **hoy existen alternativas Android y Google TV desde solo $19.990 a $34.990 CLP que rinden de forma sobresaliente**.
-
-En esta guía técnica analizamos **cuáles son los TV Box Android más económicos y recomendables en Chile**, qué trampas debes evitar con las cajas chinas genéricas sin certificación y cuál te conviene según tus aplicaciones de streaming favoritas.
-
-<div class="my-8 p-6 rounded-2xl bg-gradient-to-br from-slate-900 via-surface-card to-emerald-950/30 border-2 border-emerald-500/40 shadow-xl not-prose">
-  <div class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-emerald-400 mb-2">
-    <span>💡</span>
-    <span>Veredicto Técnico Rápido: ¿Cuál Comprar Según tu Bolsillo?</span>
-  </div>
-  <p class="text-slate-200 text-sm sm:text-base leading-relaxed m-0">
-    Si buscas un <strong>TV Box Android barato</strong> para ver <strong>Netflix, Disney+, Max y Zapping en alta definición con control por voz</strong> sin pagar lo que cuesta un Xiaomi, el mejor equipo calidad-precio indiscutible en Chile es el <strong>Onn. Google TV 4K</strong> (aprox. $34.990 CLP): cuenta con certificación oficial de Google y Netflix, por lo que nunca se te bloqueará. Si tu prioridad es <strong>gastar lo mínimo posible (menos de $23.000 CLP) y conectar pendrives con películas o cables de red</strong>, la <strong>TV Box Android con puertos USB</strong> es la opción ganadora.
-  </p>
-</div>
+El [Xiaomi TV Box S (2nd Gen)](/accesorios/como-convertir-televisor-antiguo-en-smart-tv-chile/) es excelente, pero su precio bordea los **$52.990 a $65.000 CLP**. Si tu presupuesto es más ajustado, **hoy existen alternativas Android y Google TV desde solo $19.990 a $34.990 CLP que rinden de forma sobresaliente**. En esta guía analizamos qué trampas debes evitar con las cajas genéricas sin certificación y cuál te conviene según tu televisor.
 
 <div class="my-6 p-4 rounded-xl bg-slate-900/90 border border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 not-prose shadow-lg">
   <div class="flex items-center gap-3">

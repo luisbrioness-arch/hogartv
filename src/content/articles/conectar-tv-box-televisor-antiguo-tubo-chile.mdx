@@ -15,22 +15,86 @@ import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQSection from '../../components/FAQSection.astro';
 import AdSlot from '../../components/AdSlot.astro';
 import CtaBanner from '../../components/CtaBanner.astro';
+import { Image } from 'astro:assets';
+import conversorImg from '../../assets/products/conversor-hdmi-rca.webp';
+import preciosData from '../../data/precios.json';
+import afiliadosData from '../../data/afiliados.json';
+
+<div class="my-4 p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-slate-900 via-slate-900 to-amber-950/30 border-2 border-amber-500/50 shadow-2xl not-prose">
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-3 pb-2.5 border-b border-slate-800">
+    <div class="flex items-center gap-2">
+      <span class="px-2.5 py-1 rounded-md bg-amber-500 text-slate-950 text-[11px] font-black uppercase tracking-wider">⚡ SOLUCIÓN EN 5 SEGUNDOS</span>
+      <span class="text-xs font-bold text-amber-300">Para Teles de Tubo o sin HDMI</span>
+    </div>
+    <span class="text-[11px] text-emerald-400 font-semibold">✓ Funciona en cualquier TV antigua</span>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+    <div class="md:col-span-3 flex justify-center">
+      <a href={afiliadosData['conversor-hdmi-rca'].url} target="_blank" rel="nofollow sponsored noopener noreferrer" class="block bg-white p-3 rounded-2xl shadow-lg hover:scale-105 transition-transform">
+        <Image src={conversorImg} alt="Conversor HDMI a RCA para Televisor Antiguo" class="w-28 h-28 sm:w-32 sm:h-32 object-contain" />
+      </a>
+    </div>
+
+    <div class="md:col-span-5">
+      <p class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-0.5">El Accesorio Clave + TV Box</p>
+      <h2 class="text-lg sm:text-xl font-extrabold text-white leading-tight mb-1.5">
+        Conversor Activo HDMI a RCA (Amarillo, Blanco y Rojo)
+      </h2>
+      <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-2">
+        Si tu tele es de tubo ("de cajón") y no tiene puerto HDMI, <strong>solo necesitas esta cajita conversora en norma NTSC</strong> entre tu TV Box y los cables de 3 colores.
+      </p>
+      <div class="flex flex-wrap gap-1.5 text-[11px]">
+        <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-200 border border-slate-700">Selector NTSC Chile</span>
+        <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-200 border border-slate-700">Audio + Video Color</span>
+        <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-200 border border-slate-700">USB Incluido</span>
+      </div>
+    </div>
+
+    <div class="md:col-span-4 flex flex-col gap-2 bg-slate-950/80 p-3.5 rounded-xl border border-slate-800/90">
+      <div class="flex items-baseline justify-between">
+        <span class="text-[11px] text-slate-400 font-medium">Conversor en M. Libre:</span>
+        <span class="text-xl font-black text-emerald-400 font-mono">{preciosData['conversor-hdmi-rca'].precioFormateado}</span>
+      </div>
+      <a
+        href={afiliadosData['conversor-hdmi-rca'].url}
+        target="_blank"
+        rel="nofollow sponsored noopener noreferrer"
+        class="w-full py-2.5 px-4 rounded-xl bg-[#FFE600] hover:bg-[#f5dc00] text-slate-950 font-black text-center text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-1.5"
+      >
+        <span>Ver Conversor RCA en M. Libre</span>
+        <span>→</span>
+      </a>
+      <a
+        href={afiliadosData['tv-box-android-economico'].url}
+        target="_blank"
+        rel="nofollow sponsored noopener noreferrer"
+        class="w-full py-1.5 px-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-center text-xs transition-colors"
+      >
+        Ver TV Box Barato ({preciosData['tv-box-android-economico'].precioFormateado}) →
+      </a>
+    </div>
+  </div>
+
+  <div class="mt-3 pt-3 border-t border-slate-800/80 grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+    <a href="#1-conversor-adaptador-de-hdmi-a-rca-para-teles-sin-hdmi" class="flex items-center justify-between p-2 rounded-lg bg-slate-950/60 hover:bg-slate-800/80 border border-slate-800 transition-colors">
+      <span>📺 <strong>Tele de Tubo (RCA):</strong> Conversor + Caja</span>
+      <span class="text-amber-400 font-bold">{preciosData['conversor-hdmi-rca'].precioFormateado}</span>
+    </a>
+    <a href="#2-tv-box-android-economico-ideal-para-poco-presupuesto" class="flex items-center justify-between p-2 rounded-lg bg-slate-950/60 hover:bg-slate-800/80 border border-slate-800 transition-colors">
+      <span>💰 <strong>TV Box con USB:</strong> La más barata</span>
+      <span class="text-emerald-400 font-bold">{preciosData['tv-box-android-economico'].precioFormateado}</span>
+    </a>
+    <a href="#3-onn-google-tv-4k-si-tu-tele-tiene-hdmi-y-quieres-control-por-voz" class="flex items-center justify-between p-2 rounded-lg bg-slate-950/60 hover:bg-slate-800/80 border border-slate-800 transition-colors">
+      <span>🎙️ <strong>Tele con HDMI:</strong> Onn Google TV Voz</span>
+      <span class="text-sky-400 font-bold">{preciosData['onn-google-tv-4k'].precioFormateado}</span>
+    </a>
+  </div>
+</div>
 
 ¿Tienes en tu casa un televisor antiguo que todavía funciona bien, pero no tiene internet ni aplicaciones? Ya sea una pantalla plana LCD de las primeras generaciones o un clásico televisor "de tubo" o "de cajón" (CRT) con cables de colores, **no necesitas botarlo ni gastarte $250.000 CLP en una tele nueva**.
 
-Conectando un **TV Box Android económico** puedes transformar cualquier pantalla en un Smart TV moderno en menos de 10 minutos. Podrás ver **YouTube, noticias chilenas en vivo, fútbol, películas y señales abiertas** sin enredos técnicos.
-
-En esta guía práctica te explicamos **el paso a paso exacto para conectar e instalar todo en casa**, tanto si tu televisor tiene entrada HDMI como si solo tiene los típicos conectores redondos de colores (RCA).
-
-<div class="my-8 p-6 rounded-2xl bg-gradient-to-br from-slate-900 via-surface-card to-emerald-950/30 border-2 border-emerald-500/40 shadow-xl not-prose">
-  <div class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-emerald-400 mb-2">
-    <span>💡</span>
-    <span>¿Aún no compras tu equipo?</span>
-  </div>
-  <p class="text-slate-200 text-sm sm:text-base leading-relaxed m-0">
-    Si todavía estás buscando qué reproductor comprar al mejor precio en Chile, revisa primero nuestra guía comparativa: <a href="/accesorios/mejores-tv-box-android-baratos-buenos-chile/" class="text-emerald-400 underline font-bold hover:text-emerald-300">Ranking de los Mejores TV Box Android Baratos y Buenos en Chile (desde $19.990 CLP)</a>.
-  </p>
-</div>
+Conectando un **TV Box Android económico** puedes transformar cualquier pantalla en un Smart TV moderno en menos de 10 minutos. Podrás ver **YouTube, noticias chilenas en vivo, fútbol, películas y señales abiertas** sin enredos técnicos. En esta guía práctica te explicamos **el paso a paso exacto para conectar e instalar todo en casa**, o si aún no eliges reproductor, revisa nuestro [ranking de los mejores TV Box Android baratos y buenos en Chile](/accesorios/mejores-tv-box-android-baratos-buenos-chile/).
 
 ---
 

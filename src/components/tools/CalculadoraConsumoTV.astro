@@ -1,0 +1,197 @@
+---
+---
+
+<section
+  id="calculadora-consumo-tv"
+  class="my-8 p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-slate-900 via-slate-950 to-emerald-950/40 border-2 border-emerald-500/40 shadow-2xl not-prose"
+  aria-label="Calculadora de Consumo Eléctrico de Smart TV en Pesos Chilenos"
+>
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-slate-800">
+    <div class="flex items-center gap-2.5">
+      <span class="px-2.5 py-1 rounded-md bg-emerald-500 text-slate-950 text-[11px] font-black uppercase tracking-wider">
+        ⚡ CALCULADORA DE LUZ CHILE (2026)
+      </span>
+      <h3 class="text-base sm:text-lg font-extrabold text-white m-0">
+        ¿Cuánto Paga tu Smart TV en la Boleta de Enel / CGE al Mes?
+      </h3>
+    </div>
+    <span class="text-xs text-slate-400 font-medium">Tarifa residencial actualizada en CLP/kWh</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+    <!-- Controles -->
+    <div class="lg:col-span-6 space-y-4 bg-slate-900/70 p-4 rounded-xl border border-slate-800">
+      <div>
+        <label for="pwr-tv-type" class="block text-xs sm:text-sm font-bold text-slate-200 mb-1.5">
+          1. Tamaño y Tecnología de tu Televisor:
+        </label>
+        <select
+          id="pwr-tv-type"
+          class="w-full rounded-xl bg-slate-950 border border-slate-700 px-3.5 py-2.5 text-xs sm:text-sm text-white font-medium focus:outline-none focus:border-emerald-500"
+        >
+          <option value="45">📺 Smart TV 32" a 43" LED Full HD (~45 Watts)</option>
+          <option value="85">📺 Smart TV 50" a 55" Crystal UHD / LED 4K (~85 Watts)</option>
+          <option value="125" selected>✨ Smart TV 55" QLED / QD-Mini LED 4K (~125 Watts)</option>
+          <option value="165">🎬 Smart TV 65" a 75" Mini-LED / OLED (~165 Watts)</option>
+          <option value="65">🍿 Mini Proyector LED Portátil Magcubic HY320 (~65 Watts)</option>
+        </select>
+      </div>
+
+      <div>
+        <div class="flex items-center justify-between mb-1.5">
+          <label for="pwr-hours" class="text-xs sm:text-sm font-bold text-slate-200">
+            2. Horas encendido al día (promedio):
+          </label>
+          <span id="pwr-hours-label" class="px-2.5 py-0.5 rounded-md bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 font-mono font-black text-sm">
+            5 horas / día
+          </span>
+        </div>
+        <input
+          id="pwr-hours"
+          type="range"
+          min="1"
+          max="16"
+          step="1"
+          value="5"
+          class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-500"
+        />
+        <div class="flex justify-between text-[11px] text-slate-400 mt-1">
+          <span>1h (Uso ocasional)</span>
+          <span>5h (Promedio Chile)</span>
+          <span>16h (Encendido todo el día)</span>
+        </div>
+      </div>
+
+      <div>
+        <label for="pwr-extra" class="block text-xs sm:text-sm font-bold text-slate-200 mb-1.5">
+          3. ¿Qué equipo tienes conectado al televisor?
+        </label>
+        <select
+          id="pwr-extra"
+          class="w-full rounded-xl bg-slate-950 border border-slate-700 px-3.5 py-2.5 text-xs sm:text-sm text-white font-medium focus:outline-none focus:border-emerald-500"
+        >
+          <option value="0" selected>Ninguno (Uso las apps internas del Smart TV)</option>
+          <option value="4">Roku Express / Chromecast / Onn Google TV (+4 Watts)</option>
+          <option value="18">Decodificador de cable tradicional encendido 24/7 (+18 Watts)</option>
+          <option value="35">Barra de Sonido 2.1 con Subwoofer (+35 Watts)</option>
+          <option value="200">Consola PlayStation 5 / Xbox Series X jugando (+200 Watts)</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="pwr-tariff" class="block text-xs sm:text-sm font-bold text-slate-200 mb-1.5">
+          4. Tarifa Eléctrica de tu Comuna (CLP por kWh):
+        </label>
+        <select
+          id="pwr-tariff"
+          class="w-full rounded-xl bg-slate-950 border border-slate-700 px-3.5 py-2.5 text-xs sm:text-sm text-white font-medium focus:outline-none focus:border-emerald-500"
+        >
+          <option value="245" selected>Santiago / RM (Enel Distribución: ~$245 CLP/kWh)</option>
+          <option value="265">Regiones Centro-Sur (CGE / Chilquinta: ~$265 CLP/kWh)</option>
+          <option value="280">Norte / Sur Extremo (Saesa / Frontel / CGE Norte: ~$280 CLP/kWh)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Resultados -->
+    <div class="lg:col-span-6 bg-slate-950/90 p-4 sm:p-5 rounded-xl border border-emerald-500/30 space-y-4">
+      <div class="grid grid-cols-2 gap-3">
+        <div class="p-3.5 rounded-xl bg-slate-900 border border-slate-800">
+          <span class="text-[11px] uppercase tracking-wider font-bold text-emerald-400 block mb-0.5">
+            Gasto Mensual Estimado
+          </span>
+          <span id="pwr-res-month" class="text-2xl sm:text-3xl font-black text-white font-mono block">
+            $ 4.685 CLP
+          </span>
+          <span id="pwr-res-kwh" class="text-[11px] text-slate-400 block mt-1">
+            Consumo: 19.1 kWh al mes
+          </span>
+        </div>
+
+        <div class="p-3.5 rounded-xl bg-slate-900 border border-slate-800">
+          <span class="text-[11px] uppercase tracking-wider font-bold text-amber-400 block mb-0.5">
+            Gasto Anual (12 Meses)
+          </span>
+          <span id="pwr-res-year" class="text-xl sm:text-2xl font-black text-amber-400 font-mono block">
+            $ 56.220 CLP
+          </span>
+          <span id="pwr-res-standby" class="text-[11px] text-slate-400 block mt-1">
+            Incluye consumo vampiro Standby
+          </span>
+        </div>
+      </div>
+
+      <div class="p-3.5 rounded-xl bg-emerald-950/25 border border-emerald-500/30 text-xs text-slate-200 leading-relaxed">
+        <strong class="text-emerald-400 block mb-1">💡 ¿Cuánto ahorras activando el Sensor de Luz / Modo Cine?</strong>
+        <p id="pwr-res-saving" class="m-0">
+          Si bajas la luz de fondo de 100% a 70% en la noche y apagas los decodificadores antiguos, reduces el consumo en un 28%, ahorrando cerca de <strong>$15.700 CLP al año</strong> sin perder calidad de imagen.
+        </p>
+      </div>
+
+      <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 text-[11px] text-slate-400 flex items-center justify-between gap-2">
+        <span>⚡ Dato clave: Un TV Stick moderno (4W) gasta 80% menos luz que un decodificador de cable antiguo (18W-25W).</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  (function () {
+    const tvType = document.getElementById('pwr-tv-type');
+    const hoursInput = document.getElementById('pwr-hours');
+    const hoursLabel = document.getElementById('pwr-hours-label');
+    const extraSelect = document.getElementById('pwr-extra');
+    const tariffSelect = document.getElementById('pwr-tariff');
+
+    const resMonth = document.getElementById('pwr-res-month');
+    const resKwh = document.getElementById('pwr-res-kwh');
+    const resYear = document.getElementById('pwr-res-year');
+    const resSaving = document.getElementById('pwr-res-saving');
+
+    if (!tvType || !hoursInput) return;
+
+    function formatCLP(num) {
+      return '$ ' + Math.round(num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ' CLP';
+    }
+
+    function calcPower() {
+      const wattsTv = parseFloat(tvType.value);
+      const hours = parseFloat(hoursInput.value);
+      const wattsExtra = parseFloat(extraSelect.value);
+      const tariff = parseFloat(tariffSelect.value);
+
+      hoursLabel.textContent = hours + (hours === 1 ? ' hora / día' : ' horas / día');
+
+      // Consumo activo diario en kWh
+      let dailyKwh = ((wattsTv + wattsExtra) * hours) / 1000;
+
+      // Si es decodificador tradicional (18W), suele quedar encendido o en falso standby las 24h
+      if (wattsExtra === 18) {
+        dailyKwh = (wattsTv * hours + 18 * 24) / 1000;
+      } else {
+        // Standby normal de TV moderna (0.5W a 1W durante las horas apagada)
+        dailyKwh += (0.8 * (24 - hours)) / 1000;
+      }
+
+      const monthlyKwh = dailyKwh * 30;
+      const monthlyCLP = monthlyKwh * tariff;
+      const yearlyCLP = monthlyCLP * 12;
+      const yearlySaving = yearlyCLP * 0.28;
+
+      resMonth.textContent = formatCLP(monthlyCLP);
+      resKwh.textContent = 'Consumo: ' + monthlyKwh.toFixed(1) + ' kWh al mes';
+      resYear.textContent = formatCLP(yearlyCLP);
+      resSaving.innerHTML =
+        'Activando el sensor de luz ambiental (brillo automático nocturno) y cortando el consumo vampiro con una zapatilla certificada SEC, ahorras aprox. <strong>' +
+        formatCLP(yearlySaving) +
+        ' al año</strong> en tu cuenta de luz.';
+    }
+
+    tvType.addEventListener('change', calcPower);
+    hoursInput.addEventListener('input', calcPower);
+    extraSelect.addEventListener('change', calcPower);
+    tariffSelect.addEventListener('change', calcPower);
+
+    calcPower();
+  })();
+</script>

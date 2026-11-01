@@ -1,0 +1,380 @@
+---
+import preciosData from '../../data/precios.json';
+import afiliadosData from '../../data/afiliados.json';
+
+const catalogData = {
+  'tcl-c655-55': {
+    nombre: 'TCL 55" QD-Mini LED / QLED 4K 144Hz Google TV',
+    precio: preciosData['tcl-c655-55'].precioFormateado,
+    urlMeli: afiliadosData['tcl-c655-55'].url,
+    urlFalabella: afiliadosData['falabella-tcl-p8l-55'].url,
+    badge: '🏆 Mejor Todo Terreno y Gaming 144Hz',
+    razon: 'Panel QD-Mini LED con Google TV fluido, 144Hz VRR para fútbol y PS5 sin estelas y excelente brillo antirreflejos.'
+  },
+  'hisense-u6k-55': {
+    nombre: 'Hisense 55" 4K Mini-LED ULED con Local Dimming',
+    precio: preciosData['hisense-u6k-55'].precioFormateado,
+    urlMeli: afiliadosData['hisense-u6k-55'].url,
+    urlFalabella: afiliadosData['falabella-hisense-u6-55'].url,
+    badge: '🎬 Mejor Contraste en Pieza Oscura',
+    razon: 'Atenuación local Mini-LED (Full Array Local Dimming) que apaga zonas de luz para lograr negros profundos de cine.'
+  },
+  'samsung-du7000-55': {
+    nombre: 'Samsung 55" Crystal UHD 4K DU7000 Tizen OS',
+    precio: preciosData['samsung-du7000-55'].precioFormateado,
+    urlMeli: afiliadosData['samsung-du7000-55'].url,
+    urlFalabella: afiliadosData['falabella-samsung-crystal-55'].url,
+    badge: '💰 Mejor Presupuesto Familiar y TV Abierta',
+    razon: 'Escalamiento Crystal 4K confiable para canales nacionales, Zapping y uso familiar diario con bajo consumo energético.'
+  },
+  'proyector-magcubic-hy320': {
+    nombre: 'Mini Proyector Smart Magcubic HY320 Full HD (Hasta 130")',
+    precio: preciosData['proyector-magcubic-hy320'].precioFormateado,
+    urlMeli: afiliadosData['proyector-magcubic-hy320'].url,
+    urlFalabella: afiliadosData['proyector-magcubic-aliexpress'].url,
+    badge: '🍿 Alternativa Cine Gigante 100" a 120"',
+    razon: 'Para distancias grandes en oscuridad logra 100 a 120 pulgadas por una fracción de lo que cuesta un televisor de 75".'
+  }
+};
+
+const soporteData = {
+  precio: preciosData['soporte-tv-articulado-pesado'].precioFormateado,
+  url: afiliadosData['soporte-tv-articulado-pesado'].url
+};
+---
+
+<section
+  id="calculadora-pulgadas-tv"
+  class="my-8 p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-slate-900 via-slate-950 to-indigo-950/40 border-2 border-indigo-500/40 shadow-2xl not-prose"
+  aria-label="Calculadora Interactiva de Pulgadas y Panel de Smart TV"
+>
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-slate-800">
+    <div class="flex items-center gap-2.5">
+      <span class="px-2.5 py-1 rounded-md bg-indigo-500 text-white text-[11px] font-black uppercase tracking-wider">
+        📐 HERRAMIENTA INTERACTIVA
+      </span>
+      <h3 class="text-base sm:text-lg font-extrabold text-white m-0">
+        Calculadora de Pulgadas, Distancia y Panel Ideal (Estándar SMPTE / THX)
+      </h3>
+    </div>
+    <span class="text-xs text-slate-400 font-medium">Cálculo exacto en centímetros para hogares en Chile</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+    <!-- Controles de Entrada -->
+    <div class="lg:col-span-6 space-y-5 bg-slate-900/70 p-4 rounded-xl border border-slate-800">
+      <!-- 1. Distancia -->
+      <div>
+        <div class="flex items-center justify-between mb-1.5">
+          <label for="tv-calc-dist" class="text-xs sm:text-sm font-bold text-slate-200">
+            1. Distancia desde tus ojos a la pantalla:
+          </label>
+          <span id="tv-calc-dist-label" class="px-2.5 py-0.5 rounded-md bg-indigo-500/20 border border-indigo-500/40 text-indigo-300 font-mono font-black text-sm">
+            2.2 metros
+          </span>
+        </div>
+        <input
+          id="tv-calc-dist"
+          type="range"
+          min="1.2"
+          max="4.2"
+          step="0.1"
+          value="2.2"
+          class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500"
+        />
+        <div class="flex justify-between text-[11px] text-slate-400 mt-1">
+          <span>1.2m (Escritorio/Pieza chica)</span>
+          <span>2.4m (Living depto)</span>
+          <span>4.2m (Living amplio)</span>
+        </div>
+      </div>
+
+      <!-- 2. Iluminación de la sala -->
+      <div>
+        <label class="block text-xs sm:text-sm font-bold text-slate-200 mb-2">
+          2. ¿Cuánta luz entra a tu pieza o living?
+        </label>
+        <div class="grid grid-cols-3 gap-2" role="group" aria-label="Nivel de iluminación">
+          <button
+            type="button"
+            data-light="oscura"
+            class="tv-light-btn p-2.5 rounded-xl border border-slate-700 bg-slate-950/70 text-left transition-all hover:border-indigo-400"
+          >
+            <span class="block text-base mb-0.5">🌙</span>
+            <span class="block text-xs font-bold text-white">Oscura / Noche</span>
+            <span class="block text-[10px] text-slate-400 leading-tight">Dormitorio o blackout</span>
+          </button>
+          <button
+            type="button"
+            data-light="normal"
+            class="tv-light-btn active p-2.5 rounded-xl border-2 border-indigo-500 bg-indigo-950/40 text-left transition-all"
+          >
+            <span class="block text-base mb-0.5">🏠</span>
+            <span class="block text-xs font-bold text-white">Living Normal</span>
+            <span class="block text-[10px] text-slate-300 leading-tight">Luz moderada con cortina</span>
+          </button>
+          <button
+            type="button"
+            data-light="iluminada"
+            class="tv-light-btn p-2.5 rounded-xl border border-slate-700 bg-slate-950/70 text-left transition-all hover:border-indigo-400"
+          >
+            <span class="block text-base mb-0.5">☀️</span>
+            <span class="block text-xs font-bold text-white">Mucho Sol</span>
+            <span class="block text-[10px] text-slate-400 leading-tight">Ventanal directo de día</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 3. Uso Principal -->
+      <div>
+        <label for="tv-calc-use" class="block text-xs sm:text-sm font-bold text-slate-200 mb-1.5">
+          3. ¿Para qué usarás más el televisor?
+        </label>
+        <select
+          id="tv-calc-use"
+          class="w-full rounded-xl bg-slate-950 border border-slate-700 px-3.5 py-2.5 text-xs sm:text-sm text-white font-medium focus:outline-none focus:border-indigo-500"
+        >
+          <option value="mixto" selected>📺 Uso Mixto: Películas 4K, Fútbol en Zapping/DGO y Series</option>
+          <option value="cine">🎬 Cine en Casa Nocturno (Prioridad Negros Profundos y HDR)</option>
+          <option value="gaming">🎮 Consolas PS5 / Xbox Series X / PC (Prioridad 120Hz-144Hz VRR)</option>
+          <option value="diario">📡 TV Abierta Digital, Noticias y Uso Familiar Económico</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Panel de Resultados en Tiempo Real -->
+    <div class="lg:col-span-6 bg-slate-950/90 p-4 sm:p-5 rounded-xl border border-indigo-500/30 space-y-4">
+      <div class="grid grid-cols-2 gap-3">
+        <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
+          <span class="text-[11px] uppercase tracking-wider font-bold text-indigo-400 block mb-0.5">
+            Tamaño Ideal 4K
+          </span>
+          <div class="flex items-baseline gap-1.5">
+            <span id="tv-res-inches" class="text-2xl sm:text-3xl font-black text-white font-mono">55"</span>
+            <span id="tv-res-range" class="text-xs text-slate-400">(Rango: 50" a 65")</span>
+          </div>
+          <span id="tv-res-dims" class="text-[11px] text-emerald-400 font-medium block mt-1">
+            Mide: 123 cm ancho × 71 cm alto
+          </span>
+        </div>
+
+        <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
+          <span class="text-[11px] uppercase tracking-wider font-bold text-amber-400 block mb-0.5">
+            Panel Recomendado
+          </span>
+          <span id="tv-res-panel" class="text-sm sm:text-base font-extrabold text-white block leading-snug">
+            QD-Mini LED / QLED
+          </span>
+          <span id="tv-res-height" class="text-[11px] text-slate-400 block mt-1">
+            Altura centro TV: 105 cm del piso
+          </span>
+        </div>
+      </div>
+
+      <!-- Explicación Técnica Dinámica -->
+      <div class="p-3 rounded-xl bg-indigo-950/25 border border-indigo-500/20 text-xs text-slate-300 leading-relaxed">
+        <strong class="text-indigo-300">Diagnóstico técnico:</strong>
+        <span id="tv-res-advice">
+          A 2.2 metros de distancia, una pantalla de 55 pulgadas cubre un ángulo visual óptimo de 31° (estándar SMPTE), permitiendo distinguir todos los detalles del 4K Ultra HD sin mover el cuello.
+        </span>
+      </div>
+
+      <!-- Tarjeta de Modelo Recomendado -->
+      <div class="p-3.5 rounded-xl bg-gradient-to-r from-slate-900 to-slate-900/80 border border-amber-500/40">
+        <div class="flex items-center justify-between gap-2 mb-1">
+          <span id="tv-rec-badge" class="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">
+            🏆 Mejor Todo Terreno y Gaming 144Hz
+          </span>
+          <span id="tv-rec-price" class="text-base font-black text-emerald-400 font-mono">
+            {catalogData['tcl-c655-55'].precio}
+          </span>
+        </div>
+        <h4 id="tv-rec-name" class="text-sm font-extrabold text-white m-0 mb-1">
+          {catalogData['tcl-c655-55'].nombre}
+        </h4>
+        <p id="tv-rec-reason" class="text-xs text-slate-300 m-0 mb-3 leading-relaxed">
+          {catalogData['tcl-c655-55'].razon}
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          <a
+            id="tv-rec-cta-meli"
+            href={catalogData['tcl-c655-55'].urlMeli}
+            target="_blank"
+            rel="nofollow sponsored noopener noreferrer"
+            class="py-2 px-3 rounded-lg bg-[#FFE600] hover:bg-[#f5dc00] text-slate-950 font-black text-xs text-center transition-all shadow"
+          >
+            Ver en Mercado Libre →
+          </a>
+          <a
+            id="tv-rec-cta-fala"
+            href={catalogData['tcl-c655-55'].urlFalabella}
+            target="_blank"
+            rel="nofollow sponsored noopener noreferrer"
+            class="py-2 px-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs text-center transition-colors border border-slate-700"
+          >
+            Ver Alternativa Retail →
+          </a>
+        </div>
+        <div class="mt-2 pt-2 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400">
+          <span>🔩 ¿Vas a colgarla en muro de concreto o tabique?</span>
+          <a
+            href={soporteData.url}
+            target="_blank"
+            rel="nofollow sponsored noopener noreferrer"
+            class="text-amber-400 hover:underline font-bold"
+          >
+            Soporte Doble Brazo ({soporteData.precio}) →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline define:vars={{ catalogData }}>
+  (function () {
+    const distInput = document.getElementById('tv-calc-dist');
+    const distLabel = document.getElementById('tv-calc-dist-label');
+    const lightBtns = document.querySelectorAll('.tv-light-btn');
+    const useSelect = document.getElementById('tv-calc-use');
+
+    const resInches = document.getElementById('tv-res-inches');
+    const resRange = document.getElementById('tv-res-range');
+    const resDims = document.getElementById('tv-res-dims');
+    const resPanel = document.getElementById('tv-res-panel');
+    const resHeight = document.getElementById('tv-res-height');
+    const resAdvice = document.getElementById('tv-res-advice');
+
+    const recBadge = document.getElementById('tv-rec-badge');
+    const recPrice = document.getElementById('tv-rec-price');
+    const recName = document.getElementById('tv-rec-name');
+    const recReason = document.getElementById('tv-rec-reason');
+    const recCtaMeli = document.getElementById('tv-rec-cta-meli');
+    const recCtaFala = document.getElementById('tv-rec-cta-fala');
+
+    if (!distInput || !useSelect) return;
+
+    let currentLight = 'normal';
+
+    const sizeSpecs = {
+      43: { w: 96, h: 56, range: '(40" a 43")' },
+      50: { w: 112, h: 65, range: '(43" a 50")' },
+      55: { w: 123, h: 71, range: '(50" a 55")' },
+      65: { w: 145, h: 83, range: '(55" a 65")' },
+      75: { w: 167, h: 96, range: '(65" a 75")' },
+      85: { w: 189, h: 108, range: '(75" a 100")' }
+    };
+
+    function updateCalculator() {
+      const dist = parseFloat(distInput.value);
+      const use = useSelect.value;
+      distLabel.textContent = dist.toFixed(1) + ' metros';
+
+      // Determinar pulgadas comerciales óptimas en 4K
+      let inches = 55;
+      if (dist <= 1.6) inches = 43;
+      else if (dist <= 2.0) inches = 50;
+      else if (dist <= 2.6) inches = 55;
+      else if (dist <= 3.2) inches = 65;
+      else if (dist <= 3.7) inches = 75;
+      else inches = 85;
+
+      // Si prioriza cine inmersivo THX (40 grados), puede subir un escalón
+      if (use === 'cine' && inches < 85 && dist >= 2.1) {
+        inches = inches === 50 ? 55 : inches === 55 ? 65 : inches;
+      }
+
+      const spec = sizeSpecs[inches] || sizeSpecs[55];
+      resInches.textContent = inches + '"';
+      resRange.textContent = spec.range;
+      resDims.textContent = 'Mide aprox: ' + spec.w + ' cm ancho × ' + spec.h + ' cm alto';
+
+      // Determinar tecnología de panel y modelo recomendado
+      let panelText = 'QD-Mini LED / QLED';
+      let modelKey = 'tcl-c655-55';
+      let adviceText = '';
+
+      if (currentLight === 'oscura' && use === 'cine' && dist >= 2.5) {
+        panelText = 'Mini-LED Local Dimming o Proyector 100"';
+        modelKey = dist >= 2.9 ? 'proyector-magcubic-hy320' : 'hisense-u6k-55';
+        resHeight.textContent = 'Altura centro: 115 cm (o techo)';
+        adviceText =
+          'A ' +
+          dist.toFixed(1) +
+          'm en una pieza oscura, el contraste es el rey. Evita paneles IPS comunes (que muestran los negros grises) y elige un Mini-LED con Local Dimming como el Hisense U6K o un proyector Full HD de 100 pulgadas.';
+      } else if (currentLight === 'oscura') {
+        panelText = 'Mini-LED con Atenuación Local (VA)';
+        modelKey = use === 'gaming' ? 'tcl-c655-55' : 'hisense-u6k-55';
+        resHeight.textContent = 'Altura centro TV: 110 cm (Dormitorio)';
+        adviceText =
+          'Para ver de noche o con cortinas blackout a ' +
+          dist.toFixed(1) +
+          'm, necesitas un panel con control de zonas de luz (Local Dimming) para que las barras negras de las películas no brillen en la oscuridad.';
+      } else if (currentLight === 'iluminada') {
+        panelText = 'QD-Mini LED Alto Brillo (+600 nits)';
+        modelKey = 'tcl-c655-55';
+        resHeight.textContent = 'Altura centro TV: 105 cm (Living)';
+        adviceText =
+          'En un living con ventanal soleado en Chile, un televisor LED básico se verá opaco y como espejo. Necesitas tecnología QD-Mini LED de alto brillo para vencer el reflejo del día.';
+      } else {
+        // Luz normal
+        resHeight.textContent = 'Altura centro TV: 105 cm del piso';
+        if (use === 'diario') {
+          panelText = 'Crystal UHD 4K / QLED';
+          modelKey = 'samsung-du7000-55';
+          adviceText =
+            'A ' +
+            dist.toFixed(1) +
+            'm con luz moderada y uso familiar (TV digital abierta, noticias y streaming), un panel 4K con buen procesador de escalado como el Samsung DU7000 ofrece la compra más equilibrada.';
+        } else if (use === 'gaming') {
+          panelText = 'QD-Mini LED 144Hz VRR (HDMI 2.1)';
+          modelKey = 'tcl-c655-55';
+          adviceText =
+            'Para PS5, Xbox Series X o fútbol rápido a ' +
+            dist.toFixed(1) +
+            'm, prioriza un panel con tasa de refresco nativa alta (120Hz/144Hz VRR) y bajo Input Lag como la serie TCL QD-Mini LED.';
+        } else {
+          panelText = 'QD-Mini LED / QLED 4K';
+          modelKey = 'tcl-c655-55';
+          adviceText =
+            'A ' +
+            dist.toFixed(1) +
+            ' metros de distancia, una pantalla de ' +
+            inches +
+            ' pulgadas cubre el ángulo visual óptimo SMPTE (~30°), permitiéndote disfrutar del 4K Ultra HD sin fatiga visual.';
+        }
+      }
+
+      resPanel.textContent = panelText;
+      resAdvice.textContent = adviceText;
+
+      const selectedProduct = catalogData[modelKey];
+      if (selectedProduct) {
+        recBadge.textContent = selectedProduct.badge;
+        recPrice.textContent = selectedProduct.precio;
+        recName.textContent = selectedProduct.nombre;
+        recReason.textContent = selectedProduct.razon;
+        recCtaMeli.href = selectedProduct.urlMeli;
+        recCtaFala.href = selectedProduct.urlFalabella;
+      }
+    }
+
+    distInput.addEventListener('input', updateCalculator);
+    useSelect.addEventListener('change', updateCalculator);
+
+    lightBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        lightBtns.forEach(function (b) {
+          b.classList.remove('active', 'border-2', 'border-indigo-500', 'bg-indigo-950/40');
+          b.classList.add('border', 'border-slate-700', 'bg-slate-950/70');
+        });
+        btn.classList.remove('border', 'border-slate-700', 'bg-slate-950/70');
+        btn.classList.add('active', 'border-2', 'border-indigo-500', 'bg-indigo-950/40');
+        currentLight = btn.getAttribute('data-light') || 'normal';
+        updateCalculator();
+      });
+    });
+
+    updateCalculator();
+  })();
+</script>

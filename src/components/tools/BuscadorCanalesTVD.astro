@@ -1,5 +1,6 @@
 ---
 // Componente Interactivo: Buscador y Verificador de Canales TVD y Antenas por Ciudad de Chile
+import afiliadosData from '../../data/afiliados.json';
 ---
 
 <div class="my-10 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 border-2 border-brand-500/40 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden not-prose" id="buscador-tvd-widget">
@@ -94,9 +95,9 @@
       </div>
       <div class="flex items-center gap-3 shrink-0">
         <a
-          href="https://meli.la/2qaQjtq"
+          href={afiliadosData['antena-tvd-chile'].url}
           target="_blank"
-          rel="nofollow noopener sponsored"
+          rel="nofollow sponsored noopener noreferrer"
           class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs sm:text-sm shadow-lg shadow-amber-400/20 transition-all hover:scale-105"
         >
           <span>🛒 Ver en Mercado Libre</span>

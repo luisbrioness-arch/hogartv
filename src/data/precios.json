@@ -846,5 +846,24 @@
         "urlKey": "soporte-proyector-techo-muro"
       }
     ]
+  },
+  "proyector-magcubic-hy300": {
+    "precioCLP": 42990,
+    "precioFormateado": "$ 42.990 CLP",
+    "rango": "$ 29.990 - $ 45.990 CLP",
+    "precioMinVisto": "$ 29.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-11-01",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 42.990 CLP",
+        "badge": "⚡ Modelo Básico HD",
+        "destacada": true,
+        "envio": "Envío a Todo Chile",
+        "urlKey": "proyector-magcubic-hy300"
+      }
+    ]
   }
 }

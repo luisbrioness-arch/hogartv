@@ -29,6 +29,15 @@ Enviar Mensaje vía Correo →
 </button> </form> </div> </div> </div> </main> <script>
     const form = document.getElementById('contact-form');
     const feedback = document.getElementById('form-feedback');
+    const motivoSelect = document.getElementById('motivo');
+
+    // Preseleccionar motivo desde query param si viene de un artículo o botón de cotización
+    const urlParams = new URLSearchParams(window.location.search);
+    const motivoParam = urlParams.get('motivo');
+    if (motivoParam && motivoSelect) {
+      motivoSelect.value = motivoParam;
+    }
+
     if (form && feedback) {
       form.addEventListener('submit', function() {
         feedback.classList.remove('hidden');

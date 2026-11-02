@@ -286,5 +286,35 @@
     "url": "https://meli.la/1HpiMsJ",
     "tienda": "Mercado Libre Chile",
     "actualizado": "2026-11-01"
+  },
+  "xiaomi-poco-c85": {
+    "nombre": "Xiaomi POCO C85 128GB ROM 6GB RAM",
+    "url": "https://meli.la/1SBFBgM",
+    "tienda": "Mercado Libre Chile",
+    "actualizado": "2026-11-01"
+  },
+  "xiaomi-redmi-note-13-pro-5g": {
+    "nombre": "Xiaomi Redmi Note 13 Pro 5G 256GB 8GB RAM",
+    "url": "https://meli.la/2wR5BrD",
+    "tienda": "Mercado Libre Chile",
+    "actualizado": "2026-11-01"
+  },
+  "samsung-galaxy-a57-5g": {
+    "nombre": "Samsung Galaxy A57 5G 128GB 8GB RAM",
+    "url": "https://meli.la/23fkhe9",
+    "tienda": "Mercado Libre Chile",
+    "actualizado": "2026-11-01"
+  },
+  "xiaomi-poco-x7-pro-5g": {
+    "nombre": "Xiaomi POCO X7 Pro 5G 512GB 12GB RAM",
+    "url": "https://meli.la/1zZP2Ri",
+    "tienda": "Mercado Libre Chile",
+    "actualizado": "2026-11-01"
+  },
+  "samsung-galaxy-s26-5g": {
+    "nombre": "Samsung Galaxy S26 5G 256GB Black",
+    "url": "https://meli.la/1e1N11s",
+    "tienda": "Mercado Libre Chile",
+    "actualizado": "2026-11-01"
   }
 }

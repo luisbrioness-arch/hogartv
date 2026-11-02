@@ -1,0 +1,334 @@
+---
+title: "Los 5 Mejores Celulares Calidad-Precio en Chile (Guía 2026)"
+description: "¿Buscando un celular bueno y barato en Chile? Comparamos los 5 mejores smartphones calidad-precio de 2026: Xiaomi Poco C85 (bajo $150k), Redmi Note 13 Pro, Galaxy A57 y Galaxy S26."
+category: "accesorios"
+categoryName: "Accesorios"
+publishDate: "2026-11-01"
+dateModified: "2026-11-01"
+readTime: "9 min de lectura"
+featured: true
+author: "luis-briones"
+---
+
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+import preciosData from '../../data/precios.json';
+import afiliadosData from '../../data/afiliados.json';
+
+{/* =========================================================================
+    HERO DE CONVERSIÓN INMEDIATA (REGLA DE LOS 7 SEGUNDOS)
+   ========================================================================= */}
+
+<div class="my-4 p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-950/40 border-2 border-indigo-500/50 shadow-2xl not-prose">
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-3 pb-2.5 border-b border-slate-800">
+    <div class="flex items-center gap-2">
+      <span class="px-2.5 py-1 rounded-md bg-indigo-500 text-white text-[11px] font-black uppercase tracking-wider">🏆 MEJOR CELULAR CALIDAD-PRECIO CHILE 2026</span>
+      <span class="text-xs font-bold text-indigo-300">Veredicto Rápido</span>
+    </div>
+    <span class="text-[11px] text-emerald-400 font-semibold">✓ Homologado SUBTEL · Envío Full 24h</span>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+    <div class="md:col-span-8">
+      <p class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-0.5">El Rey Económico por Menos de $150.000 CLP</p>
+      <h2 class="text-lg sm:text-xl font-extrabold text-white leading-tight mb-1.5">
+        Xiaomi POCO C85 (128GB ROM / 6GB RAM)
+      </h2>
+      <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-2">
+        El teléfono más equilibrado para el día a día en Chile: pantalla fluida, <strong>6GB de RAM reales</strong> para evitar que se pegue con WhatsApp o Instagram, batería gigante de 5.000 mAh y liberado para todas las compañías (Entel, Movistar, WOM, Claro).
+      </p>
+      <div class="flex flex-wrap gap-1.5 text-[11px]">
+        <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-200 border border-slate-700">6GB RAM + 128GB</span>
+        <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-200 border border-slate-700">Batería 5000 mAh</span>
+        <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-200 border border-slate-700">Cargador Incluido</span>
+      </div>
+    </div>
+
+    <div class="md:col-span-4 flex flex-col gap-2 bg-slate-950/80 p-3.5 rounded-xl border border-slate-800/90">
+      <div class="flex items-baseline justify-between">
+        <span class="text-[11px] text-slate-400 font-medium">Precio Oficial:</span>
+        <span class="text-xl font-black text-emerald-400 font-mono">{preciosData['xiaomi-poco-c85'].precioFormateado}</span>
+      </div>
+      <a
+        href={afiliadosData['xiaomi-poco-c85'].url}
+        target="_blank"
+        rel="nofollow sponsored noopener noreferrer"
+        class="w-full py-2.5 px-4 rounded-xl bg-[#FFE600] hover:bg-[#f5dc00] text-slate-950 font-black text-center text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-1.5"
+      >
+        <span>Ver Oferta Poco C85 en Mercado Libre</span>
+        <span>→</span>
+      </a>
+      <a
+        href="#comparativa-rapida"
+        class="w-full py-1.5 px-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-center text-xs transition-colors"
+      >
+        Ver Comparativa Completa de los 5 Modelos ↓
+      </a>
+    </div>
+  </div>
+
+  <div class="mt-3 pt-3 border-t border-slate-800/80 grid grid-cols-1 sm:grid-cols-4 gap-2 text-xs">
+    <a href="#xiaomi-poco-c85" class="flex items-center justify-between p-2 rounded-lg bg-slate-950/60 hover:bg-slate-800/80 border border-slate-800 transition-colors">
+      <span>💰 <strong>Menos de $150k:</strong> Poco C85</span>
+      <span class="text-emerald-400 font-bold">{preciosData['xiaomi-poco-c85'].precioFormateado}</span>
+    </a>
+    <a href="#xiaomi-redmi-note-13-pro-5g" class="flex items-center justify-between p-2 rounded-lg bg-slate-950/60 hover:bg-slate-800/80 border border-slate-800 transition-colors">
+      <span>📸 <strong>Cámara 200MP:</strong> Note 13 Pro</span>
+      <span class="text-amber-400 font-bold">{preciosData['xiaomi-redmi-note-13-pro-5g'].precioFormateado}</span>
+    </a>
+    <a href="#samsung-galaxy-a57-5g" class="flex items-center justify-between p-2 rounded-lg bg-slate-950/60 hover:bg-slate-800/80 border border-slate-800 transition-colors">
+      <span>🛡️ <strong>Sumergible + AI:</strong> Galaxy A57</span>
+      <span class="text-sky-400 font-bold">{preciosData['samsung-galaxy-a57-5g'].precioFormateado}</span>
+    </a>
+    <a href="#samsung-galaxy-s26-5g" class="flex items-center justify-between p-2 rounded-lg bg-slate-950/60 hover:bg-slate-800/80 border border-slate-800 transition-colors">
+      <span>👑 <strong>Gama Alta:</strong> Galaxy S26</span>
+      <span class="text-purple-400 font-bold">{preciosData['samsung-galaxy-s26-5g'].precioFormateado}</span>
+    </a>
+  </div>
+</div>
+
+## ¿Qué Debe Tener un Celular "Bueno y Barato" en Chile en 2026?
+
+Comprar un teléfono en Chile hoy no es lo mismo que hace un par de años. No basta con mirar cuántos megapíxeles dice la caja; para no arrepentirse al mes de uso, un smartphone debe cumplir con **cuatro estándares indispensables para el usuario chileno**:
+
+1. **Homologación Multibanda SAE (SUBTEL):** Debe tener el sello oficial que garantiza compatibilidad con todas las antenas chilenas (Bandas 4G B2, B4, B7, B28 y 5G N78) y recepción garantizada de alertas de emergencia ante sismos o tsunamis.
+2. **NFC para Pagos y Transporte:** Clave para vincular tarjetas de débito/crédito (CuentaRUT, BancoEstado, Tenpo, Mach, Google Wallet) y **activar cargas de la tarjeta Bip! de Red Movilidad** directamente apoyando el plástico detrás del celular.
+3. **Mínimo 6 GB de RAM y 128 GB de Almacenamiento:** Los equipos antiguos de 3 GB o 4 GB de RAM hoy colapsan con el peso de WhatsApp, Mercado Pago y apps bancarias. 6 GB es el nuevo piso para fluidez garantizada.
+4. **Pantalla a 90 Hz o 120 Hz:** El cambio de 60 Hz a 120 Hz hace que desplazarse por menús, redes sociales y páginas web se sienta el doble de rápido, incluso en procesadores económicos.
+
+---
+
+<div id="comparativa-rapida"></div>
+
+## Comparativa Rápida: Los 5 Mejores Celulares de 2026 en Chile
+
+| Modelo | Gama y Enfoque | Pantalla | Memoria / Espacio | Batería / Carga | Precio Referencial |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Xiaomi POCO C85** | Económico (Bajo $150k) | 6.74" 90Hz HD+ | 6 GB RAM / 128 GB | 5.000 mAh (18W) | **{preciosData['xiaomi-poco-c85'].precioFormateado}** |
+| **Redmi Note 13 Pro 5G** | Calidad-Precio Cámara | 6.67" 120Hz 1.5K AMOLED | 8 GB RAM / 256 GB | 5.100 mAh (67W Turbo) | **{preciosData['xiaomi-redmi-note-13-pro-5g'].precioFormateado}** |
+| **Samsung Galaxy A57 5G** | Gama Media Premium | 6.6" 120Hz Super AMOLED | 8 GB RAM / 128 GB | 5.000 mAh (IP67 Agua) | **{preciosData['samsung-galaxy-a57-5g'].precioFormateado}** |
+| **Xiaomi POCO X7 Pro 5G** | Potencia Extrema Gaming | 6.67" 120Hz CrystalRes | 12 GB RAM / 512 GB | 5.000 mAh (67W) | **{preciosData['xiaomi-poco-x7-pro-5g'].precioFormateado}** |
+| **Samsung Galaxy S26 5G** | Flagship Gama Alta | 6.2" Dynamic AMOLED 2X | 8 GB RAM / 256 GB | Cámaras Pro + AI | **{preciosData['samsung-galaxy-s26-5g'].precioFormateado}** |
+
+---
+
+## Análisis Individual: ¿Cuál es el Mejor Celular Según Tu Presupuesto?
+
+### 1. Xiaomi POCO C85 (128GB / 6GB RAM): El Campeón Bajo $150.000 CLP
+
+Si tu presupuesto es ajustado y buscas un teléfono que no se tranque, responda rápido para llamadas, redes sociales, videos de YouTube y aplicaciones de reparto o trabajo diario, el **POCO C85** es la compra maestra en Chile.
+
+A diferencia de otros modelos de entrada que solo ofrecen 4GB de memoria, este modelo incorpora **6GB de RAM físicos**, lo que permite mantener abiertas varias aplicaciones bancarias y de mensajería sin cierres forzados.
+
+<ProductCard
+  productKey="xiaomi-poco-c85"
+  title="Xiaomi POCO C85 (128GB ROM / 6GB RAM) Dual SIM Liberado"
+  brand="Xiaomi POCO"
+  badge="🏆 Mejor Celular Menos de $150.000 CLP"
+  specs={["Pantalla amplia de 6.74 pulgadas fluida a 90 Hz", "6 GB de memoria RAM física + 128 GB de almacenamiento interno", "Batería de larga duración de 5.000 mAh con carga de 18W", "Lector de huella dactilar lateral rápido y seguro", "Liberado para Entel, Movistar, WOM, Claro y VTR"]}
+  pros={[
+    "Rendimiento sobresaliente por menos de $150.000 CLP gracias a sus 6GB de RAM",
+    "Batería rinde fácilmente día y medio de uso moderado sin conectar el cargador",
+    "Incluye cargador y cable en la caja original, sin gastos sorpresa adicionales",
+    "Disponible con entrega al día siguiente mediante Envío Full en Mercado Libre"
+  ]}
+  cons={[
+    "Resolución de pantalla HD+ (adecuada para el precio, pero no Full HD)",
+    "No incluye conectividad 5G (utiliza redes 4G LTE de alta velocidad)"
+  ]}
+/>
+
+---
+
+### 2. Xiaomi Redmi Note 13 Pro 5G (256GB / 8GB RAM): La Mejor Cámara Calidad-Precio
+
+El **Redmi Note 13 Pro 5G** es el teléfono más recomendado para quienes aman sacar fotos y grabar videos nítidos sin gastar más de \$260.000 CLP. Su sensor principal de **200 Megapíxeles con estabilización óptica (OIS)** captura un nivel de detalle impresionante tanto de día como en tomas nocturnas.
+
+Su pantalla AMOLED con resolución 1.5K y tasa de refresco de 120 Hz es equivalente a la de teléfonos del doble de precio, y su cargador de 67W llena el 100% de la batería en apenas 40 minutos.
+
+<ProductCard
+  productKey="xiaomi-redmi-note-13-pro-5g"
+  title="Xiaomi Redmi Note 13 Pro 5G (256GB / 8GB RAM) Cámara 200MP OIS"
+  brand="Xiaomi"
+  badge="📸 Mejor Cámara Fotográfica Calidad-Precio"
+  specs={["Cámara estelar de 200 MP con Estabilización Óptica de Imagen (OIS)", "Pantalla AMOLED 1.5K (2712 x 1220) a 120 Hz con bordes ultradelgados", "Procesador Snapdragon 7s Gen 2 con módem 5G ultrarrápido", "Carga ultra veloz de 67W (cargador incluido en la caja)", "NFC integrado para pagos móviles y carga de tarjeta Bip!"]}
+  pros={[
+    "Calidad de fotos y video superior a cualquier competidor de su rango de precio",
+    "Pantalla AMOLED brillante y nítida, ideal para ver Netflix y videos en HDR",
+    "256 GB de memoria interna para guardar miles de fotos sin preocuparse por espacio",
+    "Incluye funda de silicona y cargador rápido turbo de 67W de fábrica"
+  ]}
+  cons={[
+    "No cuenta con certificación de resistencia al agua completa (solo salpicaduras IP54)",
+    "La interfaz HyperOS viene con algunas aplicaciones de fábrica que conviene desinstalar"
+  ]}
+/>
+
+---
+
+### 3. Samsung Galaxy A57 5G (128GB / 8GB RAM): El Más Equilibrado y Duradero
+
+Para quienes buscan la garantía, confiabilidad y soporte a largo plazo de Samsung, el **Galaxy A57 5G** es la elección predilecta. Destaca por contar con **certificación IP67 contra agua y polvo** (soporta caídas accidentales al agua o lluvia sin problemas) y hasta 5 años de actualizaciones de seguridad del sistema.
+
+Además, si tienes una Smart TV Samsung en el living, el A57 incluye **Samsung Smart View nativo**, permitiendo transmitir la pantalla a tu televisor en un solo toque sin cortes ni demoras.
+
+<ProductCard
+  productKey="samsung-galaxy-a57-5g"
+  title="Samsung Galaxy A57 5G (128GB / 8GB RAM) con Resistencia IP67 y Galaxy AI"
+  brand="Samsung"
+  badge="🛡️ Mejor Durabilidad y Resistencia al Agua IP67"
+  specs={["Pantalla Super AMOLED de 6.6 pulgadas Full HD+ a 120 Hz", "Certificación IP67 contra inmersión accidental en agua y polvo", "Cámara de 50 MP con OIS y funciones de Inteligencia Artificial", "Conectividad total con Smart TV vía Samsung Smart View y DeX básico", "Política de 5 años de parches de seguridad oficiales de Samsung"]}
+  pros={[
+    "Cuerpo robusto y resistente al agua: tranquilidad total ante accidentes o lluvia",
+    "Pantalla Super AMOLED con colores vibrantes y excelente visión bajo el sol chileno",
+    "Interfaz One UI limpia, fluida y sin publicidad invasiva",
+    "Integración perfecta con el ecosistema del hogar inteligente y Smart TVs"
+  ]}
+  cons={[
+    "Samsung ya no incluye el cubo cargador en la caja (requiere cargador USB-C de 25W)",
+    "Carga rápida de 25W más lenta que los 67W de Xiaomi"
+  ]}
+/>
+
+---
+
+### 4. Xiaomi POCO X7 Pro 5G (512GB / 12GB RAM): Potencia Bestial para Juegos y Multitarea
+
+El **POCO X7 Pro 5G** está diseñado para los usuarios más exigentes que buscan potencia bruta. Con **12 GB de memoria RAM** y un gigantesco almacenamiento de **512 GB**, este equipo rinde a la par de celulares de \$800.000 CLP en juegos pesados (Call of Duty Warzone, Genshin Impact, Free Fire) y edición de video en 4K.
+
+Su sistema de refrigeración por cámara de vapor evita que el equipo se sobrecaliente durante sesiones prolongadas de uso intenso.
+
+<ProductCard
+  productKey="xiaomi-poco-x7-pro-5g"
+  title="Xiaomi POCO X7 Pro 5G (512GB Almacenamiento / 12GB RAM) 50MP OIS"
+  brand="Xiaomi POCO"
+  badge="⚡ Máxima Potencia Gamer y 512GB de Espacio"
+  specs={["Memoria masiva de 512 GB UFS + 12 GB de memoria RAM física", "Procesador de alto rendimiento para gaming sin caídas de cuadros", "Pantalla AMOLED CrystalRes 1.5K a 120 Hz con brillo de hasta 1800 nits", "Carga turbo de 67W con cargador original incluido", "Parlantes estéreo duales con certificación Dolby Atmos y Hi-Res"]}
+  pros={[
+    "El celular más potente del mercado chileno por debajo de los $450.000 CLP",
+    "512 GB de memoria interna: olvídate para siempre de borrar fotos, videos o juegos",
+    "Pantalla ultrabrillante que se ve perfecta al aire libre en días despejados",
+    "Respuesta táctil instantánea ideal para shooters y juegos competitivos"
+  ]}
+  cons={[
+    "El diseño posterior tiene acabado brillante que atrae huellas dactilares fácilmente",
+    "Las cámaras secundarias (gran angular y macro) son básicas frente a la cámara principal"
+  ]}
+/>
+
+---
+
+### 5. Samsung Galaxy S26 5G (256GB): La Excelencia Flagship de Gama Alta
+
+Si cuentas con el presupuesto y buscas lo mejor de lo mejor sin compromisos en tamaño compacto, el **Galaxy S26 5G** es el referente de la telefonía premium. Ofrece un sistema fotográfico profesional con zoom óptico real, grabación en 8K, pantalla Dynamic AMOLED 2X de brillo inigualable y las herramientas más avanzadas de **Galaxy AI** (traducción de llamadas en tiempo real, edición fotográfica generativa y búsqueda visual con Google Circle to Search).
+
+<ProductCard
+  productKey="samsung-galaxy-s26-5g"
+  title="Samsung Galaxy S26 5G (256GB) con Galaxy AI y Cámaras Pro de Noche"
+  brand="Samsung"
+  badge="👑 El Mejor Gama Alta Flagship del Año"
+  specs={["Pantalla Dynamic AMOLED 2X de 6.2\" con tasa variable de 1 a 120 Hz", "Sistema de triple cámara con lente principal de alta gama y Teleobjetivo 3x óptico", "Funciones completas de Galaxy AI (Traducción en vivo, Circle to Search, Asistente de notas)", "Estructura de Armor Aluminium y cristal resistente Gorilla Glass Victus 2", "Soporte completo Samsung DeX para convertir el celular en un PC al conectarlo a una pantalla"]}
+  pros={[
+    "El tamaño más cómodo y ergonómico del mercado para usar con una sola mano",
+    "Fotos nocturnas y retratos con el mejor balance de color y definición de la industria",
+    "Soporte oficial de 7 años de actualizaciones de Android garantizadas por Samsung",
+    "Modo Samsung DeX para trabajar en la tele o monitor conectando teclado y ratón"
+  ]}
+  cons={[
+    "Inversión alta ($669.990 CLP), pensada para usuarios que buscan lo último en tecnología",
+    "No incluye adaptador de corriente en el empaque"
+  ]}
+/>
+
+---
+
+## Cómo Conectar tu Celular a la Tele en Chile (Smart View y Transmisión)
+
+Uno de los usos más valorados al renovar tu smartphone es poder proyectar fotos, videos familiares, presentaciones o tus partidos de fútbol en pantalla grande:
+
+* **Si tienes Smart TV Samsung o LG:** Los celulares **Samsung (Galaxy A57 y S26)** cuentan con la función nativa **Smart View** en la barra de accesos rápidos. Solo bajas la cortina superior, tocas "Smart View", seleccionas tu televisor y la pantalla se duplica al instante con audio sincronizado.
+* **Si tienes Chromecast, Android TV o Google TV (TCL, Xiaomi, Hisense):** Tanto los equipos Xiaomi (Poco C85, Note 13 Pro, Poco X7) como los Samsung son 100% compatibles con **Google Cast**. Solo abres YouTube, Netflix o Google Fotos y tocas el ícono cuadrado de transmisión para enviar la señal en 4K.
+* **Para televisores antiguos sin internet:** Si tu tele no tiene conexión WiFi, puedes añadir un [reproductor TV Box Android](/accesorios/mejores-tv-box-android-baratos-buenos-chile/) o un [Google Chromecast](/accesorios/roku-vs-chromecast-chile-cual-conviene/) por menos de $35.000 CLP para habilitar la transmisión inalámbrica desde cualquier smartphone moderno.
+
+---
+
+export const phoneFaqs = [
+  {
+    question: "¿Qué celular conviene comprar en Chile con un presupuesto menor a $150.000 CLP?",
+    answer: "El Xiaomi POCO C85 (aprox. $144.990 CLP) es la opción más sólida bajo ese rango. Cuenta con 6 GB de memoria RAM física (superior a los 4 GB habituales de la gama de entrada), 128 GB de almacenamiento, pantalla a 90 Hz y batería de 5.000 mAh con cargador original incluido."
+  },
+  {
+    question: "¿Los celulares comprados en Mercado Libre Chile vienen homologados ante la SUBTEL?",
+    answer: "Sí, siempre que compres a través de Tiendas Oficiales o publicaciones con sello Envío Full nacional. Estos equipos cuentan con el sello de Homologación Multibanda SAE chileno, garantizando compatibilidad con las frecuencias 4G/5G de Entel, Movistar, WOM y Claro, además de recibir alertas de emergencia ante catástrofes."
+  },
+  {
+    question: "¿Qué celulares permiten cargar la tarjeta Bip! y pagar con CuentaRUT desde el teléfono?",
+    answer: "Cualquier smartphone que incorpore tecnología NFC. En nuestro ranking, el Redmi Note 13 Pro 5G, el Samsung Galaxy A57 5G, el POCO X7 Pro y el Galaxy S26 incluyen NFC nativo, permitiendo validar y transferir saldo a la tarjeta Bip! mediante la app Red Movilidad y pagar en comercios acercando el celular al lector POS."
+  },
+  {
+    question: "¿Por qué algunos celulares nuevos ya no traen cargador en la caja?",
+    answer: "Marcas como Samsung y Apple eliminaron los adaptadores de corriente de la caja argumentando reducción de residuos ambientales. Por ello, modelos como el Galaxy A57 o Galaxy S26 solo incluyen el cable USB-C. En cambio, marcas como Xiaomi y POCO siguen incluyendo cargadores rápidos de alta potencia (33W a 67W) en la caja original sin costo extra."
+  },
+  {
+    question: "¿Vale la pena pagar más por un teléfono con conectividad 5G en Chile?",
+    answer: "Sí, especialmente en 2026 donde el despliegue de redes 5G en Santiago y capitales regionales ya es masivo en Entel, WOM, Movistar y Claro. Un celular 5G no solo ofrece descargas mucho más rápidas, sino menor latencia en llamadas de voz por internet y transmisiones de streaming en vivo sin cortes en lugares con mucha aglomeración."
+  }
+];
+
+## Preguntas Frecuentes sobre Celulares en Chile
+
+<FAQSection
+  title="Dudas Frecuentes al Comprar un Celular en Chile"
+  items={phoneFaqs}
+/>
+
+---
+
+<CtaBanner
+  title="¿Quieres complementar tu nuevo smartphone con los mejores accesorios?"
+  description="Revisa nuestras guías sobre cargadores certificados, baterías portátiles y dispositivos para conectar tu teléfono al televisor en casa."
+  buttonText="Ver Accesorios y Gadgets Hogar →"
+  buttonUrl="/gadgets-hogar/"
+/>
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Los 5 Mejores Celulares Calidad-Precio en Chile (2026)",
+  "description": "Comparativa técnica y ranking de los mejores smartphones calidad-precio disponibles en Chile en Mercado Libre con Envío Full.",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Xiaomi POCO C85 (128GB / 6GB RAM)",
+      "url": "https://hogartv.cl/accesorios/mejores-celulares-calidad-precio-baratos-chile/#xiaomi-poco-c85"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Xiaomi Redmi Note 13 Pro 5G (256GB / 8GB RAM)",
+      "url": "https://hogartv.cl/accesorios/mejores-celulares-calidad-precio-baratos-chile/#xiaomi-redmi-note-13-pro-5g"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Samsung Galaxy A57 5G (128GB / 8GB RAM)",
+      "url": "https://hogartv.cl/accesorios/mejores-celulares-calidad-precio-baratos-chile/#samsung-galaxy-a57-5g"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Xiaomi POCO X7 Pro 5G (512GB / 12GB RAM)",
+      "url": "https://hogartv.cl/accesorios/mejores-celulares-calidad-precio-baratos-chile/#xiaomi-poco-x7-pro-5g"
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "name": "Samsung Galaxy S26 5G (256GB)",
+      "url": "https://hogartv.cl/accesorios/mejores-celulares-calidad-precio-baratos-chile/#samsung-galaxy-s26-5g"
+    }
+  ]
+})} />

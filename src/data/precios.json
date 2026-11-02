@@ -865,5 +865,100 @@
         "urlKey": "proyector-magcubic-hy300"
       }
     ]
+  },
+  "xiaomi-poco-c85": {
+    "precioCLP": 144990,
+    "precioFormateado": "$ 144.990 CLP",
+    "rango": "$ 139.990 - $ 169.990 CLP",
+    "precioMinVisto": "$ 134.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-11-01",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 144.990 CLP",
+        "badge": "🏆 Mejor Bajo $150.000",
+        "destacada": true,
+        "envio": "Envío Full 24h",
+        "urlKey": "xiaomi-poco-c85"
+      }
+    ]
+  },
+  "xiaomi-redmi-note-13-pro-5g": {
+    "precioCLP": 259990,
+    "precioFormateado": "$ 259.990 CLP",
+    "rango": "$ 249.990 - $ 289.990 CLP",
+    "precioMinVisto": "$ 239.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-11-01",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 259.990 CLP",
+        "badge": "📸 Cámara 200MP + 67W",
+        "destacada": true,
+        "envio": "Envío Full 24h",
+        "urlKey": "xiaomi-redmi-note-13-pro-5g"
+      }
+    ]
+  },
+  "samsung-galaxy-a57-5g": {
+    "precioCLP": 299990,
+    "precioFormateado": "$ 299.990 CLP",
+    "rango": "$ 289.990 - $ 349.990 CLP",
+    "precioMinVisto": "$ 279.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-11-01",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 299.990 CLP",
+        "badge": "🛡️ Resistente IP67 + AI",
+        "destacada": true,
+        "envio": "Envío Full 24h",
+        "urlKey": "samsung-galaxy-a57-5g"
+      }
+    ]
+  },
+  "xiaomi-poco-x7-pro-5g": {
+    "precioCLP": 428990,
+    "precioFormateado": "$ 428.990 CLP",
+    "rango": "$ 399.990 - $ 459.990 CLP",
+    "precioMinVisto": "$ 389.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-11-01",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 428.990 CLP",
+        "badge": "⚡ 512GB + 12GB RAM Gamer",
+        "destacada": true,
+        "envio": "Envío Full 24h",
+        "urlKey": "xiaomi-poco-x7-pro-5g"
+      }
+    ]
+  },
+  "samsung-galaxy-s26-5g": {
+    "precioCLP": 669990,
+    "precioFormateado": "$ 669.990 CLP",
+    "rango": "$ 649.990 - $ 749.990 CLP",
+    "precioMinVisto": "$ 629.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-11-01",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 669.990 CLP",
+        "badge": "👑 Flagship Premium Galaxy",
+        "destacada": true,
+        "envio": "Envío Full 24h",
+        "urlKey": "samsung-galaxy-s26-5g"
+      }
+    ]
   }
 }

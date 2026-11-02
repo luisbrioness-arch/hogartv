@@ -171,12 +171,14 @@ const rawSecondaryAffiliates = comparativa
       precio: t.precio,
       targetUrl,
       theme,
+      isSameProduct: !t.urlKey || t.urlKey === productKey,
     };
   })
-  .filter((item: any) => item.theme.isOperative && item.targetUrl !== product.url);
+  .filter((item: any) => item.theme.isOperative && item.targetUrl !== product.url && item.isSameProduct);
 
-// Deduplicar para los botones de cabecera por red comercial (evita mostrar 2 botones idénticos de Falabella arriba)
+// Deduplicar para los botones de cabecera por red comercial (evita mostrar 2 botones idénticos de Falabella arriba o repetir Mercado Libre)
 const seenNetworks = new Set<string>();
+seenNetworks.add(primaryTheme.network); // No repetir la tienda principal
 const secondaryAffiliates = rawSecondaryAffiliates.filter((item: any) => {
   if (seenNetworks.has(item.theme.network)) {
     return false;

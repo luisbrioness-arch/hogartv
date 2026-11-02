@@ -25,6 +25,7 @@ const { author, articles } = Astro.props;
 const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
+  '@id': `${author.url}#person`,
   'name': author.nombre,
   'jobTitle': author.rol,
   'description': author.bioCompleta,

@@ -145,48 +145,79 @@ const contactSchema = {
               />
             </div>
 
-            <div>
-              <label for="email" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
-                Tu Correo Electrónico *
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                placeholder="tu@correo.cl"
-                class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all"
-              />
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="telefono" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                  Teléfono / WhatsApp *
+                </label>
+                <input
+                  type="tel"
+                  id="telefono"
+                  name="telefono"
+                  required
+                  placeholder="+56 9 1234 5678"
+                  class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all"
+                />
+              </div>
+
+              <div>
+                <label for="email" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                  Tu Correo Electrónico (Opcional)
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="tu@correo.cl"
+                  class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all"
+                />
+              </div>
             </div>
 
-            <div>
-              <label for="motivo" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
-                Tema de la Consulta *
-              </label>
-              <select
-                id="motivo"
-                name="motivo"
-                class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all"
-              >
-                <option value="servicio-tecnico">🛠️ Servicio Técnico / Instalación en Terreno (Región del Biobío)</option>
-                <option value="smart-tv">Duda sobre compra de Smart TV</option>
-                <option value="tvd">Sintonización de Canales TVD en Chile</option>
-                <option value="streaming">Dispositivos de Streaming (Roku, Chromecast, etc.)</option>
-                <option value="editorial">Sugerencia editorial o corrección técnica</option>
-                <option value="comercial">Contacto comercial o de afiliados</option>
-              </select>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="comuna" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                  Comuna o Sector (Biobío / Región)
+                </label>
+                <input
+                  type="text"
+                  id="comuna"
+                  name="comuna"
+                  placeholder="Ej. Florida, Quillón, Concepción"
+                  class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all"
+                />
+              </div>
+
+              <div>
+                <label for="motivo" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                  Tema de la Consulta *
+                </label>
+                <select
+                  id="motivo"
+                  name="motivo"
+                  class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all"
+                >
+                  <option value="servicio-tecnico">🛠️ Servicio Técnico / Instalación en Terreno (Región del Biobío)</option>
+                  <option value="satelital-rural">📡 Cotización Internet Satelital Rural (Parcelas / Terrenos)</option>
+                  <option value="smart-tv">Duda sobre compra de Smart TV</option>
+                  <option value="tvd">Sintonización de Canales TVD en Chile</option>
+                  <option value="streaming">Dispositivos de Streaming (Roku, Chromecast, etc.)</option>
+                  <option value="editorial">Sugerencia editorial o corrección técnica</option>
+                  <option value="comercial">Contacto comercial o de afiliados</option>
+                </select>
+              </div>
             </div>
 
             <div>
               <label for="mensaje" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
-                Mensaje o Pregunta *
+                Mensaje o Detalles Técnicos *
               </label>
               <textarea
                 id="mensaje"
                 name="mensaje"
-                rows="5"
+                rows="4"
                 required
-                placeholder="Indícanos en qué comuna o región te encuentras y los detalles de tu consulta técnica..."
+                placeholder="Indícanos los detalles de tu consulta técnica o cotización (distancia entre casas, altura, modelo de televisor, etc.)..."
                 class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all resize-y"
               ></textarea>
             </div>
@@ -195,7 +226,7 @@ const contactSchema = {
               type="submit"
               class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-bold text-sm shadow-lg shadow-brand-600/30 hover:scale-[1.01] active:scale-[0.99] transition-all"
             >
-              Enviar Mensaje vía Correo →
+              Enviar Consulta Técnica →
             </button>
           </form>
         </div>
@@ -216,7 +247,49 @@ const contactSchema = {
     }
 
     if (form && feedback) {
-      form.addEventListener('submit', function() {
+      form.addEventListener('submit', async function(e) {
+        // Capturar datos del prospecto
+        const nombre = (document.getElementById('nombre')?.value || '').trim();
+        const telefono = (document.getElementById('telefono')?.value || '').trim();
+        const email = (document.getElementById('email')?.value || '').trim();
+        const comuna = (document.getElementById('comuna')?.value || '').trim();
+        const motivo = motivoSelect ? motivoSelect.value : 'general';
+        const motivoText = motivoSelect && motivoSelect.options[motivoSelect.selectedIndex] ? motivoSelect.options[motivoSelect.selectedIndex].text : 'Consulta Técnica';
+        const mensaje = (document.getElementById('mensaje')?.value || '').trim();
+
+        const leadData = {
+          id: 'lead_' + Date.now(),
+          nombre: nombre || 'Cliente Web',
+          telefono: telefono,
+          email: email,
+          comuna: comuna || 'Biobío',
+          servicio: motivo,
+          servicio_nombre: motivoText,
+          mensaje: mensaje,
+          presupuesto: 0,
+          estado: 'nuevo',
+          notas: '',
+          origen: 'web_formulario_contacto',
+          creado_en: new Date().toLocaleString('es-CL')
+        };
+
+        // Guardar en localStorage para disponibilidad inmediata en el CRM
+        try {
+          const STORAGE_KEY = 'hogartv_crm_leads_v2';
+          const existing = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+          existing.unshift(leadData);
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(existing));
+        } catch (err) {}
+
+        // Enviar a la API del CRM en el servidor PHP
+        try {
+          fetch('/api/crm.php?action=save_lead', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(leadData)
+          }).catch(() => {});
+        } catch (err) {}
+
         feedback.classList.remove('hidden');
         feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       });

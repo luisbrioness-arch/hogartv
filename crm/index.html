@@ -1,0 +1,603 @@
+<!DOCTYPE html><html lang="es-CL" class="dark"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- Preload de fuente primaria Inter (evita FOIT / CLS en primer render) --><link rel="preload" href="/_astro/inter-latin-wght-normal.Dx4kXJAl.woff2" as="font" type="font/woff2" crossorigin><!-- Favicons, Apple Touch Icon y Web App Manifest --><link rel="icon" href="/favicon.ico" sizes="32x32"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><meta name="theme-color" content="#090d16"><link rel="alternate" type="application/rss+xml" title="HogarTV.cl" href="/rss.xml"><meta name="generator" content="Astro v5.18.2"><!-- Primordial SEO --><title>HogarTV CRM — Gestión de Clientes y Cotizaciones</title><meta name="description" content="Panel privado de administración y CRM de HogarTV.cl para seguimiento de cotizaciones y solicitudes de clientes."><link rel="canonical" href="https://hogartv.cl/crm/"><meta name="geo.region" content="CL"><meta name="geo.placename" content="Chile"><meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://hogartv.cl/crm/"><meta property="og:title" content="HogarTV CRM — Gestión de Clientes y Cotizaciones"><meta property="og:description" content="Panel privado de administración y CRM de HogarTV.cl para seguimiento de cotizaciones y solicitudes de clientes."><meta property="og:image" content="https://hogartv.cl/og-image.png"><meta property="og:site_name" content="HogarTV.cl"><meta property="og:locale" content="es_CL"><!-- Twitter --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:url" content="https://hogartv.cl/crm/"><meta name="twitter:title" content="HogarTV CRM — Gestión de Clientes y Cotizaciones"><meta name="twitter:description" content="Panel privado de administración y CRM de HogarTV.cl para seguimiento de cotizaciones y solicitudes de clientes."><meta name="twitter:image" content="https://hogartv.cl/og-image.png"><!-- WebSite & Organization Schema JSON-LD --><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"HogarTV.cl","url":"https://hogartv.cl","description":"Guía definitiva de Smart TVs, plataformas de streaming y televisión digital abierta en Chile.","inLanguage":"es-CL"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"HogarTV.cl","url":"https://hogartv.cl","logo":"https://hogartv.cl/apple-touch-icon.png","sameAs":["https://hogartv.cl/sobre-nosotros/","https://hogartv.cl/autor/luis-briones/"]}</script><!-- BreadcrumbList Schema JSON-LD --><script async src="https://www.googletagmanager.com/gtag/js?id=G-0ZB5T66TJ2"></script><script>(function(){const ga4Id = "G-0ZB5T66TJ2";
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', ga4Id);
+      })();</script><!-- Google AdSense --><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5268337462639131" crossorigin="anonymous"></script><link rel="stylesheet" href="/_astro/_slug_.C9zUhSqd.css"><script type="module" src="/_astro/page.DGRhADao.js"></script></head> <body class="min-h-screen flex flex-col bg-surface-dark text-slate-100 font-sans"> <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 px-4 py-2 bg-brand-600 text-white rounded-lg shadow-lg font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-brand-400">
+Saltar al contenido principal
+</a> <header class="sticky top-0 z-50 bg-surface-dark/90 backdrop-blur-md border-b border-slate-800"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> <div class="flex items-center justify-between h-16"> <!-- Logo --> <a href="/" class="flex items-center gap-3 group"> <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-400 flex items-center justify-center shadow-lg shadow-brand-500/25 group-hover:scale-105 transition-transform"> <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path> </svg> </div> <div class="flex flex-col"> <span class="text-xl font-extrabold tracking-tight text-white flex items-center gap-1">
+Hogar<span class="text-brand-400">TV</span><span class="text-xs px-1.5 py-0.5 rounded bg-brand-500/20 text-brand-300 font-semibold border border-brand-500/30">.cl</span> </span> <span class="text-[10px] text-slate-400 tracking-wider uppercase font-medium">Guía & Streaming Chile</span> </div> </a> <!-- Desktop Nav Links --> <nav class="hidden md:flex items-center gap-1 lg:gap-2"> <a href="/smart-tv/" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors"> Smart TV </a><a href="/streaming/" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors"> Streaming </a><a href="/tv-abierta/" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors"> TV Abierta Chile </a><a href="/accesorios/" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors"> Accesorios &amp; Redes </a><a href="/gadgets-hogar/" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors"> Gadgets Hogar </a><a href="/recomendados/" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors"> Recomendados </a> </nav> <!-- Action Button / Badge --> <div class="hidden sm:flex items-center gap-3"> <a href="/recomendados/" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold text-slate-950 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 hover:from-amber-300 hover:to-yellow-400 shadow-md shadow-amber-500/20 transition-all hover:shadow-amber-500/40"> <span>⭐ Superventas Chile</span> </a> </div> <!-- Mobile Menu Toggle Button --> <div class="flex md:hidden"> <button id="mobile-menu-btn" type="button" aria-label="Abrir menú" class="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 focus:outline-none"> <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path> </svg> </button> </div> </div> </div> <!-- Mobile Dropdown Menu --> <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800 bg-surface-card px-4 pt-2 pb-4 space-y-1"> <a href="/smart-tv/" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-200 hover:text-white hover:bg-slate-800"> Smart TV </a><a href="/streaming/" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-200 hover:text-white hover:bg-slate-800"> Streaming </a><a href="/tv-abierta/" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-200 hover:text-white hover:bg-slate-800"> TV Abierta Chile </a><a href="/accesorios/" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-200 hover:text-white hover:bg-slate-800"> Accesorios &amp; Redes </a><a href="/gadgets-hogar/" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-200 hover:text-white hover:bg-slate-800"> Gadgets Hogar </a><a href="/recomendados/" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-200 hover:text-white hover:bg-slate-800"> Recomendados </a> <div class="pt-2"> <a href="/recomendados/" class="block text-center w-full px-4 py-2.5 rounded-lg text-sm font-bold text-slate-950 bg-amber-400 hover:bg-amber-300">
+⭐ Superventas Chile
+</a> </div> </div> </header> <script type="module">const e=document.getElementById("mobile-menu-btn"),n=document.getElementById("mobile-menu");e&&n&&e.addEventListener("click",()=>{n.classList.toggle("hidden")});</script> <main id="main-content" class="flex-grow">  <div id="crm-app" class="min-h-screen bg-slate-950 text-slate-100 font-sans antialiased pb-20"> <!-- PANTALLA DE LOGIN --> <div id="login-view" class="flex min-h-[85vh] items-center justify-center px-4 py-12"> <div class="w-full max-w-md p-8 rounded-3xl bg-surface-card border border-slate-700/80 shadow-2xl space-y-6"> <div class="text-center space-y-2"> <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-600 to-indigo-600 text-white shadow-lg shadow-brand-500/25 mb-2"> <span class="text-2xl font-black">H</span> </div> <h1 class="text-2xl font-black text-white tracking-tight">HogarTV CRM</h1> <p class="text-xs text-slate-400">
+Panel de Control y Clientes · Administrador Técnico
+</p> </div> <form id="login-form" class="space-y-4"> <div id="login-error" class="hidden p-3 rounded-xl bg-rose-950/80 border border-rose-500/50 text-rose-300 text-xs text-center font-medium"></div> <div> <label for="crm-username" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
+Usuario
+</label> <input type="text" id="crm-username" required autocomplete="username" placeholder="admin o luis" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all"> </div> <div> <label for="crm-password" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
+Contraseña
+</label> <input type="password" id="crm-password" required autocomplete="current-password" placeholder="••••••••" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all"> </div> <div class="flex items-center justify-between text-xs text-slate-400 pt-1"> <label class="flex items-center gap-2 cursor-pointer"> <input type="checkbox" id="remember-me" checked class="rounded border-slate-700 bg-slate-900 text-brand-500 focus:ring-brand-500"> <span>Mantener sesión iniciada</span> </label> </div> <button type="submit" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-black text-sm uppercase tracking-wider shadow-lg shadow-brand-600/30 transition-all hover:scale-[1.01] active:scale-[0.99]">
+Ingresar al Panel →
+</button> </form> <div class="pt-4 border-t border-slate-800 text-center text-[11px] text-slate-500">
+HogarTV.cl · Sistema Privado de Gestión de Terreno y Ventas
+</div> </div> </div> <!-- PANEL PRINCIPAL (DASHBOARD) --> <div id="dashboard-view" class="hidden"> <!-- HEADER DEL CRM --> <header class="sticky top-0 z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 px-4 sm:px-6 lg:px-8 py-3.5"> <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3"> <div class="flex items-center gap-3"> <div class="flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-600 text-white font-black text-base shadow-md">
+H
+</div> <div> <div class="flex items-center gap-2"> <span class="text-base font-extrabold text-white tracking-tight">HogarTV CRM</span> <span class="px-2 py-0.5 rounded-full bg-emerald-950/80 border border-emerald-500/40 text-emerald-400 text-[10px] font-black uppercase tracking-wider">
+● En Línea
+</span> </div> <span class="text-[11px] text-slate-400 hidden sm:inline" id="live-clock">Chile Continental</span> </div> </div> <div class="flex items-center gap-2.5"> <a href="https://wa.me/56931926886" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-600/40 text-emerald-300 text-xs font-bold transition-colors" title="WhatsApp Oficial HogarTV"> <span>💬 +56 9 3192 6886</span> </a> <button id="btn-new-lead" class="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-lg bg-brand-600 hover:bg-brand-500 text-white text-xs font-black shadow-md transition-all"> <span>+ Nuevo Cliente</span> </button> <div class="h-5 w-px bg-slate-800"></div> <span id="user-display" class="text-xs font-semibold text-slate-300 hidden md:inline">Luis Briones</span> <button id="btn-logout" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors" title="Cerrar sesión"> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path> </svg> </button> </div> </div> </header> <!-- SUB-NAV / PESTAÑAS --> <div class="bg-slate-900/50 border-b border-slate-800/80 px-4 sm:px-6 lg:px-8 py-2"> <div class="max-w-7xl mx-auto flex items-center justify-between overflow-x-auto"> <nav class="flex items-center gap-2"> <button data-tab="tab-leads" class="crm-tab active px-4 py-1.5 rounded-lg text-xs font-bold transition-all bg-brand-600 text-white shadow-sm">
+👥 Prospectos y Cotizaciones
+</button> <button data-tab="tab-catalogo" class="crm-tab px-4 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white hover:bg-slate-800 transition-all">
+🔗 Catálogo y Afiliados
+</button> <button data-tab="tab-accesos" class="crm-tab px-4 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white hover:bg-slate-800 transition-all">
+⚡ Accesos Servidor
+</button> </nav> <div class="flex items-center gap-2 shrink-0"> <button id="btn-export-csv" class="px-3 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition-colors flex items-center gap-1"> <span>📥 Exportar CSV</span> </button> <button id="btn-sync" class="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-brand-400 transition-colors" title="Sincronizar Datos"> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path> </svg> </button> </div> </div> </div> <!-- CONTENIDO PRINCIPAL --> <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8"> <!-- PESTAÑA 1: PROSPECTOS Y CLIENTES --> <section id="tab-leads" class="crm-tab-content space-y-6"> <!-- TARJETAS KPIS --> <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4"> <div class="p-4 rounded-2xl bg-surface-card border border-slate-800 shadow-md"> <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Total Prospectos</span> <div class="flex items-baseline gap-2"> <span id="kpi-total" class="text-2xl sm:text-3xl font-black text-white font-mono">0</span> <span class="text-[11px] text-slate-500 font-medium">acumulados</span> </div> </div> <div class="p-4 rounded-2xl bg-surface-card border border-emerald-500/30 shadow-md bg-gradient-to-br from-emerald-950/20 to-surface-card"> <span class="text-[11px] font-bold text-emerald-400 uppercase tracking-wider block mb-1">Nuevos Pendientes</span> <div class="flex items-baseline gap-2"> <span id="kpi-nuevos" class="text-2xl sm:text-3xl font-black text-emerald-400 font-mono">0</span> <span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold animate-pulse">Por contactar</span> </div> </div> <div class="p-4 rounded-2xl bg-surface-card border border-sky-500/30 shadow-md bg-gradient-to-br from-sky-950/20 to-surface-card"> <span class="text-[11px] font-bold text-sky-400 uppercase tracking-wider block mb-1">Internet Rural</span> <div class="flex items-baseline gap-2"> <span id="kpi-satelitales" class="text-2xl sm:text-3xl font-black text-sky-400 font-mono">0</span> <span class="text-[11px] text-slate-500 font-medium">parcelas</span> </div> </div> <div class="p-4 rounded-2xl bg-surface-card border border-purple-500/30 shadow-md bg-gradient-to-br from-purple-950/20 to-surface-card"> <span class="text-[11px] font-bold text-purple-400 uppercase tracking-wider block mb-1">Visitas en Terreno</span> <div class="flex items-baseline gap-2"> <span id="kpi-visitas" class="text-2xl sm:text-3xl font-black text-purple-400 font-mono">0</span> <span class="text-[11px] text-slate-500 font-medium">agendadas</span> </div> </div> <div class="col-span-2 sm:col-span-1 p-4 rounded-2xl bg-surface-card border border-amber-500/30 shadow-md bg-gradient-to-br from-amber-950/20 to-surface-card"> <span class="text-[11px] font-bold text-amber-400 uppercase tracking-wider block mb-1">Total Cotizado</span> <div class="flex items-baseline gap-1"> <span class="text-xs text-amber-400 font-bold">$</span> <span id="kpi-monto" class="text-xl sm:text-2xl font-black text-amber-300 font-mono">0</span> <span class="text-[10px] text-slate-400 font-semibold uppercase">CLP</span> </div> </div> </div> <!-- BARRA DE FILTROS Y BÚSQUEDA --> <div class="p-4 rounded-2xl bg-surface-card border border-slate-800 shadow-md flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3"> <div class="relative flex-1"> <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path> </svg> <input type="text" id="search-input" placeholder="Buscar por nombre, teléfono, comuna (ej. Florida, Yumbel)..." class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700/80 text-white placeholder-slate-500 text-xs sm:text-sm focus:outline-none focus:border-brand-500 transition-all"> </div> <div class="flex flex-wrap items-center gap-2"> <select id="filter-status" class="px-3 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-300 text-xs font-semibold focus:outline-none focus:border-brand-500"> <option value="todos">Todos los Estados</option> <option value="nuevo">🟢 Nuevos</option> <option value="contactado">🔵 Contactados</option> <option value="visita">🟣 Visita Agendada</option> <option value="cerrado">⭐ Cerrados / Instalados</option> <option value="descartado">⚪ Descartados</option> </select> <select id="filter-service" class="px-3 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-300 text-xs font-semibold focus:outline-none focus:border-brand-500"> <option value="todos">Todos los Servicios</option> <option value="satelital">📡 Internet Satelital Rural</option> <option value="instalacion">🛠️ Instalación Soporte / Terreno</option> <option value="tvd">📺 Sintonización TVD</option> <option value="general">✉️ Consulta General</option> </select> </div> </div> <!-- LISTADO DE LEADS --> <div class="rounded-2xl bg-surface-card border border-slate-800 shadow-xl overflow-hidden"> <div id="leads-container" class="divide-y divide-slate-800/80"> <!-- Se rellena dinámicamente con JS --> </div> <div id="empty-leads" class="hidden p-12 text-center space-y-2"> <span class="text-4xl block mb-2">📋</span> <h3 class="text-base font-bold text-white">No se encontraron prospectos con este filtro</h3> <p class="text-xs text-slate-400">Prueba ajustando el texto de búsqueda o el estado seleccionado.</p> </div> </div> </section> <!-- PESTAÑA 2: CATÁLOGO Y AFILIADOS --> <section id="tab-catalogo" class="crm-tab-content hidden space-y-6"> <div class="p-6 rounded-2xl bg-surface-card border border-slate-800 shadow-xl space-y-4"> <div> <h2 class="text-lg font-bold text-white">Enlaces de Afiliados y Precios Oficiales</h2> <p class="text-xs text-slate-400">
+Consulta y copia rápidamente tus enlaces de Mercado Libre, Falabella y AliExpress recomendados en HogarTV.cl
+</p> </div> <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="products-catalog-list"> <!-- Se inyecta catálogo básico con JS --> </div> </div> </section> <!-- PESTAÑA 3: ACCESOS SERVIDOR --> <section id="tab-accesos" class="crm-tab-content hidden space-y-6"> <div class="grid grid-cols-1 md:grid-cols-2 gap-6"> <!-- DirectAdmin y Servidor --> <div class="p-6 rounded-2xl bg-surface-card border border-slate-800 shadow-xl space-y-4"> <div class="flex items-center gap-2"> <span class="text-xl">🖥️</span> <h3 class="text-base font-bold text-white">Servidor y Hosting (DirectAdmin)</h3> </div> <ul class="text-xs text-slate-300 space-y-2.5"> <li><strong class="text-white">Dominio Principal:</strong> <a href="https://hogartv.cl" target="_blank" class="text-brand-400 hover:underline">https://hogartv.cl</a></li> <li><strong class="text-white">Panel DirectAdmin:</strong> Puerto 2222 del hosting</li> <li><strong class="text-white">Base de datos MySQL:</strong> hogartvc_terreno</li> <li><strong class="text-white">API CRM de Leads:</strong> <code>/api/crm.php</code></li> <li><strong class="text-white">Ubicación física:</strong> Barros Arana 1098, Concepción</li> </ul> </div> <!-- WhatsApp y Contactos --> <div class="p-6 rounded-2xl bg-surface-card border border-slate-800 shadow-xl space-y-4"> <div class="flex items-center gap-2"> <span class="text-xl">📲</span> <h3 class="text-base font-bold text-white">Líneas de Atención Técnica</h3> </div> <ul class="text-xs text-slate-300 space-y-2.5"> <li><strong class="text-white">WhatsApp Oficial:</strong> <a href="https://wa.me/56931926886" target="_blank" class="text-emerald-400 hover:underline font-bold">+56 9 3192 6886</a></li> <li><strong class="text-white">Correo Oficial:</strong> contacto@hogartv.cl</li> <li><strong class="text-white">Técnico Titular:</strong> Luis Briones (Biobío, Chile)</li> <li><strong class="text-white">Cobertura Principal:</strong> Concepción, Florida, Yumbel, Santa Juana, Quillón, Los Ángeles</li> </ul> </div> </div> </section> </main> </div> <!-- MODAL: NUEVO LEAD MANUAL --> <div id="modal-lead" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm"> <div class="w-full max-w-lg p-6 sm:p-8 rounded-3xl bg-surface-card border border-slate-700 shadow-2xl space-y-5 animate-in fade-in zoom-in-95"> <div class="flex items-center justify-between pb-3 border-b border-slate-800"> <h3 class="text-lg font-bold text-white">Ingresar Nuevo Cliente / Cotización</h3> <button id="btn-close-modal" class="text-slate-400 hover:text-white text-lg">&times;</button> </div> <form id="form-new-lead" class="space-y-4 text-xs"> <div> <label class="block font-bold text-slate-300 uppercase mb-1">Nombre Completo *</label> <input type="text" id="lead-name" required placeholder="Ej. Juan Valenzuela" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500"> </div> <div class="grid grid-cols-1 sm:grid-cols-2 gap-3"> <div> <label class="block font-bold text-slate-300 uppercase mb-1">Teléfono / WhatsApp *</label> <input type="tel" id="lead-phone" required placeholder="+56 9 1234 5678" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500"> </div> <div> <label class="block font-bold text-slate-300 uppercase mb-1">Comuna o Sector</label> <input type="text" id="lead-comuna" placeholder="Ej. Florida, Quillón" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500"> </div> </div> <div> <label class="block font-bold text-slate-300 uppercase mb-1">Tipo de Servicio</label> <select id="lead-service" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white"> <option value="satelital_rural">📡 Internet Satelital Rural (Parcelas)</option> <option value="instalacion_soporte">🛠️ Instalación Soporte TV / Terreno</option> <option value="tvd">📺 Sintonización TV Digital</option> <option value="smart_tv">📺 Asesoría Smart TV / Streaming</option> <option value="general">✉️ Consulta General</option> </select> </div> <div class="grid grid-cols-1 sm:grid-cols-2 gap-3"> <div> <label class="block font-bold text-slate-300 uppercase mb-1">Distancia Estimada (Parcela)</label> <input type="text" id="lead-distance" placeholder="Ej. 120m entre casas" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500"> </div> <div> <label class="block font-bold text-slate-300 uppercase mb-1">Presupuesto Cotizado ($ CLP)</label> <input type="number" id="lead-budget" placeholder="Ej. 320000" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500"> </div> </div> <div> <label class="block font-bold text-slate-300 uppercase mb-1">Detalle o Notas del Terreno</label> <textarea id="lead-message" rows="3" placeholder="Indicar observaciones técnicas, orientación, si requiere mástil o fibra drop..." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 resize-none"></textarea> </div> <div class="flex items-center justify-end gap-2 pt-2 border-t border-slate-800"> <button type="button" id="btn-cancel-modal" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold">Cancelar</button> <button type="submit" class="px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-black shadow-md">Guardar Cliente →</button> </div> </form> </div> </div> </div>  <script>
+    (function() {
+      // Estado en memoria
+      let leads = [];
+      let currentUser = null;
+      const STORAGE_KEY = 'hogartv_crm_leads_v2';
+      const AUTH_KEY = 'hogartv_crm_auth_v2';
+
+      // Elementos DOM
+      const loginView = document.getElementById('login-view');
+      const dashboardView = document.getElementById('dashboard-view');
+      const loginForm = document.getElementById('login-form');
+      const loginError = document.getElementById('login-error');
+      const leadsContainer = document.getElementById('leads-container');
+      const emptyLeads = document.getElementById('empty-leads');
+      const searchInput = document.getElementById('search-input');
+      const filterStatus = document.getElementById('filter-status');
+      const filterService = document.getElementById('filter-service');
+      const modalLead = document.getElementById('modal-lead');
+      const formNewLead = document.getElementById('form-new-lead');
+      const btnNewLead = document.getElementById('btn-new-lead');
+      const btnCloseModal = document.getElementById('btn-close-modal');
+      const btnCancelModal = document.getElementById('btn-cancel-modal');
+      const btnLogout = document.getElementById('btn-logout');
+      const btnExportCsv = document.getElementById('btn-export-csv');
+      const btnSync = document.getElementById('btn-sync');
+
+      // Reloj Chile
+      function updateClock() {
+        const el = document.getElementById('live-clock');
+        if (el) {
+          const now = new Date();
+          el.textContent = now.toLocaleDateString('es-CL', {
+            weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit'
+          }) + ' (Chile)';
+        }
+      }
+      setInterval(updateClock, 30000);
+      updateClock();
+
+      // Control de Autenticación
+      function checkStoredAuth() {
+        try {
+          const stored = localStorage.getItem(AUTH_KEY) || sessionStorage.getItem(AUTH_KEY);
+          if (stored) {
+            const data = JSON.parse(stored);
+            if (data && data.user) {
+              loginSuccess(data.user, data.token);
+              return;
+            }
+          }
+        } catch (e) {}
+        showLogin();
+      }
+
+      function showLogin() {
+        loginView.classList.remove('hidden');
+        dashboardView.classList.add('hidden');
+      }
+
+      function loginSuccess(user, token) {
+        currentUser = user;
+        document.getElementById('user-display').textContent = user.nombre || user.username;
+        loginView.classList.add('hidden');
+        dashboardView.classList.remove('hidden');
+        loadLeads();
+      }
+
+      loginForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        loginError.classList.add('hidden');
+        const username = document.getElementById('crm-username').value.trim();
+        const password = document.getElementById('crm-password').value.trim();
+        const remember = document.getElementById('remember-me').checked;
+
+        try {
+          // Intentar autenticación vía API PHP
+          const res = await fetch('/api/crm.php?action=login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password })
+          });
+          const data = await res.json();
+
+          if (data && data.ok) {
+            const authObj = { user: data.user, token: data.token };
+            if (remember) {
+              localStorage.setItem(AUTH_KEY, JSON.stringify(authObj));
+            } else {
+              sessionStorage.setItem(AUTH_KEY, JSON.stringify(authObj));
+            }
+            loginSuccess(data.user, data.token);
+            return;
+          }
+        } catch (err) {
+          // Fallback offline / local
+        }
+
+        // Credenciales locales fijas si la API PHP aún no está en local
+        if ((username === 'admin' || username === 'luis') && password === 'hogartv2026') {
+          const userObj = { username, nombre: (username === 'luis' ? 'Luis Briones' : 'Administrador HogarTV') };
+          const authObj = { user: userObj, token: btoa(username + ':' + password) };
+          if (remember) {
+            localStorage.setItem(AUTH_KEY, JSON.stringify(authObj));
+          } else {
+            sessionStorage.setItem(AUTH_KEY, JSON.stringify(authObj));
+          }
+          loginSuccess(userObj, authObj.token);
+        } else {
+          loginError.textContent = 'Usuario o contraseña incorrectos. Verifica tus accesos.';
+          loginError.classList.remove('hidden');
+        }
+      });
+
+      btnLogout.addEventListener('click', function() {
+        localStorage.removeItem(AUTH_KEY);
+        sessionStorage.removeItem(AUTH_KEY);
+        currentUser = null;
+        showLogin();
+      });
+
+      // Carga y Sincronización de Leads
+      async function loadLeads() {
+        let remoteLeads = null;
+        try {
+          const authData = JSON.parse(localStorage.getItem(AUTH_KEY) || sessionStorage.getItem(AUTH_KEY) || '{}');
+          const res = await fetch('/api/crm.php?action=get_leads', {
+            headers: { 'Authorization': 'Bearer ' + (authData.token || '') }
+          });
+          const data = await res.json();
+          if (data && data.ok && Array.isArray(data.leads)) {
+            remoteLeads = data.leads;
+          }
+        } catch (e) {}
+
+        if (remoteLeads && remoteLeads.length > 0) {
+          leads = remoteLeads;
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(leads));
+        } else {
+          // Cargar desde localStorage
+          const local = localStorage.getItem(STORAGE_KEY);
+          if (local) {
+            try { leads = JSON.parse(local); } catch (e) { leads = []; }
+          }
+          if (!leads || leads.length === 0) {
+            // Sembrar leads iniciales
+            leads = [
+              {
+                id: 'lead_01',
+                nombre: 'Carlos Mendoza',
+                telefono: '+56987654321',
+                email: 'carlos.mendoza@gmail.com',
+                comuna: 'Florida',
+                servicio: 'satelital_rural',
+                servicio_nombre: '📡 Internet Satelital Rural (Compartido 2 Casas)',
+                distancia_estimada: '120m entre casas',
+                mensaje: 'Hola Luis, necesitamos compartir internet satelital con mi hermano en Copiulemu. Hay árboles entremedio y queremos cotizar enlace por fibra drop.',
+                estado: 'nuevo',
+                presupuesto: 360000,
+                notas: 'Requiere mástil de 4 metros en techo de teja. Enlace viable.',
+                origen: 'web_cotizador',
+                creado_en: '2026-11-02 09:30:00'
+              },
+              {
+                id: 'lead_02',
+                nombre: 'Marta Riquelme',
+                telefono: '+56976543210',
+                email: 'marta.riquelme@hotmail.cl',
+                comuna: 'Yumbel',
+                servicio: 'satelital_rural',
+                servicio_nombre: '📡 Internet Satelital Rural (Individual)',
+                distancia_estimada: 'Vivienda única',
+                mensaje: 'Tengo antena satelital comprada pero no sé cómo calibrarla ni pasar los cables hacia el interior para que el WiFi llegue a las piezas.',
+                estado: 'contactado',
+                presupuesto: 95000,
+                notas: 'Cliente ya tiene la antena; solo mano de obra de montaje, cable exterior y router interior.',
+                origen: 'web_contacto',
+                creado_en: '2026-11-01 16:20:00'
+              }
+            ];
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(leads));
+          }
+        }
+
+        renderDashboard();
+      }
+
+      // Render de Métricas y Leads
+      function renderDashboard() {
+        updateKPIs();
+        renderLeadsList();
+      }
+
+      function updateKPIs() {
+        const total = leads.length;
+        const nuevos = leads.filter(l => l.estado === 'nuevo').length;
+        const satelitales = leads.filter(l => (l.servicio || '').includes('satelital')).length;
+        const visitas = leads.filter(l => l.estado === 'visita').length;
+        const monto = leads.reduce((acc, l) => acc + (parseInt(l.presupuesto) || 0), 0);
+
+        document.getElementById('kpi-total').textContent = total;
+        document.getElementById('kpi-nuevos').textContent = nuevos;
+        document.getElementById('kpi-satelitales').textContent = satelitales;
+        document.getElementById('kpi-visitas').textContent = visitas;
+        document.getElementById('kpi-monto').textContent = monto.toLocaleString('es-CL');
+      }
+
+      function renderLeadsList() {
+        const query = searchInput.value.toLowerCase().trim();
+        const status = filterStatus.value;
+        const service = filterService.value;
+
+        const filtered = leads.filter(l => {
+          const matchQuery = !query ||
+            (l.nombre && l.nombre.toLowerCase().includes(query)) ||
+            (l.telefono && l.telefono.toLowerCase().includes(query)) ||
+            (l.comuna && l.comuna.toLowerCase().includes(query)) ||
+            (l.mensaje && l.mensaje.toLowerCase().includes(query)) ||
+            (l.notas && l.notas.toLowerCase().includes(query));
+
+          const matchStatus = status === 'todos' || l.estado === status;
+          const matchService = service === 'todos' ||
+            (service === 'satelital' && (l.servicio || '').includes('satelital')) ||
+            (service === 'instalacion' && (l.servicio || '').includes('instalacion')) ||
+            (service === 'tvd' && (l.servicio || '').includes('tvd')) ||
+            (service === 'general' && (l.servicio || '').includes('general'));
+
+          return matchQuery && matchStatus && matchService;
+        });
+
+        leadsContainer.innerHTML = '';
+
+        if (filtered.length === 0) {
+          emptyLeads.classList.remove('hidden');
+          return;
+        }
+
+        emptyLeads.classList.add('hidden');
+
+        filtered.forEach(lead => {
+          const card = document.createElement('div');
+          card.className = 'p-4 sm:p-5 hover:bg-slate-900/60 transition-colors flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4';
+
+          const badgeClass = {
+            'nuevo': 'bg-emerald-950/80 text-emerald-400 border-emerald-500/40',
+            'contactado': 'bg-sky-950/80 text-sky-400 border-sky-500/40',
+            'visita': 'bg-purple-950/80 text-purple-400 border-purple-500/40',
+            'cerrado': 'bg-amber-950/80 text-amber-300 border-amber-500/40 font-bold',
+            'descartado': 'bg-slate-900 text-slate-500 border-slate-700'
+          }[lead.estado] || 'bg-slate-900 text-slate-300 border-slate-700';
+
+          const cleanPhone = (lead.telefono || '').replace(/[^0-9]/g, '');
+          const waMessage = encodeURIComponent(`Hola ${lead.nombre}, te saluda Luis Briones de HogarTV.cl. Recibí tu solicitud por ${lead.servicio_nombre || 'instalación técnica'}. Cuéntame, ¿podemos coordinar los detalles?`);
+
+          card.innerHTML = `
+            <div class="flex-1 space-y-2 min-w-0">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider border ${badgeClass}">
+                  ${lead.estado.toUpperCase()}
+                </span>
+                <span class="text-base font-extrabold text-white">${lead.nombre}</span>
+                <span class="text-xs font-semibold px-2 py-0.5 rounded-md bg-slate-800 text-brand-300">
+                  📍 ${lead.comuna || 'Biobío'}
+                </span>
+                <span class="text-[11px] text-slate-500">${lead.creado_en || 'Reciente'}</span>
+              </div>
+
+              <div class="text-xs text-slate-300 space-y-1">
+                <p class="font-medium text-slate-200">${lead.servicio_nombre || lead.servicio}</p>
+                ${lead.distancia_estimada ? `<p class="text-slate-400">📏 Distancia: <strong class="text-slate-300">${lead.distancia_estimada}</strong></p>` : ''}
+                ${lead.mensaje ? `<p class="italic text-slate-400 bg-slate-950/60 p-2.5 rounded-xl border border-slate-800/80">"${lead.mensaje}"</p>` : ''}
+              </div>
+
+              <div class="flex flex-wrap items-center gap-3 text-xs pt-1">
+                <span class="text-slate-400 font-mono">Presupuesto: <strong class="text-amber-400 font-bold">$ ${(parseInt(lead.presupuesto) || 0).toLocaleString('es-CL')} CLP</strong></span>
+                ${lead.notas ? `<span class="text-purple-300 text-[11px] bg-purple-950/40 px-2 py-0.5 rounded border border-purple-800/30">📝 ${lead.notas}</span>` : ''}
+              </div>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2 shrink-0 w-full lg:w-auto pt-2 lg:pt-0 border-t lg:border-t-0 border-slate-800">
+              ${cleanPhone ? `
+                <a
+                  href="https://wa.me/${cleanPhone}?text=${waMessage}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center gap-1.5 shadow-md transition-all"
+                  title="Abrir WhatsApp directo con mensaje"
+                >
+                  <span>💬 WhatsApp</span>
+                </a>
+                <a
+                  href="tel:${cleanPhone}"
+                  class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold transition-colors"
+                  title="Llamar por teléfono"
+                >
+                  📞
+                </a>
+              ` : ''}
+
+              <!-- Cambiar Estado Rápido -->
+              <select data-id="${lead.id}" class="select-lead-status px-2.5 py-2 rounded-xl bg-slate-900 border border-slate-700 text-xs font-semibold text-slate-300 focus:outline-none">
+                <option value="nuevo" ${lead.estado === 'nuevo' ? 'selected' : ''}>🟢 Nuevo</option>
+                <option value="contactado" ${lead.estado === 'contactado' ? 'selected' : ''}>🔵 Contactado</option>
+                <option value="visita" ${lead.estado === 'visita' ? 'selected' : ''}>🟣 Visita Agendada</option>
+                <option value="cerrado" ${lead.estado === 'cerrado' ? 'selected' : ''}>⭐ Cerrado / Instalado</option>
+                <option value="descartado" ${lead.estado === 'descartado' ? 'selected' : ''}>⚪ Descartado</option>
+              </select>
+
+              <!-- Botón Editar Notas -->
+              <button data-id="${lead.id}" class="btn-edit-lead px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold transition-colors">
+                ✏️ Notas
+              </button>
+
+              <!-- Botón Borrar -->
+              <button data-id="${lead.id}" class="btn-delete-lead p-2 rounded-xl bg-slate-900 hover:bg-rose-950/60 text-slate-500 hover:text-rose-400 transition-colors" title="Eliminar prospecto">
+                🗑️
+              </button>
+            </div>
+          `;
+
+          leadsContainer.appendChild(card);
+        });
+
+        attachLeadEvents();
+      }
+
+      function attachLeadEvents() {
+        // Selector de estado
+        document.querySelectorAll('.select-lead-status').forEach(sel => {
+          sel.addEventListener('change', async function() {
+            const id = this.getAttribute('data-id');
+            const newStatus = this.value;
+            const item = leads.find(l => l.id === id);
+            if (item) {
+              item.estado = newStatus;
+              saveLeadsLocallyAndRemote(item, { estado: newStatus });
+              renderDashboard();
+            }
+          });
+        });
+
+        // Editar notas y presupuesto
+        document.querySelectorAll('.btn-edit-lead').forEach(btn => {
+          btn.addEventListener('click', function() {
+            const id = this.getAttribute('data-id');
+            const item = leads.find(l => l.id === id);
+            if (!item) return;
+
+            const newBudget = prompt('Ingresa el presupuesto acordado en pesos chilenos ($ CLP):', item.presupuesto || 0);
+            if (newBudget === null) return;
+            const newNotes = prompt('Escribe las notas técnicas de terreno:', item.notas || '');
+            if (newNotes === null) return;
+
+            item.presupuesto = parseInt(newBudget) || 0;
+            item.notas = newNotes;
+            saveLeadsLocallyAndRemote(item, { presupuesto: item.presupuesto, notas: item.notas });
+            renderDashboard();
+          });
+        });
+
+        // Borrar lead
+        document.querySelectorAll('.btn-delete-lead').forEach(btn => {
+          btn.addEventListener('click', async function() {
+            const id = this.getAttribute('data-id');
+            if (confirm('¿Seguro que deseas eliminar este prospecto?')) {
+              leads = leads.filter(l => l.id !== id);
+              localStorage.setItem(STORAGE_KEY, JSON.stringify(leads));
+              try {
+                const authData = JSON.parse(localStorage.getItem(AUTH_KEY) || '{}');
+                await fetch('/api/crm.php?action=delete_lead', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + (authData.token || '') },
+                  body: JSON.stringify({ id })
+                });
+              } catch (e) {}
+              renderDashboard();
+            }
+          });
+        });
+      }
+
+      async function saveLeadsLocallyAndRemote(item, updates) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(leads));
+        try {
+          const authData = JSON.parse(localStorage.getItem(AUTH_KEY) || sessionStorage.getItem(AUTH_KEY) || '{}');
+          await fetch('/api/crm.php?action=update_lead', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + (authData.token || '') },
+            body: JSON.stringify({ id: item.id, ...updates })
+          });
+        } catch (e) {}
+      }
+
+      // Filtros
+      searchInput.addEventListener('input', renderLeadsList);
+      filterStatus.addEventListener('change', renderLeadsList);
+      filterService.addEventListener('change', renderLeadsList);
+
+      // Modal Nuevo Lead
+      btnNewLead.addEventListener('click', () => modalLead.classList.remove('hidden'));
+      btnCloseModal.addEventListener('click', () => modalLead.classList.add('hidden'));
+      btnCancelModal.addEventListener('click', () => modalLead.classList.add('hidden'));
+
+      formNewLead.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const name = document.getElementById('lead-name').value.trim();
+        const phone = document.getElementById('lead-phone').value.trim();
+        const comuna = document.getElementById('lead-comuna').value.trim();
+        const service = document.getElementById('lead-service').value;
+        const serviceText = document.getElementById('lead-service').options[document.getElementById('lead-service').selectedIndex].text;
+        const distance = document.getElementById('lead-distance').value.trim();
+        const budget = parseInt(document.getElementById('lead-budget').value) || 0;
+        const message = document.getElementById('lead-message').value.trim();
+
+        const newLead = {
+          id: 'lead_' + Date.now(),
+          nombre: name,
+          telefono: phone,
+          email: '',
+          comuna: comuna || 'Biobío',
+          servicio: service,
+          servicio_nombre: serviceText,
+          distancia_estimada: distance,
+          presupuesto: budget,
+          mensaje: message,
+          estado: 'nuevo',
+          notas: '',
+          origen: 'crm_manual',
+          creado_en: new Date().toLocaleString('es-CL')
+        };
+
+        leads.unshift(newLead);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(leads));
+
+        try {
+          await fetch('/api/crm.php?action=save_lead', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newLead)
+          });
+        } catch (e) {}
+
+        formNewLead.reset();
+        modalLead.classList.add('hidden');
+        renderDashboard();
+      });
+
+      // Exportar a CSV
+      btnExportCsv.addEventListener('click', function() {
+        if (leads.length === 0) {
+          alert('No hay prospectos para exportar.');
+          return;
+        }
+
+        const headers = ['ID', 'Fecha', 'Nombre', 'Telefono', 'Comuna', 'Servicio', 'Distancia', 'Presupuesto_CLP', 'Estado', 'Notas', 'Mensaje'];
+        const rows = leads.map(l => [
+          `"${l.id}"`,
+          `"${l.creado_en || ''}"`,
+          `"${(l.nombre || '').replace(/"/g, '""')}"`,
+          `"${l.telefono || ''}"`,
+          `"${(l.comuna || '').replace(/"/g, '""')}"`,
+          `"${(l.servicio_nombre || l.servicio || '').replace(/"/g, '""')}"`,
+          `"${(l.distancia_estimada || '').replace(/"/g, '""')}"`,
+          l.presupuesto || 0,
+          `"${l.estado}"`,
+          `"${(l.notas || '').replace(/"/g, '""')}"`,
+          `"${(l.mensaje || '').replace(/"/g, '""')}"`
+        ]);
+
+        const csvContent = '\uFEFF' + [headers.join(';'), ...rows.map(r => r.join(';'))].join('\n');
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = `HogarTV_Clientes_${new Date().toISOString().slice(0, 10)}.csv`;
+        link.click();
+      });
+
+      // Botón Sincronizar
+      btnSync.addEventListener('click', function() {
+        loadLeads();
+      });
+
+      // Pestañas
+      document.querySelectorAll('.crm-tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+          const targetId = this.getAttribute('data-tab');
+          document.querySelectorAll('.crm-tab').forEach(t => {
+            t.classList.remove('active', 'bg-brand-600', 'text-white', 'shadow-sm');
+            t.classList.add('text-slate-400');
+          });
+          this.classList.add('active', 'bg-brand-600', 'text-white', 'shadow-sm');
+          this.classList.remove('text-slate-400');
+
+          document.querySelectorAll('.crm-tab-content').forEach(c => c.classList.add('hidden'));
+          const targetContent = document.getElementById(targetId);
+          if (targetContent) targetContent.classList.remove('hidden');
+
+          if (targetId === 'tab-catalogo') {
+            renderCatalogo();
+          }
+        });
+      });
+
+      // Render catálogo rápido
+      function renderCatalogo() {
+        const cat = document.getElementById('products-catalog-list');
+        if (!cat || cat.children.length > 0) return;
+
+        const items = [
+          { name: 'Mini Proyector Magcubic HY320 1080p', price: '$ 59.990 CLP', link: 'https://meli.la/1iujA8g', shop: 'Mercado Libre' },
+          { name: 'Xiaomi TV Box S (2nd Gen) 4K', price: '$ 73.990 CLP', link: 'https://meli.la/12X5zff', shop: 'Mercado Libre' },
+          { name: 'Barra de Sonido Samsung HW-B550', price: '$ 139.990 CLP', link: 'https://meli.la/13Tnoar', shop: 'Mercado Libre' },
+          { name: 'Antena Exterior TVD HD Biobío', price: '$ 15.990 CLP', link: 'https://meli.la/1p6uR5w', shop: 'Mercado Libre' },
+          { name: 'Router WiFi 6 Huawei AX3 / BE3', price: '$ 49.990 CLP', link: 'https://meli.la/1y8r2Jk', shop: 'Mercado Libre' },
+          { name: 'Kit Cámara Seguridad WiFi Exterior 360', price: '$ 29.990 CLP', link: 'https://meli.la/23fkhe9', shop: 'Mercado Libre' }
+        ];
+
+        cat.innerHTML = items.map(p => `
+          <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2">
+            <h4 class="font-bold text-white text-xs leading-tight">${p.name}</h4>
+            <div class="flex items-center justify-between text-xs">
+              <span class="text-emerald-400 font-mono font-bold">${p.price}</span>
+              <span class="text-[11px] text-slate-400">${p.shop}</span>
+            </div>
+            <a href="${p.link}" target="_blank" rel="noopener noreferrer" class="block w-full py-1.5 px-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-center text-[11px] font-bold transition-colors">
+              Abrir Enlace Afiliado ↗
+            </a>
+          </div>
+        `).join('');
+      }
+
+      // Iniciar
+      checkStoredAuth();
+    })();
+  </script>  </main> <footer class="bg-surface-dark border-t border-slate-800/80 mt-20"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12"> <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10"> <!-- Columna 1: Marca e Identidad --> <div class="md:col-span-1 space-y-4"> <a href="/" class="flex items-center gap-2"> <div class="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center"> <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path> </svg> </div> <span class="text-lg font-bold text-white">Hogar<span class="text-brand-400">TV</span>.cl</span> </a> <p class="text-xs text-slate-400 leading-relaxed">
+Portal técnico independiente en Chile para elegir Smart TV, comparar plataformas de streaming y sintonizar televisión digital abierta (TVD) gratuita.
+</p> <div class="pt-1"> <a href="/autor/luis-briones/" class="inline-flex items-center gap-2 text-xs text-brand-400 hover:text-brand-300 font-medium transition-colors"> <span>👤 Autor técnico: Luis Briones</span> </a> </div> </div> <!-- Columna 2: Categorías --> <div> <p class="text-sm font-semibold text-white uppercase tracking-wider mb-3">Categorías</p> <ul class="space-y-2 text-xs"> <li><a href="/smart-tv/" class="text-slate-400 hover:text-white transition-colors">Smart TVs en Chile</a></li> <li><a href="/streaming/" class="text-slate-400 hover:text-white transition-colors">Streaming y TV Online</a></li> <li><a href="/tv-abierta/" class="text-slate-400 hover:text-white transition-colors">Canales TVD Chile</a></li> <li><a href="/accesorios/" class="text-slate-400 hover:text-white transition-colors">TV Sticks, Redes y Accesorios</a></li> <li><a href="/gadgets-hogar/" class="text-slate-400 hover:text-white transition-colors">Gadgets Tecnológicos Hogar</a></li> <li><a href="/recomendados/" class="text-brand-400 hover:text-brand-300 font-semibold transition-colors">Catálogo de Recomendados 2026</a></li> <li><a href="/virales/" class="text-slate-500 hover:text-slate-300 transition-colors">Tendencias y Virales</a></li> </ul> </div> <!-- Columna 3: Información Legal y Políticas --> <div> <p class="text-sm font-semibold text-white uppercase tracking-wider mb-3">Transparencia y Legal</p> <ul class="space-y-2 text-xs"> <li><a href="/sobre-nosotros/" class="text-slate-400 hover:text-white transition-colors">Sobre Nosotros y Metodología</a></li> <li><a href="/contacto/" class="text-slate-400 hover:text-white transition-colors">Contacto y Soporte</a></li> <li><a href="/divulgacion-afiliados/" class="text-slate-400 hover:text-white transition-colors">Divulgación de Afiliados</a></li> <li><a href="/privacidad/" class="text-slate-400 hover:text-white transition-colors">Política de Privacidad (Chile)</a></li> <li><a href="/terminos/" class="text-slate-400 hover:text-white transition-colors">Términos y Condiciones</a></li> </ul> </div> <!-- Columna 4: Aviso de Afiliados --> <div> <p class="text-sm font-semibold text-brand-300 uppercase tracking-wider mb-3">Aviso de Afiliación</p> <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800 text-[11px] text-slate-400 leading-relaxed space-y-2"> <p>
+HogarTV.cl participa en programas de afiliados (Mercado Libre Chile, Falabella Creators y AliExpress). Si compras a través de nuestros enlaces, podemos recibir una comisión sin ningún costo extra para ti.
+</p> <a href="/divulgacion-afiliados/" class="text-brand-400 underline hover:text-brand-300 block font-medium">
+Leer política de transparencia completa →
+</a> </div> </div> </div> <!-- Barra inferior con enlaces legales --> <div class="pt-8 border-t border-slate-800/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500"> <p>© 2026 HogarTV.cl - Todos los derechos reservados. Editado para usuarios en Chile 🇨🇱.</p> <nav class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2" aria-label="Enlaces legales"> <a href="/sobre-nosotros/" class="hover:text-slate-300 transition-colors">Sobre Nosotros</a> <a href="/contacto/" class="hover:text-slate-300 transition-colors">Contacto</a> <a href="/divulgacion-afiliados/" class="hover:text-slate-300 transition-colors">Afiliados</a> <a href="/privacidad/" class="hover:text-slate-300 transition-colors">Privacidad</a> <a href="/terminos/" class="hover:text-slate-300 transition-colors">Términos</a> </nav> </div> </div> </footer> <!-- Banner de Consentimiento de Cookies (Cumplimiento Google AdSense / Ley 19.628 Chile) --> <aside id="cookie-consent-banner" class="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:max-w-md bg-slate-900/95 backdrop-blur-md border border-slate-700/80 rounded-2xl p-4 shadow-2xl z-50 transform transition-all duration-300 translate-y-32 opacity-0 pointer-events-none" role="dialog" aria-live="polite" aria-label="Consentimiento de cookies"> <div class="flex items-start gap-3"> <span class="text-2xl shrink-0" aria-hidden="true">🍪</span> <div class="space-y-2"> <p class="text-xs text-slate-300 leading-relaxed">
+En <strong>HogarTV.cl</strong> utilizamos cookies técnicas y de personalización publicitaria de Google para ofrecerte la mejor experiencia y mantener nuestras guías gratuitas en Chile. Consulta nuestra <a href="/privacidad/" class="text-brand-400 underline hover:text-brand-300 font-semibold">Política de Privacidad</a>.
+</p> <div class="flex items-center gap-2 pt-1"> <button id="accept-cookies-btn" type="button" class="px-4 py-1.5 rounded-lg bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold shadow-md transition-colors">
+Aceptar todas
+</button> <button id="essential-cookies-btn" type="button" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium transition-colors">
+Solo necesarias
+</button> </div> </div> </div> </aside> <script>
+    (function() {
+      const consentKey = 'hogartv_cookie_consent';
+      const banner = document.getElementById('cookie-consent-banner');
+      const acceptBtn = document.getElementById('accept-cookies-btn');
+      const essentialBtn = document.getElementById('essential-cookies-btn');
+
+      if (!localStorage.getItem(consentKey) && banner) {
+        setTimeout(function() {
+          banner.classList.remove('translate-y-32', 'opacity-0', 'pointer-events-none');
+        }, 800);
+      }
+
+      function dismissBanner(choice) {
+        localStorage.setItem(consentKey, choice);
+        if (banner) {
+          banner.classList.add('translate-y-32', 'opacity-0', 'pointer-events-none');
+        }
+      }
+
+      if (acceptBtn) acceptBtn.addEventListener('click', function() { dismissBanner('all'); });
+      if (essentialBtn) essentialBtn.addEventListener('click', function() { dismissBanner('essential'); });
+    })();
+  </script> </body> </html>

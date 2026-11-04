@@ -213,7 +213,6 @@ Dado que en los sectores rurales cada predio tiene distancias muy distintas (30m
 | **Individual (1 Parcela / Casa)** | Antena satelital mini + 1 Router Wi-Fi 6 de alta penetración + Montaje en mástil y calibración. | Cobertura interior completa de la vivienda | **A Convenir** · Cotización según altura y terreno |
 | **Compartido Vecinos (Cobre Blindado)** | Servicio para 2 casas contiguas + 2 Routers Wi-Fi 6 independientes + Conexión directa. | Cable de red UTP exterior UV blindado (hasta 80m) | **A Convenir** · Costo dividido entre familias |
 | **Compartido Largo (Fibra Drop)** | Servicio para 2 parcelas alejadas + 2 Routers Wi-Fi 6 + Conversores de medios ópticos. | Fibra óptica drop monomodo (100m a 500m) | **A Convenir** · Inmune a rayos y distancia |
-| **Compartido Premium (MikroTik)** | Enlace para 2 familias + 2 Routers Wi-Fi 6 + Router Administrador MikroTik con balanceo 50/50. | Cable exterior UTP o Fibra Drop dieléctrica | **A Convenir** · Ancho de banda garantizado |
 | **Cámara en Portón Lejano (PoE / Drop)** | Enlace perimetral hacia la entrada. Inyector PoE (energía + datos sin enchufe 220V) o Drop óptico dedicado. | UTP exterior UV (hasta 100m) o Fibra Drop dedicada (más de 100m) | **A Convenir** · Monitoreo en tu celular 24/7 |
 
 <div class="my-6 p-5 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-850 to-slate-900 border border-emerald-500/40 shadow-xl not-prose flex flex-col md:flex-row items-center justify-between gap-5">
@@ -258,11 +257,11 @@ Dado que en los sectores rurales cada predio tiene distancias muy distintas (30m
 
 La pregunta más habitual de quienes evalúan compartir internet es: **"¿Qué pasa si mi vecino se pone a descargar cosas pesadas? ¿Se me caerá el internet a mí?"**.
 
-La respuesta es **no**, siempre que la red se instale con un **administrador de tráfico MikroTik**:
+La respuesta es **no**, ya que calibramos la red con un **administrador y balanceador de tráfico equitativo (50/50)**:
 
 ```mermaid
 flowchart TD
-    SAT["Antena Satelital en Techo<br>(Recepción 150-250 Mbps)"] --> MIK["Router Administrador MikroTik<br>(Control de Tráfico Equitativo)"]
+    SAT["Antena Satelital en Techo<br>(Recepción 150-250 Mbps)"] --> MIK["Administrador de Red y Tráfico<br>(Control Equitativo 50/50)"]
     MIK -->|"Red Privada Casa 1"| R1["Router Wi-Fi 6 Casa A<br>(Red y Contraseña Propia)"]
     MIK -->|"Cable UTP Ext. o Fibra Drop"| R2["Router Wi-Fi 6 Casa B<br>(Red y Contraseña Propia)"]
 ```

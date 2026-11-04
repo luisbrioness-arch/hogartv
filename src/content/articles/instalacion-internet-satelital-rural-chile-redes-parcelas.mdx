@@ -1,120 +1,192 @@
 ---
-title: "Internet Satelital en Zonas Rurales de Chile: Instalación, Redes y Cómo Compartir con Vecinos (2026)"
-description: "Guía técnica para instalar internet satelital en parcelas y sectores rurales de Chile. Opciones llave en mano individuales o compartidas con vecinos mediante cable o fibra."
+title: "Internet Satelital en Zonas Rurales de Chile: Instalación en Terreno y Cómo Compartir con Vecinos (2026)"
+description: "Servicio técnico e instalación de internet satelital en parcelas y sectores rurales de la Región del Biobío. Opciones individuales o compartidas 50/50 con vecinos mediante cable o fibra."
 category: "accesorios"
 categoryName: "Accesorios"
 publishDate: "2026-11-02"
-dateModified: "2026-11-02"
-readTime: "10 min de lectura"
+dateModified: "2026-11-03"
+readTime: "8 min de lectura"
 featured: true
 author: "luis-briones"
 ---
 
+import { Image } from 'astro:assets';
+import heroImage from '../../assets/accesorios/instalacion-internet-satelital-rural-chile-redes-parcelas/hero.jpg';
 import FAQSection from '../../components/FAQSection.astro';
-import CtaBanner from '../../components/CtaBanner.astro';
-
-<div class="my-4 p-4 rounded-xl bg-slate-900 border border-slate-700/80 text-xs text-slate-300 not-prose">
-  <div class="flex items-center gap-2 text-amber-400 font-bold uppercase tracking-wider text-[11px] mb-1">
-    <span>⚖️</span>
-    <span>Aviso de Independencia Profesional y Marcas Registradas</span>
-  </div>
-  <p class="m-0 leading-relaxed text-slate-400">
-    HogarTV.cl y el técnico Luis Briones prestan servicios independientes de ingeniería de redes, montaje en altura, cableado exterior y distribución Wi-Fi para hogares y parcelas en Chile. <strong>Starlink®</strong> es una marca registrada de Space Exploration Technologies Corp. (SpaceX). Este sitio no representa, no es distribuidor oficial ni mantiene afiliación corporativa con dicha empresa. La suscripción mensual del servicio de datos es contratada directamente por el usuario con el proveedor oficial.
-  </p>
-</div>
 
 {/* =========================================================================
-    HERO DE CONVERSIÓN RÁPIDA (REGLA DE LOS 7 SEGUNDOS)
+    1. NOTA LLAMATIVA AL PRINCIPIO CON IMAGEN Y SERVICIO EN LA 8ª REGIÓN
    ========================================================================= */}
 
-<div class="my-6 p-5 sm:p-7 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900 to-sky-950/40 border-2 border-sky-500/50 shadow-2xl not-prose">
-  <div class="flex flex-wrap items-center justify-between gap-2 mb-3 pb-2.5 border-b border-slate-800">
-    <div class="flex items-center gap-2">
-      <span class="px-2.5 py-1 rounded-md bg-sky-500 text-slate-950 text-[11px] font-black uppercase tracking-wider">📡 SOLUCIÓN RURAL CHILE 2026</span>
-      <span class="text-xs font-bold text-sky-300">Conectividad de Alta Velocidad en Parcelas</span>
+<div class="my-5 rounded-3xl overflow-hidden border-2 border-emerald-500/40 bg-slate-900 shadow-2xl not-prose">
+  {/* Imagen Hero 16:9 con Badges Flotantes */}
+  <div class="relative aspect-[16/9] w-full overflow-hidden bg-slate-950">
+    <Image
+      src={heroImage}
+      alt="Instalación profesional de antena satelital en parcela rural de la Región del Biobío, Chile"
+      width={1000}
+      height={563}
+      format="webp"
+      quality={90}
+      class="w-full h-full object-cover"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+
+    <div class="absolute top-3.5 left-3.5 right-3.5 flex flex-wrap items-center justify-between gap-2">
+      <span class="px-3 py-1 rounded-full bg-emerald-500 text-slate-950 text-xs font-black uppercase tracking-wider shadow-lg">
+        📍 Servicio en Terreno · Región del Biobío
+      </span>
+      <span class="px-3 py-1 rounded-full bg-slate-950/90 border border-sky-400/50 text-sky-300 text-xs font-mono font-bold shadow-lg">
+        ⚡ 100 a 250 Mbps Reales
+      </span>
     </div>
-    <span class="text-[11px] text-emerald-400 font-semibold">✓ Sin Límites de Cobertura 4G</span>
+
+    <div class="absolute bottom-3 left-4 right-4 sm:bottom-5 sm:left-6 sm:right-6">
+      <span class="text-emerald-400 text-xs font-black uppercase tracking-wider block mb-1">
+        Conectividad de Alta Velocidad para Parcelas y Campo
+      </span>
+      <h2 class="text-xl sm:text-2xl md:text-3xl font-black text-white leading-tight drop-shadow-md m-0">
+        Instalación Profesional de Internet Satelital en la 8ª Región
+      </h2>
+    </div>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-12 gap-5 items-center">
-    <div class="md:col-span-8">
-      <p class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-0.5">Internet Satelital LEO de Baja Órbita</p>
-      <h2 class="text-xl sm:text-2xl font-extrabold text-white leading-tight mb-2">
-        Internet de 100 a 250 Mbps en el Campo: ¿Conviene Solo o Compartido?
-      </h2>
-      <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-3">
-        En sectores rurales donde no llega la fibra óptica (Movistar, Mundo o Entel) y el 4G de los celulares se satura por las tardes, el internet satelital de baja órbita (como Starlink Mini o Standard) es la única solución real. Además, <strong>es posible compartir legalmente el enlace con una parcela vecina</strong> para dividir el costo mensual a la mitad sin perder velocidad.
+  {/* Tarjeta de Oferta y Beneficios Rápidos (Sin textos pesados) */}
+  <div class="p-5 sm:p-7 bg-gradient-to-b from-slate-900 to-slate-950 space-y-5">
+    <div class="border-l-4 border-emerald-500 pl-4 py-0.5">
+      <h3 class="text-base sm:text-lg font-black text-white m-0">
+        ¿Vives en una parcela o sector rural donde no llega la fibra y el 4G colapsa en las tardes?
+      </h3>
+      <p class="text-xs sm:text-sm text-slate-300 m-0 mt-1 leading-relaxed">
+        Realizamos visitas técnicas de evaluación, montaje en altura y distribución Wi-Fi en <strong>Florida, Yumbel, Santa Juana, Quillón, Concepción, Cabrero, Los Ángeles</strong> y alrededores.
       </p>
-      <div class="flex flex-wrap gap-1.5 text-[11px]">
-        <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-200 border border-slate-700">Velocidad 100-250 Mbps</span>
-        <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-200 border border-slate-700">Baja Latencia (25-45 ms)</span>
-        <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-200 border border-slate-700">Opción 50% / 50% con Vecino</span>
+    </div>
+
+    {/* 3 Cápsulas Visuales Clave */}
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+      <div class="p-3.5 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-1">
+        <span class="text-xl block">⚡</span>
+        <h4 class="font-bold text-white text-xs">Velocidad de Fibra</h4>
+        <p class="text-[11px] text-slate-400 m-0 leading-normal">
+          100 a 250 Mbps sin cortes nocturnos. Ideal para teletrabajo y Netflix 4K.
+        </p>
+      </div>
+
+      <div class="p-3.5 rounded-2xl bg-emerald-950/30 border border-emerald-500/30 space-y-1">
+        <span class="text-xl block">🤝</span>
+        <h4 class="font-bold text-emerald-300 text-xs">Paga a Medias (50/50)</h4>
+        <p class="text-[11px] text-slate-300 m-0 leading-normal">
+          Comparte una sola antena con tu vecino contiguo y dividan la mensualidad.
+        </p>
+      </div>
+
+      <div class="p-3.5 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-1">
+        <span class="text-xl block">🛠️</span>
+        <h4 class="font-bold text-white text-xs">Llave en Mano</h4>
+        <p class="text-[11px] text-slate-400 m-0 leading-normal">
+          Ponemos mástil para librar árboles, cable blindado de exterior y Wi-Fi 6 interior.
+        </p>
       </div>
     </div>
 
-    <div class="md:col-span-4 flex flex-col gap-2.5 bg-slate-950/90 p-4 rounded-2xl border border-slate-800">
-      <div class="text-center pb-2 border-b border-slate-800">
-        <span class="text-[11px] text-slate-400 block font-medium">Instalación Llave en Mano</span>
-        <span class="text-xs text-emerald-400 font-bold">Presupuesto a Medida según Terreno</span>
-      </div>
+    {/* Botones de Acción Inmediatos */}
+    <div class="flex flex-col sm:flex-row items-center gap-3 pt-2">
       <a
-        href="https://wa.me/56931926886?text=Hola%20Luis,%20leí%20tu%20artículo%20en%20HogarTV%20y%20me%20gustaría%20cotizar%20la%20instalación%20de%20internet%20satelital%20en%20mi%20parcela."
+        href="https://wa.me/56931926886?text=Hola%20Luis,%20quiero%20cotizar%20la%20instalación%20de%20internet%20satelital%20en%20mi%20parcela."
         target="_blank"
         rel="noopener noreferrer"
-        class="w-full py-3 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-center text-xs sm:text-sm shadow-lg shadow-emerald-500/20 transition-all flex items-center justify-center gap-2"
+        class="w-full sm:w-auto flex-1 py-3.5 px-6 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-center text-xs sm:text-sm uppercase tracking-wider shadow-lg shadow-emerald-500/25 transition-all flex items-center justify-center gap-2"
       >
-        <span>📲 Consultar Factibilidad por WhatsApp</span>
+        <span>📲 Consultar Factibilidad por WhatsApp (+56 9 3192 6886)</span>
       </a>
       <a
-        href="#catalogo-proyectos"
-        class="w-full py-1.5 px-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-center text-xs transition-colors"
+        href="#modalidades-servicio"
+        class="w-full sm:w-auto py-3.5 px-5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-center text-xs transition-colors"
       >
-        Ver Catálogo de Precios ↓
+        Ver Modalidades y Presupuestos ↓
       </a>
     </div>
+
+    {/* Aviso legal discreto al pie del bloque */}
+    <p class="text-[10px] text-slate-500 border-t border-slate-800/80 pt-2.5 m-0 leading-tight">
+      ⚖️ <em>Aviso legal: HogarTV.cl y Luis Briones prestan servicios técnicos independientes de ingeniería de redes, montaje y cableado. Starlink® es marca registrada de SpaceX. La cuota mensual oficial es contratada por el usuario con su propia tarjeta.</em>
+    </p>
   </div>
 </div>
-
-## El Problema del Internet Rural en Chile y Por Qué el 4G Falla
-
-Si vives o tienes una parcela de agrado en comunas rurales (como Florida, Yumbel, Santa Juana, Quillón, Pinto, Curacaví o el Valle del Elqui), conoces de sobra esta historia:
-
-1. **La fibra óptica no llega:** Las empresas tradicionales no extienden tendidos de fibra donde hay pocas casas por kilómetro cuadrado.
-2. **Los módems 4G o "BAM" colapsan:** Durante la mañana funcionan bien, pero entre las 19:00 y las 23:00 hrs la antena celular del pueblo se satura y la velocidad cae a menos de 2 Mbps, haciendo imposible ver Netflix, YouTube o trabajar en videollamadas.
-3. **El internet satelital tradicional (Geoestacionario) era inviable:** Antiguas tecnologías satelitales tenían más de 600 ms de latencia (delay) y límites mensuales de descarga de 30 o 50 GB.
-
-La llegada de los satélites de **órbita baja (LEO)** cambió este panorama radicalmente: al orbitar a solo 550 km de la Tierra, ofrecen **velocidades reales de 100 a 250 Mbps** y latencias de 25 a 45 ms, idénticas a las de una conexión urbana.
 
 ---
 
-<div id="catalogo-proyectos"></div>
+<div id="modalidades-servicio"></div>
 
-## Modalidades de Conexión y Proyectos "Llave en Mano"
+{/* =========================================================================
+    2. DESCRIPCIÓN DEL SERVICIO (MODALIDADES Y PRESUPUESTOS)
+   ========================================================================= */}
 
-Cada parcela o terreno rural presenta desafíos técnicos particulares: la distancia entre viviendas puede variar desde 30 metros hasta más de 300 metros cruzando caminos interiores o bosque; la altura necesaria del mástil para librar la copa de árboles no siempre es la misma; y los requerimientos de puntos de acceso Wi-Fi dependen de la estructura de cada casa.
+## ¿Qué Incluyen Nuestras Instalaciones Llave en Mano?
 
-Por estas razones, **no aplicamos tarifas rígidas estándar**, sino que estructuramos **un presupuesto a la medida exacta de tu terreno** (considerando únicamente los insumos de intemperie requeridos y la mano de obra de calibración):
+No tienes que comprar herramientas especiales, trepar al techo con miedo a caerte ni complicarte configurando routers. Nosotros llevamos todos los insumos de intemperie y dejamos tu internet 100% operativo:
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6 not-prose">
+  <div class="p-5 rounded-2xl bg-surface-card border border-slate-800 space-y-3">
+    <div class="inline-block px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-200 text-[10px] font-black uppercase">
+      Modalidad 1
+    </div>
+    <h3 class="text-base font-extrabold text-white m-0">🏡 Parcela Individual</h3>
+    <p class="text-xs text-slate-400 leading-relaxed m-0">
+      Diseñada para una sola vivienda. Incluye montaje de antena en mástil elevado para esquivar copas de árboles, cableado exterior blindado y <strong>Router Wi-Fi 6 de alta cobertura</strong> para penetrar muros interiores.
+    </p>
+    <div class="text-xs text-emerald-400 font-bold">✓ Cobertura total en dormitorios y living</div>
+  </div>
+
+  <div class="p-5 rounded-2xl bg-surface-card border border-emerald-500/40 space-y-3 bg-gradient-to-br from-emerald-950/20 to-surface-card">
+    <div class="inline-block px-2.5 py-0.5 rounded-full bg-emerald-500 text-slate-950 text-[10px] font-black uppercase">
+      Modalidad 2 · Más Pedida
+    </div>
+    <h3 class="text-base font-extrabold text-white m-0">🤝 Compartido Vecinos (UTP)</h3>
+    <p class="text-xs text-slate-300 leading-relaxed m-0">
+      Para 2 casas o parcelas contiguas separadas por hasta 80 metros. Una sola antena alimenta a dos viviendas mediante <strong>cable de red exterior con doble chaqueta UV</strong>. Cada casa tiene su propio Router Wi-Fi 6 independiente.
+    </p>
+    <div class="text-xs text-emerald-300 font-bold">✓ Dividen el costo mensual a la mitad</div>
+  </div>
+
+  <div class="p-5 rounded-2xl bg-surface-card border border-sky-500/40 space-y-3 bg-gradient-to-br from-sky-950/20 to-surface-card">
+    <div class="inline-block px-2.5 py-0.5 rounded-full bg-sky-500 text-slate-950 text-[10px] font-black uppercase">
+      Modalidad 3
+    </div>
+    <h3 class="text-base font-extrabold text-white m-0">🌲 Compartido Largo (Fibra Drop)</h3>
+    <p class="text-xs text-slate-300 leading-relaxed m-0">
+      Para parcelas alejadas entre 100 y 500 metros cruzando caminos interiores o bosque. Usamos <strong>fibra óptica drop monomodo dieléctrica</strong> con conversores ópticos: inmune a rayos eléctricos y con cero pérdida de velocidad.
+    </p>
+    <div class="text-xs text-sky-300 font-bold">✓ Cero caída de señal por distancia</div>
+  </div>
+</div>
+
+### Tabla de Proyectos y Presupuesto a la Medida
+
+Dado que en los sectores rurales cada predio tiene distancias muy distintas (30m vs 300m, árboles altos o casas en loma), **no cobramos una tarifa plana rígida**, sino un **presupuesto personalizado** según la mano de obra e insumos de intemperie exactos:
 
 | Modalidad de Conexión | Equipamiento y Alcance Técnico | Tipo de Enlace Recomendado | Presupuesto de Instalación |
 | :--- | :--- | :--- | :--- |
-| **Individual (1 Parcela / Casa)** | Antena satelital mini + 1 Router Wi-Fi 6 de alta penetración + Montaje en mástil y calibración azimutal. | Cobertura interior completa de la vivienda | **A Convenir** · Cotización según altura y terreno |
-| **Compartido Vecinos (Cobre Blindado)** | Servicio para 2 casas contiguas + 2 Routers Wi-Fi 6 independientes + Conexión directa. | Cable de red UTP exterior UV blindado (hasta 80m) | **A Convenir** · Dividido entre ambas familias |
-| **Compartido Largo (Fibra Drop)** | Servicio para 2 parcelas alejadas + 2 Routers Wi-Fi 6 + Conversores de medios ópticos. | Fibra óptica drop monomodo dieléctrica (100m a 500m) | **A Convenir** · Inmune a rayos y caídas de señal |
-| **Compartido Premium (MikroTik)** | Enlace para 2 familias + 2 Routers Wi-Fi 6 + Router Administrador MikroTik con balanceo 50/50. | Cable exterior UTP o Fibra Drop dieléctrica | **A Convenir** · Garantía de ancho de banda equitativo |
+| **Individual (1 Parcela / Casa)** | Antena satelital mini + 1 Router Wi-Fi 6 de alta penetración + Montaje en mástil y calibración. | Cobertura interior completa de la vivienda | **A Convenir** · Cotización según altura y terreno |
+| **Compartido Vecinos (Cobre Blindado)** | Servicio para 2 casas contiguas + 2 Routers Wi-Fi 6 independientes + Conexión directa. | Cable de red UTP exterior UV blindado (hasta 80m) | **A Convenir** · Costo dividido entre familias |
+| **Compartido Largo (Fibra Drop)** | Servicio para 2 parcelas alejadas + 2 Routers Wi-Fi 6 + Conversores de medios ópticos. | Fibra óptica drop monomodo (100m a 500m) | **A Convenir** · Inmune a rayos y distancia |
+| **Compartido Premium (MikroTik)** | Enlace para 2 familias + 2 Routers Wi-Fi 6 + Router Administrador MikroTik con balanceo 50/50. | Cable exterior UTP o Fibra Drop dieléctrica | **A Convenir** · Ancho de banda garantizado |
 
 <div class="my-6 p-5 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-850 to-slate-900 border border-emerald-500/40 shadow-xl not-prose flex flex-col md:flex-row items-center justify-between gap-5">
   <div class="space-y-1 text-center md:text-left">
     <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-emerald-950/80 border border-emerald-500/30 text-emerald-300 text-[11px] font-bold uppercase tracking-wider">
       <span>📐 Evaluación Técnica en Terreno</span>
     </div>
-    <h4 class="text-white font-extrabold text-base sm:text-lg m-0">¿Quieres saber el presupuesto exacto para tu parcela?</h4>
+    <h4 class="text-white font-extrabold text-base sm:text-lg m-0">¿Quieres saber el valor exacto para tu parcela?</h4>
     <p class="text-xs sm:text-sm text-slate-300 m-0 max-w-xl">
-      Indícanos tu comuna o localidad rural y la distancia estimada entre construcciones. Te responderemos con la factibilidad técnica y una cotización personalizada.
+      Indícanos tu comuna o sector rural y la distancia estimada. Te respondemos con la factibilidad técnica y tu cotización en menos de 24 horas.
     </p>
   </div>
   <div class="flex flex-wrap items-center justify-center gap-3 shrink-0">
     <a
-      href="/contacto/?motivo=servicio-tecnico"
+      href="/contacto/?motivo=satelital-rural#contact-form"
       class="px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs uppercase tracking-wider transition-all shadow-lg shadow-emerald-500/25 flex items-center gap-1.5"
     >
       <span>Cotizar Ahora →</span>
@@ -131,62 +203,54 @@ Por estas razones, **no aplicamos tarifas rígidas estándar**, sino que estruct
 </div>
 
 <p class="text-xs text-slate-400 italic">
-  *Nota sobre la mensualidad: El costo del plan de datos del proveedor satelital (aprox. $35.000 a $47.000 CLP mensuales según la modalidad residencial o itinerante) es pagado directamente por el cliente al proveedor oficial mediante su propia tarjeta de crédito o débito, sin contratos de amarre. En las modalidades compartidas, ambos vecinos dividen este abono oficial en partes iguales (aprox. $17.500 a $23.500 CLP/mes cada uno).
+  *Nota sobre la mensualidad: El costo del plan de datos del proveedor satelital (aprox. $35.000 a $47.000 CLP mensuales según la modalidad contratada) es pagado directamente por el cliente al proveedor oficial mediante su tarjeta, sin contratos de amarre. En las opciones compartidas, ambos vecinos dividen este costo en partes iguales (aprox. $17.500 a $23.500 CLP/mes cada uno).
 </p>
 
 ---
 
-## ¿Cómo Funciona la Conexión Compartida entre Dos Casas o Parcelas?
+{/* =========================================================================
+    3. DETALLE DE CÓMO FUNCIONA EL SISTEMA TÉCNICO
+   ========================================================================= */}
 
-La opción más demandada en sectores rurales es el **proyecto compartido entre dos vecinos o familiares que viven en el mismo terreno o parcelas contiguas**. 
+## ¿Cómo Funciona la Conexión Compartida entre Dos Parcelas?
 
-Pagar \$47.000 CLP mensuales de forma individual puede representar un gasto elevado para un presupuesto familiar; sin embargo, al compartir el enlace, **cada casa termina pagando entre \$17.500 y \$23.500 CLP al mes**, lo que resulta **más barato que un plan de internet hogar tradicional en la ciudad**.
+La pregunta más habitual de quienes evalúan compartir internet es: **"¿Qué pasa si mi vecino se pone a descargar cosas pesadas? ¿Se me caerá el internet a mí?"**.
+
+La respuesta es **no**, siempre que la red se instale con un **administrador de tráfico MikroTik**:
 
 ```mermaid
 flowchart TD
-    SAT["Antena Satelital en Techo<br>(Recepción 150-250 Mbps)"] --> MIK["Router Administrador MikroTik<br>(Control de Ancho de Banda Equitativo)"]
-    MIK -->|"Red Local Casa 1"| R1["Router Wi-Fi 6 Casa A<br>(Red privada propia)"]
-    MIK -->|"Cable UTP Ext. o Fibra Drop"| R2["Router Wi-Fi 6 Casa B<br>(Red privada propia)"]
+    SAT["Antena Satelital en Techo<br>(Recepción 150-250 Mbps)"] --> MIK["Router Administrador MikroTik<br>(Control de Tráfico Equitativo)"]
+    MIK -->|"Red Privada Casa 1"| R1["Router Wi-Fi 6 Casa A<br>(Red y Contraseña Propia)"]
+    MIK -->|"Cable UTP Ext. o Fibra Drop"| R2["Router Wi-Fi 6 Casa B<br>(Red y Contraseña Propia)"]
 ```
 
-### ¿Por qué es indispensable un router MikroTik en la opción Premium?
+### Los 3 Pilares del Control de Tráfico Profesional:
 
-El error común que cometen quienes intentan compartir internet por su cuenta con un simple switch o cable directo es que **no existe control de tráfico**:
-* Si el vecino de la Casa 1 se pone a descargar un videojuego pesado o sincronizar archivos a la nube, absorbe el 95% del canal satelital.
-* Como consecuencia, la Casa 2 sufre congelamientos en Smart TV, lag en llamadas de WhatsApp y caídas de Zoom.
-
-En la **Modalidad Compartida Premium**, instalamos un router **MikroTik configurado con colas de tráfico avanzadas (PCQ / Simple Queues)**:
-1. **Garantía 50% / 50%:** Cada casa tiene asignado su propio ancho de banda independiente.
-2. **Priorización de Tráfico Inteligente:** Las videollamadas, el audio y las transmisiones de streaming tienen prioridad automática sobre las descargas pesadas de fondo.
-3. **Privacidad Total de Red:** Cada casa tiene su propia red Wi-Fi y contraseña aislada; los dispositivos de una casa no pueden ver ni acceder a las computadoras, cámaras o teléfonos de la otra.
+1. **Garantía 50% / 50%:** Si la antena recibe 200 Mbps, cada casa tiene asegurados 100 Mbps constantes. Nadie puede acaparar el canal del vecino.
+2. **Prioridad Inteligente para Streaming:** El sistema le da paso preferente a las videollamadas de WhatsApp, Zoom y transmisiones de Smart TV (fútbol en vivo o películas) por sobre las descargas pesadas de fondo.
+3. **Privacidad Total de Cada Hogar:** Cada casa cuenta con su propio nombre de red Wi-Fi y contraseña privada. Los dispositivos de una casa (computadores, celulares, cámaras de seguridad) están 100% aislados de la otra.
 
 ---
 
-## Cable de Red Exterior vs. Fibra Óptica Drop: ¿Cuál Necesitas?
+## Cable Exterior Blindado vs. Fibra Óptica Drop: ¿Cuál Necesitas?
 
-Dependiendo de la distancia que separe ambas viviendas, la solución técnica varía:
+Dependiendo del terreno y la distancia entre construcciones, la solución física cambia:
 
-### Opción A: Cable de Red UTP Exterior Blindado (Hasta 80 metros)
-* Se utiliza cable UTP Categoría 6 con doble chaqueta UV diseñado para resistir sol, lluvia y heladas extremas.
-* Ideal si las casas están dentro del mismo predio o separadas por un patio o jardín corto.
-* No requiere conversores eléctricos adicionales.
-
-### Opción B: Enlace por Fibra Óptica Drop Dieléctrica (Distancias de 100 a 500 metros)
-* Si las parcelas están separadas por un callejón, bosque o distancias mayores a 100 metros, el cable de cobre convencional pierde señal y atrae descargas eléctricas de tormentas.
-* La **fibra óptica drop dieléctrica** no conduce electricidad (inmune a rayos), no sufre pérdidas por distancia y garantiza que la segunda vivienda reciba exactamente los mismos 200 Mbps que la casa principal.
+* **Cable UTP Exterior Blindado (Hasta 80 metros):**  
+  Usamos cable Categoría 6 con doble chaqueta UV diseñado para soportar las heladas, la lluvia invernal del Biobío y el sol directo del verano. Es ideal si las casas están en el mismo predio o separadas por un patio.
+* **Fibra Óptica Drop Monomodo Dieléctrica (100 a 500 metros):**  
+  Si las parcelas están separadas por un callejón, bosque o quebrada, el cable de cobre convencional pierde velocidad y atrae tormentas eléctricas. La **fibra óptica drop dieléctrica no conduce electricidad (inmune a rayos)** y entrega exactamente los mismos 200 Mbps al vecino a 400 metros de distancia.
 
 ---
 
-## La Experiencia en Terreno: Recomendaciones Técnicas de Luis Briones
+## Recomendaciones en Terreno de Luis Briones (Biobío)
 
-Como instalador en terreno en la Región del Biobío, estos son los tres puntos críticos que siempre verificamos antes de fijar cualquier soporte:
+Como instalador con experiencia real en telecomunicaciones en la 8ª Región, estos son los tres puntos críticos que verificamos en cada visita:
 
-1. **Línea de Vista Despejada (Cero Obstrucciones):**  
-   Los satélites de baja órbita se mueven a miles de kilómetros por hora por el cielo. Una sola rama de eucalipto o pino que tape el cono norte de visibilidad genera microcortes de 5 a 10 segundos cada 15 minutos. Siempre montamos la antena sobre mástiles elevados con anclaje perimetral para superar copas de árboles cercanas.
-2. **Protección Eléctrica:**  
-   En zonas rurales el voltaje fluctúa constantemente. Siempre recomendamos conectar la fuente del sistema satelital a un pequeño regulador de voltaje o UPS para proteger el equipo ante bajas de tensión o cortes de luz repentinos.
-3. **Distribución Wi-Fi 6 en el Interior:**  
-   La antena satelital recibe el internet del cielo, pero si el router interior es antiguo o tiene paredes de adobe/madera gruesa entremedio, la señal no llegará a los dormitorios. Por eso nuestros paquetes incluyen **routers Wi-Fi 6 de alta penetración** para garantizar cobertura total en toda la casa.
+1. **Línea de Vista Despejada:** Los satélites de baja órbita se desplazan rápido por el cielo. Una sola rama de pino o eucalipto que tape el cono norte provoca microcortes cada 10 minutos. Siempre montamos en mástil para superar la vegetación cercana.
+2. **Protección Eléctrica Rural:** En comunas como Florida o Yumbel el voltaje suele fluctuar. Siempre recomendamos conectar la fuente a un pequeño regulador de voltaje o mini UPS para proteger los equipos.
+3. **Wi-Fi 6 Interior:** No sacas nada con tener 200 Mbps en el techo si tu router interior no traspasa las paredes de madera o adobe. Nuestros kits siempre incluyen routers Wi-Fi 6 de alta penetración.
 
 ---
 
@@ -197,53 +261,49 @@ export const satFaqs = [
   },
   {
     question: "¿Qué pasa si se corta la luz en el sector rural?",
-    answer: "La antena y los routers se apagan si no hay suministro. Sin embargo, al tener un consumo muy bajo (especialmente el modelo Starlink Mini, que consume entre 25W y 40W), es muy fácil respaldar todo el sistema con una pequeña UPS o batería de 12V para mantener internet durante apagones de varias horas."
+    answer: "La antena y los routers se apagan si no hay suministro. Sin embargo, al tener un consumo muy bajo (especialmente el modelo compacto Mini, que consume entre 25W y 40W), es muy fácil respaldar todo el sistema con una pequeña UPS o batería de 12V para mantener internet durante apagones de varias horas."
   },
   {
-    question: "¿El clima de Chile (lluvia, viento o nieve) afecta la velocidad satelital?",
-    answer: "Las antenas satelitales modernas cuentan con función integrada de derretimiento de nieve y resistencia a vientos de más de 90 km/h. Durante lluvias torrenciales muy densas puede existir una leve atenuación momentánea de la velocidad, pero la conexión se mantiene estable para streaming y trabajo."
+    question: "¿El clima del Biobío (lluvia densa o viento) afecta la señal?",
+    answer: "Las antenas satelitales modernas cuentan con función integrada de derretimiento de nieve y resistencia a vientos de más de 90 km/h. Durante temporales muy densos puede existir una leve variación momentánea de la velocidad, pero la conexión se mantiene estable para streaming y trabajo."
   },
   {
-    question: "¿Cuál es el costo mensual que se debe pagar a la compañía satelital?",
-    answer: "En Chile, los planes residenciales de internet satelital de baja órbita oscilan habitualmente entre los $35.000 y $47.000 CLP mensuales (según el tipo de plan y equipo contratado). Este cobro es directo y sin contratos de amarre; puedes pausarlo o cancelarlo cuando quieras."
-  },
-  {
-    question: "¿En qué zonas realizan instalaciones presenciales llave en mano?",
-    answer: "Realizamos visitas técnicas de evaluación, montaje y cableado en toda la Región del Biobío y comunas aledañas (Concepción, Florida, Yumbel, Santa Juana, Quillón, Coronel, Los Ángeles, Cabrero y alrededores). Para otras regiones, entregamos asesoría y kits preconfigurados listos para instalar."
+    question: "¿En qué comunas de la 8ª Región realizan visitas de instalación?",
+    answer: "Atendemos principalmente en Florida, Yumbel, Santa Juana, Quillón, Concepción, Talcahuano, San Pedro de la Paz, Chiguayante, Cabrero, Los Ángeles y comunas rurales aledañas de la Región del Biobío y Ñuble."
   }
 ];
 
-## Preguntas Frecuentes sobre Internet Satelital Rural en Chile
+## Preguntas Frecuentes sobre el Servicio Rural
 
 <FAQSection
-  title="Dudas Comunes sobre Instalación y Redes Satelitales"
+  title="Dudas Frecuentes de Vecinos y Parceleros"
   items={satFaqs}
 />
 
 ---
 
-<div class="my-8 p-6 rounded-2xl bg-gradient-to-r from-emerald-950/60 via-slate-900 to-slate-900 border-2 border-emerald-500/50 text-center not-prose shadow-xl">
-  <span class="text-3xl block mb-2">🏡</span>
-  <h3 class="text-xl font-black text-white mb-2">
+<div class="my-8 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-emerald-950/70 via-slate-900 to-slate-900 border-2 border-emerald-500/50 text-center not-prose shadow-2xl">
+  <span class="text-4xl block mb-2">🏡</span>
+  <h3 class="text-xl sm:text-2xl font-black text-white mb-2">
     ¿Quieres cotizar la instalación en tu parcela o casa de campo?
   </h3>
-  <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto mb-4 leading-relaxed">
-    Escríbenos directamente indicando tu comuna o sector rural. Revisamos la visibilidad satelital de tu terreno y te entregamos una propuesta a la medida, individual o compartida con tu vecino.
+  <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto mb-5 leading-relaxed">
+    Escríbenos directamente indicando tu comuna o sector rural del Biobío. Revisamos la visibilidad de tu terreno y te entregamos una propuesta a la medida, individual o compartida con tu vecino.
   </p>
   <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
     <a
       href="https://wa.me/56931926886?text=Hola%20Luis,%20quiero%20consultar%20por%20la%20instalación%20de%20internet%20satelital%20en%20mi%20sector%20rural."
       target="_blank"
       rel="noopener noreferrer"
-      class="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider transition-all shadow-lg shadow-emerald-500/25 flex items-center gap-2"
+      class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider transition-all shadow-lg shadow-emerald-500/25 flex items-center justify-center gap-2"
     >
       <span>📲 Contactar por WhatsApp (+56 9 3192 6886)</span>
     </a>
     <a
-      href="/contacto/?motivo=servicio-tecnico#contact-form"
-      class="px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs transition-colors"
+      href="/contacto/?motivo=satelital-rural#contact-form"
+      class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs transition-colors"
     >
-      Formulario de Contacto / Cotización Web →
+      Formulario de Cotización Web →
     </a>
   </div>
 </div>

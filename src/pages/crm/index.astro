@@ -144,6 +144,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           </nav>
 
           <div class="flex items-center gap-2 shrink-0">
+            <button id="btn-purge-test" class="px-2.5 py-1 rounded-lg bg-rose-950/60 hover:bg-rose-900 border border-rose-800 text-rose-300 text-xs font-semibold transition-colors flex items-center gap-1" title="Limpiar prospectos de prueba">
+              <span>🗑️ Limpiar Pruebas</span>
+            </button>
             <button id="btn-export-csv" class="px-3 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition-colors flex items-center gap-1">
               <span>📥 Exportar CSV</span>
             </button>
@@ -492,10 +495,18 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       async function loadLeads() {
         // Limpiar de inmediato cualquier lead de prueba previo de versiones anteriores
         try {
+          localStorage.removeItem('hogartv_crm_leads');
           const raw = localStorage.getItem(STORAGE_KEY);
           if (raw) {
             const arr = JSON.parse(raw);
-            const cleaned = arr.filter(l => !l.id.startsWith('lead_demo_') && l.id !== 'lead_01' && l.id !== 'lead_02');
+            const cleaned = arr.filter(l => 
+              l && 
+              !l.id?.startsWith('lead_demo_') && 
+              l.id !== 'lead_01' && 
+              l.id !== 'lead_02' &&
+              !l.nombre?.toLowerCase().includes('carlos mendoza') &&
+              !l.nombre?.toLowerCase().includes('patricia sanhueza')
+            );
             localStorage.setItem(STORAGE_KEY, JSON.stringify(cleaned));
             leads = cleaned;
           }
@@ -512,7 +523,14 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           const data = await res.json();
           if (data && data.ok && Array.isArray(data.leads)) {
             // Filtrar demos remotos si quedara alguno
-            remoteLeads = data.leads.filter(l => !l.id.startsWith('lead_demo_') && l.id !== 'lead_01' && l.id !== 'lead_02');
+            remoteLeads = data.leads.filter(l => 
+              l && 
+              !l.id?.startsWith('lead_demo_') && 
+              l.id !== 'lead_01' && 
+              l.id !== 'lead_02' &&
+              !l.nombre?.toLowerCase().includes('carlos mendoza') &&
+              !l.nombre?.toLowerCase().includes('patricia sanhueza')
+            );
           }
         } catch (e) {}
 
@@ -822,6 +840,19 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         link.download = `HogarTV_Clientes_${new Date().toISOString().slice(0, 10)}.csv`;
         link.click();
       });
+
+      // Botón Limpiar Pruebas
+      const btnPurge = document.getElementById('btn-purge-test');
+      if (btnPurge) {
+        btnPurge.addEventListener('click', function() {
+          if (confirm('¿Deseas vaciar la bandeja y eliminar los prospectos de prueba?')) {
+            localStorage.removeItem(STORAGE_KEY);
+            localStorage.removeItem('hogartv_crm_leads');
+            leads = [];
+            renderDashboard();
+          }
+        });
+      }
 
       // Botón Sincronizar
       btnSync.addEventListener('click', function() {

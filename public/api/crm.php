@@ -85,43 +85,9 @@ function checkAuth(array $input, array $defaultUsers): bool {
     return false;
 }
 
-// Inicializar archivo de leads con ejemplos si está vacío
+// Inicializar archivo de leads vacío si no existe
 if (!file_exists($leadsFile)) {
-    $initialLeads = [
-        [
-            'id' => 'lead_demo_01',
-            'nombre' => 'Carlos Mendoza',
-            'telefono' => '+56987654321',
-            'email' => 'carlos.mendoza@gmail.com',
-            'comuna' => 'Florida',
-            'servicio' => 'satelital_rural',
-            'servicio_nombre' => '📡 Internet Satelital Rural (Compartido 2 Casas)',
-            'distancia_estimada' => '120 metros entre parcelas',
-            'mensaje' => 'Hola, tengo una parcela en el sector Copiulemu (Florida). Queremos compartir la antena satelital con mi hermano que vive al lado a 120 metros. Necesitamos presupuesto llave en mano.',
-            'estado' => 'nuevo',
-            'presupuesto' => 360000,
-            'notas' => 'Factible por fibra drop monomodo. Calibrar visibilidad norte en loma alta.',
-            'origen' => 'web_cotizador',
-            'creado_en' => date('Y-m-d H:i:s', time() - 3600 * 4)
-        ],
-        [
-            'id' => 'lead_demo_02',
-            'nombre' => 'Patricia Sanhueza',
-            'telefono' => '+56991234567',
-            'email' => 'psanhueza@outlook.cl',
-            'comuna' => 'Concepción',
-            'servicio' => 'instalacion_soporte',
-            'servicio_nombre' => '🛠️ Instalación Soporte TV Muro + TVD',
-            'distancia_estimada' => 'N/A',
-            'mensaje' => 'Compré un Smart TV Samsung de 55 pulgadas y necesito instalarlo en muro sólido en San Pedro de la Paz, además de sintonizar los canales digitales abiertos.',
-            'estado' => 'contactado',
-            'presupuesto' => 35000,
-            'notas' => 'Llamada realizada. Visita agendada para este sábado a las 11:00.',
-            'origen' => 'web_contacto',
-            'creado_en' => date('Y-m-d H:i:s', time() - 3600 * 24)
-        ]
-    ];
-    saveJsonData($leadsFile, $initialLeads);
+    saveJsonData($leadsFile, []);
 }
 
 // ROUTING DE ACCIONES

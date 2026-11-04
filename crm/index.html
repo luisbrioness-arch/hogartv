@@ -154,6 +154,19 @@ Consulta y copia rápidamente tus enlaces de Mercado Libre, Falabella y AliExpre
 
       // Carga y Sincronización de Leads
       async function loadLeads() {
+        // Limpiar de inmediato cualquier lead de prueba previo de versiones anteriores
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (raw) {
+            const arr = JSON.parse(raw);
+            const cleaned = arr.filter(l => !l.id.startsWith('lead_demo_') && l.id !== 'lead_01' && l.id !== 'lead_02');
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(cleaned));
+            leads = cleaned;
+          }
+        } catch (e) {
+          leads = [];
+        }
+
         let remoteLeads = null;
         try {
           const authData = JSON.parse(localStorage.getItem(AUTH_KEY) || sessionStorage.getItem(AUTH_KEY) || '{}');
@@ -162,57 +175,14 @@ Consulta y copia rápidamente tus enlaces de Mercado Libre, Falabella y AliExpre
           });
           const data = await res.json();
           if (data && data.ok && Array.isArray(data.leads)) {
-            remoteLeads = data.leads;
+            // Filtrar demos remotos si quedara alguno
+            remoteLeads = data.leads.filter(l => !l.id.startsWith('lead_demo_') && l.id !== 'lead_01' && l.id !== 'lead_02');
           }
         } catch (e) {}
 
-        if (remoteLeads && remoteLeads.length > 0) {
+        if (remoteLeads !== null) {
           leads = remoteLeads;
           localStorage.setItem(STORAGE_KEY, JSON.stringify(leads));
-        } else {
-          // Cargar desde localStorage
-          const local = localStorage.getItem(STORAGE_KEY);
-          if (local) {
-            try { leads = JSON.parse(local); } catch (e) { leads = []; }
-          }
-          if (!leads || leads.length === 0) {
-            // Sembrar leads iniciales
-            leads = [
-              {
-                id: 'lead_01',
-                nombre: 'Carlos Mendoza',
-                telefono: '+56987654321',
-                email: 'carlos.mendoza@gmail.com',
-                comuna: 'Florida',
-                servicio: 'satelital_rural',
-                servicio_nombre: '📡 Internet Satelital Rural (Compartido 2 Casas)',
-                distancia_estimada: '120m entre casas',
-                mensaje: 'Hola Luis, necesitamos compartir internet satelital con mi hermano en Copiulemu. Hay árboles entremedio y queremos cotizar enlace por fibra drop.',
-                estado: 'nuevo',
-                presupuesto: 360000,
-                notas: 'Requiere mástil de 4 metros en techo de teja. Enlace viable.',
-                origen: 'web_cotizador',
-                creado_en: '2026-11-02 09:30:00'
-              },
-              {
-                id: 'lead_02',
-                nombre: 'Marta Riquelme',
-                telefono: '+56976543210',
-                email: 'marta.riquelme@hotmail.cl',
-                comuna: 'Yumbel',
-                servicio: 'satelital_rural',
-                servicio_nombre: '📡 Internet Satelital Rural (Individual)',
-                distancia_estimada: 'Vivienda única',
-                mensaje: 'Tengo antena satelital comprada pero no sé cómo calibrarla ni pasar los cables hacia el interior para que el WiFi llegue a las piezas.',
-                estado: 'contactado',
-                presupuesto: 95000,
-                notas: 'Cliente ya tiene la antena; solo mano de obra de montaje, cable exterior y router interior.',
-                origen: 'web_contacto',
-                creado_en: '2026-11-01 16:20:00'
-              }
-            ];
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(leads));
-          }
         }
 
         renderDashboard();
@@ -265,6 +235,15 @@ Consulta y copia rápidamente tus enlaces de Mercado Libre, Falabella y AliExpre
 
         if (filtered.length === 0) {
           emptyLeads.classList.remove('hidden');
+          const titleEl = emptyLeads.querySelector('h3');
+          const descEl = emptyLeads.querySelector('p');
+          if (leads.length === 0) {
+            if (titleEl) titleEl.textContent = 'Bandeja de clientes limpia y lista';
+            if (descEl) descEl.textContent = 'Aún no hay prospectos registrados. Aparecerán aquí en cuanto lleguen consultas desde la web o cuando agregues un cliente con "+ Nuevo Cliente".';
+          } else {
+            if (titleEl) titleEl.textContent = 'No se encontraron prospectos con este filtro';
+            if (descEl) descEl.textContent = 'Prueba ajustando el texto de búsqueda o el estado seleccionado.';
+          }
           return;
         }
 

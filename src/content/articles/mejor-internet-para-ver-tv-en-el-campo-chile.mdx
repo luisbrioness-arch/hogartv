@@ -1,0 +1,103 @@
+---
+title: "Mejor Internet para Ver TV en el Campo y Parcelas en Chile: Satelital vs Fibra vs 4G/5G"
+description: "Compara internet satelital, fibra óptica e internet móvil 4G/5G para ver televisión en parcelas y zonas rurales de Chile. Qué conviene según tu ubicación y cómo evitar cortes."
+category: "accesorios"
+categoryName: "Accesorios"
+publishDate: "2026-11-08"
+dateModified: "2026-11-08"
+readTime: "6 min de lectura"
+featured: false
+author: "luis-briones"
+---
+
+import { Image } from 'astro:assets';
+import satImg from '../../assets/accesorios/instalacion-internet-satelital-rural-chile-redes-parcelas/hero.jpg';
+import FAQSection from '../../components/FAQSection.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+import afiliadosData from '../../data/afiliados.json';
+import preciosData from '../../data/precios.json';
+
+<div class="my-4 p-5 sm:p-6 rounded-3xl bg-slate-900 border-2 border-emerald-500/50 shadow-2xl not-prose grid grid-cols-1 lg:grid-cols-12 gap-5 items-center">
+  <div class="lg:col-span-5">
+    <Image src={satImg} alt="Antena satelital instalada en una parcela del Biobío" width={600} height={375} class="w-full rounded-2xl object-cover" />
+  </div>
+  <div class="lg:col-span-7 space-y-3">
+    <span class="inline-block px-3 py-1 rounded-full bg-emerald-500 text-slate-950 text-xs font-black uppercase">Respuesta rápida</span>
+    <h2 class="text-xl font-black text-white m-0">¿Qué internet elegir en el campo?</h2>
+    <ul class="text-xs sm:text-sm text-slate-200 space-y-1.5 m-0 pl-4">
+      <li><strong>🟢 Hay fibra en tu camino:</strong> es la opción más estable y barata. Consulta cobertura primero.</li>
+      <li><strong>🟡 Hay buena señal de celular:</strong> internet 4G/5G con router y chip. Es la más fácil de partir.</li>
+      <li><strong>🛰️ No hay nada de lo anterior:</strong> internet satelital. Funciona casi en cualquier parte con cielo despejado.</li>
+    </ul>
+  </div>
+</div>
+
+---
+
+## Comparativa simple
+
+| | Fibra óptica | 4G / 5G con router | Satelital |
+|---|---|---|---|
+| **Disponibilidad rural** | Baja | Media (depende de la señal) | Alta |
+| **Estabilidad para TV en vivo** | Muy alta | Variable | Alta |
+| **Instalación** | La hace la compañía | Tú mismo, en minutos | Antena con vista al cielo; mejor con instalación profesional |
+| **Ideal para** | Zonas con cobertura | Casas con buena señal móvil | Parcelas aisladas |
+
+> Los precios y planes cambian seguido y dependen de cada compañía. Compara siempre el valor mensual vigente antes de decidir.
+
+---
+
+## ¿Cuánto internet necesito para ver TV?
+
+Para ver canales con apps como Mundo GO, Zapping o DGO basta con una conexión estable; lo importante es que **no se corte**, más que la velocidad máxima. Si en la casa se conectan varias pantallas a la vez, necesitas más ancho de banda.
+
+---
+
+## Evita que se corte: equipo de respaldo
+
+En el campo los cortes de luz son más frecuentes. Estos accesorios ayudan a que el internet y la tele sigan funcionando:
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-5 not-prose">
+  <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col justify-between">
+    <div><h3 class="text-sm font-black text-white m-0">Mini UPS para router o ONT</h3><p class="text-xs text-slate-300">Mantiene el módem encendido durante un corte de luz.</p><span class="text-base font-black text-emerald-400 font-mono">{preciosData['mini-ups-router-12v'].precioFormateado}</span></div>
+    <a href={afiliadosData['mini-ups-router-12v'].url} target="_blank" rel="nofollow sponsored noopener noreferrer" class="mt-3 text-center px-4 py-2.5 rounded-xl bg-amber-400 text-slate-950 font-black text-xs uppercase">Ver oferta →</a>
+  </div>
+  <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col justify-between">
+    <div><h3 class="text-sm font-black text-white m-0">Protector de voltaje certificado</h3><p class="text-xs text-slate-300">Protege tele y router de subidas de tensión, comunes en zonas rurales.</p><span class="text-base font-black text-emerald-400 font-mono">{preciosData['zapatilla-protector-voltaje'].precioFormateado}</span></div>
+    <a href={afiliadosData['zapatilla-protector-voltaje'].url} target="_blank" rel="nofollow sponsored noopener noreferrer" class="mt-3 text-center px-4 py-2.5 rounded-xl bg-amber-400 text-slate-950 font-black text-xs uppercase">Ver oferta →</a>
+  </div>
+  <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col justify-between">
+    <div><h3 class="text-sm font-black text-white m-0">Router WiFi mesh</h3><p class="text-xs text-slate-300">Lleva señal a toda la casa o a una pieza lejana.</p><span class="text-base font-black text-emerald-400 font-mono">{preciosData['wifi-mesh-tplink-deco'].precioFormateado}</span></div>
+    <a href={afiliadosData['wifi-mesh-tplink-deco'].url} target="_blank" rel="nofollow sponsored noopener noreferrer" class="mt-3 text-center px-4 py-2.5 rounded-xl bg-amber-400 text-slate-950 font-black text-xs uppercase">Ver oferta →</a>
+  </div>
+</div>
+
+Más detalle en nuestras guías de [internet sin luz](/accesorios/como-tener-internet-cuando-se-corta-la-luz-chile/) y [WiFi lento](/accesorios/como-mejorar-wifi-casa-lenta-repetidores-mesh-chile/).
+
+---
+
+## ¿Quieres instalación satelital en el Biobío?
+
+Hacemos instalación llave en mano con mástil en altura y cableado exterior, en Florida, Yumbel, Santa Juana, Quillón, Concepción y Los Ángeles. Revisa la [guía de instalación satelital rural](/accesorios/instalacion-internet-satelital-rural-chile-redes-parcelas/) o escríbenos por WhatsApp.
+
+<div class="my-4 not-prose">
+  <a href="https://wa.me/56931926886?text=Hola%20Luis,%20quiero%20consultar%20por%20internet%20para%20mi%20parcela." target="_blank" rel="noopener noreferrer" class="inline-flex px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs uppercase tracking-wider">📲 Consultar por WhatsApp</a>
+</div>
+
+---
+
+export const campoFaqs = [
+  { question: "¿Puedo ver TV en vivo con internet satelital?", answer: "Sí. Una vez instalado, funciona con apps de TV como Mundo GO, Zapping o DGO igual que cualquier otra conexión estable." },
+  { question: "¿Qué pasa con la tele si se corta internet?", answer: "Puedes seguir viendo canales abiertos con una antena digital TVD, que no depende de internet." },
+  { question: "¿4G/5G sirve para ver televisión?", answer: "Sirve si la señal de tu zona es buena y estable. Prueba la señal en el lugar exacto de la casa antes de contratar." },
+  { question: "¿Cómo sé si hay fibra en mi parcela?", answer: "Consulta cobertura con cada compañía usando tu dirección exacta; en zonas rurales la disponibilidad cambia por camino." }
+];
+
+<FAQSection title="Preguntas frecuentes" items={campoFaqs} />
+
+<CtaBanner
+  title="¿Y si se corta el internet?"
+  subtitle="Mira cómo ver canales HD gratis con una antena digital."
+  ctaText="Ver guía TVD →"
+  ctaUrl="/tv-abierta/como-sintonizar-canales-hd-tvd-chile/"
+/>

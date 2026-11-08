@@ -1,231 +1,286 @@
 ---
-title: "Google TV o Android TV: ¿Cuál es Mejor y Qué Smart TV Conviene Comprar en Chile? (2026)"
-description: "Comparativa definitiva entre Google TV y Android TV en Chile. Te explicamos diferencias de velocidad, facilidad para adultos mayores y por qué son los únicos sistemas compatibles con Mundo GO, Mega GO y Zapping."
+title: "Google TV o Android TV: ¿Cuál es Mejor y Qué Smart TV Comprar en Chile? (2026)"
+description: "¿Google TV o Android TV? Comparamos ambos sistemas en 30 segundos y te mostramos los mejores televisores compatibles con Mundo GO, Mega GO y Zapping con precios actualizados en Chile."
 category: "smart-tv"
 categoryName: "Smart TV"
 publishDate: "2026-11-07"
 dateModified: "2026-11-07"
-readTime: "8 min de lectura"
+readTime: "6 min de lectura"
 featured: true
 author: "luis-briones"
 ---
 
 import { Image } from 'astro:assets';
-import heroImg from '../../assets/smart-tv/google-tv-o-android-tv-chile-cual-conviene-smart-tv/hero.jpg';
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import FAQSection from '../../components/FAQSection.astro';
-import AdSlot from '../../components/AdSlot.astro';
 import CtaBanner from '../../components/CtaBanner.astro';
 import afiliadosData from '../../data/afiliados.json';
 import preciosData from '../../data/precios.json';
 
 import tclImg from '../../assets/smart-tv/mejores-smart-tv-calidad-precio-chile/tcl-c655-55.webp';
 import hisenseImg from '../../assets/smart-tv/mejores-smart-tv-calidad-precio-chile/hisense-u6k-55.webp';
+import onnImg from '../../assets/products/onn-google-tv-4k.webp';
 import xiaomiBoxImg from '../../assets/products/xiaomi-tv-box-s-4k.webp';
-import chromecastImg from '../../assets/products/chromecast-google-tv.webp';
 
 {/* =========================================================================
-    HERO DE CONVERSIÓN RÁPIDA (RESPUESTA DIRECTA EN 10 SEGUNDOS)
+    HERO DE CONVERSIÓN INMEDIATA (REGLA DE LOS 7 SEGUNDOS)
+    Respuesta directa + Producto Ganador + Precios Reales al Instante
    ========================================================================= */}
 
-<div class="my-5 rounded-3xl overflow-hidden border-2 border-emerald-500/40 bg-slate-900 shadow-2xl not-prose">
-  {/* Imagen Hero 16:9 con Badges Flotantes */}
-  <div class="relative aspect-[16/9] w-full overflow-hidden bg-slate-950">
-    <Image
-      src={heroImg}
-      alt="Comparativa entre Google TV y Android TV en Smart TV en Chile"
-      width={1000}
-      height={563}
-      format="webp"
-      quality={90}
-      class="w-full h-full object-cover"
-      loading="eager"
-      fetchpriority="high"
-    />
-    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+<div class="my-4 sm:my-6 p-5 sm:p-7 rounded-3xl bg-gradient-to-b from-slate-900 via-surface-card to-slate-950 border-2 border-amber-400/60 shadow-2xl not-prose relative overflow-hidden">
 
-    <div class="absolute top-3.5 left-3.5 right-3.5 flex flex-wrap items-center justify-between gap-2">
-      <span class="px-3 py-1 rounded-full bg-emerald-500 text-slate-950 text-xs font-black uppercase tracking-wider shadow-lg">
-        📺 Guía Definitiva Chile 2026
-      </span>
-      <span class="px-3 py-1 rounded-full bg-slate-950/90 border border-sky-400/50 text-sky-300 text-xs font-mono font-bold shadow-lg">
-        ✓ 100% Compatible con Mundo GO y Mega GO
-      </span>
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-slate-800/80">
+    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400 text-slate-950 text-xs font-black uppercase tracking-wider shadow-sm">
+      <span>🏆</span>
+      <span>Veredicto en 7 Segundos: Elige Google TV</span>
+    </div>
+    <span class="text-xs font-bold text-emerald-400 flex items-center gap-1.5">
+      <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      ✓ 100% Compatible con Mundo GO, Mega GO y Zapping
+    </span>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+
+    {/* Columna Imagen Cliqueable */}
+    <div class="md:col-span-4 flex flex-col items-center">
+      <a
+        href={afiliadosData['tcl-c655-55'].url}
+        target="_blank"
+        rel="nofollow sponsored noopener noreferrer"
+        class="relative w-48 h-48 sm:w-56 sm:h-56 rounded-2xl bg-white p-3 border border-slate-200 flex items-center justify-center shadow-lg hover:scale-105 transition-transform"
+      >
+        <Image
+          src={tclImg}
+          alt="Smart TV TCL 55 Pulgadas QLED 4K con Google TV Oficial en Chile"
+          width={280}
+          height={280}
+          class="w-full h-full object-contain filter drop-shadow-md"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <span class="absolute -bottom-2.5 px-3 py-0.5 rounded-full bg-rose-600 text-white text-[11px] font-black uppercase tracking-wider shadow">
+          🔥 Bajó 35% Hoy
+        </span>
+      </a>
     </div>
 
-    <div class="absolute bottom-3 left-4 right-4 sm:bottom-5 sm:left-6 sm:right-6">
-      <span class="text-emerald-400 text-xs font-black uppercase tracking-wider block mb-1">
-        Sistemas Operativos de Televisores Inteligentes
-      </span>
-      <h2 class="text-xl sm:text-2xl md:text-3xl font-black text-white leading-tight drop-shadow-md m-0">
-        ¿Google TV o Android TV? Cuál Elegir y Qué Televisor Comprar
+    {/* Columna Veredicto + CTA */}
+    <div class="md:col-span-8 flex flex-col justify-center">
+      <div class="flex items-center gap-1 text-amber-400 text-xs mb-1 font-semibold">
+        <span>★★★★★</span>
+        <span class="text-slate-300 ml-1">4.9/5 · La Smart TV con Google TV más vendida en Chile</span>
+      </div>
+
+      <h2 class="text-xl sm:text-2xl font-black text-white leading-tight mb-2">
+        Smart TV TCL 55" QLED 4K con Google TV Oficial (55T6D / C655)
       </h2>
+
+      <div class="flex flex-wrap items-baseline gap-3 mb-3">
+        <span class="text-2xl sm:text-3xl font-black text-emerald-400 font-mono">
+          {preciosData['tcl-c655-55'].precioFormateado}
+        </span>
+        <span class="text-xs text-slate-500 line-through font-mono">$ 479.990 CLP</span>
+        <span class="text-xs px-2.5 py-1 rounded-md bg-emerald-950/60 border border-emerald-500/40 text-emerald-300 font-semibold">
+          ⚡ Play Store Oficial + Control por Voz
+        </span>
+      </div>
+
+      <div class="space-y-2 text-xs sm:text-sm text-slate-200 mb-4 bg-slate-950/90 p-3.5 rounded-xl border border-slate-800">
+        <div class="flex items-start gap-2">
+          <span class="text-amber-400 font-bold shrink-0">⚡ ¿Google TV o Android TV?:</span>
+          <span><strong>Google TV gana</strong> porque es la versión moderna que reemplazó a Android TV: usa la misma tienda Play Store, pero es mucho más rápida y ordenada.</span>
+        </div>
+        <div class="flex items-start gap-2">
+          <span class="text-emerald-400 font-bold shrink-0">📺 Sí tiene Mundo GO y Mega GO:</span>
+          <span>A diferencia de Samsung o LG (donde Mundo GO <strong>no existe</strong>), aquí instalas <strong>Mundo GO, Mega GO, Zapping y DGO</strong> directo desde la tienda.</span>
+        </div>
+        <div class="flex items-start gap-2">
+          <span class="text-sky-400 font-bold shrink-0">👵 Fácil para Adultos Mayores:</span>
+          <span>Permite dejar <strong>Mundo GO como primer botón</strong> al prender la tele o abrir los canales hablando al micrófono del control.</span>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap gap-3">
+        <a
+          href={afiliadosData['tcl-c655-55'].url}
+          target="_blank"
+          rel="nofollow sponsored noopener noreferrer"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#FFE600] hover:bg-[#f5dc00] text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider shadow-xl shadow-yellow-500/20 transition-all transform hover:-translate-y-0.5"
+        >
+          <span>👉 Ver Oferta en Mercado Libre ({preciosData['tcl-c655-55'].precioFormateado})</span>
+        </a>
+        <a
+          href={afiliadosData['falabella-tcl-t6d-55'].url}
+          target="_blank"
+          rel="nofollow sponsored noopener noreferrer"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-bold text-xs sm:text-sm transition-all"
+        >
+          <span>Ver en Falabella ($ 359.990) →</span>
+        </a>
+      </div>
     </div>
   </div>
 
-  {/* Resumen Directo en 30 Segundos */}
-  <div class="p-5 sm:p-7 bg-gradient-to-b from-slate-900 to-slate-950 space-y-4">
-    <div class="border-l-4 border-emerald-500 pl-4 py-1">
-      <h3 class="text-base sm:text-lg font-black text-white m-0">
-        Veredicto Rápido: ¿Cuál es la diferencia real entre ambos?
+  {/* Barra de Navegación Rápida por Presupuesto */}
+  <div class="mt-5 pt-4 border-t border-slate-800/90 grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs">
+    <a href="#1-tcl-qled-55-google-tv" class="flex items-center justify-between p-2.5 rounded-xl bg-slate-950/70 hover:bg-slate-800/80 border border-slate-800 transition-colors">
+      <span>🥇 <strong>Mejor Tele Google TV:</strong> TCL 55"</span>
+      <span class="text-emerald-400 font-black font-mono">{preciosData['tcl-c655-55'].precioFormateado}</span>
+    </a>
+    <a href="#solucion-tv-box-barata" class="flex items-center justify-between p-2.5 rounded-xl bg-slate-950/70 hover:bg-slate-800/80 border border-slate-800 transition-colors">
+      <span>💡 <strong>Sin cambiar tu tele:</strong> Onn 4K Box</span>
+      <span class="text-amber-400 font-black font-mono">{preciosData['onn-google-tv-4k'].precioFormateado}</span>
+    </a>
+    <a href="#solucion-tv-box-barata" class="flex items-center justify-between p-2.5 rounded-xl bg-slate-950/70 hover:bg-slate-800/80 border border-slate-800 transition-colors">
+      <span>⭐ <strong>TV Box con Puerto USB:</strong> Xiaomi 4K</span>
+      <span class="text-sky-400 font-black font-mono">{preciosData['xiaomi-tv-box-s-4k'].precioFormateado}</span>
+    </a>
+  </div>
+</div>
+
+---
+
+## En 1 Vistazo: ¿Cuál es la Diferencia entre Google TV y Android TV?
+
+No te compliques: **no son marcas rivales**. Ambos son de Google y tienen exactamente la misma tienda de aplicaciones (**Google Play Store**), pero **Google TV es la versión nueva y mejorada**:
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-5 not-prose">
+  {/* Tarjeta Google TV */}
+  <div class="p-5 rounded-2xl bg-gradient-to-br from-emerald-950/30 via-slate-900 to-slate-950 border-2 border-emerald-500/50 space-y-3 shadow-lg">
+    <div class="flex items-center justify-between">
+      <span class="px-3 py-1 rounded-full bg-emerald-500 text-slate-950 text-xs font-black uppercase">
+        🏆 GANADOR · Google TV (Moderno)
+      </span>
+      <span class="text-emerald-400 font-black text-sm font-mono">Nota: 9.6 / 10</span>
+    </div>
+    <ul class="space-y-2 text-xs sm:text-sm text-slate-200 m-0 p-0 list-none">
+      <li class="flex items-start gap-2">
+        <span class="text-emerald-400 font-bold">✓</span>
+        <span><strong>Más rápido y fluido:</strong> Optimizado para los televisores 2025–2026 (TCL, Hisense, Xiaomi).</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-emerald-400 font-bold">✓</span>
+        <span><strong>Modo Básico para Adultos Mayores:</strong> Permite esconder la publicidad y dejar solo los íconos grandes de <strong>Mundo GO, Mega GO y YouTube</strong>.</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-emerald-400 font-bold">✓</span>
+        <span><strong>Micrófono Inteligente:</strong> Apretar un botón y decir <em>"Abrir Mundo GO"</em> funciona al instante.</span>
+      </li>
+    </ul>
+  </div>
+
+  {/* Tarjeta Android TV */}
+  <div class="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-3">
+    <div class="flex items-center justify-between">
+      <span class="px-3 py-1 rounded-full bg-slate-800 text-slate-300 text-xs font-black uppercase">
+        ⚙️ Android TV (Versión Clásica)
+      </span>
+      <span class="text-slate-400 font-bold text-sm font-mono">Nota: 7.8 / 10</span>
+    </div>
+    <ul class="space-y-2 text-xs sm:text-sm text-slate-300 m-0 p-0 list-none">
+      <li class="flex items-start gap-2">
+        <span class="text-sky-400 font-bold">✓</span>
+        <span><strong>Misma tienda Play Store:</strong> También permite instalar <strong>Mundo GO, Mega GO, Zapping y DGO</strong> sin problemas.</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-amber-400 font-bold">•</span>
+        <span><strong>Menú más antiguo:</strong> Muestra filas horizontales de cajas que pueden verse más desordenadas.</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-amber-400 font-bold">•</span>
+        <span><strong>Dónde viene hoy:</strong> Presente en televisores económicos de 32" o cajas TV Box básicas.</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+---
+
+## ⚠️ El Semáforo de Mundo GO en Chile (No Compres la Tele Equivocada)
+
+Si tienes internet de **Mundo Telecomunicaciones (Mundo Pacífico)** y buscas un televisor para que tú, tus padres o abuelos vean los canales de cable en **Mundo GO** (o **Mega GO**), mira este cuadro antes de pasar la tarjeta:
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-5 not-prose">
+  {/* SÍ COMPATIBLES */}
+  <div class="p-5 rounded-2xl bg-emerald-950/25 border-2 border-emerald-500/40 space-y-2.5">
+    <div class="flex items-center gap-2">
+      <span class="text-xl">🟢</span>
+      <h3 class="text-base font-black text-emerald-300 m-0">
+        SÍ Tienen Mundo GO y Mega GO Oficial
       </h3>
-      <p class="text-xs sm:text-sm text-slate-300 m-0 mt-1 leading-relaxed">
-        <strong>Google TV es la versión moderna y mejorada de Android TV.</strong> No son sistemas rivales: ambos están creados por Google, usan la misma base de Android y tienen acceso a la <strong>misma tienda oficial Google Play Store</strong>. Sin embargo, Google TV es más rápido, organiza las películas y canales en una sola pantalla y es <strong>mucho más amigable y fácil de usar para adultos mayores</strong>.
-      </p>
     </div>
-
-    {/* Alerta Destacada sobre Mundo GO en Chile */}
-    <div class="p-4 rounded-2xl bg-amber-950/30 border border-amber-500/40 space-y-1.5">
-      <div class="flex items-center gap-2">
-        <span class="text-lg">⚠️</span>
-        <h4 class="font-extrabold text-amber-300 text-xs sm:text-sm m-0">
-          ¿Buscas una Smart TV para usar la app Mundo GO en Chile?
-        </h4>
-      </div>
-      <p class="text-xs text-slate-300 m-0 leading-relaxed">
-        Muchos usuarios compran televisores Samsung (sistema Tizen), LG (webOS) o Roku y luego se llevan la gran sorpresa de que <strong>Mundo GO NO existe en sus tiendas de aplicaciones</strong>. Tanto <strong>Google TV como Android TV sí son 100% compatibles con la app oficial Mundo GO</strong> mediante Google Play Store, permitiendo ver todos los canales de cable por internet con solo encender la tele.
-      </p>
+    <p class="text-xs text-slate-300 m-0 leading-relaxed">
+      Se descargan directo de la tienda Google Play Store con un clic:
+    </p>
+    <div class="grid grid-cols-2 gap-2 pt-1 text-xs font-bold text-white">
+      <div class="p-2 rounded-lg bg-slate-950/80 border border-emerald-500/30">✅ TCL con Google TV</div>
+      <div class="p-2 rounded-lg bg-slate-950/80 border border-emerald-500/30">✅ Hisense (con Google TV)</div>
+      <div class="p-2 rounded-lg bg-slate-950/80 border border-emerald-500/30">✅ Xiaomi TV / Philips</div>
+      <div class="p-2 rounded-lg bg-slate-950/80 border border-emerald-500/30">✅ TV Box Xiaomi / Onn 4K</div>
     </div>
+  </div>
 
-    <div class="flex flex-wrap items-center gap-3 pt-1">
-      <a
-        href="#comparativa-directa"
-        class="flex-1 min-w-[200px] py-3 px-5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-center text-xs uppercase tracking-wider transition-all shadow-lg shadow-emerald-500/25"
-      >
-        Ver Comparativa Detallada ↓
-      </a>
-      <a
-        href="#televisores-recomendados"
-        class="py-3 px-5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-center text-xs transition-colors"
-      >
-        Ver Televisores Recomendados ↓
-      </a>
+  {/* NO COMPATIBLES */}
+  <div class="p-5 rounded-2xl bg-rose-950/25 border-2 border-rose-500/40 space-y-2.5">
+    <div class="flex items-center gap-2">
+      <span class="text-xl">🔴</span>
+      <h3 class="text-base font-black text-rose-300 m-0">
+        NO Tienen Mundo GO en su Tienda
+      </h3>
+    </div>
+    <p class="text-xs text-slate-300 m-0 leading-relaxed">
+      Usan sistemas propios cerrados donde la app Mundo GO no existe:
+    </p>
+    <div class="grid grid-cols-2 gap-2 pt-1 text-xs font-bold text-slate-300">
+      <div class="p-2 rounded-lg bg-slate-950/80 border border-rose-500/30">❌ Samsung (Tizen OS)</div>
+      <div class="p-2 rounded-lg bg-slate-950/80 border border-rose-500/30">❌ LG (webOS)</div>
+      <div class="p-2 rounded-lg bg-slate-950/80 border border-rose-500/30">❌ Roku TV / Roku Stick</div>
+      <div class="p-2 rounded-lg bg-slate-950/80 border border-rose-500/30">❌ Hisense con VIDAA</div>
     </div>
   </div>
 </div>
 
 ---
 
-<div id="comparativa-directa"></div>
-
-## ¿Google TV o Android TV? La Verdad Técnica Detrás de Ambos
-
-Una de las dudas más frecuentes en las tiendas chilenas al mirar televisores de marcas como **TCL, Hisense, Xiaomi o Philips** es encontrar cajas que dicen *"Android TV"* y otras que dicen *"Google TV"*.
-
-Para entenderlo sin enredos técnicos:
-
-* **Android TV** nació primero (en 2014) como la adaptación del sistema operativo de los celulares a los televisores. Su pantalla principal está organizada en **filas horizontales por cada aplicación** (una fila para YouTube, otra para Netflix, otra para Prime Video).
-* **Google TV** se lanzó en 2020 y es la **nueva interfaz inteligente de Google**. Por debajo sigue funcionando con el motor de Android, pero su pantalla principal no te obliga a entrar app por app: te muestra directamente las películas, series y canales en vivo que estabas viendo o que te recomienda según tus gustos personales.
-
-```mermaid
-flowchart TD
-    CORE["Núcleo del Sistema: Android TV OS<br>(Base de Google con Play Store Oficial)"] --> GTV["Google TV (Interfaz Moderna 2024-2026)<br>Pantalla 'Para Ti' + Perfiles Familiares + Búsqueda Inteligente"]
-    CORE --> ATV["Android TV (Interfaz Clásica)<br>Filas fijas de iconos por aplicación"]
-    GTV --> APPS["Google Play Store Oficial<br>Mundo GO · Mega GO · Zapping · DGO · YouTube · Netflix"]
-    ATV --> APPS
-```
-
-### Tabla Comparativa Directa: Google TV vs. Android TV
-
-<ComparisonTable
-  title="Google TV vs. Android TV: Duelo de Características en Chile"
-  headers={["Característica", "Google TV (Moderno)", "Android TV (Clásico)"]}
-  rows={[
-    { feature: "Tipo de Interfaz", values: ["Centrada en el contenido ('Para ti') con portada interactiva", "Centrada en filas de aplicaciones individuales"] },
-    { feature: "Tienda de Aplicaciones", values: ["Google Play Store para TV (+10.000 aplicaciones)", "Google Play Store para TV (+10.000 aplicaciones)"] },
-    { feature: "Compatibilidad Mundo GO y Mega GO", values: ["✓ 100% Compatible y certificada", "✓ 100% Compatible y certificada"] },
-    { feature: "Facilidad de Uso para Adultos Mayores", values: ["Excelente: Íconos grandes, control por voz rápido y accesos directos", "Buena: Menú más espartano en filas horizontales"] },
-    { feature: "Búsqueda por Voz (Google Assistant)", values: ["Ultra rápida en español chileno con sugerencias precisas", "Básica (búsqueda dentro de aplicaciones seleccionadas)"] },
-    { feature: "Perfiles de Usuario Independientes", values: ["Sí (perfil por persona + perfil exclusivo para niños)", "No (un solo perfil general para toda la casa)"] },
-    { feature: "Modo 'Televisor Básico' (Sólo Canales)", values: ["Sí (ideal si no quieres que adultos mayores se confundan)", "No disponible"] },
-    { feature: "Presencia en Televisores Nuevos 2026", values: ["Estándar actual en TCL, Hisense, Xiaomi y Philips", "Presente solo en modelos antiguos o TV boxes económicos"] }
-  ]}
-  verdict="Google TV es el claro ganador para comprar hoy: ofrece la misma libertad de aplicaciones de Android TV pero con una interfaz mucho más fluida, moderna y pensada para que cualquier persona en la familia pueda navegar sin complicaciones."
-/>
-
----
-
-<div id="mundo-go-chile"></div>
-
-## La Razón Clave en Chile: Compatibilidad con Mundo GO, Mega GO y TV Nacional
-
-En Chile existe un fenómeno muy particular que motiva a miles de personas a buscar específicamente un televisor con **Google TV o Android TV**: la aplicación **Mundo GO**.
-
-### ¿Qué es Mundo GO y por qué genera tantos problemas en otras marcas?
-
-**Mundo Telecomunicaciones (antes Mundo Pacífico)** es la compañía de fibra óptica con mayor crecimiento en comunas rurales y regiones de Chile (Región Metropolitana periférica, O'Higgins, Maule, Ñuble, Biobío, Los Lagos, etc.). Al contratar su servicio, la empresa entrega acceso a su plataforma **Mundo GO**, que permite ver más de 100 canales de televisión por cable en vivo (incluyendo señales chilenas como Mega, CHV, Canal 13, TVN, además de canales infantiles, de noticias y deportes como TNT Sports o ESPN).
-
-El problema radica en que muchas personas compran un televisor guiándose solo por la marca conocida:
-
-| Marca de Smart TV | Sistema Operativo | ¿Tiene la App Mundo GO Oficial? | ¿Tiene Mega GO y Zapping? |
-| :--- | :--- | :--- | :--- |
-| **TCL / Hisense / Xiaomi / Philips** | **Google TV o Android TV** | **✅ SÍ (En Google Play Store)** | **✅ SÍ (100% Compatibles)** |
-| **Samsung** | Tizen OS | ❌ NO disponible nativamente | ⚠️ Mega GO sí, Mundo GO NO |
-| **LG** | webOS | ❌ NO disponible nativamente | ⚠️ Zapping sí, Mundo GO NO |
-| **Roku TV** (AOC, RCA, Philips Roku) | Roku OS | ❌ NO disponible nativamente | ⚠️ Solo Zapping; Mundo GO NO |
-
-> **⚠️ Atención:** Si compras una Smart TV Samsung o LG con la intención de instalar Mundo GO para un familiar o adulto mayor, te encontrarás con que **la aplicación no existe en sus tiendas propietarias**. Para tener Mundo GO garantizado sin trucos raros, **el televisor debe tener Google TV o Android TV**.
-
----
-
-## Diseñado para Adultos Mayores: Cómo Configurar Mundo GO para que no se Confundan
-
-Una de las mayores preocupaciones al comprarle un televisor a una persona de la tercera edad o a familiares del campo es: *"No quiero que la tele sea complicada y no puedan poner los canales"*.
-
-Con **Google TV**, la configuración es sumamente limpia y se resuelve en solo 3 minutos:
-
-1. **Fijar Mundo GO como Primera Aplicación:**  
-   En la pantalla de inicio de Google TV, mantén presionado el botón central sobre el ícono de Mundo GO y muévelo al **primer lugar de la fila de 'Mis Aplicaciones'**. De esta manera, cada vez que el adulto mayor encienda el televisor, solo tiene que presionar **un solo botón en el control remoto** y la televisión por cable se abrirá al instante.
-2. **Control por Voz con Micrófono en Español:**  
-   Los controles remotos de televisores con Google TV incluyen un botón con el logo de micrófono de Google. La persona solo debe mantener presionado el botón y decir:  
-   👉 *"Abrir Mundo GO"*  
-   👉 *"Poner Mega GO"*  
-   👉 *"Noticias en YouTube"*  
-   El televisor abrirá el canal o la aplicación de inmediato sin necesidad de escribir letra por letra.
-3. **Modo 'Solo Aplicaciones' o Cuenta Limpia:**  
-   En los ajustes de Google TV se puede activar el modo simplificado para ocultar recomendaciones publicitarias y dejar únicamente una barra con los íconos indispensables: **Mundo GO, YouTube y Netflix**.
-
----
-
 <div id="televisores-recomendados"></div>
+<div id="1-tcl-qled-55-google-tv"></div>
 
-## Los Mejores Smart TV con Google TV Recomendados en Chile (2026)
+## 1. Mejores Smart TV con Google TV (Listos para Mundo GO y Mega GO)
 
-Si vas a renovar la tele de tu casa o quieres regalarle una pantalla a tus padres o abuelos que sea rápida, moderna y 100% compatible con **Mundo GO, Mega GO, Zapping y DGO**, estos son los modelos más recomendados y con mejor respaldo técnico en el país:
+### 🥇 Opción #1 Calidad-Precio: TCL 55" QLED 4K con Google TV (55T6D / C655)
 
-### 1. TCL Serie C655 / P755 / T6D: El Rey Calidad-Precio con Google TV
-
-TCL es el fabricante que mejor implementa **Google TV oficial** en Chile. Su sistema vuela en velocidad, incluye control remoto ergonómico con botón de voz de Google y sus pantallas utilizan tecnología **QLED** con colores vivos y gran nivel de brillo para que se vea claro incluso de día.
+Es el televisor más conveniente hoy en Chile: acaba de bajar a **$ 311.271 CLP en Mercado Libre**, trae pantalla **QLED** de colores vibrantes, **Google TV oficial** que abre Mundo GO en segundos y control remoto con comando de voz en español.
 
 <ProductCard
   productKey="tcl-c655-55"
   isFirst={true}
-  title='Smart TV TCL 55" 4K QLED con Google TV (Línea C655 / T6D)'
+  title='Smart TV TCL 55" QLED UHD 4K con Google TV (55T6D / C655)'
   brand="TCL"
-  badge="🏆 La Mejor Opción con Google TV en Chile"
+  badge="🔥 Oferta #1 hoy en Chile (-35%)"
   specs={[
-    "55 Pulgadas 4K Ultra HD",
-    "Panel QLED Quantum Dot",
-    "Google TV Oficial con Play Store",
-    "Control Remoto con Micrófono Google Assistant",
-    "Compatible con Mundo GO, Mega GO y Zapping",
-    "WiFi Dual Band 2.4 / 5 GHz"
+    "55 Pulgadas QLED 4K",
+    "Google TV Oficial",
+    "Compatible Mundo GO y Mega GO",
+    "Control con Micrófono de Voz",
+    "Dolby Vision & Atmos",
+    "WiFi Dual Band 5GHz"
   ]}
   pros={[
-    "Google TV oficial de fábrica: instalas Mundo GO en 1 minuto desde la Play Store",
-    "Control remoto simple y con micrófono para abrir canales con la voz",
-    "Pantalla QLED brillante ideal para ver fútbol y noticias de día",
-    "Disponible también en versiones de 43, 50 y 65 pulgadas para cualquier habitación"
+    "Bajó a $311.271 CLP en Mercado Libre (más barato que un LED normal)",
+    "Google Play Store completa: instalas Mundo GO, Mega GO, Zapping y DGO en 1 minuto",
+    "Muy fácil para adultos mayores: puedes dejar Mundo GO como primer botón al encender",
+    "También disponible en versión QD-Mini LED P8L para máxima fluidez"
   ]}
   cons={[
-    "El audio integrado es estándar; si buscas sonido de cine conviene sumar barra de sonido"
+    "El stock en oferta suele agotarse rápido durante la semana"
   ]}
   tiendas={[
     {
-      tienda: "Mercado Libre Chile",
+      tienda: "Mercado Libre Chile (Modelo 55T6D QLED)",
       precio: preciosData['tcl-c655-55'].precioFormateado,
-      badge: "🔥 Envío Rápido",
+      badge: "🔥 Precio Mínimo Histórico",
       destacada: true,
       envio: "Envío Gratis a Domicilio",
       urlKey: "tcl-c655-55"
@@ -237,127 +292,176 @@ TCL es el fabricante que mejor implementa **Google TV oficial** en Chile. Su sis
       destacada: false,
       envio: "Despacho o Retiro en Tienda",
       url: "https://creators.falabella.com/-5xdD"
+    },
+    {
+      tienda: "Falabella Chile (Modelo P8L QD-Mini LED)",
+      precio: "$ 399.990 CLP",
+      badge: "Versión Mini-LED 144Hz",
+      destacada: false,
+      envio: "Despacho o Retiro",
+      url: "https://creators.falabella.com/-5xdz"
     }
   ]}
 />
 
 ---
 
-### 2. Hisense U6K / U7K: Máximo Brillo Mini-LED con Google TV
+### 🥈 Opción #2 Alto Brillo: Hisense 55" Mini-LED ULED 4K con Google TV
 
-Si tu televisor estará en un living con ventanales grandes donde entra mucho sol, la línea **U6K de Hisense** con Google TV ofrece iluminación **Mini-LED**, entregando negros profundos y una potencia de luz superior para que nadie tenga que forzar la vista.
-
-*(Ojo al comprar Hisense en tiendas: asegúrate de que la caja diga **Google TV**, ya que los modelos más básicos de la marca vienen con el sistema VIDAA, el cual no tiene Mundo GO).*
+Si el televisor irá en un living con ventanales grandes donde entra mucho sol de día, este modelo **Mini-LED de Hisense con Google TV** entrega mucha más potencia de luz para ver sin reflejos. *(Importante: compra desde estos enlaces verificados con **Google TV**, evitando las versiones básicas con sistema VIDAA).*
 
 <ProductCard
   productKey="hisense-u6k-55"
-  title='Smart TV Hisense 55" Mini-LED ULED 4K con Google TV (U6K)'
+  title='Smart TV Hisense 55" ULED Mini-LED 4K con Google TV'
   brand="Hisense"
-  badge="☀️ El Más Brillante para Livings Iluminados"
+  badge="☀️ Máximo Brillo Antirreflejo"
   specs={[
-    "55 Pulgadas 4K Mini-LED ULED",
-    "Atenuación Local (Local Dimming)",
-    "Google TV Oficial",
-    "Dolby Vision & Dolby Atmos",
-    "Play Store con Mundo GO y Mega GO",
-    "Control por Voz Integrado"
+    "55 Pulgadas Mini-LED 4K",
+    "Google TV Certificado",
+    "Local Dimming (Negros Puros)",
+    "Compatible Mundo GO y Mega GO",
+    "Dolby Vision IQ",
+    "Control por Voz"
   ]}
   pros={[
-    "Brillo potente que elimina los reflejos de ventanas de día",
-    "Google TV fluido con acceso a todas las plataformas chilenas",
-    "Negros profundos gracias a sus zonas de atenuación Mini-LED"
+    "Tecnología Mini-LED ideal para piezas o livings muy iluminados",
+    "Trae Google TV oficial con tienda Play Store completa para Chile",
+    "Excelente sonido y contraste superior para películas y fútbol"
   ]}
   cons={[
-    "Precio ligeramente más alto que los modelos LED tradicionales",
-    "Debes verificar que el modelo traiga Google TV y no VIDAA OS"
+    "Precio más elevado que el TCL QLED"
   ]}
   tiendas={[
     {
-      tienda: "Mercado Libre Chile",
-      precio: preciosData['hisense-u6k-55'].precioFormateado,
-      badge: "🔥 Mejor Oferta",
+      tienda: "Falabella Chile (Modelo 55U6ESV Mini-LED)",
+      precio: "$ 429.990 CLP",
+      badge: "🔥 Mejor Precio Retail",
       destacada: true,
-      envio: "Envío Gratis a Todo Chile",
-      urlKey: "hisense-u6k-55"
+      envio: "Despacho o Retiro en Tienda",
+      url: "https://creators.falabella.com/-5xdR"
     },
     {
-      tienda: "Falabella Chile (Hisense U6 Mini-LED)",
-      precio: "$ 429.990 CLP",
-      badge: "Retail Oficial",
+      tienda: "Mercado Libre Chile (Modelo 55U7ESG Mini-LED)",
+      precio: preciosData['hisense-u6k-55'].precioFormateado,
+      badge: "Envío Gratis Full",
       destacada: false,
-      envio: "Despacho o Retiro",
-      url: "https://creators.falabella.com/-5xdR"
+      envio: "Envío Gratis a Todo Chile",
+      urlKey: "hisense-u6k-55"
     }
   ]}
 />
 
 ---
 
-## ¿Ya Tienes un Televisor Samsung, LG o Antiguo? La Solución Barata con TV Box
+<div id="solucion-tv-box-barata"></div>
 
-Si en tu casa ya tienes un televisor funcionando perfecto pero tiene un sistema cerrado (Samsung Tizen, LG webOS o una tele antigua sin internet), **no necesitas gastar $300.000 en una pantalla nueva**.
+## 2. ¿Ya Tienes una Tele Samsung, LG o Antigua? Ponle Google TV y Mundo GO desde $34.990
 
-La solución más inteligente y económica es conectar un pequeño reproductor por el puerto **HDMI**, transformando de inmediato cualquier televisor en un **Google TV completo**:
+Si ya tienes un televisor en casa que se ve bien pero **no te deja bajar Mundo GO** (o se puso lento), **no gastes $300.000 en otra tele**. Conecta uno de estos 3 aparatos al puerto HDMI y tendrás **Google TV + Mundo GO + Control por Voz** en 5 minutos:
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-5 my-6 not-prose">
-  {/* Opción 1: Xiaomi TV Box S 2nd Gen */}
-  <div class="p-5 rounded-2xl bg-surface-card border-2 border-emerald-500/40 space-y-3 flex flex-col justify-between">
-    <div class="space-y-2">
-      <div class="inline-block px-2.5 py-0.5 rounded-full bg-emerald-500 text-slate-950 text-[10px] font-black uppercase tracking-wider">
-        Recomendado N°1 Calidad / Precio
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6 not-prose">
+  {/* Tarjeta 1: Onn Google TV 4K */}
+  <div class="p-5 rounded-2xl bg-slate-900 border-2 border-amber-400/50 flex flex-col justify-between shadow-xl">
+    <div class="space-y-3">
+      <div class="flex items-center justify-between">
+        <span class="px-2.5 py-0.5 rounded-full bg-amber-400 text-slate-950 text-[10px] font-black uppercase">
+          🏆 Más Barato Certificado
+        </span>
+        <span class="text-xs text-emerald-400 font-bold">Google TV 4K</span>
       </div>
-      <h3 class="text-base sm:text-lg font-black text-white m-0">
-        Xiaomi TV Box S (2nd Gen) 4K con Google TV
+      <div class="bg-white rounded-xl p-2.5 flex justify-center">
+        <Image src={onnImg} alt="Onn Google TV 4K Box" class="w-24 h-24 object-contain" />
+      </div>
+      <h3 class="text-base font-black text-white m-0">
+        Onn. Google TV 4K con Control por Voz
       </h3>
       <p class="text-xs text-slate-300 leading-relaxed m-0">
-        Se conecta al HDMI de cualquier tele Samsung, LG o antigua. Trae **Google TV oficial con Play Store**, control Bluetooth con comando de voz, puerto USB para ver fotos o videos y conexión WiFi rápida.
+        El favorito de los técnicos en Chile. Convierte cualquier tele Samsung, LG o antigua en un Google TV rapidísimo con <strong>Mundo GO, Mega GO, Zapping y Netflix 4K</strong>.
       </p>
-      <div class="text-xs text-emerald-400 font-bold">
-        ✓ Compatible al 100% con Mundo GO, Mega GO, Zapping y DGO
-      </div>
     </div>
-    <div class="pt-2 border-t border-slate-800 flex items-center justify-between">
-      <span class="text-sm sm:text-base font-black text-white">
-        {preciosData['xiaomi-tv-box-s-4k'].precioFormateado}
-      </span>
+    <div class="pt-4 mt-4 border-t border-slate-800 space-y-2">
+      <div class="flex items-baseline justify-between">
+        <span class="text-xs text-slate-400">Precio Actual:</span>
+        <span class="text-lg font-black text-emerald-400 font-mono">{preciosData['onn-google-tv-4k'].precioFormateado}</span>
+      </div>
       <a
-        href={afiliadosData['xiaomi-tv-box-s-4k'].url}
+        href={afiliadosData['onn-google-tv-4k'].url}
         target="_blank"
-        rel="noopener noreferrer"
-        class="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs uppercase tracking-wider transition-all"
+        rel="nofollow sponsored noopener noreferrer"
+        class="w-full py-2.5 px-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-center text-xs uppercase tracking-wider transition-all block"
       >
-        Ver en M. Libre →
+        Ver Oferta Onn 4K →
       </a>
     </div>
   </div>
 
-  {/* Opción 2: Chromecast con Google TV */}
-  <div class="p-5 rounded-2xl bg-surface-card border border-slate-800 space-y-3 flex flex-col justify-between">
-    <div class="space-y-2">
-      <div class="inline-block px-2.5 py-0.5 rounded-full bg-sky-500 text-slate-950 text-[10px] font-black uppercase tracking-wider">
-        Ultra Compacto
+  {/* Tarjeta 2: TV Box Android 14 en Mercado Libre */}
+  <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col justify-between shadow-xl">
+    <div class="space-y-3">
+      <div class="flex items-center justify-between">
+        <span class="px-2.5 py-0.5 rounded-full bg-emerald-500 text-slate-950 text-[10px] font-black uppercase">
+          ⚡ Envío Rápido Chile
+        </span>
+        <span class="text-xs text-slate-400 font-bold">Android TV 14</span>
       </div>
-      <h3 class="text-base sm:text-lg font-black text-white m-0">
-        Google Chromecast con Google TV (HD / 4K)
+      <div class="h-28 rounded-xl bg-slate-950 border border-slate-800 flex flex-col items-center justify-center p-3 text-center">
+        <span class="text-3xl mb-1">📦</span>
+        <span class="text-[11px] font-bold text-emerald-400">Incluye Puertos USB + Cable Red + Control Voz</span>
+      </div>
+      <h3 class="text-base font-black text-white m-0">
+        TV Box Android 4K con Control por Voz (M. Libre)
       </h3>
       <p class="text-xs text-slate-300 leading-relaxed m-0">
-        El dispositivo original de Google. Queda completamente oculto detrás del televisor, incluye control remoto con volumen y encendido que puede reemplazar al control original de la tele.
+        Si prefieres comprar en Mercado Libre con despacho inmediato en Chile y necesitas <strong>entrada para cable de red Ethernet y puertos USB</strong>.
       </p>
-      <div class="text-xs text-sky-300 font-bold">
-        ✓ Ideal para televisores colgados a la pared
-      </div>
     </div>
-    <div class="pt-2 border-t border-slate-800 flex items-center justify-between">
-      <span class="text-sm sm:text-base font-black text-white">
-        {preciosData['chromecast-google-tv'].precioFormateado}
-      </span>
+    <div class="pt-4 mt-4 border-t border-slate-800 space-y-2">
+      <div class="flex items-baseline justify-between">
+        <span class="text-xs text-slate-400">Precio M. Libre:</span>
+        <span class="text-lg font-black text-emerald-400 font-mono">{preciosData['tv-box-android-economico'].precioFormateado}</span>
+      </div>
       <a
-        href={afiliadosData['chromecast-google-tv'].url}
+        href={afiliadosData['tv-box-android-economico'].url}
         target="_blank"
-        rel="noopener noreferrer"
-        class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs transition-colors"
+        rel="nofollow sponsored noopener noreferrer"
+        class="w-full py-2.5 px-4 rounded-xl bg-[#FFE600] hover:bg-[#f5dc00] text-slate-950 font-black text-center text-xs uppercase tracking-wider transition-all block"
       >
-        Ver en M. Libre →
+        Ver en Mercado Libre →
+      </a>
+    </div>
+  </div>
+
+  {/* Tarjeta 3: Xiaomi TV Box S 4K */}
+  <div class="p-5 rounded-2xl bg-slate-900 border border-sky-500/40 flex flex-col justify-between shadow-xl">
+    <div class="space-y-3">
+      <div class="flex items-center justify-between">
+        <span class="px-2.5 py-0.5 rounded-full bg-sky-400 text-slate-950 text-[10px] font-black uppercase">
+          ⭐ Tope de Gama 32GB
+        </span>
+        <span class="text-xs text-sky-300 font-bold">Google TV Oficial</span>
+      </div>
+      <div class="bg-white rounded-xl p-2.5 flex justify-center">
+        <Image src={xiaomiBoxImg} alt="Xiaomi TV Box S 4K Google TV" class="w-24 h-24 object-contain" />
+      </div>
+      <h3 class="text-base font-black text-white m-0">
+        Xiaomi TV Box S 4K (Nueva Gen 32GB)
+      </h3>
+      <p class="text-xs text-slate-300 leading-relaxed m-0">
+        La caja oficial más potente de Xiaomi: <strong>32GB de memoria interna</strong>, Google TV certificado, Dolby Vision y puerto USB integrado.
+      </p>
+    </div>
+    <div class="pt-4 mt-4 border-t border-slate-800 space-y-2">
+      <div class="flex items-baseline justify-between">
+        <span class="text-xs text-slate-400">Precio M. Libre:</span>
+        <span class="text-lg font-black text-sky-400 font-mono">{preciosData['xiaomi-tv-box-s-4k'].precioFormateado}</span>
+      </div>
+      <a
+        href={afiliadosData['xiaomi-tv-box-s-4k'].url}
+        target="_blank"
+        rel="nofollow sponsored noopener noreferrer"
+        class="w-full py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-white border border-sky-500/40 font-black text-center text-xs uppercase tracking-wider transition-all block"
+      >
+        Ver Xiaomi en M. Libre →
       </a>
     </div>
   </div>
@@ -365,54 +469,90 @@ La solución más inteligente y económica es conectar un pequeño reproductor p
 
 ---
 
-## Cómo Instalar y Activar Mundo GO Paso a Paso en tu Smart TV
+## Guía Fácil en 3 Pasos: Cómo Dejar Mundo GO Listo para un Adulto Mayor
 
-Si ya compraste tu televisor o TV Box con Google TV o Android TV, sigue estos sencillos pasos para dejar los canales de cable funcionando:
+Si le estás configurando la tele a tus papás o abuelos para que vean televisión sin enredarse:
 
-1. **Conecta tu cuenta de Google:** Al encender el televisor por primera vez, vincula cualquier cuenta de Gmail para activar la tienda Google Play Store.
-2. **Entra a la pestaña de Aplicaciones:** En la parte superior de la pantalla, ve a la sección **'Apps'** o abre el ícono de **Google Play Store**.
-3. **Busca 'Mundo GO':** En el buscador escribe *"Mundo GO"* (o presiona el botón de voz del control y dilo en voz alta).
-4. **Instalar y Abrir:** Presiona **'Instalar'**. La aplicación se descargará en menos de 20 segundos.
-5. **Iniciar Sesión:** Abre la app e ingresa con el usuario y contraseña que te proporcionó Mundo Telecomunicaciones (suele ser el RUT del titular y la clave asignada).
-6. **Fijar en Favoritos:** Vuelve a la pantalla principal de la tele, busca el ícono de Mundo GO y muévelo a la primera posición para que esté siempre a mano.
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-5 not-prose">
+  <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-1.5">
+    <span class="text-xs font-black uppercase text-emerald-400">Paso 1</span>
+    <h4 class="text-sm font-extrabold text-white m-0">1. Descarga Mundo GO</h4>
+    <p class="text-xs text-slate-400 m-0 leading-relaxed">
+      Entra a la pestaña <strong>Apps (Google Play Store)</strong>, escribe <em>"Mundo GO"</em> e ingresa una sola vez con el RUT y clave de cliente Mundo.
+    </p>
+  </div>
+
+  <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-1.5">
+    <span class="text-xs font-black uppercase text-amber-400">Paso 2</span>
+    <h4 class="text-sm font-extrabold text-white m-0">2. Ponlo en el 1er Lugar</h4>
+    <p class="text-xs text-slate-400 m-0 leading-relaxed">
+      En la pantalla de inicio, mantén apretado el botón central sobre <strong>Mundo GO</strong> y selecciona <strong>"Mover"</strong> para dejarlo de los primeros.
+    </p>
+  </div>
+
+  <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-1.5">
+    <span class="text-xs font-black uppercase text-sky-400">Paso 3</span>
+    <h4 class="text-sm font-extrabold text-white m-0">3. Usa el Botón de Voz</h4>
+    <p class="text-xs text-slate-400 m-0 leading-relaxed">
+      Enséñales que manteniendo apretado el <strong>botón del micrófono</strong> y diciendo <em>"Abrir Mundo GO"</em>, los canales se abren solos.
+    </p>
+  </div>
+</div>
+
+---
+
+## Tabla Comparativa Rápida: Google TV vs. Android TV
+
+<ComparisonTable
+  title="Google TV vs. Android TV: Resumen de Diferencias"
+  headers={["Característica", "Google TV (2025 - 2026)", "Android TV (Clásico)"]}
+  rows={[
+    { feature: "Compatibilidad Mundo GO / Mega GO", values: ["✅ 100% Oficial en Play Store", "✅ 100% Oficial en Play Store"] },
+    { feature: "Compatibilidad Zapping / DGO / TNT", values: ["✅ 100% Oficial", "✅ 100% Oficial"] },
+    { feature: "Facilidad para Adultos Mayores", values: ["Excelente (Modo Básico + Voz rápida)", "Buena (Filas clásicas de iconos)"] },
+    { feature: "Velocidad y Fluidez", values: ["Alta (Optimizado para equipos nuevos)", "Media"] },
+    { feature: "Televisores que lo incluyen", values: ["TCL (T6D, C655, P8L), Hisense U6/U7, Xiaomi", "Modelos básicos de 32\" o TV Box económicos"] }
+  ]}
+  columnCtas={[
+    { productKey: "tcl-c655-55", ctaLabel: "Ver TCL Google TV ($311.271)" },
+    { productKey: "tv-box-android-economico", ctaLabel: "Ver TV Box Android ($39.990)" }
+  ]}
+  verdict="Si compras un televisor nuevo hoy, elige Google TV (como la línea TCL QLED 55T6D en oferta). Si ya tienes una tele Samsung o LG en casa, agrégale un Onn 4K o Xiaomi TV Box S por HDMI."
+/>
 
 ---
 
 export const tvFaqs = [
   {
-    question: "¿Es mejor comprar una tele con Google TV o con Android TV en 2026?",
-    answer: "Conviene elegir Google TV. Aunque ambos tienen la misma tienda Play Store y ejecutan las mismas aplicaciones (incluyendo Mundo GO y Mega GO), Google TV es el sistema que reemplazó a Android TV, por lo que recibe actualizaciones más frecuentes, tiene una interfaz mucho más moderna y es más fácil de usar para toda la familia."
+    question: "¿Por qué no aparece Mundo GO en mi televisor Samsung o LG?",
+    answer: "Porque Samsung usa el sistema Tizen y LG usa webOS. Ninguno de los dos tiene la tienda Google Play Store, y la aplicación oficial de Mundo GO para televisores solo existe para Google TV y Android TV. Para ver Mundo GO en una tele Samsung o LG sin cambiarla, basta con conectarle un TV Box con Google TV (como el Onn 4K o Xiaomi TV Box S) por el cable HDMI."
   },
   {
-    question: "¿Por qué no puedo instalar Mundo GO en mi Smart TV Samsung o LG?",
-    answer: "Porque Samsung utiliza su propio sistema operativo llamado Tizen, y LG utiliza webOS. Ambas marcas tienen tiendas cerradas de aplicaciones y los desarrolladores de Mundo GO crearon la app exclusivamente para el ecosistema Android TV / Google TV. Para tener Mundo GO en una tele Samsung o LG, debes conectarle un TV Box como el Xiaomi TV Box S o un Chromecast por HDMI."
+    question: "¿Qué es mejor: Google TV o Android TV?",
+    answer: "Google TV es mejor porque es la versión actualizada de Android TV. Ambos instalan exactamente las mismas aplicaciones chilenas (Mundo GO, Mega GO, Zapping, DGO), pero Google TV es más rápido, tiene control por voz más preciso y permite activar un modo simplificado ideal para personas mayores."
   },
   {
-    question: "¿Mundo GO funciona en televisores con sistema Roku?",
-    answer: "No de forma oficial. El sistema Roku OS no dispone de la aplicación Mundo GO en su tienda de canales en Chile. Si tienes una tele con Roku y necesitas Mundo GO, la única solución es agregar un reproductor con Google TV."
+    question: "¿Roku sirve para instalar Mundo GO?",
+    answer: "No. Los dispositivos Roku no tienen la aplicación Mundo GO en su tienda de canales en Chile. Si tu prioridad es Mundo GO, debes comprar un televisor o TV Box con Google TV o Android TV."
   },
   {
-    question: "¿Qué otras aplicaciones chilenas funcionan en Google TV?",
-    answer: "En Google TV y Android TV puedes instalar todas las aplicaciones de streaming chilenas disponibles en el mercado: Mega GO, Zapping, DGO (DirecTV), Entel TV, Movistar TV, Pluto TV Chile, 13 GO, TVN Play y Estadio TNT Sports."
-  },
-  {
-    question: "¿Qué tamaño de Smart TV con Google TV conviene para una persona mayor?",
-    answer: "Para un dormitorio, los tamaños de 40 a 43 pulgadas (como la serie TCL S5400 o C655) son los más recomendados: tienen una pantalla amplia para leer los textos y menús de las noticias sin cansar la vista y caben cómodamente en cualquier mueble o soporte de muro."
+    question: "¿Todos los televisores Hisense tienen Google TV?",
+    answer: "No todos. Algunos modelos económicos de Hisense vienen con el sistema VIDAA (donde no está Mundo GO), mientras que las líneas U6 y U7 específicas traen Google TV. Si quieres ir a la segura sin confusiones, los televisores TCL 4K en Chile vienen con Google TV oficial de fábrica."
   }
 ];
 
-## Preguntas Frecuentes sobre Google TV, Android TV y Apps en Chile
+## Preguntas Frecuentes
 
 <FAQSection
-  title="Dudas Frecuentes sobre Televisores y Compatibilidad de Apps"
+  title="Dudas Rápidas antes de Comprar"
   items={tvFaqs}
 />
 
 ---
 
 <CtaBanner
-  title="¿Buscas una Smart TV rápida y compatible con todos los canales en Chile?"
-  subtitle="Revisa las mejores ofertas del día en televisores TCL y Hisense con Google TV oficial en Mercado Libre y Falabella con despacho directo a todo el país."
-  ctaText="Ver Ofertas de Smart TV en Chile →"
+  title="¿Quieres ver todas las ofertas de Smart TV verificadas hoy?"
+  subtitle="Revisa nuestro radar diario con descuentos reales en Mercado Libre Full y Falabella Chile."
+  ctaText="Ver Ofertas de Smart TV →"
   ctaUrl="/ofertas-tv-chile/"
 />

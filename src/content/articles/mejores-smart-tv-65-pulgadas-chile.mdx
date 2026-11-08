@@ -10,173 +10,225 @@ readTime: "10 min de lectura"
 featured: true
 ---
 
+import { Image } from 'astro:assets';
+import tclImg from '../../assets/smart-tv/mejores-smart-tv-calidad-precio-chile/tcl-c655-55.webp';
+import samsungImg from '../../assets/smart-tv/mejores-smart-tv-calidad-precio-chile/samsung-du7000-55.webp';
+import hisenseImg from '../../assets/smart-tv/mejores-smart-tv-calidad-precio-chile/hisense-u6k-55.webp';
+
 import ProductCard from '../../components/ProductCard.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import CtaBanner from '../../components/CtaBanner.astro';
 import YouTubeEmbed from '../../components/YouTubeEmbed.astro';
 import FAQSection from '../../components/FAQSection.astro';
 
-{/* ⚡ HOOK DE LOS 7 SEGUNDOS: DECISIÓN RÁPIDA CON LLAMADAS A LA ACCIÓN INMEDIATAS */}
-<div class="my-6 p-5 sm:p-7 rounded-3xl bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 border-2 border-amber-500/60 shadow-2xl relative overflow-hidden">
-  
-  <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
-    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400 text-slate-950 text-xs font-black uppercase tracking-wider shadow-md">
-      ⚡ Decisión Rápida (Regla de los 7 Segundos)
-    </span>
-    <span class="text-xs font-mono font-bold text-emerald-400">
+{/* =========================================================================
+    HERO DE IMPACTO INMEDIATO: REGLA DE LOS 7 SEGUNDOS (NOT-PROSE)
+   ========================================================================= */}
+<div class="not-prose my-6 p-5 sm:p-7 rounded-3xl bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 border-2 border-brand-500/60 shadow-2xl relative overflow-hidden">
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-slate-800">
+    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400 text-slate-950 text-xs font-black uppercase tracking-wider shadow-md">
+      <span>⚡</span>
+      <span>Veredicto Rápido (Regla de los 7 Segundos)</span>
+    </div>
+    <span class="text-xs font-mono font-bold text-emerald-400 flex items-center gap-1">
+      <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
       Precios Verificados Chile 2026
     </span>
   </div>
 
-  <h2 class="text-xl sm:text-2xl font-black text-white leading-tight mb-2 m-0">
+  <h2 class="text-xl sm:text-2xl md:text-3xl font-black text-white leading-tight mb-2">
     ¿Cuál Smart TV de 65" comprar hoy en Chile sin botar tu plata?
   </h2>
   
-  <p class="text-xs sm:text-sm text-slate-300 mb-6 leading-relaxed m-0">
-    Un televisor de 65" es un <strong>40% más grande que uno de 55"</strong>: los paneles malos se notan al tiro. Si tienes poco tiempo, aquí tienes los <strong>3 ganadores definitivos</strong> según tu living y presupuesto:
+  <p class="text-xs sm:text-sm text-slate-300 mb-6 leading-relaxed">
+    Una pantalla de 65" es un <strong class="text-white">40% más grande que una de 55"</strong>: los paneles malos se notan al tiro con colores lavados o lag. Si tienes poco tiempo para leer, aquí tienes los <strong class="text-brand-300">3 ganadores indiscutibles</strong> con stock en Chile:
   </p>
 
-  {/* 3 TARJETAS ULTRA ACCIONABLES CON BOTONES DE COMPRA DIRECTA */}
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-5">
     
-    {/* 1. TCL QLED - Calidad Precio */}
-    <div class="p-4 rounded-2xl bg-slate-900/90 border-2 border-brand-500/50 flex flex-col justify-between shadow-lg">
+    {/* 1. TCL 65" QLED */}
+    <div class="rounded-2xl border-2 border-brand-500/50 bg-slate-900/90 p-4 sm:p-5 flex flex-col justify-between shadow-xl hover:border-brand-400 transition-all">
       <div>
-        <div class="flex items-center justify-between gap-1 mb-2">
-          <span class="px-2 py-0.5 rounded-full bg-brand-600 text-white text-[10px] font-black uppercase">
+        <div class="flex items-center justify-between gap-1 mb-2.5">
+          <span class="px-2.5 py-0.5 rounded-full bg-brand-600 text-white text-[10px] font-black uppercase tracking-wide">
             🥇 Mejor Calidad/Precio
           </span>
           <span class="text-xs font-bold text-amber-300">N°1 Ventas</span>
         </div>
-        <h3 class="text-base font-black text-white mb-1 m-0">
+        <div class="aspect-video rounded-xl overflow-hidden bg-slate-950 mb-3 border border-slate-800 flex items-center justify-center p-2">
+          <Image
+            src={tclImg}
+            alt="Smart TV TCL 65 pulgadas QLED 144Hz en Chile"
+            width={280}
+            height={160}
+            format="webp"
+            quality={85}
+            class="w-full h-full object-contain"
+          />
+        </div>
+        <h3 class="text-base font-black text-white leading-snug mb-1">
           TCL 65" QLED 144Hz (C655 / T6D)
         </h3>
-        <p class="text-xs text-slate-300 mb-3 m-0">
-          Colores Quantum Dot, Google TV oficial sin bloqueos y 144Hz fluido para fútbol y PS5.
+        <p class="text-xs text-slate-400 mb-3 line-clamp-2">
+          Colores Quantum Dot, Google TV oficial sin bloqueos y 144Hz fluido para fútbol y consolas PS5.
         </p>
-        <div class="text-xs text-slate-400 mb-1">Rango estimado:</div>
-        <div class="text-lg font-black text-white mb-3">$ 499.990 - $ 599.990 CLP</div>
+        <div class="space-y-0.5 mb-3">
+          <div class="text-[11px] text-slate-400">Rango de precio:</div>
+          <div class="text-xl font-black text-white">$ 499.990 - $ 599.990 CLP</div>
+          <div class="text-[10px] text-emerald-400 font-bold">🔥 Hasta 6 cuotas sin interés</div>
+        </div>
       </div>
-      <div class="space-y-1.5 pt-2 border-t border-slate-800">
+      <div class="space-y-2 pt-2 border-t border-slate-800">
         <a
           href="https://meli.la/1V2kC6e"
           target="_blank"
           rel="nofollow sponsored noopener noreferrer"
-          class="w-full inline-flex items-center justify-center gap-1 px-3 py-2 rounded-xl bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 font-black text-xs shadow-md transition-all no-underline"
+          class="w-full inline-flex items-center justify-center gap-1 px-4 py-2.5 rounded-xl bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 font-black text-xs shadow-md transition-all"
         >
-          <span>Ver en Mercado Libre Full ↗</span>
+          <span>Ver en Mercado Libre Full</span>
+          <span>↗</span>
         </a>
         <a
           href="https://creators.falabella.com/-1yGZ"
           target="_blank"
           rel="nofollow sponsored noopener noreferrer"
-          class="w-full inline-flex items-center justify-center gap-1 px-3 py-2 rounded-xl bg-[#008A00] hover:bg-[#007000] text-white font-black text-xs shadow-md transition-all no-underline"
+          class="w-full inline-flex items-center justify-center gap-1 px-4 py-2.5 rounded-xl bg-[#008A00] hover:bg-[#007000] text-white font-black text-xs shadow-md transition-all"
         >
-          <span>Ver Oferta en Falabella ↗</span>
+          <span>Ver Oferta en Falabella</span>
+          <span>↗</span>
         </a>
       </div>
     </div>
 
-    {/* 2. Samsung Crystal - Familiar y Confiable */}
-    <div class="p-4 rounded-2xl bg-slate-900/90 border border-purple-500/40 flex flex-col justify-between shadow-lg">
+    {/* 2. Samsung 65" Crystal UHD */}
+    <div class="rounded-2xl border border-purple-500/40 bg-slate-900/90 p-4 sm:p-5 flex flex-col justify-between shadow-xl hover:border-purple-400 transition-all">
       <div>
-        <div class="flex items-center justify-between gap-1 mb-2">
-          <span class="px-2 py-0.5 rounded-full bg-purple-600 text-white text-[10px] font-black uppercase">
+        <div class="flex items-center justify-between gap-1 mb-2.5">
+          <span class="px-2.5 py-0.5 rounded-full bg-purple-600 text-white text-[10px] font-black uppercase tracking-wide">
             🥈 Mejor Familiar
           </span>
           <span class="text-xs font-bold text-purple-300">Fácil Uso</span>
         </div>
-        <h3 class="text-base font-black text-white mb-1 m-0">
+        <div class="aspect-video rounded-xl overflow-hidden bg-slate-950 mb-3 border border-slate-800 flex items-center justify-center p-2">
+          <Image
+            src={samsungImg}
+            alt="Smart TV Samsung 65 pulgadas Crystal UHD DU7000 en Chile"
+            width={280}
+            height={160}
+            format="webp"
+            quality={85}
+            class="w-full h-full object-contain"
+          />
+        </div>
+        <h3 class="text-base font-black text-white leading-snug mb-1">
           Samsung 65" Crystal UHD (DU7000)
         </h3>
-        <p class="text-xs text-slate-300 mb-3 m-0">
-          Diseño AirSlim ultra delgado, Tizen OS con canales gratis de Samsung TV Plus y garantía total.
+        <p class="text-xs text-slate-400 mb-3 line-clamp-2">
+          Diseño AirSlim ultraplano, menú Tizen OS muy fácil de usar y canales gratis en Samsung TV Plus.
         </p>
-        <div class="text-xs text-slate-400 mb-1">Rango estimado:</div>
-        <div class="text-lg font-black text-white mb-3">$ 479.990 - $ 549.990 CLP</div>
+        <div class="space-y-0.5 mb-3">
+          <div class="text-[11px] text-slate-400">Rango de precio:</div>
+          <div class="text-xl font-black text-white">$ 479.990 - $ 549.990 CLP</div>
+          <div class="text-[10px] text-purple-300 font-bold">⚡ Garantía oficial Samsung Chile</div>
+        </div>
       </div>
-      <div class="space-y-1.5 pt-2 border-t border-slate-800">
+      <div class="space-y-2 pt-2 border-t border-slate-800">
         <a
           href="https://meli.la/1qFvM4t"
           target="_blank"
           rel="nofollow sponsored noopener noreferrer"
-          class="w-full inline-flex items-center justify-center gap-1 px-3 py-2 rounded-xl bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 font-black text-xs shadow-md transition-all no-underline"
+          class="w-full inline-flex items-center justify-center gap-1 px-4 py-2.5 rounded-xl bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 font-black text-xs shadow-md transition-all"
         >
-          <span>Ver en Mercado Libre ↗</span>
+          <span>Ver en Mercado Libre</span>
+          <span>↗</span>
         </a>
         <a
           href="https://creators.falabella.com/-K02H"
           target="_blank"
           rel="nofollow sponsored noopener noreferrer"
-          class="w-full inline-flex items-center justify-center gap-1 px-3 py-2 rounded-xl bg-[#008A00] hover:bg-[#007000] text-white font-black text-xs shadow-md transition-all no-underline"
+          class="w-full inline-flex items-center justify-center gap-1 px-4 py-2.5 rounded-xl bg-[#008A00] hover:bg-[#007000] text-white font-black text-xs shadow-md transition-all"
         >
-          <span>Ver Oferta en Falabella ↗</span>
+          <span>Ver Oferta en Falabella</span>
+          <span>↗</span>
         </a>
       </div>
     </div>
 
-    {/* 3. Hisense Mini-LED - Sol y Brillo Extremo */}
-    <div class="p-4 rounded-2xl bg-slate-900/90 border border-emerald-500/40 flex flex-col justify-between shadow-lg">
+    {/* 3. Hisense 65" Mini-LED */}
+    <div class="rounded-2xl border border-emerald-500/40 bg-slate-900/90 p-4 sm:p-5 flex flex-col justify-between shadow-xl hover:border-emerald-400 transition-all">
       <div>
-        <div class="flex items-center justify-between gap-1 mb-2">
-          <span class="px-2 py-0.5 rounded-full bg-emerald-600 text-white text-[10px] font-black uppercase">
+        <div class="flex items-center justify-between gap-1 mb-2.5">
+          <span class="px-2.5 py-0.5 rounded-full bg-emerald-600 text-white text-[10px] font-black uppercase tracking-wide">
             ☀️ Living Luminoso
           </span>
           <span class="text-xs font-bold text-emerald-300">Mini-LED</span>
         </div>
-        <h3 class="text-base font-black text-white mb-1 m-0">
+        <div class="aspect-video rounded-xl overflow-hidden bg-slate-950 mb-3 border border-slate-800 flex items-center justify-center p-2">
+          <Image
+            src={hisenseImg}
+            alt="Smart TV Hisense 65 pulgadas Mini-LED U6K en Chile"
+            width={280}
+            height={160}
+            format="webp"
+            quality={85}
+            class="w-full h-full object-contain"
+          />
+        </div>
+        <h3 class="text-base font-black text-white leading-snug mb-1">
           Hisense 65" Mini-LED U6K
         </h3>
-        <p class="text-xs text-slate-300 mb-3 m-0">
-          Atenuación local con brillo altísimo para derrotar los reflejos de ventanales a pleno sol.
+        <p class="text-xs text-slate-400 mb-3 line-clamp-2">
+          Atenuación local con brillo altísimo para derrotar los reflejos en salas con ventanales a pleno sol.
         </p>
-        <div class="text-xs text-slate-400 mb-1">Rango estimado:</div>
-        <div class="text-lg font-black text-white mb-3">$ 569.990 - $ 689.990 CLP</div>
+        <div class="space-y-0.5 mb-3">
+          <div class="text-[11px] text-slate-400">Rango de precio:</div>
+          <div class="text-xl font-black text-white">$ 569.990 - $ 689.990 CLP</div>
+          <div class="text-[10px] text-emerald-400 font-bold">✨ Negros puros y HDR brillante</div>
+        </div>
       </div>
-      <div class="space-y-1.5 pt-2 border-t border-slate-800">
+      <div class="space-y-2 pt-2 border-t border-slate-800">
         <a
           href="https://meli.la/14wz9gU"
           target="_blank"
           rel="nofollow sponsored noopener noreferrer"
-          class="w-full inline-flex items-center justify-center gap-1 px-3 py-2 rounded-xl bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 font-black text-xs shadow-md transition-all no-underline"
+          class="w-full inline-flex items-center justify-center gap-1 px-4 py-2.5 rounded-xl bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 font-black text-xs shadow-md transition-all"
         >
-          <span>Ver en Mercado Libre ↗</span>
+          <span>Ver en Mercado Libre</span>
+          <span>↗</span>
         </a>
         <a
           href="https://creators.falabella.com/-Y019"
           target="_blank"
           rel="nofollow sponsored noopener noreferrer"
-          class="w-full inline-flex items-center justify-center gap-1 px-3 py-2 rounded-xl bg-[#008A00] hover:bg-[#007000] text-white font-black text-xs shadow-md transition-all no-underline"
+          class="w-full inline-flex items-center justify-center gap-1 px-4 py-2.5 rounded-xl bg-[#008A00] hover:bg-[#007000] text-white font-black text-xs shadow-md transition-all"
         >
-          <span>Ver Oferta en Falabella ↗</span>
+          <span>Ver Oferta en Falabella</span>
+          <span>↗</span>
         </a>
       </div>
     </div>
 
   </div>
 
-  <div class="pt-3 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400">
-    <span>💡 <strong>Consejo express:</strong> Si vas a pagar en cuotas, revisa ambas tiendas: Mercado Libre ofrece hasta 6 cuotas sin interés con cualquier tarjeta y Falabella rebajas extras con CMR.</span>
+  <div class="pt-3 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400">
+    <span>💡 <strong>Consejo de financiamiento:</strong> Mercado Libre ofrece hasta 6 cuotas sin interés con todos los bancos, mientras que Falabella lanza promociones exclusivas con tarjeta CMR.</span>
   </div>
-
 </div>
 
-{/* RESUMEN CRÍTICO: MEDIDAS Y DISTANCIA ANTES DE COMPRAR */}
-<div class="mb-8 p-4 sm:p-5 rounded-2xl bg-surface-card border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+{/* RESUMEN CRÍTICO: MEDIDAS Y DISTANCIA */}
+<div class="not-prose mb-8 p-4 sm:p-5 rounded-2xl bg-surface-card border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
   <div class="space-y-1 text-center sm:text-left">
-    <div class="text-xs font-black uppercase text-amber-400 tracking-wider">📏 Medida Clave para tu Living</div>
-    <div class="text-sm sm:text-base font-extrabold text-white">Una pantalla de 65" mide 145 cm de ancho y requiere entre 2,2 y 3,2 metros de distancia.</div>
-    <div class="text-xs text-slate-400">Si tu rack mide menos de 160 cm, te recomendamos montarla con un soporte articulado reforzado.</div>
+    <div class="text-xs font-black uppercase text-amber-400 tracking-wider">📏 Medida Crítica para tu Living</div>
+    <div class="text-sm sm:text-base font-extrabold text-white">Una pantalla de 65" mide 145 cm de ancho y requiere entre 2,2 y 3,2 metros de distancia del sofá.</div>
+    <div class="text-xs text-slate-400">Si tu rack mide menos de 160 cm, te recomendamos montarla al muro con un soporte articulado reforzado.</div>
   </div>
   <a
     href="#medidas-y-distancia-cabe-un-smart-tv-de-65-en-tu-living"
-    class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold shrink-0 transition-colors no-underline"
+    class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold shrink-0 transition-colors"
   >
     Ver Medidas ↓
   </a>
 </div>
-
----
 
 ## Tabla Comparativa: Mejores Smart TV de 65 Pulgadas en Chile (2026)
 

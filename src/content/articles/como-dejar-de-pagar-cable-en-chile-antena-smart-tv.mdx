@@ -1,0 +1,406 @@
+---
+title: "Cómo Dejar de Pagar Cable en Chile (2026): Ahorra $450.000 al Año con Antena y Smart TV"
+description: "Guía completa para cortar el cable en Chile sin perder canales nacionales en HD, deportes ni películas. Descubre cómo una Smart TV o una antena digital se pagan solas con tu ahorro mensual."
+category: "tv-abierta"
+categoryName: "TV Abierta"
+publishDate: "2026-11-08"
+dateModified: "2026-11-08"
+readTime: "6 min de lectura"
+featured: true
+author: "luis-briones"
+---
+
+import { Image } from 'astro:assets';
+import heroImg from '../../assets/tv-abierta/como-dejar-de-pagar-cable-en-chile-antena-smart-tv/hero.jpg';
+import tclImg from '../../assets/smart-tv/mejores-smart-tv-calidad-precio-chile/tcl-c655-55.webp';
+import samsungImg from '../../assets/smart-tv/mejores-smart-tv-calidad-precio-chile/samsung-du7000-55.webp';
+import antenaImg from '../../assets/products/antena-tvd-chile.webp';
+import decoImg from '../../assets/products/decodificador-tvd.webp';
+import xiaomiBoxImg from '../../assets/products/xiaomi-tv-box-s-4k.webp';
+
+import ProductCard from '../../components/ProductCard.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+import afiliadosData from '../../data/afiliados.json';
+import preciosData from '../../data/precios.json';
+
+{/* =========================================================================
+    HERO DE IMPACTO INMEDIATO (REGLA DE LOS 7 SEGUNDOS)
+    Cálculo del ahorro real y propuesta de valor
+   ========================================================================= */}
+
+<div class="my-4 sm:my-6 p-5 sm:p-7 rounded-3xl bg-gradient-to-b from-slate-900 via-surface-card to-slate-950 border-2 border-emerald-500/50 shadow-2xl not-prose relative overflow-hidden">
+
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-slate-800/80">
+    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500 text-slate-950 text-xs font-black uppercase tracking-wider shadow-sm">
+      <span>💰</span>
+      <span>Guía Anti-Mensualidades: Ahorro Inteligente en Chile</span>
+    </div>
+    <span class="text-xs font-bold text-emerald-300 flex items-center gap-1.5">
+      <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      ✓ 100% Legal, Sin Contratos y en Alta Definición
+    </span>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+
+    {/* Foto Hero */}
+    <div class="md:col-span-5 flex flex-col items-center">
+      <div class="relative w-full aspect-[16/10] sm:aspect-[16/9] rounded-2xl overflow-hidden bg-slate-950 border border-slate-800 shadow-xl">
+        <Image
+          src={heroImg}
+          alt="Living moderno en Chile con Smart TV 55 pulgadas sin decodificadores ni cables molestos"
+          width={600}
+          height={375}
+          class="w-full h-full object-cover"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+        <span class="absolute bottom-2.5 left-3 px-2.5 py-0.5 rounded-md bg-slate-900/90 border border-emerald-500/40 text-[11px] font-bold text-emerald-300">
+          ✓ Cero Facturas a Fin de Mes
+        </span>
+      </div>
+    </div>
+
+    {/* La Cuenta Matemática del Ahorro */}
+    <div class="md:col-span-7 flex flex-col justify-center">
+      <h2 class="text-xl sm:text-2xl font-black text-white leading-tight mb-2">
+        ¿Sigues Pagando $40.000 al Mes por Cable? Mira la Cuenta Real
+      </h2>
+
+      <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-3">
+        El chileno promedio gasta entre **$ 35.000 y $ 45.000 pesos mensuales** en planes de televisión por cable con más de 100 canales de relleno que nadie mira.
+      </p>
+
+      {/* Caja de Cálculo */}
+      <div class="space-y-2 text-xs sm:text-sm text-slate-200 mb-4 bg-slate-950/90 p-4 rounded-2xl border border-emerald-500/30">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+          <span class="text-slate-400">Gasto anual en cable tradicional (VTR / Movistar / Claro):</span>
+          <span class="text-rose-400 font-black font-mono text-sm sm:text-base">-$ 480.000 CLP</span>
+        </div>
+        <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+          <span class="text-slate-400">Costo con Antena Digital TVD + Apps Gratuitas:</span>
+          <span class="text-emerald-400 font-black font-mono text-sm sm:text-base">$ 0 / mes</span>
+        </div>
+        <div class="flex items-center justify-between pt-1">
+          <span class="font-extrabold text-white">Tu ahorro neto cada 12 meses:</span>
+          <span class="text-emerald-300 font-black font-mono text-base sm:text-lg">+$ 480.000 CLP</span>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap gap-3">
+        <a
+          href="#la-inversion-maestra"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider shadow-lg shadow-emerald-500/20 transition-all"
+        >
+          <span>👉 La Smart TV que se Paga Sola ↓</span>
+        </a>
+        <a
+          href="#opcion-antena"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-bold text-xs sm:text-sm transition-all"
+        >
+          <span>Solución de $9.216 para tu Tele Actual</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+---
+
+{/* =========================================================================
+    ¿CÓMO SE VE TELEVISIÓN SIN CABLE HOY EN CHILE?
+   ========================================================================= */}
+
+## ¿Cómo Funciona la Televisión Sin Cable Hoy en Chile?
+
+No tienes que renunciar a tus programas habituales ni quedar incomunicado. La televisión moderna se divide en dos fuentes que no te cobran ni un solo peso al mes:
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5 my-6 not-prose">
+
+  {/* FUENTE 1: ANTENA TVD POR EL AIRE */}
+  <div class="p-6 rounded-3xl bg-slate-900 border-2 border-emerald-500/40 flex flex-col justify-between shadow-xl">
+    <div>
+      <div class="flex items-center gap-3 mb-3">
+        <span class="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-2xl flex items-center justify-center">
+          📡
+        </span>
+        <div>
+          <h3 class="text-lg font-black text-white m-0">1. Canales Nacionales en HD por Aire (TVD)</h3>
+          <span class="text-xs font-bold text-emerald-400">Norma Digital Chilena ISDB-Tb</span>
+        </div>
+      </div>
+      <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
+        Con una antena digital conectada directamente a tu tele, sintonizas en vivo: **Mega HD, TVN HD, Canal 13 HD, Chilevisión HD, NTV (infantil-cultural), 24 Horas Noticias, T13 En Vivo y canales regionales**.
+      </p>
+      <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-1.5 text-xs text-slate-200">
+        <div class="text-emerald-400 font-bold">✓ Cero retraso en los goles:</div>
+        <div class="text-slate-300">Gritas el gol antes que los vecinos con cable o streaming por internet.</div>
+        <div class="text-emerald-400 font-bold pt-1">✓ No depende de internet:</div>
+        <div class="text-slate-300">Si se corta la fibra óptica o hay temporal, la tele sigue funcionando impecable.</div>
+      </div>
+    </div>
+  </div>
+
+  {/* FUENTE 2: STREAMING GRATUITO LEGAL */}
+  <div class="p-6 rounded-3xl bg-slate-900 border-2 border-sky-500/40 flex flex-col justify-between shadow-xl">
+    <div>
+      <div class="flex items-center gap-3 mb-3">
+        <span class="w-12 h-12 rounded-2xl bg-sky-500/20 border border-sky-500/40 text-sky-400 text-2xl flex items-center justify-center">
+          🍿
+        </span>
+        <div>
+          <h3 class="text-lg font-black text-white m-0">2. Películas y Series 100% Gratis por Internet</h3>
+          <span class="text-xs font-bold text-sky-400">Aplicaciones Legales Sin Suscripción</span>
+        </div>
+      </div>
+      <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
+        Solo necesitas tener internet básico en casa para acceder a miles de horas de entretenimiento gratuito:
+      </p>
+      <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-1.5 text-xs text-slate-200">
+        <div><strong>Pluto TV:</strong> Más de 100 canales en vivo gratis (noticias, cocina, animé, películas y series).</div>
+        <div><strong>Riivi:</strong> La plataforma gratuita con lo mejor del cine y series chilenas y latinoamericanas.</div>
+        <div><strong>YouTube & Twitch:</strong> Documentales, música, noticias en vivo y transmisiones 24/7 sin pagar nada.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+---
+
+{/* =========================================================================
+    LA INVERSIÓN MAESTRA: LA TELE QUE SE PAGA SOLA
+   ========================================================================= */}
+
+<div id="la-inversion-maestra"></div>
+
+## La Opción Inteligente: Compra una Smart TV 55" QLED con lo que Ahorras en Cable
+
+Muchos creen que comprar un televisor de última generación es un lujo caro. Pero mira esta comparación:
+
+* Si sigues pagando cable: **Botas $450.000 CLP al año** y te quedas con las manos vacías.
+* Si cancelas el cable hoy: **En solo 7 a 8 meses te compras una pantalla de cine de 55 pulgadas**, ya trae sintonizador digital HD integrado y te dura 7 a 10 años en el living.
+
+### 🥇 La Mejor Compra Calidad-Precio en Chile Hoy: TCL 55" QLED 4K (C655 / 55T6D)
+
+Acaba de bajar de precio a **$ 311.271 CLP** en Mercado Libre (su precio habitual es de $479.990). Es la pantalla perfecta para decirle adiós a las empresas de cable:
+
+<ProductCard
+  productKey="tcl-c655-55"
+  isFirst={true}
+  title='Smart TV TCL 55" QLED UHD 4K con Google TV Oficial (55T6D / C655)'
+  brand="TCL"
+  badge="🔥 Se paga sola con 7 meses de ahorro de cable (-35%)"
+  specs={[
+    "55 Pulgadas QLED 4K Ultra HD",
+    "Sintonizador Digital TVD Chileno Integrado (ISDB-Tb)",
+    "Google TV Oficial con Play Store",
+    "Control Remoto con Micrófono de Voz",
+    "Dolby Vision & Dolby Atmos",
+    "WiFi Dual Band 5GHz Ultrarrápido"
+  ]}
+  pros={[
+    "Conectas una antena básica de $9.000 atrás y sintonizas todos los canales nacionales en HD sin pagar nada nunca más",
+    "Google TV te permite descargar Pluto TV, YouTube, Riivi, Zapping y DGO sin restricciones",
+    "Panel QLED con colores vibrantes y brillo alto para ver fútbol de día sin reflejos",
+    "Bajó a $311.271 CLP con Envío Gratis a todo Chile por Mercado Libre"
+  ]}
+  cons={[
+    "Mide 123 cm de ancho con sus patas: revisa las dimensiones del mueble de tu casa"
+  ]}
+  tiendas={[
+    {
+      tienda: "Mercado Libre Chile (Modelo Oficial 55T6D QLED)",
+      precio: preciosData['tcl-c655-55'].precioFormateado,
+      badge: "🔥 Precio Mínimo Histórico",
+      destacada: true,
+      envio: "Envío Gratis a Todo Chile",
+      urlKey: "tcl-c655-55"
+    },
+    {
+      tienda: "Falabella Chile (Modelo T6D QLED)",
+      precio: "$ 359.990 CLP",
+      badge: "Distribuidor Oficial",
+      destacada: false,
+      envio: "Despacho o Retiro en Tienda",
+      url: "https://creators.falabella.com/-5xdD"
+    }
+  ]}
+/>
+
+---
+
+{/* =========================================================================
+    OPCIÓN ALTERNATIVA: SAMSUNG 55" CRYSTAL UHD
+   ========================================================================= */}
+
+### ¿Prefieres la Marca Samsung? Opción 55" Crystal UHD DU7000
+
+Si prefieres la confiabilidad de Samsung, el modelo **DU7000 de 55 pulgadas** se encuentra hoy en **$ 309.990 CLP**. Cuenta con procesador Crystal 4K, sintonizador digital chileno de fábrica y el sistema Samsung TV Plus con decenas de canales en streaming gratis:
+
+<ProductCard
+  productKey="samsung-du7000-55"
+  isFirst={false}
+  title='Smart TV Samsung 55" Crystal UHD 4K (UN55DU7000GXZS)'
+  brand="Samsung"
+  badge="⭐ Marca Líder en Chile"
+  specs={[
+    "55 Pulgadas Crystal UHD 4K",
+    "Sintonizador Digital TVD Integrado",
+    "Sistema Tizen OS con Samsung TV Plus Gratis",
+    "Motion Xcelerator para Deportes",
+    "Diseño Slim Sin Bordes"
+  ]}
+  pros={[
+    "Incluye Samsung TV Plus: canales de noticias, cocina y películas 100% gratis por internet de fábrica",
+    "Excelente escalado 4K para ver partidos de fútbol en canales nacionales con gran definición",
+    "Garantía oficial y servicio técnico en todo Chile"
+  ]}
+  cons={[
+    "En aplicaciones pesadas como Mundo GO puede ser un poco más lento que Google TV"
+  ]}
+  tiendas={[
+    {
+      tienda: "Mercado Libre Chile (Tienda Oficial Samsung)",
+      precio: preciosData['samsung-du7000-55'].precioFormateado,
+      badge: "Garantía Oficial",
+      destacada: true,
+      envio: "Envío Gratis",
+      urlKey: "samsung-du7000-55"
+    }
+  ]}
+/>
+
+---
+
+{/* =========================================================================
+    OPCIÓN ECONÓMICA: RENOVAR TU TELE ACTUAL POR $9.216 O $24.500
+   ========================================================================= */}
+
+<div id="opcion-antena"></div>
+
+## ¿No Quieres Comprar Tele Nueva? Equipa tu Tele Actual por Menos de $25.000
+
+Si en tu living, dormitorio o casa de campo ya tienes una tele que prende bien y no quieres gastar en una pantalla nueva, puedes cortar el cable hoy mismo con estos dos accesorios:
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5 my-6 not-prose">
+
+  {/* TARJETA 1: ANTENA DIGITAL */}
+  <div class="p-6 rounded-3xl bg-slate-900 border-2 border-emerald-500/50 flex flex-col justify-between shadow-xl">
+    <div>
+      <div class="flex items-center gap-4 mb-3">
+        <div class="bg-white p-3 rounded-2xl w-20 h-20 shrink-0 flex items-center justify-center shadow-md">
+          <Image src={antenaImg} alt="Antena TVD Digital Amplificada Chile" class="w-full h-full object-contain" />
+        </div>
+        <div>
+          <span class="inline-block px-2.5 py-0.5 rounded-full bg-emerald-500 text-slate-950 text-[10px] font-black uppercase mb-1">
+            Imprescindible
+          </span>
+          <h3 class="text-base font-black text-white m-0">Antena Digital HDTV Amplificada</h3>
+          <span class="text-lg font-black text-emerald-400 font-mono">
+            {preciosData['antena-tvd-chile'].precioFormateado}
+          </span>
+        </div>
+      </div>
+      <p class="text-xs text-slate-300 leading-relaxed mb-3">
+        Si tu televisor es del año 2014 en adelante, ya tiene sintonizador digital adentro. Solo le enroscas esta antena atrás, la pegas cerca de una ventana y sintonizas más de 15 canales en HD gratis.
+      </p>
+    </div>
+    <a
+      href={afiliadosData['antena-tvd-chile'].url}
+      target="_blank"
+      rel="nofollow sponsored noopener noreferrer"
+      class="mt-3 text-center px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs uppercase tracking-wider shadow-lg transition-all"
+    >
+      Ver Antena en Mercado Libre ({preciosData['antena-tvd-chile'].precioFormateado}) →
+    </a>
+  </div>
+
+  {/* TARJETA 2: DECODIFICADOR TVD */}
+  <div class="p-6 rounded-3xl bg-slate-900 border-2 border-amber-500/50 flex flex-col justify-between shadow-xl">
+    <div>
+      <div class="flex items-center gap-4 mb-3">
+        <div class="bg-white p-3 rounded-2xl w-20 h-20 shrink-0 flex items-center justify-center shadow-md">
+          <Image src={decoImg} alt="Decodificador TV Digital TDT ISDB-Tb Chile" class="w-full h-full object-contain" />
+        </div>
+        <div>
+          <span class="inline-block px-2.5 py-0.5 rounded-full bg-amber-400 text-slate-950 text-[10px] font-black uppercase mb-1">
+            Para Teles Antiguas
+          </span>
+          <h3 class="text-base font-black text-white m-0">Decodificador TVD Digital (Norma Chile)</h3>
+          <span class="text-lg font-black text-emerald-400 font-mono">
+            {preciosData['decodificador-tvd'].precioFormateado}
+          </span>
+        </div>
+      </div>
+      <p class="text-xs text-slate-300 leading-relaxed mb-3">
+        ¿Tu tele es antigua, de tubo o una pantalla importada sin norma chilena? Le conectas este decodificador por cable HDMI o RCA (amarillo, blanco y rojo), le enchufas la antena y queda convertida en HD al tiro.
+      </p>
+    </div>
+    <a
+      href={afiliadosData['decodificador-tvd'].url}
+      target="_blank"
+      rel="nofollow sponsored noopener noreferrer"
+      class="mt-3 text-center px-5 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs uppercase tracking-wider shadow-lg transition-all"
+    >
+      Ver Decodificador en Mercado Libre ({preciosData['decodificador-tvd'].precioFormateado}) →
+    </a>
+  </div>
+
+</div>
+
+---
+
+{/* =========================================================================
+    TABLA COMPARATIVA DE COSTOS A 1 Y 3 AÑOS
+   ========================================================================= */}
+
+## Comparativa: Seguir Pagando Cable vs Comprar Smart TV o Antena
+
+| Característica | Cable Tradicional (VTR / Movistar / Claro) | Comprar Smart TV TCL 55" QLED + Antena | Quedarte con tu Tele + Antena Digital |
+| :--- | :--- | :--- | :--- |
+| **Costo Mensual** | $ 35.000 a $ 45.000 CLP / mes | **$ 0 CLP / mes de por vida** | **$ 0 CLP / mes de por vida** |
+| **Gasto en 1 Año** | **$ 480.000 CLP** (Plata perdida) | **$ 320.487 CLP** (Te quedas con la tele) | **$ 9.216 CLP** (Inversión única) |
+| **Gasto en 3 Años** | **$ 1.440.000 CLP** 😱 | **$ 320.487 CLP** (Ahorraste +$1.100.000) | **$ 9.216 CLP** (Ahorraste +$1.430.000) |
+| **Calidad de Canales Nacionales** | Comprimida con delay de hasta 40 segundos | **Full HD 1080p sin compresión ni delay** | **Full HD 1080p sin delay** |
+| **¿Funciona si se Corta Internet?** | ❌ Se cae la señal de TV | **✅ Sigue funcionando por aire** | **✅ Sigue funcionando por aire** |
+
+---
+
+export const cordCuttingFaqs = [
+  {
+    question: "¿Es legal dejar de pagar cable y usar una antena digital en Chile?",
+    answer: "100% legal. La televisión digital abierta (norma ISDB-Tb) es un servicio público gratuito garantizado por la ley chilena y transmitido por aire por los canales nacionales (TVN, Mega, C13, CHV, etc.). No requiere suscripción ni permisos."
+  },
+  {
+    question: "¿Cómo sé si mi televisor necesita un decodificador externo?",
+    answer: "Si tu tele fue comprada en Chile después de 2014, trae el logo 'TVD Declarada' y tiene el sintonizador digital adentro: solo necesitas la antena de $9.216. Si es más antigua o no sintoniza canales digitales, necesitas sumarle el decodificador externo de $15.286."
+  },
+  {
+    question: "¿Por qué los goles se gritan antes con antena que con cable o streaming?",
+    answer: "Porque la señal digital por aire viaja a la velocidad de la luz directamente desde la antena repetidora del cerro hasta tu casa, con menos de 1 segundo de latencia. El cable y las apps de internet comprimen la señal y sufren un retardo de entre 25 y 60 segundos."
+  },
+  {
+    question: "¿Puedo ver películas y series sin pagar suscripciones mensuales?",
+    answer: "Sí. Instalando aplicaciones gratuitas como Pluto TV (con más de 100 canales temáticos en vivo), Riivi (cine chileno gratis) y YouTube, tienes miles de horas de contenido sin pagar ni un peso."
+  }
+];
+
+## Preguntas Frecuentes
+
+<FAQSection
+  title="Dudas Frecuentes sobre Cortar el Cable en Chile"
+  items={cordCuttingFaqs}
+/>
+
+---
+
+<CtaBanner
+  title="¿Listo para ahorrarte $450.000 pesos al año?"
+  subtitle="Aprovecha las ofertas vigentes con despacho gratis en Mercado Libre y equipa tu hogar con televisión sin mensualidades."
+  ctaText='Ver Oferta Smart TV TCL 55" QLED →'
+  ctaUrl="https://meli.la/2Twu2YX"
+/>

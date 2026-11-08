@@ -349,8 +349,8 @@
     ]
   },
   "tv-box-android-economico": {
-    "precioCLP": 39990,
-    "precioFormateado": "$ 39.990 CLP",
+    "precioCLP": 29990,
+    "precioFormateado": "$ 29.990 CLP",
     "rango": "$ 22.990 - $ 42.990 CLP",
     "precioMinVisto": "$ 22.990 CLP",
     "tiendaReferencia": "Mercado Libre Chile",
@@ -950,6 +950,26 @@
         "destacada": true,
         "envio": "Envío Full 24h",
         "urlKey": "samsung-galaxy-s26-5g"
+      }
+    ]
+  },
+  "amazon-fire-tv-stick": {
+    "precioCLP": 31443,
+    "precioFormateado": "$ 31.443 CLP",
+    "rango": "$ 31.443 - $ 41.383 CLP",
+    "precioMinVisto": "$ 31.443 CLP",
+    "tiendaReferencia": "Mercado Libre (Envío Internacional USA)",
+    "fechaVerificacion": "2026-11-08",
+    "enOferta": true,
+    "notaImportante": "Envío desde USA. Mercado Libre estima ~.970 de impuestos aduaneros.",
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre (Internacional)",
+        "precio": "$ 31.443 CLP",
+        "badge": "✈️ Envío Internacional USA",
+        "destacada": true,
+        "envio": "Envío desde USA (+ impuestos est. .970)",
+        "urlKey": "amazon-fire-tv-stick"
       }
     ]
   }

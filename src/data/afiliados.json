@@ -132,10 +132,10 @@
     "actualizado": "2026-10-25"
   },
   "tv-box-android-economico": {
-    "nombre": "TV Box Android 4K Económico con USB, Lector SD y Red Ethernet",
+    "nombre": "TV Box Android 14 4K UHD con Control por Voz (2GB RAM + 16GB ROM)",
     "url": "https://meli.la/17Wdq2T",
     "tienda": "Mercado Libre Chile",
-    "actualizado": "2026-10-25"
+    "actualizado": "2026-11-08"
   },
   "conversor-hdmi-rca": {
     "nombre": "Conversor Adaptador HDMI a RCA AV (Amarillo, Blanco y Rojo) con Cable USB",
@@ -316,5 +316,11 @@
     "url": "https://meli.la/1e1N11s",
     "tienda": "Mercado Libre Chile",
     "actualizado": "2026-11-01"
+  },
+  "amazon-fire-tv-stick": {
+    "nombre": "Amazon Fire TV Stick HD (2026) con Control Remoto por Voz Alexa",
+    "url": "https://meli.la/2K8kRep",
+    "tienda": "Mercado Libre (Envío Internacional USA)",
+    "actualizado": "2026-11-08"
   }
 }

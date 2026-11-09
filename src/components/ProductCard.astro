@@ -4,6 +4,7 @@ import type { ImageMetadata } from 'astro';
 import afiliadosData from '../data/afiliados.json';
 import preciosData from '../data/precios.json';
 import AffiliateLink from './AffiliateLink.astro';
+import StoreLogo from './StoreLogo.astro';
 import Precio from './Precio.astro';
 
 interface Props {
@@ -451,6 +452,7 @@ const productSchema = {
                 productKey={productKey}
                 class={`inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl font-black text-sm sm:text-base shadow-lg hover:scale-[1.03] active:scale-[0.98] transition-all !no-underline border ${primaryTheme.btnBg}`}
               >
+                <StoreLogo network={primaryTheme.network} class="w-5 h-5 shrink-0" />
                 <span class={`font-black tracking-tight ${primaryTheme.iconColor}`}>{primaryTheme.btnFullText}</span>
                 <svg class={`w-5 h-5 shrink-0 ${primaryTheme.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
               </AffiliateLink>
@@ -464,6 +466,7 @@ const productSchema = {
                   class={`inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl font-black text-sm shadow-md hover:scale-[1.03] active:scale-[0.98] transition-all !no-underline border ${sec.theme.btnBg}`}
                   title={`Comprar también en ${sec.tienda}`}
                 >
+                  <StoreLogo network={sec.theme.network} class="w-4 h-4 shrink-0" />
                   <span class={`font-black tracking-tight ${sec.theme.iconColor}`}>{sec.theme.btnFullText}</span>
                   <svg class={`w-4 h-4 shrink-0 ${sec.theme.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </a>
@@ -556,13 +559,14 @@ const productSchema = {
                           href={targetUrl}
                           target="_blank"
                           rel="nofollow sponsored noopener noreferrer"
-                          class={`inline-flex items-center gap-1 px-3.5 py-1.5 rounded-xl text-xs font-black transition-all !no-underline border ${
+                          class={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-black transition-all !no-underline border ${
                             isAffiliate
                               ? `${theme.btnBg} hover:scale-105 active:scale-95 shadow-md`
                               : 'bg-slate-800/80 hover:bg-slate-700 !text-slate-400 hover:!text-slate-200 border-slate-700/60 shadow-none'
                           }`}
                           title={`Ver precio en ${t.tienda}`}
                         >
+                          <StoreLogo network={theme.network} class="w-3.5 h-3.5 shrink-0" />
                           <span>{theme.btnText}</span>
                           <svg class={`w-3.5 h-3.5 shrink-0 ${theme.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>

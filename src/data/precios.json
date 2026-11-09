@@ -26,9 +26,9 @@
       },
       {
         "tienda": "Falabella (Modelo T6D QLED)",
-        "precio": "$ 359.990 CLP",
-        "badge": "Alternativa QLED",
-        "destacada": false,
+        "precio": "$ 299.990 CLP",
+        "badge": "🔥 Oferta Flash -30%",
+        "destacada": true,
         "envio": "Despacho o Retiro",
         "url": "https://creators.falabella.com/-5xdD"
       }
@@ -1082,18 +1082,18 @@
     ]
   },
   "tcl-t6d-55": {
-    "precioCLP": 359990,
-    "precioFormateado": "$ 359.990 CLP",
-    "rango": "$ 311.271 - $ 359.990 CLP",
-    "precioMinVisto": "$ 311.271 CLP",
+    "precioCLP": 299990,
+    "precioFormateado": "$ 299.990 CLP",
+    "rango": "$ 299.990 - $ 359.990 CLP",
+    "precioMinVisto": "$ 299.990 CLP",
     "tiendaReferencia": "Falabella Chile",
-    "fechaVerificacion": "2026-11-08",
+    "fechaVerificacion": "2026-11-09",
     "enOferta": true,
     "comparativaTiendas": [
       {
         "tienda": "Falabella (Modelo T6D QLED Oficial)",
-        "precio": "$ 359.990 CLP",
-        "badge": "⭐ Recomendada TikTok",
+        "precio": "$ 299.990 CLP",
+        "badge": "🔥 Oferta Flash -30% Falabella ($299.990)",
         "destacada": true,
         "envio": "Despacho o Retiro en Tienda",
         "urlKey": "falabella-tcl-t6d-55"
@@ -1101,7 +1101,7 @@
       {
         "tienda": "Mercado Libre (TCL 55\" QLED C655 / T6D)",
         "precio": "$ 311.271 CLP",
-        "badge": "🔥 Oferta Envío Full",
+        "badge": "⚡ Oferta Envío Full",
         "destacada": false,
         "envio": "Envío Gratis Rápido 24-48h",
         "urlKey": "tcl-c655-55"

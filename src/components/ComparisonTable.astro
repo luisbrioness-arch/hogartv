@@ -1,5 +1,6 @@
 ---
 import afiliadosData from '../data/afiliados.json';
+import StoreLogo from './StoreLogo.astro';
 
 interface ColumnCta {
   productKey?: string;
@@ -249,8 +250,9 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
                         href={targetUrl}
                         target="_blank"
                         rel="nofollow sponsored noopener noreferrer"
-                        class={`inline-flex items-center gap-1 px-3 py-1.5 rounded-lg font-black text-xs shadow-sm !no-underline border ${theme.btnBg}`}
+                        class={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-black text-xs shadow-sm !no-underline border ${theme.btnBg}`}
                       >
+                        <StoreLogo network={theme.network} class="w-3.5 h-3.5" />
                         <span>{label}</span>
                         <svg class={`w-3 h-3 shrink-0 ${theme.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                       </a>
@@ -259,8 +261,9 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
                           href={secTargetUrl}
                           target="_blank"
                           rel="nofollow sponsored noopener noreferrer"
-                          class={`inline-flex items-center gap-1 px-3 py-1.5 rounded-lg font-black text-xs shadow-sm !no-underline border ${secTheme.btnBg}`}
+                          class={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-black text-xs shadow-sm !no-underline border ${secTheme.btnBg}`}
                         >
+                          <StoreLogo network={secTheme.network} class="w-3.5 h-3.5" />
                           <span>{secLabel}</span>
                           <svg class={`w-3 h-3 shrink-0 ${secTheme.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                         </a>
@@ -352,6 +355,7 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
                     rel="nofollow sponsored noopener noreferrer"
                     class={`flex-1 inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl font-black text-xs shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all !no-underline border ${theme.btnBg}`}
                   >
+                    <StoreLogo network={theme.network} class="w-3.5 h-3.5" />
                     <span>{label}</span>
                     <svg class={`w-3.5 h-3.5 shrink-0 ${theme.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -365,6 +369,7 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
                     rel="nofollow sponsored noopener noreferrer"
                     class={`flex-1 inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl font-black text-xs shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all !no-underline border ${secTheme.btnBg}`}
                   >
+                    <StoreLogo network={secTheme.network} class="w-3.5 h-3.5" />
                     <span>{secLabel}</span>
                     <svg class={`w-3.5 h-3.5 shrink-0 ${secTheme.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -514,7 +519,10 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
                         class={`w-full inline-flex items-center justify-between px-2.5 py-1.5 rounded-lg font-black text-[11px] shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all !no-underline border ${theme.btnBg} whitespace-nowrap`}
                         title={`Ver oferta en ${tiendaName || 'tienda'}`}
                       >
-                        <span>{label}</span>
+                        <span class="flex items-center gap-1.5">
+                          <StoreLogo network={theme.network} class="w-3.5 h-3.5" />
+                          <span>{label}</span>
+                        </span>
                         <svg class={`w-3 h-3 shrink-0 ${theme.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>
@@ -530,7 +538,10 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
                         class={`w-full inline-flex items-center justify-between px-2.5 py-1.5 rounded-lg font-black text-[11px] shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all !no-underline border ${secTheme.btnBg} whitespace-nowrap`}
                         title="Ver oferta alternativa"
                       >
-                        <span>{secLabel}</span>
+                        <span class="flex items-center gap-1.5">
+                          <StoreLogo network={secTheme.network} class="w-3.5 h-3.5" />
+                          <span>{secLabel}</span>
+                        </span>
                         <svg class={`w-3 h-3 shrink-0 ${secTheme.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>

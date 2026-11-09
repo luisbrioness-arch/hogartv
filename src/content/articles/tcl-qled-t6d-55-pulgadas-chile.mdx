@@ -14,6 +14,7 @@ import { Image } from 'astro:assets';
 import tclImg from '../../assets/products/tcl-t6d-55.webp';
 
 import ProductCard from '../../components/ProductCard.astro';
+import StoreLogo from '../../components/StoreLogo.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
 import YouTubeEmbed from '../../components/YouTubeEmbed.astro';
 import FAQSection from '../../components/FAQSection.astro';
@@ -62,7 +63,7 @@ import CtaBanner from '../../components/CtaBanner.astro';
     <div class="lg:col-span-7 flex flex-col justify-between">
       <div>
         <h2 class="text-xl sm:text-2xl md:text-3xl font-black text-white leading-tight mb-2">
-          Por qué la TCL QLED 55" T6D es la compra inteligente por menos de $360.000
+          Por qué la TCL QLED 55" T6D es la compra inteligente por solo $299.990 CLP (Oferta Flash en Falabella)
         </h2>
         <p class="text-xs sm:text-sm text-slate-300 mb-4 leading-relaxed">
           La mayoría de los televisores de 55" en este rango de precio usan paneles LED básicos que se ven grises de noche y traen sistemas cerrados lentos. La <strong class="text-white">TCL 55" QLED T6D (55T6D / C655)</strong> rompe el mercado chileno entregando <strong class="text-emerald-300">cristales cuánticos QLED reales, Google TV oficial liberado y aceleración gamer a 120Hz</strong>.
@@ -92,7 +93,7 @@ import CtaBanner from '../../components/CtaBanner.astro';
       <div class="p-4 rounded-2xl bg-slate-900/95 border border-slate-800 space-y-2.5">
         <div class="flex flex-wrap items-baseline justify-between gap-2 mb-1">
           <span class="text-xs text-slate-400 font-semibold">Opciones de compra verificadas hoy en Chile:</span>
-          <span class="text-sm font-black text-white">Desde $ 311.271 a $ 359.990 CLP</span>
+          <span class="text-sm font-black text-white">Desde $ 299.990 a $ 311.271 CLP (Histórico)</span>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -102,7 +103,8 @@ import CtaBanner from '../../components/CtaBanner.astro';
             rel="nofollow sponsored noopener noreferrer"
             class="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#008A00] hover:bg-[#007000] text-white font-black text-xs sm:text-sm shadow-lg shadow-emerald-900/30 transition-all"
           >
-            <span>🟢 Ver TCL 55" T6D en Falabella ($359.990)</span>
+            <StoreLogo network="falabella" class="w-4 h-4" />
+            <span>Ver TCL 55" T6D en Falabella ($299.990)</span>
             <span>↗</span>
           </a>
           <a
@@ -111,7 +113,8 @@ import CtaBanner from '../../components/CtaBanner.astro';
             rel="nofollow sponsored noopener noreferrer"
             class="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 font-black text-xs sm:text-sm shadow-lg shadow-yellow-500/20 transition-all"
           >
-            <span>⚡ Ver en Mercado Libre Full ($311.271)</span>
+            <StoreLogo network="mercadolibre" class="w-4 h-4" />
+            <span>Ver en Mercado Libre Full ($311.271)</span>
             <span>↗</span>
           </a>
         </div>
@@ -168,7 +171,7 @@ Mira cómo se posiciona frente a un televisor LED básico del mismo precio y fre
   rows={[
     {
       feature: "1. TCL 55\" QLED T6D (Recomendada TikTok)",
-      values: ["QLED Quantum Dot (VA Alto Contraste)", "60Hz / 120Hz Game Accelerator", "Google TV Oficial (Abierto)", "$ 359.990 CLP", "Mejor Equilibrio 3B"],
+      values: ["QLED Quantum Dot (VA Alto Contraste)", "60Hz / 120Hz Game Accelerator", "Google TV Oficial (Abierto)", "$ 299.990 CLP", "Mejor Equilibrio 3B"],
       productKey: "falabella-tcl-t6d-55",
       secondaryProductKey: "tcl-c655-55"
     },

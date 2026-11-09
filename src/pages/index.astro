@@ -4,6 +4,7 @@ import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductCard from '../components/ProductCard.astro';
+import StoreLogo from '../components/StoreLogo.astro';
 import FAQSection from '../components/FAQSection.astro';
 import AdSlot from '../components/AdSlot.astro';
 import sitioData from '../data/sitio.json';
@@ -451,7 +452,7 @@ const quickNeeds = [
                 Smart TV TCL QLED 55" 4K modelo T6D (Google TV Oficial)
               </h2>
               <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
-                La tele que recomendamos en TikTok por menos de $360.000: <strong class="text-white">Panel QLED Quantum Dot real</strong> (no LED básico lavado), <strong class="text-emerald-300">Google TV oficial sin bloqueos</strong> para instalar Zapping, DGO, Netflix y cualquier app, audio Dolby Atmos y <strong class="text-amber-300">120Hz Game Accelerator</strong> para consolas.
+                La tele que recomendamos en TikTok con oferta flash de $299.990 (bajó de $429.990 en Falabella): <strong class="text-white">Panel QLED Quantum Dot real</strong> (no LED básico lavado), <strong class="text-emerald-300">Google TV oficial sin bloqueos</strong> para instalar Zapping, DGO, Netflix y cualquier app, audio Dolby Atmos y <strong class="text-amber-300">120Hz Game Accelerator</strong> para consolas.
               </p>
             </div>
 
@@ -462,7 +463,8 @@ const quickNeeds = [
                 rel="nofollow sponsored noopener noreferrer"
                 class="inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl bg-[#008A00] hover:bg-[#007000] text-white font-black text-xs shadow-lg transition-all"
               >
-                <span>🟢 Ver T6D en Falabella ($359.990)</span>
+                <StoreLogo network="falabella" class="w-4 h-4" />
+                <span>Ver T6D en Falabella ($299.990)</span>
                 <span>↗</span>
               </a>
               <a
@@ -471,7 +473,8 @@ const quickNeeds = [
                 rel="nofollow sponsored noopener noreferrer"
                 class="inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 font-black text-xs shadow-lg transition-all"
               >
-                <span>⚡ Ver en M. Libre Full ($311.271)</span>
+                <StoreLogo network="mercadolibre" class="w-4 h-4" />
+                <span>Ver en M. Libre Full ($311.271)</span>
                 <span>↗</span>
               </a>
               <a
@@ -555,6 +558,7 @@ const quickNeeds = [
                 rel="nofollow sponsored noopener noreferrer"
                 class="w-full inline-flex items-center justify-center gap-1 px-3 py-2 rounded-xl bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 font-black text-xs shadow-md transition-all"
               >
+                <StoreLogo network="mercadolibre" class="w-3.5 h-3.5" />
                 <span>M. Libre Full 24h</span>
                 <span>↗</span>
               </a>
@@ -564,6 +568,7 @@ const quickNeeds = [
                 rel="nofollow sponsored noopener noreferrer"
                 class="w-full inline-flex items-center justify-center gap-1 px-3 py-2 rounded-xl bg-[#008A00] hover:bg-[#007000] text-white font-black text-xs shadow-md transition-all"
               >
+                <StoreLogo network="falabella" class="w-3.5 h-3.5" />
                 <span>Ver en Falabella</span>
                 <span>↗</span>
               </a>
@@ -615,6 +620,7 @@ const quickNeeds = [
                 rel="nofollow sponsored noopener noreferrer"
                 class="w-full inline-flex items-center justify-center gap-1 px-3 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs shadow-md transition-all"
               >
+                <StoreLogo network="aliexpress" class="w-3.5 h-3.5" />
                 <span>Ver en AliExpress</span>
                 <span>↗</span>
               </a>
@@ -669,6 +675,7 @@ const quickNeeds = [
                 rel="nofollow sponsored noopener noreferrer"
                 class="w-full inline-flex items-center justify-center gap-1 px-3 py-2 rounded-xl bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 font-black text-xs shadow-md transition-all"
               >
+                <StoreLogo network="mercadolibre" class="w-3.5 h-3.5" />
                 <span>Comprar en M. Libre</span>
                 <span>↗</span>
               </a>
@@ -720,6 +727,7 @@ const quickNeeds = [
                 rel="nofollow sponsored noopener noreferrer"
                 class="w-full inline-flex items-center justify-center gap-1 px-3 py-2 rounded-xl bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 font-black text-xs shadow-md transition-all"
               >
+                <StoreLogo network="mercadolibre" class="w-3.5 h-3.5" />
                 <span>Comprar en M. Libre</span>
                 <span>↗</span>
               </a>
@@ -771,6 +779,7 @@ const quickNeeds = [
                 rel="nofollow sponsored noopener noreferrer"
                 class="w-full inline-flex items-center justify-center gap-1 px-3 py-2 rounded-xl bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 font-black text-xs shadow-md transition-all"
               >
+                <StoreLogo network="mercadolibre" class="w-3.5 h-3.5" />
                 <span>Comprar en M. Libre</span>
                 <span>↗</span>
               </a>

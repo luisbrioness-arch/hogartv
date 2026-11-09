@@ -87,7 +87,7 @@ const comparativa = (tiendasProp && tiendasProp.length > 0) ? tiendasProp : (pre
 function getStoreAffiliateTheme(url: string, storeName?: string) {
   const safeUrl = url || '';
   const isMeli = safeUrl.includes('meli.la') || safeUrl.includes('mercadolibre.cl');
-  const isFalabella = safeUrl.includes('creators.falabella.com');
+  const isFalabella = safeUrl.includes('creators.falabella.com') || safeUrl.includes('falabella.com');
   const isAliExpress = safeUrl.includes('s.click.aliexpress.com') || (safeUrl.includes('aliexpress.com') && safeUrl.includes('aff_platform'));
 
   if (isMeli) {
@@ -96,8 +96,8 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
       network: 'mercadolibre',
       storeName: 'Mercado Libre',
       btnBg: 'bg-[#FFE600] hover:bg-[#F5D600] !text-slate-950 border-yellow-400 shadow-md shadow-yellow-500/25',
-      btnText: 'Comprar',
-      btnFullText: 'Comprar en Mercado Libre',
+      btnText: '',
+      btnFullText: 'Ver Oferta',
       badgeText: '⚡ Envío Full Garantizado',
       badgeClass: 'bg-yellow-500/20 text-yellow-300 border-yellow-500/40',
       rowBorder: 'border-l-4 border-yellow-400 bg-yellow-950/20 hover:bg-yellow-950/30',
@@ -112,14 +112,14 @@ function getStoreAffiliateTheme(url: string, storeName?: string) {
       isOperative: true,
       network: 'falabella',
       storeName: 'Falabella',
-      btnBg: 'bg-[#008A00] hover:bg-[#007000] !text-white border-emerald-400 shadow-md shadow-emerald-700/30',
-      btnText: 'Comprar',
-      btnFullText: 'Comprar en Falabella',
+      btnBg: 'bg-[#FAFAFA] hover:bg-white !text-slate-900 border-2 border-[#8FCA00] shadow-md shadow-lime-500/20',
+      btnText: '',
+      btnFullText: 'Ver Oferta',
       badgeText: '⭐ Enlace Oficial Falabella',
       badgeClass: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40',
       rowBorder: 'border-l-4 border-emerald-500 bg-emerald-950/25 hover:bg-emerald-950/35',
       dotClass: 'bg-emerald-400 animate-pulse shadow-sm shadow-emerald-400/50',
-      iconColor: 'text-white',
+      iconColor: 'text-slate-900',
       tagIcon: '🛍️',
     };
   }
@@ -452,7 +452,7 @@ const productSchema = {
                 productKey={productKey}
                 class={`inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl font-black text-sm sm:text-base shadow-lg hover:scale-[1.03] active:scale-[0.98] transition-all !no-underline border ${primaryTheme.btnBg}`}
               >
-                <StoreLogo network={primaryTheme.network} class="w-5 h-5 shrink-0" />
+                <StoreLogo network={primaryTheme.network} class="h-6 sm:h-7" />
                 <span class={`font-black tracking-tight ${primaryTheme.iconColor}`}>{primaryTheme.btnFullText}</span>
                 <svg class={`w-5 h-5 shrink-0 ${primaryTheme.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
               </AffiliateLink>
@@ -466,7 +466,7 @@ const productSchema = {
                   class={`inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl font-black text-sm shadow-md hover:scale-[1.03] active:scale-[0.98] transition-all !no-underline border ${sec.theme.btnBg}`}
                   title={`Comprar también en ${sec.tienda}`}
                 >
-                  <StoreLogo network={sec.theme.network} class="w-4 h-4 shrink-0" />
+                  <StoreLogo network={sec.theme.network} class="h-6 sm:h-7" />
                   <span class={`font-black tracking-tight ${sec.theme.iconColor}`}>{sec.theme.btnFullText}</span>
                   <svg class={`w-4 h-4 shrink-0 ${sec.theme.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </a>
@@ -566,7 +566,7 @@ const productSchema = {
                           }`}
                           title={`Ver precio en ${t.tienda}`}
                         >
-                          <StoreLogo network={theme.network} class="w-3.5 h-3.5 shrink-0" />
+                          <StoreLogo network={theme.network} class="h-5 sm:h-6" />
                           <span>{theme.btnText}</span>
                           <svg class={`w-3.5 h-3.5 shrink-0 ${theme.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>

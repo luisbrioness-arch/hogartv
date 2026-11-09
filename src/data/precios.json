@@ -1080,5 +1080,40 @@
         "urlKey": "falabella-gama-elegance"
       }
     ]
+  },
+  "tcl-t6d-55": {
+    "precioCLP": 359990,
+    "precioFormateado": "$ 359.990 CLP",
+    "rango": "$ 311.271 - $ 359.990 CLP",
+    "precioMinVisto": "$ 311.271 CLP",
+    "tiendaReferencia": "Falabella Chile",
+    "fechaVerificacion": "2026-11-08",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Falabella (Modelo T6D QLED Oficial)",
+        "precio": "$ 359.990 CLP",
+        "badge": "⭐ Recomendada TikTok",
+        "destacada": true,
+        "envio": "Despacho o Retiro en Tienda",
+        "urlKey": "falabella-tcl-t6d-55"
+      },
+      {
+        "tienda": "Mercado Libre (TCL 55\" QLED C655 / T6D)",
+        "precio": "$ 311.271 CLP",
+        "badge": "🔥 Oferta Envío Full",
+        "destacada": false,
+        "envio": "Envío Gratis Rápido 24-48h",
+        "urlKey": "tcl-c655-55"
+      },
+      {
+        "tienda": "Falabella (Modelo P8L QD-Mini LED)",
+        "precio": "$ 399.990 CLP",
+        "badge": "Versión Mini-LED",
+        "destacada": false,
+        "envio": "Despacho o Retiro en Tienda",
+        "urlKey": "falabella-tcl-p8l-55"
+      }
+    ]
   }
 }

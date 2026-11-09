@@ -6,7 +6,7 @@ const articles = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    category: z.enum(['smart-tv', 'streaming', 'tv-abierta', 'accesorios']),
+    category: z.enum(['smart-tv', 'streaming', 'tv-abierta', 'accesorios', 'gadgets-hogar']),
     categoryName: z.string(),
     publishDate: z.string(),
     dateModified: z.string().optional(),

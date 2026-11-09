@@ -968,8 +968,116 @@
         "precio": "$ 31.443 CLP",
         "badge": "✈️ Envío Internacional USA",
         "destacada": true,
-        "envio": "Envío desde USA (+ impuestos est. .970)",
+        "envio": "Envío desde USA (+ impuestos est. $ 5.970)",
         "urlKey": "amazon-fire-tv-stick"
+      }
+    ]
+  },
+  "babylisspro-nano-titanium": {
+    "precioCLP": 84990,
+    "precioFormateado": "$ 84.990 CLP",
+    "rango": "$ 79.990 - $ 99.990 CLP",
+    "precioMinVisto": "$ 79.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-11-08",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 84.990 CLP",
+        "badge": "⚡ Envío Full 24h",
+        "destacada": true,
+        "envio": "Envío Gratis a Todo Chile",
+        "urlKey": "babylisspro-nano-titanium"
+      },
+      {
+        "tienda": "Falabella Chile",
+        "precio": "$ 89.990 CLP",
+        "badge": "Retail Oficial",
+        "destacada": false,
+        "envio": "Despacho o Retiro en Tienda",
+        "urlKey": "falabella-babylisspro"
+      }
+    ]
+  },
+  "remington-keratin-therapy": {
+    "precioCLP": 44990,
+    "precioFormateado": "$ 44.990 CLP",
+    "rango": "$ 42.990 - $ 54.990 CLP",
+    "precioMinVisto": "$ 39.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-11-08",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 44.990 CLP",
+        "badge": "🔥 N°1 Más Vendida",
+        "destacada": true,
+        "envio": "Envío Full Gratis",
+        "urlKey": "remington-keratin-therapy"
+      },
+      {
+        "tienda": "Falabella Chile",
+        "precio": "$ 49.990 CLP",
+        "badge": "Garantía Oficial",
+        "destacada": false,
+        "envio": "Retiro Gratis en Tienda",
+        "urlKey": "falabella-remington-keratin"
+      }
+    ]
+  },
+  "remington-shine-therapy": {
+    "precioCLP": 38990,
+    "precioFormateado": "$ 38.990 CLP",
+    "rango": "$ 36.990 - $ 45.990 CLP",
+    "precioMinVisto": "$ 34.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-11-08",
+    "enOferta": true,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 38.990 CLP",
+        "badge": "✨ Mejor Precio Antifrizz",
+        "destacada": true,
+        "envio": "Envío Rápido 24-48h",
+        "urlKey": "remington-shine-therapy"
+      },
+      {
+        "tienda": "Falabella Chile",
+        "precio": "$ 41.990 CLP",
+        "badge": "Tienda Oficial",
+        "destacada": false,
+        "envio": "Despacho a Domicilio",
+        "urlKey": "falabella-remington-shine"
+      }
+    ]
+  },
+  "gama-italy-elegance": {
+    "precioCLP": 32990,
+    "precioFormateado": "$ 32.990 CLP",
+    "rango": "$ 29.990 - $ 39.990 CLP",
+    "precioMinVisto": "$ 27.990 CLP",
+    "tiendaReferencia": "Mercado Libre Chile",
+    "fechaVerificacion": "2026-11-08",
+    "enOferta": false,
+    "comparativaTiendas": [
+      {
+        "tienda": "Mercado Libre Chile",
+        "precio": "$ 32.990 CLP",
+        "badge": "💡 Económica & Liviana",
+        "destacada": true,
+        "envio": "Envío Gratis con Mercado Envíos",
+        "urlKey": "gama-italy-elegance"
+      },
+      {
+        "tienda": "Falabella Chile",
+        "precio": "$ 34.990 CLP",
+        "badge": "Distribuidor Autorizado",
+        "destacada": false,
+        "envio": "Retiro en Tienda Falabella",
+        "urlKey": "falabella-gama-elegance"
       }
     ]
   }

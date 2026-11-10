@@ -19,6 +19,7 @@ export default defineConfig({
     sitemap({
       filter: (page) => {
         const excluded = [
+          'https://hogartv.cl/crm/',
           'https://hogartv.cl/virales/',
           'https://hogartv.cl/ofertas-tv-chile/',
           'https://hogartv.cl/gadgets-hogar/',
@@ -28,7 +29,7 @@ export default defineConfig({
         return !excluded.some((url) => page === url || page.startsWith(url));
       },
       serialize(item) {
-        item.lastmod = new Date().toISOString();
+        item.lastmod = '2026-04-15T12:00:00.000Z';
         return item;
       },
     }),

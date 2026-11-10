@@ -13,6 +13,7 @@ interface Props {
   publishedTime?: string;
   breadcrumbs?: { name: string; url: string }[];
   noindex?: boolean;
+  noIndex?: boolean;
 }
 
 const {
@@ -24,7 +25,9 @@ const {
   publishedTime,
   breadcrumbs,
   noindex = false,
+  noIndex = false,
 } = Astro.props;
+const isNoindex = Boolean(noindex || noIndex);
 
 const siteUrl = 'https://hogartv.cl';
 let rawCanonical = canonical || new URL(Astro.url.pathname, siteUrl).href;
@@ -46,7 +49,7 @@ const metaDescription = clampDescription(description);
 // Variables de entorno para GA4, GSC y AdSense
 const ga4Id = import.meta.env.PUBLIC_GA4_ID?.trim() || 'G-0ZB5T66TJ2';
 const gscVerification = import.meta.env.PUBLIC_GSC_VERIFICATION?.trim();
-const adsenseId = import.meta.env.PUBLIC_ADSENSE_ID?.trim();
+const adsenseId = import.meta.env.PUBLIC_ADSENSE_ID?.trim() || 'ca-pub-5268337462639131';
 const isDev = import.meta.env.DEV;
 const showGA4 = !isDev && Boolean(ga4Id);
 const showGSC = Boolean(gscVerification);
@@ -128,7 +131,7 @@ const breadcrumbSchema =
   <link rel="canonical" href={canonicalUrl} />
   <meta name="geo.region" content="CL" />
   <meta name="geo.placename" content="Chile" />
-  {noindex ? (
+  {isNoindex ? (
     <meta name="robots" content="noindex, follow" />
   ) : (
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
@@ -176,9 +179,11 @@ const breadcrumbSchema =
     </>
   )}
 
-  <!-- Google AdSense -->
-  <script is:inline async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5268337462639131"
-     crossorigin="anonymous"></script>
+  <!-- Google AdSense (Solo en páginas editoriales indexables, nunca en 404, login o noindex) -->
+  {!isNoindex && showAdsense && (
+    <script is:inline async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseId}`}
+       crossorigin="anonymous"></script>
+  )}
 </head>
 <body class="min-h-screen flex flex-col bg-surface-dark text-slate-100 font-sans">
   <a

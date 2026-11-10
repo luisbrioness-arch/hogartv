@@ -1,19 +1,24 @@
 User-agent: Googlebot
 Allow: /
+Disallow: /crm/
 
 User-agent: Googlebot-Mobile
 Allow: /
+Disallow: /crm/
 
 User-agent: Mediapartners-Google
 Allow: /
 Allow: /ads.txt
+Disallow: /crm/
 
 User-agent: Bingbot
 Allow: /
+Disallow: /crm/
 
 User-agent: *
 Allow: /
 Allow: /ads.txt
+Disallow: /crm/
 
 Sitemap: https://hogartv.cl/sitemap-index.xml
 Sitemap: https://hogartv.cl/sitemap-0.xml

@@ -1,0 +1,372 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import StoreLogo from '../components/StoreLogo.astro';
+import FAQSection from '../components/FAQSection.astro';
+import afiliadosData from '../data/afiliados.json';
+import preciosData from '../data/precios.json';
+
+import heroBusImg from '../assets/accesorios/proyecto-bus-rescate-yumbel-coronel-restauracion-camper-chile/hero.jpg';
+import busLateralImg from '../assets/accesorios/proyecto-bus-rescate-yumbel-coronel-restauracion-camper-chile/bus-lateral-yumbel.jpg';
+import busFrenteImg from '../assets/accesorios/proyecto-bus-rescate-yumbel-coronel-restauracion-camper-chile/bus-frente-yumbel.jpg';
+
+const breadcrumbs = [
+  { name: 'Reviviendo un Dinosaurio', url: '/dinosaurio/' },
+];
+
+const herramientas = [
+  {
+    badge: '🔋 Baterías 12V / 24V',
+    badgeClass: 'bg-amber-500 text-slate-950',
+    borderClass: 'border-amber-500/40',
+    title: 'Cargador y Partidor Inteligente 12V / 24V',
+    desc: 'Fundamental para vehículos que llevan tiempo parados. Reconoce 12V y 24V y trae modo pulso para recuperar baterías descargadas.',
+    price: preciosData['partidor-baterias-12v-24v'].precioFormateado,
+    url: afiliadosData['partidor-baterias-12v-24v'].url,
+  },
+  {
+    badge: '💦 Lavado Profundo',
+    badgeClass: 'bg-sky-500 text-slate-950',
+    borderClass: 'border-sky-500/40',
+    title: 'Hidrolavadora Alta Presión (1800W - 2000W)',
+    desc: 'Para sacar barro seco, musgo de campo y grasa vieja de carrocería, chasis y pasos de rueda sin gastar agua de más.',
+    price: preciosData['hidrolavadora-alta-presion'].precioFormateado,
+    url: afiliadosData['hidrolavadora-alta-presion'].url,
+  },
+  {
+    badge: '🛠️ Latonería y Corte',
+    badgeClass: 'bg-brand-600 text-white',
+    borderClass: 'border-brand-500/40',
+    title: 'Esmeril Angular / Galletera 4 1/2"',
+    desc: 'Para desbaste, limpiar sectores picados y trabajar chapa con disco flap o cepillo copa de alambre.',
+    price: preciosData['esmeril-angular-galletera'].precioFormateado,
+    url: afiliadosData['esmeril-angular-galletera'].url,
+  },
+  {
+    badge: '🛡️ Control de Óxido',
+    badgeClass: 'bg-rose-600 text-white',
+    borderClass: 'border-rose-500/40',
+    title: 'Convertidor de Óxido Automotriz',
+    desc: 'Clave en zona costera como Coronel. Neutraliza el óxido superficial y deja la lata protegida antes del imprimante.',
+    price: preciosData['convertidor-oxido-automotriz'].precioFormateado,
+    url: afiliadosData['convertidor-oxido-automotriz'].url,
+  },
+];
+
+const pautaCapitulos = [
+  {
+    status: 'listo',
+    tag: '✅ Publicado · +14,3K vistas',
+    title: 'Parte 1: El rescate en Yumbel',
+    desc: 'Fuimos a buscar la micro al campo en Yumbel, revisamos baterías, agua y dimos los primeros intentos de arranque.',
+  },
+  {
+    status: 'listo',
+    tag: '✅ Publicado · +48,6K vistas',
+    title: 'Parte 2: ¿Llegó andando o en grúa a Coronel?',
+    desc: 'El viaje por carretera cruzando el Biobío hasta Coronel, vigilando temperatura, frenos y su primer lavado a fondo.',
+  },
+  {
+    status: 'curso',
+    tag: '🔧 En proceso · Pauta de la comunidad',
+    title: 'Parte 3: Mecánica a fondo (radiador, mazas y aceites)',
+    desc: 'Siguiendo los datos que nos dejaron en comentarios: embarillar el radiador, cambiar depósito de agua y mangueras con sus banjos por el óxido, mantención de mazas y calipers, y cambio de aceites (motor, caja y corona).',
+  },
+  {
+    status: 'proximo',
+    tag: '⚡ Próxima etapa · Sello HogarTV',
+    title: 'Fase Tech: Cámaras, sensores, luces, pantallas y Wi-Fi',
+    desc: 'Con la mecánica sana, pasamos a nuestro terreno: iluminación LED, cámaras de retroceso y seguridad, sensores, pantallas y conectividad a bordo.',
+  },
+];
+---
+
+<BaseLayout
+  title="Reviviendo un Dinosaurio 🦖🚌 | Bitácora Oficial @HogarTV.cl"
+  description="Serie oficial de @hogartv.cl en TikTok e Instagram: rescate y restauración mecánica de una micro antigua traída de Yumbel a Coronel, más integración tecnológica y herramientas."
+  breadcrumbs={breadcrumbs}
+>
+  <!-- HERO DE BIENVENIDA TIKTOK / INSTAGRAM -->
+  <section class="relative overflow-hidden pt-8 pb-12 border-b border-slate-800/80 bg-gradient-to-b from-slate-950 via-surface-dark to-surface-dark">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="rounded-3xl border-2 border-amber-500/50 bg-gradient-to-br from-slate-900 via-slate-950 to-amber-950/25 shadow-2xl p-5 sm:p-8 relative overflow-hidden">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-5 pb-3 border-b border-slate-800/90">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500 text-slate-950 text-xs font-black uppercase tracking-wider shadow-md">
+            <span>🦖🚌</span>
+            <span>Reviviendo un Dinosaurio · @HogarTV.cl</span>
+          </div>
+          <span class="text-xs font-bold text-emerald-400">📍 Yumbel ➔ Coronel · Región del Biobío</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-7 items-center">
+          <div class="lg:col-span-5">
+            <div class="rounded-2xl overflow-hidden border border-slate-700/80 shadow-xl bg-slate-950">
+              <Image
+                src={heroBusImg}
+                alt="Micro Mercedes-Benz Metalpar del proyecto Reviviendo un Dinosaurio traída de Yumbel a Coronel"
+                width={720}
+                height={540}
+                format="webp"
+                quality={88}
+                class="w-full h-auto object-cover"
+                loading="eager"
+              />
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 space-y-4">
+            <h1 class="text-2xl sm:text-3xl md:text-4xl font-black text-white leading-tight tracking-tight">
+              Reviviendo un Dinosaurio: de Yumbel a Coronel paso a paso
+            </h1>
+            <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+              Si llegaste desde <strong class="text-white">TikTok</strong> o <strong class="text-white">Instagram (@hogartv.cl)</strong>, estás en el lugar correcto. Soy <strong class="text-white">Luis</strong>, técnico en telecomunicaciones del Biobío: en <strong class="text-brand-300">HogarTV</strong> hacemos guías de internet, Smart TVs y tecnología, y además nos metimos en el desafío de rescatar y restaurar esta micro antigua.
+            </p>
+            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+              El plan es simple y real: <strong class="text-amber-300">primero recuperación mecánica completa</strong> en Coronel (radiador, mangueras, frenos, aceites y carrocería), y <strong class="text-sky-300">después la parte tecnológica</strong> (cámaras, sensores, pantallas, luces y Wi-Fi).
+            </p>
+
+            <div class="flex flex-wrap gap-2.5 pt-2">
+              <a
+                href="#capitulos"
+                class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm shadow-lg transition-all"
+              >
+                <span>📋 Ver Pauta Parte 3</span>
+                <span>↓</span>
+              </a>
+              <a
+                href="#herramientas"
+                class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white border border-slate-600 font-bold text-xs sm:text-sm transition-all"
+              >
+                <span>🛠️ Herramientas Usadas</span>
+                <span>↓</span>
+              </a>
+              <a
+                href="#talleres-biobio"
+                class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-emerald-950/80 hover:bg-emerald-900/80 text-emerald-300 border border-emerald-500/40 font-bold text-xs sm:text-sm transition-all"
+              >
+                <span>🤝 Talleres / Canjes Biobío</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HOJA DE RUTA / CAPÍTULOS -->
+  <section id="capitulos" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-b border-slate-800/70">
+    <div class="mb-8">
+      <span class="text-xs font-bold uppercase tracking-wider text-amber-400 block mb-1">Bitácora Real</span>
+      <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
+        Avance de Capítulos y Pauta Mecánica de la Comunidad
+      </h2>
+      <p class="text-xs sm:text-sm text-slate-400 mt-1">
+        Cada paso lo vamos armando con lo que aparece en terreno y los consejos que nos dejan mecánicos y choferes en los comentarios.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {pautaCapitulos.map((cap) => (
+        <div
+          class={`rounded-2xl p-5 sm:p-6 border shadow-lg ${
+            cap.status === 'curso'
+              ? 'bg-amber-950/20 border-amber-500/60'
+              : cap.status === 'listo'
+              ? 'bg-surface-card border-slate-800'
+              : 'bg-slate-900/60 border-sky-500/30'
+          }`}
+        >
+          <span
+            class={`inline-block px-2.5 py-1 rounded-full text-[11px] font-black uppercase tracking-wide mb-3 ${
+              cap.status === 'curso'
+                ? 'bg-amber-500 text-slate-950'
+                : cap.status === 'listo'
+                ? 'bg-emerald-950 text-emerald-300 border border-emerald-700/50'
+                : 'bg-sky-950 text-sky-300 border border-sky-700/50'
+            }`}
+          >
+            {cap.tag}
+          </span>
+          <h3 class="text-lg font-extrabold text-white mb-2">{cap.title}</h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed m-0">{cap.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- GALERÍA DE FOTOS REALES -->
+    <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-5">
+      <figure class="rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/90 shadow-lg m-0">
+        <Image
+          src={busLateralImg}
+          alt="Vista lateral del bus rescatado en Yumbel antes del viaje hacia Coronel"
+          width={720}
+          height={540}
+          format="webp"
+          quality={85}
+          class="w-full h-64 sm:h-72 object-cover"
+          loading="lazy"
+        />
+        <figcaption class="px-4 py-3 text-xs text-slate-300 bg-slate-950/90 border-t border-slate-800">
+          📍 Así estaba en el campo en Yumbel revisando compartimentos y baterías antes de echarlo a andar.
+        </figcaption>
+      </figure>
+      <figure class="rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/90 shadow-lg m-0">
+        <Image
+          src={busFrenteImg}
+          alt="Frente del bus Mercedes-Benz Metalpar en Yumbel antes del lavado"
+          width={576}
+          height={768}
+          format="webp"
+          quality={85}
+          class="w-full h-64 sm:h-72 object-cover object-bottom"
+          loading="lazy"
+        />
+        <figcaption class="px-4 py-3 text-xs text-slate-300 bg-slate-950/90 border-t border-slate-800">
+          🚌 Frente del Dinosaurio antes de salir a carretera y pasar por la hidrolavadora en Coronel.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- HERRAMIENTAS Y CHICHES (AFILIADOS MERCADO LIBRE) -->
+  <section id="herramientas" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-b border-slate-800/70">
+    <div class="mb-8">
+      <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 block mb-1">Datos de Taller · Mercado Libre Chile</span>
+      <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
+        Herramientas que nos han salvado en la restauración
+      </h2>
+      <p class="text-xs sm:text-sm text-slate-400 mt-1 max-w-3xl">
+        Varios nos preguntaron en comentarios qué equipos conviene tener para revivir vehículos o trabajar en casa sin gastar de más. Aquí iremos dejando las herramientas y, más adelante, las cámaras, luces y pantallas que instalemos.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {herramientas.map((item) => (
+        <div class={`rounded-2xl border ${item.borderClass} bg-surface-card p-5 flex flex-col justify-between shadow-xl`}>
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class={`px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase ${item.badgeClass}`}>
+                {item.badge}
+              </span>
+              <span class="text-xs font-mono font-bold text-emerald-400">{item.price}</span>
+            </div>
+            <h3 class="text-base font-black text-white mb-2 leading-snug">{item.title}</h3>
+            <p class="text-xs text-slate-300 leading-relaxed mb-4">{item.desc}</p>
+          </div>
+          <div class="pt-3 border-t border-slate-800">
+            <a
+              href={item.url}
+              target="_blank"
+              rel="nofollow sponsored noopener noreferrer"
+              class="w-full inline-flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 font-black text-xs shadow-md transition-all"
+            >
+              <StoreLogo network="mercadolibre" class="h-6" />
+              <span>Ver Oferta ↗</span>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- BLOQUE PARA TALLERES Y AUSPICIADORES LOCALES DEL BIOBÍO -->
+  <section id="talleres-biobio" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-b border-slate-800/70">
+    <div class="rounded-3xl bg-gradient-to-r from-slate-900 via-slate-900 to-emerald-950/40 border-2 border-emerald-500/40 p-6 sm:p-10 shadow-2xl">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-8 space-y-4">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 text-xs font-black uppercase tracking-wider">
+            <span>🤝 Colaboraciones y Canjes · Región del Biobío</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-white leading-tight">
+            ¿Tienes taller, lubricentro, casa de repuestos o ferretería en el Biobío?
+          </h2>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            La serie <strong class="text-white">«Reviviendo un Dinosaurio»</strong> ya suma <strong class="text-emerald-300">más de 62.000 reproducciones orgánicas</strong> solo en sus primeros 2 capítulos en TikTok (y ahora replicándose en Instagram Reels), con audiencia directa en <strong class="text-white">Coronel, Lota, San Pedro de la Paz, Concepción y Yumbel</strong>.
+          </p>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+            Si trabajas en <strong class="text-slate-200">radiadores, repuestos, lubricantes, baterías, frenos, latonería o ferretería</strong> y quieres aparecer en los próximos capítulos mostrando tu trabajo real a miles de personas de la zona, conversemos un canje o mención.
+          </p>
+        </div>
+        <div class="lg:col-span-4 flex flex-col gap-3">
+          <a
+            href="https://wa.me/56931926886?text=Hola%20Luis,%20vi%20la%20serie%20del%20Dinosaurio%20en%20HogarTV%20y%20quiero%20conversar%20por%20una%20colaboraci%C3%B3n%20o%20canje%20en%20el%20Biob%C3%ADo."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-sm shadow-lg shadow-emerald-500/20 transition-all"
+          >
+            <span>📲 Hablar por WhatsApp</span>
+          </a>
+          <div class="grid grid-cols-2 gap-2 text-center">
+            <a
+              href="https://www.tiktok.com/@hogartv.cl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold border border-slate-700 transition-colors"
+            >
+              TikTok @hogartv.cl
+            </a>
+            <a
+              href="https://www.instagram.com/hogartv.cl/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold border border-slate-700 transition-colors"
+            >
+              Instagram @hogartv.cl
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PUENTE SUAVE AL RESTO DE HOGARTV (TECH, INTERNET Y TV) -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="mb-6">
+      <span class="text-xs font-bold uppercase tracking-wider text-brand-400 block mb-1">¿Qué más es HogarTV.cl?</span>
+      <h2 class="text-xl sm:text-2xl font-black text-white tracking-tight">
+        Guías de Tecnología, Internet y TV que hacemos en el día a día
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <a href="/accesorios/como-mejorar-wifi-casa-lenta-repetidores-mesh-chile/" class="p-5 rounded-2xl bg-surface-card border border-slate-800 hover:border-brand-500/60 transition-all group">
+        <span class="text-xs font-black text-amber-400 uppercase block mb-1">📶 WiFi y Redes</span>
+        <h3 class="text-base font-extrabold text-white group-hover:text-brand-300 mb-1.5">Cómo arreglar el WiFi lento en casa</h3>
+        <p class="text-xs text-slate-400 m-0">Routers Wi-Fi 7, sistemas Mesh para casas de 2 pisos y trucos reales de terreno en Chile.</p>
+      </a>
+      <a href="/smart-tv/tcl-qled-t6d-55-pulgadas-chile/" class="p-5 rounded-2xl bg-surface-card border border-slate-800 hover:border-emerald-500/60 transition-all group">
+        <span class="text-xs font-black text-emerald-400 uppercase block mb-1">📺 Smart TV Chile</span>
+        <h3 class="text-base font-extrabold text-white group-hover:text-emerald-300 mb-1.5">La mejor Smart TV 55&quot; calidad-precio</h3>
+        <p class="text-xs text-slate-400 m-0">Pruebas del TCL QLED 55&quot; T6D con Google TV y comparativa de precios en tiendas de Chile.</p>
+      </a>
+      <a href="/accesorios/mejores-tv-box-android-baratos-buenos-chile/" class="p-5 rounded-2xl bg-surface-card border border-slate-800 hover:border-sky-500/60 transition-all group">
+        <span class="text-xs font-black text-sky-400 uppercase block mb-1">📦 Revive tu Tele</span>
+        <h3 class="text-base font-extrabold text-white group-hover:text-sky-300 mb-1.5">Mejores TV Box para teles lentas</h3>
+        <p class="text-xs text-slate-400 m-0">Xiaomi TV Box S, Roku y alternativas económicas para tener Netflix, YouTube y Zapping fluidos.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+    <FAQSection
+      title="Preguntas Frecuentes sobre Reviviendo un Dinosaurio"
+      items={[
+        {
+          question: "¿Qué se viene en la Parte 3 de la restauración?",
+          answer: "Siguiendo los consejos que dejó la comunidad en los comentarios, toca trabajo mecánico serio: embarillar el radiador, cambiar el depósito de agua y mangueras con sus banjos por el óxido, hacer mantención de mazas y calipers, y cambiar aceites de motor, caja y corona."
+        },
+        {
+          question: "¿Cuándo viene la parte tecnológica de HogarTV en el bus?",
+          answer: "Primero aseguramos toda la parte mecánica para que quede 100% confiable. Apenas termine esa etapa, pasamos a instalar cámaras, sensores, iluminación LED, pantallas y conectividad Wi-Fi."
+        },
+        {
+          question: "¿Cómo puedo colaborar si tengo un taller o tienda de repuestos en el Biobío?",
+          answer: "Puedes escribirme directo al botón de WhatsApp en esta misma página o por mensaje directo en Instagram (@hogartv.cl). Mostramos tu taller y trabajo real frente a decenas de miles de personas de Coronel, Lota, San Pedro, Concepción y Yumbel."
+        }
+      ]}
+    />
+  </section>
+</BaseLayout>

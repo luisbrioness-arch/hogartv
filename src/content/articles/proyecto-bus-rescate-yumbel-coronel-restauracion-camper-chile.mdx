@@ -17,6 +17,8 @@ import CtaBanner from '../../components/CtaBanner.astro';
 import afiliadosData from '../../data/afiliados.json';
 import preciosData from '../../data/precios.json';
 import heroBusImg from '../../assets/accesorios/proyecto-bus-rescate-yumbel-coronel-restauracion-camper-chile/hero.jpg';
+import busLateralImg from '../../assets/accesorios/proyecto-bus-rescate-yumbel-coronel-restauracion-camper-chile/bus-lateral-yumbel.jpg';
+import busFrenteImg from '../../assets/accesorios/proyecto-bus-rescate-yumbel-coronel-restauracion-camper-chile/bus-frente-yumbel.jpg';
 
 {/* =========================================================================
     HERO DE BIENVENIDA VIRAL TIKTOK (REGLA DE LOS 7 SEGUNDOS)
@@ -50,7 +52,7 @@ import heroBusImg from '../../assets/accesorios/proyecto-bus-rescate-yumbel-coro
         ¿Vienes de TikTok por los videos del Bus? ¡Bienvenido, estás en el lugar correcto!
       </h2>
       <p class="text-sm text-slate-300 leading-relaxed m-0">
-        Soy <strong class="text-white">Luis Briones</strong>, técnico en telecomunicaciones y creador de <strong class="text-brand-300">HogarTV.cl</strong> en Coronel. Rescatamos este bus en <strong class="text-amber-300">Yumbel</strong>, lo echamos a andar revisando baterías y agua, le hicimos su primer lavado extremo y nos lo trajimos andando por carretera hasta <strong class="text-emerald-300">Coronel</strong>.
+        Soy <strong class="text-white">Luis Briones</strong>, técnico en telecomunicaciones y creador de <strong class="text-brand-300">HogarTV.cl</strong> en Coronel. Rescatamos este <strong class="text-white">Mercedes-Benz Metalpar Salón Ejecutivo</strong> en <strong class="text-amber-300">Yumbel</strong>, lo echamos a andar revisando baterías y agua, le hicimos su primer lavado extremo y nos lo trajimos andando por carretera hasta <strong class="text-emerald-300">Coronel</strong>.
       </p>
       <p class="text-xs sm:text-sm text-slate-400 leading-relaxed m-0">
         Aquí iremos documentando <strong class="text-white">cada etapa de la restauración</strong>, las <strong class="text-amber-300">herramientas que estamos usando</strong> y cómo lo vamos a equipar por dentro con <strong class="text-sky-300">corriente 12V/220V, internet satelital, TV digital abierta y cine portátil</strong>.
@@ -92,6 +94,40 @@ Traerlo rodando desde **Yumbel hasta Coronel** fue la prueba de fuego. Todo el t
 
 ### 3. El Lavado Profundo y Diagnóstico de Chapa
 Con años de tierra de campo, polvo y humedad encima, el primer paso en Coronel fue atacarlo con **hidrolavadora de alta presión**. El cambio visual fue brutal: ahí recién aparecieron los puntos reales de óxido que ahora vamos a atacar con galletera, discos de desbaste y convertidor de óxido automotriz antes de pasar a la fase de pintura y aislación.
+
+{/* GALERÍA REAL DEL RESCATE EN YUMBEL */}
+<div class="not-prose my-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+  <figure class="rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/90 shadow-lg m-0">
+    <Image
+      src={busLateralImg}
+      alt="Vista lateral del bus Mercedes-Benz Metalpar en el terreno de Yumbel antes del traslado a Coronel"
+      width={720}
+      height={540}
+      format="webp"
+      quality={85}
+      class="w-full h-64 sm:h-72 object-cover"
+      loading="lazy"
+    />
+    <figcaption class="px-4 py-2.5 text-xs text-slate-300 bg-slate-950/90 border-t border-slate-800">
+      📍 Vista lateral en Yumbel revisando compartimentos, baterías y carrocería antes de salir a carretera.
+    </figcaption>
+  </figure>
+  <figure class="rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/90 shadow-lg m-0">
+    <Image
+      src={busFrenteImg}
+      alt="Vista frontal del bus Mercedes-Benz Metalpar rescatado en Yumbel por HogarTV.cl"
+      width={576}
+      height={768}
+      format="webp"
+      quality={85}
+      class="w-full h-64 sm:h-72 object-cover object-bottom"
+      loading="lazy"
+    />
+    <figcaption class="px-4 py-2.5 text-xs text-slate-300 bg-slate-950/90 border-t border-slate-800">
+      🚌 Frente del Mercedes-Benz Metalpar tal como lo encontramos en el campo antes del lavado en Coronel.
+    </figcaption>
+  </figure>
+</div>
 
 ---
 

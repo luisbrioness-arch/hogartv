@@ -115,7 +115,7 @@ const contactSchema = {
             <h2 class="text-xl font-bold text-white">Envíanos un mensaje</h2>
             {telefonoContacto && (
               <a
-                href={`https://wa.me/${telefonoContacto.replace(/[^0-9]/g, '')}?text=Hola%20Luis,%20tengo%20una%20consulta%20técnica%20desde%20HogarTV.cl`}
+                href={`https://wa.me/${telefonoContacto.replace(/[^0-9]/g, '')}?text=Hola%20HogarTV,%20tengo%20una%20consulta%20técnica%20desde%20HogarTV.cl`}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow transition-all"
@@ -127,7 +127,7 @@ const contactSchema = {
 
           <div id="form-feedback" class="hidden mb-6 p-4 rounded-xl bg-emerald-950/80 border border-emerald-500/50 text-emerald-300 text-xs leading-relaxed">
             <strong class="block text-white font-bold mb-1">✅ ¡Consulta técnica registrada!</strong>
-            Tu mensaje será revisado directamente por Luis Briones y el equipo técnico de HogarTV.cl. Te responderemos a la brevedad dentro de las próximas 24 a 48 horas hábiles.
+            Tu mensaje será revisado directamente por la administración y el equipo técnico de HogarTV.cl. Te responderemos a la brevedad dentro de las próximas 24 a 48 horas hábiles.
           </div>
 
           <form id="contact-form" action={`mailto:${contactEmail}`} method="POST" enctype="text/plain" class="space-y-5">

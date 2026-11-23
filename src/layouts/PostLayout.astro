@@ -100,9 +100,9 @@ const articleSchema = {
     'url': siteUrl,
     'logo': {
       '@type': 'ImageObject',
-      'url': `${siteUrl}/apple-touch-icon.png`,
-      'width': 180,
-      'height': 180,
+      'url': `${siteUrl}/favicon-512x512.png`,
+      'width': 512,
+      'height': 512,
     },
   },
   'author': {
@@ -136,7 +136,7 @@ const articleSchema = {
   <!-- Barra de Progreso de Lectura -->
   <div id="reading-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-brand-500 via-indigo-500 to-purple-500 z-50 transition-all duration-150 w-0" aria-hidden="true"></div>
 
-  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-3 sm:pt-4 pb-12">
+  <article class="w-full max-w-4xl mx-auto px-3.5 sm:px-6 lg:px-8 pt-3 sm:pt-4 pb-12 min-w-0 overflow-x-clip">
     
     <!-- Migas de pan (Breadcrumbs) + Categoría compactos en una sola línea -->
     <nav class="flex flex-wrap items-center gap-2 text-xs text-slate-400 py-1 font-medium mb-2" aria-label="Migas de pan">

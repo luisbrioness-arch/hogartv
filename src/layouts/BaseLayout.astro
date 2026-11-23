@@ -35,14 +35,14 @@ if (!rawCanonical.endsWith('/') && !rawCanonical.match(/\.[a-zA-Z0-9]+$/)) {
   rawCanonical = `${rawCanonical}/`;
 }
 const canonicalUrl = rawCanonical;
-// TÃ­tulo SERP: Google corta ~60 caracteres. Solo aÃ±adimos la marca si cabe completa.
+// Título SERP: Google corta ~60 caracteres. Solo añadimos la marca si cabe completa.
 const fullTitle = title.includes('HogarTV') || title.length + 13 > 60 ? title : `${title} | HogarTV.cl`;
 
-// Meta description: mÃ¡x. ~158 caracteres, cortada en lÃ­mite de palabra.
+// Meta description: máx. ~158 caracteres, cortada en límite de palabra.
 const clampDescription = (text: string, max = 158) => {
   if (text.length <= max) return text;
   const cut = text.slice(0, max - 1);
-  return cut.slice(0, cut.lastIndexOf(' ')).replace(/[\s,.;:â€“-]+$/, '') + 'â€¦';
+  return cut.slice(0, cut.lastIndexOf(' ')).replace(/[\s,.;:–-]+$/, '') + '…';
 };
 const metaDescription = clampDescription(description);
 
@@ -75,10 +75,11 @@ const organizationSchema = {
   '@type': 'Organization',
   'name': 'HogarTV.cl',
   'url': siteUrl,
-  'logo': `${siteUrl}/apple-touch-icon.png`,
+  'logo': `${siteUrl}/favicon-512x512.png`,
   'sameAs': [
+    'https://www.tiktok.com/@hogartv.cl',
+    'https://www.instagram.com/hogartv.cl/',
     `${siteUrl}/sobre-nosotros/`,
-    `${siteUrl}/autor/luis-briones/`
   ],
 };
 
@@ -116,10 +117,12 @@ const breadcrumbSchema =
   <!-- Preload de fuente primaria Inter (evita FOIT / CLS en primer render) -->
   <link rel="preload" href={interLatinWoff2} as="font" type="font/woff2" crossorigin />
 
-  <!-- Favicons, Apple Touch Icon y Web App Manifest -->
-  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  <!-- Favicons, Apple Touch Icon y Web App Manifest (Nuevo Logo HogarTV.cl) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#090d16" />
   <link rel="alternate" type="application/rss+xml" title="HogarTV.cl" href="/rss.xml" />
@@ -185,7 +188,7 @@ const breadcrumbSchema =
        crossorigin="anonymous"></script>
   )}
 </head>
-<body class="min-h-screen flex flex-col bg-surface-dark text-slate-100 font-sans">
+<body class="min-h-[100dvh] flex flex-col bg-surface-dark text-slate-100 font-sans overflow-x-clip max-w-full">
   <a
     href="#main-content"
     class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 px-4 py-2 bg-brand-600 text-white rounded-lg shadow-lg font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-brand-400"
@@ -193,7 +196,7 @@ const breadcrumbSchema =
     Saltar al contenido principal
   </a>
   <Header />
-  <main id="main-content" class="flex-grow">
+  <main id="main-content" class="flex-grow min-w-0 max-w-full">
     <slot />
   </main>
   <Footer />

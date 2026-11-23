@@ -3,40 +3,26 @@ import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ProductCard from '../components/ProductCard.astro';
 import StoreLogo from '../components/StoreLogo.astro';
-import FAQSection from '../components/FAQSection.astro';
 import AdSlot from '../components/AdSlot.astro';
 import sitioData from '../data/sitio.json';
 import afiliadosData from '../data/afiliados.json';
 import preciosData from '../data/precios.json';
 
-// Imágenes optimizadas para el Bento Grid y Vitrina de Más Vendidos
-import heroCinePieza from '../assets/como-armar-cine-en-casa-barato-pieza-chile/hero.webp';
-import heroTvVieja from '../assets/como-convertir-televisor-antiguo-en-smart-tv-chile/hero.webp';
-import heroTv32y40 from '../assets/mejores-smart-tv-32-40-pulgadas-baratos-chile/hero.webp';
-import heroTv65 from '../assets/mejores-smart-tv-65-pulgadas-chile/hero.webp';
-import heroSatelital from '../assets/accesorios/instalacion-internet-satelital-rural-chile-redes-parcelas/hero.jpg';
 import heroBus from '../assets/accesorios/proyecto-bus-rescate-yumbel-coronel-restauracion-camper-chile/hero.jpg';
-
-import imgMagcubic from '../assets/accesorios/proyector-magcubic-hy320.webp';
-import imgXiaomiBox from '../assets/products/xiaomi-tv-box-s-4k.webp';
+import heroSatelital from '../assets/accesorios/instalacion-internet-satelital-rural-chile-redes-parcelas/hero.jpg';
 import imgTcl55 from '../assets/smart-tv/mejores-smart-tv-calidad-precio-chile/tcl-c655-55.webp';
-import imgSamsungBar from '../assets/accesorios/samsung-soundbar-b550.webp';
-import imgLucesLed from '../assets/products/luces-led-tv-ambilight.webp';
-import imgAntenaTvd from '../assets/tv-abierta/como-sintonizar-canales-hd-tvd-chile/antena-tvd-chile.webp';
-import imgSoporteMuro from '../assets/accesorios/soporte-tv-articulado-pesado.webp';
+import imgXiaomiBox from '../assets/products/xiaomi-tv-box-s-4k.webp';
+import imgMagcubic from '../assets/accesorios/proyector-magcubic-hy320.webp';
+import imgHuaweiWifi from '../assets/products/router-huawei-wifi7-be3.webp';
 import imgRoku4k from '../assets/accesorios/roku-vs-chromecast-chile-cual-conviene/roku-express-4k.webp';
+import imgTapoC500 from '../assets/products/camara-wifi-exterior-360.webp';
 import imgOnnBox from '../assets/products/onn-google-tv-4k.webp';
 import imgFireTv from '../assets/products/amazon-fire-tv-stick-hd.webp';
 import imgTvBoxEcono from '../assets/products/tv-box-android-economico.webp';
-import imgLagartija from '../assets/products/lagartija-chillona-bicicleta.webp';
-import imgHuaweiWifi from '../assets/products/router-huawei-wifi7-be3.webp';
-import imgTapoC500 from '../assets/products/camara-wifi-exterior-360.webp';
-import imgCelularSenior from '../assets/products/celular-adulto-mayor-sos.webp';
 
 const allArticles = await getCollection('articles');
-const featuredArticles = allArticles.sort((a, b) => {
+const sortedArticles = allArticles.sort((a, b) => {
   const dateDiff = new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime();
   if (dateDiff !== 0) return dateDiff;
   if (a.data.featured && !b.data.featured) return -1;
@@ -44,8 +30,10 @@ const featuredArticles = allArticles.sort((a, b) => {
   return 0;
 });
 
-const allHeroes = import.meta.glob<{ default: ImageMetadata }>('/src/assets/**/hero.{png,jpg,jpeg,webp,avif}', { eager: true });
+const latestGuides = sortedArticles.slice(0, 6);
+const archiveGuides = sortedArticles.slice(6);
 
+const allHeroes = import.meta.glob<{ default: ImageMetadata }>('/src/assets/**/hero.{png,jpg,jpeg,webp,avif}', { eager: true });
 const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL || sitioData.emailContacto;
 
 const organizationSchema = {
@@ -53,13 +41,13 @@ const organizationSchema = {
   '@type': 'LocalBusiness',
   'name': 'HogarTV.cl',
   'url': 'https://hogartv.cl',
-  'logo': 'https://hogartv.cl/favicon.svg',
-  'description': 'Portal en Chile especializado en datos, picadas tecnológicas, comparativas de Smart TVs, proyectores portátiles, streaming y televisión digital abierta (TVD).',
+  'logo': 'https://hogartv.cl/favicon-512x512.png',
+  'description': 'Guías de Smart TVs, TV Box, redes, instalación de Starlink en la Región del Biobío y la serie Reviviendo un Dinosaurio en Chile.',
   'address': {
     '@type': 'PostalAddress',
     'addressCountry': 'CL',
     'addressRegion': 'Región del Biobío',
-    'addressLocality': 'Concepción, Región del Biobío, Chile',
+    'addressLocality': 'Coronel y Gran Concepción, Región del Biobío, Chile',
   },
   'contactPoint': {
     '@type': 'ContactPoint',
@@ -67,1473 +55,533 @@ const organizationSchema = {
     'email': contactEmail,
     'availableLanguage': ['Spanish'],
   },
-  'knowsAbout': [
-    'Smart TV',
-    'Proyectores Portátiles',
-    'Televisión Digital Abierta Chile (TVD)',
-    'Norma ISDB-Tb',
-    'Streaming y TV Boxes',
-    'Instalación de Antenas y Soportes de TV',
-  ],
   'sameAs': [
+    'https://www.tiktok.com/@hogartv.cl',
+    'https://www.instagram.com/hogartv.cl/',
     'https://hogartv.cl/sobre-nosotros/',
-    'https://hogartv.cl/autor/luis-briones/',
   ],
 };
 
-// Los 8 Productos Más Vendidos y Recomendados (Vitrina Principal de Conversión)
-const topSellers = [
+// Los 6 Equipos Estrella (sin repeticiones, optimizados para vista móvil limpia)
+const featuredGear = [
   {
-    badge: '🚀 N°1 WiFi 7 en Chile',
-    badgeClass: 'bg-indigo-500 text-white',
-    title: 'Router Huawei BE3 Wi-Fi 7 Dual Band (Puerto 2.5G)',
-    hook: 'Multiplica la velocidad de tu fibra óptica y elimina el lag en gaming y streaming 4K. Con control parental y puerto ultra rápido 2.5 Gbps.',
-    price: preciosData['router-huawei-wifi7-be3'].precioFormateado,
-    subPrice: 'Top 1 routers WiFi 7 en M. Libre',
-    image: imgHuaweiWifi,
-    reviewUrl: '/accesorios/como-mejorar-wifi-casa-lenta-repetidores-mesh-chile/',
-    reviewLabel: 'Ver guía de WiFi en casa →',
-    primaryCtaText: 'Comprar en M. Libre',
-    primaryCtaUrl: afiliadosData['router-huawei-wifi7-be3'].url,
-    primaryCtaClass: 'bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 border-yellow-400',
-    secondaryCtaText: 'Ver Análisis WiFi',
-    secondaryCtaUrl: '/accesorios/como-mejorar-wifi-casa-lenta-repetidores-mesh-chile/',
-    secondaryCtaClass: 'bg-slate-800 hover:bg-slate-700 text-slate-200 border-slate-600',
-  },
-  {
-    badge: '📹 Seguridad Sin Mensualidad',
-    badgeClass: 'bg-cyan-500 text-slate-950',
-    title: 'Cámara Exterior Tapo C500 360° WiFi Full HD',
-    hook: 'Vigila tu casa o negocio día y noche desde el celular sin pagar planes mensuales. Alertas de movimiento y visión nocturna.',
-    price: preciosData['camara-wifi-exterior-360'].precioFormateado,
-    subPrice: 'Sin suscripción ni cobros extra',
-    image: imgTapoC500,
-    reviewUrl: '/accesorios/mejores-camaras-seguridad-wifi-sin-mensualidad-chile/',
-    reviewLabel: 'Ver comparativa de cámaras →',
-    primaryCtaText: 'Comprar en M. Libre',
-    primaryCtaUrl: afiliadosData['camara-wifi-exterior-360'].url,
-    primaryCtaClass: 'bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 border-yellow-400',
-    secondaryCtaText: 'Cámara Interior',
-    secondaryCtaUrl: afiliadosData['camara-wifi-interior-360'].url,
-    secondaryCtaClass: 'bg-slate-800 hover:bg-slate-700 text-slate-200 border-slate-600',
-  },
-  {
-    badge: '⚡ Revive Cualquier Tele',
+    badge: '🏆 Top TV 55"',
     badgeClass: 'bg-emerald-500 text-slate-950',
-    title: 'Roku Express HD / 4K con Menú Rápido y Control',
-    hook: 'La solución más barata y estable para convertir cualquier televisor antiguo en Smart TV. Compatible con Zapping, Netflix y YouTube.',
-    price: preciosData['roku-express-4k'].precioFormateado,
-    subPrice: 'Envío Full 24h en Chile',
-    image: imgRoku4k,
-    reviewUrl: '/accesorios/como-convertir-televisor-antiguo-en-smart-tv-chile/',
-    reviewLabel: 'Ver guía de instalación →',
-    primaryCtaText: 'Comprar en M. Libre',
-    primaryCtaUrl: afiliadosData['roku-express-4k'].url,
-    primaryCtaClass: 'bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 border-yellow-400',
-    secondaryCtaText: 'Roku vs Chromecast',
-    secondaryCtaUrl: '/accesorios/roku-vs-chromecast-chile-cual-conviene/',
-    secondaryCtaClass: 'bg-slate-800 hover:bg-slate-700 text-slate-200 border-slate-600',
-  },
-  {
-    badge: '🔥 N°1 Más Viral en Chile',
-    badgeClass: 'bg-amber-500 text-slate-950',
-    title: 'Mini Proyector Smart Magcubic HY320 (Full HD 1080p)',
-    hook: 'Proyecta de 80" a 130" en pared o techo. Android 11, WiFi 6 y giro de 180° para ver películas y series desde la cama.',
-    price: '$ 59.990 CLP',
-    subPrice: 'o $ 44.990 en AliExpress',
-    image: imgMagcubic,
-    reviewUrl: '/smart-tv/review-proyector-magcubic-hy320-vs-hy300-chile/',
-    reviewLabel: 'Ver pruebas y detalles →',
-    primaryCtaText: 'Comprar en M. Libre',
-    primaryCtaUrl: afiliadosData['proyector-magcubic-hy320'].url,
-    primaryCtaClass: 'bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 border-yellow-400',
-    secondaryCtaText: 'Ver en AliExpress',
-    secondaryCtaUrl: afiliadosData['proyector-magcubic-aliexpress'].url,
-    secondaryCtaClass: 'bg-[#FF4747] hover:bg-[#E03030] text-white border-rose-400',
-  },
-  {
-    badge: '🆘 Cuidado Adulto Mayor',
-    badgeClass: 'bg-rose-500 text-white',
-    title: 'Celular Tecnolab TL038 con Botón SOS y Teclas Gigantes',
-    hook: 'Diseñado para abuelos y adultos mayores: números grandes, linterna directa, sonido potente y botón de pánico que llama a la familia.',
-    price: preciosData['celular-adulto-mayor-sos'].precioFormateado,
-    subPrice: 'Con base de carga incluida',
-    image: imgCelularSenior,
-    reviewUrl: '/accesorios/mejores-celulares-tecnologia-adultos-mayores-chile/',
-    reviewLabel: 'Ver guía para adultos mayores →',
-    primaryCtaText: 'Comprar en M. Libre',
-    primaryCtaUrl: afiliadosData['celular-adulto-mayor-sos'].url,
-    primaryCtaClass: 'bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 border-yellow-400',
-    secondaryCtaText: 'Botón Pánico 118dB',
-    secondaryCtaUrl: afiliadosData['boton-panico-sos-inalambrico'].url,
-    secondaryCtaClass: 'bg-slate-800 hover:bg-slate-700 text-slate-200 border-slate-600',
-  },
-  {
-    badge: '🏆 Mejor Smart TV 2026',
-    badgeClass: 'bg-emerald-500 text-slate-950',
-    title: 'Smart TV TCL 55" 4K QLED / QD-Mini LED (144Hz)',
-    hook: 'Calidad de imagen de gama alta a precio de gama media. Google TV oficial, Dolby Vision y panel ultra fluido para fútbol y consolas.',
-    price: '$ 359.990 CLP',
-    subPrice: 'Hasta 6 cuotas sin interés',
+    title: 'Smart TV TCL 55" QLED T6D',
+    desc: 'Panel QLED 4K real, Google TV oficial sin bloqueos y 120Hz Game Accelerator.',
+    price: '$299.990',
+    priceSub: 'Falabella · $311.271 M. Libre',
     image: imgTcl55,
-    reviewUrl: '/smart-tv/review-tcl-c655-p8l-55-chile/',
-    reviewLabel: 'Ver review técnico →',
-    primaryCtaText: 'Mercado Libre',
-    primaryCtaUrl: afiliadosData['tcl-c655-55'].url,
-    primaryCtaClass: 'bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 border-yellow-400',
-    secondaryCtaText: 'Falabella',
-    secondaryCtaUrl: afiliadosData['falabella-tcl-t6d-55'].url,
-    secondaryCtaClass: 'bg-[#008A00] hover:bg-[#007000] text-white border-emerald-400',
+    reviewUrl: '/smart-tv/tcl-qled-t6d-55-pulgadas-chile/',
+    reviewText: 'Ver análisis',
+    primaryNetwork: 'falabella' as const,
+    primaryUrl: afiliadosData['falabella-tcl-t6d-55'].url,
+    secondaryNetwork: 'mercadolibre' as const,
+    secondaryUrl: afiliadosData['tcl-c655-55'].url,
   },
   {
-    badge: '🤖 Potencia Google TV',
+    badge: '👑 Mejor TV Box',
     badgeClass: 'bg-brand-500 text-white',
-    title: 'Xiaomi TV Box S (2nd Gen) 4K Ultra HD Google TV',
-    hook: 'Transforma tu televisor en un centro multimedia veloz. Compatible con Zapping, DGO, navegadores y aplicaciones APK.',
+    title: 'Xiaomi TV Box S 4K (2da Gen)',
+    desc: 'Revive cualquier tele lenta en 2 minutos. Google TV fluido y puerto USB.',
     price: preciosData['xiaomi-tv-box-s-4k'].precioFormateado,
-    subPrice: 'Envío Full 24h en Chile',
+    priceSub: 'Envío Full Chile',
     image: imgXiaomiBox,
     reviewUrl: '/accesorios/mejores-tv-box-android-baratos-buenos-chile/',
-    reviewLabel: 'Guía y Ranking TV Box Android →',
-    primaryCtaText: 'Comprar en M. Libre',
-    primaryCtaUrl: afiliadosData['xiaomi-tv-box-s-4k'].url,
-    primaryCtaClass: 'bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 border-yellow-400',
-    secondaryCtaText: 'Alternativa Onn 4K',
-    secondaryCtaUrl: afiliadosData['onn-google-tv-4k'].url,
-    secondaryCtaClass: 'bg-slate-800 hover:bg-slate-700 text-slate-200 border-slate-600',
+    reviewText: 'Guía TV Box',
+    primaryNetwork: 'mercadolibre' as const,
+    primaryUrl: afiliadosData['xiaomi-tv-box-s-4k'].url,
+    secondaryNetwork: 'falabella' as const,
+    secondaryUrl: afiliadosData['falabella-xiaomi-tv-box'].url,
   },
   {
-    badge: '🔊 Cine en tu Living',
-    badgeClass: 'bg-purple-500 text-white',
-    title: 'Barra de Sonido Samsung HW-B550 2.1ch (410W)',
-    hook: 'Subwoofer inalámbrico dedicado que hace vibrar la sala. Se conecta por Bluetooth o HDMI ARC en segundos.',
-    price: preciosData['samsung-soundbar-b550'].precioFormateado,
-    subPrice: 'Subwoofer inalámbrico incluido',
-    image: imgSamsungBar,
-    reviewUrl: '/accesorios/mejores-barras-de-sonido-calidad-precio-chile/',
-    reviewLabel: 'Ver comparativa de audio →',
-    primaryCtaText: 'Mercado Libre',
-    primaryCtaUrl: afiliadosData['samsung-soundbar-b550'].url,
-    primaryCtaClass: 'bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 border-yellow-400',
-    secondaryCtaText: 'Falabella',
-    secondaryCtaUrl: afiliadosData['falabella-samsung-soundbar'].url,
-    secondaryCtaClass: 'bg-[#008A00] hover:bg-[#007000] text-white border-emerald-400',
-  },
-];
-
-// Picadas Baratas bajo $45.000 CLP (Compras de Impulso)
-const impulseDeals = [
-  {
-    title: 'Lagarto Verde Movimiento Auto y Moto (Viral)',
-    desc: 'Adorno 3D con resorte que baila con el movimiento del auto',
-    price: '$ 2.990 - $ 5.990 CLP',
-    image: imgLagartija,
-    buyUrl: afiliadosData['lagartija-chillona-bicicleta'].url,
-    guideUrl: '/accesorios/lagarto-verde-auto-movimiento-viral-tiktok-chile/',
-  },
-  {
-    title: 'Antena Digital TVD HD Interior/Exterior',
-    desc: 'Canales nacionales 1080p gratis sin pagar cable',
-    price: '$ 9.990 CLP',
-    image: imgAntenaTvd,
-    buyUrl: afiliadosData['antena-tvd-chile'].url,
-    guideUrl: '/tv-abierta/como-sintonizar-canales-hd-tvd-chile/',
-  },
-  {
-    title: 'Kit Tira Luces LED RGBIC Ambilight USB',
-    desc: 'Iluminación de cine para TV o pieza con control y App',
-    price: '$ 12.990 CLP',
-    image: imgLucesLed,
-    buyUrl: afiliadosData['luces-led-tv-ambilight'].url,
-    guideUrl: '/accesorios/como-armar-cine-en-casa-barato-pieza-chile/',
-  },
-  {
-    title: 'Soporte Muro Articulado Doble Brazo (32"-75")',
-    desc: 'Acero reforzado para girar e inclinar tu televisor',
-    price: '$ 19.990 CLP',
-    image: imgSoporteMuro,
-    buyUrl: afiliadosData['soporte-tv-articulado-pesado'].url,
-    guideUrl: '/accesorios/como-instalar-soporte-tv-muro-chile/',
-  },
-  {
-    title: 'Roku Express 4K con Control Remoto',
-    desc: 'El sistema más fácil para adultos mayores y niños',
-    price: '$ 44.990 CLP',
-    image: imgRoku4k,
-    buyUrl: afiliadosData['roku-express-4k'].url,
-    guideUrl: '/accesorios/roku-vs-chromecast-chile-cual-conviene/',
-  },
-];
-
-// Selección de Gadgets y Monos Virales (TikTok e Internet Chile)
-const viralHighlights = [
-  {
-    badge: '🦎 Mono Viral #1 en TikTok',
-    badgeClass: 'bg-emerald-500 text-slate-950',
-    title: 'Lagarto Verde con Movimiento para Tablero de Auto y Moto',
-    hook: 'Furor en TikTok e Instagram: adorno impreso en 3D con resorte que baila y se sacude al ritmo del auto y del viento. Se instala en 10 segundos.',
-    priceMeli: '$ 5.990 CLP',
-    priceAli: '$ 2.990 CLP',
-    image: imgLagartija,
-    meliUrl: afiliadosData['lagartija-chillona-bicicleta'].url,
-    aliUrl: afiliadosData['lagartija-chillona-aliexpress'].url,
-    detailUrl: '/accesorios/lagarto-verde-auto-movimiento-viral-tiktok-chile/',
-  },
-  {
-    badge: '🎬 Cine en el Techo',
-    badgeClass: 'bg-brand-600 text-white',
-    title: 'Mini Proyector Smart Magcubic HY320 Full HD',
-    hook: 'El proyector portátil 1080p con giro en 180° que convirtió las piezas en salas de cine gigante de 150\". Con Android 11 y WiFi 6.',
-    priceMeli: '$ 59.990 CLP',
-    priceAli: '$ 44.990 CLP',
+    badge: '🎬 Cine 100"',
+    badgeClass: 'bg-amber-400 text-slate-950',
+    title: 'Proyector Magcubic HY320',
+    desc: 'Full HD 1080p, Android integrado y giro de 180° al techo para tu pieza.',
+    price: preciosData['proyector-magcubic-hy320'].precioFormateado,
+    priceSub: 'Picada cine en casa',
     image: imgMagcubic,
-    meliUrl: afiliadosData['proyector-magcubic-hy320'].url,
-    aliUrl: afiliadosData['proyector-magcubic-aliexpress'].url,
-    detailUrl: '/virales/#proyector-magcubic-hy320',
+    reviewUrl: '/accesorios/como-armar-cine-en-casa-barato-pieza-chile/',
+    reviewText: 'Cómo armarlo',
+    primaryNetwork: 'mercadolibre' as const,
+    primaryUrl: afiliadosData['proyector-magcubic-hy320'].url,
   },
   {
-    badge: '✨ Setup Inmersivo',
-    badgeClass: 'bg-purple-600 text-white',
-    title: 'Kit Tiras Luces LED RGBIC TV Ambilight USB',
-    hook: 'El truco viral para que tu tele económica luzca de $800.000: luces reactivas que se conectan directo al USB de la pantalla.',
-    priceMeli: '$ 12.990 CLP',
-    priceAli: '$ 8.990 CLP',
-    image: imgLucesLed,
-    meliUrl: afiliadosData['luces-led-tv-ambilight'].url,
-    aliUrl: null,
-    detailUrl: '/virales/#luces-led-tv-ambilight',
+    badge: '🚀 Wi-Fi 7',
+    badgeClass: 'bg-indigo-500 text-white',
+    title: 'Router Huawei BE3 Wi-Fi 7',
+    desc: 'Multiplica tu fibra óptica con puerto 2.5G y acaba con el Wi-Fi lento en casa.',
+    price: preciosData['router-huawei-wifi7-be3'].precioFormateado,
+    priceSub: 'Top ventas M. Libre',
+    image: imgHuaweiWifi,
+    reviewUrl: '/accesorios/como-mejorar-wifi-casa-lenta-repetidores-mesh-chile/',
+    reviewText: 'Guía Wi-Fi',
+    primaryNetwork: 'mercadolibre' as const,
+    primaryUrl: afiliadosData['router-huawei-wifi7-be3'].url,
   },
   {
-    badge: '🚀 Revive Cualquier Tele',
-    badgeClass: 'bg-amber-500 text-slate-950',
-    title: 'Xiaomi TV Box S (2nd Gen) 4K Ultra HD',
-    hook: 'Convierte televisores viejos en un centro multimedia con Google TV, Netflix 4K certificado y puerto USB físico para pendrives.',
-    priceMeli: '$ 52.990 CLP',
-    priceAli: null,
-    image: imgXiaomiBox,
-    meliUrl: afiliadosData['xiaomi-tv-box-s-4k'].url,
-    aliUrl: null,
-    detailUrl: '/virales/#xiaomi-tv-box-s-4k',
+    badge: '👴 Fácil Uso',
+    badgeClass: 'bg-purple-500 text-white',
+    title: 'Roku Express HD / 4K',
+    desc: 'Menú simple con íconos grandes, ideal para papás y adultos mayores.',
+    price: preciosData['roku-express-4k'].precioFormateado,
+    priceSub: 'Control simplificado',
+    image: imgRoku4k,
+    reviewUrl: '/accesorios/roku-vs-chromecast-chile-cual-conviene/',
+    reviewText: 'Roku vs Stick',
+    primaryNetwork: 'mercadolibre' as const,
+    primaryUrl: afiliadosData['roku-express-4k'].url,
+  },
+  {
+    badge: '📹 Sin Mensualidad',
+    badgeClass: 'bg-sky-500 text-slate-950',
+    title: 'Cámara Exterior Wi-Fi 360°',
+    desc: 'Visión nocturna, resistencia a lluvia y grabación directa en MicroSD.',
+    price: preciosData['camara-wifi-exterior-360'].precioFormateado,
+    priceSub: 'Control desde celular',
+    image: imgTapoC500,
+    reviewUrl: '/accesorios/mejores-camaras-seguridad-wifi-sin-mensualidad-chile/',
+    reviewText: 'Ver guía',
+    primaryNetwork: 'mercadolibre' as const,
+    primaryUrl: afiliadosData['camara-wifi-exterior-360'].url,
   },
 ];
 
-const quickNeeds = [
+// Opciones económicas extra de TV Box (plegables en móvil para mantener la portada limpia)
+const extraTvBoxes = [
   {
-    icon: '🏷️',
-    question: 'Quiero ver las ofertas reales de Smart TVs y Gadgets hoy',
-    solution: 'Radar actualizado con los descuentos verificados en Mercado Libre Full, Falabella y AliExpress.',
-    link: '/ofertas-tv-chile/',
+    title: 'Onn. Google TV 4K',
+    tag: '🇨🇳 AliExpress Choice',
+    price: '$34.990 CLP',
+    image: imgOnnBox,
+    network: 'aliexpress' as const,
+    url: afiliadosData['onn-google-tv-4k'].url,
+    btnText: 'Ver en AliExpress',
   },
   {
-    icon: '🍿',
-    question: 'Quiero armar un cine de 100" en mi pieza gastando poco',
-    solution: 'El combo viral de proyector Full HD + luces Ambilight por menos de $120.000 en Chile.',
-    link: '/accesorios/como-armar-cine-en-casa-barato-pieza-chile/',
+    title: 'Amazon Fire TV Stick HD',
+    tag: '✈️ Envío USA · Alexa',
+    price: '$31.443 CLP',
+    image: imgFireTv,
+    network: 'mercadolibre' as const,
+    url: afiliadosData['amazon-fire-tv-stick'].url,
+    btnText: 'Ver Oferta',
   },
   {
-    icon: '🛏️',
-    question: 'Busco un Smart TV barato (32", 40", 43" o 50") para pieza o cocina',
-    solution: 'Comparativa de modelos económicos que no se pegan y soportan todas las apps.',
-    link: '/smart-tv/mejores-smart-tv-32-40-pulgadas-baratos-chile/',
-  },
-  {
-    icon: '🔌',
-    question: 'Mi tele es lenta o vieja y quiero ponerle Netflix, YouTube y Zapping',
-    solution: 'Cómo transformarla en Smart TV en 2 minutos con Xiaomi TV Box S, Roku o Chromecast.',
-    link: '/accesorios/como-convertir-televisor-antiguo-en-smart-tv-chile/',
-  },
-  {
-    icon: '🆓',
-    question: 'Quiero ver canales nacionales en Full HD gratis sin cable',
-    solution: 'Tutorial paso a paso para sintonizar señales digitales TVD con antena de $9.990.',
-    link: '/tv-abierta/como-sintonizar-canales-hd-tvd-chile/',
-  },
-  {
-    icon: '⚽',
-    question: 'Quiero ver fútbol chileno (TNT Sports) sin spoilers de goles',
-    solution: 'Comparativa a fondo de Zapping TV vs. DGO con precios y latencia en vivo.',
-    link: '/streaming/zapping-vs-dgo-chile-cual-conviene/',
+    title: 'TV Box Android 14 4K',
+    tag: '⭐ Económico · 2GB/16GB',
+    price: '$29.990 CLP',
+    image: imgTvBoxEcono,
+    network: 'mercadolibre' as const,
+    url: afiliadosData['tv-box-android-economico'].url,
+    btnText: 'Ver Oferta',
   },
 ];
+
+const categories = [
+  { icon: '📺', name: 'Smart TVs', sub: '32" a 65" Chile', href: '/smart-tv/' },
+  { icon: '📦', name: 'TV Box y Wi-Fi', sub: 'Redes y guías', href: '/accesorios/' },
+  { icon: '⚽', name: 'Streaming', sub: 'Zapping, DGO', href: '/streaming/' },
+  { icon: '🆓', name: 'TV Abierta HD', sub: 'Antenas TVD', href: '/tv-abierta/' },
+  { icon: '🏷️', name: 'Ofertas Hoy', sub: 'Descuentos TV', href: '/ofertas-tv-chile/' },
+  { icon: '🛒', name: 'Recomendados', sub: 'Top equipos', href: '/recomendados/' },
+];
+
+const waStarlinkUrl =
+  'https://wa.me/56931926886?text=Hola%20HogarTV,%20quiero%20consultar%20por%20la%20instalaci%C3%B3n%20de%20Starlink%20o%20redes%20en%20mi%20hogar%20en%20el%20Biob%C3%ADo.';
 ---
 
 <BaseLayout
-  title="HogarTV.cl | Smart TVs, Proyectores y Ofertas en Chile"
-  description="Las mejores picadas tecnológicas, comparativas de Smart TVs, mini proyectores portátiles, TV Boxes y guías para ver canales HD gratis en Chile."
+  title="HogarTV.cl | Reviviendo un Dinosaurio, Starlink Biobío y Tecnología Chile"
+  description="Bitácora oficial de Reviviendo un Dinosaurio (@hogartv.cl), instalación profesional de Starlink y redes en el Biobío, y las mejores guías de Smart TV, TV Box y Wi-Fi en Chile."
 >
 
-  <!-- BARRA SUPERIOR DE TENDENCIAS / ACCESO RÁPIDO A OFERTAS -->
-  <div class="bg-gradient-to-r from-amber-500/15 via-brand-500/15 to-emerald-500/15 border-b border-slate-800/90 py-2 px-4">
-    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2 text-xs">
-      <div class="flex items-center gap-2 font-bold text-amber-300">
-        <span class="inline-block w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
-        <span>🔥 TENDENCIA EN CHILE HOY:</span>
-        <a href="/smart-tv/review-proyector-magcubic-hy320-vs-hy300-chile/" class="text-white hover:text-amber-300 underline decoration-amber-400/60 underline-offset-2 transition-colors">
-          Mini Proyector Magcubic HY320 Full HD (100" en tu pieza desde $44.990)
-        </a>
-      </div>
-      <div class="hidden md:flex items-center gap-4 text-slate-300 font-medium">
-        <a href="/ofertas-tv-chile/" class="hover:text-amber-300 transition-colors">🏷️ Radar de Ofertas</a>
-        <span>·</span>
-        <a href="/recomendados/" class="hover:text-brand-300 transition-colors">⚡ Top 9 Gadgets</a>
-        <span>·</span>
-        <a href="/smart-tv/mejores-smart-tv-65-pulgadas-chile/" class="hover:text-emerald-300 transition-colors">📺 TVs 65" en Oferta</a>
-        <span>·</span>
-        <a href="/gadgets-hogar/mejores-planchas-de-pelo-chile-comparativa/" class="hover:text-rose-300 transition-colors">💇 Planchas de Pelo 2026</a>
-      </div>
-    </div>
-  </div>
-
   <!-- ======================================================================= -->
-  <!-- 1. PORTADA EDITORIAL ESTILO NOTICIA DE IMPACTO (BENTO GRID)             -->
+  <!-- 1. PORTADA LIMPIA MOBILE-FIRST: ACCESO DIRECTO + LOS 2 PILARES          -->
   <!-- ======================================================================= -->
-  <section class="relative overflow-hidden pt-6 pb-12 border-b border-slate-800/80 bg-gradient-to-b from-slate-950 via-surface-dark to-surface-dark">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+  <section class="pt-4 sm:pt-7 pb-8 sm:pb-12 border-b border-slate-800/80 bg-gradient-to-b from-slate-950 via-surface-dark to-surface-dark w-full max-w-full overflow-x-clip">
+    <div class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 space-y-5 sm:space-y-7">
 
-      
-      <!-- ======================================================================= -->
-      <!-- SELECTOR RÁPIDO TIKTOK @HOGARTV.CL (RESPONDE A LOS VIDEOS DE TIKTOK)    -->
-      <!-- ======================================================================= -->
-      <div class="mb-6 p-3.5 sm:p-4 rounded-2xl bg-slate-900/95 border border-brand-500/40 shadow-xl flex flex-col xl:flex-row items-center justify-between gap-3">
-        <div class="flex items-center gap-2 text-xs sm:text-sm font-black text-white">
-          <span class="px-2.5 py-1 rounded-full bg-rose-600 text-white text-[10px] uppercase tracking-wider animate-pulse">📱 @HogarTV.cl</span>
-          <span>¿Vienes de TikTok o Instagram? Elige a qué entrar:</span>
+      <!-- Saludo compacto + Accesos Rápidos 2x2 en celular -->
+      <div class="space-y-3">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-1.5">
+          <div>
+            <h1 class="text-xl sm:text-3xl font-black text-white tracking-tight leading-tight">
+              Hogar<span class="text-orange-400">TV</span><span class="text-sky-400">.cl</span> — Tech, Starlink y el Dinosaurio
+            </h1>
+            <p class="text-xs sm:text-sm text-slate-400 mt-0.5">
+              Elige rápido a dónde entrar desde tu celular:
+            </p>
+          </div>
+          <a href="/recomendados/" class="hidden sm:inline-flex items-center gap-1 text-xs font-bold text-amber-400 hover:text-amber-300 shrink-0">
+            <span>⭐ Ver escaparate de recomendados</span>
+            <span>→</span>
+          </a>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2 w-full xl:w-auto">
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3">
           <a
             href="/dinosaurio/"
-            class="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-slate-950 font-black text-xs shadow-md transition-all"
+            class="flex items-center gap-2.5 p-2.5 sm:p-3.5 rounded-2xl bg-gradient-to-br from-orange-500/20 to-amber-500/10 border border-amber-500/50 hover:border-amber-400 transition-all group"
           >
-            <span>🦖 Reviviendo un Dinosaurio</span>
-            <span>→</span>
+            <span class="text-xl sm:text-2xl shrink-0 leading-none">🦖</span>
+            <div class="min-w-0">
+              <span class="block text-xs sm:text-sm font-black text-amber-300 group-hover:text-white truncate">El Dinosaurio</span>
+              <span class="block text-[10px] sm:text-xs text-slate-300 truncate">Capítulos y pauta</span>
+            </div>
           </a>
+
           <a
             href="#starlink-biobio"
-            class="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs shadow-md transition-all"
+            class="flex items-center gap-2.5 p-2.5 sm:p-3.5 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-teal-500/10 border border-emerald-500/50 hover:border-emerald-400 transition-all group"
           >
-            <span>📡 Instalar Starlink Biobío</span>
-            <span>↓</span>
+            <span class="text-xl sm:text-2xl shrink-0 leading-none">📡</span>
+            <div class="min-w-0">
+              <span class="block text-xs sm:text-sm font-black text-emerald-300 group-hover:text-white truncate">Starlink Biobío</span>
+              <span class="block text-[10px] sm:text-xs text-slate-300 truncate">Hogares y parcelas</span>
+            </div>
           </a>
+
           <a
-            href="#tv-box-tiktok"
-            class="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-black text-xs shadow-md transition-all"
+            href="#destacados-tech"
+            class="flex items-center gap-2.5 p-2.5 sm:p-3.5 rounded-2xl bg-slate-900/90 border border-brand-500/40 hover:border-brand-400 transition-all group"
           >
-            <span>📦 Mejores TV Box</span>
-            <span>↓</span>
+            <span class="text-xl sm:text-2xl shrink-0 leading-none">📺</span>
+            <div class="min-w-0">
+              <span class="block text-xs sm:text-sm font-black text-white group-hover:text-brand-300 truncate">TV Box y TVs</span>
+              <span class="block text-[10px] sm:text-xs text-slate-400 truncate">TCL 55" y ofertas</span>
+            </div>
           </a>
-          <a
-            href="#tcl-t6d-tiktok"
-            class="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-black text-xs shadow-md transition-all"
-          >
-            <span>📺 TCL 55" QLED T6D</span>
-            <span>↓</span>
-          </a>
+
           <a
             href="/accesorios/como-mejorar-wifi-casa-lenta-repetidores-mesh-chile/"
-            class="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-300 border border-amber-500/40 font-black text-xs shadow-md transition-all"
+            class="flex items-center gap-2.5 p-2.5 sm:p-3.5 rounded-2xl bg-slate-900/90 border border-slate-700/80 hover:border-sky-400 transition-all group"
           >
-            <span>📶 Mejorar WiFi Casa</span>
-            <span>→</span>
+            <span class="text-xl sm:text-2xl shrink-0 leading-none">📶</span>
+            <div class="min-w-0">
+              <span class="block text-xs sm:text-sm font-black text-white group-hover:text-sky-300 truncate">Mejorar Wi-Fi</span>
+              <span class="block text-[10px] sm:text-xs text-slate-400 truncate">Routers y Mesh</span>
+            </div>
           </a>
         </div>
       </div>
 
-      <!-- ======================================================================= -->
-      <!-- 1. SERIE VIRAL: REVIVIENDO UN DINOSAURIO (YUMBEL ➔ CORONEL)            -->
-      <!-- ======================================================================= -->
-      <section id="proyecto-bus-tiktok" class="mb-6 rounded-3xl border-2 border-amber-500/60 bg-gradient-to-br from-slate-900 via-slate-950 to-amber-950/30 shadow-2xl p-4 sm:p-6 relative overflow-hidden">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-center relative z-10">
-          <div class="lg:col-span-4">
-            <a href="/dinosaurio/" class="block rounded-2xl overflow-hidden bg-slate-950 border border-slate-800 group hover:border-amber-400 transition-all">
+      <!-- LOS 2 PILARES PRINCIPALES (Lado a lado en PC / 2 tarjetas claras en celular) -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 items-stretch">
+
+        <!-- PILAR 1: SERIE VIRAL REVIVIENDO UN DINOSAURIO -->
+        <article id="proyecto-bus-tiktok" class="rounded-3xl border-2 border-amber-500/60 bg-gradient-to-br from-slate-900 via-slate-950 to-amber-950/25 shadow-2xl overflow-hidden flex flex-col justify-between">
+          <div>
+            <a href="/dinosaurio/" class="block relative aspect-[16/9] overflow-hidden bg-slate-950 group">
               <Image
                 src={heroBus}
-                alt="Proyecto rescate y restauración de bus desde Yumbel hacia Coronel por HogarTV.cl"
-                width={480}
-                height={270}
+                alt="Proyecto rescate y restauración Reviviendo un Dinosaurio desde Yumbel hacia Coronel"
+                width={720}
+                height={405}
                 format="webp"
-                quality={85}
-                class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                quality={86}
                 loading="eager"
+                fetchpriority="high"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
-            </a>
-          </div>
-          <div class="lg:col-span-8 flex flex-col justify-between space-y-3">
-            <div>
-              <div class="inline-flex flex-wrap items-center gap-2 px-3 py-1 rounded-full bg-amber-500/15 border border-amber-500/40 text-amber-300 text-[11px] font-black uppercase tracking-wider mb-2">
-                <span>🦖 SERIE VIRAL HOGARTV · YUMBEL ➔ CORONEL</span>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/25 to-transparent"></div>
+              <div class="absolute top-3 left-3 right-3 flex flex-wrap items-center justify-between gap-1.5">
+                <span class="px-2.5 py-1 rounded-full bg-amber-500 text-slate-950 text-[10px] font-black uppercase tracking-wider shadow-lg">
+                  🦖 Serie Viral · Yumbel ➔ Coronel
+                </span>
+                <span class="px-2.5 py-1 rounded-full bg-slate-950/90 border border-amber-400/50 text-amber-300 text-[10px] font-bold">
+                  +62K vistas
+                </span>
               </div>
-              <h2 class="text-xl sm:text-2xl font-black text-white leading-tight mb-2">
-                «Reviviendo un Dinosaurio»: Bitácora, Pauta Parte 3 y Herramientas
+            </a>
+
+            <div class="p-4 sm:p-5 space-y-2">
+              <h2 class="text-lg sm:text-xl font-black text-white leading-snug">
+                <a href="/dinosaurio/" class="hover:text-amber-300 transition-colors">
+                  «Reviviendo un Dinosaurio»: Bitácora, Pauta y Herramientas
+                </a>
               </h2>
-              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed m-0">
-                En <strong class="text-brand-300">HogarTV</strong> hacemos proyectos técnicos y guías de tecnología en Chile, y además estamos <strong class="text-white">rescatando y restaurando esta micro traída desde Yumbel a Coronel</strong>: primero recuperación mecánica (radiador, mangueras, mazas, calipers y aceites), luego <strong class="text-rose-300">latonería y pintura completa</strong>, y después integración tech (<strong class="text-amber-300">cámaras, sensores, pantallas, luces y Wi-Fi</strong>).
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Rescatamos y estamos restaurando esta micro paso a paso en Coronel: <strong class="text-white">mecánica pesada</strong>, <strong class="text-rose-300">latonería y pintura completa</strong>, y al final <strong class="text-sky-300">cámaras, pantallas, luces y Wi-Fi</strong>.
               </p>
             </div>
-            <div class="flex flex-wrap items-center gap-2.5 pt-2 border-t border-slate-800/80">
-              <a
-                href="/dinosaurio/"
-                class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-slate-950 font-black text-xs sm:text-sm shadow-lg transition-all"
-              >
-                <span>🦖 Entrar a hogartv.cl/dinosaurio</span>
-                <span>→</span>
-              </a>
-              <span class="text-xs font-extrabold text-slate-300 ml-1">Síguenos en nuestras redes sociales:</span>
+          </div>
+
+          <div class="px-4 sm:px-5 pb-4 sm:pb-5 space-y-2.5">
+            <a
+              href="/dinosaurio/"
+              class="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-r from-orange-500 to-amber-400 hover:from-orange-400 hover:to-amber-300 text-slate-950 font-black text-xs sm:text-sm shadow-lg transition-all"
+            >
+              <span>🦖 Entrar a hogartv.cl/dinosaurio</span>
+              <span>→</span>
+            </a>
+            <div class="grid grid-cols-2 gap-2">
               <a
                 href="https://www.tiktok.com/@hogartv.cl"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-black hover:bg-zinc-900 text-white font-black text-xs border border-[#25F4EE]/60 shadow-[0_0_12px_rgba(254,44,85,0.25)] transition-all"
+                class="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-black hover:bg-zinc-900 text-white font-black text-[11px] sm:text-xs border border-[#25F4EE]/60 transition-colors"
               >
-                <svg class="w-4 h-4 shrink-0 text-[#25F4EE]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <svg class="w-3.5 h-3.5 shrink-0 text-[#25F4EE]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
                 </svg>
-                <span>TikTok @hogartv.cl</span>
+                <span>TikTok</span>
               </a>
               <a
                 href="https://www.instagram.com/hogartv.cl/"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] hover:opacity-95 text-white font-black text-xs shadow-md transition-all"
+                class="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] hover:opacity-95 text-white font-black text-[11px] sm:text-xs transition-opacity"
               >
-                <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                 </svg>
-                <span>Instagram @hogartv.cl</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ======================================================================= -->
-      <!-- 2. SERVICIO ESTRELLA EN TERRENO 8ª REGIÓN: STARLINK Y REDES PARCELAS   -->
-      <!-- ======================================================================= -->
-      <section id="starlink-biobio" class="mb-8 rounded-3xl overflow-hidden border-2 border-emerald-500/60 bg-gradient-to-r from-slate-900 via-slate-950 to-emerald-950/40 shadow-2xl relative group">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-center">
-          <a
-            href="/accesorios/instalacion-internet-satelital-rural-chile-redes-parcelas/"
-            class="block lg:col-span-4 relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-auto lg:h-full min-h-[210px] overflow-hidden bg-slate-950 cursor-pointer"
-            aria-label="Ver detalles e instalación de Starlink e internet satelital en el Biobío"
-          >
-            <Image
-              src={heroSatelital}
-              alt="Instalación profesional de Starlink, internet satelital y redes para parcelas en la Región del Biobío"
-              width={600}
-              height={360}
-              format="webp"
-              quality={88}
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-              loading="eager"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-slate-950 via-slate-950/25 to-transparent"></div>
-            <div class="absolute top-3 left-3 flex items-center gap-2">
-              <span class="px-2.5 py-1 rounded-full bg-emerald-500 text-slate-950 text-[10px] font-black uppercase tracking-wider shadow-lg">
-                📡 Servicio Técnico en Terreno · 8ª Región
-              </span>
-            </div>
-          </a>
-          <div class="lg:col-span-8 p-4 sm:p-6 space-y-2.5">
-            <div class="flex flex-wrap items-center gap-2">
-              <span class="px-2.5 py-0.5 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-700/60 text-[10px] font-extrabold uppercase tracking-wider">
-                📍 Coronel · Yumbel · Florida · Santa Juana · San Pedro · Concepción · Quillón
-              </span>
-              <span class="text-xs text-emerald-400 font-mono font-bold">⚡ 100 a 250 Mbps</span>
-            </div>
-            <h2 class="text-xl sm:text-2xl font-black text-white leading-tight m-0">
-              <a href="/accesorios/instalacion-internet-satelital-rural-chile-redes-parcelas/" class="hover:text-emerald-300 transition-colors">
-                Instalación de Starlink, Internet Satelital y Redes en el Biobío (Hogares y Parcelas)
-              </a>
-            </h2>
-            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed m-0">
-              Instalación llave en mano con mástil en altura, cableado exterior blindado o fibra óptica drop para tu casa o terreno. <strong class="text-white">Opción de compartir antena entre vecinos (50/50)</strong> y <strong class="text-emerald-300">conexión de cámaras de seguridad lejanas (portón o perímetro con PoE o fibra óptica +100m)</strong>.
-            </p>
-            <div class="pt-2 flex flex-wrap items-center gap-2.5">
-              <a
-                href="https://wa.me/56931926886?text=Hola%20HogarTV,%20quiero%20consultar%20por%20la%20instalaci%C3%B3n%20de%20Starlink%20o%20redes%20en%20mi%20hogar%20en%20el%20Biob%C3%ADo."
-                target="_blank"
-                rel="noopener noreferrer"
-                class="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs sm:text-sm shadow-lg shadow-emerald-500/25 transition-all inline-flex items-center gap-2"
-              >
-                <span>📲 Cotizar Instalación por WhatsApp</span>
-              </a>
-              <a
-                href="/accesorios/instalacion-internet-satelital-rural-chile-redes-parcelas/"
-                class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-bold text-xs transition-colors"
-              >
-                Ver Modalidades y Proyectos en Terreno →
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ======================================================================= -->
-      <!-- VIDEO TIKTOK #2: SMART TV TCL 55" QLED T6D (RECOMENDACIÓN OFICIAL)      -->
-      <!-- ======================================================================= -->
-      <section id="tcl-t6d-tiktok" class="mb-8 rounded-3xl border-2 border-emerald-500/60 bg-gradient-to-br from-slate-900 via-slate-950 to-emerald-950/30 shadow-2xl p-4 sm:p-6 lg:p-7 relative overflow-hidden">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-center relative z-10">
-          <!-- Imagen TCL 55" T6D -->
-          <div class="lg:col-span-4">
-            <a href="/smart-tv/tcl-qled-t6d-55-pulgadas-chile/" class="block rounded-2xl bg-slate-950 border border-slate-800 p-4 text-center group hover:border-emerald-400 transition-all">
-              <div class="flex items-center justify-between gap-1 mb-2">
-                <span class="px-2.5 py-0.5 rounded-full bg-emerald-600 text-white text-[10px] font-black uppercase">
-                  🏆 Video TikTok: Mejor TV 55"
-                </span>
-                <span class="text-[11px] font-bold text-amber-300">★ 4.8/5</span>
-              </div>
-              <Image
-                src={imgTcl55}
-                alt="Smart TV TCL QLED 55 pulgadas UHD 4K modelo T6D en Chile"
-                width={320}
-                height={210}
-                format="webp"
-                quality={85}
-                class="w-full max-w-[260px] mx-auto h-auto object-contain group-hover:scale-105 transition-transform duration-300"
-              />
-            </a>
-          </div>
-
-          <!-- Info + Botones de Compra Directa -->
-          <div class="lg:col-span-8 flex flex-col justify-between">
-            <div>
-              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-[11px] font-black uppercase tracking-wider mb-2">
-                <span>📺 RECOMENDACIÓN N°1 CALIDAD / PRECIO EN 55 PULGADAS</span>
-              </div>
-              <h2 class="text-xl sm:text-2xl md:text-3xl font-black text-white leading-tight mb-2">
-                Smart TV TCL QLED 55" 4K modelo T6D (Google TV Oficial)
-              </h2>
-              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
-                La tele que recomendamos en TikTok con oferta flash de $299.990 (bajó de $429.990 en Falabella): <strong class="text-white">Panel QLED Quantum Dot real</strong> (no LED básico lavado), <strong class="text-emerald-300">Google TV oficial sin bloqueos</strong> para instalar Zapping, DGO, Netflix y cualquier app, audio Dolby Atmos y <strong class="text-amber-300">120Hz Game Accelerator</strong> para consolas.
-              </p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-3 border-t border-slate-800/80">
-              <a
-                href={afiliadosData['falabella-tcl-t6d-55'].url}
-                target="_blank"
-                rel="nofollow sponsored noopener noreferrer"
-                class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-[#FAFAFA] hover:bg-white text-slate-900 border-2 border-[#8FCA00] font-black text-xs sm:text-sm shadow-lg transition-all">
-                <StoreLogo network="falabella" class="h-6 sm:h-7" />
-                <span>$299.990</span>
-                <span>↗</span>
-              </a>
-              <a
-                href={afiliadosData['tcl-c655-55'].url}
-                target="_blank"
-                rel="nofollow sponsored noopener noreferrer"
-                class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 border-2 border-yellow-400 font-black text-xs sm:text-sm shadow-lg transition-all">
-                <StoreLogo network="mercadolibre" class="h-6 sm:h-7" />
-                <span>$311.271</span>
-                <span>↗</span>
-              </a>
-              <a
-                href="/smart-tv/tcl-qled-t6d-55-pulgadas-chile/"
-                class="inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-emerald-300 hover:text-white border border-emerald-500/40 font-black text-xs transition-all"
-              >
-                <span>📖 Leer Artículo y Pruebas TCL T6D</span>
-                <span>→</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ======================================================================= -->
-      <!-- VIDEO TIKTOK #1 / HUB COMPARATIVO ESPECIAL TIKTOK: TV BOX CHILE 2026    -->
-      <!-- ======================================================================= -->
-      <section id="tv-box-tiktok" class="mb-10 rounded-3xl border-2 border-brand-500/60 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 shadow-2xl p-4 sm:p-7 lg:p-8 relative overflow-hidden">
-        <!-- Glows de fondo -->
-        <div class="absolute -top-24 -right-24 w-96 h-96 bg-brand-500/15 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-purple-500/15 rounded-full blur-3xl pointer-events-none"></div>
-
-        <!-- Encabezado Gancho TikTok -->
-        <div class="relative z-10 max-w-4xl mx-auto text-center mb-8">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-500/20 border border-brand-400/40 text-brand-300 text-xs font-black uppercase tracking-wider mb-3 shadow-md">
-            <span>📱 VISTO EN TIKTOK @HOGARTV.CL</span>
-            <span>·</span>
-            <span>GUÍA OFICIAL CHILE 2026</span>
-          </div>
-          <h1 class="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight leading-tight mb-3">
-            ¿Tu tele anda lenta, a pedales o se queda pegada? <br class="hidden sm:inline" />
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 via-indigo-300 to-purple-400">
-              Revívela en 2 minutos con un TV Box
-            </span>
-          </h1>
-          <p class="text-xs sm:text-sm md:text-base text-slate-300 leading-relaxed max-w-3xl mx-auto m-0">
-            No botes tu televisor ni gastes $400.000 en uno nuevo si la pantalla todavía funciona. Conéctale un convertidor por HDMI y tendrás <strong>streaming ultra rápido</strong>, Netflix, Zapping, Mega GO, DGO y YouTube sin cortes ni esperas.
-          </p>
-        </div>
-
-        <!-- Grid Comparativo: Los 5 Modelos Más Recomendados en Chile -->
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 relative z-10 mb-8">
-
-          <!-- 1. Xiaomi TV Box S (2nd Gen) 4K -->
-          <div class="rounded-2xl border-2 border-brand-500/50 bg-slate-900/90 p-4 sm:p-5 flex flex-col justify-between shadow-xl hover:border-brand-400 transition-all hover:-translate-y-1 group">
-            <div>
-              <div class="flex items-center justify-between gap-1 mb-2.5">
-                <span class="px-2 py-0.5 rounded-full bg-brand-600 text-white text-[10px] font-black uppercase tracking-wide">
-                  👑 N°1 Potencia
-                </span>
-                <span class="text-[11px] font-mono font-bold text-amber-300">Top Ventas</span>
-              </div>
-              <div class="aspect-square rounded-xl overflow-hidden bg-slate-950 mb-3 border border-slate-800 flex items-center justify-center p-2">
-                <Image
-                  src={imgXiaomiBox}
-                  alt="Xiaomi TV Box S 2nd Gen 4K Ultra HD en Chile"
-                  width={240}
-                  height={240}
-                  format="webp"
-                  quality={85}
-                  class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <h3 class="text-sm sm:text-base font-black text-white group-hover:text-brand-300 transition-colors leading-snug mb-1">
-                Xiaomi TV Box S 4K (2da Gen)
-              </h3>
-              <p class="text-[11px] text-slate-400 mb-2.5 line-clamp-2">
-                Google TV oficial, puerto USB para pendrives/películas y 2GB RAM para máxima fluidez.
-              </p>
-              <div class="space-y-0.5 mb-3">
-                <div class="text-[11px] text-slate-400">Precio nacional:</div>
-                <div class="text-lg font-black text-white">$ 73.990 CLP</div>
-                <div class="text-[10px] text-emerald-400 font-bold">🔥 Envío Full 24h M. Libre</div>
-              </div>
-            </div>
-            <div class="space-y-1.5 pt-2 border-t border-slate-800">
-              <a
-                href={afiliadosData['xiaomi-tv-box-s-4k'].url}
-                target="_blank"
-                rel="nofollow sponsored noopener noreferrer"
-                class="w-full inline-flex items-center justify-center gap-1 px-3 py-2 rounded-xl bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 font-black text-xs shadow-md transition-all"
-              >
-                <StoreLogo network="mercadolibre" class="h-6" />
-                <span>↗</span>
-              </a>
-              <a
-                href={afiliadosData['falabella-xiaomi-tv-box'].url}
-                target="_blank"
-                rel="nofollow sponsored noopener noreferrer"
-                class="w-full inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#FAFAFA] hover:bg-white text-slate-900 border-2 border-[#8FCA00] font-black text-xs shadow-md transition-all">
-                <StoreLogo network="falabella" class="h-6" />
-                <span>↗</span>
-              </a>
-              <a
-                href="/accesorios/mejores-tv-box-android-baratos-buenos-chile/"
-                class="w-full inline-flex items-center justify-center text-[11px] text-brand-300 hover:text-white font-bold py-0.5 transition-colors"
-              >
-                Ver Análisis →
-              </a>
-            </div>
-          </div>
-
-          <!-- 2. Onn. Google TV 4K (Aviso AliExpress) -->
-          <div class="rounded-2xl border border-amber-500/40 bg-slate-900/90 p-4 sm:p-5 flex flex-col justify-between shadow-xl hover:border-amber-400 transition-all hover:-translate-y-1 group">
-            <div>
-              <div class="flex items-center justify-between gap-1 mb-2.5">
-                <span class="px-2 py-0.5 rounded-full bg-amber-400 text-slate-950 text-[10px] font-black uppercase tracking-wide">
-                  🏷️ Rey de las 3B
-                </span>
-                <span class="text-[11px] font-mono font-bold text-amber-300">Barato</span>
-              </div>
-              <div class="aspect-square rounded-xl overflow-hidden bg-slate-950 mb-3 border border-slate-800 flex items-center justify-center p-2">
-                <Image
-                  src={imgOnnBox}
-                  alt="Onn Google TV 4K Streaming Box en AliExpress"
-                  width={240}
-                  height={240}
-                  format="webp"
-                  quality={85}
-                  class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <h3 class="text-sm sm:text-base font-black text-white group-hover:text-amber-300 transition-colors leading-snug mb-1">
-                Onn. Google TV 4K
-              </h3>
-              <p class="text-[11px] text-slate-400 mb-2.5 line-clamp-2">
-                Google TV oficial nativo con control por voz a precio imbatible de importación directa.
-              </p>
-              <div class="space-y-0.5 mb-3">
-                <div class="text-[11px] text-slate-400">Precio AliExpress:</div>
-                <div class="text-lg font-black text-white">$ 34.990 CLP</div>
-                <div class="text-[10px] text-amber-300 font-bold">🇨🇳 Comprado en AliExpress Choice</div>
-              </div>
-            </div>
-            <div class="space-y-1.5 pt-2 border-t border-slate-800">
-              <a
-                href={afiliadosData['onn-google-tv-4k'].url}
-                target="_blank"
-                rel="nofollow sponsored noopener noreferrer"
-                class="w-full inline-flex items-center justify-center gap-1 px-3 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs shadow-md transition-all"
-              >
-                <StoreLogo network="aliexpress" class="w-3.5 h-3.5" />
-                <span>Ver en AliExpress</span>
-                <span>↗</span>
-              </a>
-              <a
-                href="/accesorios/mejores-tv-box-android-baratos-buenos-chile/"
-                class="w-full inline-flex items-center justify-center text-[11px] text-amber-300 hover:text-white font-bold py-0.5 transition-colors"
-              >
-                Ver Comparativa →
-              </a>
-            </div>
-          </div>
-
-          <!-- 3. Amazon Fire TV Stick HD (Reemplazo de Chromecast con aviso impuestos) -->
-          <div class="rounded-2xl border-2 border-sky-500/50 bg-slate-900/90 p-4 sm:p-5 flex flex-col justify-between shadow-xl hover:border-sky-400 transition-all hover:-translate-y-1 group">
-            <div>
-              <div class="flex items-center justify-between gap-1 mb-2.5">
-                <span class="px-2 py-0.5 rounded-full bg-sky-500 text-slate-950 text-[10px] font-black uppercase tracking-wide">
-                  ✈️ N°1 USA Alexa
-                </span>
-                <span class="text-[11px] font-mono font-bold text-sky-300">4.7 ★ (1.4k)</span>
-              </div>
-              <div class="aspect-square rounded-xl overflow-hidden bg-slate-950 mb-3 border border-slate-800 flex items-center justify-center p-2">
-                <Image
-                  src={imgFireTv}
-                  alt="Amazon Fire TV Stick HD 2026 con control por voz Alexa"
-                  width={240}
-                  height={240}
-                  format="webp"
-                  quality={85}
-                  class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <h3 class="text-sm sm:text-base font-black text-white group-hover:text-sky-300 transition-colors leading-snug mb-1">
-                Amazon Fire TV Stick HD
-              </h3>
-              <p class="text-[11px] text-slate-400 mb-2.5 line-clamp-2">
-                Ultra fluido con control Alexa. Ideal para Netflix, Prime Video, YouTube y streaming.
-              </p>
-              <div class="space-y-0.5 mb-3">
-                <div class="text-[11px] text-slate-400">Oferta M. Libre (24% OFF):</div>
-                <div class="text-lg font-black text-white">$ 31.443 CLP</div>
-                <div class="text-[10px] text-amber-300 font-semibold leading-tight">
-                  ✈️ Envío Internacional USA <br/>
-                  <span class="text-slate-400 text-[9px]">(Podría sumar ~$5.970 de impuestos)</span>
-                </div>
-              </div>
-            </div>
-            <div class="space-y-1.5 pt-2 border-t border-slate-800">
-              <a
-                href={afiliadosData['amazon-fire-tv-stick'].url}
-                target="_blank"
-                rel="nofollow sponsored noopener noreferrer"
-                class="w-full inline-flex items-center justify-center gap-1 px-3 py-2 rounded-xl bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 font-black text-xs shadow-md transition-all"
-              >
-                <StoreLogo network="mercadolibre" class="h-6" />
-                <span>↗</span>
-              </a>
-              <a
-                href="/accesorios/mejores-tv-box-android-baratos-buenos-chile/"
-                class="w-full inline-flex items-center justify-center text-[11px] text-sky-300 hover:text-white font-bold py-0.5 transition-colors"
-              >
-                Ver Detalles →
-              </a>
-            </div>
-          </div>
-
-          <!-- 4. Roku Express HD / 4K -->
-          <div class="rounded-2xl border border-purple-500/40 bg-slate-900/90 p-4 sm:p-5 flex flex-col justify-between shadow-xl hover:border-purple-400 transition-all hover:-translate-y-1 group">
-            <div>
-              <div class="flex items-center justify-between gap-1 mb-2.5">
-                <span class="px-2 py-0.5 rounded-full bg-purple-600 text-white text-[10px] font-black uppercase tracking-wide">
-                  👴 Adulto Mayor
-                </span>
-                <span class="text-[11px] font-mono font-bold text-purple-300">Fácil uso</span>
-              </div>
-              <div class="aspect-square rounded-xl overflow-hidden bg-slate-950 mb-3 border border-slate-800 flex items-center justify-center p-2">
-                <Image
-                  src={imgRoku4k}
-                  alt="Roku Express HD y 4K con control remoto simplificado en Chile"
-                  width={240}
-                  height={240}
-                  format="webp"
-                  quality={85}
-                  class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <h3 class="text-sm sm:text-base font-black text-white group-hover:text-purple-300 transition-colors leading-snug mb-1">
-                Roku Express HD / 4K
-              </h3>
-              <p class="text-[11px] text-slate-400 mb-2.5 line-clamp-2">
-                Menú simple con íconos gigantes. Cero enredos para los abuelos y control con botones directos.
-              </p>
-              <div class="space-y-0.5 mb-3">
-                <div class="text-[11px] text-slate-400">Precio nacional:</div>
-                <div class="text-lg font-black text-white">$ 27.990 CLP</div>
-                <div class="text-[10px] text-purple-400 font-bold">⚡ Envío Full Inmediato</div>
-              </div>
-            </div>
-            <div class="space-y-1.5 pt-2 border-t border-slate-800">
-              <a
-                href={afiliadosData['roku-express-4k'].url}
-                target="_blank"
-                rel="nofollow sponsored noopener noreferrer"
-                class="w-full inline-flex items-center justify-center gap-1 px-3 py-2 rounded-xl bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 font-black text-xs shadow-md transition-all"
-              >
-                <StoreLogo network="mercadolibre" class="h-6" />
-                <span>↗</span>
-              </a>
-              <a
-                href="/accesorios/roku-vs-chromecast-chile-cual-conviene/"
-                class="w-full inline-flex items-center justify-center text-[11px] text-purple-300 hover:text-white font-bold py-0.5 transition-colors"
-              >
-                Roku vs Stick →
-              </a>
-            </div>
-          </div>
-
-          <!-- 5. TV Box Android 14 4K Genérico (Buenas Reseñas) -->
-          <div class="rounded-2xl border border-emerald-500/40 bg-slate-900/90 p-4 sm:p-5 flex flex-col justify-between shadow-xl hover:border-emerald-400 transition-all hover:-translate-y-1 group">
-            <div>
-              <div class="flex items-center justify-between gap-1 mb-2.5">
-                <span class="px-2 py-0.5 rounded-full bg-emerald-600 text-white text-[10px] font-black uppercase tracking-wide">
-                  ⭐ Opción Genérica
-                </span>
-                <span class="text-[11px] font-mono font-bold text-emerald-300">4.0 ★ (170+)</span>
-              </div>
-              <div class="aspect-square rounded-xl overflow-hidden bg-slate-950 mb-3 border border-slate-800 flex items-center justify-center p-2">
-                <Image
-                  src={imgTvBoxEcono}
-                  alt="TV Box Android 14 4K UHD con Control por Voz en Mercado Libre"
-                  width={240}
-                  height={240}
-                  format="webp"
-                  quality={85}
-                  class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <h3 class="text-sm sm:text-base font-black text-white group-hover:text-emerald-300 transition-colors leading-snug mb-1">
-                TV Box Android 14 4K
-              </h3>
-              <p class="text-[11px] text-slate-400 mb-2.5 line-clamp-2">
-                2GB RAM + 16GB ROM, control por voz y puertos USB. Muy recomendado por usuarios para IPTV y apps libres.
-              </p>
-              <div class="space-y-0.5 mb-3">
-                <div class="text-[11px] text-slate-400">Precio nacional M. Libre:</div>
-                <div class="text-lg font-black text-white">$ 29.990 CLP</div>
-                <div class="text-[10px] text-emerald-400 font-bold">⚡ Despacho Rápido en Chile</div>
-              </div>
-            </div>
-            <div class="space-y-1.5 pt-2 border-t border-slate-800">
-              <a
-                href={afiliadosData['tv-box-android-economico'].url}
-                target="_blank"
-                rel="nofollow sponsored noopener noreferrer"
-                class="w-full inline-flex items-center justify-center gap-1 px-3 py-2 rounded-xl bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 font-black text-xs shadow-md transition-all"
-              >
-                <StoreLogo network="mercadolibre" class="h-6" />
-                <span>↗</span>
-              </a>
-              <a
-                href="/accesorios/conectar-tv-box-televisor-antiguo-tubo-chile/"
-                class="w-full inline-flex items-center justify-center text-[11px] text-emerald-300 hover:text-white font-bold py-0.5 transition-colors"
-              >
-                Guía de Conexión →
-              </a>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Guía Rápida de Decisión + Enlaces Clave -->
-        <div class="p-4 sm:p-5 rounded-2xl bg-slate-950/80 border border-slate-800/80 relative z-10">
-          <h4 class="text-xs sm:text-sm font-black text-white uppercase tracking-wider mb-3 flex items-center gap-2">
-            <span>💡 Resumen: ¿Cuál te conviene elegir según tu presupuesto y uso?</span>
-          </h4>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5 text-xs mb-3.5">
-            <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800">
-              <strong class="text-brand-300 block mb-0.5">📁 Películas y USB:</strong>
-              <p class="text-slate-300 m-0 text-[11px]"><strong>Xiaomi TV Box S</strong> por su puerto USB físico y máxima potencia.</p>
-            </div>
-            <div class="p-2.5 rounded-xl bg-amber-950/40 border border-amber-800/60">
-              <strong class="text-amber-300 block mb-0.5">🇨🇳 Google TV Barato:</strong>
-              <p class="text-slate-300 m-0 text-[11px]"><strong>Onn 4K</strong> en AliExpress Choice (aprox. $34.990, demora 12 días).</p>
-            </div>
-            <div class="p-2.5 rounded-xl bg-sky-950/40 border border-sky-800/60">
-              <strong class="text-sky-300 block mb-0.5">✈️ Streaming con Alexa:</strong>
-              <p class="text-slate-300 m-0 text-[11px]"><strong>Fire TV Stick</strong> desde USA ($31.443 + impuestos est. ~$5.970).</p>
-            </div>
-            <div class="p-2.5 rounded-xl bg-purple-950/40 border border-purple-800/60">
-              <strong class="text-purple-300 block mb-0.5">👵 Papás y Abuelos:</strong>
-              <p class="text-slate-300 m-0 text-[11px]"><strong>Roku Express</strong> por su menú simple y control con pocos botones.</p>
-            </div>
-            <div class="p-2.5 rounded-xl bg-emerald-950/40 border border-emerald-800/60">
-              <strong class="text-emerald-300 block mb-0.5">📺 Genérico para IPTV:</strong>
-              <p class="text-slate-300 m-0 text-[11px]"><strong>TV Box Android 14</strong> con buenas reseñas (4.0★) por $29.990.</p>
-            </div>
-          </div>
-          <div class="pt-2.5 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3 text-xs">
-            <span class="text-slate-400 font-medium">Guías completas paso a paso:</span>
-            <div class="flex flex-wrap items-center gap-3 font-bold">
-              <a href="/accesorios/mejores-tv-box-android-baratos-buenos-chile/" class="text-brand-300 hover:text-white underline decoration-brand-500/50">
-                📖 Ranking Completo TV Box 2026
-              </a>
-              <span class="text-slate-600">·</span>
-              <a href="/accesorios/como-convertir-televisor-antiguo-en-smart-tv-chile/" class="text-amber-300 hover:text-white underline decoration-amber-500/50">
-                ⚡ Cómo revivir cualquier tele en 2 min
-              </a>
-              <span class="text-slate-600">·</span>
-              <a href="/accesorios/conectar-tv-box-televisor-antiguo-tubo-chile/" class="text-emerald-300 hover:text-white underline decoration-emerald-500/50">
-                📺 Conectar a tele antigua / RCA
-              </a>
-            </div>
-          </div>
-        </div>
-
-      </section>
-
-
-      <!-- Cabecera compacta de sección -->
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-5">
-        <div class="flex items-center gap-2.5">
-          <span class="px-2.5 py-1 rounded-md bg-rose-600 text-white text-[11px] font-black uppercase tracking-wider shadow-sm">
-            Destacados de la Semana
-          </span>
-          <span class="text-xs sm:text-sm text-slate-300 font-medium">
-            Pruebas reales, datos verificados y precios actualizados en Chile 🇨🇱
-          </span>
-        </div>
-        <a
-          href="/ofertas-tv-chile/"
-          class="inline-flex items-center gap-1.5 text-xs font-extrabold text-amber-400 hover:text-amber-300 transition-colors"
-        >
-          <span>⚡ Ver todas las ofertas del día en M. Libre y Falabella</span>
-          <span>→</span>
-        </a>
-      </div>
-
-      <!-- BENTO GRID: Noticia Principal Gigante (7 cols) + 3 Noticias Clave Laterales (5 cols) -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-
-        <!-- BLOQUE PRINCIPAL: EL PROYECTOR / CINE EN LA PIEZA -->
-        <article class="lg:col-span-7 rounded-3xl border-2 border-brand-500/40 bg-slate-900 overflow-hidden shadow-2xl flex flex-col justify-between group relative">
-          <a href="/accesorios/como-armar-cine-en-casa-barato-pieza-chile/" class="block relative aspect-[16/10] sm:aspect-[16/9] overflow-hidden bg-slate-950">
-            <Image
-              src={heroCinePieza}
-              alt="Mini Proyector Magcubic HY320 proyectando 100 pulgadas en dormitorio en Chile"
-              width={900}
-              height={506}
-              format="webp"
-              quality={88}
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-              loading="eager"
-              fetchpriority="high"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/35 to-transparent"></div>
-
-            <!-- Etiquetas Flotantes Superiores -->
-            <div class="absolute top-3.5 left-3.5 right-3.5 flex flex-wrap items-center justify-between gap-2">
-              <span class="px-3 py-1 rounded-full bg-amber-400 text-slate-950 text-xs font-black uppercase tracking-wide shadow-lg">
-                🔥 Picada N°1 en Chile · Ahorra $300.000
-              </span>
-              <span class="px-3 py-1 rounded-full bg-slate-950/90 border border-emerald-500/50 text-emerald-400 text-xs font-mono font-bold shadow-lg">
-                Desde $44.990 CLP
-              </span>
-            </div>
-
-            <!-- Titular Estilo Noticia Gigante Sobre la Imagen (Desktop/Mobile) -->
-            <div class="absolute bottom-0 inset-x-0 p-5 sm:p-7">
-              <span class="text-brand-300 text-xs font-extrabold uppercase tracking-wider block mb-1.5">
-                Especial Cine en Casa · Prueba a Fondo
-              </span>
-              <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight leading-tight drop-shadow-md">
-                El Mini Proyector de $44.990 que reemplaza a una Tele de 100 Pulgadas en tu Pieza
-              </h2>
-            </div>
-          </a>
-
-          <!-- Cuerpo y Llamados a la Acción Inmediatos -->
-          <div class="p-5 sm:p-7 bg-gradient-to-b from-slate-900 to-slate-950 flex-1 flex flex-col justify-between gap-5">
-            <p class="text-slate-300 text-sm sm:text-base leading-relaxed m-0">
-              Olvídate de gastar una fortuna en un televisor gigante para el dormitorio. Analizamos el <strong>Magcubic HY320 (Full HD 1080p real, Android 11 y giro de 180° al techo)</strong> y te mostramos cómo armar un cine completo en tu pieza.
-            </p>
-
-            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1">
-              <a
-                href="/accesorios/como-armar-cine-en-casa-barato-pieza-chile/"
-                class="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-black text-sm shadow-lg shadow-brand-600/30 transition-all hover:-translate-y-0.5"
-              >
-                <span>📖 Ve aquí todos los detalles y cómo armarlo</span>
-                <span>→</span>
-              </a>
-              <a
-                href={afiliadosData['proyector-magcubic-hy320'].url}
-                target="_blank"
-                rel="nofollow sponsored noopener noreferrer"
-                class="inline-flex items-center justify-center gap-1.5 px-5 py-3.5 rounded-xl bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 font-black text-sm shadow-md transition-all hover:scale-[1.02] shrink-0"
-              >
-                <span>🛒 Ver Oferta en M. Libre</span>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                <span>Instagram</span>
               </a>
             </div>
           </div>
         </article>
 
-        <!-- COLUMNA LATERAL: 3 NOTICIAS / DATOS DE ALTA CONVERSIÓN -->
-        <div class="lg:col-span-5 flex flex-col justify-between gap-4">
-
-          <!-- Noticia Lateral 1: Revivir Tele Vieja -->
-          <article class="flex-1 rounded-2xl border border-slate-800 hover:border-brand-500/60 bg-surface-card p-4 sm:p-5 shadow-lg transition-all group flex flex-col justify-between">
-            <div class="flex gap-4 items-start">
-              <a href="/accesorios/como-convertir-televisor-antiguo-en-smart-tv-chile/" class="w-28 sm:w-32 aspect-[4/3] rounded-xl overflow-hidden shrink-0 bg-slate-900 border border-slate-800">
-                <Image
-                  src={heroTvVieja}
-                  alt="Convertir televisor antiguo en Smart TV en Chile"
-                  width={240}
-                  height={180}
-                  format="webp"
-                  quality={80}
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </a>
-              <div class="min-w-0 flex-1">
-                <span class="inline-block px-2 py-0.5 rounded bg-brand-950 text-brand-300 border border-brand-800/60 text-[10px] font-extrabold uppercase tracking-wider mb-1">
-                  ⚡ Dato Ahorro · Desde $44.990
+        <!-- PILAR 2: SERVICIO TÉCNICO STARLINK Y REDES EN EL BIOBÍO -->
+        <article id="starlink-biobio" class="rounded-3xl border-2 border-emerald-500/60 bg-gradient-to-br from-slate-900 via-slate-950 to-emerald-950/30 shadow-2xl overflow-hidden flex flex-col justify-between">
+          <div>
+            <a href="/accesorios/instalacion-internet-satelital-rural-chile-redes-parcelas/" class="block relative aspect-[16/9] overflow-hidden bg-slate-950 group">
+              <Image
+                src={heroSatelital}
+                alt="Instalación profesional de Starlink, internet satelital y redes en hogares y parcelas del Biobío"
+                width={720}
+                height={405}
+                format="webp"
+                quality={86}
+                loading="eager"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/25 to-transparent"></div>
+              <div class="absolute top-3 left-3 right-3 flex flex-wrap items-center justify-between gap-1.5">
+                <span class="px-2.5 py-1 rounded-full bg-emerald-500 text-slate-950 text-[10px] font-black uppercase tracking-wider shadow-lg">
+                  📡 Servicio en Terreno · Biobío
                 </span>
-                <h2 class="text-sm sm:text-base font-extrabold text-white group-hover:text-brand-300 transition-colors leading-snug mb-1.5">
-                  <a href="/accesorios/como-convertir-televisor-antiguo-en-smart-tv-chile/">
-                    No botes tu tele vieja: conviértela en un Smart TV 4K ultra rápido en 2 minutos
-                  </a>
-                </h2>
-                <p class="text-xs text-slate-400 line-clamp-2 m-0">
-                  Comparamos Xiaomi TV Box S 4K, Roku y Chromecast para instalar Zapping, DGO y Netflix en cualquier tele.
-                </p>
-              </div>
-            </div>
-            <div class="mt-3 pt-2.5 border-t border-slate-800/80 flex items-center justify-between gap-2">
-              <a href="/accesorios/como-convertir-televisor-antiguo-en-smart-tv-chile/" class="text-xs font-extrabold text-brand-400 hover:text-brand-300">
-                Ver guía y modelos compatibles →
-              </a>
-              <a
-                href={afiliadosData['xiaomi-tv-box-s-4k'].url}
-                target="_blank"
-                rel="nofollow sponsored noopener noreferrer"
-                class="px-2.5 py-1 rounded-lg bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 font-black text-[11px]"
-              >
-                Xiaomi Box en M. Libre ↗
-              </a>
-            </div>
-          </article>
-
-          <!-- Noticia Lateral 2: Smart TVs Baratas 32, 40 y 50 pulgadas -->
-          <article class="flex-1 rounded-2xl border border-slate-800 hover:border-emerald-500/60 bg-surface-card p-4 sm:p-5 shadow-lg transition-all group flex flex-col justify-between">
-            <div class="flex gap-4 items-start">
-              <a href="/smart-tv/mejores-smart-tv-32-40-pulgadas-baratos-chile/" class="w-28 sm:w-32 aspect-[4/3] rounded-xl overflow-hidden shrink-0 bg-slate-900 border border-slate-800">
-                <Image
-                  src={heroTv32y40}
-                  alt="Mejores Smart TV de 32 y 40 pulgadas baratas en Chile"
-                  width={240}
-                  height={180}
-                  format="webp"
-                  quality={80}
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </a>
-              <div class="min-w-0 flex-1">
-                <span class="inline-block px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800/60 text-[10px] font-extrabold uppercase tracking-wider mb-1">
-                  📺 Especial Pieza y Cocina
+                <span class="px-2.5 py-1 rounded-full bg-slate-950/90 border border-emerald-400/50 text-emerald-300 text-[10px] font-mono font-bold">
+                  ⚡ 100–250 Mbps
                 </span>
-                <h2 class="text-sm sm:text-base font-extrabold text-white group-hover:text-emerald-300 transition-colors leading-snug mb-1.5">
-                  <a href="/smart-tv/mejores-smart-tv-32-40-pulgadas-baratos-chile/">
-                    Mejores Smart TV de 32, 40 y 50 Pulgadas Baratas en Chile (Ranking 2026)
-                  </a>
-                </h2>
-                <p class="text-xs text-slate-400 line-clamp-2 m-0">
-                  Cuáles valen la pena por su fluidez en TCL, Samsung y Hisense y cuáles evitar para no pasar rabias.
-                </p>
               </div>
-            </div>
-            <div class="mt-3 pt-2.5 border-t border-slate-800/80 flex items-center justify-between gap-2">
-              <a href="/smart-tv/mejores-smart-tv-32-40-pulgadas-baratos-chile/" class="text-xs font-extrabold text-emerald-400 hover:text-emerald-300">
-                Ver ranking de televisores →
-              </a>
-              <a href="/smart-tv/mejores-smart-tv-43-50-pulgadas-baratos-chile/" class="text-[11px] font-bold text-slate-300 hover:text-white underline">
-                Ver 43" y 50"
-              </a>
-            </div>
-          </article>
+            </a>
 
-          <!-- Noticia Lateral 3: Smart TVs 65 Pulgadas / Radar de Ofertas -->
-          <article class="flex-1 rounded-2xl border border-amber-500/30 hover:border-amber-400 bg-gradient-to-r from-slate-900 via-surface-card to-amber-950/20 p-4 sm:p-5 shadow-lg transition-all group flex flex-col justify-between">
-            <div class="flex gap-4 items-start">
-              <a href="/smart-tv/mejores-smart-tv-65-pulgadas-chile/" class="w-28 sm:w-32 aspect-[4/3] rounded-xl overflow-hidden shrink-0 bg-slate-900 border border-slate-800">
-                <Image
-                  src={heroTv65}
-                  alt="Mejores Smart TV 65 pulgadas y ofertas en Chile"
-                  width={240}
-                  height={180}
-                  format="webp"
-                  quality={80}
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </a>
-              <div class="min-w-0 flex-1">
-                <span class="inline-block px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40 text-[10px] font-extrabold uppercase tracking-wider mb-1">
-                  🏷️ Radar de Descuentos Hoy
-                </span>
-                <h2 class="text-sm sm:text-base font-extrabold text-white group-hover:text-amber-300 transition-colors leading-snug mb-1.5">
-                  <a href="/ofertas-tv-chile/">
-                    Ofertas Verificadas en Smart TVs de 55" y 65" QLED / Mini-LED en Chile
-                  </a>
-                </h2>
-                <p class="text-xs text-slate-400 line-clamp-2 m-0">
-                  Comparador en vivo entre Mercado Libre y Falabella con ahorro de hasta $180.000 CLP.
-                </p>
-              </div>
+            <div class="p-4 sm:p-5 space-y-2">
+              <h2 class="text-lg sm:text-xl font-black text-white leading-snug">
+                <a href="/accesorios/instalacion-internet-satelital-rural-chile-redes-parcelas/" class="hover:text-emerald-300 transition-colors">
+                  Instalación de Starlink y Redes en el Biobío (Hogares y Parcelas)
+                </a>
+              </h2>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Montaje profesional en altura, bajada blindada UV o fibra drop en <strong class="text-white">Coronel, San Pedro, Yumbel, Florida, Santa Juana y Concepción</strong>. Opción <strong class="text-emerald-300">compartida 50/50</strong> y <strong class="text-emerald-300">cámaras lejanas PoE/fibra</strong>.
+              </p>
             </div>
-            <div class="mt-3 pt-2.5 border-t border-slate-800/80 flex items-center justify-between gap-2">
-              <a href="/ofertas-tv-chile/" class="text-xs font-extrabold text-amber-400 hover:text-amber-300">
-                Abrir el Radar de Ofertas →
-              </a>
-              <a href="/smart-tv/mejores-smart-tv-65-pulgadas-chile/" class="text-[11px] font-bold text-slate-300 hover:text-white underline">
-                Guía 65 Pulgadas
-              </a>
-            </div>
-          </article>
+          </div>
 
-        </div>
+          <div class="px-4 sm:px-5 pb-4 sm:pb-5 space-y-2.5">
+            <a
+              href={waStarlinkUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs sm:text-sm shadow-lg shadow-emerald-500/20 transition-all"
+            >
+              <span>📲 Cotizar Instalación por WhatsApp</span>
+            </a>
+            <a
+              href="/accesorios/instalacion-internet-satelital-rural-chile-redes-parcelas/"
+              class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-slate-200 border border-slate-700 font-bold text-xs transition-colors"
+            >
+              <span>Ver Modalidades, Cobertura y Preguntas</span>
+              <span>→</span>
+            </a>
+          </div>
+        </article>
+
       </div>
-
     </div>
   </section>
 
   <!-- ======================================================================= -->
-  <!-- 2. VITRINA DE COMPRA DIRECTA: "LOS 4 DATOS MÁS VENDIDOS EN CHILE"       -->
+  <!-- 2. LOS 6 EQUIPOS MÁS PEDIDOS (SIN DUPLICADOS, COMPACTO EN CELULAR)      -->
   <!-- ======================================================================= -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-b border-slate-800/70">
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+  <section id="destacados-tech" class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 py-8 sm:py-12 border-b border-slate-800/70">
+    <div class="flex items-end justify-between gap-3 mb-5 sm:mb-7">
       <div>
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-extrabold uppercase tracking-wider mb-2">
-          <span>🛒 Selección de Compra Inteligente</span>
-        </div>
-        <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
-          Los 8 Productos Más Vendidos y Recomendados en Chile
+        <span class="text-[11px] font-black uppercase tracking-wider text-brand-400 block mb-0.5">Selección Verificada Chile</span>
+        <h2 class="text-lg sm:text-2xl font-black text-white tracking-tight">
+          Lo Más Pedido de TikTok (TV, Wi-Fi y Cine)
         </h2>
-        <p class="text-xs sm:text-sm text-slate-400 mt-1">
-          Revisa nuestro análisis técnico o ve directo a la oferta verificada en Mercado Libre, Falabella y AliExpress:
-        </p>
       </div>
-      <a
-        href="/gadgets-hogar/"
-        class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-brand-300 border border-slate-700 text-xs font-bold transition-colors shrink-0"
-      >
-        <span>Ver Catálogo Completo de Recomendados</span>
-        <span>→</span>
+      <a href="/ofertas-tv-chile/" class="text-xs font-extrabold text-amber-400 hover:text-amber-300 shrink-0">
+        Ver ofertas →
       </a>
     </div>
 
-    <!-- Grilla de 4 Tarjetas de Alta Conversión -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      {topSellers.map((item) => (
-        <div class="rounded-2xl border border-slate-800 hover:border-brand-500/50 bg-surface-card flex flex-col justify-between overflow-hidden shadow-xl transition-all hover:-translate-y-1">
-          <div>
-            <!-- Imagen del Producto con Badge -->
-            <a href={item.reviewUrl} class="block relative aspect-[4/3] bg-white p-4 overflow-hidden border-b border-slate-800">
-              <Image
-                src={item.image}
-                alt={item.title}
-                width={400}
-                height={300}
-                format="webp"
-                quality={85}
-                class="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
-              />
-              <span class={`absolute top-2.5 left-2.5 px-2.5 py-1 rounded-full text-[11px] font-black uppercase tracking-wide shadow ${item.badgeClass}`}>
-                {item.badge}
-              </span>
-            </a>
+    <!-- Tarjetas horizontales compactas en celular / grilla 3 columnas en escritorio -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
+      {featuredGear.map((item) => (
+        <article class="rounded-2xl bg-surface-card border border-slate-800 hover:border-brand-500/50 p-3 sm:p-4 flex flex-row md:flex-col gap-3 sm:gap-4 justify-between shadow-lg transition-all">
+          <!-- Imagen -->
+          <a
+            href={item.reviewUrl}
+            class="relative w-24 h-24 sm:w-28 sm:h-28 md:w-full md:h-44 rounded-xl bg-white p-2 sm:p-3 shrink-0 flex items-center justify-center overflow-hidden border border-slate-700/60 group"
+          >
+            <Image
+              src={item.image}
+              alt={item.title}
+              width={260}
+              height={200}
+              format="webp"
+              quality={85}
+              loading="lazy"
+              class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+            />
+            <span class={`hidden md:inline-block absolute top-2 left-2 px-2 py-0.5 rounded-full text-[10px] font-black uppercase shadow ${item.badgeClass}`}>
+              {item.badge}
+            </span>
+          </a>
 
-            <!-- Contenido de la Ficha -->
-            <div class="p-4 sm:p-5">
-              <h3 class="text-base font-extrabold text-white leading-snug mb-2">
+          <!-- Contenido + Botones -->
+          <div class="flex-1 min-w-0 flex flex-col justify-between gap-2">
+            <div>
+              <div class="flex items-center gap-1.5 mb-1 md:hidden">
+                <span class={`px-2 py-0.5 rounded-full text-[9px] font-black uppercase ${item.badgeClass}`}>
+                  {item.badge}
+                </span>
+              </div>
+              <h3 class="text-sm sm:text-base font-black text-white leading-snug line-clamp-2">
                 <a href={item.reviewUrl} class="hover:text-brand-300 transition-colors">
                   {item.title}
                 </a>
               </h3>
-              <p class="text-xs text-slate-300 leading-relaxed mb-4">
-                {item.hook}
+              <p class="text-[11px] sm:text-xs text-slate-400 leading-snug line-clamp-2 mt-1">
+                {item.desc}
               </p>
+            </div>
 
-              <!-- Bloque de Precio -->
-              <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-800/90 mb-3">
-                <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Mejor Precio Ref. Hoy:</div>
-                <div class="text-lg font-black font-mono text-emerald-400">{item.price}</div>
-                <div class="text-[11px] text-slate-400">{item.subPrice}</div>
+            <div class="space-y-2 pt-1">
+              <div class="flex items-baseline justify-between gap-2">
+                <span class="text-sm sm:text-lg font-black font-mono text-emerald-400">{item.price}</span>
+                <a href={item.reviewUrl} class="text-[11px] font-bold text-brand-300 hover:text-white underline shrink-0">
+                  {item.reviewText} →
+                </a>
+              </div>
+
+              <div class={`grid gap-1.5 ${item.secondaryUrl ? 'grid-cols-2' : 'grid-cols-1'}`}>
+                <a
+                  href={item.primaryUrl}
+                  target="_blank"
+                  rel="nofollow sponsored noopener noreferrer"
+                  class={item.primaryNetwork === 'falabella'
+                    ? 'inline-flex items-center justify-center gap-1 px-2.5 py-2 rounded-xl bg-[#FAFAFA] hover:bg-white text-slate-900 border-2 border-[#8FCA00] font-black text-[11px] shadow-sm transition-transform hover:scale-[1.01]'
+                    : 'inline-flex items-center justify-center gap-1 px-2.5 py-2 rounded-xl bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 font-black text-[11px] shadow-sm transition-transform hover:scale-[1.01]'}
+                >
+                  <StoreLogo network={item.primaryNetwork} class="h-5" />
+                  <span>↗</span>
+                </a>
+                {item.secondaryUrl && item.secondaryNetwork && (
+                  <a
+                    href={item.secondaryUrl}
+                    target="_blank"
+                    rel="nofollow sponsored noopener noreferrer"
+                    class={item.secondaryNetwork === 'falabella'
+                      ? 'inline-flex items-center justify-center gap-1 px-2.5 py-2 rounded-xl bg-[#FAFAFA] hover:bg-white text-slate-900 border-2 border-[#8FCA00] font-black text-[11px] shadow-sm transition-transform hover:scale-[1.01]'
+                      : 'inline-flex items-center justify-center gap-1 px-2.5 py-2 rounded-xl bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 font-black text-[11px] shadow-sm transition-transform hover:scale-[1.01]'}
+                  >
+                    <StoreLogo network={item.secondaryNetwork} class="h-5" />
+                    <span>↗</span>
+                  </a>
+                )}
               </div>
             </div>
           </div>
-
-          <!-- Botones de Acción (Compra Directa + Ver Detalles) -->
-          <div class="px-4 sm:px-5 pb-5 space-y-2">
-            <div class="grid grid-cols-2 gap-2">
-              <a
-                href={item.primaryCtaUrl}
-                target="_blank"
-                rel="nofollow sponsored noopener noreferrer"
-                class={`inline-flex items-center justify-center gap-1 px-2.5 py-2.5 rounded-xl font-black text-xs border shadow-sm transition-transform hover:scale-[1.02] text-center ${item.primaryCtaClass}`}
-              >
-                <span>{item.primaryCtaText}</span>
-                <span>↗</span>
-              </a>
-              <a
-                href={item.secondaryCtaUrl}
-                target="_blank"
-                rel="nofollow sponsored noopener noreferrer"
-                class={`inline-flex items-center justify-center gap-1 px-2.5 py-2.5 rounded-xl font-black text-xs border shadow-sm transition-transform hover:scale-[1.02] text-center ${item.secondaryCtaClass}`}
-              >
-                <span>{item.secondaryCtaText}</span>
-                <span>↗</span>
-              </a>
-            </div>
-            <a
-              href={item.reviewUrl}
-              class="block w-full text-center py-2 rounded-lg bg-slate-900/90 hover:bg-slate-800 text-brand-300 font-bold text-xs border border-slate-800 transition-colors"
-            >
-              {item.reviewLabel}
-            </a>
-          </div>
-        </div>
+        </article>
       ))}
     </div>
 
-    <!-- Barra de 5 Picadas Baratas bajo $45.000 (Impulso Rápido) -->
-    <div class="mt-8 rounded-2xl bg-slate-900/70 border border-slate-800 p-4 sm:p-6">
-      <div class="flex items-center justify-between mb-4">
-        <h3 class="text-sm sm:text-base font-extrabold text-white flex items-center gap-2 m-0">
-          <span>⚡</span>
-          <span>Picadas Baratas bajo $45.000 CLP que Resuelven Problemas Reales:</span>
-        </h3>
-        <span class="text-[11px] text-emerald-400 font-mono hidden sm:inline">Envío Rápido a Todo Chile</span>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5">
-        {impulseDeals.map((deal) => (
-          <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-800/90 hover:border-slate-700 flex items-center gap-3 justify-between">
-            <img
-              src={deal.image.src}
-              alt={deal.title}
-              width="56"
-              height="56"
+    <!-- Desplegable compacto para TV Box económicos extra (no estorba en celular, accesible en 1 toque) -->
+    <details id="tv-box-tiktok" class="mt-4 rounded-2xl bg-slate-900/80 border border-slate-800 p-3.5 sm:p-4 group">
+      <summary class="flex items-center justify-between gap-2 cursor-pointer list-none select-none text-xs sm:text-sm font-black text-white">
+        <span class="flex items-center gap-2">
+          <span>📦</span>
+          <span>¿Buscas un TV Box más barato? (Onn 4K, Fire TV Stick, Android 14)</span>
+        </span>
+        <span class="text-brand-400 text-xs shrink-0 group-open:rotate-180 transition-transform">▼</span>
+      </summary>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4 pt-3 border-t border-slate-800">
+        {extraTvBoxes.map((box) => (
+          <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 flex items-center gap-3">
+            <Image
+              src={box.image}
+              alt={box.title}
+              width={64}
+              height={64}
+              format="webp"
               loading="lazy"
               class="w-14 h-14 rounded-lg bg-white p-1 object-contain shrink-0"
             />
-            <div class="min-w-0 flex-1">
-              <a href={deal.guideUrl} class="text-xs font-bold text-white hover:text-brand-300 line-clamp-1 block">
-                {deal.title}
-              </a>
-              <span class="text-xs font-mono font-black text-emerald-400 block">{deal.price}</span>
-              <div class="flex items-center gap-2 mt-1">
+            <div class="min-w-0 flex-1 space-y-1">
+              <div class="text-[10px] font-bold text-amber-300 truncate">{box.tag}</div>
+              <div class="text-xs font-black text-white truncate">{box.title}</div>
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-xs font-mono font-black text-emerald-400">{box.price}</span>
                 <a
-                  href={deal.buyUrl}
+                  href={box.url}
                   target="_blank"
                   rel="nofollow sponsored noopener noreferrer"
-                  class="px-2 py-0.5 rounded bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 font-black text-[10px]"
+                  class={box.network === 'aliexpress'
+                    ? 'px-2.5 py-1 rounded-lg bg-[#E62E04] hover:bg-[#D02600] text-white font-black text-[10px]'
+                    : 'px-2.5 py-1 rounded-lg bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 font-black text-[10px]'}
                 >
-                  Ver en M. Libre ↗
-                </a>
-                <a href={deal.guideUrl} class="text-[10px] text-slate-400 hover:text-white underline">
-                  Detalles
+                  {box.btnText} ↗
                 </a>
               </div>
             </div>
           </div>
         ))}
       </div>
-    </div>
+    </details>
   </section>
 
-    <!-- ======================================================================= -->
-  <!-- 2.5 SECCIÓN VIRAL: LO MÁS BUSCADO DE TIKTOK Y REDES EN CHILE            -->
   <!-- ======================================================================= -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-b border-slate-800/70">
-    <div class="p-6 sm:p-10 rounded-3xl bg-gradient-to-br from-rose-950/40 via-slate-900 to-purple-950/40 border-2 border-rose-500/30 shadow-2xl relative overflow-hidden">
-      <!-- Glow decorativo -->
-      <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-rose-500/10 blur-3xl pointer-events-none"></div>
-
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 relative z-10">
-        <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-black uppercase tracking-wider mb-2">
-            <span class="w-2 h-2 rounded-full bg-rose-400 animate-ping"></span>
-            <span>🔥 Tendencias TikTok e Internet Chile</span>
-          </div>
-          <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
-            Los Gadgets y Monos Virales que la Rompen en Redes
-          </h2>
-          <p class="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl">
-            Desde el lagarto verde de tablero hasta el proyector de techo para Netflix: reunimos lo viral y te damos los enlaces directos a las tiendas oficiales, para que no pagues de más en tiendas dudosas.
-          </p>
-        </div>
+  <!-- 3. EXPLORAR POR TEMA (GRID COMPACTO 2x3 EN CELULAR)                     -->
+  <!-- ======================================================================= -->
+  <section class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 py-7 sm:py-10 border-b border-slate-800/70">
+    <h2 class="text-base sm:text-xl font-black text-white tracking-tight mb-4">
+      Explorar por Categoría
+    </h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-3">
+      {categories.map((cat) => (
         <a
-          href="/virales/"
-          class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-gradient-to-r from-rose-600 to-fuchsia-600 hover:from-rose-500 hover:to-fuchsia-500 text-white text-xs font-black shadow-lg shadow-rose-900/40 transition-all shrink-0"
+          href={cat.href}
+          class="p-3 rounded-2xl bg-surface-card border border-slate-800 hover:border-brand-500/60 flex items-center sm:flex-col sm:text-center gap-2.5 sm:gap-1.5 transition-all group"
         >
-          <span>Ver Catálogo Completo de Virales</span>
-          <span>→</span>
+          <span class="text-xl sm:text-2xl shrink-0">{cat.icon}</span>
+          <div class="min-w-0">
+            <span class="block text-xs sm:text-sm font-extrabold text-white group-hover:text-brand-300 truncate">{cat.name}</span>
+            <span class="block text-[10px] text-slate-400 truncate">{cat.sub}</span>
+          </div>
         </a>
-      </div>
-
-      <!-- Grilla de 4 Tarjetas Virales -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 relative z-10">
-        {viralHighlights.map((v) => (
-          <div class="rounded-2xl bg-surface-card/90 border border-slate-800 hover:border-rose-500/50 p-4 sm:p-5 flex flex-col justify-between shadow-xl transition-all hover:-translate-y-1 group">
-            <div>
-              <div class="relative aspect-square rounded-xl bg-white p-3 overflow-hidden mb-3 border border-slate-700/60">
-                <Image
-                  src={v.image}
-                  alt={v.title}
-                  width={300}
-                  height={300}
-                  format="webp"
-                  quality={85}
-                  class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                />
-                <span class={`absolute top-2 left-2 px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wide shadow ${v.badgeClass}`}>
-                  {v.badge}
-                </span>
-              </div>
-
-              <h3 class="text-sm font-extrabold text-white leading-snug mb-2 group-hover:text-rose-300 transition-colors">
-                <a href={v.detailUrl}>{v.title}</a>
-              </h3>
-              <p class="text-xs text-slate-300 leading-relaxed mb-4">
-                {v.hook}
-              </p>
-            </div>
-
-            <div class="space-y-2 pt-3 border-t border-slate-800/80">
-              <div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center justify-between">
-                <span class="text-[10px] uppercase font-bold text-slate-400">Precios Ref:</span>
-                <span class="text-xs font-mono font-black text-emerald-400">
-                  {v.priceAli ? `${v.priceAli} - ${v.priceMeli}` : v.priceMeli}
-                </span>
-              </div>
-
-              <div class="grid grid-cols-1 gap-1.5">
-                {v.meliUrl && (
-                  <a
-                    href={v.meliUrl}
-                    target="_blank"
-                    rel="nofollow sponsored noopener noreferrer"
-                    class="w-full inline-flex items-center justify-between px-3 py-2 rounded-xl bg-[#FFE600] hover:bg-[#F5D600] text-slate-950 font-black text-xs shadow-sm transition-transform hover:scale-[1.01]"
-                  >
-                    <span>Comprar en M. Libre (24h)</span>
-                    <span class="font-bold">↗</span>
-                  </a>
-                )}
-                {v.aliUrl && (
-                  <a
-                    href={v.aliUrl}
-                    target="_blank"
-                    rel="nofollow sponsored noopener noreferrer"
-                    class="w-full inline-flex items-center justify-between px-3 py-2 rounded-xl bg-[#E62E04] hover:bg-[#D02600] text-white font-black text-xs shadow-sm transition-transform hover:scale-[1.01]"
-                  >
-                    <span>Comprar en AliExpress ({v.priceAli})</span>
-                    <span class="font-bold">↗</span>
-                  </a>
-                )}
-              </div>
-
-              <a
-                href={v.detailUrl}
-                class="block w-full text-center py-1.5 text-[11px] text-slate-400 hover:text-white underline transition-colors"
-              >
-                Ver review y detalles completos →
-              </a>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-<!-- ======================================================================= -->
-  <!-- 3. SELECTOR RÁPIDO INTERACTIVO: "¿QUÉ NECESITAS RESOLVER HOY?"          -->
-  <!-- ======================================================================= -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="bg-surface-card border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-xl">
-      <div class="max-w-2xl mb-8">
-        <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 block mb-1">Soluciones en 1 Clic</span>
-        <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
-          ¿Qué estás buscando para tu casa o dormitorio hoy?
-        </h2>
-        <p class="text-xs sm:text-sm text-slate-400 mt-1">
-          Elige tu caso y entra directo a la guía con los productos seleccionados y enlaces de compra:
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {quickNeeds.map((item) => (
-          <a
-            href={item.link}
-            class="p-5 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-brand-500/60 hover:bg-slate-900 transition-all flex items-start gap-4 group"
-          >
-            <span class="text-2xl p-2.5 bg-slate-800/80 rounded-xl border border-slate-700/50 group-hover:scale-110 transition-transform shrink-0">
-              {item.icon}
-            </span>
-            <div>
-              <h3 class="text-sm font-bold text-white group-hover:text-brand-300 transition-colors mb-1">
-                {item.question}
-              </h3>
-              <p class="text-xs text-slate-400 leading-relaxed">
-                {item.solution}
-              </p>
-            </div>
-          </a>
-        ))}
-      </div>
+      ))}
     </div>
   </section>
 
   <!-- ======================================================================= -->
-  <!-- 4. TODAS LAS GUÍAS, COMPARATIVAS Y PICADAS RECIENTES                    -->
+  <!-- 4. GUÍAS RECIENTES (6 DESTACADAS + ARCHIVO PLEGABLE PARA CERO BLOAT)    -->
   <!-- ======================================================================= -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="flex items-center justify-between mb-8">
+  <section class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 py-8 sm:py-12">
+    <div class="flex items-end justify-between gap-2 mb-5">
       <div>
-        <span class="text-xs font-bold uppercase tracking-wider text-brand-400 block mb-1">Catálogo Completo</span>
-        <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">Últimas Guías de Compra, Reviews y Tutoriales</h2>
-        <p class="text-xs sm:text-sm text-slate-400">Análisis independientes con precios en pesos chilenos y enlaces verificados</p>
+        <span class="text-[11px] font-bold uppercase tracking-wider text-brand-400 block">Guías Técnicas Chile</span>
+        <h2 class="text-lg sm:text-2xl font-black text-white tracking-tight">Últimas Guías y Comparativas</h2>
       </div>
-      <span class="text-xs font-semibold text-brand-400 hidden sm:inline-block">
-        {featuredArticles.length} guías publicadas
-      </span>
+      <span class="text-[11px] text-slate-400 font-semibold shrink-0">{sortedArticles.length} guías</span>
     </div>
 
-    <!-- BANNER DESTACADO CLÚSTER CELULARES CALIDAD-PRECIO -->
-    <div class="mb-8 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-indigo-950/70 via-slate-900 to-slate-900 border border-indigo-500/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-xl">
-      <div class="flex items-center gap-3">
-        <span class="text-3xl">📱</span>
-        <div>
-          <div class="flex items-center gap-2 mb-1">
-            <span class="px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-[10px] font-black uppercase tracking-wider">Nuevo Nicho · Celulares 2026</span>
-            <span class="text-[11px] text-emerald-400 font-bold">✓ Envío Full en Chile</span>
-          </div>
-          <h3 class="text-sm sm:text-base font-extrabold text-white mb-0.5">
-            Los 5 Mejores Celulares Calidad-Precio en Chile (Buenos y Baratos)
-          </h3>
-          <p class="text-xs text-slate-400 m-0">
-            Comparamos Xiaomi Poco C85 (&lt;$150k), Redmi Note 13 Pro 5G, Galaxy A57 y Galaxy S26 con NFC para Bip! y Smart View para TV.
-          </p>
-          <div class="pt-1">
-            <a href="/accesorios/instalacion-internet-satelital-rural-chile-redes-parcelas/" class="text-xs font-bold text-sky-400 hover:text-sky-300 underline inline-flex items-center gap-1">
-              <span>📡 Ver proyectos de internet satelital rural llave en mano</span>
-              <span>→</span>
-            </a>
-          </div>
-        </div>
-      </div>
-      <a
-        href="/accesorios/mejores-celulares-calidad-precio-baratos-chile/"
-        class="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-black text-xs transition-all whitespace-nowrap shadow-md shrink-0 flex items-center gap-1.5"
-      >
-        <span>Ver Ranking Celulares</span>
-        <span>→</span>
-      </a>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-      {featuredArticles.map((article) => {
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
+      {latestGuides.map((article) => {
         const slug = article.id.replace(/\.(md|mdx)$/, '');
         const heroEntry = Object.entries(allHeroes).find(([filePath]) =>
           filePath.includes(`/${slug}/hero.`)
@@ -1541,60 +589,46 @@ const quickNeeds = [
         const heroImage = heroEntry ? heroEntry[1].default : null;
 
         return (
-          <article class="flex flex-col bg-surface-card border border-slate-800 rounded-2xl overflow-hidden hover:border-brand-500/50 hover:shadow-2xl hover:shadow-brand-500/10 transition-all duration-300 group">
-            <a href={`/${article.data.category}/${slug}/`} class="block relative aspect-video overflow-hidden bg-slate-900 border-b border-slate-800">
+          <article class="flex flex-row md:flex-col bg-surface-card border border-slate-800 rounded-2xl overflow-hidden hover:border-brand-500/50 transition-all group">
+            <a href={`/${article.data.category}/${slug}/`} class="block relative w-28 sm:w-36 md:w-full aspect-[4/3] md:aspect-video shrink-0 overflow-hidden bg-slate-900">
               {heroImage ? (
                 <Image
                   src={heroImage}
                   alt={article.data.title}
-                  width={600}
-                  height={338}
+                  width={480}
+                  height={270}
                   format="webp"
-                  quality={85}
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                  quality={82}
                   loading="lazy"
                   decoding="async"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               ) : (
-                <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-900 to-slate-950 text-slate-700">
-                  <span class="text-4xl">📺</span>
-                </div>
+                <div class="w-full h-full flex items-center justify-center bg-slate-900 text-2xl">📺</div>
               )}
-              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-60"></div>
-              <span class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-md border border-slate-800 text-brand-400 text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-md">
+              <span class="hidden md:inline-block absolute top-2.5 left-2.5 bg-slate-950/85 border border-slate-800 text-brand-400 text-[10px] font-bold uppercase px-2 py-0.5 rounded-full">
                 {article.data.categoryName}
               </span>
             </a>
 
-            <div class="p-6 flex-1 flex flex-col justify-between">
+            <div class="p-3 sm:p-4 flex-1 min-w-0 flex flex-col justify-between gap-1.5">
               <div>
-                <div class="flex items-center justify-between text-xs text-slate-400 mb-2.5">
-                  <span class="text-slate-400 flex items-center gap-1">
-                    <span>📅</span>
-                    <time datetime={article.data.publishDate}>{article.data.publishDate}</time>
-                  </span>
-                  <span class="text-slate-400 flex items-center gap-1">
-                    <span>⏱️</span>
-                    <span>{article.data.readTime}</span>
-                  </span>
-                </div>
-                <h3 class="text-lg font-bold text-white group-hover:text-brand-300 transition-colors mb-3 leading-snug line-clamp-2">
+                <span class="md:hidden text-[10px] font-bold uppercase text-brand-400 block mb-0.5">
+                  {article.data.categoryName}
+                </span>
+                <h3 class="text-xs sm:text-sm md:text-base font-bold text-white group-hover:text-brand-300 transition-colors leading-snug line-clamp-2">
                   <a href={`/${article.data.category}/${slug}/`}>
                     {article.data.title}
                   </a>
                 </h3>
-                <p class="text-slate-400 text-xs leading-relaxed mb-4 line-clamp-3">
+                <p class="hidden md:block text-slate-400 text-xs leading-relaxed mt-1.5 line-clamp-2">
                   {article.data.description}
                 </p>
               </div>
-              <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
-                <span class="text-[11px] text-emerald-400 font-semibold">✓ Precios Chile 2026</span>
-                <a
-                  href={`/${article.data.category}/${slug}/`}
-                  class="inline-flex items-center gap-1 font-extrabold text-brand-400 group-hover:text-brand-300 transition-colors"
-                >
-                  <span>Ver detalles y ofertas</span>
-                  <span class="group-hover:translate-x-1 transition-transform">→</span>
+              <div class="flex items-center justify-between text-[11px] text-slate-400 pt-1">
+                <span>⏱️ {article.data.readTime}</span>
+                <a href={`/${article.data.category}/${slug}/`} class="font-bold text-brand-400 hover:text-brand-300">
+                  Leer →
                 </a>
               </div>
             </div>
@@ -1602,78 +636,72 @@ const quickNeeds = [
         );
       })}
     </div>
+
+    <!-- Resto del catálogo plegable (mantiene 100% SEO sin alargar el scroll en celular) -->
+    {archiveGuides.length > 0 && (
+      <details class="mt-5 rounded-2xl bg-slate-900/70 border border-slate-800 p-4 group">
+        <summary class="flex items-center justify-between gap-2 cursor-pointer list-none select-none text-xs sm:text-sm font-extrabold text-brand-300 hover:text-white">
+          <span>📚 Ver todas las guías publicadas ({archiveGuides.length} artículos más)</span>
+          <span class="text-xs group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <ul class="mt-4 pt-3 border-t border-slate-800 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 text-xs">
+          {archiveGuides.map((article) => {
+            const slug = article.id.replace(/\.(md|mdx)$/, '');
+            return (
+              <li>
+                <a
+                  href={`/${article.data.category}/${slug}/`}
+                  class="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-slate-950/70 border border-slate-800/80 hover:border-brand-500/50 text-slate-200 hover:text-white transition-colors"
+                >
+                  <span class="line-clamp-1 font-medium">{article.data.title}</span>
+                  <span class="text-brand-400 shrink-0">→</span>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </details>
+    )}
   </section>
 
-  <!-- ESPACIO PUBLICITARIO PROGRAMÁTICO -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- ESPACIO PUBLICITARIO -->
+  <div class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
     <AdSlot format="banner" label="Espacio Patrocinado" />
   </div>
 
   <!-- ======================================================================= -->
-  <!-- 5. SERVICIO TÉCNICO EN EL BIOBÍO (UBICADO AL CIERRE COMO COMPLEMENTO)   -->
+  <!-- 5. CIERRE COMPACTO: CONTACTO Y SOPORTE BIOBÍO                           -->
   <!-- ======================================================================= -->
-  <section id="servicio-tecnico" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="rounded-3xl bg-gradient-to-r from-slate-900 via-slate-900/90 to-indigo-950/40 border border-slate-800 p-8 sm:p-10 relative overflow-hidden shadow-xl">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        <div class="lg:col-span-8 space-y-4">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-950/80 border border-brand-800/50 text-brand-300 text-xs font-semibold uppercase tracking-wider">
-            <span>🛠️ Instalación Presencial · Región del Biobío</span>
-          </div>
-          <h2 class="text-xl sm:text-3xl font-black text-white tracking-tight leading-snug">
-            ¿Vives en el Gran Concepción o Biobío y necesitas instalación a domicilio?
-          </h2>
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            Además de nuestras guías y comparativas para todo Chile, realizamos <strong>proyectos de internet satelital llave en mano en hogares y parcelas (individual o compartido con vecinos), instalación de antenas TVD HD y montaje de soportes de TV</strong> en Coronel, San Pedro de la Paz, Concepción, Florida, Yumbel, Santa Juana, Quillón, Talcahuano y Los Ángeles, a cargo de la <strong>administración técnica de HogarTV</strong>.
-          </p>
-        </div>
-        <div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3">
-          <a
-            href="/contacto/"
-            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm shadow-lg shadow-brand-600/30 transition-all"
-          >
-            <span>✉️</span> Solicitar Visita / Cotización
-          </a>
-          <a
-            href="/sobre-nosotros/"
-            class="w-full inline-flex items-center justify-center px-4 py-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 font-semibold text-xs border border-slate-700 transition-colors"
-          >
-            Conocer experiencia técnica →
-          </a>
-        </div>
+  <section id="servicio-tecnico" class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 pt-4 pb-6">
+    <div class="rounded-3xl bg-gradient-to-r from-slate-900 via-slate-900 to-emerald-950/30 border border-slate-800 p-5 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-xl">
+      <div class="space-y-1.5">
+        <span class="text-[11px] font-black uppercase tracking-wider text-emerald-400 block">🛠️ Región del Biobío</span>
+        <h2 class="text-lg sm:text-2xl font-black text-white leading-snug">
+          ¿Necesitas instalación de Starlink, redes o antena TVD en tu hogar?
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-300 max-w-2xl">
+          Atendemos en Coronel, San Pedro de la Paz, Concepción, Yumbel, Florida, Santa Juana y alrededores a cargo de la administración técnica de HogarTV.
+        </p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-2.5 w-full md:w-auto shrink-0">
+        <a
+          href={waStarlinkUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs sm:text-sm shadow-lg transition-all"
+        >
+          <span>📲 WhatsApp HogarTV</span>
+        </a>
+        <a
+          href="/contacto/"
+          class="inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 font-bold text-xs transition-colors"
+        >
+          <span>✉️ Formulario Web</span>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- ======================================================================= -->
-  <!-- 6. PREGUNTAS FRECUENTES (SEO ORGÁNICO)                                  -->
-  <!-- ======================================================================= -->
-  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-    <FAQSection
-      title="Preguntas Frecuentes sobre Smart TVs, Proyectores y Canales HD en Chile"
-      items={[
-        {
-          question: "¿Vale la pena comprar el mini proyector Magcubic HY320 en vez de un televisor para la pieza?",
-          answer: "Si tu objetivo es ver películas, series o fútbol de noche o con cortinas cerradas ahorrando espacio y dinero, el Magcubic HY320 ofrece una pantalla de 100 a 130 pulgadas en resolución Full HD 1080p nativa por menos de $60.000 CLP en Chile. Si en cambio necesitas ver televisión a pleno día con luz solar directa entrando por la ventana, un televisor LED o QLED tradicional de 40, 43 o 50 pulgadas será más adecuado."
-        },
-        {
-          question: "¿Cómo convertir una tele antigua en Smart TV para ver Netflix, YouTube o Zapping?",
-          answer: "Solo debes conectar un dispositivo de streaming al puerto HDMI, como el Xiaomi TV Box S (2nd Gen) 4K, Roku Express 4K o Google Chromecast con Google TV. Estos aparatos incluyen control remoto propio, conexión WiFi de doble banda y actualizan de forma instantánea cualquier pantalla antigua con las aplicaciones chilenas más recientes."
-        },
-        {
-          question: "¿Cómo ver canales nacionales en Full HD gratis sin pagar cable?",
-          answer: "Solo necesitas un televisor con sintonizador digital (norma chilena ISDB-Tb) y conectar una antena para TV digital abierta (UHF) a la entrada coaxial. Luego seleccionas la opción de sintonización automática para captar Canal 13, TVN, Chilevisión, Mega, La Red y canales regionales con calidad 1080p sin pagar mensualidades."
-        },
-        {
-          question: "¿Cuál es la mejor alternativa para ver fútbol chileno (TNT Sports) por internet?",
-          answer: "Servicios de streaming legal como Zapping TV y DGO (DirecTV GO) permiten contratar TNT Sports Premium sin contratos de permanencia ni cobros de arriendo por decodificador. Zapping destaca por su Modo Turbo con baja latencia para evitar spoilers de goles, mientras que DGO ofrece señales deportivas exclusivas de DSPORTS."
-        },
-        {
-          question: "¿Es seguro comprar televisores y gadgets por Mercado Libre y Falabella desde sus enlaces?",
-          answer: "Sí, absolutamente. En HogarTV.cl seleccionamos exclusivamente enlaces hacia tiendas oficiales y vendedores verificados con Compra Protegida en Mercado Libre Chile, Falabella y AliExpress Choice, garantizando despacho a domicilio en todo el país y respaldo ante cualquier eventualidad."
-        }
-      ]}
-    />
-  </section>
-
+  <!-- LocalBusiness Schema JSON-LD -->
   <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
 </BaseLayout>

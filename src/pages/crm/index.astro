@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import hogarTvLogo from '../../assets/brand/hogartv-logo.png';
 ---
 
 <BaseLayout
@@ -12,8 +14,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <div id="login-view" class="flex min-h-[85vh] items-center justify-center px-4 py-12">
       <div class="w-full max-w-md p-8 rounded-3xl bg-surface-card border border-slate-700/80 shadow-2xl space-y-6">
         <div class="text-center space-y-2">
-          <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-600 to-indigo-600 text-white shadow-lg shadow-brand-500/25 mb-2">
-            <span class="text-2xl font-black">H</span>
+          <div class="inline-flex items-center justify-center mb-2">
+            <Image src={hogarTvLogo} alt="Logo oficial HogarTV.cl" width={64} height={64} format="webp" loading="eager" class="w-16 h-16 rounded-full object-contain drop-shadow-lg" />
           </div>
           <h1 class="text-2xl font-black text-white tracking-tight">HogarTV CRM</h1>
           <p class="text-xs text-slate-400">
@@ -79,9 +81,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       <header class="sticky top-0 z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 px-4 sm:px-6 lg:px-8 py-3.5">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <div class="flex items-center gap-3">
-            <div class="flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-600 text-white font-black text-base shadow-md">
-              H
-            </div>
+            <Image src={hogarTvLogo} alt="Logo HogarTV.cl" width={40} height={40} format="webp" loading="lazy" class="w-10 h-10 rounded-full object-contain shrink-0" />
             <div>
               <div class="flex items-center gap-2">
                 <span class="text-base font-extrabold text-white tracking-tight">HogarTV CRM</span>

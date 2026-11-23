@@ -20,10 +20,10 @@ import FAQSection from '../../components/FAQSection.astro';
 
 <div class="my-5 rounded-3xl overflow-hidden border-2 border-emerald-500/40 bg-slate-900 shadow-2xl not-prose">
   {/* Imagen Hero 16:9 con Badges Flotantes */}
-  <div class="relative aspect-[16/9] w-full overflow-hidden bg-slate-950">
+  <div class="relative aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden bg-slate-950">
     <Image
       src={heroImage}
-      alt="Instalación profesional de antena satelital en parcela rural de la Región del Biobío, Chile"
+      alt="Instalación profesional de antena satelital en hogar y parcela de la Región del Biobío, Chile"
       width={1000}
       height={563}
       format="webp"
@@ -32,30 +32,30 @@ import FAQSection from '../../components/FAQSection.astro';
       loading="eager"
       fetchpriority="high"
     />
-    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent"></div>
 
-    <div class="absolute top-3.5 left-3.5 right-3.5 flex flex-wrap items-center justify-between gap-2">
-      <span class="px-3 py-1 rounded-full bg-emerald-500 text-slate-950 text-xs font-black uppercase tracking-wider shadow-lg">
-        📍 Servicio en Terreno · Región del Biobío
+    <div class="absolute top-2.5 left-2.5 right-2.5 sm:top-3.5 sm:left-3.5 sm:right-3.5 flex flex-wrap items-center justify-between gap-1.5">
+      <span class="px-2.5 py-1 rounded-full bg-emerald-500 text-slate-950 text-[10px] sm:text-xs font-black uppercase tracking-wider shadow-lg">
+        📍 Terreno · Región del Biobío
       </span>
-      <span class="px-3 py-1 rounded-full bg-slate-950/90 border border-sky-400/50 text-sky-300 text-xs font-mono font-bold shadow-lg">
-        ⚡ 100 a 250 Mbps Reales
+      <span class="px-2.5 py-1 rounded-full bg-slate-950/90 border border-sky-400/50 text-sky-300 text-[10px] sm:text-xs font-mono font-bold shadow-lg">
+        ⚡ 100 a 250 Mbps
       </span>
     </div>
 
-    <div class="absolute bottom-3 left-4 right-4 sm:bottom-5 sm:left-6 sm:right-6">
-      <span class="text-emerald-400 text-xs font-black uppercase tracking-wider block mb-1">
-        Conectividad de Alta Velocidad para Parcelas y Zonas Rurales
+    <div class="absolute bottom-2.5 left-3 right-3 sm:bottom-5 sm:left-6 sm:right-6">
+      <span class="text-emerald-400 text-[10px] sm:text-xs font-black uppercase tracking-wider block mb-0.5 sm:mb-1">
+        Internet Satelital para Hogares y Parcelas
       </span>
-      <h2 class="text-xl sm:text-2xl md:text-3xl font-black text-white leading-tight drop-shadow-md m-0">
-        Instalación Profesional de Internet Satelital en la 8ª Región
+      <h2 class="text-lg sm:text-2xl md:text-3xl font-black text-white leading-tight drop-shadow-md m-0">
+        Instalación Profesional de Starlink en la 8ª Región
       </h2>
     </div>
   </div>
 
   {/* Resumen Directo y Botones de Acción */}
-  <div class="p-5 sm:p-7 bg-gradient-to-b from-slate-900 to-slate-950 space-y-5">
-    <div class="border-l-4 border-emerald-500 pl-4 py-0.5">
+  <div class="p-4 sm:p-7 bg-gradient-to-b from-slate-900 to-slate-950 space-y-4 sm:space-y-5">
+    <div class="border-l-4 border-emerald-500 pl-3.5 sm:pl-4 py-0.5">
       <h3 class="text-base sm:text-lg font-black text-white m-0">
         ¿Vives en un hogar o parcela del Biobío donde no llega la fibra y el 4G se satura por las tardes?
       </h3>
@@ -64,26 +64,26 @@ import FAQSection from '../../components/FAQSection.astro';
       </p>
     </div>
 
-    <div class="flex flex-col sm:flex-row items-center gap-3 pt-1">
+    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 pt-1">
       <a
         href="https://wa.me/56931926886?text=Hola%20HogarTV,%20quiero%20consultar%20por%20la%20instalaci%C3%B3n%20de%20Starlink%20o%20redes%20en%20mi%20hogar%20en%20el%20Biob%C3%ADo."
         target="_blank"
         rel="noopener noreferrer"
-        class="w-full sm:w-auto flex-1 py-3.5 px-6 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-center text-xs sm:text-sm uppercase tracking-wider shadow-lg shadow-emerald-500/25 transition-all flex items-center justify-center gap-2"
+        class="w-full sm:w-auto flex-1 py-3 px-4 sm:px-6 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-center text-xs sm:text-sm uppercase tracking-wide shadow-lg shadow-emerald-500/25 transition-all flex items-center justify-center gap-2"
       >
-        <span>📲 Consultar Factibilidad por WhatsApp (+56 9 3192 6886)</span>
+        <span>📲 Cotizar por WhatsApp</span>
       </a>
       <a
         href="#guia-facil"
-        class="w-full sm:w-auto py-3.5 px-5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-center text-xs transition-colors"
+        class="w-full sm:w-auto py-3 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-center text-xs transition-colors"
       >
         Ver Guía Fácil ↓
       </a>
       <a
         href="#modalidades-servicio"
-        class="w-full sm:w-auto py-3.5 px-5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-emerald-300 border border-emerald-500/30 font-bold text-center text-xs transition-colors"
+        class="w-full sm:w-auto py-3 px-4 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-emerald-300 border border-emerald-500/30 font-bold text-center text-xs transition-colors"
       >
-        Modalidades y Cotización ↓
+        Modalidades ↓
       </a>
     </div>
 
@@ -329,12 +329,33 @@ Una duda común al compartir internet con un vecino es: **¿Qué ocurre si una c
 
 El enlace se configura con un **administrador de red y control de tráfico equitativo (50/50)** que separa y protege el ancho de banda de cada hogar:
 
-```mermaid
-flowchart TD
-    SAT["Antena Satelital en Altura<br>(Recepción 150-250 Mbps)"] --> ADM["Administrador de Red y Tráfico<br>(Control Equitativo 50/50)"]
-    ADM -->|"Enlace Casa 1"| R1["Router Wi-Fi 6 Casa A<br>(Nombre Wi-Fi y Clave Propia)"]
-    ADM -->|"Cable UTP UV o Fibra Drop"| R2["Router Wi-Fi 6 Casa B<br>(Nombre Wi-Fi y Clave Propia)"]
-```
+<div class="my-6 p-4 sm:p-6 rounded-2xl bg-slate-950/90 border border-slate-800 not-prose">
+  <p class="text-[11px] font-black uppercase tracking-wider text-emerald-400 text-center mb-4">Esquema de Conexión Compartida 50/50</p>
+  <div class="flex flex-col items-center gap-2.5 max-w-xl mx-auto">
+    <div class="w-full p-3.5 rounded-xl bg-sky-950/50 border border-sky-500/40 text-center">
+      <div class="text-xs sm:text-sm font-black text-white">📡 Antena Satelital en Altura</div>
+      <div class="text-[11px] text-sky-300">Recepción 150–250 Mbps sin obstrucciones</div>
+    </div>
+    <div class="text-slate-500 font-bold text-sm leading-none">↓</div>
+    <div class="w-full p-3.5 rounded-xl bg-emerald-950/40 border border-emerald-500/50 text-center">
+      <div class="text-xs sm:text-sm font-black text-white">⚙️ Administrador de Red y Tráfico</div>
+      <div class="text-[11px] text-emerald-300">Control equitativo 50/50 + redes aisladas</div>
+    </div>
+    <div class="text-slate-500 font-bold text-sm leading-none">↙ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↘</div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full">
+      <div class="p-3.5 rounded-xl bg-slate-900 border border-slate-700 text-center">
+        <div class="text-[10px] font-bold uppercase text-brand-300 mb-0.5">Enlace Casa 1</div>
+        <div class="text-xs font-extrabold text-white">📶 Router Wi-Fi 6 Casa A</div>
+        <div class="text-[11px] text-slate-400">Nombre Wi-Fi y clave propia</div>
+      </div>
+      <div class="p-3.5 rounded-xl bg-slate-900 border border-slate-700 text-center">
+        <div class="text-[10px] font-bold uppercase text-amber-300 mb-0.5">UTP Blindado UV o Fibra Drop</div>
+        <div class="text-xs font-extrabold text-white">📶 Router Wi-Fi 6 Casa B</div>
+        <div class="text-[11px] text-slate-400">Nombre Wi-Fi y clave propia</div>
+      </div>
+    </div>
+  </div>
+</div>
 
 * **Velocidad Asegurada:** Si la antena recibe 200 Mbps, cada vivienda dispone de 100 Mbps garantizados sin que el consumo de una afecte a la otra.
 * **Prioridad para Video y Llamadas:** El tráfico de videollamadas (WhatsApp, Zoom, Teams) y televisión en vivo tiene prioridad automática sobre las descargas de archivos pesados.

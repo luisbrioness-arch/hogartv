@@ -1,7 +1,6 @@
 ---
 import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import StoreLogo from '../../components/StoreLogo.astro';
 import afiliadosData from '../../data/afiliados.json';
 
 import hogarTvLogo from '../../assets/brand/hogartv-logo.png';
@@ -456,60 +455,60 @@ const faqSchema = {
             <div class="space-y-2.5 pt-3 border-t border-slate-100">
               <p class="text-[11px] font-bold uppercase tracking-wider text-slate-500 m-0">Modelos recomendados en Chile:</p>
 
-              <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/90 space-y-2">
+              <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/90 space-y-2.5">
                 <div class="flex items-center justify-between gap-2">
                   <span class="text-xs font-extrabold text-[#0F1824]">Starlink Mini (Compacta)</span>
                   <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#26C6F5]/15 text-[#0369A1]">Ideal cabaña</span>
                 </div>
-                <div class="grid grid-cols-2 gap-1.5">
+                <div class="grid grid-cols-2 gap-2">
                   <a
                     href={afiliadosData['starlink-mini-kit'].url}
                     target="_blank"
                     rel="nofollow sponsored noopener noreferrer"
-                    aria-label="Ver Starlink Mini en Mercado Libre Chile"
-                    class="min-h-[40px] inline-flex items-center justify-center gap-1 px-2 py-1.5 rounded-xl bg-[#FFE600] hover:bg-[#f5d600] text-[#0F1824] font-black text-[11px] transition-colors"
+                    aria-label="Ver precio de Starlink Mini en Mercado Libre Chile"
+                    class="min-h-[48px] flex flex-col items-center justify-center px-2.5 py-2 rounded-xl bg-[#FFE600] hover:bg-[#f2d600] active:translate-y-0.5 text-[#0F1824] border border-[#CBB300] shadow-[0_3px_0_#CBB300] transition-all text-center"
                   >
-                    <StoreLogo network="mercadolibre" class="h-4" />
-                    <span aria-hidden="true">↗</span>
+                    <span class="text-[10px] font-bold leading-none opacity-80">Ver precio en</span>
+                    <span class="text-xs font-black leading-tight mt-0.5">Mercado Libre <span aria-hidden="true">↗</span></span>
                   </a>
                   <a
                     href={afiliadosData['falabella-starlink-mini'].url}
                     target="_blank"
                     rel="nofollow sponsored noopener noreferrer"
-                    aria-label="Ver Starlink Mini en Falabella Chile"
-                    class="min-h-[40px] inline-flex items-center justify-center gap-1 px-2 py-1.5 rounded-xl bg-white hover:bg-slate-100 text-[#0F1824] border border-[#8FCA00] font-bold text-[11px] transition-colors"
+                    aria-label="Ver precio de Starlink Mini en Falabella Chile"
+                    class="min-h-[48px] flex flex-col items-center justify-center px-2.5 py-2 rounded-xl bg-[#A8D400] hover:bg-[#97c000] active:translate-y-0.5 text-[#0F1824] border border-[#799B00] shadow-[0_3px_0_#799B00] transition-all text-center"
                   >
-                    <StoreLogo network="falabella" class="h-4" />
-                    <span aria-hidden="true">↗</span>
+                    <span class="text-[10px] font-bold leading-none opacity-80">Ver precio en</span>
+                    <span class="text-xs font-black leading-tight mt-0.5">Falabella.com <span aria-hidden="true">↗</span></span>
                   </a>
                 </div>
               </div>
 
-              <div class="p-3 rounded-2xl bg-slate-50 border border-[#FF7010]/40 space-y-2">
+              <div class="p-3 rounded-2xl bg-slate-50 border border-[#FF7010]/40 space-y-2.5">
                 <div class="flex items-center justify-between gap-2">
                   <span class="text-xs font-extrabold text-[#0F1824]">Starlink Estándar 4 X (Gen 3)</span>
                   <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#FF7010]/15 text-[#C2410C]">Más potente</span>
                 </div>
-                <div class="grid grid-cols-2 gap-1.5">
+                <div class="grid grid-cols-2 gap-2">
                   <a
                     href={afiliadosData['starlink-estandar-gen3'].url}
                     target="_blank"
                     rel="nofollow sponsored noopener noreferrer"
-                    aria-label="Ver Starlink Estándar 4 X en Mercado Libre Chile"
-                    class="min-h-[40px] inline-flex items-center justify-center gap-1 px-2 py-1.5 rounded-xl bg-[#FFE600] hover:bg-[#f5d600] text-[#0F1824] font-black text-[11px] transition-colors"
+                    aria-label="Ver precio de Starlink Estándar 4 X en Mercado Libre Chile"
+                    class="min-h-[48px] flex flex-col items-center justify-center px-2.5 py-2 rounded-xl bg-[#FFE600] hover:bg-[#f2d600] active:translate-y-0.5 text-[#0F1824] border border-[#CBB300] shadow-[0_3px_0_#CBB300] transition-all text-center"
                   >
-                    <StoreLogo network="mercadolibre" class="h-4" />
-                    <span aria-hidden="true">↗</span>
+                    <span class="text-[10px] font-bold leading-none opacity-80">Ver precio en</span>
+                    <span class="text-xs font-black leading-tight mt-0.5">Mercado Libre <span aria-hidden="true">↗</span></span>
                   </a>
                   <a
                     href={afiliadosData['falabella-starlink-gen3'].url}
                     target="_blank"
                     rel="nofollow sponsored noopener noreferrer"
-                    aria-label="Ver Starlink Estándar 4 X en Falabella Chile"
-                    class="min-h-[40px] inline-flex items-center justify-center gap-1 px-2 py-1.5 rounded-xl bg-white hover:bg-slate-100 text-[#0F1824] border border-[#8FCA00] font-bold text-[11px] transition-colors"
+                    aria-label="Ver precio de Starlink Estándar 4 X en Falabella Chile"
+                    class="min-h-[48px] flex flex-col items-center justify-center px-2.5 py-2 rounded-xl bg-[#A8D400] hover:bg-[#97c000] active:translate-y-0.5 text-[#0F1824] border border-[#799B00] shadow-[0_3px_0_#799B00] transition-all text-center"
                   >
-                    <StoreLogo network="falabella" class="h-4" />
-                    <span aria-hidden="true">↗</span>
+                    <span class="text-[10px] font-bold leading-none opacity-80">Ver precio en</span>
+                    <span class="text-xs font-black leading-tight mt-0.5">Falabella.com <span aria-hidden="true">↗</span></span>
                   </a>
                 </div>
               </div>
@@ -664,21 +663,21 @@ const faqSchema = {
                         href={afiliadosData['starlink-mini-kit'].url}
                         target="_blank"
                         rel="nofollow sponsored noopener noreferrer"
-                        aria-label="Comprar Starlink Mini en Mercado Libre Chile"
-                        class="min-h-[42px] inline-flex items-center justify-center gap-1.5 px-2.5 py-2 rounded-xl bg-[#FFE600] hover:bg-[#f5d600] text-[#0F1824] font-black text-[11px] transition-colors"
+                        aria-label="Ver precio de Starlink Mini en Mercado Libre Chile"
+                        class="min-h-[50px] flex flex-col items-center justify-center px-2.5 py-2 rounded-xl bg-[#FFE600] hover:bg-[#f2d600] active:translate-y-0.5 text-[#0F1824] border border-[#CBB300] shadow-[0_3px_0_#CBB300] transition-all text-center"
                       >
-                        <StoreLogo network="mercadolibre" class="h-4" />
-                        <span aria-hidden="true">↗</span>
+                        <span class="text-[10px] font-bold leading-none opacity-80">Ver precio en</span>
+                        <span class="text-xs font-black leading-tight mt-0.5">Mercado Libre <span aria-hidden="true">↗</span></span>
                       </a>
                       <a
                         href={afiliadosData['falabella-starlink-mini'].url}
                         target="_blank"
                         rel="nofollow sponsored noopener noreferrer"
-                        aria-label="Comprar Starlink Mini en Falabella Chile"
-                        class="min-h-[42px] inline-flex items-center justify-center gap-1.5 px-2.5 py-2 rounded-xl bg-white hover:bg-slate-100 text-[#0F1824] border border-[#8FCA00] font-bold text-[11px] transition-colors"
+                        aria-label="Ver precio de Starlink Mini en Falabella Chile"
+                        class="min-h-[50px] flex flex-col items-center justify-center px-2.5 py-2 rounded-xl bg-[#A8D400] hover:bg-[#97c000] active:translate-y-0.5 text-[#0F1824] border border-[#799B00] shadow-[0_3px_0_#799B00] transition-all text-center"
                       >
-                        <StoreLogo network="falabella" class="h-4" />
-                        <span aria-hidden="true">↗</span>
+                        <span class="text-[10px] font-bold leading-none opacity-80">Ver precio en</span>
+                        <span class="text-xs font-black leading-tight mt-0.5">Falabella.com <span aria-hidden="true">↗</span></span>
                       </a>
                     </div>
                   </td>
@@ -691,21 +690,21 @@ const faqSchema = {
                         href={afiliadosData['starlink-estandar-gen3'].url}
                         target="_blank"
                         rel="nofollow sponsored noopener noreferrer"
-                        aria-label="Comprar Starlink Kit Estándar 4 X en Mercado Libre Chile"
-                        class="min-h-[42px] inline-flex items-center justify-center gap-1.5 px-2.5 py-2 rounded-xl bg-[#FFE600] hover:bg-[#f5d600] text-[#0F1824] font-black text-[11px] transition-colors shadow-sm"
+                        aria-label="Ver precio de Starlink Kit Estándar 4 X en Mercado Libre Chile"
+                        class="min-h-[50px] flex flex-col items-center justify-center px-2.5 py-2 rounded-xl bg-[#FFE600] hover:bg-[#f2d600] active:translate-y-0.5 text-[#0F1824] border border-[#CBB300] shadow-[0_3px_0_#CBB300] transition-all text-center"
                       >
-                        <StoreLogo network="mercadolibre" class="h-4" />
-                        <span aria-hidden="true">↗</span>
+                        <span class="text-[10px] font-bold leading-none opacity-80">Ver precio en</span>
+                        <span class="text-xs font-black leading-tight mt-0.5">Mercado Libre <span aria-hidden="true">↗</span></span>
                       </a>
                       <a
                         href={afiliadosData['falabella-starlink-gen3'].url}
                         target="_blank"
                         rel="nofollow sponsored noopener noreferrer"
-                        aria-label="Comprar Starlink Kit Estándar 4 X en Falabella Chile"
-                        class="min-h-[42px] inline-flex items-center justify-center gap-1.5 px-2.5 py-2 rounded-xl bg-white hover:bg-slate-100 text-[#0F1824] border border-[#8FCA00] font-bold text-[11px] transition-colors shadow-sm"
+                        aria-label="Ver precio de Starlink Kit Estándar 4 X en Falabella Chile"
+                        class="min-h-[50px] flex flex-col items-center justify-center px-2.5 py-2 rounded-xl bg-[#A8D400] hover:bg-[#97c000] active:translate-y-0.5 text-[#0F1824] border border-[#799B00] shadow-[0_3px_0_#799B00] transition-all text-center"
                       >
-                        <StoreLogo network="falabella" class="h-4" />
-                        <span aria-hidden="true">↗</span>
+                        <span class="text-[10px] font-bold leading-none opacity-80">Ver precio en</span>
+                        <span class="text-xs font-black leading-tight mt-0.5">Falabella.com <span aria-hidden="true">↗</span></span>
                       </a>
                     </div>
                   </td>

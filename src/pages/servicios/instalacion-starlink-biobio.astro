@@ -165,7 +165,7 @@ const galleryItems = [
 const faqs = [
   {
     question: '¿Cuánto sale comprar la antena Starlink y cuánto cuesta la mensualidad?',
-    answer: 'La antena la compras tú directo en tienda (como Mercado Libre, Falabella o Starlink.com) y puedes pagarla en cuotas; suele rondar entre $190.000 (Starlink Mini) y $350.000 (Estándar Gen 3) según promociones. El plan mensual residencial ilimitado lo pagas directo a Starlink sin contratos de amarre (aprox. $35.000 a $47.000 al mes). Si la compartes 50/50 con un vecino, cada casa paga la mitad (~$17.500 a $23.500 al mes).',
+    answer: 'La antena la compras tú directo en tienda (como Mercado Libre, Falabella o Starlink.com) y puedes pagarla en cuotas; suele rondar entre $180.000–$210.000 (Starlink Mini) y $265.000–$340.000 (Starlink Estándar 4 X / Gen 3) según promociones. El plan mensual residencial ilimitado lo pagas directo a Starlink sin contratos de amarre (aprox. $35.000 a $47.000 al mes). Si la compartes 50/50 con un vecino, cada casa paga la mitad (~$17.500 a $23.500 al mes).',
   },
   {
     question: '¿Funciona bien con lluvia intensa y temporales de viento en el Biobío?',
@@ -466,16 +466,18 @@ const faqSchema = {
                     href={afiliadosData['starlink-mini-kit'].url}
                     target="_blank"
                     rel="nofollow sponsored noopener noreferrer"
-                    class="min-h-[38px] inline-flex items-center justify-center gap-1 px-2.5 py-1.5 rounded-xl bg-[#FFE600] hover:bg-[#f5d600] text-[#0F1824] font-black text-[11px] transition-colors"
+                    aria-label="Ver Starlink Mini en Mercado Libre Chile"
+                    class="min-h-[40px] inline-flex items-center justify-center gap-1 px-2 py-1.5 rounded-xl bg-[#FFE600] hover:bg-[#f5d600] text-[#0F1824] font-black text-[11px] transition-colors"
                   >
-                    <span>Ver Starlink Mini</span>
+                    <StoreLogo network="mercadolibre" class="h-4" />
                     <span aria-hidden="true">↗</span>
                   </a>
                   <a
                     href={afiliadosData['falabella-starlink-mini'].url}
                     target="_blank"
                     rel="nofollow sponsored noopener noreferrer"
-                    class="min-h-[38px] inline-flex items-center justify-center gap-1 px-2 py-1.5 rounded-xl bg-white hover:bg-slate-100 text-[#0F1824] border border-[#8FCA00] font-bold text-[11px] transition-colors"
+                    aria-label="Ver Starlink Mini en Falabella Chile"
+                    class="min-h-[40px] inline-flex items-center justify-center gap-1 px-2 py-1.5 rounded-xl bg-white hover:bg-slate-100 text-[#0F1824] border border-[#8FCA00] font-bold text-[11px] transition-colors"
                   >
                     <StoreLogo network="falabella" class="h-4" />
                     <span aria-hidden="true">↗</span>
@@ -483,9 +485,9 @@ const faqSchema = {
                 </div>
               </div>
 
-              <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/90 space-y-2">
+              <div class="p-3 rounded-2xl bg-slate-50 border border-[#FF7010]/40 space-y-2">
                 <div class="flex items-center justify-between gap-2">
-                  <span class="text-xs font-extrabold text-[#0F1824]">Starlink Estándar Gen 3</span>
+                  <span class="text-xs font-extrabold text-[#0F1824]">Starlink Estándar 4 X (Gen 3)</span>
                   <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#FF7010]/15 text-[#C2410C]">Más potente</span>
                 </div>
                 <div class="grid grid-cols-2 gap-1.5">
@@ -493,22 +495,27 @@ const faqSchema = {
                     href={afiliadosData['starlink-estandar-gen3'].url}
                     target="_blank"
                     rel="nofollow sponsored noopener noreferrer"
-                    class="min-h-[38px] inline-flex items-center justify-center gap-1 px-2.5 py-1.5 rounded-xl bg-[#FFE600] hover:bg-[#f5d600] text-[#0F1824] font-black text-[11px] transition-colors"
+                    aria-label="Ver Starlink Estándar 4 X en Mercado Libre Chile"
+                    class="min-h-[40px] inline-flex items-center justify-center gap-1 px-2 py-1.5 rounded-xl bg-[#FFE600] hover:bg-[#f5d600] text-[#0F1824] font-black text-[11px] transition-colors"
                   >
-                    <span>Ver Gen 3</span>
+                    <StoreLogo network="mercadolibre" class="h-4" />
                     <span aria-hidden="true">↗</span>
                   </a>
                   <a
                     href={afiliadosData['falabella-starlink-gen3'].url}
                     target="_blank"
                     rel="nofollow sponsored noopener noreferrer"
-                    class="min-h-[38px] inline-flex items-center justify-center gap-1 px-2 py-1.5 rounded-xl bg-white hover:bg-slate-100 text-[#0F1824] border border-[#8FCA00] font-bold text-[11px] transition-colors"
+                    aria-label="Ver Starlink Estándar 4 X en Falabella Chile"
+                    class="min-h-[40px] inline-flex items-center justify-center gap-1 px-2 py-1.5 rounded-xl bg-white hover:bg-slate-100 text-[#0F1824] border border-[#8FCA00] font-bold text-[11px] transition-colors"
                   >
                     <StoreLogo network="falabella" class="h-4" />
                     <span aria-hidden="true">↗</span>
                   </a>
                 </div>
               </div>
+              <a href="#comparativa-antenas" class="block text-center text-[11px] font-extrabold text-[#0369A1] hover:underline pt-0.5">
+                ¿Cuál antena me conviene? Ver tabla comparativa ↓
+              </a>
             </div>
           </article>
 
@@ -551,6 +558,165 @@ const faqSchema = {
               </p>
             </div>
           </article>
+        </div>
+
+        <!-- TABLA COMPARATIVA: ¿CUÁL ANTENA STARLINK TE CONVIENE COMPRAR? -->
+        <div id="comparativa-antenas" class="mt-10 sm:mt-12 scroll-mt-20">
+          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-5">
+            <div class="max-w-2xl">
+              <span class="inline-block px-3 py-1 rounded-full bg-[#FF7010]/15 text-[#C2410C] text-xs font-black uppercase tracking-wider mb-1.5">
+                Guía rápida antes de comprar
+              </span>
+              <h3 class="text-xl sm:text-2xl font-black text-[#0F1824] tracking-tight leading-snug">
+                ¿Cuál antena te conviene? Starlink Mini vs. Estándar 4 X (Gen 3)
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 mt-1 m-0">
+                Compara en 30 segundos qué kit comprar según tu casa, tus paneles solares o si vas a compartir 50/50 con un vecino.
+              </p>
+            </div>
+          </div>
+
+          <div tabindex="0" role="region" aria-labelledby="starlink-compare-caption" class="starlink-table-wrapper rounded-3xl border border-slate-200/90 bg-white shadow-sm">
+            <table class="starlink-compare-table w-full text-left text-sm">
+              <caption id="starlink-compare-caption" class="sr-only">
+                Comparativa entre Starlink Mini y Starlink Kit Estándar 4 X (Gen 3) para parcelas y casas en el Biobío
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col" class="bg-[#0F1824] text-slate-300 font-extrabold text-xs uppercase tracking-wider p-4 w-[24%] border-b border-slate-700">
+                    ¿Qué importa para tu casa?
+                  </th>
+                  <th scope="col" class="bg-[#0F1824] text-white font-black text-sm p-4 w-[38%] border-b border-slate-700">
+                    <span class="block text-[#26C6F5] text-[10px] font-black uppercase tracking-wider">Compacta · Bajo consumo</span>
+                    <span>Starlink Mini</span>
+                  </th>
+                  <th scope="col" class="bg-[#1D2731] text-white font-black text-sm p-4 w-[38%] border-b-2 border-[#FF7010]">
+                    <span class="inline-block px-2 py-0.5 rounded-full bg-[#FF7010] text-white text-[10px] font-black uppercase tracking-wider mb-1">
+                      Recomendada Hogar / 50-50
+                    </span>
+                    <span class="block">Starlink Kit Estándar 4 X (Gen 3)</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">¿Para quién es ideal?</th>
+                  <td>
+                    Cabañas pequeñas, <strong>parcelas de fin de semana</strong> (1 a 4 personas), viajes en motorhome/camper o 1 sola vivienda chica.
+                  </td>
+                  <td class="starlink-col-featured">
+                    <strong>Casas donde viven todo el año</strong>, familias con varios TV y celulares, teletrabajo, <strong>compartir 50/50 entre 2 vecinos</strong> o varias cámaras.
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Velocidad real en el Biobío</th>
+                  <td>
+                    Muy buena para uso diario (<strong>~80 a 150 Megas</strong>: Netflix, YouTube, WhatsApp y videollamadas fluidas).
+                  </td>
+                  <td class="starlink-col-featured">
+                    <strong>Máxima potencia (~150 a 250+ Megas)</strong>: varias TVs en 4K, juegos online, videollamadas y 2 casas conectadas a la vez sin pegarse.
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">¿Sirve para compartir 50/50 con un vecino?</th>
+                  <td>
+                    Solo si ambos le dan uso liviano (WhatsApp y 1 TV). Si ven películas o trabajan al mismo tiempo, se queda justa.
+                  </td>
+                  <td class="starlink-col-featured">
+                    <strong>Sí, es la ideal para 50/50.</strong> Tiene mayor recepción y router separado con puertos listos para repartir parejo entre 2 casas.
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Alcance Wi-Fi dentro de la casa</th>
+                  <td>
+                    El Wi-Fi viene metido <strong>dentro de la misma antena afuera</strong>. En casas grandes, de 2 pisos o muros gruesos conviene sumar un router adentro.
+                  </td>
+                  <td class="starlink-col-featured">
+                    Incluye su propio <strong>router Wi-Fi 6 independiente para dejar adentro de la casa</strong>, con mucho mejor cobertura en dormitorios y living.
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Consumo eléctrico y paneles solares</th>
+                  <td>
+                    <strong>Gana por lejos en ahorro eléctrico</strong> (consume casi la mitad; funciona incluso con batería 12V o kit solar pequeño).
+                  </td>
+                  <td class="starlink-col-featured">
+                    Consumo normal a enchufe 220V (similar a una ampolleta grande o un televisor pequeño encendido).
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Lluvia intensa y árboles cercanos</th>
+                  <td>
+                    Tamaño cuaderno y ultraliviana (fácil de guardar o llevar de viaje). En sectores con temporal fuerte necesita vista bien despejada.
+                  </td>
+                  <td class="starlink-col-featured">
+                    <strong>Antena más grande y estable:</strong> aguanta mejor la lluvia pesada del Biobío y rinde mejor cuando hay árboles cerca del horizonte.
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Veredicto rápido y dónde comprar</th>
+                  <td>
+                    <p class="text-xs text-slate-700 m-0 mb-2.5 leading-relaxed">
+                      <strong>Elige Starlink Mini</strong> si vas solo fines de semana, tienes panel solar chico o quieres llevarla de viaje.
+                    </p>
+                    <div class="grid grid-cols-2 gap-2">
+                      <a
+                        href={afiliadosData['starlink-mini-kit'].url}
+                        target="_blank"
+                        rel="nofollow sponsored noopener noreferrer"
+                        aria-label="Comprar Starlink Mini en Mercado Libre Chile"
+                        class="min-h-[42px] inline-flex items-center justify-center gap-1.5 px-2.5 py-2 rounded-xl bg-[#FFE600] hover:bg-[#f5d600] text-[#0F1824] font-black text-[11px] transition-colors"
+                      >
+                        <StoreLogo network="mercadolibre" class="h-4" />
+                        <span aria-hidden="true">↗</span>
+                      </a>
+                      <a
+                        href={afiliadosData['falabella-starlink-mini'].url}
+                        target="_blank"
+                        rel="nofollow sponsored noopener noreferrer"
+                        aria-label="Comprar Starlink Mini en Falabella Chile"
+                        class="min-h-[42px] inline-flex items-center justify-center gap-1.5 px-2.5 py-2 rounded-xl bg-white hover:bg-slate-100 text-[#0F1824] border border-[#8FCA00] font-bold text-[11px] transition-colors"
+                      >
+                        <StoreLogo network="falabella" class="h-4" />
+                        <span aria-hidden="true">↗</span>
+                      </a>
+                    </div>
+                  </td>
+                  <td class="starlink-col-featured">
+                    <p class="text-xs text-[#0F1824] m-0 mb-2.5 leading-relaxed">
+                      <strong>Elige Estándar 4 X (Gen 3)</strong> si vives ahí, trabajas online, pondrás cámaras o compartirás 50/50 con tu vecino.
+                    </p>
+                    <div class="grid grid-cols-2 gap-2">
+                      <a
+                        href={afiliadosData['starlink-estandar-gen3'].url}
+                        target="_blank"
+                        rel="nofollow sponsored noopener noreferrer"
+                        aria-label="Comprar Starlink Kit Estándar 4 X en Mercado Libre Chile"
+                        class="min-h-[42px] inline-flex items-center justify-center gap-1.5 px-2.5 py-2 rounded-xl bg-[#FFE600] hover:bg-[#f5d600] text-[#0F1824] font-black text-[11px] transition-colors shadow-sm"
+                      >
+                        <StoreLogo network="mercadolibre" class="h-4" />
+                        <span aria-hidden="true">↗</span>
+                      </a>
+                      <a
+                        href={afiliadosData['falabella-starlink-gen3'].url}
+                        target="_blank"
+                        rel="nofollow sponsored noopener noreferrer"
+                        aria-label="Comprar Starlink Kit Estándar 4 X en Falabella Chile"
+                        class="min-h-[42px] inline-flex items-center justify-center gap-1.5 px-2.5 py-2 rounded-xl bg-white hover:bg-slate-100 text-[#0F1824] border border-[#8FCA00] font-bold text-[11px] transition-colors shadow-sm"
+                      >
+                        <StoreLogo network="falabella" class="h-4" />
+                        <span aria-hidden="true">↗</span>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="text-[11px] text-slate-500 mt-3 text-center sm:text-left m-0">
+            ¿Aún tienes dudas entre Mini o Estándar 4 X para tu terreno? Escríbeme por WhatsApp antes de comprar y te confirmo gratis cuál te rinde mejor.
+          </p>
         </div>
       </div>
     </section>
@@ -1186,4 +1352,138 @@ const faqSchema = {
   <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <style>
+    .starlink-table-wrapper {
+      overflow-x: auto;
+      max-inline-size: 100%;
+      container-type: inline-size;
+    }
+
+    .starlink-compare-table {
+      border-collapse: separate;
+      border-spacing: 0;
+      --label-2: "Starlink Mini";
+      --label-3: "Starlink Estándar 4 X (Gen 3)";
+    }
+
+    .starlink-compare-table thead {
+      position: sticky;
+      inset-block-start: 0;
+      z-index: 1;
+    }
+
+    .starlink-compare-table tbody th {
+      position: sticky;
+      inset-inline-start: 0;
+      background: #f8fafc;
+      color: #0f1824;
+      font-weight: 800;
+      font-size: 0.8125rem;
+      padding: 1rem;
+      border-bottom: 1px solid #e2e8f0;
+      border-right: 1px solid #e2e8f0;
+      vertical-align: top;
+    }
+
+    .starlink-compare-table tbody td {
+      padding: 1rem;
+      color: #334155;
+      font-size: 0.8125rem;
+      line-height: 1.55;
+      border-bottom: 1px solid #e2e8f0;
+      vertical-align: top;
+      background: #ffffff;
+    }
+
+    .starlink-compare-table tbody td.starlink-col-featured {
+      background: #fff7ed;
+      border-left: 1px solid #fed7aa;
+    }
+
+    .starlink-compare-table tbody tr:last-child th,
+    .starlink-compare-table tbody tr:last-child td {
+      border-bottom: 0;
+    }
+
+    @container (width < 600px) {
+      .starlink-table-wrapper {
+        border: 0;
+        background: transparent;
+        box-shadow: none;
+        overflow: visible;
+      }
+
+      .starlink-compare-table,
+      .starlink-compare-table thead,
+      .starlink-compare-table tbody,
+      .starlink-compare-table tr,
+      .starlink-compare-table th,
+      .starlink-compare-table td {
+        display: block;
+      }
+
+      .starlink-compare-table thead {
+        display: none;
+      }
+
+      .starlink-compare-table tbody tr {
+        margin-block-end: 0.875rem;
+        border: 1px solid #cbd5e1;
+        border-radius: 1.25rem;
+        overflow: hidden;
+        background: #ffffff;
+        box-shadow: 0 2px 8px rgba(15, 24, 36, 0.05);
+      }
+
+      .starlink-compare-table tbody tr:last-child {
+        margin-block-end: 0;
+      }
+
+      .starlink-compare-table tbody th {
+        position: sticky;
+        inset-block-start: 0;
+        z-index: 2;
+        background: #0f1824;
+        color: #ffffff;
+        border-right: 0;
+        border-bottom: 1px solid #1e293b;
+        padding: 0.75rem 1rem;
+        font-size: 0.8125rem;
+      }
+
+      .starlink-compare-table tbody td {
+        border-left: 0;
+        padding: 0.85rem 1rem;
+      }
+
+      .starlink-compare-table tbody td.starlink-col-featured {
+        background: #fff7ed;
+        border-left: 0;
+        border-top: 1px solid #fed7aa;
+      }
+
+      .starlink-compare-table tbody td:nth-child(2)::before {
+        content: var(--label-2) ": ";
+        display: block;
+        font-size: 0.7rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: #0369a1;
+        margin-block-end: 0.25rem;
+      }
+
+      .starlink-compare-table tbody td:nth-child(3)::before {
+        content: var(--label-3) ": ";
+        display: block;
+        font-size: 0.7rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: #c2410c;
+        margin-block-end: 0.25rem;
+      }
+    }
+  </style>
 </BaseLayout>

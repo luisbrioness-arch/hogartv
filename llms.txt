@@ -20,6 +20,8 @@ HogarTV.cl entrega análisis técnicos objetivos, fichas de calibración, prueba
 ## Secciones y Páginas Principales
 
 - [Portada Oficial HogarTV.cl](https://hogartv.cl/)
+- [Instalación Profesional de Starlink, Cableado Estructurado y Cámaras en la Región del Biobío](https://hogartv.cl/servicios/instalacion-starlink-biobio/)
+- [Reviviendo un Dinosaurio (Bitácora de Restauración en Coronel)](https://hogartv.cl/dinosaurio/)
 - [Radar de Ofertas en Smart TVs, Audio y Gadgets en Chile](https://hogartv.cl/ofertas-tv-chile/)
 - [Gadgets Hogar: AliExpress vs. Mercado Libre en Chile](https://hogartv.cl/gadgets-hogar/)
 - [Catálogo de Equipos Recomendados en Chile](https://hogartv.cl/recomendados/)

@@ -12,6 +12,9 @@ ErrorDocument 404 /404.html
     RewriteCond %{HTTP_HOST} ^www\.hogartv\.cl$ [NC]
     RewriteRule ^(.*)$ https://hogartv.cl/$1 [L,R=301]
 
+    # 2.5 Redirección 301 SEO: migración de artículo satelital a Landing Page de Servicio Local
+    RewriteRule ^accesorios/instalacion-internet-satelital-rural-chile-redes-parcelas/?$ https://hogartv.cl/servicios/instalacion-starlink-biobio/ [R=301,L,NC]
+
     # 3. Forzar trailing slash canónico (ej: /smart-tv -> /smart-tv/)
     # Excluye archivos existentes y extensiones comunes (.xml, .png, .ico, etc.)
     RewriteCond %{REQUEST_FILENAME} !-f

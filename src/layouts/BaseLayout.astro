@@ -14,6 +14,7 @@ interface Props {
   breadcrumbs?: { name: string; url: string }[];
   noindex?: boolean;
   noIndex?: boolean;
+  disableAds?: boolean;
 }
 
 const {
@@ -26,6 +27,7 @@ const {
   breadcrumbs,
   noindex = false,
   noIndex = false,
+  disableAds = false,
 } = Astro.props;
 const isNoindex = Boolean(noindex || noIndex);
 
@@ -182,8 +184,8 @@ const breadcrumbSchema =
     </>
   )}
 
-  <!-- Google AdSense (Solo en páginas editoriales indexables, nunca en 404, login o noindex) -->
-  {!isNoindex && showAdsense && (
+  <!-- Google AdSense (Solo en páginas editoriales indexables, nunca en landings de servicio, 404, login o noindex) -->
+  {!isNoindex && !disableAds && showAdsense && (
     <script is:inline async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseId}`}
        crossorigin="anonymous"></script>
   )}

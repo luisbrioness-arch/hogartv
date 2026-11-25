@@ -1,0 +1,960 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import AuthorAvatar from '../../components/AuthorAvatar.astro';
+
+import heroImage from '../../assets/servicios/instalacion-starlink-biobio/hero.jpg';
+import imgMastil from '../../assets/servicios/instalacion-starlink-biobio/montaje-mastil-starlink-biobio.webp';
+import imgCanaleta from '../../assets/servicios/instalacion-starlink-biobio/canaleta-cableado-estructurado-limpio.webp';
+import imgCamaraPorton from '../../assets/servicios/instalacion-starlink-biobio/camara-poe-porton-parcela.webp';
+import imgRackWifi from '../../assets/servicios/instalacion-starlink-biobio/rack-router-wifi6-instalacion.webp';
+import imgFibraDrop from '../../assets/servicios/instalacion-starlink-biobio/enlace-fibra-drop-vecinos-biobio.webp';
+import imgCajaEstanca from '../../assets/servicios/instalacion-starlink-biobio/caja-estanca-ip65-conduit-exterior.webp';
+
+const siteUrl = 'https://hogartv.cl';
+const pageUrl = `${siteUrl}/servicios/instalacion-starlink-biobio/`;
+const whatsappNumber = '56931926886';
+const defaultWaText = 'Hola, quiero cotizar una instalación de Starlink / redes en mi comuna en la Región del Biobío.';
+const waUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(defaultWaText)}`;
+
+const comunasBiobio = [
+  'Coronel',
+  'Concepción',
+  'San Pedro de la Paz',
+  'Lota',
+  'Chiguayante',
+  'Talcahuano',
+  'Hualqui',
+  'Tomé',
+  'Penco',
+  'Santa Juana',
+  'Florida',
+  'Yumbel',
+  'Cabrero',
+  'Quillón',
+  'Los Ángeles',
+  'Arauco',
+  'Santa Bárbara',
+];
+
+const coberturaZonas = [
+  {
+    zone: 'Gran Concepción y Borde Costero',
+    badge: 'Atención Rápida',
+    communes: ['Concepción', 'San Pedro de la Paz', 'Coronel', 'Lota', 'Chiguayante', 'Talcahuano', 'Hualqui', 'Tomé', 'Penco'],
+  },
+  {
+    zone: 'Parcelas, Valle e Interior',
+    badge: 'Especialidad Rural',
+    communes: ['Santa Juana', 'Florida', 'Yumbel', 'Cabrero', 'Quillón', 'Caminos rurales y condominios de parcelas'],
+  },
+  {
+    zone: 'Provincia de Biobío y Arauco',
+    badge: 'Proyectos y Terreno',
+    communes: ['Los Ángeles', 'Arauco', 'Santa Bárbara', 'Sectores rurales, fundos y empresas aledañas'],
+  },
+];
+
+const servicios = [
+  {
+    badge: 'Especialidad Principal',
+    badgeClass: 'bg-emerald-500 text-slate-950',
+    borderClass: 'border-emerald-500/50',
+    icon: '📡',
+    title: 'Instalación de Starlink (Standard Gen 3 y Mini)',
+    desc: 'Montaje profesional en altura con mástil de acero firme para librar copas de árboles y asegurar línea de vista despejada al cielo.',
+    bullets: [
+      'Alineación de precisión y verificación real de obstrucciones (cero microcortes)',
+      'Fijaciones reforzadas pensadas para temporales de viento y lluvia del Biobío',
+      'Sellado hermético en pasada de techo/muro y configuración completa del router',
+    ],
+  },
+  {
+    badge: 'Hogares y Empresas',
+    badgeClass: 'bg-sky-500 text-slate-950',
+    borderClass: 'border-sky-500/40',
+    icon: '🔌',
+    title: 'Cableado Estructurado Profesional (Cat6 / Cat6A)',
+    desc: 'Puntos de red LAN estables para casas, oficinas, locales comerciales, bodegas y parcelas que exigen velocidad simétrica sin caídas.',
+    bullets: [
+      'Tendido y remate de puntos de red certificados Cat6 / Cat6A Gigabit',
+      'Ordenamiento de racks de comunicaciones, patch panels y switches PoE',
+      'Prueba punto a punto con tester y verificación de velocidad real por boca',
+    ],
+  },
+  {
+    badge: 'Estética Impecable',
+    badgeClass: 'bg-amber-400 text-slate-950',
+    borderClass: 'border-amber-500/40',
+    icon: '📐',
+    title: 'Canalización y Terminaciones Prolijas',
+    desc: 'Trabajamos con estándar estético limpio: cero cables sueltos, colgando o improvisados a la vista en muros o fachadas.',
+    bullets: [
+      'Canaletas PVC interiores con cortes limpios a medida y fijación firme',
+      'Tubería conduit interior/exterior resistente a sol UV y humedad costera',
+      'Cajas estancas certificadas IP65 / IP66 para empalmes y fuentes en intemperie',
+    ],
+  },
+  {
+    badge: 'Seguridad 24/7',
+    badgeClass: 'bg-indigo-500 text-white',
+    borderClass: 'border-indigo-500/40',
+    icon: '📹',
+    title: 'Cámaras de Seguridad (CCTV / IP PoE / Portones Lejanos)',
+    desc: 'Sistemas de vigilancia para parcelas, casas y negocios, incluyendo cámaras lejos de la vivienda principal con acceso desde tu celular.',
+    bullets: [
+      'Instalación de cámaras IP PoE y sistemas CCTV para perímetro, accesos y bodegas',
+      'Portones hasta 100 metros: cable UTP blindado UV + inyector PoE desde la casa (sin enchufe en el portón)',
+      'Más de 100m (hasta 500m): fibra óptica drop dedicada + alimentación en el punto',
+    ],
+  },
+  {
+    badge: 'Conectividad Total',
+    badgeClass: 'bg-cyan-400 text-slate-950',
+    borderClass: 'border-cyan-500/40',
+    icon: '📶',
+    title: 'Wi-Fi Mesh, Starlink Compartido 50/50 y Respaldo UPS',
+    desc: 'Soluciones integrales para llevar señal potente a cada rincón, dividir costos mensuales entre vecinos y seguir conectado ante cortes de luz.',
+    bullets: [
+      'Sistemas Wi-Fi Mesh y Access Points cableados para casas grandes o de dos pisos',
+      'Compartir Starlink 50/50 entre 2 vecinos (UTP UV hasta 80m o Fibra Drop 100–500m) con redes privadas separadas',
+      'Integración de respaldo eléctrico UPS para mantener internet y cámaras activos sin luz',
+    ],
+  },
+];
+
+const modalidades = [
+  {
+    nombre: 'Starlink Individual (Casa / Parcela)',
+    incluye: 'Mástil en altura reforzado + cableado canalizado/sellado + configuración Wi-Fi y pruebas reales.',
+    enlace: 'Cable exterior blindado + canaleta / conduit',
+    ideal: 'Hogares, parcelas y negocios sin fibra óptica',
+  },
+  {
+    nombre: 'Starlink Compartido 50/50 (UTP UV)',
+    incluye: '1 antena para 2 casas vecinas + 2 Routers Wi-Fi 6 independientes + reparto equitativo de ancho de banda.',
+    enlace: 'Cable UTP exterior doble chaqueta UV (hasta 80m)',
+    ideal: 'Vecinos o familiares que dividen la mensualidad a la mitad',
+  },
+  {
+    nombre: 'Starlink Compartido Largo (Fibra Drop)',
+    incluye: 'Enlace óptico entre 2 viviendas distantes + conversores de fibra + 2 redes Wi-Fi separadas.',
+    enlace: 'Fibra óptica drop monomodo aérea (100m a 500m)',
+    ideal: 'Parcelas grandes cruzando árboles o caminos sin pérdida',
+  },
+  {
+    nombre: 'Cableado Estructurado y Canalización',
+    incluye: 'Puntos de red Cat6/Cat6A, ordenamiento de rack, patch panel, canaletas PVC, conduit y cajas IP65.',
+    enlace: 'Red LAN Gigabit certificada + canalización prolija',
+    ideal: 'Oficinas, locales comerciales, talleres y casas de 2 pisos',
+  },
+  {
+    nombre: 'Cámaras IP PoE / Portón Lejano',
+    incluye: 'Montaje de cámaras de seguridad, configuración en celular 24/7 y tendido PoE o Fibra Drop.',
+    enlace: 'PoE (hasta 100m) o Fibra Drop (+100m a 500m)',
+    ideal: 'Portones de entrada, galpones, bodegas y perímetros',
+  },
+];
+
+const pasosTrabajo = [
+  {
+    num: '01',
+    title: 'Evaluación de Factibilidad',
+    desc: 'Nos escribes por WhatsApp con tu comuna, fotos del techo o ubicación aproximada (o coordinamos visita técnica) para evaluar obstáculos y distancias.',
+  },
+  {
+    num: '02',
+    title: 'Presupuesto Transparente',
+    desc: 'Te entregamos una cotización clara antes de partir, detallando soporte/mástil, metros de cable o fibra, canalización y mano de obra, sin cobros ocultos.',
+  },
+  {
+    num: '03',
+    title: 'Instalación Limpia y Pruebas',
+    desc: 'Montaje seguro en altura, terminaciones con canaletas o conduit y pruebas de velocidad reales en cada pieza, oficina o cámara instalada.',
+  },
+  {
+    num: '04',
+    title: 'Garantía y Soporte Local',
+    desc: 'Todas nuestras instalaciones cuentan con garantía en terreno y respaldo técnico directo en la Región del Biobío ante cualquier duda o ampliación futura.',
+  },
+];
+
+const galeriaTrabajos = [
+  {
+    img: imgMastil,
+    fileHint: 'montaje-mastil-starlink-biobio.webp',
+    tag: 'Starlink Gen 3 / Mini',
+    title: 'Montaje de Antena Starlink en Altura',
+    caption: 'Instalación sobre mástil reforzado para despejar árboles y resistir ráfagas de viento en el Biobío.',
+    alt: 'Montaje profesional de antena Starlink en mástil reforzado en altura en la Región del Biobío',
+  },
+  {
+    img: imgCanaleta,
+    fileHint: 'canaleta-cableado-estructurado-limpio.webp',
+    tag: 'Cableado Estructurado',
+    title: 'Canalización Limpia con Canaletas PVC',
+    caption: 'Terminaciones prolijas en muros interiores y exteriores: cero cables sueltos ni perforaciones expuestas.',
+    alt: 'Instalación limpia de cableado estructurado Cat6 con canaletas PVC en vivienda y oficina del Biobío',
+  },
+  {
+    img: imgCamaraPorton,
+    fileHint: 'camara-poe-porton-parcela.webp',
+    tag: 'Seguridad Perimetral',
+    title: 'Cámara IP PoE en Portón de Parcela',
+    caption: 'Vigilancia en portón de entrada a distancia con inyector PoE o fibra óptica drop y monitoreo 24/7 en celular.',
+    alt: 'Cámara de seguridad IP PoE instalada en portón de entrada de parcela en la Región del Biobío',
+  },
+  {
+    img: imgRackWifi,
+    fileHint: 'rack-router-wifi6-instalacion.webp',
+    tag: 'Racks y Wi-Fi Mesh',
+    title: 'Ordenamiento de Rack y Router Wi-Fi 6',
+    caption: 'Patch panel ordenado, puntos LAN rotulados y cobertura Wi-Fi optimizada para casas de dos pisos y oficinas.',
+    alt: 'Ordenamiento de rack de comunicaciones, patch panel y router Wi-Fi 6 en Concepción y Biobío',
+  },
+  {
+    img: imgFibraDrop,
+    fileHint: 'enlace-fibra-drop-vecinos-biobio.webp',
+    tag: 'Compartido 50/50',
+    title: 'Enlace Fibra Óptica Drop entre Parcelas',
+    caption: 'Conexión aérea de 100 a 500 metros inmune a tormentas eléctricas para compartir Starlink entre dos casas.',
+    alt: 'Tendido de fibra óptica drop monomodo para compartir internet Starlink entre parcelas vecinas en el Biobío',
+  },
+  {
+    img: imgCajaEstanca,
+    fileHint: 'caja-estanca-ip65-conduit-exterior.webp',
+    tag: 'Protección Intemperie',
+    title: 'Cajas Estancas IP65 y Tubería Conduit',
+    caption: 'Empalmes y equipamiento exterior protegidos herméticamente contra la lluvia intensa y humedad costera.',
+    alt: 'Instalación de caja estanca IP65 y tubería conduit exterior para redes y cámaras en clima del Biobío',
+  },
+];
+
+const faqs = [
+  {
+    question: '¿Cuánto cuesta instalar Starlink o cableado estructurado en la Región del Biobío?',
+    answer: 'El valor depende de cada propiedad: altura y tipo de techumbre, si requiere mástil elevado para superar árboles, metros de canaleta o tubería conduit, y si incluye puntos de red adicionales, enlace con vecino o cámaras. Envíenos su comuna y un par de fotos por WhatsApp para entregarle un presupuesto transparente y cerrado antes de agendar la visita.',
+  },
+  {
+    question: '¿Instalan tanto Starlink Standard (Gen 3) como Starlink Mini?',
+    answer: 'Sí. Trabajamos con Starlink Standard Gen 3, generaciones anteriores y Starlink Mini. Contamos con adaptadores de mástil, soportes reforzados de muro o techumbre, extensiones de cableado exterior y configuración en modo puente (bypass) cuando conectamos routers Wi-Fi 6/7 o sistemas Mesh.',
+  },
+  {
+    question: '¿Cómo trabajan las canaletas y pasadas de muro para que quede estético?',
+    answer: 'Priorizamos terminaciones prolijas: utilizamos canaletas PVC a medida en interiores, tubería conduit con abrazaderas metálicas en exteriores, pasamuros sellados con silicona neutra contra filtraciones de lluvia y cajas estancas IP65/IP66. No dejamos cables colgando ni perforaciones sin terminar.',
+  },
+  {
+    question: '¿Se puede compartir una sola antena Starlink 50/50 entre dos casas o parcelas vecinas?',
+    answer: 'Sí. Conectamos ambas propiedades mediante cable UTP exterior blindado UV (hasta 80 metros) o fibra óptica drop monomodo (100 a 500 metros). Configuramos un administrador de red con reparto equitativo 50/50 y dos routers independientes para que cada casa tenga su propio nombre de Wi-Fi, clave privada y velocidad garantizada, dividiendo la mensualidad a la mitad.',
+  },
+  {
+    question: '¿Cómo conectan una cámara de seguridad en un portón lejos de la casa?',
+    answer: 'Según la distancia: hasta 100 metros tendemos cable UTP blindado exterior con un inyector PoE desde la vivienda principal, enviando datos y electricidad por el mismo cable (no necesita corriente 220V en el portón). Sobre 100 metros (hasta 500m) tendemos fibra óptica drop sin pérdida de señal con conversor óptico y alimentación en el punto del portón, caseta o kit solar.',
+  },
+  {
+    question: '¿También hacen cableado estructurado Cat6 y ordenamiento de racks para oficinas o casas?',
+    answer: 'Sí. Instalamos puntos de red LAN Cat6 y Cat6A para oficinas, locales comerciales, talleres y casas de dos pisos donde el Wi-Fi no atraviesa losas de hormigón. Incluye instalación de patch panels, ordenamiento de racks, instalación de Access Points Wi-Fi Mesh y pruebas de conectividad en cada punto.',
+  },
+  {
+    question: '¿La instalación resiste temporales de viento/lluvia del Biobío y qué pasa si se corta la luz?',
+    answer: 'Las antenas Starlink están fabricadas para intemperie severa y nuestros mástiles y anclajes se instalan calculados para ráfagas de viento de la 8ª Región. Respecto a cortes de luz en sectores rurales o costeros, podemos sumar una batería de respaldo (UPS) de bajo consumo que mantiene el internet satelital y las cámaras funcionando durante varias horas.',
+  },
+  {
+    question: '¿En qué comunas de la Región del Biobío atienden en terreno?',
+    answer: 'Atendemos en toda la Región del Biobío: Coronel, Concepción, San Pedro de la Paz, Lota, Chiguayante, Talcahuano, Hualqui, Tomé, Penco, Santa Juana, Florida, Yumbel, Cabrero, Quillón, Los Ángeles, Arauco, Santa Bárbara y sectores rurales o parcelas aledañas.',
+  },
+];
+
+// Schema JSON-LD: LocalBusiness + HomeAndConstructionBusiness / ProfessionalService
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': ['ProfessionalService', 'HomeAndConstructionBusiness'],
+  '@id': `${siteUrl}/#servicio-starlink-biobio`,
+  'name': 'HogarTV.cl — Instalación de Starlink, Cableado Estructurado y Cámaras Biobío',
+  'description': 'Servicio técnico profesional en terreno en la Región del Biobío para instalación de Starlink (Gen 3 y Mini), cableado estructurado Cat6/Cat6A con canalización limpia, enlaces 50/50 y cámaras de seguridad IP PoE.',
+  'url': pageUrl,
+  'telephone': '+56931926886',
+  'priceRange': '$$',
+  'image': `${siteUrl}${heroImage.src}`,
+  'logo': `${siteUrl}/favicon-512x512.png`,
+  'address': {
+    '@type': 'PostalAddress',
+    'addressLocality': 'Coronel y Concepción',
+    'addressRegion': 'Región del Biobío',
+    'addressCountry': 'CL',
+  },
+  'geo': {
+    '@type': 'GeoCoordinates',
+    'latitude': -36.827,
+    'longitude': -73.0503,
+  },
+  'openingHoursSpecification': [
+    {
+      '@type': 'OpeningHoursSpecification',
+      'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      'opens': '09:00',
+      'closes': '19:30',
+    },
+  ],
+  'areaServed': [
+    { '@type': 'AdministrativeArea', 'name': 'Región del Biobío' },
+    ...comunasBiobio.map((comuna) => ({
+      '@type': 'City',
+      'name': `${comuna}, Región del Biobío`,
+    })),
+  ],
+  'sameAs': [
+    'https://www.tiktok.com/@hogartv.cl',
+    'https://www.instagram.com/hogartv.cl/',
+    `${siteUrl}/sobre-nosotros/`,
+  ],
+};
+
+// Schema JSON-LD: Service con OfferCatalog detallado
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  'serviceType': 'Instalación de Starlink, Cableado Estructurado y Cámaras de Seguridad',
+  'name': 'Instalación Profesional de Starlink y Redes en la Región del Biobío',
+  'description': 'Instalación en altura de Starlink Standard Gen 3 y Mini, cableado estructurado Cat6/Cat6A con canaletas PVC y conduit, cámaras IP PoE en portones lejanos, enlaces compartidos 50/50 por UTP UV o Fibra Óptica Drop y optimización Wi-Fi Mesh en el Biobío.',
+  'url': pageUrl,
+  'provider': {
+    '@id': `${siteUrl}/#servicio-starlink-biobio`,
+  },
+  'areaServed': {
+    '@type': 'AdministrativeArea',
+    'name': 'Región del Biobío, Chile',
+  },
+  'hasOfferCatalog': {
+    '@type': 'OfferCatalog',
+    'name': 'Servicios Técnicos de Telecomunicaciones y Redes en Biobío',
+    'itemListElement': [
+      {
+        '@type': 'Offer',
+        'itemOffered': {
+          '@type': 'Service',
+          'name': 'Instalación de Starlink Standard Gen 3 y Mini en Altura',
+          'description': 'Montaje seguro con mástil reforzado para despejar árboles, fijaciones resistentes a viento y lluvia del Biobío, sellado y configuración Wi-Fi.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        'itemOffered': {
+          '@type': 'Service',
+          'name': 'Cableado Estructurado Profesional Cat6 / Cat6A',
+          'description': 'Puntos de red LAN certificados para casas, oficinas, locales comerciales y parcelas; ordenamiento de racks y patch panels.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        'itemOffered': {
+          '@type': 'Service',
+          'name': 'Canalización Prolija (Canaletas PVC, Conduit y Cajas IP65/IP66)',
+          'description': 'Terminaciones limpias sin cables sueltos en interiores y exteriores con protección UV y estanqueidad para el sur de Chile.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        'itemOffered': {
+          '@type': 'Service',
+          'name': 'Cámaras de Seguridad CCTV / IP PoE y Portones Lejanos',
+          'description': 'Vigilancia para hogares, parcelas y negocios, incluyendo enlaces PoE hasta 100m y Fibra Óptica Drop sobre 100m con monitoreo 24/7 en celular.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        'itemOffered': {
+          '@type': 'Service',
+          'name': 'Enlaces Compartidos 50/50 entre Vecinos, Wi-Fi Mesh y UPS',
+          'description': 'Conexión compartida por UTP blindado UV (hasta 80m) o Fibra Drop (100 a 500m) con redes privadas independientes, Wi-Fi Mesh y respaldo eléctrico UPS.',
+        },
+      },
+    ],
+  },
+};
+---
+
+<BaseLayout
+  title="Instalación Starlink Biobío y Concepción | Redes HogarTV"
+  description="Técnico instalador de Starlink (Gen 3 y Mini), cableado estructurado con canaletas y cámaras en Concepción y todo el Biobío. Cotiza por WhatsApp hoy."
+  canonical={pageUrl}
+  ogImage={heroImage.src}
+  disableAds={true}
+  breadcrumbs={[
+    { name: 'Instalación Starlink Biobío', url: '/servicios/instalacion-starlink-biobio/' },
+  ]}
+>
+  <div class="w-full max-w-full overflow-x-clip pb-24 md:pb-12">
+
+    <!-- ======================================================================= -->
+    <!-- 1. HERO DE ALTO IMPACTO (CRO ABOVE THE FOLD · SIN DISTRACCIONES BLOG)   -->
+    <!-- ======================================================================= -->
+    <section class="relative pt-4 sm:pt-8 pb-10 sm:pb-14 border-b border-slate-800/80 bg-gradient-to-b from-slate-950 via-surface-dark to-surface-dark">
+      <div class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
+
+        <!-- Breadcrumb limpio -->
+        <nav class="flex flex-wrap items-center gap-2 text-xs text-slate-400 font-medium mb-4" aria-label="Migas de pan">
+          <a href="/" class="hover:text-white transition-colors">Inicio</a>
+          <span class="text-slate-600" aria-hidden="true">/</span>
+          <span class="text-emerald-400 font-bold">Servicios Biobío · Instalación Starlink y Redes</span>
+        </nav>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-9 items-center">
+
+          <!-- Columna Izquierda: Propuesta de Valor + CTAs Directos -->
+          <div class="lg:col-span-7 space-y-4 sm:space-y-5 min-w-0">
+            <div class="inline-flex flex-wrap items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 text-[11px] sm:text-xs font-black uppercase tracking-wider">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true"></span>
+              <span>Técnico en Terreno · 8ª Región del Biobío</span>
+            </div>
+
+            <h1 class="text-2xl sm:text-4xl lg:text-[2.65rem] font-black text-white tracking-tight leading-[1.12]">
+              Instalación Profesional de <span class="text-emerald-400">Starlink</span> y Redes en la Región del Biobío
+            </h1>
+
+            <p class="text-sm sm:text-base lg:text-lg text-slate-300 leading-relaxed max-w-2xl">
+              Soluciones llave en mano para <strong class="text-white">parcelas, casas y empresas</strong> en Concepción, Coronel, San Pedro, Santa Juana, Yumbel, Los Ángeles y toda la 8ª Región: montaje <strong class="text-white">Starlink Gen 3 / Mini</strong> en altura, <strong class="text-sky-300">cableado estructurado Cat6 con canaletas prolijas</strong>, enlaces compartidos 50/50 y <strong class="text-indigo-300">cámaras de seguridad IP PoE</strong>.
+            </p>
+
+            <!-- Selector rápido de comuna + CTA principal de WhatsApp (CRO) -->
+            <div class="p-3.5 sm:p-4 rounded-2xl bg-slate-900/95 border border-emerald-500/35 shadow-xl space-y-3">
+              <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
+                <div class="sm:w-52 shrink-0">
+                  <label for="hero-comuna-select" class="sr-only">Selecciona tu comuna en el Biobío</label>
+                  <select
+                    id="hero-comuna-select"
+                    class="w-full px-3.5 py-3 rounded-xl bg-slate-950 border border-slate-700 text-slate-100 text-xs sm:text-sm font-semibold focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400"
+                  >
+                    <option value="">📍 Elige tu comuna (Opcional)</option>
+                    {comunasBiobio.map((c) => (
+                      <option value={c}>{c}</option>
+                    ))}
+                    <option value="otro sector de la Región del Biobío">Otro sector del Biobío</option>
+                  </select>
+                </div>
+                <a
+                  id="hero-wa-cta"
+                  href={waUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wide shadow-lg shadow-emerald-500/25 transition-all hover:scale-[1.01]"
+                >
+                  <span>📲 Cotizar por WhatsApp (+56 9 3192 6886)</span>
+                </a>
+              </div>
+
+              <div class="flex flex-wrap items-center justify-between gap-2 pt-1 text-xs">
+                <a
+                  href="#servicios"
+                  class="inline-flex items-center gap-1.5 font-bold text-slate-200 hover:text-emerald-300 transition-colors"
+                >
+                  <span>Ver los 5 servicios en terreno</span>
+                  <span aria-hidden="true">↓</span>
+                </a>
+                <a
+                  href="/contacto/?motivo=starlink-biobio#contact-form"
+                  class="inline-flex items-center gap-1 font-semibold text-slate-400 hover:text-white underline underline-offset-4 transition-colors"
+                >
+                  <span>Cotizar por formulario web →</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- 4 Badges de Confianza -->
+            <ul class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1" aria-label="Garantías del servicio">
+              <li class="px-3 py-2 rounded-xl bg-slate-900/80 border border-slate-800 text-[11px] font-bold text-slate-200 flex items-center gap-1.5">
+                <span class="text-emerald-400 shrink-0" aria-hidden="true">✓</span>
+                <span>+8 años en terreno</span>
+              </li>
+              <li class="px-3 py-2 rounded-xl bg-slate-900/80 border border-slate-800 text-[11px] font-bold text-slate-200 flex items-center gap-1.5">
+                <span class="text-sky-400 shrink-0" aria-hidden="true">✓</span>
+                <span>Limpio con canaletas</span>
+              </li>
+              <li class="px-3 py-2 rounded-xl bg-slate-900/80 border border-slate-800 text-[11px] font-bold text-slate-200 flex items-center gap-1.5">
+                <span class="text-amber-400 shrink-0" aria-hidden="true">✓</span>
+                <span>Garantía en terreno</span>
+              </li>
+              <li class="px-3 py-2 rounded-xl bg-slate-900/80 border border-slate-800 text-[11px] font-bold text-slate-200 flex items-center gap-1.5">
+                <span class="text-emerald-400 shrink-0" aria-hidden="true">✓</span>
+                <span>Toda la 8ª Región</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Columna Derecha: Imagen Hero LCP Optimizada -->
+          <div class="lg:col-span-5 min-w-0">
+            <div class="rounded-3xl overflow-hidden border-2 border-emerald-500/45 bg-slate-900 shadow-2xl">
+              <div class="relative aspect-[16/10] sm:aspect-[4/3] w-full overflow-hidden bg-slate-950">
+                <Image
+                  src={heroImage}
+                  alt="Instalación profesional de antena Starlink en altura con mástil reforzado en la Región del Biobío, Chile"
+                  width={900}
+                  height={675}
+                  format="webp"
+                  quality={88}
+                  loading="eager"
+                  fetchpriority="high"
+                  class="w-full h-full object-cover"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/25 to-transparent"></div>
+                <div class="absolute top-3 left-3 right-3 flex flex-wrap items-center justify-between gap-2">
+                  <span class="px-2.5 py-1 rounded-full bg-slate-950/90 border border-emerald-500/50 text-emerald-300 text-[11px] font-mono font-bold shadow">
+                    ⚡ 100 a 250 Mbps Reales
+                  </span>
+                  <span class="px-2.5 py-1 rounded-full bg-emerald-500 text-slate-950 text-[10px] font-black uppercase shadow">
+                    Llave en Mano
+                  </span>
+                </div>
+                <div class="absolute bottom-3 left-3.5 right-3.5">
+                  <p class="text-xs sm:text-sm font-extrabold text-white drop-shadow m-0">
+                    Montaje en altura, cableado exterior blindado UV, fibra óptica drop y terminaciones con canaletas.
+                  </p>
+                </div>
+              </div>
+              <div class="p-3.5 sm:p-4 bg-slate-950/90 border-t border-slate-800 grid grid-cols-3 gap-2 text-center">
+                <div>
+                  <span class="block text-sm sm:text-base font-black text-emerald-400">Gen 3 / Mini</span>
+                  <span class="block text-[10px] text-slate-400 font-semibold">Starlink</span>
+                </div>
+                <div class="border-x border-slate-800">
+                  <span class="block text-sm sm:text-base font-black text-sky-400">Cat6 / Fibra</span>
+                  <span class="block text-[10px] text-slate-400 font-semibold">Redes y Racks</span>
+                </div>
+                <div>
+                  <span class="block text-sm sm:text-base font-black text-indigo-400">IP PoE 24/7</span>
+                  <span class="block text-[10px] text-slate-400 font-semibold">Cámaras</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- 2. BLOQUE DE SERVICIOS COMPLETOS (5 SOLUCIONES INTEGRALES)              -->
+    <!-- ======================================================================= -->
+    <section id="servicios" class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 py-10 sm:py-14 border-b border-slate-800/70 scroll-mt-20">
+      <div class="max-w-3xl mb-7 sm:mb-9">
+        <span class="text-xs font-black uppercase tracking-wider text-emerald-400 block mb-1">
+          Soluciones Técnicas en Terreno · Biobío
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
+          Servicios de Instalación Starlink, Cableado Estructurado y Cámaras en el Biobío
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">
+          Cada propiedad tiene desafíos distintos: árboles altos, muros gruesos, humedad costera o portones a cientos de metros. Diseñamos e instalamos la solución completa con materiales certificados para el clima del sur de Chile.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+        {servicios.map((srv, idx) => (
+          <article class={`rounded-2xl bg-surface-card border ${srv.borderClass} p-5 sm:p-6 flex flex-col justify-between shadow-xl ${idx === 4 ? 'md:col-span-2 lg:col-span-2' : ''}`}>
+            <div class="space-y-3">
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-2xl" aria-hidden="true">{srv.icon}</span>
+                <span class={`px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider ${srv.badgeClass}`}>
+                  {srv.badge}
+                </span>
+              </div>
+              <h3 class="text-base sm:text-lg font-black text-white leading-snug">
+                {srv.title}
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                {srv.desc}
+              </p>
+              <ul class="space-y-2 pt-1 text-xs text-slate-300">
+                {srv.bullets.map((b) => (
+                  <li class="flex items-start gap-2">
+                    <span class="text-emerald-400 font-bold shrink-0 mt-0.5" aria-hidden="true">✓</span>
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div class="pt-4 mt-4 border-t border-slate-800/80">
+              <a
+                href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Hola, quiero cotizar: ${srv.title} en la Región del Biobío.`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 text-xs font-extrabold text-emerald-400 hover:text-emerald-300 transition-colors"
+              >
+                <span>📲 Cotizar este servicio por WhatsApp</span>
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- 3. MODALIDADES Y TABLA COMPARATIVA 100% RESPONSIVA                      -->
+    <!-- ======================================================================= -->
+    <section id="modalidades" class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 py-10 sm:py-14 border-b border-slate-800/70 scroll-mt-20">
+      <div class="max-w-3xl mb-6 sm:mb-8">
+        <span class="text-xs font-black uppercase tracking-wider text-sky-400 block mb-1">
+          Comparativa Rápida
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
+          Modalidades de Instalación para Hogares, Parcelas y Empresas
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-300 mt-1.5 leading-relaxed">
+          Elaboramos presupuestos a medida según altura de montaje, metros de cable/fibra y terminaciones con canaletas o conduit.
+        </p>
+      </div>
+
+      <div class="article-content">
+        <div class="table-wrapper" tabindex="0" role="region" aria-label="Modalidades de instalación Starlink, redes y cámaras en Biobío">
+          <table data-cols="4">
+            <thead>
+              <tr>
+                <th>Modalidad / Servicio</th>
+                <th>Qué Incluye en Terreno</th>
+                <th>Infraestructura y Enlace</th>
+                <th>Ideal Para</th>
+              </tr>
+            </thead>
+            <tbody>
+              {modalidades.map((m) => (
+                <tr>
+                  <td data-label="Modalidad / Servicio"><strong>{m.nombre}</strong></td>
+                  <td data-label="Qué Incluye en Terreno">{m.incluye}</td>
+                  <td data-label="Infraestructura y Enlace">{m.enlace}</td>
+                  <td data-label="Ideal Para">{m.ideal}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Diagrama Visual Limpio: Compartir Starlink 50/50 + Cámaras Lejanas (Sin Mermaid) -->
+      <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-5">
+        <!-- Esquema 1: Starlink Compartido 50/50 -->
+        <div class="p-5 sm:p-6 rounded-3xl bg-slate-950/90 border border-emerald-500/35 shadow-xl">
+          <div class="flex items-center justify-between gap-2 mb-4">
+            <h3 class="text-sm sm:text-base font-black text-white">
+              🤝 Cómo Funciona Compartir Starlink 50/50 con Vecinos
+            </h3>
+            <span class="px-2 py-0.5 rounded-md bg-emerald-950 text-emerald-300 border border-emerald-700/60 text-[10px] font-bold shrink-0">
+              50% Ahorro/mes
+            </span>
+          </div>
+
+          <div class="flex flex-col items-center gap-2">
+            <div class="w-full p-3 rounded-xl bg-sky-950/50 border border-sky-500/40 text-center">
+              <div class="text-xs sm:text-sm font-black text-white">📡 1 Antena Starlink en Altura</div>
+              <div class="text-[11px] text-sky-300">Recepción 150–250 Mbps libre de árboles</div>
+            </div>
+            <div class="text-emerald-400 font-black text-sm leading-none" aria-hidden="true">↓</div>
+            <div class="w-full p-3 rounded-xl bg-emerald-950/45 border border-emerald-500/50 text-center">
+              <div class="text-xs sm:text-sm font-black text-white">⚙️ Administrador de Tráfico 50/50</div>
+              <div class="text-[11px] text-emerald-300">Ancho de banda protegido + redes 100% aisladas</div>
+            </div>
+            <div class="text-slate-500 font-black text-xs tracking-widest leading-none py-0.5" aria-hidden="true">↙ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↘</div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 w-full">
+              <div class="p-3 rounded-xl bg-slate-900 border border-slate-700 text-center">
+                <span class="block text-[10px] font-bold uppercase text-brand-300">Casa 1 · Red Privada</span>
+                <span class="block text-xs font-extrabold text-white mt-0.5">📶 Router Wi-Fi 6 Casa A</span>
+                <span class="block text-[11px] text-slate-400">Nombre y clave propios</span>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900 border border-slate-700 text-center">
+                <span class="block text-[10px] font-bold uppercase text-amber-300">UTP UV (&lt;80m) o Fibra (100–500m)</span>
+                <span class="block text-xs font-extrabold text-white mt-0.5">📶 Router Wi-Fi 6 Casa B</span>
+                <span class="block text-[11px] text-slate-400">Nombre y clave propios</span>
+              </div>
+            </div>
+          </div>
+          <p class="text-[11px] text-slate-400 mt-3 leading-relaxed">
+            Ninguna casa puede ver los dispositivos de la otra y las descargas pesadas no ralentizan las videollamadas ni la TV del vecino.
+          </p>
+        </div>
+
+        <!-- Esquema 2: Cámaras en Portones Lejanos (PoE vs Fibra Drop) -->
+        <div class="p-5 sm:p-6 rounded-3xl bg-slate-950/90 border border-indigo-500/35 shadow-xl flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <h3 class="text-sm sm:text-base font-black text-white">
+                📹 Cómo Conectamos Cámaras en Portones o Bodegas Lejanas
+              </h3>
+              <span class="px-2 py-0.5 rounded-md bg-indigo-950 text-indigo-300 border border-indigo-700/60 text-[10px] font-bold shrink-0">
+                App Celular 24/7
+              </span>
+            </div>
+
+            <div class="space-y-3">
+              <div class="p-3.5 rounded-2xl bg-slate-900 border border-emerald-500/35 space-y-1.5">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="text-xs sm:text-sm font-black text-white">🔌 Tramo hasta 100 metros (Inyector PoE)</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 font-bold shrink-0">Sin enchufe en portón</span>
+                </div>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                  Tendido de <strong>cable UTP exterior blindado UV</strong> en conduit o aéreo. El inyector PoE dentro de la casa envía <strong>internet y energía eléctrica por el mismo cable</strong> directo hasta la cámara.
+                </p>
+              </div>
+
+              <div class="p-3.5 rounded-2xl bg-slate-900 border border-indigo-500/40 space-y-1.5">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="text-xs sm:text-sm font-black text-white">⚡ Más de 100 metros (Fibra Óptica Drop)</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-indigo-950 text-indigo-300 font-bold shrink-0">100m a 500m</span>
+                </div>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                  Línea de <strong>fibra óptica drop dedicada</strong> inmune a interferencias y descargas eléctricas + caja estanca IP65 con conversor óptico e inyector PoE alimentado desde el portón eléctrico, caseta o kit solar.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between gap-2 text-xs">
+            <span class="text-slate-400">¿Tu portón o galpón está lejos de la casa?</span>
+            <a href={waUrl} target="_blank" rel="noopener noreferrer" class="font-black text-indigo-300 hover:text-white shrink-0">
+              Evaluar tramo →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- 4. CÓMO TRABAJAMOS (4 PASOS TRANSPARENTES)                              -->
+    <!-- ======================================================================= -->
+    <section id="como-trabajamos" class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 py-10 sm:py-14 border-b border-slate-800/70">
+      <div class="max-w-2xl mb-7">
+        <span class="text-xs font-black uppercase tracking-wider text-amber-400 block mb-1">Proceso Simple y Claro</span>
+        <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
+          Cómo Trabajamos en Terreno (Paso a Paso)
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {pasosTrabajo.map((p) => (
+          <div class="p-5 rounded-2xl bg-surface-card border border-slate-800 space-y-2.5 shadow-lg">
+            <span class="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 font-mono font-black text-sm">
+              {p.num}
+            </span>
+            <h3 class="text-base font-extrabold text-white">{p.title}</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- 5. GALERÍA DE TRABAJOS REALES EN EL BIOBÍO (LISTA PARA TUS FOTOS)       -->
+    <!-- ======================================================================= -->
+    <section id="galeria-trabajos" class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 py-10 sm:py-14 border-b border-slate-800/70">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-7">
+        <div class="max-w-2xl">
+          <span class="text-xs font-black uppercase tracking-wider text-emerald-400 block mb-1">Estándar de Calidad en Terreno</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
+            Galería de Trabajos Reales en el Biobío
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-300 mt-1">
+            Así lucen nuestras instalaciones: mástiles seguros en altura, canaletas prolijas sin cables sueltos, racks ordenados y cámaras exteriores selladas.
+          </p>
+        </div>
+        <a
+          href={waUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 text-xs font-extrabold text-emerald-400 hover:text-emerald-300 shrink-0"
+        >
+          <span>Pedir referencias de trabajos en tu comuna →</span>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+        {galeriaTrabajos.map((item) => (
+          <figure class="rounded-2xl overflow-hidden bg-surface-card border border-slate-800 shadow-lg flex flex-col m-0 group">
+            <div class="relative aspect-[3/2] w-full overflow-hidden bg-slate-950 border-b border-slate-800">
+              <Image
+                src={item.img}
+                alt={item.alt}
+                width={800}
+                height={533}
+                format="webp"
+                quality={85}
+                loading="lazy"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-slate-950/90 border border-slate-700 text-emerald-300 text-[10px] font-black uppercase tracking-wider">
+                {item.tag}
+              </span>
+            </div>
+            <figcaption class="p-4 space-y-1 flex-1">
+              <div class="text-sm font-extrabold text-white">{item.title}</div>
+              <p class="text-xs text-slate-400 leading-relaxed m-0">{item.caption}</p>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- 6. COBERTURA LOCAL EN TODA LA REGIÓN DEL BIOBÍO (SEO LOCAL)             -->
+    <!-- ======================================================================= -->
+    <section id="cobertura-biobio" class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 py-10 sm:py-14 border-b border-slate-800/70">
+      <div class="max-w-3xl mb-7">
+        <span class="text-xs font-black uppercase tracking-wider text-emerald-400 block mb-1">Cobertura 8ª Región</span>
+        <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
+          Cobertura Técnica en Toda la Región del Biobío
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-300 mt-1.5 leading-relaxed">
+          Realizamos visitas técnicas e instalaciones de Starlink, cableado estructurado y cámaras en zonas urbanas, costeras y sectores rurales o parcelas de las siguientes comunas:
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
+        {coberturaZonas.map((z) => (
+          <div class="p-5 rounded-2xl bg-surface-card border border-slate-800 space-y-3 shadow-lg">
+            <div class="flex items-center justify-between gap-2 pb-2.5 border-b border-slate-800">
+              <h3 class="text-sm sm:text-base font-black text-white">{z.zone}</h3>
+              <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-700/50 font-bold shrink-0">
+                {z.badge}
+              </span>
+            </div>
+            <ul class="flex flex-wrap gap-1.5">
+              {z.communes.map((comuna) => (
+                <li class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-xs font-semibold text-slate-200">
+                  📍 {comuna}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- 7. AUTORIDAD Y CONFIANZA: QUIÉN INSTALA (FTTH, STARLINK Y REDES)        -->
+    <!-- ======================================================================= -->
+    <section id="quien-instala" class="max-w-5xl mx-auto px-3.5 sm:px-6 lg:px-8 py-10 sm:py-14 border-b border-slate-800/70">
+      <div class="rounded-3xl bg-gradient-to-br from-slate-900 via-surface-card to-emerald-950/20 border border-slate-700/80 p-5 sm:p-8 shadow-2xl">
+        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-5 sm:gap-7">
+          <div class="shrink-0">
+            <AuthorAvatar slug="luis-briones" nombre="Luis Briones — Técnico en Telecomunicaciones Biobío" size="lg" class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl border-2 border-emerald-500/60 shadow-xl" />
+          </div>
+          <div class="flex-1 min-w-0 text-center sm:text-left space-y-3">
+            <div>
+              <span class="text-[11px] font-black uppercase tracking-wider text-emerald-400 block mb-1">
+                ¿Quién Realiza tu Instalación en Terreno?
+              </span>
+              <h2 class="text-xl sm:text-2xl font-black text-white">
+                Luis Briones — Técnico Especialista en Telecomunicaciones
+              </h2>
+              <p class="text-xs sm:text-sm text-sky-300 font-semibold mt-0.5">
+                Redes FTTH · Enlaces Satelitales Starlink · Cableado Estructurado · Seguridad IP/PoE en el Biobío
+              </p>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Con más de <strong class="text-white">8 años de experiencia práctica en terreno en la Región del Biobío</strong>, trabajo directamente en despliegue de redes de fibra óptica FTTH, instalación profesional de antenas Starlink (Gen 3 y Mini) en altura, cableado estructurado Cat6/Cat6A con canalización limpia y sistemas de cámaras IP PoE para hogares, parcelas y empresas.
+            </p>
+            <ul class="flex flex-wrap justify-center sm:justify-start gap-2 pt-1 text-[11px] font-semibold text-slate-200">
+              <li class="px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800">✓ Experiencia real en fibra óptica FTTH</li>
+              <li class="px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800">✓ Instrumentación y certificación de red</li>
+              <li class="px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800">✓ Terminaciones prolijas y garantía escrita</li>
+              <li class="px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800">✓ Atención directa sin intermediarios</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- 8. PREGUNTAS FRECUENTES (SYNCHRONIZED FAQPage JSON-LD)                  -->
+    <!-- ======================================================================= -->
+    <section id="preguntas-frecuentes" class="max-w-4xl mx-auto px-3.5 sm:px-6 lg:px-8 pt-4 pb-6">
+      <FAQSection
+        title="Preguntas Frecuentes sobre Instalación Starlink y Redes en el Biobío"
+        headingLevel="h2"
+        items={faqs}
+      />
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- 9. CTA FINAL DE CONVERSIÓN + AVISO LEGAL DISCRETO                       -->
+    <!-- ======================================================================= -->
+    <section class="max-w-5xl mx-auto px-3.5 sm:px-6 lg:px-8 pt-2 pb-4 space-y-6">
+      <div class="p-6 sm:p-9 rounded-3xl bg-gradient-to-r from-emerald-950/80 via-slate-900 to-slate-900 border-2 border-emerald-500/50 text-center shadow-2xl space-y-4">
+        <span class="inline-block px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-xs font-black uppercase tracking-wider">
+          Presupuesto Rápido y Sin Compromiso
+        </span>
+        <h2 class="text-xl sm:text-3xl font-black text-white leading-tight">
+          ¿Listo para instalar Starlink, cableado o cámaras con terminación profesional?
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-300 max-w-2xl mx-auto leading-relaxed">
+          Escríbenos por WhatsApp indicando tu comuna en la Región del Biobío y qué necesitas (Starlink individual, compartido 50/50, cableado estructurado con canaletas o cámaras). Te respondemos a la brevedad.
+        </p>
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 pt-1">
+          <a
+            href={waUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-7 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider shadow-lg shadow-emerald-500/25 transition-all inline-flex items-center justify-center gap-2"
+          >
+            <span>📲 Cotizar por WhatsApp (+56 9 3192 6886)</span>
+          </a>
+          <a
+            href="/contacto/?motivo=starlink-biobio#contact-form"
+            class="px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 font-bold text-xs sm:text-sm transition-colors inline-flex items-center justify-center gap-1.5"
+          >
+            <span>✉️ Formulario de Cotización Web →</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Aviso legal discreto al cierre (sin enfriar conversión arriba) -->
+      <p class="text-[11px] text-slate-500 text-center max-w-3xl mx-auto leading-relaxed">
+        ⚖️ Aviso legal: HogarTV.cl presta servicios técnicos independientes de instalación de antenas, ingeniería de redes, cableado estructurado, canalización y cámaras de seguridad en la Región del Biobío. Starlink® es marca registrada de SpaceX; el kit y el plan mensual oficial son contratados directamente por el cliente con el proveedor.
+      </p>
+    </section>
+
+  </div>
+
+  <!-- CTA Flotante Sutil en Móvil (1 toque directo a WhatsApp) -->
+  <div class="md:hidden fixed bottom-3 inset-x-3 z-40 pointer-events-none">
+    <a
+      id="floating-wa-cta"
+      href={waUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="pointer-events-auto w-full flex items-center justify-between gap-2 px-4 py-3 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs shadow-[0_10px_30px_rgba(16,185,129,0.4)] border border-emerald-300/60"
+    >
+      <span class="flex items-center gap-2 min-w-0">
+        <span class="text-base leading-none shrink-0" aria-hidden="true">📲</span>
+        <span class="truncate">Cotizar Starlink / Redes Biobío</span>
+      </span>
+      <span class="px-2.5 py-1 rounded-lg bg-slate-950 text-emerald-400 text-[11px] font-black shrink-0">
+        WhatsApp →
+      </span>
+    </a>
+  </div>
+
+  <!-- Script progresivo para personalizar el mensaje de WhatsApp según la comuna elegida -->
+  <script is:inline>
+    (function() {
+      const select = document.getElementById('hero-comuna-select');
+      const heroCta = document.getElementById('hero-wa-cta');
+      const floatCta = document.getElementById('floating-wa-cta');
+      if (!select || !heroCta) return;
+
+      const base = 'https://wa.me/56931926886?text=';
+      select.addEventListener('change', function() {
+        const comuna = select.value;
+        const msg = comuna
+          ? `Hola, quiero cotizar una instalación de Starlink / redes en ${comuna} (Región del Biobío).`
+          : 'Hola, quiero cotizar una instalación de Starlink / redes en mi comuna en la Región del Biobío.';
+        const fullUrl = base + encodeURIComponent(msg);
+        heroCta.setAttribute('href', fullUrl);
+        if (floatCta) floatCta.setAttribute('href', fullUrl);
+      });
+    })();
+  </script>
+
+  <!-- JSON-LD LocalBusiness / ProfessionalService & Service Catalog -->
+  <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+</BaseLayout>

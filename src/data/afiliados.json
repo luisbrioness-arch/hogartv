@@ -442,5 +442,29 @@
     "url": "https://www.falabella.com/falabella-cl/search?Ntt=convertidor+de+oxido",
     "tienda": "Falabella Chile",
     "actualizado": "2026-11-22"
+  },
+  "starlink-mini-kit": {
+    "nombre": "Antena Starlink Mini Kit con Router Wi-Fi Integrado",
+    "url": "https://listado.mercadolibre.cl/starlink-mini",
+    "tienda": "Mercado Libre Chile",
+    "actualizado": "2026-11-25"
+  },
+  "falabella-starlink-mini": {
+    "nombre": "Antena Starlink Mini en Falabella Chile",
+    "url": "https://www.falabella.com/falabella-cl/search?Ntt=starlink+mini",
+    "tienda": "Falabella Chile",
+    "actualizado": "2026-11-25"
+  },
+  "starlink-estandar-gen3": {
+    "nombre": "Antena Starlink Estándar Gen 3 con Router Wi-Fi 6",
+    "url": "https://listado.mercadolibre.cl/starlink-estandar-gen-3",
+    "tienda": "Mercado Libre Chile",
+    "actualizado": "2026-11-25"
+  },
+  "falabella-starlink-gen3": {
+    "nombre": "Antena Starlink Estándar Gen 3 en Falabella Chile",
+    "url": "https://www.falabella.com/falabella-cl/search?Ntt=starlink+estandar+gen+3",
+    "tienda": "Falabella Chile",
+    "actualizado": "2026-11-25"
   }
 }

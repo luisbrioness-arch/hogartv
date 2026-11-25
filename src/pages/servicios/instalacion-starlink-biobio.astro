@@ -1,9 +1,11 @@
 ---
 import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import FAQSection from '../../components/FAQSection.astro';
+import StoreLogo from '../../components/StoreLogo.astro';
+import afiliadosData from '../../data/afiliados.json';
 
 import hogarTvLogo from '../../assets/brand/hogartv-logo.png';
+import luisPhoto from '../../assets/autores/luis-briones.webp';
 import heroImage from '../../assets/servicios/instalacion-starlink-biobio/hero.jpg';
 import imgMastil from '../../assets/servicios/instalacion-starlink-biobio/montaje-mastil-starlink-biobio.webp';
 import imgCanaleta from '../../assets/servicios/instalacion-starlink-biobio/canaleta-cableado-estructurado-limpio.webp';
@@ -15,245 +17,210 @@ import imgCajaEstanca from '../../assets/servicios/instalacion-starlink-biobio/c
 const siteUrl = 'https://hogartv.cl';
 const pageUrl = `${siteUrl}/servicios/instalacion-starlink-biobio/`;
 const waBase = 'https://wa.me/56931926886?text=';
-const defaultWaText = 'Hola HogarTV, quiero cotizar una instalación de Starlink o redes en mi comuna en la Región del Biobío.';
-const waUrl = `${waBase}${encodeURIComponent(defaultWaText)}`;
+const waDirectUrl = `${waBase}${encodeURIComponent(
+  'Hola Luis, vi la página de HogarTV.cl y quiero cotizar una instalación de Starlink en la Región del Biobío.'
+)}`;
 
-const comunasBiobio = [
-  'Coronel',
-  'Concepción',
-  'San Pedro de la Paz',
-  'Lota',
-  'Chiguayante',
-  'Talcahuano',
-  'Hualqui',
-  'Tomé',
-  'Penco',
-  'Santa Juana',
-  'Florida',
-  'Yumbel',
-  'Cabrero',
-  'Quillón',
-  'Los Ángeles',
-  'Arauco',
-  'Santa Bárbara',
-];
-
-const comunasDestacadas = [
-  'Concepción',
-  'Coronel',
-  'San Pedro de la Paz',
-  'Santa Juana',
-  'Florida',
-  'Yumbel',
-  'Los Ángeles',
-  'Arauco',
-];
-
-const coberturaZonas = [
+const packages = [
   {
-    zone: 'Gran Concepción y Costa',
-    communes: ['Concepción', 'San Pedro de la Paz', 'Coronel', 'Lota', 'Chiguayante', 'Talcahuano', 'Hualqui', 'Tomé', 'Penco'],
-  },
-  {
-    zone: 'Parcelas e Interior',
-    communes: ['Santa Juana', 'Florida', 'Yumbel', 'Cabrero', 'Quillón', 'Condominios y caminos rurales'],
-  },
-  {
-    zone: 'Provincia de Biobío y Arauco',
-    communes: ['Los Ángeles', 'Arauco', 'Santa Bárbara', 'Sectores rurales y empresas aledañas'],
-  },
-];
-
-// 5 servicios claros para el cliente, con resumen corto + detalles desplegables
-const servicios = [
-  {
-    id: 'starlink',
-    icon: '📡',
-    badge: 'Más solicitado',
-    badgeClass: 'bg-emerald-500 text-slate-950',
-    borderClass: 'border-emerald-500/45',
-    title: 'Instalación de Starlink (Gen 3 y Mini)',
-    summary: 'Montamos tu antena en altura para esquivar árboles y que tu internet funcione firme con lluvia y viento.',
-    waMsg: 'Hola HogarTV, quiero cotizar la instalación de Starlink en la Región del Biobío.',
-    details: [
-      'Mástil firme de acero y anclajes calculados para temporales de viento del Biobío.',
-      'Alineación con cielo despejado para evitar microcortes en videollamadas o TV.',
-      'Pasada de muro/techo sellada contra filtraciones y configuración completa del Wi-Fi.',
-      'Compatible con Starlink Standard Gen 3, generaciones anteriores y Starlink Mini.',
+    id: 'base',
+    name: 'Base Techo o Muro',
+    priceLabel: '$95.000 – $110.000',
+    min: 95000,
+    max: 110000,
+    tag: 'Casas y cabañas despejadas',
+    featured: false,
+    desc: 'Ideal cuando tu casa o techo tiene buena vista al cielo sin árboles altos encima.',
+    bullets: [
+      'Soporte firme en techo o muro (resiste lluvia y viento)',
+      'Bajada de cable prolija y sellada contra filtraciones',
+      'Configuración completa del Wi-Fi y prueba en tus celulares',
     ],
-    ideal: 'Casas, parcelas, cabañas y negocios sin fibra óptica.',
   },
   {
-    id: 'compartido-50-50',
-    icon: '🤝',
-    badge: 'Ahorra 50% al mes',
-    badgeClass: 'bg-cyan-400 text-slate-950',
-    borderClass: 'border-cyan-500/40',
-    title: 'Compartir Starlink 50/50 entre Vecinos',
-    summary: 'Una sola antena alimenta 2 casas o parcelas cercanas. Cada familia tiene su propio Wi-Fi privado y pagan la mitad.',
-    waMsg: 'Hola HogarTV, quiero cotizar compartir una antena Starlink 50/50 entre dos casas en el Biobío.',
-    details: [
-      'Hasta 80 metros: enlace por cable UTP exterior blindado doble chaqueta UV.',
-      'De 100 a 500 metros: tendido aéreo de fibra óptica drop monomodo (sin pérdida de velocidad e inmune a tormentas).',
-      'Reparto equitativo 50/50: las descargas pesadas de una casa nunca frenan a la otra.',
-      'Redes 100% separadas: cada vivienda usa su propio router, nombre de Wi-Fi y contraseña.',
+    id: 'parcela-full',
+    name: 'Parcela Full Mástil + Wi-Fi',
+    priceLabel: '$150.000 – $180.000',
+    min: 150000,
+    max: 180000,
+    tag: 'Parcelas con árboles',
+    featured: false,
+    desc: 'Elevamos la antena por sobre copas de pinos o eucaliptos y reforzamos el Wi-Fi interior.',
+    bullets: [
+      'Mástil de acero elevado para librar árboles y evitar cortes',
+      'Fijaciones reforzadas pensadas para temporales del sur',
+      'Cableado exterior protegido UV + router Wi-Fi de largo alcance',
     ],
-    ideal: 'Vecinos, familiares en el mismo terreno o parcelas contiguas.',
   },
   {
-    id: 'cableado-canaletas',
-    icon: '🔌',
-    badge: 'Cero cables sueltos',
-    badgeClass: 'bg-sky-400 text-slate-950',
-    borderClass: 'border-sky-500/40',
-    title: 'Cableado Estructurado y Canaletas Limpias',
-    summary: 'Llevamos internet estable por cable (Cat6 / Cat6A) a piezas, oficinas o locales, 100% ordenado y estético.',
-    waMsg: 'Hola HogarTV, quiero cotizar cableado estructurado con canaletas en la Región del Biobío.',
-    details: [
-      'Puntos de red LAN Gigabit certificados (Cat6 / Cat6A) para PCs, televisores y oficinas.',
-      'Terminación limpia con canaletas PVC interiores a medida (sin cables colgando).',
-      'Tubería conduit interior/exterior y cajas estancas IP65/IP66 resistentes al clima costero.',
-      'Ordenamiento de racks de comunicaciones, patch panels, switches y rotulado de cables.',
+    id: 'vecinos-50-50',
+    name: 'Compartido Vecinos 50/50',
+    priceLabel: '$250.000 – $280.000',
+    perHouseLabel: '~$130.000 por cada casa',
+    min: 250000,
+    max: 280000,
+    tag: 'MÁS PEDIDO · AHORRA 50%',
+    featured: true,
+    desc: '1 sola antena alimenta 2 casas hasta 80 metros. Cada familia queda con su Wi-Fi privado y pagan la mitad de la mensualidad.',
+    bullets: [
+      '1 antena alimenta 2 viviendas (hasta 80m con cable exterior blindado)',
+      '2 redes Wi-Fi 100% privadas e independientes (nombre y clave propia)',
+      'Reparto equitativo 50/50: dividen la mensualidad a la mitad sin frenarse',
     ],
-    ideal: 'Casas de 2 pisos, oficinas, locales comerciales y talleres.',
   },
   {
-    id: 'camaras-porton',
-    icon: '📹',
-    badge: 'Vigilancia 24/7',
-    badgeClass: 'bg-indigo-400 text-slate-950',
-    borderClass: 'border-indigo-500/40',
-    title: 'Cámaras de Seguridad y Portones Lejanos',
-    summary: 'Instalamos cámaras CCTV / IP PoE para ver tu casa, negocio o portón de entrada en vivo desde el celular.',
-    waMsg: 'Hola HogarTV, quiero cotizar instalación de cámaras de seguridad o cámara en portón en el Biobío.',
-    details: [
-      'Portón hasta 100 metros: cable exterior blindado con inyector PoE desde tu casa (no necesitas enchufe 220V en el portón).',
-      'Más de 100 metros (hasta 500m): fibra óptica drop dedicada hasta el portón, galpón o bodega con caja estanca IP65.',
-      'Sistemas CCTV / IP PoE para perímetro, accesos y negocios.',
-      'Dejamos la aplicación configurada y probada en los celulares de tu familia.',
+    id: 'fibra-camaras',
+    name: 'Enlace Fibra Larga (100–500m) o + Cámaras Portón',
+    priceLabel: 'Desde $340.000',
+    min: 340000,
+    max: null,
+    tag: 'Grandes distancias y seguridad',
+    featured: false,
+    desc: 'Une dos parcelas lejanas por fibra óptica o vigila tu portón y bodega desde el celular 24/7.',
+    bullets: [
+      'Tendido de fibra óptica entre parcelas de 100 a 500 metros sin pérdida',
+      'Cámara de seguridad en portón o galpón (incluso sin enchufe en el portón)',
+      'Cajas estancas selladas contra lluvia y visualización 24/7 en tu celular',
     ],
-    ideal: 'Portones de parcelas, galpones, bodegas, casas y negocios.',
-  },
-  {
-    id: 'wifi-ups',
-    icon: '📶',
-    badge: 'Señal en toda la casa',
-    badgeClass: 'bg-amber-400 text-slate-950',
-    borderClass: 'border-amber-500/40',
-    title: 'Wi-Fi Mesh y Respaldo para Cortes de Luz (UPS)',
-    summary: 'Eliminamos los sectores sin señal en casas grandes y sumamos respaldo con batería para seguir conectado sin luz.',
-    waMsg: 'Hola HogarTV, quiero cotizar mejora de Wi-Fi Mesh o respaldo UPS en la Región del Biobío.',
-    details: [
-      'Instalación de sistemas Wi-Fi Mesh y Access Points cableados para viviendas amplias o de dos pisos.',
-      'Configuración en modo puente (bypass) para exprimir al máximo tu router principal.',
-      'Integración de respaldo eléctrico UPS para que tu Starlink y cámaras sigan activos durante cortes de luz.',
-    ],
-    ideal: 'Casas grandes con muros gruesos y sectores con cortes frecuentes de luz.',
   },
 ];
 
-const pasosTrabajo = [
+const zones = [
   {
-    num: '1',
-    title: 'Escríbenos por WhatsApp',
-    desc: 'Indícanos tu comuna y qué necesitas (puedes mandar una foto del techo o del sector).',
+    label: 'Zona Base ($0 traslado)',
+    communes: [
+      { name: 'Coronel', min: 0, max: 0, zoneType: 'base' },
+      { name: 'Lota', min: 0, max: 0, zoneType: 'base' },
+      { name: 'San Pedro de la Paz', min: 0, max: 0, zoneType: 'base' },
+      { name: 'Concepción', min: 0, max: 0, zoneType: 'base' },
+    ],
   },
   {
-    num: '2',
-    title: 'Presupuesto claro',
-    desc: 'Te cotizamos materiales, canalización y mano de obra antes de ir, sin cobros sorpresa.',
+    label: 'Zona Media (+$20.000 – $25.000 traslado)',
+    communes: [
+      { name: 'Santa Juana', min: 20000, max: 25000, zoneType: 'media' },
+      { name: 'Chiguayante', min: 20000, max: 25000, zoneType: 'media' },
+      { name: 'Hualqui', min: 20000, max: 25000, zoneType: 'media' },
+      { name: 'Patagual', min: 20000, max: 25000, zoneType: 'media' },
+    ],
   },
   {
-    num: '3',
-    title: 'Instalamos y probamos todo',
-    desc: 'Dejamos la instalación limpia, funcionando al 100% y con garantía técnica en terreno.',
+    label: 'Zona Rural (+$30.000 – $35.000 traslado)',
+    communes: [
+      { name: 'Yumbel', min: 30000, max: 35000, zoneType: 'rural' },
+      { name: 'Florida', min: 30000, max: 35000, zoneType: 'rural' },
+      { name: 'Quillón', min: 30000, max: 35000, zoneType: 'rural' },
+      { name: 'Cabrero', min: 30000, max: 35000, zoneType: 'rural' },
+      { name: 'Los Ángeles', min: 30000, max: 35000, zoneType: 'rural' },
+      { name: 'Arauco', min: 30000, max: 35000, zoneType: 'rural' },
+    ],
   },
 ];
 
-const galeriaTrabajos = [
+const galleryItems = [
   {
     img: imgMastil,
-    tag: 'Starlink en altura',
-    title: 'Montaje en Mástil Firme',
+    badge: 'Firme ante temporales',
+    title: 'Mástil en altura sobre árboles',
+    desc: 'Fijación sólida en techo pensada para las ráfagas de viento y lluvia del Biobío.',
     alt: 'Montaje profesional de antena Starlink en mástil reforzado en altura en la Región del Biobío',
   },
   {
     img: imgCanaleta,
-    tag: 'Sin cables sueltos',
-    title: 'Canaletas y Cableado Cat6',
-    alt: 'Instalación limpia de cableado estructurado Cat6 con canaletas PVC en vivienda y oficina del Biobío',
+    badge: 'Cero cables colgando',
+    title: 'Canaletas ordenadas en muros',
+    desc: 'Terminación prolija por dentro y por fuera, respetando la estética de tu casa.',
+    alt: 'Instalación limpia con canaletas PVC ordenadas sin cables colgando en vivienda del Biobío',
   },
   {
     img: imgCamaraPorton,
-    tag: 'Seguridad 24/7',
-    title: 'Cámara PoE en Portón',
-    alt: 'Cámara de seguridad IP PoE instalada en portón de entrada de parcela en la Región del Biobío',
+    badge: 'Portón vigilado 24/7',
+    title: 'Cámara hasta el portón de entrada',
+    desc: 'Mira quién llega a tu parcela directo desde el celular, incluso sin enchufe en el portón.',
+    alt: 'Cámara de seguridad instalada en portón de entrada de parcela en la Región del Biobío',
   },
   {
     img: imgRackWifi,
-    tag: 'Orden y Wi-Fi 6',
-    title: 'Rack y Router Wi-Fi',
-    alt: 'Ordenamiento de rack de comunicaciones, patch panel y router Wi-Fi 6 en Concepción y Biobío',
+    badge: 'Wi-Fi en toda la casa',
+    title: 'Router y red ordenados',
+    desc: 'Equipos organizados y señal potente en dormitorios, living y segundo piso.',
+    alt: 'Instalación ordenada de router Wi-Fi de largo alcance y equipos de red en hogar del Biobío',
   },
   {
     img: imgFibraDrop,
-    tag: 'Compartido 50/50',
-    title: 'Enlace Fibra Drop',
-    alt: 'Tendido de fibra óptica drop monomodo para compartir internet Starlink entre parcelas vecinas en el Biobío',
+    badge: 'Ahorra 50% al mes',
+    title: 'Enlace largo entre vecinos',
+    desc: 'Conexión aérea de larga distancia entre dos parcelas sin perder velocidad.',
+    alt: 'Tendido de fibra óptica aérea para compartir Starlink entre parcelas vecinas en el Biobío',
   },
   {
     img: imgCajaEstanca,
-    tag: 'Clima del sur',
-    title: 'Caja Estanca IP65',
-    alt: 'Instalación de caja estanca IP65 y tubería conduit exterior para redes y cámaras en clima del Biobío',
+    badge: 'Sellado contra lluvia',
+    title: 'Cajas selladas para exterior',
+    desc: 'Conexiones protegidas contra humedad costera, sol y temporales del sur.',
+    alt: 'Caja estanca exterior sellada contra lluvia y tubería conduit en instalación del Biobío',
   },
 ];
 
 const faqs = [
   {
-    question: '¿Cuánto cuesta instalar Starlink o cableado en la Región del Biobío?',
-    answer: 'El valor depende de cada casa o parcela: altura del techo, si necesita mástil elevado para esquivar árboles, metros de canaleta o cable/fibra y si se agregan cámaras o puntos de red. Escríbenos por WhatsApp con tu comuna y te damos un presupuesto claro y sin compromiso antes de agendar.',
+    question: '¿Cuánto sale comprar la antena Starlink y cuánto cuesta la mensualidad?',
+    answer: 'La antena la compras tú directo en tienda (como Mercado Libre, Falabella o Starlink.com) y puedes pagarla en cuotas; suele rondar entre $190.000 (Starlink Mini) y $350.000 (Estándar Gen 3) según promociones. El plan mensual residencial ilimitado lo pagas directo a Starlink sin contratos de amarre (aprox. $35.000 a $47.000 al mes). Si la compartes 50/50 con un vecino, cada casa paga la mitad (~$17.500 a $23.500 al mes).',
   },
   {
-    question: '¿Instalan Starlink Standard (Gen 3) y Starlink Mini?',
-    answer: 'Sí. Instalamos Starlink Standard Gen 3, generaciones anteriores y Starlink Mini, con mástiles reforzados, soportes de muro/techo y configuración completa de tu red Wi-Fi.',
+    question: '¿Funciona bien con lluvia intensa y temporales de viento en el Biobío?',
+    answer: 'Sí. La antena Starlink está hecha para el clima pesado y tiene calefacción interna contra escarcha. Lo que marca la diferencia en el Biobío es que quede bien anclada en un mástil firme y con sus cajas y pasadas selladas contra la lluvia, que es justamente nuestro estándar en terreno.',
   },
   {
-    question: '¿Cómo evitan que queden cables colgando o feos a la vista?',
-    answer: 'Usamos canaletas PVC a medida en interiores, tubería conduit en exteriores, pasamuros sellados contra lluvia y cajas estancas IP65/IP66. Nuestro foco es dejar una terminación limpia y prolija.',
+    question: '¿De verdad se puede compartir 50/50 con un vecino sin que se pegue?',
+    answer: 'Sí, totalmente. Como Starlink entrega entre 150 y 250 Megas reales, sobra velocidad para dos familias viendo Netflix, teletrabajo y cámaras. Dejamos configurado un reparto equitativo 50/50 y cada casa tiene su propio router, nombre de Wi-Fi y contraseña privada, sin ver los equipos del otro.',
   },
   {
-    question: '¿Realmente se puede compartir Starlink 50/50 con un vecino sin que se ponga lento?',
-    answer: 'Sí. Conectamos las 2 viviendas con cable exterior blindado UV (hasta 80m) o fibra óptica drop (100 a 500m) y configuramos control de tráfico 50/50 con dos routers independientes. Cada casa tiene su Wi-Fi privado y velocidad protegida.',
+    question: '¿Qué pasa si tengo muchos árboles altos alrededor de mi parcela?',
+    answer: 'Si hay pinos o eucaliptos cerca de la casa, la antena necesita ver el cielo despejado para que no tenga microcortes. Por eso antes de ir revisamos tu terreno con fotos o ubicación y, si hace falta, montamos un mástil elevado firme para despejar el horizonte.',
   },
   {
-    question: '¿Puedo poner una cámara en el portón si ahí no tengo enchufe?',
-    answer: 'Sí. Si tu portón está a menos de 100 metros de la casa, llevamos internet y energía por un solo cable blindado usando un inyector PoE desde la vivienda. Si está a más de 100 metros (hasta 500m), usamos fibra óptica drop con alimentación en el portón, caseta o kit solar.',
+    question: '¿Cómo se paga la instalación y qué garantía tiene?',
+    answer: 'Reservas tu hora de fin de semana con solo $25.000 (que se descuentan del total) para asegurar materiales y agenda. El saldo lo pagas al terminar la instalación, cuando ya probaste el Wi-Fi y la velocidad funcionando en tu celular. Además puedes pedir boleta de honorarios y todo trabajo incluye garantía en terreno.',
   },
   {
-    question: '¿Qué pasa con los temporales de lluvia, viento o cortes de luz en el Biobío?',
-    answer: 'Nuestros mástiles y cajas estancas están pensados para la lluvia y ráfagas de viento de la zona. Además, podemos incorporar una pequeña batería UPS para que tu internet y cámaras sigan funcionando si se corta la luz.',
-  },
-  {
-    question: '¿En qué comunas de la Región del Biobío atienden?',
-    answer: 'Atendemos en Coronel, Concepción, San Pedro de la Paz, Lota, Chiguayante, Talcahuano, Hualqui, Tomé, Penco, Santa Juana, Florida, Yumbel, Cabrero, Quillón, Los Ángeles, Arauco, Santa Bárbara y sectores rurales aledaños.',
+    question: '¿Atienden sábados y domingos en parcelas de fin de semana?',
+    answer: 'Sí. Sabemos que muchas familias solo pueden ir a su parcela los fines de semana, por eso tenemos agenda dedicada sábados y domingos en Coronel, Concepción, San Pedro, Santa Juana, Yumbel, Florida, Quillón y comunas cercanas.',
   },
 ];
 
-// Schema JSON-LD sin exponer nombre personal ni número de teléfono en texto abierto
+const allCommunesList = [
+  'Región del Biobío',
+  'Coronel',
+  'Concepción',
+  'San Pedro de la Paz',
+  'Lota',
+  'Santa Juana',
+  'Chiguayante',
+  'Hualqui',
+  'Patagual',
+  'Yumbel',
+  'Florida',
+  'Quillón',
+  'Cabrero',
+  'Los Ángeles',
+  'Arauco',
+];
+
 const localBusinessSchema = {
   '@context': 'https://schema.org',
-  '@type': ['ProfessionalService', 'HomeAndConstructionBusiness'],
+  '@type': ['LocalBusiness', 'HomeAndConstructionBusiness'],
   '@id': `${siteUrl}/#servicio-starlink-biobio`,
-  'name': 'HogarTV.cl — Instalación de Starlink, Cableado Estructurado y Cámaras Biobío',
-  'description': 'Servicio técnico en terreno en la Región del Biobío para instalación de Starlink (Gen 3 y Mini), cableado estructurado Cat6/Cat6A con canaletas limpias, enlaces 50/50 y cámaras de seguridad IP PoE.',
+  'name': 'HogarTV.cl — Instalación Profesional de Starlink y Redes en el Biobío',
+  'description': 'Instalación profesional de internet satelital Starlink (Mini y Gen 3) en altura, enlaces compartidos 50/50 entre vecinos, cableado ordenado con canaletas y cámaras de seguridad en parcelas de la Región del Biobío.',
   'url': pageUrl,
-  'priceRange': '$$',
+  'telephone': '+56931926886',
+  'priceRange': '$95.000 - $340.000+ CLP',
   'image': `${siteUrl}${heroImage.src}`,
   'logo': `${siteUrl}/favicon-512x512.png`,
   'address': {
     '@type': 'PostalAddress',
-    'addressLocality': 'Región del Biobío',
+    'addressLocality': 'Coronel y Concepción',
     'addressRegion': 'Región del Biobío',
     'addressCountry': 'CL',
   },
@@ -262,51 +229,74 @@ const localBusinessSchema = {
     'latitude': -36.827,
     'longitude': -73.0503,
   },
-  'areaServed': [
-    { '@type': 'AdministrativeArea', 'name': 'Región del Biobío' },
-    ...comunasBiobio.map((comuna) => ({
-      '@type': 'City',
-      'name': `${comuna}, Región del Biobío`,
-    })),
+  'openingHoursSpecification': [
+    {
+      '@type': 'OpeningHoursSpecification',
+      'dayOfWeek': ['Saturday', 'Sunday'],
+      'opens': '08:30',
+      'closes': '20:00',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      'opens': '09:00',
+      'closes': '19:30',
+    },
   ],
+  'areaServed': allCommunesList.map((place, idx) =>
+    idx === 0
+      ? { '@type': 'AdministrativeArea', 'name': place }
+      : { '@type': 'City', 'name': `${place}, Región del Biobío` }
+  ),
   'sameAs': [
     'https://www.tiktok.com/@hogartv.cl',
     'https://www.instagram.com/hogartv.cl/',
+    `${siteUrl}/sobre-nosotros/`,
   ],
 };
 
 const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
-  'serviceType': 'Instalación de Starlink, Cableado Estructurado, Canalización y Cámaras de Seguridad',
-  'name': 'Instalación Profesional de Starlink y Redes en la Región del Biobío',
-  'description': 'Instalación en altura de Starlink Standard Gen 3 y Mini, cableado estructurado Cat6/Cat6A con canaletas PVC y conduit, cámaras IP PoE en portones lejanos, enlaces compartidos 50/50 y Wi-Fi Mesh con respaldo UPS en la Región del Biobío.',
+  'serviceType': 'Instalación de Internet Satelital Starlink, Enlaces 50/50 y Cámaras en Parcelas',
+  'name': 'Instalación de Starlink y Redes en la Región del Biobío',
+  'description': 'Instalación llave en mano de Starlink en techo o mástil en altura, opción compartida 50/50 entre vecinos, tendido de fibra óptica hasta 500m y cámaras de seguridad al portón en el Biobío.',
   'url': pageUrl,
-  'provider': {
-    '@id': `${siteUrl}/#servicio-starlink-biobio`,
-  },
-  'areaServed': {
-    '@type': 'AdministrativeArea',
-    'name': 'Región del Biobío, Chile',
-  },
+  'provider': { '@id': `${siteUrl}/#servicio-starlink-biobio` },
+  'areaServed': { '@type': 'AdministrativeArea', 'name': 'Región del Biobío, Chile' },
   'hasOfferCatalog': {
     '@type': 'OfferCatalog',
-    'name': 'Servicios de Starlink, Redes y Seguridad en Biobío',
-    'itemListElement': servicios.map((s) => ({
+    'name': 'Paquetes de Instalación Starlink Biobío',
+    'itemListElement': packages.map((pkg) => ({
       '@type': 'Offer',
+      'priceCurrency': 'CLP',
+      'price': String(pkg.min),
       'itemOffered': {
         '@type': 'Service',
-        'name': s.title,
-        'description': s.summary,
+        'name': pkg.name,
+        'description': pkg.desc,
       },
     })),
   },
 };
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  'mainEntity': faqs.map((item) => ({
+    '@type': 'Question',
+    'name': item.question,
+    'acceptedAnswer': {
+      '@type': 'Answer',
+      'text': item.answer,
+    },
+  })),
+};
 ---
 
 <BaseLayout
-  title="Instalación Starlink Biobío y Concepción | Redes HogarTV"
-  description="Instalación profesional de Starlink (Gen 3 y Mini), cableado estructurado con canaletas y cámaras en Concepción y todo el Biobío. Cotiza por WhatsApp."
+  title="Instalación Starlink Biobío desde $95.000 | HogarTV.cl"
+  description="¿Internet lento en tu parcela del Biobío? Instalamos Starlink hasta 250 Megas en 1 día, opción 50/50 vecinos y cámaras al portón. Sábados y domingos."
   canonical={pageUrl}
   ogImage={heroImage.src}
   disableAds={true}
@@ -314,89 +304,88 @@ const serviceSchema = {
     { name: 'Instalación Starlink Biobío', url: '/servicios/instalacion-starlink-biobio/' },
   ]}
 >
-  <div class="w-full max-w-full overflow-x-clip pb-24 md:pb-10">
+  <div class="w-full max-w-full overflow-x-clip pb-24 md:pb-8">
 
     <!-- ======================================================================= -->
-    <!-- 1. HERO SIMPLE, CLARO Y DIRECTO A WHATSAPP                              -->
+    <!-- 1. HERO DE ALTO IMPACTO (FONDO AZUL MARINO PROFUNDO #0F1824)            -->
     <!-- ======================================================================= -->
-    <section class="pt-4 sm:pt-8 pb-8 sm:pb-12 border-b border-slate-800/80 bg-gradient-to-b from-slate-950 via-surface-dark to-surface-dark">
-      <div class="max-w-6xl mx-auto px-3.5 sm:px-6 lg:px-8">
+    <section class="bg-[#0F1824] text-white pt-4 sm:pt-8 pb-10 sm:pb-14 border-b border-slate-800/80 relative overflow-hidden">
+      <!-- Acentos sutiles de marca (#26C6F5 y #FF7010) -->
+      <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-[#26C6F5]/10 blur-3xl pointer-events-none" aria-hidden="true"></div>
+      <div class="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-[#FF7010]/10 blur-3xl pointer-events-none" aria-hidden="true"></div>
 
-        <nav class="flex flex-wrap items-center gap-1.5 text-xs text-slate-400 font-medium mb-4" aria-label="Migas de pan">
-          <a href="/" class="hover:text-white transition-colors">Inicio</a>
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <!-- Breadcrumb limpio -->
+        <nav class="flex flex-wrap items-center gap-1.5 text-xs text-slate-400 mb-4 font-medium" aria-label="Migas de pan">
+          <a href="/" class="hover:text-[#26C6F5] transition-colors">Inicio</a>
           <span class="text-slate-600" aria-hidden="true">/</span>
-          <span class="text-emerald-400 font-bold">Instalación Starlink y Redes Biobío</span>
+          <span class="text-[#26C6F5] font-bold">Instalación Starlink Biobío</span>
         </nav>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
-          <!-- Texto principal + CTA -->
-          <div class="lg:col-span-7 space-y-4 min-w-0">
-            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 text-[11px] font-black uppercase tracking-wider">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true"></span>
-              <span>Servicio Técnico en Terreno · 8ª Región</span>
-            </span>
-
-            <h1 class="text-2xl sm:text-4xl font-black text-white tracking-tight leading-tight">
-              Instalación Profesional de <span class="text-emerald-400">Starlink</span> y Redes en la Región del Biobío
-            </h1>
-
-            <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
-              Instalamos <strong class="text-white">Starlink (Gen 3 y Mini)</strong> en altura, <strong class="text-sky-300">cableado de red con canaletas limpias</strong>, enlaces compartidos <strong class="text-emerald-300">50/50 entre vecinos</strong> y <strong class="text-indigo-300">cámaras de seguridad</strong> para casas, parcelas y empresas.
-            </p>
-
-            <!-- Caja simple: Elige tu comuna + Botón WhatsApp (sin mostrar número) -->
-            <div class="p-3.5 sm:p-4 rounded-2xl bg-slate-900/95 border border-emerald-500/40 shadow-xl space-y-2.5">
-              <div class="flex flex-col sm:flex-row gap-2.5">
-                <div class="sm:w-52 shrink-0">
-                  <label for="hero-comuna-select" class="sr-only">Elige tu comuna en el Biobío</label>
-                  <select
-                    id="hero-comuna-select"
-                    class="w-full px-3.5 py-3 rounded-xl bg-slate-950 border border-slate-700 text-slate-100 text-xs sm:text-sm font-semibold focus:outline-none focus:border-emerald-400"
-                  >
-                    <option value="">📍 Elige tu comuna</option>
-                    {comunasBiobio.map((c) => (
-                      <option value={c}>{c}</option>
-                    ))}
-                    <option value="otro sector del Biobío">Otro sector del Biobío</option>
-                  </select>
-                </div>
-                <a
-                  id="hero-wa-cta"
-                  href={waUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-sm shadow-lg shadow-emerald-500/25 transition-all"
-                >
-                  <span>📲 Cotizar por WhatsApp</span>
-                </a>
-              </div>
-
-              <div class="flex flex-wrap items-center justify-between gap-2 text-xs pt-0.5">
-                <a href="#servicios" class="font-bold text-slate-200 hover:text-emerald-300 transition-colors">
-                  Ver servicios y detalles ↓
-                </a>
-                <a href="/contacto/?motivo=starlink-biobio#contact-form" class="text-slate-400 hover:text-white underline underline-offset-4">
-                  Cotizar por formulario →
-                </a>
-              </div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-7 lg:gap-9 items-center">
+          <!-- Columna Principal -->
+          <div class="lg:col-span-7 space-y-4 sm:space-y-5 min-w-0">
+            <div class="inline-flex flex-wrap items-center gap-2 px-3 py-1.5 rounded-full bg-[#1D2731] border border-[#26C6F5]/40 text-[#26C6F5] text-[11px] sm:text-xs font-extrabold tracking-wide">
+              <span class="w-2 h-2 rounded-full bg-[#25D366] animate-pulse shrink-0" aria-hidden="true"></span>
+              <span>Técnico en terreno · Región del Biobío · Agenda Sábados y Domingos</span>
             </div>
 
-            <!-- 4 Sellos de confianza cortos -->
-            <ul class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[11px] font-bold text-slate-200" aria-label="Ventajas del servicio">
-              <li class="px-2.5 py-2 rounded-xl bg-slate-900/80 border border-slate-800 text-center">✓ +8 años en terreno</li>
-              <li class="px-2.5 py-2 rounded-xl bg-slate-900/80 border border-slate-800 text-center">✓ Sin cables sueltos</li>
-              <li class="px-2.5 py-2 rounded-xl bg-slate-900/80 border border-slate-800 text-center">✓ Garantía en terreno</li>
-              <li class="px-2.5 py-2 rounded-xl bg-slate-900/80 border border-slate-800 text-center">✓ Todo el Biobío</li>
+            <h1 class="text-[1.7rem] sm:text-4xl lg:text-[2.6rem] font-black text-white tracking-tight leading-[1.14]">
+              ¿Internet lento o sin señal en tu parcela o campo? <span class="text-[#26C6F5]">Dejamos hasta 250 Megas firmes en 1 día.</span>
+            </h1>
+
+            <p class="text-sm sm:text-base lg:text-lg text-slate-200 leading-relaxed max-w-2xl">
+              Instalamos internet satelital (Starlink) con mástil firme sobre árboles, opción <strong class="text-[#FF7010]">50/50 para dividir la mensualidad con tu vecino</strong> y cámaras de seguridad hasta el portón.
+            </p>
+
+            <!-- 2 CTAs Principales -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1">
+              <a
+                href="#cotizador"
+                class="min-h-[50px] inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-[#25D366] hover:bg-[#1ebe5d] text-[#09140E] font-black text-sm sm:text-base shadow-[0_8px_24px_rgba(37,211,102,0.3)] transition-all hover:-translate-y-0.5"
+              >
+                <span>Calcular mi instalación en 15 seg</span>
+                <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+              </a>
+              <a
+                href={waDirectUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="min-h-[50px] inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl bg-[#1D2731] hover:bg-slate-800 text-white border border-slate-600/80 font-bold text-sm transition-colors"
+              >
+                <svg class="w-4 h-4 text-[#25D366] shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12.031 2c-5.516 0-9.969 4.453-9.969 9.969 0 1.766.469 3.484 1.344 5l-1.406 5.156 5.281-1.391c1.469.797 3.109 1.219 4.75 1.219 5.516 0 9.969-4.453 9.969-9.969S17.547 2 12.031 2zm5.813 14.125c-.25.703-1.438 1.328-2 1.406-.516.078-1.172.109-1.891-.125-.438-.141-1-.328-1.719-.641-3.031-1.313-5.016-4.375-5.172-4.578-.156-.203-1.234-1.641-1.234-3.125s.781-2.219 1.063-2.516c.281-.297.609-.375.813-.375h.578c.188 0 .438-.078.688.516.25.609.859 2.094.938 2.25.078.156.125.344.016.547-.109.203-.156.344-.313.516-.156.188-.328.406-.469.547-.156.156-.328.328-.141.641.188.313.844 1.391 1.813 2.25 1.25 1.109 2.297 1.453 2.609 1.609.313.156.5.125.688-.078.188-.203.781-.906.984-1.219.203-.313.406-.266.688-.156.281.109 1.797.844 2.109 1 .313.156.516.234.594.359.078.125.078.734-.172 1.438z"/>
+                </svg>
+                <span>Hablar por WhatsApp directo</span>
+              </a>
+            </div>
+
+            <!-- Micro-pruebas de confianza en 1 fila -->
+            <ul class="flex flex-wrap items-center gap-x-4 gap-y-2 pt-1 text-xs sm:text-[13px] font-bold text-slate-200" aria-label="Garantías principales">
+              <li class="inline-flex items-center gap-1.5">
+                <span class="text-[#26C6F5]" aria-hidden="true">✓</span>
+                <span>Instalación desde $95.000</span>
+              </li>
+              <li class="inline-flex items-center gap-1.5">
+                <span class="text-[#26C6F5]" aria-hidden="true">✓</span>
+                <span>Pagas al terminar funcionando</span>
+              </li>
+              <li class="inline-flex items-center gap-1.5">
+                <span class="text-[#FF7010]" aria-hidden="true">✓</span>
+                <span>Ideal para parcelas de fin de semana</span>
+              </li>
             </ul>
           </div>
 
-          <!-- Imagen Hero LCP limpia -->
+          <!-- Imagen Hero LCP Optimizada -->
           <div class="lg:col-span-5 min-w-0">
-            <div class="rounded-3xl overflow-hidden border-2 border-emerald-500/40 bg-slate-900 shadow-2xl">
-              <div class="relative aspect-[16/10] sm:aspect-[4/3] w-full overflow-hidden bg-slate-950">
+            <div class="rounded-3xl overflow-hidden border border-[#26C6F5]/35 bg-[#1D2731] shadow-2xl">
+              <div class="relative aspect-[16/10] sm:aspect-[4/3] w-full overflow-hidden bg-[#0F1824]">
                 <Image
                   src={heroImage}
-                  alt="Instalación profesional de antena Starlink en altura con mástil reforzado en la Región del Biobío"
+                  alt="Instalación profesional de antena Starlink en parcela de la Región del Biobío con mástil firme"
                   width={900}
                   height={675}
                   format="webp"
@@ -405,356 +394,796 @@ const serviceSchema = {
                   fetchpriority="high"
                   class="w-full h-full object-cover"
                 />
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-transparent"></div>
-                <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-slate-950/90 border border-emerald-500/50 text-emerald-300 text-[11px] font-mono font-bold">
-                  ⚡ 100 a 250 Mbps Reales
-                </span>
-                <p class="absolute bottom-3 left-3.5 right-3.5 text-xs font-bold text-white drop-shadow m-0">
-                  Mástil en altura · Canaletas limpias · Cámaras IP PoE
-                </p>
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0F1824] via-[#0F1824]/20 to-transparent"></div>
+                <div class="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
+                  <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#0F1824]/90 border border-[#26C6F5]/50 text-[#26C6F5] text-[11px] font-extrabold">
+                    Hasta 250 Megas reales
+                  </span>
+                  <Image
+                    src={hogarTvLogo}
+                    alt="Sello HogarTV.cl"
+                    width={36}
+                    height={36}
+                    format="webp"
+                    loading="eager"
+                    class="w-9 h-9 rounded-full object-contain drop-shadow-md"
+                  />
+                </div>
+                <div class="absolute bottom-3 left-4 right-4">
+                  <p class="text-xs sm:text-sm font-bold text-white drop-shadow m-0">
+                    Dejamos tu casa o parcela conectada en 1 día · Trabajo limpio y garantizado
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </section>
 
     <!-- ======================================================================= -->
-    <!-- 2. QUÉ INSTALAMOS (TARJETAS CLARAS CON BOTÓN "VER DETALLES")            -->
+    <!-- 2. "EXPLICADO CON PERAS Y MANZANAS" (SECCIÓN CLARA ALTO CONTRASTE)      -->
     <!-- ======================================================================= -->
-    <section id="servicios" class="max-w-6xl mx-auto px-3.5 sm:px-6 lg:px-8 py-9 sm:py-12 border-b border-slate-800/70 scroll-mt-20">
-      <div class="mb-6 sm:mb-8">
-        <span class="text-xs font-black uppercase tracking-wider text-emerald-400 block mb-1">Nuestros Servicios</span>
-        <h2 class="text-xl sm:text-3xl font-black text-white tracking-tight">
-          ¿Qué necesitas instalar? Elige y toca «Ver detalles»
-        </h2>
-        <p class="text-xs sm:text-sm text-slate-400 mt-1">
-          Explicado simple y directo. Abre cada servicio para ver qué incluye y cotizar al instante.
-        </p>
-      </div>
+    <section id="como-funciona" class="bg-[#F4F7FB] text-[#0F1824] py-11 sm:py-16 border-b border-slate-200">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl mb-8">
+          <span class="inline-block px-3 py-1 rounded-full bg-[#26C6F5]/15 text-[#0369A1] text-xs font-black uppercase tracking-wider mb-2">
+            Sin palabras enredadas
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-black text-[#0F1824] tracking-tight leading-tight">
+            Cómo funciona Starlink explicado con peras y manzanas
+          </h2>
+          <p class="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed">
+            No necesitas saber nada de tecnología. En 3 pasos simples pasas de no tener señal a ver películas, teletrabajar y mirar tus cámaras desde el celular.
+          </p>
+        </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {servicios.map((srv, idx) => (
-          <article class={`rounded-2xl bg-surface-card border ${srv.borderClass} p-4 sm:p-5 flex flex-col justify-between gap-3 shadow-lg ${idx === 4 ? 'md:col-span-2' : ''}`}>
-            <div class="space-y-2">
-              <div class="flex items-center justify-between gap-2">
-                <span class="text-2xl leading-none" aria-hidden="true">{srv.icon}</span>
-                <span class={`px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase ${srv.badgeClass}`}>
-                  {srv.badge}
-                </span>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+          <!-- Paso 1 -->
+          <article class="rounded-3xl bg-white border border-slate-200 p-5 sm:p-6 shadow-sm flex flex-col justify-between gap-4">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="inline-flex items-center justify-center w-10 h-10 rounded-2xl bg-[#0F1824] text-[#26C6F5] font-black text-base">1</span>
+                <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500">El equipo</span>
               </div>
-              <h3 class="text-base sm:text-lg font-black text-white leading-snug">
-                {srv.title}
-              </h3>
-              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                {srv.summary}
+              <h3 class="text-lg font-black text-[#0F1824]">Paso 1 — El equipo (la antena)</h3>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                La compras tú directo en tienda o internet en cuotas. <strong>Te mandamos el link exacto gratis</strong> por WhatsApp para que no te equivoques de modelo.
               </p>
             </div>
 
-            <!-- Botón desplegable nativo "Ver detalles" -->
-            <details name="servicio-detalle" class="group rounded-xl bg-slate-950/75 border border-slate-800 open:border-emerald-500/40 overflow-hidden">
-              <summary class="flex items-center justify-between gap-2 px-3.5 py-2.5 cursor-pointer list-none select-none text-xs font-extrabold text-emerald-300 hover:text-white transition-colors">
-                <span>Ver detalles de qué incluye</span>
-                <svg class="w-4 h-4 text-emerald-400 group-open:rotate-180 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
-                </svg>
-              </summary>
-              <div class="px-3.5 pb-3.5 pt-2 border-t border-slate-800/80 space-y-3">
-                <ul class="space-y-1.5 text-xs text-slate-300">
-                  {srv.details.map((d) => (
+            <!-- 2 tarjetas discretas de afiliado -->
+            <div class="space-y-2.5 pt-3 border-t border-slate-100">
+              <p class="text-[11px] font-bold uppercase tracking-wider text-slate-500 m-0">Modelos recomendados en Chile:</p>
+
+              <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/90 space-y-2">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="text-xs font-extrabold text-[#0F1824]">Starlink Mini (Compacta)</span>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#26C6F5]/15 text-[#0369A1]">Ideal cabaña</span>
+                </div>
+                <div class="grid grid-cols-2 gap-1.5">
+                  <a
+                    href={afiliadosData['starlink-mini-kit'].url}
+                    target="_blank"
+                    rel="nofollow sponsored noopener noreferrer"
+                    class="min-h-[38px] inline-flex items-center justify-center gap-1 px-2.5 py-1.5 rounded-xl bg-[#FFE600] hover:bg-[#f5d600] text-[#0F1824] font-black text-[11px] transition-colors"
+                  >
+                    <span>Ver Starlink Mini</span>
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                  <a
+                    href={afiliadosData['falabella-starlink-mini'].url}
+                    target="_blank"
+                    rel="nofollow sponsored noopener noreferrer"
+                    class="min-h-[38px] inline-flex items-center justify-center gap-1 px-2 py-1.5 rounded-xl bg-white hover:bg-slate-100 text-[#0F1824] border border-[#8FCA00] font-bold text-[11px] transition-colors"
+                  >
+                    <StoreLogo network="falabella" class="h-4" />
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                </div>
+              </div>
+
+              <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/90 space-y-2">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="text-xs font-extrabold text-[#0F1824]">Starlink Estándar Gen 3</span>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#FF7010]/15 text-[#C2410C]">Más potente</span>
+                </div>
+                <div class="grid grid-cols-2 gap-1.5">
+                  <a
+                    href={afiliadosData['starlink-estandar-gen3'].url}
+                    target="_blank"
+                    rel="nofollow sponsored noopener noreferrer"
+                    class="min-h-[38px] inline-flex items-center justify-center gap-1 px-2.5 py-1.5 rounded-xl bg-[#FFE600] hover:bg-[#f5d600] text-[#0F1824] font-black text-[11px] transition-colors"
+                  >
+                    <span>Ver Gen 3</span>
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                  <a
+                    href={afiliadosData['falabella-starlink-gen3'].url}
+                    target="_blank"
+                    rel="nofollow sponsored noopener noreferrer"
+                    class="min-h-[38px] inline-flex items-center justify-center gap-1 px-2 py-1.5 rounded-xl bg-white hover:bg-slate-100 text-[#0F1824] border border-[#8FCA00] font-bold text-[11px] transition-colors"
+                  >
+                    <StoreLogo network="falabella" class="h-4" />
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Paso 2 -->
+          <article class="rounded-3xl bg-white border border-slate-200 p-5 sm:p-6 shadow-sm flex flex-col justify-between gap-4">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="inline-flex items-center justify-center w-10 h-10 rounded-2xl bg-[#0F1824] text-[#26C6F5] font-black text-base">2</span>
+                <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500">En terreno</span>
+              </div>
+              <h3 class="text-lg font-black text-[#0F1824]">Paso 2 — La instalación profesional</h3>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                Coordinamos <strong>sábado o domingo</strong>, vamos en camioneta con mástil, cables de exterior, canaletas y herramientas para dejarla firme y el Wi-Fi volando en toda tu casa.
+              </p>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-[#0F1824] text-white space-y-1.5">
+              <div class="text-xs font-extrabold text-[#26C6F5]">Sin subirte al techo ni pasar rabias</div>
+              <p class="text-xs text-slate-300 m-0 leading-relaxed">
+                Llevamos escalera, taladros, fijaciones para viento del sur, sellantes y todo listo para que quedes conectado el mismo día.
+              </p>
+            </div>
+          </article>
+
+          <!-- Paso 3 -->
+          <article class="rounded-3xl bg-white border border-slate-200 p-5 sm:p-6 shadow-sm flex flex-col justify-between gap-4">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="inline-flex items-center justify-center w-10 h-10 rounded-2xl bg-[#0F1824] text-[#FF7010] font-black text-base">3</span>
+                <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500">Cero riesgo</span>
+              </div>
+              <h3 class="text-lg font-black text-[#0F1824]">Paso 3 — Pagas tranquilo</h3>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                Reservas fecha con solo <strong class="text-[#0F1824]">$25.000 (descontables del total)</strong> y pagas el saldo al final, recién cuando ves la velocidad real probada en tu celular.
+              </p>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 space-y-1">
+              <div class="text-xs font-black text-emerald-900">✓ Pagas al ver el Wi-Fi funcionando</div>
+              <p class="text-xs text-emerald-800 m-0 leading-relaxed">
+                Transferencia o efectivo al terminar, con opción de boleta de honorarios y garantía en terreno.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- 3. PAQUETES Y PRECIOS TRANSPARENTES (FONDO #0F1824)                     -->
+    <!-- ======================================================================= -->
+    <section id="paquetes" class="bg-[#0F1824] text-white py-11 sm:py-16 border-b border-slate-800/80 scroll-mt-16">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+          <div class="max-w-2xl">
+            <span class="inline-block px-3 py-1 rounded-full bg-[#FF7010]/15 border border-[#FF7010]/40 text-[#FF7010] text-xs font-black uppercase tracking-wider mb-2">
+              Precios claros desde el principio
+            </span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
+              Paquetes de Instalación en el Biobío
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-300 mt-1.5">
+              Valores de instalación y materiales de montaje <strong class="text-white">(no incluye la antena Starlink)</strong>.
+            </p>
+          </div>
+          <a href="#cotizador" class="text-xs sm:text-sm font-extrabold text-[#26C6F5] hover:underline shrink-0">
+            Estimar con traslado a mi comuna ↓
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 items-stretch">
+          {packages.map((pkg, idx) => (
+            <article
+              class={`rounded-3xl p-5 flex flex-col justify-between transition-all ${
+                pkg.featured
+                  ? 'bg-gradient-to-b from-[#1D2731] via-[#172330] to-[#0F1824] border-2 border-[#FF7010] shadow-[0_0_32px_rgba(255,112,16,0.2)] relative'
+                  : 'bg-[#1D2731]/90 border border-slate-700/80 shadow-xl'
+              }`}
+            >
+              <div class="space-y-3">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="text-[11px] font-mono font-bold text-slate-400">PAQUETE {idx + 1}</span>
+                  <span
+                    class={`px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wide ${
+                      pkg.featured
+                        ? 'bg-[#FF7010] text-white shadow'
+                        : 'bg-[#0F1824] text-[#26C6F5] border border-[#26C6F5]/30'
+                    }`}
+                  >
+                    {pkg.tag}
+                  </span>
+                </div>
+
+                <h3 class="text-lg font-black text-white leading-snug">{pkg.name}</h3>
+
+                <div class="p-3 rounded-2xl bg-[#0F1824]/90 border border-slate-700/70">
+                  <div class={`text-xl font-black font-mono ${pkg.featured ? 'text-[#26C6F5]' : 'text-white'}`}>
+                    {pkg.priceLabel}
+                  </div>
+                  {pkg.perHouseLabel && (
+                    <div class="text-xs font-extrabold text-[#FF7010] mt-0.5">
+                      entre ambos · {pkg.perHouseLabel}
+                    </div>
+                  )}
+                </div>
+
+                <p class="text-xs text-slate-300 leading-relaxed">{pkg.desc}</p>
+
+                <ul class="space-y-2 text-xs text-slate-200 pt-1">
+                  {pkg.bullets.map((b) => (
                     <li class="flex items-start gap-2">
-                      <span class="text-emerald-400 font-bold shrink-0" aria-hidden="true">✓</span>
-                      <span>{d}</span>
+                      <span class="text-[#26C6F5] font-black shrink-0" aria-hidden="true">✓</span>
+                      <span>{b}</span>
                     </li>
                   ))}
                 </ul>
-                <p class="text-[11px] text-slate-400 bg-slate-900/90 px-3 py-2 rounded-lg border border-slate-800">
-                  <strong class="text-slate-200">Ideal para:</strong> {srv.ideal}
-                </p>
-                <a
-                  href={`${waBase}${encodeURIComponent(srv.waMsg)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs transition-all"
+              </div>
+
+              <div class="pt-5 mt-5 border-t border-slate-700/70">
+                <button
+                  type="button"
+                  data-select-pkg={pkg.id}
+                  class={`pkg-jump-btn min-h-[46px] w-full px-4 py-2.5 rounded-xl font-black text-xs transition-all ${
+                    pkg.featured
+                      ? 'bg-[#25D366] hover:bg-[#1ebe5d] text-[#09140E] shadow-lg shadow-[#25D366]/20'
+                      : 'bg-[#0F1824] hover:bg-slate-800 text-[#26C6F5] border border-[#26C6F5]/40'
+                  }`}
                 >
-                  <span>📲 Cotizar este servicio por WhatsApp</span>
-                </a>
+                  Calcular con mi comuna →
+                </button>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- 4. COTIZADOR INTERACTIVO EN 15 SEGUNDOS (JS LIGERO SIN DEPENDENCIAS)    -->
+    <!-- ======================================================================= -->
+    <section id="cotizador" class="bg-[#F4F7FB] text-[#0F1824] py-11 sm:py-16 border-b border-slate-200 scroll-mt-16">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-8">
+          <span class="inline-block px-3 py-1 rounded-full bg-[#0F1824] text-[#26C6F5] text-xs font-black uppercase tracking-wider mb-2">
+            Cotizador al instante
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-black text-[#0F1824] tracking-tight">
+            Calcula el valor de tu instalación en 15 segundos
+          </h2>
+          <p class="text-sm text-slate-600 mt-1.5">
+            Elige lo que necesitas, marca tu comuna y ve el estimado en vivo antes de escribir por WhatsApp.
+          </p>
+        </div>
+
+        <form id="starlink-calculator" aria-labelledby="cotizador-heading" class="rounded-3xl bg-[#1D2731] text-white border border-slate-700/80 shadow-2xl p-5 sm:p-8 space-y-6">
+          <span id="cotizador-heading" class="sr-only">Cotizador interactivo de instalación Starlink en el Biobío</span>
+
+          <!-- Paso 1: 4 Radios visibles (Decision Matrix: 2-5 opciones exclusivas) -->
+          <fieldset class="space-y-3 border-0 p-0 m-0">
+            <legend class="text-sm sm:text-base font-black text-white mb-2.5 flex items-center gap-2">
+              <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[#26C6F5] text-[#0F1824] text-xs font-black">1</span>
+              <span>¿Qué necesitas instalar?</span>
+            </legend>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              {packages.map((pkg) => (
+                <label class="calc-radio-card relative flex items-start gap-3 p-3.5 min-h-[56px] rounded-2xl bg-[#0F1824] border border-slate-700 hover:border-[#26C6F5]/70 cursor-pointer transition-all has-[:checked]:border-[#26C6F5] has-[:checked]:bg-[#0F1824] has-[:checked]:ring-2 has-[:checked]:ring-[#26C6F5]/35">
+                  <input
+                    type="radio"
+                    name="paquete"
+                    value={pkg.id}
+                    checked={pkg.id === 'vecinos-50-50'}
+                    class="mt-1 w-4 h-4 shrink-0 accent-[#26C6F5]"
+                  />
+                  <span class="min-w-0 flex-1">
+                    <span class="flex items-center justify-between gap-2">
+                      <span class="text-xs sm:text-sm font-extrabold text-white leading-snug">{pkg.name}</span>
+                      {pkg.featured && (
+                        <span class="px-2 py-0.5 rounded-full bg-[#FF7010] text-white text-[9px] font-black uppercase shrink-0">50/50</span>
+                      )}
+                    </span>
+                    <span class="block text-xs font-mono font-bold text-[#26C6F5] mt-0.5">{pkg.priceLabel}</span>
+                  </span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <!-- Paso 2: Comuna (<select> agrupado con font-size >= 16px anti-zoom iOS) -->
+          <div class="space-y-2">
+            <label for="calc-comuna" class="text-sm sm:text-base font-black text-white flex items-center gap-2">
+              <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[#26C6F5] text-[#0F1824] text-xs font-black">2</span>
+              <span>¿En qué comuna está tu casa o parcela?</span>
+            </label>
+            <select
+              id="calc-comuna"
+              name="comuna"
+              class="w-full min-h-[50px] px-4 py-3 rounded-2xl bg-[#0F1824] border border-slate-600 text-white text-base font-semibold focus:outline-none focus:border-[#26C6F5] focus:ring-2 focus:ring-[#26C6F5]/30"
+            >
+              {zones.map((z) => (
+                <optgroup label={z.label}>
+                  {z.communes.map((c) => (
+                    <option
+                      value={c.name}
+                      data-min={c.min}
+                      data-max={c.max}
+                      data-zone={c.zoneType}
+                      selected={c.name === 'Coronel'}
+                    >
+                      {c.name} {c.min === 0 ? '($0 traslado)' : `(+$${c.min.toLocaleString('es-CL')} – $${c.max.toLocaleString('es-CL')})`}
+                    </option>
+                  ))}
+                </optgroup>
+              ))}
+            </select>
+            <p id="calc-rural-tip" class="text-xs text-amber-200 bg-[#FF7010]/15 border border-[#FF7010]/40 rounded-xl px-3.5 py-2.5 m-0 leading-relaxed">
+              <strong>Tip de ahorro:</strong> Si se juntan 2 vecinos de la misma comuna el mismo día, el traslado se divide o sale gratis.
+            </p>
+          </div>
+
+          <!-- Paso 3: ¿Ya tienes antena? (2 radios visibles) -->
+          <fieldset class="space-y-2.5 border-0 p-0 m-0">
+            <legend class="text-sm sm:text-base font-black text-white mb-2 flex items-center gap-2">
+              <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[#26C6F5] text-[#0F1824] text-xs font-black">3</span>
+              <span>¿Ya tienes tu antena Starlink?</span>
+            </legend>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <label class="flex items-center gap-3 p-3.5 min-h-[50px] rounded-2xl bg-[#0F1824] border border-slate-700 hover:border-[#26C6F5]/70 cursor-pointer has-[:checked]:border-[#26C6F5] has-[:checked]:ring-2 has-[:checked]:ring-[#26C6F5]/35">
+                <input type="radio" name="antena" value="Sí, ya la compré" checked class="w-4 h-4 shrink-0 accent-[#26C6F5]" />
+                <span class="text-sm font-bold text-white">Sí, ya la compré</span>
+              </label>
+              <label class="flex items-center gap-3 p-3.5 min-h-[50px] rounded-2xl bg-[#0F1824] border border-slate-700 hover:border-[#26C6F5]/70 cursor-pointer has-[:checked]:border-[#26C6F5] has-[:checked]:ring-2 has-[:checked]:ring-[#26C6F5]/35">
+                <input type="radio" name="antena" value="Todavía no, necesito orientación" class="w-4 h-4 shrink-0 accent-[#26C6F5]" />
+                <span class="text-sm font-bold text-white">Todavía no, necesito orientación</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <!-- Resultado en vivo (aria-live polite) -->
+          <div role="status" aria-live="polite" class="rounded-2xl bg-[#0F1824] border-2 border-[#26C6F5]/50 p-4 sm:p-6 space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs border-b border-slate-800 pb-4">
+              <div>
+                <span class="text-slate-400 block">Instalación estimada:</span>
+                <strong id="out-install" class="text-sm sm:text-base font-mono text-white">$250.000 – $280.000</strong>
+              </div>
+              <div>
+                <span class="text-slate-400 block">Traslado (<span id="out-comuna">Coronel</span>):</span>
+                <strong id="out-travel" class="text-sm sm:text-base font-mono text-[#26C6F5]">$0 (Zona Base)</strong>
+              </div>
+              <div>
+                <span class="text-slate-400 block">Total estimado (sin antena):</span>
+                <strong id="out-total" class="text-lg sm:text-xl font-mono font-black text-[#25D366]">$250.000 – $280.000</strong>
+              </div>
+            </div>
+
+            <div id="out-note" class="text-xs text-[#FF7010] font-bold">
+              Entre 2 vecinos queda aprox. en $125.000 – $140.000 por cada casa · Reservas con $25.000 descontables.
+            </div>
+
+            <a
+              id="calc-wa-btn"
+              href={waDirectUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="min-h-[54px] w-full inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-2xl bg-[#25D366] hover:bg-[#1ebe5d] text-[#09140E] font-black text-sm sm:text-base shadow-[0_10px_28px_rgba(37,211,102,0.35)] transition-all hover:scale-[1.01]"
+            >
+              <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12.031 2c-5.516 0-9.969 4.453-9.969 9.969 0 1.766.469 3.484 1.344 5l-1.406 5.156 5.281-1.391c1.469.797 3.109 1.219 4.75 1.219 5.516 0 9.969-4.453 9.969-9.969S17.547 2 12.031 2zm5.813 14.125c-.25.703-1.438 1.328-2 1.406-.516.078-1.172.109-1.891-.125-.438-.141-1-.328-1.719-.641-3.031-1.313-5.016-4.375-5.172-4.578-.156-.203-1.234-1.641-1.234-3.125s.781-2.219 1.063-2.516c.281-.297.609-.375.813-.375h.578c.188 0 .438-.078.688.516.25.609.859 2.094.938 2.25.078.156.125.344.016.547-.109.203-.156.344-.313.516-.156.188-.328.406-.469.547-.156.156-.328.328-.141.641.188.313.844 1.391 1.813 2.25 1.25 1.109 2.297 1.453 2.609 1.609.313.156.5.125.688-.078.188-.203.781-.906.984-1.219.203-.313.406-.266.688-.156.281.109 1.797.844 2.109 1 .313.156.516.234.594.359.078.125.078.734-.172 1.438z"/>
+              </svg>
+              <span>Enviar esta cotización por WhatsApp</span>
+            </a>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- 5. ESQUEMA VISUAL LIMPIO (SVG): 50/50 VECINOS + CÁMARA AL PORTÓN        -->
+    <!-- ======================================================================= -->
+    <section id="esquema-visual" class="bg-[#0F1824] text-white py-11 sm:py-16 border-b border-slate-800/80">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl mb-8">
+          <span class="inline-block px-3 py-1 rounded-full bg-[#26C6F5]/15 text-[#26C6F5] text-xs font-black uppercase tracking-wider mb-2">
+            Visual y simple
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
+            Así repartimos Starlink 50/50 y llevamos cámaras hasta el portón
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- Esquema A: Compartido 50/50 -->
+          <div class="rounded-3xl bg-[#1D2731] border border-[#26C6F5]/35 p-5 sm:p-7 space-y-4 shadow-xl">
+            <div class="flex items-center justify-between gap-2">
+              <h3 class="text-base sm:text-lg font-black text-white">Compartir 1 antena entre 2 casas</h3>
+              <span class="px-2.5 py-1 rounded-full bg-[#FF7010]/20 text-[#FF7010] text-[11px] font-black shrink-0">Ahorra 50%</span>
+            </div>
+
+            <div class="flex flex-col items-center gap-2.5">
+              <!-- Nodo 1: Antena -->
+              <div class="w-full p-3.5 rounded-2xl bg-[#0F1824] border border-[#26C6F5]/50 flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-[#26C6F5]/15 text-[#26C6F5] flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.14 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"></path>
+                  </svg>
+                </div>
+                <div>
+                  <div class="text-sm font-black text-white">1 Antena Starlink en Altura</div>
+                  <div class="text-xs text-[#26C6F5]">Recibe hasta 250 Megas sin obstáculos</div>
+                </div>
+              </div>
+
+              <svg class="w-5 h-5 text-[#26C6F5]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 5v14m0 0l-5-5m5 5l5-5"></path>
+              </svg>
+
+              <!-- Nodo 2: Repartidor -->
+              <div class="w-full p-3.5 rounded-2xl bg-[#0F1824] border border-[#FF7010]/50 flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-[#FF7010]/15 text-[#FF7010] flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+                  </svg>
+                </div>
+                <div>
+                  <div class="text-sm font-black text-white">Control Parejo 50/50</div>
+                  <div class="text-xs text-slate-300">Separa las redes y protege la velocidad de ambas casas</div>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-around w-2/3 text-[#26C6F5]" aria-hidden="true">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 7L7 17m0 0h7m-7 0v-7"></path></svg>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M7 7l10 10m0 0h-7m7 0v-7"></path></svg>
+              </div>
+
+              <!-- Nodo 3: 2 Casas -->
+              <div class="grid grid-cols-2 gap-3 w-full">
+                <div class="p-3.5 rounded-2xl bg-[#0F1824] border border-slate-700 text-center space-y-1">
+                  <div class="inline-flex w-8 h-8 rounded-lg bg-slate-800 text-[#26C6F5] items-center justify-center mx-auto">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                  </div>
+                  <div class="text-xs sm:text-sm font-black text-white">Tu Casa</div>
+                  <div class="text-[11px] text-slate-400">Wi-Fi y clave privada</div>
+                </div>
+                <div class="p-3.5 rounded-2xl bg-[#0F1824] border border-slate-700 text-center space-y-1">
+                  <div class="inline-flex w-8 h-8 rounded-lg bg-slate-800 text-[#FF7010] items-center justify-center mx-auto">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                  </div>
+                  <div class="text-xs sm:text-sm font-black text-white">Casa del Vecino</div>
+                  <div class="text-[11px] text-slate-400">Hasta 80m cable / 500m fibra</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Esquema B: Cámara al Portón Lejano -->
+          <div class="rounded-3xl bg-[#1D2731] border border-[#26C6F5]/35 p-5 sm:p-7 flex flex-col justify-between gap-4 shadow-xl">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between gap-2">
+                <h3 class="text-base sm:text-lg font-black text-white">Cámara de seguridad hasta el portón</h3>
+                <span class="px-2.5 py-1 rounded-full bg-[#26C6F5]/15 text-[#26C6F5] text-[11px] font-black shrink-0">En tu celular 24/7</span>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-[#0F1824] border border-slate-700 flex items-start gap-3.5">
+                <div class="w-10 h-10 rounded-xl bg-[#25D366]/15 text-[#25D366] flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                  </svg>
+                </div>
+                <div class="space-y-1">
+                  <div class="text-sm font-black text-white">Portón hasta 100 metros (sin enchufe afuera)</div>
+                  <p class="text-xs text-slate-300 leading-relaxed m-0">
+                    Tiramos un solo cable exterior blindado desde tu casa que lleva <strong>internet y energía eléctrica juntos</strong> directo a la cámara del portón.
+                  </p>
+                </div>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-[#0F1824] border border-slate-700 flex items-start gap-3.5">
+                <div class="w-10 h-10 rounded-xl bg-[#26C6F5]/15 text-[#26C6F5] flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                  </svg>
+                </div>
+                <div class="space-y-1">
+                  <div class="text-sm font-black text-white">Portón o bodega de 100 a 500 metros</div>
+                  <p class="text-xs text-slate-300 leading-relaxed m-0">
+                    Tendemos <strong>fibra óptica sin pérdida de señal</strong> protegida en caja sellada contra lluvia, conectada a la corriente del portón automático, bodega o panel solar.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-3.5 rounded-2xl bg-[#0F1824]/80 border border-slate-700/70 flex items-center justify-between gap-3 text-xs">
+              <span class="text-slate-300">Respaldo técnico para proyectos a medida</span>
+              <a href="#cotizador" class="font-black text-[#26C6F5] hover:underline shrink-0">Cotizar tramo ↑</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- 6. GALERÍA DE TERMINACIONES REALES ("CERO CABLES COLGANDO")             -->
+    <!-- ======================================================================= -->
+    <section id="galeria" class="bg-[#F4F7FB] text-[#0F1824] py-11 sm:py-16 border-b border-slate-200">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-8">
+          <div class="max-w-2xl">
+            <span class="inline-block px-3 py-1 rounded-full bg-[#0F1824] text-[#FF7010] text-xs font-black uppercase tracking-wider mb-2">
+              Cero cables colgando
+            </span>
+            <h2 class="text-2xl sm:text-3xl font-black text-[#0F1824] tracking-tight">
+              Terminaciones reales pensadas para durar en el Biobío
+            </h2>
+            <p class="text-sm text-slate-600 mt-1">
+              Mástiles firmes ante temporales, canaletas prolijas en muros y cajas selladas contra la lluvia del sur.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+          {galleryItems.map((item) => (
+            <figure class="rounded-3xl overflow-hidden bg-white border border-slate-200 shadow-sm flex flex-col m-0 group">
+              <div class="relative aspect-[3/2] w-full overflow-hidden bg-[#0F1824]">
+                <Image
+                  src={item.img}
+                  alt={item.alt}
+                  width={800}
+                  height={533}
+                  format="webp"
+                  quality={85}
+                  loading="lazy"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-[#0F1824]/90 text-[#26C6F5] text-[10px] font-black uppercase tracking-wider">
+                  {item.badge}
+                </span>
+              </div>
+              <figcaption class="p-4 space-y-1">
+                <div class="text-sm font-black text-[#0F1824]">{item.title}</div>
+                <p class="text-xs text-slate-600 leading-relaxed m-0">{item.desc}</p>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- 7. QUIÉN TE ATIENDE — CONFIANZA HUMANA REAL (LUIS BRIONES)              -->
+    <!-- ======================================================================= -->
+    <section id="quien-te-atiende" class="bg-[#1D2731] text-white py-11 sm:py-16 border-b border-slate-800/80">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="rounded-3xl bg-[#0F1824] border border-slate-700/80 p-6 sm:p-9 shadow-2xl flex flex-col md:flex-row items-center md:items-start gap-6 sm:gap-8">
+          <div class="shrink-0 text-center">
+            <Image
+              src={luisPhoto}
+              alt="Luis Briones, técnico en telecomunicaciones e instalador Starlink en la Región del Biobío"
+              width={144}
+              height={144}
+              format="webp"
+              quality={88}
+              loading="lazy"
+              class="w-28 h-28 sm:w-36 sm:h-36 rounded-3xl object-cover border-2 border-[#26C6F5]/70 shadow-xl mx-auto"
+            />
+            <span class="inline-block mt-2.5 px-3 py-1 rounded-full bg-[#1D2731] border border-slate-700 text-[#26C6F5] text-[11px] font-extrabold">
+              HogarTV.cl · Biobío
+            </span>
+          </div>
+
+          <div class="flex-1 min-w-0 text-center md:text-left space-y-3.5">
+            <div>
+              <span class="text-xs font-black uppercase tracking-wider text-[#FF7010] block mb-1">Trato directo, sin intermediarios</span>
+              <h2 class="text-2xl sm:text-3xl font-black text-white leading-tight">
+                Hola, soy Luis Briones — Técnico en terreno del Biobío
+              </h2>
+            </div>
+
+            <p class="text-sm sm:text-base text-slate-200 leading-relaxed">
+              Llevo más de <strong class="text-white">8 años trabajando en terreno en redes y telecomunicaciones en la Región del Biobío</strong>. Cuando me escribes, hablas directo conmigo —sin call centers ni vendedores— y yo mismo voy a tu casa o parcela a dejar todo instalado, ordenado y funcionando al 100%.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1 text-xs font-bold text-slate-200">
+              <div class="p-3 rounded-2xl bg-[#1D2731] border border-slate-700/70">
+                <span class="text-[#26C6F5] block font-black mb-0.5">Sábados y Domingos</span>
+                <span>Agenda especial para parcelas de fin de semana</span>
+              </div>
+              <div class="p-3 rounded-2xl bg-[#1D2731] border border-slate-700/70">
+                <span class="text-[#FF7010] block font-black mb-0.5">Boleta de honorarios</span>
+                <span>Opción formal para casas y empresas</span>
+              </div>
+              <div class="p-3 rounded-2xl bg-[#1D2731] border border-slate-700/70">
+                <span class="text-[#25D366] block font-black mb-0.5">Garantía real</span>
+                <span>Soporte directo en la 8ª Región</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- 8. PREGUNTAS FRECUENTES REALES (ACORDEÓN <details> LIMPIO)              -->
+    <!-- ======================================================================= -->
+    <section id="preguntas-frecuentes" class="bg-[#0F1824] text-white py-11 sm:py-16">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        <div class="text-center max-w-2xl mx-auto">
+          <span class="text-xs font-black uppercase tracking-wider text-[#26C6F5] block mb-1">Dudas comunes</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
+            Preguntas frecuentes antes de instalar
+          </h2>
+        </div>
+
+        <div class="space-y-3">
+          {faqs.map((item) => (
+            <details name="starlink-faq" class="group rounded-2xl bg-[#1D2731] border border-slate-700/80 open:border-[#26C6F5]/60 overflow-hidden transition-colors">
+              <summary class="flex items-center justify-between gap-3 p-4 sm:p-5 cursor-pointer list-none select-none font-extrabold text-sm sm:text-base text-white hover:text-[#26C6F5] transition-colors">
+                <span>{item.question}</span>
+                <svg class="w-5 h-5 text-[#26C6F5] group-open:rotate-180 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </summary>
+              <div class="px-4 sm:px-5 pb-5 pt-2 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-slate-700/60">
+                {item.answer}
               </div>
             </details>
-          </article>
-        ))}
-      </div>
-
-      <!-- Esquema visual opcional plegable (para clientes que quieren entender cómo funciona el 50/50 y portones) -->
-      <details class="mt-4 rounded-2xl bg-slate-900/90 border border-slate-800 open:border-sky-500/40 overflow-hidden group">
-        <summary class="flex items-center justify-between gap-2 px-4 sm:px-5 py-3.5 cursor-pointer list-none select-none text-xs sm:text-sm font-black text-white hover:text-sky-300 transition-colors">
-          <span class="flex items-center gap-2">
-            <span aria-hidden="true">🗺️</span>
-            <span>Ver esquema fácil: ¿Cómo se comparte Starlink 50/50 y cómo llega una cámara al portón?</span>
-          </span>
-          <svg class="w-4 h-4 text-sky-400 group-open:rotate-180 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
-          </svg>
-        </summary>
-        <div class="p-4 sm:p-5 border-t border-slate-800 grid grid-cols-1 lg:grid-cols-2 gap-4">
-          <!-- Esquema 50/50 -->
-          <div class="p-4 rounded-2xl bg-slate-950 border border-emerald-500/30 space-y-2 text-center">
-            <h3 class="text-xs sm:text-sm font-black text-emerald-300">🤝 1 Antena Starlink → 2 Casas Independientes</h3>
-            <div class="p-2.5 rounded-xl bg-sky-950/50 border border-sky-500/35 text-xs font-bold text-white">
-              📡 Antena Starlink en Altura (150–250 Mbps)
-            </div>
-            <div class="text-emerald-400 font-black text-xs" aria-hidden="true">↓</div>
-            <div class="p-2.5 rounded-xl bg-emerald-950/50 border border-emerald-500/40 text-xs font-bold text-white">
-              ⚙️ Control de Red 50/50 (Velocidad pareja y privada)
-            </div>
-            <div class="text-slate-500 font-black text-xs" aria-hidden="true">↙ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↘</div>
-            <div class="grid grid-cols-2 gap-2 text-[11px]">
-              <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-700">
-                <strong class="block text-white">🏠 Casa A</strong>
-                <span class="text-slate-400">Wi-Fi y clave propia</span>
-              </div>
-              <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-700">
-                <strong class="block text-white">🏠 Casa B</strong>
-                <span class="text-slate-400">UTP (&lt;80m) o Fibra (100–500m)</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Esquema Cámara Portón -->
-          <div class="p-4 rounded-2xl bg-slate-950 border border-indigo-500/30 space-y-2.5">
-            <h3 class="text-xs sm:text-sm font-black text-indigo-300 text-center">📹 Cámara en Portón o Galpón Lejano</h3>
-            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-xs space-y-1">
-              <strong class="text-emerald-300 block">🔌 Hasta 100 metros (PoE):</strong>
-              <p class="text-slate-300 m-0">Un solo cable blindado lleva internet y electricidad desde la casa. No necesitas enchufe en el portón.</p>
-            </div>
-            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-xs space-y-1">
-              <strong class="text-sky-300 block">⚡ Más de 100 metros (Fibra Drop):</strong>
-              <p class="text-slate-300 m-0">Tendemos fibra óptica sin pérdida (hasta 500m) + caja estanca IP65 con alimentación en el portón o kit solar.</p>
-            </div>
-          </div>
-        </div>
-      </details>
-    </section>
-
-    <!-- ======================================================================= -->
-    <!-- 3. CÓMO FUNCIONA (3 PASOS CLAROS)                                       -->
-    <!-- ======================================================================= -->
-    <section id="como-trabajamos" class="max-w-6xl mx-auto px-3.5 sm:px-6 lg:px-8 py-9 sm:py-12 border-b border-slate-800/70">
-      <div class="mb-6">
-        <span class="text-xs font-black uppercase tracking-wider text-amber-400 block mb-1">Así de Fácil</span>
-        <h2 class="text-xl sm:text-3xl font-black text-white tracking-tight">
-          Cómo Trabajamos en 3 Pasos
-        </h2>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-5">
-        {pasosTrabajo.map((p) => (
-          <div class="p-4 sm:p-5 rounded-2xl bg-surface-card border border-slate-800 flex sm:flex-col items-start gap-3.5 shadow-lg">
-            <span class="w-9 h-9 rounded-xl bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 font-mono font-black text-sm flex items-center justify-center shrink-0">
-              {p.num}
-            </span>
-            <div>
-              <h3 class="text-sm sm:text-base font-extrabold text-white mb-1">{p.title}</h3>
-              <p class="text-xs text-slate-300 leading-relaxed m-0">{p.desc}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-
-    <!-- ======================================================================= -->
-    <!-- 4. GALERÍA DE TRABAJOS EN EL BIOBÍO (COMPACTA 2x3 MÓVIL / 3x2 PC)       -->
-    <!-- ======================================================================= -->
-    <section id="galeria-trabajos" class="max-w-6xl mx-auto px-3.5 sm:px-6 lg:px-8 py-9 sm:py-12 border-b border-slate-800/70">
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 mb-6">
-        <div>
-          <span class="text-xs font-black uppercase tracking-wider text-emerald-400 block mb-1">Estándar de Terminaciones</span>
-          <h2 class="text-xl sm:text-3xl font-black text-white tracking-tight">
-            Galería de Trabajos en el Biobío
-          </h2>
-        </div>
-        <a href={waUrl} target="_blank" rel="noopener noreferrer" class="text-xs font-extrabold text-emerald-400 hover:text-emerald-300">
-          Pedir fotos de trabajos por WhatsApp →
-        </a>
-      </div>
-
-      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
-        {galeriaTrabajos.map((item) => (
-          <figure class="rounded-2xl overflow-hidden bg-surface-card border border-slate-800 shadow-lg flex flex-col m-0 group">
-            <div class="relative aspect-[3/2] w-full overflow-hidden bg-slate-950 border-b border-slate-800">
-              <Image
-                src={item.img}
-                alt={item.alt}
-                width={800}
-                height={533}
-                format="webp"
-                quality={85}
-                loading="lazy"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-            <figcaption class="p-2.5 sm:p-3.5 space-y-0.5">
-              <span class="text-[10px] font-bold uppercase text-emerald-400 block">{item.tag}</span>
-              <span class="text-xs sm:text-sm font-extrabold text-white block leading-snug">{item.title}</span>
-            </figcaption>
-          </figure>
-        ))}
-      </div>
-    </section>
-
-    <!-- ======================================================================= -->
-    <!-- 5. COBERTURA LOCAL BIOBÍO + QUIÉN INSTALA (100% MARCA HOGARTV)          -->
-    <!-- ======================================================================= -->
-    <section id="cobertura-biobio" class="max-w-6xl mx-auto px-3.5 sm:px-6 lg:px-8 py-9 sm:py-12 border-b border-slate-800/70 space-y-6">
-      <!-- Cobertura clara + desplegable completo -->
-      <div class="rounded-3xl bg-surface-card border border-slate-800 p-5 sm:p-7 space-y-4 shadow-xl">
-        <div>
-          <span class="text-xs font-black uppercase tracking-wider text-emerald-400 block mb-1">Cobertura 8ª Región</span>
-          <h2 class="text-xl sm:text-2xl font-black text-white">
-            Comunas donde Instalamos en la Región del Biobío
-          </h2>
-        </div>
-
-        <ul class="flex flex-wrap gap-2">
-          {comunasDestacadas.map((c) => (
-            <li class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700/80 text-xs font-bold text-white">
-              📍 {c}
-            </li>
           ))}
-        </ul>
+        </div>
 
-        <details class="rounded-xl bg-slate-950/75 border border-slate-800 overflow-hidden group">
-          <summary class="flex items-center justify-between gap-2 px-4 py-2.5 cursor-pointer list-none select-none text-xs font-extrabold text-sky-300 hover:text-white">
-            <span>Ver lista completa de las 17 comunas y sectores rurales</span>
-            <svg class="w-4 h-4 text-sky-400 group-open:rotate-180 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </summary>
-          <div class="p-4 border-t border-slate-800 grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {coberturaZonas.map((z) => (
-              <div class="space-y-1.5">
-                <h3 class="text-xs font-black text-emerald-400 uppercase tracking-wider">{z.zone}</h3>
-                <p class="text-xs text-slate-300 leading-relaxed m-0">{z.communes.join(' · ')}</p>
-              </div>
-            ))}
+        <!-- Cierre de conversión + Aviso legal discreto -->
+        <div class="pt-6">
+          <div class="rounded-3xl bg-gradient-to-r from-[#1D2731] via-[#152232] to-[#1D2731] border border-[#26C6F5]/40 p-6 sm:p-8 text-center space-y-4 shadow-2xl">
+            <h3 class="text-xl sm:text-2xl font-black text-white">
+              ¿Listo para tener internet rápido en tu parcela este fin de semana?
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto">
+              Escríbeme por WhatsApp o usa el cotizador de arriba para reservar tu hora en Coronel, Concepción, Santa Juana, Yumbel, Florida, Quillón o alrededores.
+            </p>
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 pt-1">
+              <a
+                href={waDirectUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="min-h-[50px] inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl bg-[#25D366] hover:bg-[#1ebe5d] text-[#09140E] font-black text-sm shadow-lg shadow-[#25D366]/25 transition-all"
+              >
+                <span>Hablar por WhatsApp ahora</span>
+              </a>
+              <a
+                href="#cotizador"
+                class="min-h-[50px] inline-flex items-center justify-center px-6 py-3.5 rounded-2xl bg-[#0F1824] hover:bg-slate-900 text-[#26C6F5] border border-[#26C6F5]/40 font-bold text-sm transition-colors"
+              >
+                Volver al cotizador ↑
+              </a>
+            </div>
           </div>
-        </details>
-      </div>
 
-      <!-- Quién instala: 100% marca técnica HogarTV.cl (sin exponer nombre personal) -->
-      <div class="rounded-3xl bg-gradient-to-br from-slate-900 via-surface-card to-emerald-950/20 border border-slate-700/80 p-5 sm:p-7 shadow-xl flex flex-col sm:flex-row items-center sm:items-start gap-5">
-        <Image
-          src={hogarTvLogo}
-          alt="Logo oficial del Equipo Técnico HogarTV.cl"
-          width={88}
-          height={88}
-          format="webp"
-          quality={90}
-          loading="lazy"
-          class="w-20 h-20 sm:w-24 sm:h-24 rounded-full object-contain shrink-0 drop-shadow-lg"
-        />
-        <div class="flex-1 min-w-0 text-center sm:text-left space-y-2.5">
-          <div>
-            <span class="text-[11px] font-black uppercase tracking-wider text-emerald-400 block">Respaldo Técnico Local</span>
-            <h2 class="text-lg sm:text-2xl font-black text-white">
-              Equipo Técnico HogarTV.cl — Especialistas en Terreno
-            </h2>
-          </div>
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            Contamos con más de <strong class="text-white">8 años de experiencia real en terreno en la Región del Biobío</strong> trabajando en redes de fibra óptica FTTH, enlaces satelitales Starlink, cableado estructurado Cat6/Cat6A con canalización limpia y seguridad IP/PoE. Atención directa sin intermediarios.
+          <p class="text-[11px] text-slate-500 text-center max-w-2xl mx-auto mt-5 leading-relaxed">
+            Aviso legal: HogarTV.cl presta servicios técnicos independientes de instalación de antenas, redes y cámaras en la Región del Biobío. Starlink® es marca registrada de SpaceX; el kit y la mensualidad oficial los contratas directo con el proveedor.
           </p>
-          <ul class="flex flex-wrap justify-center sm:justify-start gap-1.5 text-[11px] font-semibold text-slate-200">
-            <li class="px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800">✓ Especialistas FTTH y Starlink</li>
-            <li class="px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800">✓ Canalización prolija</li>
-            <li class="px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800">✓ Garantía en terreno</li>
-          </ul>
         </div>
       </div>
     </section>
 
-    <!-- ======================================================================= -->
-    <!-- 6. PREGUNTAS FRECUENTES (FAQPage JSON-LD SINCRONIZADO)                  -->
-    <!-- ======================================================================= -->
-    <section id="preguntas-frecuentes" class="max-w-4xl mx-auto px-3.5 sm:px-6 lg:px-8 pt-2 pb-4">
-      <FAQSection
-        title="Preguntas Frecuentes"
-        headingLevel="h2"
-        items={faqs}
-      />
-    </section>
+  </div>
 
-    <!-- ======================================================================= -->
-    <!-- 7. CIERRE DIRECTO Y CLARO + AVISO LEGAL DISCRETO                        -->
-    <!-- ======================================================================= -->
-    <section class="max-w-4xl mx-auto px-3.5 sm:px-6 lg:px-8 pt-2 pb-4 space-y-5">
-      <div class="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-emerald-950/80 via-slate-900 to-slate-900 border-2 border-emerald-500/50 text-center shadow-2xl space-y-3.5">
-        <h2 class="text-xl sm:text-2xl font-black text-white leading-snug">
-          ¿Quieres cotizar tu instalación en el Biobío?
-        </h2>
-        <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto leading-relaxed">
-          Toca el botón de WhatsApp, dinos tu comuna y te orientamos rápido y sin compromiso.
-        </p>
-        <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 pt-1">
-          <a
-            href={waUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="px-7 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-sm shadow-lg shadow-emerald-500/25 transition-all inline-flex items-center justify-center gap-2"
-          >
-            <span>📲 Hablar por WhatsApp</span>
-          </a>
-          <a
-            href="/contacto/?motivo=starlink-biobio#contact-form"
-            class="px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 font-bold text-xs sm:text-sm transition-colors inline-flex items-center justify-center"
-          >
-            ✉️ Formulario Web →
-          </a>
-        </div>
+  <!-- ======================================================================= -->
+  <!-- 9. BARRA FLOTANTE STICKY DISCRETA EN MÓVIL                              -->
+  <!-- ======================================================================= -->
+  <div class="md:hidden fixed bottom-0 inset-x-0 z-40 bg-[#0F1824]/95 backdrop-blur-md border-t border-slate-700/80 px-3.5 py-2.5 shadow-[0_-8px_24px_rgba(0,0,0,0.45)]">
+    <div class="flex items-center justify-between gap-3">
+      <div class="min-w-0">
+        <span class="block text-[10px] font-bold uppercase tracking-wider text-slate-400">Instalación Biobío</span>
+        <span class="block text-sm font-black text-white">Desde $95.000</span>
       </div>
-
-      <p class="text-[11px] text-slate-500 text-center max-w-2xl mx-auto leading-relaxed">
-        ⚖️ Aviso legal: HogarTV.cl presta servicios técnicos independientes de instalación de antenas, cableado estructurado, canalización y cámaras de seguridad. Starlink® es marca registrada de SpaceX; el kit y el plan mensual oficial se contratan directamente con el proveedor.
-      </p>
-    </section>
-
+      <a
+        id="sticky-wa-btn"
+        href={waDirectUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="min-h-[44px] inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#25D366] hover:bg-[#1ebe5d] text-[#09140E] font-black text-xs shadow-md shrink-0"
+      >
+        <span>Cotizar por WhatsApp</span>
+      </a>
+    </div>
   </div>
 
-  <!-- Botón Flotante Limpio de WhatsApp en Celular (sin número visible) -->
-  <div class="md:hidden fixed bottom-3 inset-x-3 z-40 pointer-events-none">
-    <a
-      id="floating-wa-cta"
-      href={waUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="pointer-events-auto w-full flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-sm shadow-[0_10px_28px_rgba(16,185,129,0.45)] border border-emerald-300/60"
-    >
-      <span>📲 Cotizar por WhatsApp</span>
-    </a>
-  </div>
-
-  <!-- Actualiza el mensaje de WhatsApp con la comuna elegida -->
+  <!-- Script ligero del Cotizador en 15 segundos (0 dependencias externas) -->
   <script is:inline>
     (function() {
-      const select = document.getElementById('hero-comuna-select');
-      const heroCta = document.getElementById('hero-wa-cta');
-      const floatCta = document.getElementById('floating-wa-cta');
-      if (!select || !heroCta) return;
+      const form = document.getElementById('starlink-calculator');
+      if (!form) return;
 
-      const base = 'https://wa.me/56931926886?text=';
-      select.addEventListener('change', function() {
-        const comuna = select.value;
-        const msg = comuna
-          ? `Hola HogarTV, quiero cotizar una instalación de Starlink o redes en ${comuna} (Región del Biobío).`
-          : 'Hola HogarTV, quiero cotizar una instalación de Starlink o redes en mi comuna en la Región del Biobío.';
-        const fullUrl = base + encodeURIComponent(msg);
-        heroCta.setAttribute('href', fullUrl);
-        if (floatCta) floatCta.setAttribute('href', fullUrl);
+      const pkgMap = {
+        'base': { name: 'Paquete 1: Base Techo o Muro', min: 95000, max: 110000 },
+        'parcela-full': { name: 'Paquete 2: Parcela Full Mástil + Wi-Fi', min: 150000, max: 180000 },
+        'vecinos-50-50': { name: 'Paquete 3: Compartido Vecinos 50/50', min: 250000, max: 280000 },
+        'fibra-camaras': { name: 'Paquete 4: Enlace Fibra Larga (100–500m) o + Cámaras Portón', min: 340000, max: null },
+      };
+
+      const comunaSelect = document.getElementById('calc-comuna');
+      const outInstall = document.getElementById('out-install');
+      const outComuna = document.getElementById('out-comuna');
+      const outTravel = document.getElementById('out-travel');
+      const outTotal = document.getElementById('out-total');
+      const outNote = document.getElementById('out-note');
+      const waBtn = document.getElementById('calc-wa-btn');
+      const stickyWaBtn = document.getElementById('sticky-wa-btn');
+
+      const fmt = (n) => '$' + Number(n).toLocaleString('es-CL');
+
+      function updateCalc() {
+        const checkedPkg = form.querySelector('input[name="paquete"]:checked');
+        const checkedAnt = form.querySelector('input[name="antena"]:checked');
+        const pkgId = checkedPkg ? checkedPkg.value : 'vecinos-50-50';
+        const antenaState = checkedAnt ? checkedAnt.value : 'Sí, ya la compré';
+        const pkg = pkgMap[pkgId] || pkgMap['vecinos-50-50'];
+
+        const opt = comunaSelect.options[comunaSelect.selectedIndex];
+        const comunaName = opt ? opt.value : 'Coronel';
+        const tMin = Number(opt?.getAttribute('data-min') || 0);
+        const tMax = Number(opt?.getAttribute('data-max') || 0);
+
+        const installStr = pkg.max ? `${fmt(pkg.min)} – ${fmt(pkg.max)}` : `Desde ${fmt(pkg.min)}`;
+        const travelStr = tMin === 0 ? '$0 (Zona Base)' : `+${fmt(tMin)} – ${fmt(tMax)}`;
+        const totalMin = pkg.min + tMin;
+        const totalMax = pkg.max ? pkg.max + tMax : null;
+        const totalStr = totalMax ? `${fmt(totalMin)} – ${fmt(totalMax)}` : `Desde ${fmt(totalMin)}`;
+
+        if (outInstall) outInstall.textContent = installStr;
+        if (outComuna) outComuna.textContent = comunaName;
+        if (outTravel) outTravel.textContent = travelStr;
+        if (outTotal) outTotal.textContent = totalStr;
+
+        if (outNote) {
+          if (pkgId === 'vecinos-50-50' && totalMax) {
+            const halfMin = Math.round(totalMin / 2 / 1000) * 1000;
+            const halfMax = Math.round(totalMax / 2 / 1000) * 1000;
+            outNote.textContent = `Entre 2 vecinos queda aprox. en ${fmt(halfMin)} – ${fmt(halfMax)} por cada casa · Reservas con $25.000 descontables.`;
+          } else {
+            outNote.textContent = 'Reservas tu fecha con $25.000 descontables y pagas el saldo al terminar funcionando.';
+          }
+        }
+
+        const msg = [
+          'Hola Luis, hice mi cotización en HogarTV.cl:',
+          `• Servicio: ${pkg.name}`,
+          `• Comuna: ${comunaName} (Traslado: ${travelStr})`,
+          `• Total estimado: ${totalStr} (sin antena)`,
+          `• Antena Starlink: ${antenaState}`,
+          '¿Qué disponibilidad tienes este sábado o domingo?',
+        ].join('\n');
+
+        const url = 'https://wa.me/56931926886?text=' + encodeURIComponent(msg);
+        if (waBtn) waBtn.setAttribute('href', url);
+        if (stickyWaBtn) stickyWaBtn.setAttribute('href', url);
+      }
+
+      form.addEventListener('change', updateCalc);
+      form.addEventListener('submit', (e) => e.preventDefault());
+
+      // Botones de los paquetes seleccionan automáticamente la opción en el cotizador
+      document.querySelectorAll('.pkg-jump-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const targetPkg = btn.getAttribute('data-select-pkg');
+          const radio = form.querySelector(`input[name="paquete"][value="${targetPkg}"]`);
+          if (radio) {
+            radio.checked = true;
+            updateCalc();
+          }
+          document.getElementById('cotizador')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
       });
+
+      updateCalc();
     })();
   </script>
 
-  <!-- JSON-LD LocalBusiness / ProfessionalService & Service Catalog -->
+  <!-- JSON-LD Estructurado SEO Local: LocalBusiness + Service + FAQPage -->
   <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 </BaseLayout>

@@ -27,59 +27,58 @@ const packages = [
     priceLabel: '$95.000 – $110.000',
     min: 95000,
     max: 110000,
-    tag: 'Casas y cabañas despejadas',
+    tag: 'Casas despejadas',
     featured: false,
-    desc: 'Ideal cuando tu casa o techo tiene buena vista al cielo sin árboles altos encima.',
+    desc: 'Ideal cuando tu casa o cabaña tiene buena vista al cielo sin árboles altos encima (usa cable original del kit).',
     bullets: [
       'Soporte firme en techo o muro (resiste lluvia y viento)',
-      'Bajada de cable prolija y sellada contra filtraciones',
-      'Configuración completa del Wi-Fi y prueba en tus celulares',
+      'Bajada de cable prolija y sellada contra filtraciones + canaleta básica',
+      'Configuración completa del Wi-Fi y prueba real en tus celulares',
     ],
   },
   {
     id: 'parcela-full',
-    name: 'Parcela Full Mástil + Wi-Fi',
+    name: 'Parcela Full Mástil en Altura',
     priceLabel: '$150.000 – $180.000',
     min: 150000,
     max: 180000,
-    tag: 'Parcelas con árboles',
-    featured: false,
-    desc: 'Elevamos la antena por sobre copas de pinos o eucaliptos y reforzamos el Wi-Fi interior.',
-    bullets: [
-      'Mástil de acero elevado para librar árboles y evitar cortes',
-      'Fijaciones reforzadas pensadas para temporales del sur',
-      'Cableado exterior protegido UV + router Wi-Fi de largo alcance',
-    ],
-  },
-  {
-    id: 'vecinos-50-50',
-    name: 'Compartido Vecinos 50/50',
-    priceLabel: '$250.000 – $280.000',
-    perHouseLabel: '~$130.000 por cada casa',
-    min: 250000,
-    max: 280000,
-    tag: 'MÁS PEDIDO · AHORRA 50%',
+    tag: 'MÁS PEDIDO · PARCELAS',
     featured: true,
-    desc: '1 sola antena alimenta 2 casas hasta 80 metros. Cada familia queda con su Wi-Fi privado y pagan la mitad de la mensualidad.',
+    desc: 'Elevamos tu antena por sobre pinos o eucaliptos con mástil reforzado y canalización exterior sellada para temporales.',
     bullets: [
-      '1 antena alimenta 2 viviendas (hasta 80m con cable exterior blindado)',
-      '2 redes Wi-Fi 100% privadas e independientes (nombre y clave propia)',
-      'Reparto equitativo 50/50: dividen la mensualidad a la mitad sin frenarse',
+      'Mástil de acero galvanizado en altura para librar árboles y evitar cortes',
+      'Fijaciones y vientos pensados para ráfagas de viento del Biobío',
+      'Canalización exterior UV sellada y configuración Wi-Fi (router extra opcional)',
     ],
   },
   {
-    id: 'fibra-camaras',
-    name: 'Enlace Fibra Larga (100–500m) o + Cámaras Portón',
-    priceLabel: 'Desde $340.000',
-    min: 340000,
-    max: null,
-    tag: 'Grandes distancias y seguridad',
+    id: 'camara-porton',
+    name: 'Cámara al Portón (hasta 100m)',
+    priceLabel: '$140.000 – $220.000',
+    min: 140000,
+    max: 220000,
+    tag: 'Sin enchufe en el portón',
     featured: false,
-    desc: 'Une dos parcelas lejanas por fibra óptica o vigila tu portón y bodega desde el celular 24/7.',
+    desc: 'Mira quién llega a tu parcela 24/7 desde el celular con un solo cable blindado que lleva internet y energía.',
     bullets: [
-      'Tendido de fibra óptica entre parcelas de 100 a 500 metros sin pérdida',
-      'Cámara de seguridad en portón o galpón (incluso sin enchufe en el portón)',
-      'Cajas estancas selladas contra lluvia y visualización 24/7 en tu celular',
+      'Tendido exterior blindado hasta 100m (lleva internet y electricidad juntos)',
+      'Caja estanca sellada contra lluvia + configuración en tu celular 24/7',
+      'Desde $140.000 si ya tienes la cámara · hasta $220.000 llave en mano con cámara',
+    ],
+  },
+  {
+    id: 'combo-parcela',
+    name: 'Combo Starlink + Portón o Fibra (100–500m)',
+    priceLabel: 'Desde $320.000',
+    min: 320000,
+    max: null,
+    tag: 'Proyectos completos',
+    featured: false,
+    desc: 'Instalación Starlink en altura sumando cámara en portón lejano o enlace de fibra hacia bodega, quincho o 2ª cabaña.',
+    bullets: [
+      'Antena Starlink en altura + cámara al portón o fibra óptica 100–500m sin pérdida',
+      'Cajas estancas selladas contra lluvia y canaletas ordenadas en muros',
+      'Opción de reforzar Wi-Fi en 2º piso, quincho o bodega dentro de tu parcela',
     ],
   },
 ];
@@ -109,9 +108,14 @@ const zones = [
       { name: 'Yumbel', min: 30000, max: 35000, zoneType: 'rural' },
       { name: 'Florida', min: 30000, max: 35000, zoneType: 'rural' },
       { name: 'Quillón', min: 30000, max: 35000, zoneType: 'rural' },
-      { name: 'Cabrero', min: 30000, max: 35000, zoneType: 'rural' },
-      { name: 'Los Ángeles', min: 30000, max: 35000, zoneType: 'rural' },
       { name: 'Arauco', min: 30000, max: 35000, zoneType: 'rural' },
+    ],
+  },
+  {
+    label: 'Zona Rural Lejana (+$45.000 – $50.000 traslado)',
+    communes: [
+      { name: 'Cabrero', min: 45000, max: 50000, zoneType: 'rural-lejana' },
+      { name: 'Los Ángeles', min: 45000, max: 50000, zoneType: 'rural-lejana' },
     ],
   },
 ];
@@ -147,10 +151,10 @@ const galleryItems = [
   },
   {
     img: imgFibraDrop,
-    badge: 'Ahorra 50% al mes',
-    title: 'Enlace largo entre vecinos',
-    desc: 'Conexión aérea de larga distancia entre dos parcelas sin perder velocidad.',
-    alt: 'Tendido de fibra óptica aérea para compartir Starlink entre parcelas vecinas en el Biobío',
+    badge: 'Larga distancia sin pérdida',
+    title: 'Fibra hacia bodega, quincho o portón',
+    desc: 'Tendido de fibra óptica de hasta 500 metros dentro de tu terreno manteniendo máxima velocidad.',
+    alt: 'Tendido de fibra óptica aérea de larga distancia en parcela de la Región del Biobío',
   },
   {
     img: imgCajaEstanca,
@@ -164,15 +168,15 @@ const galleryItems = [
 const faqs = [
   {
     question: '¿Cuánto sale comprar la antena Starlink y cuánto cuesta la mensualidad?',
-    answer: 'La antena la compras tú directo en tienda (como Mercado Libre, Falabella o Starlink.com) y puedes pagarla en cuotas; suele rondar entre $180.000–$210.000 (Starlink Mini) y $265.000–$340.000 (Starlink Estándar 4 X / Gen 3) según promociones. El plan mensual residencial ilimitado lo pagas directo a Starlink sin contratos de amarre (aprox. $35.000 a $47.000 al mes). Si la compartes 50/50 con un vecino, cada casa paga la mitad (~$17.500 a $23.500 al mes).',
+    answer: 'La antena la compras tú directo en tienda (como Mercado Libre, Falabella o Starlink.com) y puedes pagarla en cuotas; suele rondar entre $180.000–$210.000 (Starlink Mini) y $265.000–$340.000 (Starlink Estándar 4 X / Gen 3) según promociones. Antes de comprar te asesoramos gratis para elegir el modelo exacto. El plan mensual residencial ilimitado lo pagas directo a Starlink sin contratos de amarre (aprox. $35.000 a $47.000 al mes).',
   },
   {
     question: '¿Funciona bien con lluvia intensa y temporales de viento en el Biobío?',
     answer: 'Sí. La antena Starlink está hecha para el clima pesado y tiene calefacción interna contra escarcha. Lo que marca la diferencia en el Biobío es que quede bien anclada en un mástil firme y con sus cajas y pasadas selladas contra la lluvia, que es justamente nuestro estándar en terreno.',
   },
   {
-    question: '¿De verdad se puede compartir 50/50 con un vecino sin que se pegue?',
-    answer: 'Sí, totalmente. Como Starlink entrega entre 150 y 250 Megas reales, sobra velocidad para dos familias viendo Netflix, teletrabajo y cámaras. Dejamos configurado un reparto equitativo 50/50 y cada casa tiene su propio router, nombre de Wi-Fi y contraseña privada, sin ver los equipos del otro.',
+    question: '¿Puedo llevar Wi-Fi firme a mi segundo piso, quincho o cámaras en el portón?',
+    answer: 'Sí, totalmente. Si tu casa tiene muros gruesos, dos pisos, quincho o bodega, dejamos puntos de red ordenados con canaletas para que el Wi-Fi llegue fuerte a todos los rincones. Y para tu portón de entrada instalamos cámaras hasta 100 metros con un solo cable (sin necesitar enchufe en el portón) o hasta 500 metros con fibra óptica.',
   },
   {
     question: '¿Qué pasa si tengo muchos árboles altos alrededor de mi parcela?',
@@ -211,10 +215,10 @@ const localBusinessSchema = {
   '@type': ['LocalBusiness', 'HomeAndConstructionBusiness'],
   '@id': `${siteUrl}/#servicio-starlink-biobio`,
   'name': 'HogarTV.cl — Instalación Profesional de Starlink y Redes en el Biobío',
-  'description': 'Instalación profesional de internet satelital Starlink (Mini y Gen 3) en altura, enlaces compartidos 50/50 entre vecinos, cableado ordenado con canaletas y cámaras de seguridad en parcelas de la Región del Biobío.',
+  'description': 'Instalación profesional de internet satelital Starlink (Mini y Estándar 4 X) en altura, asesoría de compra, cableado ordenado con canaletas, cobertura Wi-Fi y cámaras de seguridad al portón en la Región del Biobío.',
   'url': pageUrl,
   'telephone': '+56931926886',
-  'priceRange': '$95.000 - $340.000+ CLP',
+  'priceRange': '$95.000 - $320.000+ CLP',
   'image': `${siteUrl}${heroImage.src}`,
   'logo': `${siteUrl}/favicon-512x512.png`,
   'address': {
@@ -257,9 +261,9 @@ const localBusinessSchema = {
 const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
-  'serviceType': 'Instalación de Internet Satelital Starlink, Enlaces 50/50 y Cámaras en Parcelas',
-  'name': 'Instalación de Starlink y Redes en la Región del Biobío',
-  'description': 'Instalación llave en mano de Starlink en techo o mástil en altura, opción compartida 50/50 entre vecinos, tendido de fibra óptica hasta 500m y cámaras de seguridad al portón en el Biobío.',
+  'serviceType': 'Instalación de Internet Satelital Starlink, Redes Wi-Fi y Cámaras en Parcelas',
+  'name': 'Instalación de Starlink y Cámaras en la Región del Biobío',
+  'description': 'Instalación profesional de Starlink en techo o mástil en altura, asesoría de compra, cableado estructurado, fibra óptica hasta 500m y cámaras de seguridad al portón en el Biobío.',
   'url': pageUrl,
   'provider': { '@id': `${siteUrl}/#servicio-starlink-biobio` },
   'areaServed': { '@type': 'AdministrativeArea', 'name': 'Región del Biobío, Chile' },
@@ -295,7 +299,7 @@ const faqSchema = {
 
 <BaseLayout
   title="Instalación Starlink Biobío desde $95.000 | HogarTV.cl"
-  description="¿Internet lento en tu parcela del Biobío? Instalamos Starlink hasta 250 Megas en 1 día, opción 50/50 vecinos y cámaras al portón. Sábados y domingos."
+  description="¿Internet lento en tu parcela del Biobío? Te asesoramos en la compra e instalamos Starlink en 1 día, Wi-Fi en toda tu casa y cámaras al portón. Fines de semana."
   canonical={pageUrl}
   ogImage={heroImage.src}
   disableAds={true}
@@ -334,7 +338,7 @@ const faqSchema = {
             </h1>
 
             <p class="text-sm sm:text-base lg:text-lg text-slate-200 leading-relaxed max-w-2xl">
-              Instalamos internet satelital (Starlink) con mástil firme sobre árboles, opción <strong class="text-[#FF7010]">50/50 para dividir la mensualidad con tu vecino</strong> y cámaras de seguridad hasta el portón.
+              Te asesoramos gratis para elegir tu antena e instalamos Starlink con mástil firme sobre árboles, <strong class="text-[#FF7010]">Wi-Fi ordenado en toda tu casa</strong> y cámaras de seguridad hasta el portón.
             </p>
 
             <!-- 2 CTAs Principales -->
@@ -570,7 +574,7 @@ const faqSchema = {
                 ¿Cuál antena te conviene? Starlink Mini vs. Estándar 4 X (Gen 3)
               </h3>
               <p class="text-xs sm:text-sm text-slate-600 mt-1 m-0">
-                Compara en 30 segundos qué kit comprar según tu casa, tus paneles solares o si vas a compartir 50/50 con un vecino.
+                Compara en 30 segundos qué kit comprar según tu casa, tus paneles solares o si vas a instalar cámaras y varios televisores.
               </p>
             </div>
           </div>
@@ -591,7 +595,7 @@ const faqSchema = {
                   </th>
                   <th scope="col" class="bg-[#1D2731] text-white font-black text-sm p-4 w-[38%] border-b-2 border-[#FF7010]">
                     <span class="inline-block px-2 py-0.5 rounded-full bg-[#FF7010] text-white text-[10px] font-black uppercase tracking-wider mb-1">
-                      Recomendada Hogar / 50-50
+                      Recomendada Hogar / Parcela
                     </span>
                     <span class="block">Starlink Kit Estándar 4 X (Gen 3)</span>
                   </th>
@@ -604,7 +608,7 @@ const faqSchema = {
                     Cabañas pequeñas, <strong>parcelas de fin de semana</strong> (1 a 4 personas), viajes en motorhome/camper o 1 sola vivienda chica.
                   </td>
                   <td class="starlink-col-featured">
-                    <strong>Casas donde viven todo el año</strong>, familias con varios TV y celulares, teletrabajo, <strong>compartir 50/50 entre 2 vecinos</strong> o varias cámaras.
+                    <strong>Casas donde viven todo el año</strong>, familias con varios TV y celulares, teletrabajo, <strong>casas grandes o parcelas con cámaras</strong>.
                   </td>
                 </tr>
                 <tr>
@@ -613,16 +617,16 @@ const faqSchema = {
                     Muy buena para uso diario (<strong>~80 a 150 Megas</strong>: Netflix, YouTube, WhatsApp y videollamadas fluidas).
                   </td>
                   <td class="starlink-col-featured">
-                    <strong>Máxima potencia (~150 a 250+ Megas)</strong>: varias TVs en 4K, juegos online, videollamadas y 2 casas conectadas a la vez sin pegarse.
+                    <strong>Máxima potencia (~150 a 250+ Megas)</strong>: varias TVs en 4K, juegos online, videollamadas y cámaras conectadas a la vez sin pegarse.
                   </td>
                 </tr>
                 <tr>
-                  <th scope="row">¿Sirve para compartir 50/50 con un vecino?</th>
+                  <th scope="row">¿Sirve para varias TVs, teletrabajo y cámaras?</th>
                   <td>
-                    Solo si ambos le dan uso liviano (WhatsApp y 1 TV). Si ven películas o trabajan al mismo tiempo, se queda justa.
+                    Funciona bien para uso moderado (1 a 2 TVs y celulares). Si conectas muchas cámaras y videollamadas juntas puede quedar más justa.
                   </td>
                   <td class="starlink-col-featured">
-                    <strong>Sí, es la ideal para 50/50.</strong> Tiene mayor recepción y router separado con puertos listos para repartir parejo entre 2 casas.
+                    <strong>Sí, es la mejor opción para uso exigente.</strong> Trae mayor recepción y puertos de red listos para conectar cámaras, router extra o cableado interior.
                   </td>
                 </tr>
                 <tr>
@@ -683,7 +687,7 @@ const faqSchema = {
                   </td>
                   <td class="starlink-col-featured">
                     <p class="text-xs text-[#0F1824] m-0 mb-2.5 leading-relaxed">
-                      <strong>Elige Estándar 4 X (Gen 3)</strong> si vives ahí, trabajas online, pondrás cámaras o compartirás 50/50 con tu vecino.
+                      <strong>Elige Estándar 4 X (Gen 3)</strong> si vives ahí todo el año, trabajas online, tienes varios televisores o instalarás cámaras de seguridad.
                     </p>
                     <div class="grid grid-cols-2 gap-2">
                       <a
@@ -771,11 +775,6 @@ const faqSchema = {
                   <div class={`text-xl font-black font-mono ${pkg.featured ? 'text-[#26C6F5]' : 'text-white'}`}>
                     {pkg.priceLabel}
                   </div>
-                  {pkg.perHouseLabel && (
-                    <div class="text-xs font-extrabold text-[#FF7010] mt-0.5">
-                      entre ambos · {pkg.perHouseLabel}
-                    </div>
-                  )}
                 </div>
 
                 <p class="text-xs text-slate-300 leading-relaxed">{pkg.desc}</p>
@@ -842,14 +841,14 @@ const faqSchema = {
                     type="radio"
                     name="paquete"
                     value={pkg.id}
-                    checked={pkg.id === 'vecinos-50-50'}
+                    checked={pkg.id === 'parcela-full'}
                     class="mt-1 w-4 h-4 shrink-0 accent-[#26C6F5]"
                   />
                   <span class="min-w-0 flex-1">
                     <span class="flex items-center justify-between gap-2">
                       <span class="text-xs sm:text-sm font-extrabold text-white leading-snug">{pkg.name}</span>
                       {pkg.featured && (
-                        <span class="px-2 py-0.5 rounded-full bg-[#FF7010] text-white text-[9px] font-black uppercase shrink-0">50/50</span>
+                        <span class="px-2 py-0.5 rounded-full bg-[#FF7010] text-white text-[9px] font-black uppercase shrink-0">Más pedido</span>
                       )}
                     </span>
                     <span class="block text-xs font-mono font-bold text-[#26C6F5] mt-0.5">{pkg.priceLabel}</span>
@@ -886,8 +885,8 @@ const faqSchema = {
                 </optgroup>
               ))}
             </select>
-            <p id="calc-rural-tip" class="text-xs text-amber-200 bg-[#FF7010]/15 border border-[#FF7010]/40 rounded-xl px-3.5 py-2.5 m-0 leading-relaxed">
-              <strong>Tip de ahorro:</strong> Si se juntan 2 vecinos de la misma comuna el mismo día, el traslado se divide o sale gratis.
+            <p id="calc-rural-tip" class="text-xs text-slate-200 bg-[#0F1824]/90 border border-slate-700 rounded-xl px-3.5 py-2.5 m-0 leading-relaxed">
+              <strong class="text-[#26C6F5]">Traslado transparente:</strong> Incluye ida y vuelta con materiales desde Coronel/Concepción (sin cobros sorpresa en terreno).
             </p>
           </div>
 
@@ -914,7 +913,7 @@ const faqSchema = {
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs border-b border-slate-800 pb-4">
               <div>
                 <span class="text-slate-400 block">Instalación estimada:</span>
-                <strong id="out-install" class="text-sm sm:text-base font-mono text-white">$250.000 – $280.000</strong>
+                <strong id="out-install" class="text-sm sm:text-base font-mono text-white">$150.000 – $180.000</strong>
               </div>
               <div>
                 <span class="text-slate-400 block">Traslado (<span id="out-comuna">Coronel</span>):</span>
@@ -922,12 +921,12 @@ const faqSchema = {
               </div>
               <div>
                 <span class="text-slate-400 block">Total estimado (sin antena):</span>
-                <strong id="out-total" class="text-lg sm:text-xl font-mono font-black text-[#25D366]">$250.000 – $280.000</strong>
+                <strong id="out-total" class="text-lg sm:text-xl font-mono font-black text-[#25D366]">$150.000 – $180.000</strong>
               </div>
             </div>
 
             <div id="out-note" class="text-xs text-[#FF7010] font-bold">
-              Entre 2 vecinos queda aprox. en $125.000 – $140.000 por cada casa · Reservas con $25.000 descontables.
+              Reservas tu fecha con $25.000 descontables y pagas el saldo al terminar funcionando.
             </div>
 
             <a
@@ -948,7 +947,7 @@ const faqSchema = {
     </section>
 
     <!-- ======================================================================= -->
-    <!-- 5. ESQUEMA VISUAL LIMPIO (SVG): 50/50 VECINOS + CÁMARA AL PORTÓN        -->
+    <!-- 5. ESQUEMA VISUAL LIMPIO (SVG): WI-FI TODA LA CASA + CÁMARA AL PORTÓN   -->
     <!-- ======================================================================= -->
     <section id="esquema-visual" class="bg-[#0F1824] text-white py-11 sm:py-16 border-b border-slate-800/80">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -957,16 +956,16 @@ const faqSchema = {
             Visual y simple
           </span>
           <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
-            Así repartimos Starlink 50/50 y llevamos cámaras hasta el portón
+            Así dejamos Wi-Fi firme en toda tu parcela y cámaras hasta el portón
           </h2>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <!-- Esquema A: Compartido 50/50 -->
+          <!-- Esquema A: Cobertura total en tu casa y parcela -->
           <div class="rounded-3xl bg-[#1D2731] border border-[#26C6F5]/35 p-5 sm:p-7 space-y-4 shadow-xl">
             <div class="flex items-center justify-between gap-2">
-              <h3 class="text-base sm:text-lg font-black text-white">Compartir 1 antena entre 2 casas</h3>
-              <span class="px-2.5 py-1 rounded-full bg-[#FF7010]/20 text-[#FF7010] text-[11px] font-black shrink-0">Ahorra 50%</span>
+              <h3 class="text-base sm:text-lg font-black text-white">Wi-Fi firme en tu casa, 2º piso y quincho</h3>
+              <span class="px-2.5 py-1 rounded-full bg-[#FF7010]/20 text-[#FF7010] text-[11px] font-black shrink-0">Cero puntos muertos</span>
             </div>
 
             <div class="flex flex-col items-center gap-2.5">
@@ -978,8 +977,8 @@ const faqSchema = {
                   </svg>
                 </div>
                 <div>
-                  <div class="text-sm font-black text-white">1 Antena Starlink en Altura</div>
-                  <div class="text-xs text-[#26C6F5]">Recibe hasta 250 Megas sin obstáculos</div>
+                  <div class="text-sm font-black text-white">Antena Starlink en Mástil Firme</div>
+                  <div class="text-xs text-[#26C6F5]">Elevada sobre árboles para recibir hasta 250 Megas</div>
                 </div>
               </div>
 
@@ -987,7 +986,7 @@ const faqSchema = {
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 5v14m0 0l-5-5m5 5l5-5"></path>
               </svg>
 
-              <!-- Nodo 2: Repartidor -->
+              <!-- Nodo 2: Bajada y Router Principal -->
               <div class="w-full p-3.5 rounded-2xl bg-[#0F1824] border border-[#FF7010]/50 flex items-center gap-3">
                 <div class="w-10 h-10 rounded-xl bg-[#FF7010]/15 text-[#FF7010] flex items-center justify-center shrink-0">
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -995,8 +994,8 @@ const faqSchema = {
                   </svg>
                 </div>
                 <div>
-                  <div class="text-sm font-black text-white">Control Parejo 50/50</div>
-                  <div class="text-xs text-slate-300">Separa las redes y protege la velocidad de ambas casas</div>
+                  <div class="text-sm font-black text-white">Bajada Sellada + Router Principal</div>
+                  <div class="text-xs text-slate-300">Cable oculto en canaletas limpias dentro de tu casa</div>
                 </div>
               </div>
 
@@ -1005,21 +1004,21 @@ const faqSchema = {
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M7 7l10 10m0 0h-7m7 0v-7"></path></svg>
               </div>
 
-              <!-- Nodo 3: 2 Casas -->
+              <!-- Nodo 3: Zonas cubiertas -->
               <div class="grid grid-cols-2 gap-3 w-full">
                 <div class="p-3.5 rounded-2xl bg-[#0F1824] border border-slate-700 text-center space-y-1">
                   <div class="inline-flex w-8 h-8 rounded-lg bg-slate-800 text-[#26C6F5] items-center justify-center mx-auto">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
                   </div>
-                  <div class="text-xs sm:text-sm font-black text-white">Tu Casa</div>
-                  <div class="text-[11px] text-slate-400">Wi-Fi y clave privada</div>
+                  <div class="text-xs sm:text-sm font-black text-white">Casa y 2º Piso</div>
+                  <div class="text-[11px] text-slate-400">Smart TVs, teletrabajo y celulares</div>
                 </div>
                 <div class="p-3.5 rounded-2xl bg-[#0F1824] border border-slate-700 text-center space-y-1">
                   <div class="inline-flex w-8 h-8 rounded-lg bg-slate-800 text-[#FF7010] items-center justify-center mx-auto">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
                   </div>
-                  <div class="text-xs sm:text-sm font-black text-white">Casa del Vecino</div>
-                  <div class="text-[11px] text-slate-400">Hasta 80m cable / 500m fibra</div>
+                  <div class="text-xs sm:text-sm font-black text-white">Quincho o Bodega</div>
+                  <div class="text-[11px] text-slate-400">Cable exterior o fibra hasta 500m</div>
                 </div>
               </div>
             </div>
@@ -1264,9 +1263,9 @@ const faqSchema = {
 
       const pkgMap = {
         'base': { name: 'Paquete 1: Base Techo o Muro', min: 95000, max: 110000 },
-        'parcela-full': { name: 'Paquete 2: Parcela Full Mástil + Wi-Fi', min: 150000, max: 180000 },
-        'vecinos-50-50': { name: 'Paquete 3: Compartido Vecinos 50/50', min: 250000, max: 280000 },
-        'fibra-camaras': { name: 'Paquete 4: Enlace Fibra Larga (100–500m) o + Cámaras Portón', min: 340000, max: null },
+        'parcela-full': { name: 'Paquete 2: Parcela Full Mástil en Altura', min: 150000, max: 180000 },
+        'camara-porton': { name: 'Paquete 3: Cámara al Portón (hasta 100m sin enchufe)', min: 140000, max: 220000 },
+        'combo-parcela': { name: 'Paquete 4: Combo Starlink + Portón o Fibra (100–500m)', min: 320000, max: null },
       };
 
       const comunaSelect = document.getElementById('calc-comuna');
@@ -1283,9 +1282,9 @@ const faqSchema = {
       function updateCalc() {
         const checkedPkg = form.querySelector('input[name="paquete"]:checked');
         const checkedAnt = form.querySelector('input[name="antena"]:checked');
-        const pkgId = checkedPkg ? checkedPkg.value : 'vecinos-50-50';
+        const pkgId = checkedPkg ? checkedPkg.value : 'parcela-full';
         const antenaState = checkedAnt ? checkedAnt.value : 'Sí, ya la compré';
-        const pkg = pkgMap[pkgId] || pkgMap['vecinos-50-50'];
+        const pkg = pkgMap[pkgId] || pkgMap['parcela-full'];
 
         const opt = comunaSelect.options[comunaSelect.selectedIndex];
         const comunaName = opt ? opt.value : 'Coronel';
@@ -1304,10 +1303,8 @@ const faqSchema = {
         if (outTotal) outTotal.textContent = totalStr;
 
         if (outNote) {
-          if (pkgId === 'vecinos-50-50' && totalMax) {
-            const halfMin = Math.round(totalMin / 2 / 1000) * 1000;
-            const halfMax = Math.round(totalMax / 2 / 1000) * 1000;
-            outNote.textContent = `Entre 2 vecinos queda aprox. en ${fmt(halfMin)} – ${fmt(halfMax)} por cada casa · Reservas con $25.000 descontables.`;
+          if (pkgId === 'camara-porton') {
+            outNote.textContent = 'Valor según distancia y si ya tienes tu cámara o la llevamos lista llave en mano · Reservas con $25.000 descontables.';
           } else {
             outNote.textContent = 'Reservas tu fecha con $25.000 descontables y pagas el saldo al terminar funcionando.';
           }
